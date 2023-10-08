@@ -12,5 +12,6 @@ signal hp_is_zero
 @export var mp:int
 @export var speed:int
 @export var damage:int
-@export var atk_speed:int
+@export var atk_speed:float
+@export var atk_cd:float
 @export var atk_range:float

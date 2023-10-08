@@ -1,7 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://dx27klpp0nc4x"]
+[gd_scene load_steps=23 format=3 uid="uid://dx27klpp0nc4x"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/NonPlayableCharacter/Enemy.gd" id="1_jkjmt"]
 [ext_resource type="Texture2D" uid="uid://bcvid2hgflnb" path="res://Assets/Texture/Characters/purple_character.png" id="1_lm6s8"]
+[ext_resource type="Texture2D" uid="uid://cgtj8kodii1q7" path="res://Assets/Texture/Weapons/weapon_axe.png" id="2_d4ff6"]
+[ext_resource type="Script" path="res://Script/Perfabs/NonPlayableCharacter/EnemyWeapons.gd" id="2_f5php"]
 [ext_resource type="Script" path="res://addons/FlowerBuff/Script/FlowerBuffManager.gd" id="2_jei58"]
 [ext_resource type="Script" path="res://Script/Resources/CharacterData.gd" id="3_ffvvw"]
 [ext_resource type="Script" path="res://Script/Component/PathfindComponent.gd" id="4_e4v6d"]
@@ -11,11 +13,19 @@
 [ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="8_6dat1"]
 [ext_resource type="Script" path="res://Script/Beehave/Condition/IsPlayerInRange.gd" id="9_07cna"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="9_25vbi"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence_reactive.gd" id="10_xb1ga"]
 [ext_resource type="Script" path="res://Script/Beehave/Condition/EnemyAttack.gd" id="12_smyub"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="12_xeagt"]
 [ext_resource type="Script" path="res://Script/Beehave/Condition/IsPlayerNotInRange.gd" id="13_mbbn3"]
 [ext_resource type="Script" path="res://Script/Beehave/Condition/EnemyPatrol.gd" id="14_dl18r"]
-[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence_star.gd" id="14_p5kp7"]
+
+[sub_resource type="Animation" id="Animation_w24fo"]
+resource_name = "Attack"
+length = 0.5
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pyvvk"]
+_data = {
+"Attack": SubResource("Animation_w24fo")
+}
 
 [sub_resource type="Resource" id="Resource_j7sht"]
 script = ExtResource("3_ffvvw")
@@ -24,7 +34,8 @@ max_hp = 100
 mp = 0
 speed = 2
 damage = 1
-atk_speed = 0
+atk_speed = 1.0
+atk_cd = 0.5
 atk_range = 100.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3mlrj"]
@@ -35,6 +46,25 @@ radius = 37.0135
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_jkjmt")
+
+[node name="AtkCDTimer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pyvvk")
+}
+
+[node name="Weapons" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(56, 21)
+gizmo_extents = 34.2
+script = ExtResource("2_f5php")
+
+[node name="Weapons1" type="Sprite2D" parent="Weapons"]
+position = Vector2(-58.25, 1)
+rotation = 2.00713
+texture = ExtResource("2_d4ff6")
+offset = Vector2(-0.82136, -58.2528)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_lm6s8")
@@ -70,7 +100,7 @@ blackboard = NodePath("../Blackboard")
 script = ExtResource("9_25vbi")
 
 [node name="Attack" type="Node" parent="BeehaveTree/SelectorReactiveComposite"]
-script = ExtResource("10_xb1ga")
+script = ExtResource("12_xeagt")
 
 [node name="IsPlayerInRange" type="Node" parent="BeehaveTree/SelectorReactiveComposite/Attack"]
 script = ExtResource("9_07cna")
@@ -79,7 +109,7 @@ script = ExtResource("9_07cna")
 script = ExtResource("12_smyub")
 
 [node name="Patrol" type="Node" parent="BeehaveTree/SelectorReactiveComposite"]
-script = ExtResource("14_p5kp7")
+script = ExtResource("12_xeagt")
 
 [node name="IsPlayerNotInRange" type="Node" parent="BeehaveTree/SelectorReactiveComposite/Patrol"]
 script = ExtResource("13_mbbn3")
