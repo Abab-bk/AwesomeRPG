@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=2 format=3 uid="uid://cxjh70teksadv"]
+
+[ext_resource type="Script" path="res://Script/Resources/CharacterData.gd" id="1_nesea"]
+
+[resource]
+script = ExtResource("1_nesea")
+hp = 100
+max_hp = 200
+mp = 100
+speed = 600
+damage = 10
+atk_speed = 1
+atk_range = 0.0
