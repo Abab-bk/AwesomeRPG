@@ -5,3 +5,4 @@ extends Area2D
 
 func handle_hit(_value:int) -> void:
     health_component.damage(_value)
+    EventBus.update_ui.emit()

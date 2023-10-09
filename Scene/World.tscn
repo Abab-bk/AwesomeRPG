@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://blncare6u6ty" path="res://Assets/Texture/Map/TileSheet.png" id="1_7qj4v"]
 [ext_resource type="PackedScene" uid="uid://v51c0x6v6m7h" path="res://Scene/Perfabs/PlayabelCharacter/Player.tscn" id="2_l5a8p"]
-[ext_resource type="PackedScene" uid="uid://dx27klpp0nc4x" path="res://Scene/Perfabs/NonPlayCharacter/Enemy.tscn" id="3_1kk65"]
 [ext_resource type="PackedScene" uid="uid://dlpspce2dr6hw" path="res://Scene/Perfabs/Maps/RelifePoint.tscn" id="4_f4kq8"]
 [ext_resource type="PackedScene" uid="uid://bjqtnyo6c546w" path="res://Scene/UI/Hud.tscn" id="5_07fkt"]
+[ext_resource type="PackedScene" uid="uid://brwommtxhiim5" path="res://Scene/Perfabs/NonPlayCharacter/Slime.tscn" id="5_m1lkm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7roa4"]
 texture = ExtResource("1_7qj4v")
@@ -169,9 +169,9 @@ layer_1/tile_data = PackedInt32Array()
 [node name="Player" parent="." instance=ExtResource("2_l5a8p")]
 position = Vector2(402, 216)
 
-[node name="Enemy" parent="." instance=ExtResource("3_1kk65")]
-position = Vector2(474, 121)
-
 [node name="RelifePoint" parent="." instance=ExtResource("4_f4kq8")]
 
 [node name="Hud" parent="." instance=ExtResource("5_07fkt")]
+
+[node name="Slime" parent="." instance=ExtResource("5_m1lkm")]
+position = Vector2(588, 169)

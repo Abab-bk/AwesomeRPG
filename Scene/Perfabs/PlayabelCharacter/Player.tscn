@@ -1,24 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://v51c0x6v6m7h"]
+[gd_scene load_steps=9 format=3 uid="uid://v51c0x6v6m7h"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/PlayableCharacter/Player.gd" id="1_8yy7w"]
 [ext_resource type="Texture2D" uid="uid://dslvgplb0lb00" path="res://Assets/Texture/Characters/green_character.png" id="2_3w4i3"]
 [ext_resource type="Script" path="res://addons/FlowerBuff/Script/FlowerBuffManager.gd" id="3_nckal"]
 [ext_resource type="Resource" uid="uid://cxjh70teksadv" path="res://Assets/Resources/Datas/Characters/Knight.tres" id="4_14ux5"]
-[ext_resource type="Script" path="res://addons/FlowerBuff/Script/FlowerBaseBuff.gd" id="5_bfn6a"]
+[ext_resource type="Script" path="res://Script/Component/HurtBoxComponent.gd" id="6_mwt7r"]
+[ext_resource type="Script" path="res://Script/Component/HealthComponent.gd" id="7_afrsm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jqcd1"]
 radius = 38.3275
 
-[sub_resource type="Resource" id="Resource_m00tt"]
-script = ExtResource("5_bfn6a")
-name = ""
-desc = ""
-repeat = false
-infinite = false
-compute_values = Array[Resource("res://addons/FlowerBuff/Script/FlowerComputeData.gd")]([])
-prepare_time = 0
-active_time = 0
-cooldown_time = 0
+[sub_resource type="CircleShape2D" id="CircleShape2D_e07rq"]
+radius = 39.0128
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_8yy7w")
@@ -35,4 +28,15 @@ shape = SubResource("CircleShape2D_jqcd1")
 script = ExtResource("3_nckal")
 target = NodePath("..")
 compute_data = ExtResource("4_14ux5")
-buff_list = Array[ExtResource("5_bfn6a")]([SubResource("Resource_m00tt")])
+buff_list = Array[Resource("res://addons/FlowerBuff/Script/FlowerBaseBuff.gd")]([null])
+
+[node name="HurtBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("6_mwt7r")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+shape = SubResource("CircleShape2D_e07rq")
+
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("buff_manager")]
+script = ExtResource("7_afrsm")
+buff_manager = NodePath("../FlowerBuffManager")

@@ -21,6 +21,7 @@ Master="*res://Script/Game/Global/Master.gd"
 EventBus="*res://Script/Game/Global/EventBus.gd"
 BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
+tw="*res://addons/tw/tw.gd"
 
 [display]
 
@@ -37,7 +38,7 @@ naming/scene_name_casing=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/FlowerBuff/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/beehave/plugin.cfg")
+enabled=PackedStringArray("res://addons/FlowerBuff/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/beehave/plugin.cfg", "res://addons/tw/plugin.cfg")
 
 [input]
 
