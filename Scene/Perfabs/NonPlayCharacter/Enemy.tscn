@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bcvid2hgflnb" path="res://Assets/Texture/Characters/purple_character.png" id="1_lm6s8"]
 [ext_resource type="Script" path="res://Script/Perfabs/NonPlayableCharacter/EnemyWeapons.gd" id="2_f5php"]
 [ext_resource type="Script" path="res://addons/FlowerBuff/Script/FlowerBuffManager.gd" id="2_jei58"]
-[ext_resource type="Script" path="res://Script/Resources/CharacterData.gd" id="3_ffvvw"]
 [ext_resource type="PackedScene" uid="uid://cwrtaokg2sgt6" path="res://Scene/Component/WeaponComponent.tscn" id="3_ufpvg"]
 [ext_resource type="Script" path="res://Script/Component/PathfindComponent.gd" id="4_e4v6d"]
 [ext_resource type="Script" path="res://Script/Component/ConductorComponent.gd" id="4_wpuqm"]
 [ext_resource type="Script" path="res://Script/Component/HealthComponent.gd" id="5_bho0k"]
+[ext_resource type="Resource" uid="uid://p3ihvfils2o" path="res://Assets/Resources/Datas/Enemys/NormalEnemy.tres" id="5_iftaj"]
 [ext_resource type="Script" path="res://Script/Component/HurtBoxComponent.gd" id="6_sc1tl"]
 [ext_resource type="Script" path="res://addons/FlowerBuff/Script/FlowerComputeData.gd" id="7_ib5rm"]
 [ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="8_6dat1"]
@@ -21,25 +21,65 @@
 radius = 37.054
 
 [sub_resource type="Animation" id="Animation_w24fo"]
-resource_name = "Attack"
+resource_name = "Die"
 length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -3.49066]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_kw3tx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pyvvk"]
 _data = {
-"Attack": SubResource("Animation_w24fo")
+"Die": SubResource("Animation_w24fo"),
+"RESET": SubResource("Animation_kw3tx")
 }
-
-[sub_resource type="Resource" id="Resource_j7sht"]
-script = ExtResource("3_ffvvw")
-hp = 100
-max_hp = 100
-mp = 0
-speed = 200
-damage = 20
-vision = 300
-atk_speed = 1.0
-atk_cd = 0.5
-atk_range = 100.0
 
 [sub_resource type="Resource" id="Resource_78fr2"]
 script = ExtResource("7_ib5rm")
@@ -69,26 +109,19 @@ radius = 97.1288
 [sub_resource type="CircleShape2D" id="CircleShape2D_u6wmr"]
 radius = 37.0135
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_jkjmt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3mlrj")
 
 [node name="AtkCDTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_pyvvk")
 }
-
-[node name="Weapons" type="Node2D" parent="." node_paths=PackedStringArray("atk_cd_timer")]
-unique_name_in_owner = true
-script = ExtResource("2_f5php")
-atk_cd_timer = NodePath("../AtkCDTimer")
-
-[node name="WeaponComponent" parent="Weapons" node_paths=PackedStringArray("buff_manager") instance=ExtResource("3_ufpvg")]
-buff_manager = NodePath("../../FlowerBuffManager")
 
 [node name="ConductorComponent" type="Node" parent="." node_paths=PackedStringArray("blackboard", "buff_manager", "atk_range", "vision", "weapons", "atk_cd_timer")]
 script = ExtResource("4_wpuqm")
@@ -96,13 +129,13 @@ blackboard = NodePath("../Blackboard")
 buff_manager = NodePath("../FlowerBuffManager")
 atk_range = NodePath("../AtkRange")
 vision = NodePath("../VisionComponent")
-weapons = NodePath("../Weapons")
+weapons = NodePath("../Sprite2D/Weapons")
 atk_cd_timer = NodePath("../AtkCDTimer")
 
 [node name="FlowerBuffManager" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("2_jei58")
 target = NodePath("..")
-compute_data = SubResource("Resource_j7sht")
+compute_data = ExtResource("5_iftaj")
 buff_list = Array[ExtResource("8_id3tm")]([SubResource("Resource_xtp0x")])
 
 [node name="PathFindComponent" type="Node" parent="."]
@@ -134,10 +167,19 @@ health_component = NodePath("../HealthComponent")
 shape = SubResource("CircleShape2D_u6wmr")
 
 [node name="NormalEnemyBehavior" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("14_15x1o")]
-blackboard = NodePath("@Node@73086")
+blackboard = NodePath("../Blackboard")
 
 [node name="Blackboard" type="Node" parent="."]
 script = ExtResource("8_6dat1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_lm6s8")
+
+[node name="Weapons" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("atk_cd_timer")]
+unique_name_in_owner = true
+show_behind_parent = true
+script = ExtResource("2_f5php")
+atk_cd_timer = NodePath("../../AtkCDTimer")
+
+[node name="WeaponComponent" parent="Sprite2D/Weapons" node_paths=PackedStringArray("buff_manager") instance=ExtResource("3_ufpvg")]
+buff_manager = NodePath("../../../FlowerBuffManager")

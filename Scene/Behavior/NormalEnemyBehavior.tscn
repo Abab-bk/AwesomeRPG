@@ -13,7 +13,7 @@
 [node name="NormalEnemyBehavior" type="Node" node_paths=PackedStringArray("blackboard")]
 script = ExtResource("1_rujn6")
 actor_node_path = NodePath("..")
-blackboard = NodePath("")
+blackboard = NodePath("@Node@27164")
 
 [node name="SelectorReactiveComposite" type="Node" parent="."]
 script = ExtResource("2_rijjy")

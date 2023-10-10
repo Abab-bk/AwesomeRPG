@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=2 format=3 uid="uid://p3ihvfils2o"]
+
+[ext_resource type="Script" path="res://Script/Resources/CharacterData.gd" id="1_vaa0w"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_vaa0w")
+hp = 100
+max_hp = 100
+mp = 0
+speed = 200
+damage = 20
+vision = 300
+atk_speed = 1.0
+atk_cd = 0.5
+atk_range = 100.0

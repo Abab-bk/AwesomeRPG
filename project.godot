@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Master="*res://Script/Game/Global/Master.gd"
 EventBus="*res://Script/Game/Global/EventBus.gd"
+Bulider="*res://Script/Game/Global/Bulider.gd"
 BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 tw="*res://addons/tw/tw.gd"
@@ -47,6 +48,10 @@ Click={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
+
+[layer_names]
+
+2d_physics/layer_2="HurtBox"
 
 [rendering]
 

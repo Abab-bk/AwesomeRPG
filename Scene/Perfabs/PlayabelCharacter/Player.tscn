@@ -1,14 +1,96 @@
-[gd_scene load_steps=9 format=3 uid="uid://v51c0x6v6m7h"]
+[gd_scene load_steps=29 format=3 uid="uid://v51c0x6v6m7h"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/PlayableCharacter/Player.gd" id="1_8yy7w"]
 [ext_resource type="Texture2D" uid="uid://dslvgplb0lb00" path="res://Assets/Texture/Characters/green_character.png" id="2_3w4i3"]
 [ext_resource type="Script" path="res://addons/FlowerBuff/Script/FlowerBuffManager.gd" id="3_nckal"]
 [ext_resource type="Resource" uid="uid://cxjh70teksadv" path="res://Assets/Resources/Datas/Characters/Knight.tres" id="4_14ux5"]
+[ext_resource type="Script" path="res://Script/Component/AtkRangeComponent.gd" id="5_cwveo"]
 [ext_resource type="Script" path="res://Script/Component/HurtBoxComponent.gd" id="6_mwt7r"]
+[ext_resource type="Script" path="res://Script/Component/VisionComponent.gd" id="6_r1tqh"]
 [ext_resource type="Script" path="res://Script/Component/HealthComponent.gd" id="7_afrsm"]
+[ext_resource type="Script" path="res://Script/Perfabs/NonPlayableCharacter/EnemyWeapons.gd" id="7_j8fjd"]
+[ext_resource type="PackedScene" uid="uid://cwrtaokg2sgt6" path="res://Scene/Component/WeaponComponent.tscn" id="8_5wme0"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="9_38ipv"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="10_o822m"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="11_as28j"]
+[ext_resource type="Script" path="res://Script/Beehave/Action/TurnToEnemy.gd" id="14_1312a"]
+[ext_resource type="Script" path="res://Script/Beehave/Condition/IsEnemyInRange.gd" id="15_bcwp0"]
+[ext_resource type="Script" path="res://Script/Beehave/Action/MoveToEnemy.gd" id="15_ijydr"]
+[ext_resource type="Script" path="res://Script/Beehave/Condition/InEnemyNotInRange.gd" id="16_733eq"]
+[ext_resource type="Script" path="res://Script/Beehave/Action/PlayerPatrol.gd" id="17_qcyq5"]
+[ext_resource type="Script" path="res://Script/Component/ConductorComponent.gd" id="18_rbisg"]
+[ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="19_2nmpk"]
+[ext_resource type="Script" path="res://Script/Beehave/Action/PlayerAttack.gd" id="20_txu13"]
+
+[sub_resource type="Animation" id="Animation_lopl1"]
+resource_name = "Die"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -3.89208]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_pjveo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qk5d5"]
+_data = {
+"Die": SubResource("Animation_lopl1"),
+"RESET": SubResource("Animation_pjveo")
+}
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jqcd1"]
 radius = 38.3275
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_28jd6"]
+radius = 137.015
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wcb0n"]
+radius = 198.091
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e07rq"]
 radius = 39.0128
@@ -16,19 +98,58 @@ radius = 39.0128
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_8yy7w")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_3w4i3")
-
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_qk5d5")
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jqcd1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_3w4i3")
+
+[node name="Weapons" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("atk_cd_timer")]
+show_behind_parent = true
+script = ExtResource("7_j8fjd")
+atk_cd_timer = NodePath("../../AtkCDTimer")
+
+[node name="WeaponComponent" parent="Sprite2D/Weapons" node_paths=PackedStringArray("buff_manager") instance=ExtResource("8_5wme0")]
+buff_manager = NodePath("../../../FlowerBuffManager")
+
+[node name="AtkCDTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AtkRangeComponent" type="Area2D" parent="." node_paths=PackedStringArray("buff_manager")]
+script = ExtResource("5_cwveo")
+buff_manager = NodePath("../FlowerBuffManager")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AtkRangeComponent"]
+shape = SubResource("CircleShape2D_28jd6")
+
+[node name="VisionComponent" type="Area2D" parent="." node_paths=PackedStringArray("buff_manager")]
+script = ExtResource("6_r1tqh")
+buff_manager = NodePath("../FlowerBuffManager")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionComponent"]
+shape = SubResource("CircleShape2D_wcb0n")
 
 [node name="FlowerBuffManager" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("3_nckal")
 target = NodePath("..")
 compute_data = ExtResource("4_14ux5")
 buff_list = Array[Resource("res://addons/FlowerBuff/Script/FlowerBaseBuff.gd")]([null])
+
+[node name="ConductorComponent" type="Node" parent="." node_paths=PackedStringArray("blackboard", "buff_manager", "atk_range", "vision", "weapons", "atk_cd_timer")]
+script = ExtResource("18_rbisg")
+blackboard = NodePath("../Blackboard")
+buff_manager = NodePath("../FlowerBuffManager")
+atk_range = NodePath("../AtkRangeComponent")
+vision = NodePath("../VisionComponent")
+weapons = NodePath("../Sprite2D/Weapons")
+atk_cd_timer = NodePath("../AtkCDTimer")
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="HurtBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("6_mwt7r")
@@ -40,3 +161,41 @@ shape = SubResource("CircleShape2D_e07rq")
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("buff_manager")]
 script = ExtResource("7_afrsm")
 buff_manager = NodePath("../FlowerBuffManager")
+
+[node name="Behavior" type="Node" parent="." node_paths=PackedStringArray("blackboard")]
+script = ExtResource("9_38ipv")
+actor_node_path = NodePath("..")
+blackboard = NodePath("../Blackboard")
+
+[node name="SelectorReactiveComposite" type="Node" parent="Behavior"]
+script = ExtResource("10_o822m")
+
+[node name="Patrol" type="Node" parent="Behavior/SelectorReactiveComposite"]
+script = ExtResource("11_as28j")
+
+[node name="PlayerPatrol" type="Node" parent="Behavior/SelectorReactiveComposite/Patrol"]
+script = ExtResource("17_qcyq5")
+
+[node name="IsEnemyNotInRange" type="Node" parent="Behavior/SelectorReactiveComposite/Patrol"]
+script = ExtResource("16_733eq")
+
+[node name="Attack" type="Node" parent="Behavior/SelectorReactiveComposite"]
+script = ExtResource("11_as28j")
+
+[node name="IsEnemyInRange" type="Node" parent="Behavior/SelectorReactiveComposite/Attack"]
+script = ExtResource("15_bcwp0")
+
+[node name="SequenceComposite" type="Node" parent="Behavior/SelectorReactiveComposite/Attack"]
+script = ExtResource("11_as28j")
+
+[node name="TurnToEnemy" type="Node" parent="Behavior/SelectorReactiveComposite/Attack/SequenceComposite"]
+script = ExtResource("14_1312a")
+
+[node name="MoveToEnemy" type="Node" parent="Behavior/SelectorReactiveComposite/Attack/SequenceComposite"]
+script = ExtResource("15_ijydr")
+
+[node name="PlayerAttack" type="Node" parent="Behavior/SelectorReactiveComposite/Attack/SequenceComposite"]
+script = ExtResource("20_txu13")
+
+[node name="Blackboard" type="Node" parent="."]
+script = ExtResource("19_2nmpk")
