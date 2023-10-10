@@ -13,3 +13,4 @@ func _ready() -> void:
 
 func update_ui() -> void:
     hp_bar.value = (float(player_data.hp) / float(player_data.max_hp)) * 100.0
+    

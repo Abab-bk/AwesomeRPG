@@ -1,10 +1,23 @@
-extends Marker2D
+class_name Weapons extends Node2D
 
 signal animation_ok
 
+@export var atk_cd_timer:Timer
+
 @onready var weapons_1:Node2D = $WeaponComponent
 
-func play(atk_speed:float) -> void:
+var attacking:bool = false
+
+func attack(atk_speed:float) -> void:
+    attacking = true
+    
     weapons_1.run(atk_speed)
     await weapons_1.animation_ok
-    animation_ok.emit()
+    
+    atk_cd_timer.start()
+    await atk_cd_timer.timeout
+    
+    attacking = false
+    
+    EventBus.update_ui.emit()
+    

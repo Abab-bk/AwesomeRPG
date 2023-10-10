@@ -15,6 +15,7 @@ max_hp = 200
 mp = 0
 speed = 200
 damage = 50
+vision = 0
 atk_speed = 1.0
 atk_cd = 0.0
 atk_range = 200.0

@@ -1,10 +1,15 @@
 class_name EnemyAttack extends ActionLeaf
 
-func tick(actor:Node, _blackboard:Blackboard) -> int:
-    actor = actor as Enemy
+var can_attack:bool
+
+func tick(actor:Node, blackboard:Blackboard) -> int:
+    actor.velocity = Vector2.ZERO
     
-    if actor.can_attack:
+    var weapons:Node2D = blackboard.get_value("weapons") as Weapons
+    
+    if weapons.attacking:
         return RUNNING
     
-    actor.attack()
+    weapons.attack(blackboard.get_value("data").atk_speed)
+    
     return SUCCESS
