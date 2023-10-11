@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck3r30dw3dngl"]
+[gd_scene load_steps=4 format=3 uid="uid://ck3r30dw3dngl"]
 
 [ext_resource type="Script" path="res://Script/UI/Inventory.gd" id="1_bvtty"]
 [ext_resource type="Resource" uid="uid://ckdu1ut07l0w1" path="res://Assets/Resources/Inventory/Bag.tres" id="2_oab0o"]
+[ext_resource type="PackedScene" uid="uid://bbp1iqow5k0b3" path="res://Scene/UI/ItemToolTip.tscn" id="3_87o5i"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -42,3 +43,6 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "返回"
+
+[node name="ItemToolTip" parent="." instance=ExtResource("3_87o5i")]
+layout_mode = 0

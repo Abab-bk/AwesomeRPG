@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpmutbde43xsq"]
+[gd_scene load_steps=3 format=3 uid="uid://cpmutbde43xsq"]
 
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_eew5n"]
 [ext_resource type="Script" path="res://Script/UI/InventoryItem.gd" id="1_er7k6"]
 
 [node name="InventoryItem" type="Panel"]
 custom_minimum_size = Vector2(170, 170)
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("1_eew5n")
 script = ExtResource("1_er7k6")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -29,3 +31,12 @@ layout_mode = 2
 size_flags_vertical = 8
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"EmptyBtn"
