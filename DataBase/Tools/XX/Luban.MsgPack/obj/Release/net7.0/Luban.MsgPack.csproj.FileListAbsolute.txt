@@ -1,0 +1,13 @@
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\Luban\Luban.MsgPack.deps.json
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\Luban\Luban.MsgPack.dll
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\Luban\Luban.MsgPack.pdb
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.MsgPack\obj\Release\net7.0\Luban.MsgPack.csproj.AssemblyReference.cache
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.MsgPack\obj\Release\net7.0\Luban.MsgPack.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.MsgPack\obj\Release\net7.0\Luban.MsgPack.AssemblyInfoInputs.cache
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.MsgPack\obj\Release\net7.0\Luban.MsgPack.AssemblyInfo.cs
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.MsgPack\obj\Release\net7.0\Luban.MsgPack.csproj.CoreCompileInputs.cache
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.MsgPack\obj\Release\net7.0\Luban.MsgPack.csproj.CopyComplete
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.MsgPack\obj\Release\net7.0\Luban.MsgPack.dll
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.MsgPack\obj\Release\net7.0\refint\Luban.MsgPack.dll
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.MsgPack\obj\Release\net7.0\Luban.MsgPack.pdb
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.MsgPack\obj\Release\net7.0\ref\Luban.MsgPack.dll

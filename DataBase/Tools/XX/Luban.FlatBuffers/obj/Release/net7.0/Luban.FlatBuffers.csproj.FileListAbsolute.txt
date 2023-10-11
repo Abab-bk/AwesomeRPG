@@ -1,0 +1,14 @@
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\Luban\Templates\flatbuffers\schema.sbn
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\Luban\Luban.FlatBuffers.deps.json
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\Luban\Luban.FlatBuffers.dll
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\Luban\Luban.FlatBuffers.pdb
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.FlatBuffers\obj\Release\net7.0\Luban.FlatBuffers.csproj.AssemblyReference.cache
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.FlatBuffers\obj\Release\net7.0\Luban.FlatBuffers.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.FlatBuffers\obj\Release\net7.0\Luban.FlatBuffers.AssemblyInfoInputs.cache
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.FlatBuffers\obj\Release\net7.0\Luban.FlatBuffers.AssemblyInfo.cs
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.FlatBuffers\obj\Release\net7.0\Luban.FlatBuffers.csproj.CoreCompileInputs.cache
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.FlatBuffers\obj\Release\net7.0\Luban.FlatBuffers.csproj.CopyComplete
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.FlatBuffers\obj\Release\net7.0\Luban.FlatBuffers.dll
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.FlatBuffers\obj\Release\net7.0\refint\Luban.FlatBuffers.dll
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.FlatBuffers\obj\Release\net7.0\Luban.FlatBuffers.pdb
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.FlatBuffers\obj\Release\net7.0\ref\Luban.FlatBuffers.dll

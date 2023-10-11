@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1001,
+    "name": "灼烧",
+    "desc": "火焰伤害 + 3",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加伤害",
+        "type": 2,
+        "value": 3,
+        "target_property": "fire_damage"
+      }
+    ]
+  },
+  {
+    "id": 1002,
+    "name": "冰霜",
+    "desc": "冰霜伤害 + 3",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加伤害",
+        "type": 2,
+        "value": 3,
+        "target_property": "frost_damage"
+      }
+    ]
+  }
+]
