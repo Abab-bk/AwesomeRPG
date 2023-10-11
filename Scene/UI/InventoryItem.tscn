@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpmutbde43xsq"]
+
+[ext_resource type="Script" path="res://Script/UI/InventoryItem.gd" id="1_er7k6"]
+
+[node name="InventoryItem" type="Panel"]
+custom_minimum_size = Vector2(170, 170)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_er7k6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Texture" type="TextureRect" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+expand_mode = 2
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+horizontal_alignment = 1
+vertical_alignment = 1

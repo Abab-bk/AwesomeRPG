@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://dx27klpp0nc4x"]
+[gd_scene load_steps=27 format=3 uid="uid://dx27klpp0nc4x"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/NonPlayableCharacter/Enemy.gd" id="1_jkjmt"]
 [ext_resource type="Texture2D" uid="uid://bcvid2hgflnb" path="res://Assets/Texture/Characters/purple_character.png" id="1_lm6s8"]
+[ext_resource type="Script" path="res://Script/Game/ItemGenerator.gd" id="2_032p5"]
 [ext_resource type="Script" path="res://Script/Perfabs/NonPlayableCharacter/EnemyWeapons.gd" id="2_f5php"]
 [ext_resource type="Script" path="res://addons/FlowerBuff/Script/FlowerBuffManager.gd" id="2_jei58"]
 [ext_resource type="PackedScene" uid="uid://cwrtaokg2sgt6" path="res://Scene/Component/WeaponComponent.tscn" id="3_ufpvg"]
@@ -122,6 +123,9 @@ one_shot = true
 libraries = {
 "": SubResource("AnimationLibrary_pyvvk")
 }
+
+[node name="ItemGenerator" type="Node" parent="."]
+script = ExtResource("2_032p5")
 
 [node name="ConductorComponent" type="Node" parent="." node_paths=PackedStringArray("blackboard", "buff_manager", "atk_range", "vision", "weapons", "atk_cd_timer")]
 script = ExtResource("4_wpuqm")

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=2 format=3 uid="uid://dsgd3vq88weu5"]
+
+[ext_resource type="Script" path="res://Script/Game/System/InventoryItem.gd" id="1_hybfd"]
+
+[resource]
+script = ExtResource("1_hybfd")
+name = "TestItem"
+texture_path = "res://icon.svg"
+stackable = false
+num = 0
