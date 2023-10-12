@@ -138,7 +138,6 @@ shape = SubResource("CircleShape2D_wcb0n")
 script = ExtResource("3_nckal")
 target = NodePath("..")
 compute_data = ExtResource("4_14ux5")
-buff_list = Array[Resource("res://addons/FlowerBuff/Script/FlowerBaseBuff.gd")]([null])
 
 [node name="ConductorComponent" type="Node" parent="." node_paths=PackedStringArray("blackboard", "buff_manager", "atk_range", "vision", "weapons", "atk_cd_timer")]
 script = ExtResource("18_rbisg")

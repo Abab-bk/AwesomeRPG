@@ -95,6 +95,7 @@ script = ExtResource("8_id3tm")
 name = ""
 desc = ""
 repeat = false
+repeat_count = 0
 infinite = false
 compute_values = Array[ExtResource("7_ib5rm")]([SubResource("Resource_78fr2")])
 prepare_time = 0

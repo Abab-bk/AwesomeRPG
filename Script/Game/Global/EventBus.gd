@@ -2,10 +2,14 @@ extends Node
 
 signal update_ui
 signal update_inventory
-signal show_item_tooltip(item:InventoryItem, pos:Vector2)
+signal change_item_tooltip_state(item:InventoryItem)
 
 signal player_hited(damage:int)
 signal player_dead
+signal equipment_up(type:Const.EQUIPMENT_TYPE, item:InventoryItem)
+signal equipment_down(type:Const.EQUIPMENT_TYPE, item:InventoryItem)
+signal equipment_down_ok(type:Const.EQUIPMENT_TYPE, item:InventoryItem)
+signal equipment_up_ok(type:Const.EQUIPMENT_TYPE, item:InventoryItem)
 
 signal enemy_die
 

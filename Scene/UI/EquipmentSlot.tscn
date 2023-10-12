@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3ts6cj14tj0l"]
+
+[ext_resource type="Script" path="res://Script/UI/EquipmentSlot.gd" id="1_5rdfu"]
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_vdyxs"]
+[ext_resource type="Texture2D" uid="uid://b8bt7c0g3o2kg" path="res://Assets/UI/Icons/Equipment/Helm.png" id="2_hosma"]
+
+[node name="EquipmentSlot" type="Panel"]
+custom_minimum_size = Vector2(200, 200)
+size_flags_vertical = 4
+theme = ExtResource("1_vdyxs")
+script = ExtResource("1_5rdfu")
+
+[node name="SlotsImg" type="TextureRect" parent="."]
+modulate = Color(0.388235, 0.388235, 0.388235, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hosma")
+stretch_mode = 4
+flip_h = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"EmptyBtn"

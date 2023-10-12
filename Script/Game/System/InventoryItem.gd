@@ -5,4 +5,4 @@ class_name InventoryItem extends Resource
 @export var affixs:Array[AffixItem] = []
 @export var stackable:bool = false
 @export var num:int = 1
-
+@export var type:Const.EQUIPMENT_TYPE

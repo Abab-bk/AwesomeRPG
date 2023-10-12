@@ -14,10 +14,41 @@ func _ready() -> void:
     Master.player = self
     EventBus.player_dead.connect(relife)
     EventBus.enemy_die.connect(find_closest_enemy)
+    EventBus.equipment_up.connect(
+        func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
+        # 判断插槽有没有
+        
+        # 装备
+        # TODO: 如果 type 是武器或者项链，选择左右手，当前为直接替换
+        data.quipments[_type] = _item
+        
+        # TODO: 实现装备，已实现buff加成
+        
+        # 应用 Buff
+        for i in _item.affixs:
+            flower_buff_manager.add_buff(i.buff)
+            flower_buff_manager.compute()
+        
+        # 更新 UI
+        EventBus.equipment_up_ok.emit(_type, _item)
+        )
+    
+    EventBus.equipment_down.connect(
+        func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
+            data.quipments[_type] = null
+            
+            for i in _item.affixs:
+                print("移除装备")
+                flower_buff_manager.remove_buff(i.buff)
+                # TODO: 更新后无需手动调用 compute
+                flower_buff_manager.compute()
+            
+            EventBus.equipment_down_ok.emit(_type, _item)
+            )
     
     data = flower_buff_manager.compute_data
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
     move_and_slide()
 
 func relife() -> void:
@@ -43,13 +74,3 @@ func find_closest_enemy() -> void:
         if enemy_distance < closest_distance:
             closest_distance = enemy_distance
             closest_enemy = enemy
-
-# ======== 移动 =========
-#func _input(event):
-#    if event.is_action_pressed("Click"):
-#        target = get_global_mouse_position()
-#
-#func _physics_process(_delta):
-#    velocity = position.direction_to(target) * data.speed
-#    if position.distance_to(target) > 10:
-#        move_and_slide()

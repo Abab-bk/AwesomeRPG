@@ -12,10 +12,10 @@ extends RefCounted
 
 enum BuffsEDataType
 {
-    MORE = 1,
-    INCREASE = 2,
-    COMPLEX_MORE = 3,
-    COMPLEX_INCREASE = 4,
+    MORE = 0,
+    INCREASE = 1,
+    COMPLEX_MORE = 2,
+    COMPLEX_INCREASE = 3,
 }
 
 

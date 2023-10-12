@@ -5,6 +5,7 @@ var relife_point:Marker2D
 
 var config
 var affixs:Array
+var buffs:Dictionary
 var json_path:String = "res://DataBase/output/"
 
 func get_random_affix() -> AffixItem:
@@ -18,6 +19,8 @@ func get_random_affix() -> AffixItem:
     _affix.desc = _data.desc % str(_offset)
     _affix.offset = _offset
     
+    _affix.update()
+    
     return _affix
 
 func loader(file_name:String):
@@ -28,5 +31,6 @@ func loader(file_name:String):
 
 func _ready():
     config = Schema.CfgTables.new(loader)
-    affixs = config.TbAffix.get_data_list()
     
+    affixs = config.TbAffix.get_data_list()
+    buffs = config.TbBuffs.get_data_map()
