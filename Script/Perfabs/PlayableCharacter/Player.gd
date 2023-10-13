@@ -16,22 +16,16 @@ func _ready() -> void:
     EventBus.enemy_die.connect(find_closest_enemy)
     EventBus.equipment_up.connect(
         func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
-        # 判断插槽有没有
-        
         # 装备
         # TODO: 如果 type 是武器或者项链，选择左右手，当前为直接替换
         data.quipments[_type] = _item
         
-        # TODO: 实现装备，已实现buff加成
-        
         # 应用 Buff
         for i in _item.affixs:
             flower_buff_manager.add_buff(i.buff)
-            flower_buff_manager.compute()
         
         # 更新 UI
-        EventBus.equipment_up_ok.emit(_type, _item)
-        )
+        EventBus.equipment_up_ok.emit(_type, _item))
     
     EventBus.equipment_down.connect(
         func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
@@ -40,13 +34,20 @@ func _ready() -> void:
             for i in _item.affixs:
                 print("移除装备")
                 flower_buff_manager.remove_buff(i.buff)
-                # TODO: 更新后无需手动调用 compute
-                flower_buff_manager.compute()
             
-            EventBus.equipment_down_ok.emit(_type, _item)
-            )
+            EventBus.equipment_down_ok.emit(_type, _item))
+    
+    flower_buff_manager.compute_ok.connect(func():
+        EventBus.player_data_change.emit()
+        Master.player_data = flower_buff_manager.output_data
+        )
+#    flower_buff_manager.a_buff_removed
     
     data = flower_buff_manager.compute_data
+    flower_buff_manager.output_data = data.duplicate(true)
+    Master.player_data = flower_buff_manager.output_data
+    
+    flower_buff_manager.compute()
 
 func _physics_process(_delta: float) -> void:
     move_and_slide()

@@ -10,14 +10,14 @@ signal hp_is_zero
         if hp <= 0:
             hp_is_zero.emit()
 @export var max_hp:int
-@export var mp:int
+@export var magic:int
 @export var strength:int
 @export var wisdom:int
 @export var agility:int
 @export var luck:float
 @export var speed:int
 @export var damage:float
-@export var streng:float
+@export var defense:float
 @export var fire_damage:float
 @export var frost_damage:float
 @export var light_damage:float
@@ -27,6 +27,13 @@ signal hp_is_zero
 @export var light_resistance:float
 @export var toxic_resistance:float
 @export var physical_resistance:float
+@export var critical_rate:float
+@export var critical_damage:float
+@export var vulnerability_rate:float
+@export var vulnerability_damage:float
+@export var evasion:float
+@export var health_regeneration:float
+@export var healing_effciency:float
 
 @export var vision:int
 @export var atk_speed:float

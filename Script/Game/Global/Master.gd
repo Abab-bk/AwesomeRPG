@@ -1,6 +1,7 @@
 extends Node
 
 var player:CharacterBody2D
+var player_data:CharacterData
 var relife_point:Marker2D
 
 var config

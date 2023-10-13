@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=4 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="PackedScene" uid="uid://ck3r30dw3dngl" path="res://Scene/UI/Inventory.tscn" id="2_cil1e"]
+[ext_resource type="PackedScene" uid="uid://b33g1ypyny6i5" path="res://Scene/UI/CharacterPanel.tscn" id="3_aoxj4"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_d15xn")
@@ -38,6 +39,13 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
+[node name="CharacterBtn" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "角色"
+
 [node name="InventoryBtn" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -48,32 +56,5 @@ text = "背包"
 [node name="Inventory" parent="." instance=ExtResource("2_cil1e")]
 visible = false
 
-[node name="Logger" type="Control" parent="."]
+[node name="CharacterPanel" parent="." instance=ExtResource("3_aoxj4")]
 visible = false
-layout_mode = 3
-anchor_top = 0.117
-anchor_bottom = 0.117
-offset_top = -0.640015
-offset_right = 487.0
-offset_bottom = 707.36
-
-[node name="Panel" type="Panel" parent="Logger"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Logger/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="Logger/Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "HP: 555"
