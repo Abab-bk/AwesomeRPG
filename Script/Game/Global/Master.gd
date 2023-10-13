@@ -16,7 +16,7 @@ func get_random_affix() -> AffixItem:
     _affix.target_buff_id = _data.target_buff_id
     
     var _offset:int = randi_range(_data.offset[0], _data.offset[1])
-    _affix.desc = _data.desc % str(_offset)
+    _affix.desc = _data.desc.format({"s": str(_offset)})
     _affix.offset = _offset
     
     _affix.update()

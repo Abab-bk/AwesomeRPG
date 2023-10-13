@@ -1,7 +1,7 @@
 [
   {
     "id": 1001,
-    "name": "灼烧",
+    "name": "火焰",
     "desc": "火焰伤害 + 3",
     "repeat": false,
     "infinite": true,
@@ -36,6 +36,366 @@
         "type": 1,
         "value": 3,
         "target_property": "frost_damage"
+      }
+    ]
+  },
+  {
+    "id": 1003,
+    "name": "闪电",
+    "desc": "闪电伤害 + 3",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加伤害",
+        "type": 1,
+        "value": 3,
+        "target_property": "light_damage"
+      }
+    ]
+  },
+  {
+    "id": 1004,
+    "name": "毒素",
+    "desc": "毒素伤害 + 3",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加伤害",
+        "type": 1,
+        "value": 3,
+        "target_property": "toxic_damage"
+      }
+    ]
+  },
+  {
+    "id": 1005,
+    "name": "物理",
+    "desc": "物理伤害 + 3",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加伤害",
+        "type": 1,
+        "value": 3,
+        "target_property": "damage"
+      }
+    ]
+  },
+  {
+    "id": 1006,
+    "name": "火焰抗性",
+    "desc": "火焰抗性 + 3",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加抗性",
+        "type": 1,
+        "value": 3,
+        "target_property": "fire_resistance"
+      }
+    ]
+  },
+  {
+    "id": 1007,
+    "name": "冰霜抗性",
+    "desc": "冰霜伤害 + 3",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加抗性",
+        "type": 1,
+        "value": 3,
+        "target_property": "frost_resistance"
+      }
+    ]
+  },
+  {
+    "id": 1008,
+    "name": "闪电抗性",
+    "desc": "闪电抗性 + 3",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加抗性",
+        "type": 1,
+        "value": 3,
+        "target_property": "light_resistance"
+      }
+    ]
+  },
+  {
+    "id": 1009,
+    "name": "毒素抗性",
+    "desc": "毒素抗性+ 3",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加抗性",
+        "type": 1,
+        "value": 3,
+        "target_property": "toxic_resistance"
+      }
+    ]
+  },
+  {
+    "id": 1010,
+    "name": "物理抗性",
+    "desc": "物理抗性 + 3",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加抗性",
+        "type": 1,
+        "value": 3,
+        "target_property": "physical_resistance"
+      }
+    ]
+  },
+  {
+    "id": 1011,
+    "name": "火焰百分比",
+    "desc": "火焰伤害 + 3%",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加伤害",
+        "type": 0,
+        "value": 3,
+        "target_property": "fire_damage"
+      }
+    ]
+  },
+  {
+    "id": 1012,
+    "name": "冰霜百分比",
+    "desc": "冰霜伤害 + 3%",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加伤害",
+        "type": 0,
+        "value": 3,
+        "target_property": "frost_damage"
+      }
+    ]
+  },
+  {
+    "id": 1013,
+    "name": "闪电百分比",
+    "desc": "闪电伤害 + 3%",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加伤害",
+        "type": 0,
+        "value": 3,
+        "target_property": "light_damage"
+      }
+    ]
+  },
+  {
+    "id": 1014,
+    "name": "毒素百分比",
+    "desc": "毒素伤害 + 3%",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加伤害",
+        "type": 0,
+        "value": 3,
+        "target_property": "toxic_damage"
+      }
+    ]
+  },
+  {
+    "id": 1015,
+    "name": "物理百分比",
+    "desc": "物理伤害 + 3%",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加伤害",
+        "type": 0,
+        "value": 3,
+        "target_property": "damage"
+      }
+    ]
+  },
+  {
+    "id": 1016,
+    "name": "火焰抗性百分比",
+    "desc": "火焰抗性 + 3%",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加抗性",
+        "type": 0,
+        "value": 3,
+        "target_property": "fire_resistance"
+      }
+    ]
+  },
+  {
+    "id": 1017,
+    "name": "冰霜抗性百分比",
+    "desc": "冰霜伤害 + 3%",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加抗性",
+        "type": 0,
+        "value": 3,
+        "target_property": "frost_resistance"
+      }
+    ]
+  },
+  {
+    "id": 1018,
+    "name": "闪电抗性百分比",
+    "desc": "闪电抗性 + 3%",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加抗性",
+        "type": 0,
+        "value": 3,
+        "target_property": "light_resistance"
+      }
+    ]
+  },
+  {
+    "id": 1019,
+    "name": "毒素抗性百分比",
+    "desc": "毒素抗性+ 3%",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加抗性",
+        "type": 0,
+        "value": 3,
+        "target_property": "toxic_resistance"
+      }
+    ]
+  },
+  {
+    "id": 1020,
+    "name": "物理抗性百分比",
+    "desc": "物理抗性 + 3%",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "增加抗性",
+        "type": 0,
+        "value": 3,
+        "target_property": "physical_resistance"
       }
     ]
   }

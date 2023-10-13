@@ -24,6 +24,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "厉害剑"
+clip_text = true
 
 [node name="AffixeLabels" type="VBoxContainer" parent="Content/VBoxContainer"]
 unique_name_in_owner = true

@@ -3,6 +3,7 @@ extends FlowerData
 
 signal hp_is_zero
 
+# ======= 战斗属性
 @export var hp:int:
     set(v):
         hp = v
@@ -10,10 +11,23 @@ signal hp_is_zero
             hp_is_zero.emit()
 @export var max_hp:int
 @export var mp:int
+@export var strength:int
+@export var wisdom:int
+@export var agility:int
+@export var luck:float
 @export var speed:int
-@export var damage:int
+@export var damage:float
+@export var streng:float
 @export var fire_damage:float
 @export var frost_damage:float
+@export var light_damage:float
+@export var toxic_damage:float
+@export var fire_resistance:float
+@export var frost_resistance:float
+@export var light_resistance:float
+@export var toxic_resistance:float
+@export var physical_resistance:float
+
 @export var vision:int
 @export var atk_speed:float
 @export var atk_cd:float
