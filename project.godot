@@ -38,7 +38,7 @@ naming/scene_name_casing=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/FlowerBuff/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/beehave/plugin.cfg", "res://addons/tw/plugin.cfg")
+enabled=PackedStringArray("res://addons/FlowerBuff/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/beehave/plugin.cfg")
 
 [input]
 
