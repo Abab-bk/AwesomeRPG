@@ -76,7 +76,7 @@ class Affixs:
     var name: String
     var desc: String
     var target_buff_id: int
-    var offset: Array[int]
+    var offset: Array[float]
 
     func _init(_json_) -> void:
         self.id = _json_["id"]
@@ -84,7 +84,7 @@ class Affixs:
         self.desc = _json_["desc"]
         self.target_buff_id = _json_["target_buff_id"]
         self.offset = []
-        for _ele in _json_["offset"]: var _e: int; _e = _ele; self.offset.append(_e)
+        for _ele in _json_["offset"]: var _e: float; _e = _ele; self.offset.append(_e)
 
 
 class BuffsTbBuffs:

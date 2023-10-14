@@ -11,6 +11,7 @@ var json_path:String = "res://DataBase/output/"
 
 #FIXME: 词缀装上属性不对
 
+# 生成随机词缀
 func get_random_affix() -> AffixItem:
     var _affix:AffixItem = AffixItem.new()
     var _data = affixs[randi_range(0, affixs.size() - 1)]
@@ -18,8 +19,14 @@ func get_random_affix() -> AffixItem:
     _affix.name = _data.name
     _affix.target_buff_id = _data.target_buff_id
     
-    var _offset:int = randi_range(_data.offset[0], _data.offset[1])
-    _affix.desc = _data.desc.format({"s": str(_offset)})
+    var _offset:float = randf_range(_data.offset[0], _data.offset[1])
+    # 决定词缀描述
+    # HACK: 临时修复？ - 词缀如果是 INC 类型也会 * 10，导致显示错误
+    if _offset <= 1.0:
+        _affix.desc = _data.desc.format({"s": str(floor(_offset * 10))}) # *10 是为了显示正常，因为实际数据是 0.1 - 1.0
+    else:
+        _affix.desc = _data.desc.format({"s": str(floor(_offset))})
+    
     _affix.offset = _offset
     
     _affix.update()

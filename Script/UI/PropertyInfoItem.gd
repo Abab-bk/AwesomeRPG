@@ -14,4 +14,5 @@ func _ready() -> void:
     update_value()
 
 func update_value() -> void:
-    value_label.text = str(Master.player_data[value_index])
+    # FIXME: 如果数太小会吞掉部分数字显示
+    value_label.text = str(floor(Master.player_data[value_index]))

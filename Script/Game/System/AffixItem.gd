@@ -3,8 +3,8 @@ class_name AffixItem extends Resource
 var name:String
 var desc:String
 var target_buff_id:int
-var offset:int
-# FIXME: 设置offset
+var offset:float
+
 var buff:FlowerBaseBuff = FlowerBaseBuff.new()
 
 func update() -> void:
