@@ -9,6 +9,8 @@ var affixs:Array
 var buffs:Dictionary
 var json_path:String = "res://DataBase/output/"
 
+#FIXME: 词缀装上属性不对
+
 func get_random_affix() -> AffixItem:
     var _affix:AffixItem = AffixItem.new()
     var _data = affixs[randi_range(0, affixs.size() - 1)]

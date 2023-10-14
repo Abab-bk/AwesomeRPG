@@ -12,9 +12,9 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加伤害",
+        "id": "1001",
         "type": 1,
-        "value": 3,
+        "value": 0,
         "target_property": "fire_damage"
       }
     ]
@@ -32,9 +32,9 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加伤害",
+        "id": "1002",
         "type": 1,
-        "value": 3,
+        "value": 0,
         "target_property": "frost_damage"
       }
     ]
@@ -52,9 +52,9 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加伤害",
+        "id": "1003",
         "type": 1,
-        "value": 3,
+        "value": 0,
         "target_property": "light_damage"
       }
     ]
@@ -72,9 +72,9 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加伤害",
+        "id": "1004",
         "type": 1,
-        "value": 3,
+        "value": 0,
         "target_property": "toxic_damage"
       }
     ]
@@ -92,9 +92,9 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加伤害",
+        "id": "1005",
         "type": 1,
-        "value": 3,
+        "value": 0,
         "target_property": "damage"
       }
     ]
@@ -112,9 +112,9 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加抗性",
+        "id": "1006",
         "type": 1,
-        "value": 3,
+        "value": 0,
         "target_property": "fire_resistance"
       }
     ]
@@ -132,9 +132,9 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加抗性",
+        "id": "1007",
         "type": 1,
-        "value": 3,
+        "value": 0,
         "target_property": "frost_resistance"
       }
     ]
@@ -152,9 +152,9 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加抗性",
+        "id": "1008",
         "type": 1,
-        "value": 3,
+        "value": 0,
         "target_property": "light_resistance"
       }
     ]
@@ -172,9 +172,9 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加抗性",
+        "id": "1009",
         "type": 1,
-        "value": 3,
+        "value": 0,
         "target_property": "toxic_resistance"
       }
     ]
@@ -192,9 +192,9 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加抗性",
+        "id": "1010",
         "type": 1,
-        "value": 3,
+        "value": 0,
         "target_property": "physical_resistance"
       }
     ]
@@ -212,9 +212,9 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加伤害",
+        "id": "1011",
         "type": 0,
-        "value": 3,
+        "value": 0,
         "target_property": "fire_damage"
       }
     ]
@@ -232,9 +232,9 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加伤害",
+        "id": "1012",
         "type": 0,
-        "value": 3,
+        "value": 0,
         "target_property": "frost_damage"
       }
     ]
@@ -252,9 +252,9 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加伤害",
+        "id": "1013",
         "type": 0,
-        "value": 3,
+        "value": 0,
         "target_property": "light_damage"
       }
     ]
@@ -272,9 +272,9 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加伤害",
+        "id": "1014",
         "type": 0,
-        "value": 3,
+        "value": 0,
         "target_property": "toxic_damage"
       }
     ]
@@ -292,9 +292,9 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加伤害",
+        "id": "1015",
         "type": 0,
-        "value": 3,
+        "value": 0,
         "target_property": "damage"
       }
     ]
@@ -312,9 +312,9 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加抗性",
+        "id": "1016",
         "type": 0,
-        "value": 3,
+        "value": 0,
         "target_property": "fire_resistance"
       }
     ]
@@ -332,9 +332,9 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加抗性",
+        "id": "1017",
         "type": 0,
-        "value": 3,
+        "value": 0,
         "target_property": "frost_resistance"
       }
     ]
@@ -352,9 +352,9 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加抗性",
+        "id": "1018",
         "type": 0,
-        "value": 3,
+        "value": 0,
         "target_property": "light_resistance"
       }
     ]
@@ -372,9 +372,9 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加抗性",
+        "id": "1019",
         "type": 0,
-        "value": 3,
+        "value": 0,
         "target_property": "toxic_resistance"
       }
     ]
@@ -382,7 +382,7 @@
   {
     "id": 1020,
     "name": "物理抗性百分比",
-    "desc": "物理抗性 + 3%",
+    "desc": "",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -392,10 +392,730 @@
     "tigger": "empty",
     "compute_values": [
       {
-        "id": "增加抗性",
+        "id": "1020",
         "type": 0,
-        "value": 3,
+        "value": 0,
         "target_property": "physical_resistance"
+      }
+    ]
+  },
+  {
+    "id": 1021,
+    "name": "最大生命值",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1020",
+        "type": 1,
+        "value": 0,
+        "target_property": "max_hp"
+      }
+    ]
+  },
+  {
+    "id": 1022,
+    "name": "生命回复",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1021",
+        "type": 1,
+        "value": 0,
+        "target_property": "health_regeneration"
+      }
+    ]
+  },
+  {
+    "id": 1023,
+    "name": "防御",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1022",
+        "type": 1,
+        "value": 0,
+        "target_property": "defense"
+      }
+    ]
+  },
+  {
+    "id": 1024,
+    "name": "闪避",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1023",
+        "type": 1,
+        "value": 0,
+        "target_property": "evasion"
+      }
+    ]
+  },
+  {
+    "id": 1025,
+    "name": "幸运",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1024",
+        "type": 1,
+        "value": 0,
+        "target_property": "luck"
+      }
+    ]
+  },
+  {
+    "id": 1026,
+    "name": "速度",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1025",
+        "type": 1,
+        "value": 0,
+        "target_property": "speed"
+      }
+    ]
+  },
+  {
+    "id": 1027,
+    "name": "治疗效率",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1026",
+        "type": 1,
+        "value": 0,
+        "target_property": "healing_effciency"
+      }
+    ]
+  },
+  {
+    "id": 1028,
+    "name": "暴击率",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1027",
+        "type": 1,
+        "value": 0,
+        "target_property": "critical_rate"
+      }
+    ]
+  },
+  {
+    "id": 1029,
+    "name": "暴击伤害",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1028",
+        "type": 1,
+        "value": 0,
+        "target_property": "critical_damage"
+      }
+    ]
+  },
+  {
+    "id": 1030,
+    "name": "易伤伤害",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1029",
+        "type": 1,
+        "value": 0,
+        "target_property": "vulnerability_damage"
+      }
+    ]
+  },
+  {
+    "id": 1031,
+    "name": "易伤率",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1030",
+        "type": 1,
+        "value": 0,
+        "target_property": "vulnerability_rate"
+      }
+    ]
+  },
+  {
+    "id": 1032,
+    "name": "魔力",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1031",
+        "type": 1,
+        "value": 0,
+        "target_property": "magic"
+      }
+    ]
+  },
+  {
+    "id": 1033,
+    "name": "攻击速度",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1032",
+        "type": 1,
+        "value": 0,
+        "target_property": "atk_speed"
+      }
+    ]
+  },
+  {
+    "id": 1034,
+    "name": "力量",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1033",
+        "type": 1,
+        "value": 0,
+        "target_property": "strength"
+      }
+    ]
+  },
+  {
+    "id": 1035,
+    "name": "智慧",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1034",
+        "type": 1,
+        "value": 0,
+        "target_property": "wisdom"
+      }
+    ]
+  },
+  {
+    "id": 1036,
+    "name": "敏捷",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1035",
+        "type": 1,
+        "value": 0,
+        "target_property": "agility"
+      }
+    ]
+  },
+  {
+    "id": 1037,
+    "name": "攻击范围",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1036",
+        "type": 1,
+        "value": 0,
+        "target_property": "atk_range"
+      }
+    ]
+  },
+  {
+    "id": 1038,
+    "name": "视野",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1037",
+        "type": 1,
+        "value": 0,
+        "target_property": "vision"
+      }
+    ]
+  },
+  {
+    "id": 1039,
+    "name": "攻击范围百分比",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1038",
+        "type": 0,
+        "value": 0,
+        "target_property": "max_hp"
+      }
+    ]
+  },
+  {
+    "id": 1040,
+    "name": "视野百分比",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1039",
+        "type": 0,
+        "value": 0,
+        "target_property": "health_regeneration"
+      }
+    ]
+  },
+  {
+    "id": 1041,
+    "name": "最大生命值百分比",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1040",
+        "type": 0,
+        "value": 0,
+        "target_property": "defense"
+      }
+    ]
+  },
+  {
+    "id": 1042,
+    "name": "生命回复百分比",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1041",
+        "type": 0,
+        "value": 0,
+        "target_property": "evasion"
+      }
+    ]
+  },
+  {
+    "id": 1043,
+    "name": "防御百分比",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1042",
+        "type": 0,
+        "value": 0,
+        "target_property": "luck"
+      }
+    ]
+  },
+  {
+    "id": 1044,
+    "name": "闪避百分比",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1043",
+        "type": 0,
+        "value": 0,
+        "target_property": "speed"
+      }
+    ]
+  },
+  {
+    "id": 1045,
+    "name": "幸运百分比",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1044",
+        "type": 0,
+        "value": 0,
+        "target_property": "healing_effciency"
+      }
+    ]
+  },
+  {
+    "id": 1046,
+    "name": "速度百分比",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1045",
+        "type": 0,
+        "value": 0,
+        "target_property": "critical_rate"
+      }
+    ]
+  },
+  {
+    "id": 1047,
+    "name": "治疗效率百分比",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1046",
+        "type": 0,
+        "value": 0,
+        "target_property": "critical_damage"
+      }
+    ]
+  },
+  {
+    "id": 1048,
+    "name": "暴击率百分比",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1047",
+        "type": 0,
+        "value": 0,
+        "target_property": "vulnerability_damage"
+      }
+    ]
+  },
+  {
+    "id": 1049,
+    "name": "暴击伤害百分比",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1048",
+        "type": 0,
+        "value": 0,
+        "target_property": "vulnerability_rate"
+      }
+    ]
+  },
+  {
+    "id": 1050,
+    "name": "易伤伤害百分比",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1049",
+        "type": 0,
+        "value": 0,
+        "target_property": "magic"
+      }
+    ]
+  },
+  {
+    "id": 1051,
+    "name": "易伤率百分比",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1050",
+        "type": 0,
+        "value": 0,
+        "target_property": "atk_speed"
+      }
+    ]
+  },
+  {
+    "id": 1052,
+    "name": "魔力百分比",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1051",
+        "type": 0,
+        "value": 0,
+        "target_property": "strength"
+      }
+    ]
+  },
+  {
+    "id": 1053,
+    "name": "攻击速度百分比",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1052",
+        "type": 0,
+        "value": 0,
+        "target_property": "wisdom"
+      }
+    ]
+  },
+  {
+    "id": 1054,
+    "name": "力量百分比",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1053",
+        "type": 0,
+        "value": 0,
+        "target_property": "agility"
+      }
+    ]
+  },
+  {
+    "id": 1055,
+    "name": "智慧百分比",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1054",
+        "type": 0,
+        "value": 0,
+        "target_property": "atk_range"
+      }
+    ]
+  },
+  {
+    "id": 1056,
+    "name": "敏捷百分比",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "tigger": "empty",
+    "compute_values": [
+      {
+        "id": "1055",
+        "type": 0,
+        "value": 0,
+        "target_property": "vision"
       }
     ]
   }
