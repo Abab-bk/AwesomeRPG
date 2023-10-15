@@ -1,10 +1,16 @@
-[gd_scene load_steps=33 format=3 uid="uid://v51c0x6v6m7h"]
+[gd_scene load_steps=41 format=3 uid="uid://v51c0x6v6m7h"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/PlayableCharacter/Player.gd" id="1_8yy7w"]
 [ext_resource type="Texture2D" uid="uid://dslvgplb0lb00" path="res://Assets/Texture/Characters/green_character.png" id="2_3w4i3"]
+[ext_resource type="Script" path="res://addons/godot_gameplay_systems/attributes_and_abilities/nodes/ability_container.gd" id="2_wgxq3"]
+[ext_resource type="Script" path="res://Script/Abilitys/TestAbility.gd" id="3_c6dfa"]
 [ext_resource type="Script" path="res://addons/FlowerBuff/Script/FlowerBuffManager.gd" id="3_nckal"]
+[ext_resource type="Script" path="res://addons/godot_gameplay_systems/attributes_and_abilities/nodes/gameplay_attribute_map.gd" id="3_ujgsn"]
 [ext_resource type="Resource" uid="uid://cxjh70teksadv" path="res://Assets/Resources/Datas/Characters/Knight.tres" id="4_14ux5"]
+[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="4_cqbv3"]
+[ext_resource type="Script" path="res://addons/godot_gameplay_systems/attributes_and_abilities/resources/attribute.gd" id="4_d8e3s"]
 [ext_resource type="Script" path="res://Script/Component/AtkRangeComponent.gd" id="5_cwveo"]
+[ext_resource type="Resource" uid="uid://c4383c515ai5x" path="res://Assets/Resources/Abilitys/Tables/TestTables.tres" id="5_s223o"]
 [ext_resource type="Script" path="res://Script/Component/HurtBoxComponent.gd" id="6_mwt7r"]
 [ext_resource type="Script" path="res://Script/Component/VisionComponent.gd" id="6_r1tqh"]
 [ext_resource type="Script" path="res://Script/Component/HealthComponent.gd" id="7_afrsm"]
@@ -23,6 +29,36 @@
 [ext_resource type="Script" path="res://Script/Component/ConductorComponent.gd" id="18_rbisg"]
 [ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="19_2nmpk"]
 [ext_resource type="Script" path="res://Script/Beehave/Action/PlayerAttack.gd" id="20_txu13"]
+
+[sub_resource type="Resource" id="Resource_liqkq"]
+script = ExtResource("3_c6dfa")
+ui_icon = ExtResource("4_cqbv3")
+ui_name = "测试技能"
+cooldown_duration = 5.0
+cooldown_continuos = false
+grant_automatic = false
+grant_tags = Array[String]([])
+grant_tags_required = Array[String]([])
+tags_activation = Array[String]([])
+tags_activation_required = Array[String]([])
+tags_block = Array[String]([])
+tags_cancellation_required = Array[String]([])
+tags_cooldown_start = Array[String]([])
+tags_cooldown_end = Array[String]([])
+tags_end_blocking = Array[String]([])
+tags_to_remove_on_activation = Array[String]([])
+tags_to_remove_on_block = Array[String]([])
+tags_to_remove_on_cancellation = Array[String]([])
+tags_to_remove_on_cooldown_start = Array[String]([])
+tags_to_remove_on_cooldown_end = Array[String]([])
+tags_to_remove_on_end = Array[String]([])
+
+[sub_resource type="Resource" id="Resource_d8rjj"]
+script = ExtResource("4_d8e3s")
+attribute_name = "Health"
+minimum_value = 0.0
+maximum_value = 0.0
+current_value = 0.0
 
 [sub_resource type="Animation" id="Animation_lopl1"]
 resource_name = "Die"
@@ -119,6 +155,17 @@ radius = 39.0128
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_8yy7w")
+
+[node name="AbilityContainer" type="Node" parent="."]
+script = ExtResource("2_wgxq3")
+gameplay_attribute_map_path = NodePath("../GameplayAttributeMap")
+abilities = Array[Resource("res://addons/godot_gameplay_systems/attributes_and_abilities/resources/ability.gd")]([SubResource("Resource_liqkq")])
+
+[node name="GameplayAttributeMap" type="Node" parent="."]
+script = ExtResource("3_ujgsn")
+owning_character = NodePath("..")
+attributes = Array[ExtResource("4_d8e3s")]([SubResource("Resource_d8rjj")])
+table = ExtResource("5_s223o")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

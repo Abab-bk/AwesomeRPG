@@ -22,6 +22,7 @@ EventBus="*res://Script/Game/Global/EventBus.gd"
 Bulider="*res://Script/Game/Global/Bulider.gd"
 BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
+TurnManager="*res://addons/godot_gameplay_systems/turn_based/./autoloads/turn_manager.gd"
 
 [display]
 
@@ -38,7 +39,7 @@ naming/scene_name_casing=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/FlowerBuff/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/beehave/plugin.cfg")
+enabled=PackedStringArray("res://addons/FlowerBuff/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/beehave/plugin.cfg", "res://addons/godot_gameplay_systems/plugin.cfg")
 
 [input]
 

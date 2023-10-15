@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @onready var flower_buff_manager:FlowerBuffManager = $FlowerBuffManager
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
+@onready var ability_container:AbilityContainer = $AbilityContainer
+@onready var attribute_map:GameplayAttributeMap = $GameplayAttributeMap
 
 var data:CharacterData
 var target:Vector2 = global_position
@@ -51,6 +53,10 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
     move_and_slide()
+
+func _input(event: InputEvent) -> void:
+    if event.is_action_pressed("ui_accept"):
+        ability_container.activate_many()
 
 func relife() -> void:
     # FIXME: data是资源，不会唯一化

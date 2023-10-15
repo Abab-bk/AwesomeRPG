@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="TestAbility" load_steps=3 format=3 uid="uid://ds0ssrd2w7gr4"]
+
+[ext_resource type="Script" path="res://Script/Abilitys/TestAbility.gd" id="1_la507"]
+[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="2_5m5x4"]
+
+[resource]
+script = ExtResource("1_la507")
+ui_icon = ExtResource("2_5m5x4")
+ui_name = "测试技能"
+cooldown_duration = 3.0
+cooldown_continuos = false
+grant_automatic = true
+grant_tags = Array[String]([])
+grant_tags_required = Array[String]([])
+tags_activation = Array[String]([])
+tags_activation_required = Array[String]([])
+tags_block = Array[String]([])
+tags_cancellation_required = Array[String]([])
+tags_cooldown_start = Array[String]([])
+tags_cooldown_end = Array[String]([])
+tags_end_blocking = Array[String]([])
+tags_to_remove_on_activation = Array[String]([])
+tags_to_remove_on_block = Array[String]([])
+tags_to_remove_on_cancellation = Array[String]([])
+tags_to_remove_on_cooldown_start = Array[String]([])
+tags_to_remove_on_cooldown_end = Array[String]([])
+tags_to_remove_on_end = Array[String]([])
