@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://clchsofy7wd08"]
+
+[ext_resource type="FontFile" uid="uid://c7bfs6orcmgh2" path="res://Assets/Font/SourceHanSansCN-Medium.otf" id="1_v8sno"]
+
+[resource]
+font = ExtResource("1_v8sno")
+font_size = 24
+font_color = Color(0.843137, 0.843137, 0.843137, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)

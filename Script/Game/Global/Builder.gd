@@ -4,6 +4,11 @@ const enemy := preload("res://Scene/Perfabs/NonPlayCharacter/Enemy.tscn")
 const fireball:String = "res://Scene/Perfabs/Bullets/FireBall.tscn"
 const inventory_item := preload("res://Scene/UI/InventoryItem.tscn")
 const skill_btn:String = "res://Scene/UI/SkillItem.tscn"
+const affix_label:String = "res://Scene/UI/AffixLabel.tscn"
+
+func build_a_affix_label() -> HBoxContainer:
+    var _n:HBoxContainer = load(affix_label).instantiate()
+    return _n
 
 func build_a_fireball() -> CharacterBody2D:
     var _n:CharacterBody2D = load(fireball).instantiate()

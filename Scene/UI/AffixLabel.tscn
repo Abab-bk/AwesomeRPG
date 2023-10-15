@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://twlqvo6sld7s"]
+
+[ext_resource type="Script" path="res://Script/UI/AffixLabel.gd" id="1_5e7vu"]
+[ext_resource type="Texture2D" uid="uid://2cc57rame2k7" path="res://Assets/UI/Texture/SmallClub.png" id="1_hawx8"]
+[ext_resource type="LabelSettings" uid="uid://clchsofy7wd08" path="res://Assets/LabelSetting/NormalWhite.tres" id="2_wsang"]
+
+[node name="AffixLabel" type="HBoxContainer"]
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+script = ExtResource("1_5e7vu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_hawx8")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "雷电抗性 +34.0%"
+label_settings = ExtResource("2_wsang")
