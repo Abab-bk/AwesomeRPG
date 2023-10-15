@@ -26,7 +26,12 @@ func _ready() -> void:
         
         down_state = _down
         
-        global_position = get_global_mouse_position() + Vector2(50, 50)
+        global_position = get_global_mouse_position()
+        # TODO: 计算窗口位置
+#        print(DisplayServer.window_get_size())
+#        if Vector2i((global_position + size)) > DisplayServer.window_get_size():
+#            global_position = global_position - size
+        
         item = _item
         show()
         update_ui())

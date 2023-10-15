@@ -15,12 +15,11 @@ func compute() -> void:
 func compute_all() -> void:
     output_data = origin_data.duplicate(true)
     
-    for _modifier in all_data:        
+    for _modifier in all_data:
         var __modifier:FlowerComputeData = all_data[_modifier]
         # 如果没有这个属性
         if not origin_data.get(__modifier.target_property):
             continue
-        
         match __modifier.type:
             # 根据modifier的type计算
             FlowerConst.COMPUTE_TYPE.MORE:
@@ -76,8 +75,8 @@ func compute_all() -> void:
                 output_data[_origin_index] += output_data[_origin_index] * computed_data[_origin_index]
                 
                 output_data_change.emit()
-        
-        buff_manager.compute_ok.emit()
+                
+    buff_manager.compute_ok.emit()
 #        print("计算完毕")
 
 func analyse_formula(_formula:String) -> String:
