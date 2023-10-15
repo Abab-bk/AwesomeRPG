@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 Master="*res://Script/Game/Global/Master.gd"
 EventBus="*res://Script/Game/Global/EventBus.gd"
-Bulider="*res://Script/Game/Global/Bulider.gd"
+Builder="*res://Script/Game/Global/Builder.gd"
 BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 TurnManager="*res://addons/godot_gameplay_systems/turn_based/./autoloads/turn_manager.gd"

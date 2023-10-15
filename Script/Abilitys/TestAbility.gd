@@ -6,12 +6,13 @@ func activate(event: ActivationEvent) -> void:
     if not event.character:
         return
     
-    print("使用测试技能")
+    var _fire_ball:CharacterBody2D = Builder.build_a_fireball()
+    _fire_ball.global_position = event.character.global_position
+    
+    _fire_ball.velocity = _fire_ball.global_position.\
+    direction_to(event.character.closest_enemy.global_position) * 500.0
+    
+    Master.world.add_child(_fire_ball)
 
 func can_activate(event: ActivationEvent) -> bool:
-    var health_attribute = event.get_attribute("health")
-
-    if health_attribute:
-        return super.can_activate(event) and health_attribute.current_buffed_value <= 0.0
-    else:
-        return super.can_activate(event)
+    return super.can_activate(event)

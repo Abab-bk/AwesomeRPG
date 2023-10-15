@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://3xynvu782kcm"]
+[gd_scene load_steps=10 format=3 uid="uid://3xynvu782kcm"]
 
 [ext_resource type="Texture2D" uid="uid://blncare6u6ty" path="res://Assets/Texture/Map/TileSheet.png" id="1_7qj4v"]
+[ext_resource type="Script" path="res://Script/Game/World.gd" id="1_myfhc"]
 [ext_resource type="PackedScene" uid="uid://v51c0x6v6m7h" path="res://Scene/Perfabs/PlayabelCharacter/Player.tscn" id="2_l5a8p"]
 [ext_resource type="Script" path="res://Script/Game/EnemyHome.gd" id="4_22mer"]
 [ext_resource type="PackedScene" uid="uid://dlpspce2dr6hw" path="res://Scene/Perfabs/Maps/RelifePoint.tscn" id="4_f4kq8"]
@@ -152,6 +153,7 @@ tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetAtlasSource_7roa4")
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_myfhc")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ephjn")

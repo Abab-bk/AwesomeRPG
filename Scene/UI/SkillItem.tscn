@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://v2fgwbl2yjp4"]
+
+[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="1_js4gn"]
+[ext_resource type="Script" path="res://Script/UI/SkillItem.gd" id="1_n8kr4"]
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_vefd4"]
+
+[node name="SkillItem" type="Panel"]
+custom_minimum_size = Vector2(150, 150)
+theme = ExtResource("1_vefd4")
+script = ExtResource("1_n8kr4")
+
+[node name="Icon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_js4gn")
+stretch_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Icon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ProgressBar" type="TextureProgressBar" parent="Icon/MarginContainer"]
+unique_name_in_owner = true
+modulate = Color(0.298039, 0.298039, 0.298039, 1)
+layout_mode = 2
+value = 34.0
+fill_mode = 5
+texture_progress = ExtResource("1_js4gn")
+
+[node name="TitleLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"EmptyBtn"

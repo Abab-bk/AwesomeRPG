@@ -1,6 +1,8 @@
 extends Node
 
-var player:CharacterBody2D
+var world:Node2D
+
+var player:Player
 var player_data:CharacterData
 var relife_point:Marker2D
 

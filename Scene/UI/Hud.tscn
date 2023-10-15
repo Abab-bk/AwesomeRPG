@@ -36,6 +36,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="SkillBar" type="HBoxContainer" parent="Control/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 

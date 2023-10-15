@@ -41,7 +41,7 @@ func _ready() -> void:
 
 func set_bag() -> void:
     for i in inventory.size:
-        var _n = Bulider.builder_a_inventory_item()
+        var _n = Builder.builder_a_inventory_item()
         items_ui.add_child(_n)
 
 func update_ui() -> void:    

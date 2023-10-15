@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
 @onready var flower_buff_manager:FlowerBuffManager = $FlowerBuffManager
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
@@ -39,6 +39,10 @@ func _ready() -> void:
             
             EventBus.equipment_down_ok.emit(_type, _item))
     
+    EventBus.player_ability_activate.connect(func(_ability:Ability):
+        ability_container.activate_one(_ability)
+        )
+    
     flower_buff_manager.compute_ok.connect(func():
         EventBus.player_data_change.emit()
         Master.player_data = flower_buff_manager.output_data
@@ -54,9 +58,10 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
     move_and_slide()
 
-func _input(event: InputEvent) -> void:
-    if event.is_action_pressed("ui_accept"):
-        ability_container.activate_many()
+func get_ability_list() -> Array:
+    var _list:Array = []
+    _list = ability_container.granted_abilities
+    return _list
 
 func relife() -> void:
     # FIXME: data是资源，不会唯一化

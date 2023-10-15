@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var character_btn:Button = %CharacterBtn
 @onready var inventory_ui:Control = $Inventory
 @onready var character_panel_ui:Control = $CharacterPanel
+@onready var skill_bar:HBoxContainer = %SkillBar
 
 enum PAGE {
     HOME,
@@ -20,9 +21,13 @@ func _ready() -> void:
     
     inventory_btn.pressed.connect(change_page.bind(PAGE.INVENTORY))
     character_btn.pressed.connect(change_page.bind(PAGE.CHARACTER_PANEL))
-
+    
+    for i in Master.player.get_ability_list().size():
+        skill_bar.add_child(Builder.builder_a_skill_btn())
+    
     player_data = Master.player.data
-
+    
+    set_skills_ui()
     update_ui()
 
 func change_page(_page:PAGE) -> void:
@@ -36,6 +41,12 @@ func change_page(_page:PAGE) -> void:
         PAGE.INVENTORY:
             inventory_ui.show()
             character_panel_ui.hide()
+
+# 技能条 UI
+func set_skills_ui() -> void:
+    for _i in Master.player.get_ability_list().size():
+        var _ability:Ability = Master.player.get_ability_list()[_i - 1]
+        skill_bar.get_child(_i).set_ability(_ability)
 
 func update_ui() -> void:
     hp_bar.value = (float(player_data.hp) / float(player_data.max_hp)) * 100.0
