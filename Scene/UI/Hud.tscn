@@ -39,10 +39,12 @@ layout_mode = 2
 [node name="HpBar" type="ProgressBar" parent="Control/MarginContainer/VBoxContainer/PlayerStat"]
 unique_name_in_owner = true
 layout_mode = 2
+show_percentage = false
 
 [node name="XpBar" type="ProgressBar" parent="Control/MarginContainer/VBoxContainer/PlayerStat"]
 unique_name_in_owner = true
 layout_mode = 2
+show_percentage = false
 
 [node name="Control" type="Control" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
