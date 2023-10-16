@@ -1,6 +1,6 @@
 extends Control
 
-@onready var items_ui:GridContainer = $Panel/VBoxContainer/GridContainer
+@onready var items_ui:GridContainer = %Items
 @onready var cancel_btn:Button = %CancelBtn
 @onready var slots_ui:GridContainer = %Slots
 

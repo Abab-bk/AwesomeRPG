@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b33g1ypyny6i5"]
+[gd_scene load_steps=5 format=3 uid="uid://b33g1ypyny6i5"]
 
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_601td"]
 [ext_resource type="Script" path="res://Script/UI/CharacterPanel.gd" id="1_cbk0p"]
 [ext_resource type="PackedScene" uid="uid://b13y6wkodkbq1" path="res://Scene/UI/PropertyInfoItem.tscn" id="1_q04fi"]
+[ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="3_fevng"]
 
 [node name="CharacterPanel" type="Control"]
 layout_mode = 3
@@ -10,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_601td")
 script = ExtResource("1_cbk0p")
 
 [node name="Panel" type="Panel" parent="."]
@@ -20,146 +23,154 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
 
-[node name="Title" type="Label" parent="Panel/VBoxContainer2"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "人物信息"
+label_settings = ExtResource("3_fevng")
 horizontal_alignment = 1
 
-[node name="Propertys" type="GridContainer" parent="Panel/VBoxContainer2"]
+[node name="Propertys" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 columns = 2
 
-[node name="力量" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="力量" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "strength"
 
-[node name="智慧" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="智慧" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "wisdom"
 
-[node name="敏捷" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="敏捷" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "agility"
 
-[node name="魔力" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="魔力" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "magic"
 
-[node name="血量" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="血量" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "hp"
 
-[node name="防御" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="防御" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "defense"
 
-[node name="暴击率" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="暴击率" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "critical_rate"
 
-[node name="易伤几率" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="易伤几率" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "vulnerability_rate"
 
-[node name="闪避" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="闪避" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "evasion"
 
-[node name="幸运" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="幸运" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "luck"
 
-[node name="速度" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="速度" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "speed"
 
-[node name="生命回复" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="生命回复" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "health_regeneration"
 
-[node name="治疗效率" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="治疗效率" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "healing_effciency"
 
-[node name="物理伤害" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="物理伤害" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "damage"
 
-[node name="暴击伤害" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="暴击伤害" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "critical_damage"
 
-[node name="易伤伤害" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="易伤伤害" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "vulnerability_damage"
 
-[node name="火焰伤害" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="火焰伤害" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "fire_damage"
 
-[node name="闪电伤害" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="闪电伤害" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "light_damage"
 
-[node name="冰霜伤害" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="冰霜伤害" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "frost_damage"
 
-[node name="物理抗性" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="物理抗性" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "physical_resistance"
 
-[node name="冰霜抗性" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="冰霜抗性" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "frost_resistance"
 
-[node name="闪电抗性" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="闪电抗性" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "light_resistance"
 
-[node name="火焰抗性" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="火焰抗性" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "fire_resistance"
 
-[node name="毒素抗性" parent="Panel/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
+[node name="毒素抗性" parent="Panel/MarginContainer/VBoxContainer2/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "toxic_resistance"
 
-[node name="CancelBtn" type="Button" parent="Panel/VBoxContainer2"]
+[node name="CancelBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2

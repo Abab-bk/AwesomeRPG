@@ -3,6 +3,7 @@ extends FlowerData
 
 signal hp_is_zero
 
+@export var level:int = 1
 # ======= 战斗属性
 @export var hp:int:
     set(v):

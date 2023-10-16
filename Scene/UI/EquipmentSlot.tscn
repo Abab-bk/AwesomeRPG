@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b8bt7c0g3o2kg" path="res://Assets/UI/Icons/Equipment/Helm.png" id="2_hosma"]
 
 [node name="EquipmentSlot" type="Panel"]
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(180, 180)
 size_flags_vertical = 4
 theme = ExtResource("1_vdyxs")
 script = ExtResource("1_5rdfu")
