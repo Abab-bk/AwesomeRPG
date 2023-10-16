@@ -43,6 +43,8 @@ func _ready() -> void:
         ability_container.activate_one(_ability)
         )
     
+    EventBus.enemy_die.connect(get_xp)
+    
     flower_buff_manager.compute_ok.connect(func():
         EventBus.player_data_change.emit()
         Master.player_data = flower_buff_manager.output_data
@@ -71,6 +73,20 @@ func get_ability_list() -> Array:
     _list = ability_container.granted_abilities
     return _list
 
+
+# ======= 属性 ========
+func up_level() -> void:
+    data.level += 1
+    data.now_xp = 0
+    print("玩家升级！")
+    data.update_next_xp()
+
+func get_xp(_value:int) -> void:
+    data.now_xp += _value
+    if data.now_xp >= data.next_level_xp:
+        up_level()
+
+# ======= 战斗 ========
 func relife() -> void:
     # FIXME: data是资源，不会唯一化
     data.hp = data.max_hp
@@ -83,7 +99,7 @@ func die() -> void:
     await animation_player.animation_finished
     EventBus.player_dead.emit()
 
-func find_closest_enemy() -> void:
+func find_closest_enemy(_temp = 0) -> void:
     all_enemy = get_tree().get_nodes_in_group("Enemy")
     
     for enemy in all_enemy:

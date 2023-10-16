@@ -14,7 +14,7 @@ signal equipment_down(type:Const.EQUIPMENT_TYPE, item:InventoryItem)
 signal equipment_down_ok(type:Const.EQUIPMENT_TYPE, item:InventoryItem)
 signal equipment_up_ok(type:Const.EQUIPMENT_TYPE, item:InventoryItem)
 
-signal enemy_die
+signal enemy_die(xp:int)
 
 signal add_item(item:InventoryItem)
 # 新掉落物品（在游戏世界里）

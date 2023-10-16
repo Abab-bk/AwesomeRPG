@@ -16,7 +16,9 @@ func die() -> void:
     
     $AnimationPlayer.play("Die")
     await $AnimationPlayer.animation_finished
-    EventBus.enemy_die.emit()
+    # 获得经验
+    EventBus.enemy_die.emit(100)
+    
     queue_free()
 
 func _physics_process(_delta:float) -> void:
