@@ -18,7 +18,7 @@ func _ready() -> void:
     EventBus.enemy_die.connect(find_closest_enemy)
     EventBus.equipment_up.connect(
         func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
-        # 装备
+        # 装备装备
         # TODO: 如果 type 是武器或者项链，选择左右手，当前为直接替换
         data.quipments[_type] = _item
         

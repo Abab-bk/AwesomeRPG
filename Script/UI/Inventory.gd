@@ -15,8 +15,9 @@ func _ready() -> void:
     EventBus.equipment_up_ok.connect(
         func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
             for i in slots_ui.get_children():
+                # 如果装备类型不匹配，进入下一次循环
                 if not i.current_equipment_type == _type:
-                    return
+                    continue
                 
                 # 装备
                 inventory.add_item(i.item)
