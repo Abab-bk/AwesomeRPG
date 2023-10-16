@@ -78,7 +78,6 @@ func get_ability_list() -> Array:
 func up_level() -> void:
     data.level += 1
     data.now_xp = 0
-    print("玩家升级！")
     data.update_next_xp()
 
 func get_xp(_value:int) -> void:

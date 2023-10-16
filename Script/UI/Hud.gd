@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 @onready var hp_bar:ProgressBar = %HpBar
+@onready var xp_bar:ProgressBar = %XpBar
 @onready var inventory_btn:Button = %InventoryBtn
 @onready var character_btn:Button = %CharacterBtn
 @onready var inventory_ui:Control = $Inventory
@@ -50,6 +51,7 @@ func set_skills_ui() -> void:
 
 func update_ui() -> void:
     hp_bar.value = (float(player_data.hp) / float(player_data.max_hp)) * 100.0
+    xp_bar.value = (float(player_data.now_xp) / float(player_data.next_level_xp)) * 100.0
 
 func new_drop_item(_item:InventoryItem, _pos:Vector2) -> void:
     var _new_sprite:Sprite2D = Sprite2D.new()

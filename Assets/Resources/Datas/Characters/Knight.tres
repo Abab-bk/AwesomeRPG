@@ -4,6 +4,9 @@
 
 [resource]
 script = ExtResource("1_nesea")
+level = 1
+now_xp = 1
+next_level_xp = 100
 hp = 500
 max_hp = 500
 magic = 1
@@ -26,6 +29,7 @@ physical_resistance = 1.0
 critical_rate = 1.0
 critical_damage = 1.0
 vulnerability_rate = 1.0
+vulnerability_damage = 0.0
 evasion = 1.0
 health_regeneration = 1.0
 healing_effciency = 1.0

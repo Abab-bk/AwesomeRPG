@@ -5,6 +5,11 @@ extends CharacterBody2D
 @onready var item_generator:ItemGenerator = $ItemGenerator
 
 var dead:bool = false
+var data:CharacterData
+
+func _ready() -> void:
+    data = buff_manager.compute_data
+    set_level(1)
 
 func die() -> void:
     if dead:
@@ -17,9 +22,12 @@ func die() -> void:
     $AnimationPlayer.play("Die")
     await $AnimationPlayer.animation_finished
     # 获得经验
-    EventBus.enemy_die.emit(100)
+    EventBus.enemy_die.emit(data.level * 10)
     
     queue_free()
+
+func set_level(_value:int) -> void:
+    data.level = _value
 
 func _physics_process(_delta:float) -> void:
     move_and_slide()
