@@ -1,0 +1,33 @@
+[
+  {
+    "id": 3001,
+    "name": "狂怒",
+    "desc": "火焰伤害 + {s}。",
+    "next_skill_id": 3002,
+    "child_skills": []
+  },
+  {
+    "id": 3002,
+    "name": "狂怒2",
+    "desc": "火焰伤害 + {s}。",
+    "next_skill_id": 0,
+    "child_skills": [
+      3003,
+      3004
+    ]
+  },
+  {
+    "id": 3003,
+    "name": "灼烧",
+    "desc": "火焰伤害 + {s}。",
+    "next_skill_id": 0,
+    "child_skills": []
+  },
+  {
+    "id": 3004,
+    "name": "猛冲",
+    "desc": "物理伤害 + {s}。",
+    "next_skill_id": 0,
+    "child_skills": []
+  }
+]

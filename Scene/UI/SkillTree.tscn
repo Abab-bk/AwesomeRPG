@@ -1,0 +1,70 @@
+[gd_scene load_steps=12 format=3 uid="uid://dsr1p5lgdflk6"]
+
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_dn14h"]
+[ext_resource type="Script" path="res://Script/UI/SkillTree.gd" id="2_gk725"]
+[ext_resource type="Script" path="res://addons/worldmap_builder/nodes/worldmap_view.gd" id="3_t4oc6"]
+[ext_resource type="Resource" uid="uid://bcrbi1uvmegoo" path="res://Assets/Resources/Styles/SkillTree/Active.tres" id="4_kr2x5"]
+[ext_resource type="Script" path="res://addons/worldmap_builder/nodes/worldmap_graph.gd" id="4_r0gjf"]
+[ext_resource type="Resource" uid="uid://dniiltq2u7uo7" path="res://Assets/Resources/Styles/SkillTree/CanActive.tres" id="5_c40ah"]
+[ext_resource type="Script" path="res://addons/worldmap_builder/resource_types/worldmap_node_data.gd" id="5_k8vqh"]
+[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="6_82ghc"]
+[ext_resource type="Resource" uid="uid://cpgs2kbj8rqgg" path="res://Assets/Resources/Styles/SkillTree/InActive.tres" id="6_rkgqa"]
+[ext_resource type="Resource" uid="uid://bsy6npdrkd5a" path="res://example/skills/example.tres" id="7_006tx"]
+
+[sub_resource type="Resource" id="Resource_sev4q"]
+script = ExtResource("5_k8vqh")
+id = &"3001"
+texture = ExtResource("6_82ghc")
+color = Color(1, 1, 1, 1)
+name = "怒火"
+desc = ""
+size_tier = 0
+cost = 1
+tags = Array[StringName]([])
+data = Array[Resource]([])
+
+[node name="SkillTree" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_dn14h")
+script = ExtResource("2_gk725")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorldmapView" type="Control" parent="Panel" node_paths=PackedStringArray("initial_item")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_t4oc6")
+initial_item = NodePath("RootItem")
+style_active = ExtResource("4_kr2x5")
+style_can_activate = ExtResource("5_c40ah")
+style_inactive = ExtResource("6_rkgqa")
+
+[node name="RootItem" type="Node2D" parent="Panel/WorldmapView"]
+unique_name_in_owner = true
+script = ExtResource("4_r0gjf")
+connection_mode = 1
+connection_min_length = 100.0
+end_connection_nodes = Array[int]([1])
+node_count = 2
+node_0/data = SubResource("Resource_sev4q")
+node_0/position = Vector2(526.172, 1796.98)
+node_1/data = ExtResource("7_006tx")
+node_1/position = Vector2(233.703, 1562.21)
+connection_count = 1
+connection_0/nodes = Vector2i(1, 0)

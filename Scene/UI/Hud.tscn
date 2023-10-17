@@ -73,6 +73,12 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
 text = "背包"
 
+[node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "技能树"
+
 [node name="Inventory" parent="." instance=ExtResource("2_cil1e")]
 visible = false
 

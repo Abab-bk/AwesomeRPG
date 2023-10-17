@@ -87,6 +87,22 @@ class Affixs:
         for _ele in _json_["offset"]: var _e: float; _e = _ele; self.offset.append(_e)
 
 
+class SkillTree:
+    var id: int
+    var name: String
+    var desc: String
+    var next_skill_id: int
+    var child_skills: Array[int]
+
+    func _init(_json_) -> void:
+        self.id = _json_["id"]
+        self.name = _json_["name"]
+        self.desc = _json_["desc"]
+        self.next_skill_id = _json_["next_skill_id"]
+        self.child_skills = []
+        for _ele in _json_["child_skills"]: var _e: int; _e = _ele; self.child_skills.append(_e)
+
+
 class BuffsTbBuffs:
     var _data_list: Array[Buffs]
     var _data_map: Dictionary
@@ -129,11 +145,34 @@ class AffixsTbAffix:
         return self._data_map.get(key)
 
 
+class SkillTreeTbSkills:
+    var _data_list: Array[SkillTree]
+    var _data_map: Dictionary
+    
+    func _init(_json_) -> void:
+        for _json2_ in _json_:
+            var _v: SkillTree
+            _v = SkillTree.new(_json2_)
+            self._data_list.append(_v)
+            self._data_map[_v.id] = _v
+
+    func get_data_list() -> Array[SkillTree]:
+        return self._data_list
+
+    func get_data_map() -> Dictionary:
+        return self._data_map
+
+    func get_item(key) -> SkillTree:
+        return self._data_map.get(key)
+
+
 class CfgTables:
     var TbBuffs: BuffsTbBuffs
     var TbAffix: AffixsTbAffix
+    var TbSkills: SkillTreeTbSkills
     
     func _init(loader: Callable) -> void:
         self.TbBuffs = BuffsTbBuffs.new(loader.call('buffs_tbbuffs'))
         self.TbAffix = AffixsTbAffix.new(loader.call('affixs_tbaffix'))
+        self.TbSkills = SkillTreeTbSkills.new(loader.call('skilltree_tbskills'))
 

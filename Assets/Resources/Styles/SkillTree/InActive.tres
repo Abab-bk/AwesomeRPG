@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WorldmapStyle" load_steps=4 format=3 uid="uid://cpgs2kbj8rqgg"]
+
+[ext_resource type="Texture2D" uid="uid://dfwrk73ka6j8x" path="res://example/skilltree_borders.png" id="1_n21yq"]
+[ext_resource type="Script" path="res://addons/worldmap_builder/resource_types/wordmap_style.gd" id="2_aefpl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wm6gh"]
+atlas = ExtResource("1_n21yq")
+region = Rect2(0, 16, 32, 32)
+
+[resource]
+resource_name = "Inactive"
+script = ExtResource("2_aefpl")
+icon_modulate = Color(1, 1, 1, 1)
+icon_border_modulate = Color(1, 1, 1, 1)
+connection_modulate = Color(1, 1, 1, 1)
+icon_borders = Array[Texture2D]([SubResource("AtlasTexture_wm6gh")])
+straight_tex = ExtResource("1_n21yq")
+straight_tex_region = Rect2(0, 0, 128, 8)
+straight_tex_repeat = false
+priority = 0
