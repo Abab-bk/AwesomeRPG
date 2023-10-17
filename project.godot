@@ -11,9 +11,12 @@ config_version=5
 [application]
 
 config/name="AwesomeRPG"
-run/main_scene="res://Scene/World.tscn"
+run/main_scene="res://Scene/UI/BootSplash.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/show_image=false
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+config/icon="res://Icon.png"
 
 [autoload]
 
