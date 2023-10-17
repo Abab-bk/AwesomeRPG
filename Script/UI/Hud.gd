@@ -2,16 +2,22 @@ extends CanvasLayer
 
 @onready var hp_bar:ProgressBar = %HpBar
 @onready var xp_bar:ProgressBar = %XpBar
+
 @onready var inventory_btn:Button = %InventoryBtn
 @onready var character_btn:Button = %CharacterBtn
+@onready var skill_tree_btn:Button = %SkillTreeBtn
+
 @onready var inventory_ui:Control = $Inventory
 @onready var character_panel_ui:Control = $CharacterPanel
+@onready var skill_tree_ui:Control = $SkillTree
+
 @onready var skill_bar:HBoxContainer = %SkillBar
 
 enum PAGE {
     HOME,
     CHARACTER_PANEL,
-    INVENTORY
+    INVENTORY,
+    SKILL_TREE
 }
 
 var player_data:CharacterData
@@ -22,6 +28,7 @@ func _ready() -> void:
     
     inventory_btn.pressed.connect(change_page.bind(PAGE.INVENTORY))
     character_btn.pressed.connect(change_page.bind(PAGE.CHARACTER_PANEL))
+    skill_tree_btn.pressed.connect(change_page.bind(PAGE.SKILL_TREE))
     
     for i in Master.player.get_ability_list().size():
         skill_bar.add_child(Builder.builder_a_skill_btn())
@@ -30,17 +37,25 @@ func _ready() -> void:
     
     set_skills_ui()
     update_ui()
+    change_page(PAGE.HOME)
 
 func change_page(_page:PAGE) -> void:
     match _page:
         PAGE.HOME:
             inventory_ui.hide()
             character_panel_ui.hide()
+            skill_tree_ui.hide()
         PAGE.CHARACTER_PANEL:
+            skill_tree_ui.hide()
             inventory_ui.hide()
             character_panel_ui.show()
         PAGE.INVENTORY:
+            skill_tree_ui.hide()
             inventory_ui.show()
+            character_panel_ui.hide()
+        PAGE.SKILL_TREE:
+            skill_tree_ui.show()
+            inventory_ui.hide()
             character_panel_ui.hide()
 
 # 技能条 UI

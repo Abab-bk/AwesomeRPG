@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=7 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
 [ext_resource type="PackedScene" uid="uid://ck3r30dw3dngl" path="res://Scene/UI/Inventory.tscn" id="2_cil1e"]
+[ext_resource type="LabelSettings" uid="uid://clchsofy7wd08" path="res://Assets/LabelSetting/NormalWhite.tres" id="3_4ebfx"]
 [ext_resource type="PackedScene" uid="uid://b33g1ypyny6i5" path="res://Scene/UI/CharacterPanel.tscn" id="3_aoxj4"]
+[ext_resource type="PackedScene" uid="uid://dsr1p5lgdflk6" path="res://Scene/UI/SkillTree.tscn" id="5_xu7ou"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_d15xn")
@@ -41,10 +43,32 @@ unique_name_in_owner = true
 layout_mode = 2
 show_percentage = false
 
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/PlayerStat/HpBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "HP"
+label_settings = ExtResource("3_4ebfx")
+vertical_alignment = 1
+
 [node name="XpBar" type="ProgressBar" parent="Control/MarginContainer/VBoxContainer/PlayerStat"]
 unique_name_in_owner = true
 layout_mode = 2
 show_percentage = false
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/PlayerStat/XpBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MP"
+label_settings = ExtResource("3_4ebfx")
+vertical_alignment = 1
 
 [node name="Control" type="Control" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -73,7 +97,8 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
 text = "背包"
 
-[node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="SkillTreeBtn" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
@@ -83,4 +108,7 @@ text = "技能树"
 visible = false
 
 [node name="CharacterPanel" parent="." instance=ExtResource("3_aoxj4")]
+visible = false
+
+[node name="SkillTree" parent="." instance=ExtResource("5_xu7ou")]
 visible = false

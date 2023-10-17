@@ -3,6 +3,12 @@ extends Control
 @onready var skills_ui:WorldmapView = %WorldmapView
 @onready var root_item:WorldmapGraph = %RootItem
 
+@onready var cancel_btn:Button = %CancelBtn
+
+
+func _ready() -> void:
+    cancel_btn.pressed.connect(func():hide())
+
 # {3001: {xx}, 3002...}
 
 #var data:Dictionary = {

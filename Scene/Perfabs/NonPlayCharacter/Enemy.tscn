@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://dx27klpp0nc4x"]
+[gd_scene load_steps=24 format=3 uid="uid://dx27klpp0nc4x"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/NonPlayableCharacter/Enemy.gd" id="1_jkjmt"]
 [ext_resource type="Texture2D" uid="uid://bcvid2hgflnb" path="res://Assets/Texture/Characters/purple_character.png" id="1_lm6s8"]
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_6wwaj"]
 [ext_resource type="Script" path="res://Script/Game/ItemGenerator.gd" id="2_032p5"]
 [ext_resource type="Script" path="res://Script/Perfabs/NonPlayableCharacter/EnemyWeapons.gd" id="2_f5php"]
 [ext_resource type="Script" path="res://addons/FlowerBuff/Script/FlowerBuffManager.gd" id="2_jei58"]
@@ -91,6 +92,25 @@ radius = 37.0135
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_jkjmt")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -72.0
+offset_top = -113.0
+offset_right = 82.0
+offset_bottom = -49.0
+theme = ExtResource("2_6wwaj")
+
+[node name="HpBar" type="ProgressBar" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+show_percentage = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_3mlrj")

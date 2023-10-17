@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @onready var buff_manager:FlowerBuffManager = $FlowerBuffManager
 @onready var item_generator:ItemGenerator = $ItemGenerator
+@onready var hp_bar:ProgressBar = %HpBar
 
 var dead:bool = false
 var data:CharacterData
@@ -31,3 +32,4 @@ func set_level(_value:int) -> void:
 
 func _physics_process(_delta:float) -> void:
     move_and_slide()
+    hp_bar.value = (float(data.hp) / float(data.max_hp)) * 100.0
