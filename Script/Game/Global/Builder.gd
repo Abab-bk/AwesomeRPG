@@ -15,8 +15,8 @@ func build_a_fireball() -> CharacterBody2D:
     var _n:CharacterBody2D = load(fireball).instantiate()
     return _n
 
-func builder_a_skill_btn() -> SkillBtn:
-    var _n:SkillBtn = load(skill_btn).instantiate()
+func builder_a_skill_btn() -> Panel:
+    var _n = load(skill_btn).instantiate()
     return _n
 
 func builder_a_enemy() -> Enemy:

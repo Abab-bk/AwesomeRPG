@@ -61,7 +61,7 @@ func change_page(_page:PAGE) -> void:
 # 技能条 UI
 func set_skills_ui() -> void:
     for _i in Master.player.get_ability_list().size():
-        var _ability:Ability = Master.player.get_ability_list()[_i - 1]
+        var _ability:FlowerAbility = Master.player.get_ability_list()[_i - 1]
         skill_bar.get_child(_i).set_ability(_ability)
 
 func update_ui() -> void:

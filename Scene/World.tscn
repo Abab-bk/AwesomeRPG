@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://3xynvu782kcm"]
+[gd_scene load_steps=11 format=3 uid="uid://3xynvu782kcm"]
 
 [ext_resource type="Texture2D" uid="uid://blncare6u6ty" path="res://Assets/Texture/Map/TileSheet.png" id="1_7qj4v"]
 [ext_resource type="Script" path="res://Script/Game/World.gd" id="1_myfhc"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dlpspce2dr6hw" path="res://Scene/Perfabs/Maps/RelifePoint.tscn" id="4_f4kq8"]
 [ext_resource type="PackedScene" uid="uid://bjqtnyo6c546w" path="res://Scene/UI/Hud.tscn" id="5_07fkt"]
 [ext_resource type="PackedScene" uid="uid://dx27klpp0nc4x" path="res://Scene/Perfabs/NonPlayCharacter/Enemy.tscn" id="5_t1ymi"]
+[ext_resource type="Script" path="res://addons/FlowerAbility/Script/FlowerAbilityContainer.gd" id="8_g8vox"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7roa4"]
 texture = ExtResource("1_7qj4v")
@@ -180,3 +181,6 @@ script = ExtResource("4_22mer")
 
 [node name="Enemy" parent="." instance=ExtResource("5_t1ymi")]
 position = Vector2(326, 1314)
+
+[node name="FlowerAbilityContainer" type="Node" parent="."]
+script = ExtResource("8_g8vox")

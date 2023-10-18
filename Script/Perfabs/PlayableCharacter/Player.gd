@@ -1,8 +1,8 @@
 class_name Player extends CharacterBody2D
 
+@onready var ability_container:FlowerAbilityContainer = $FlowerAbilityContainer
 @onready var flower_buff_manager:FlowerBuffManager = $FlowerBuffManager
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
-@onready var ability_container:AbilityContainer = $AbilityContainer
 @onready var attribute_map:GameplayAttributeMap = $GameplayAttributeMap
 
 var data:CharacterData
@@ -42,8 +42,8 @@ func _ready() -> void:
             
             EventBus.equipment_down_ok.emit(_type, _item))
     
-    EventBus.player_ability_activate.connect(func(_ability:Ability):
-        ability_container.activate_one(_ability)
+    EventBus.player_ability_activate.connect(func(_ability:FlowerAbility):
+        ability_container.active_a_ability(_ability)
         )
     
     EventBus.enemy_die.connect(get_xp)
@@ -72,7 +72,7 @@ func _physics_process(_delta: float) -> void:
 
 func get_ability_list() -> Array:
     var _list:Array = []
-    _list = ability_container.granted_abilities
+    _list = ability_container.ability_list
     return _list
 
 func get_level() -> int:
