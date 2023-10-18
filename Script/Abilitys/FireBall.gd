@@ -2,7 +2,6 @@ class_name FireBall extends FlowerAbility
 
 func active() -> void:
     super()
-    
     var _fire_ball:CharacterBody2D = Builder.build_a_fireball()
     _fire_ball.global_position = actor.global_position
     

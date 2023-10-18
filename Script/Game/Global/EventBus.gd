@@ -8,7 +8,9 @@ signal player_data_change
 
 signal player_hited(damage:int)
 signal player_dead
-signal player_ability_activate(ability:Ability)
+signal player_ability_change
+signal player_ability_activate(ability:FlowerAbility)
+signal player_get_a_ability(ability:FlowerAbility)
 signal equipment_up(type:Const.EQUIPMENT_TYPE, item:InventoryItem)
 signal equipment_down(type:Const.EQUIPMENT_TYPE, item:InventoryItem)
 signal equipment_down_ok(type:Const.EQUIPMENT_TYPE, item:InventoryItem)

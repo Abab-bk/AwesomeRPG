@@ -20,7 +20,8 @@ func set_ability(_v:FlowerAbility) -> void:
     ability = _v
 
 func _physics_process(_delta:float) -> void:
-    progress_bar.value = ability.get_cooldown_left()    
+    if ability:
+        progress_bar.value = ability.get_cooldown_left()    
 
 func update_ui() -> void:
     title_label.text = ability.name

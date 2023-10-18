@@ -1,12 +1,10 @@
-[gd_scene load_steps=37 format=3 uid="uid://v51c0x6v6m7h"]
+[gd_scene load_steps=34 format=3 uid="uid://v51c0x6v6m7h"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/PlayableCharacter/Player.gd" id="1_8yy7w"]
 [ext_resource type="Texture2D" uid="uid://dslvgplb0lb00" path="res://Assets/Texture/Characters/green_character.png" id="2_3w4i3"]
 [ext_resource type="Script" path="res://addons/FlowerAbility/Script/FlowerAbilityContainer.gd" id="2_8gp7m"]
-[ext_resource type="Texture2D" uid="uid://dp0iy2awe2e3l" path="res://Icon.png" id="3_kifoi"]
 [ext_resource type="Script" path="res://addons/FlowerBuff/Script/FlowerBuffManager.gd" id="3_nckal"]
 [ext_resource type="Resource" uid="uid://cxjh70teksadv" path="res://Assets/Resources/Datas/Characters/Knight.tres" id="4_14ux5"]
-[ext_resource type="Script" path="res://Script/Abilitys/FireBall.gd" id="4_st1a6"]
 [ext_resource type="Script" path="res://Script/Component/AtkRangeComponent.gd" id="5_cwveo"]
 [ext_resource type="Script" path="res://Script/Component/HurtBoxComponent.gd" id="6_mwt7r"]
 [ext_resource type="Script" path="res://Script/Component/VisionComponent.gd" id="6_r1tqh"]
@@ -26,15 +24,6 @@
 [ext_resource type="Script" path="res://Script/Component/ConductorComponent.gd" id="18_rbisg"]
 [ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="19_2nmpk"]
 [ext_resource type="Script" path="res://Script/Beehave/Action/PlayerAttack.gd" id="20_txu13"]
-
-[sub_resource type="Resource" id="Resource_yg1e2"]
-script = ExtResource("4_st1a6")
-id = &"火球术"
-name = "火球术"
-desc = ""
-icon = ExtResource("3_kifoi")
-cooldown = 3.0
-casting_time = 0.0
 
 [sub_resource type="Animation" id="Animation_lopl1"]
 resource_name = "Die"
@@ -134,7 +123,6 @@ script = ExtResource("1_8yy7w")
 
 [node name="FlowerAbilityContainer" type="Node" parent="." node_paths=PackedStringArray("actor")]
 script = ExtResource("2_8gp7m")
-ability_list = Array[Resource("res://addons/FlowerAbility/Script/FlowerAbility.gd")]([SubResource("Resource_yg1e2")])
 actor = NodePath("..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

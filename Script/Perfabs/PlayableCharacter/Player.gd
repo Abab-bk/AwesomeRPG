@@ -3,7 +3,6 @@ class_name Player extends CharacterBody2D
 @onready var ability_container:FlowerAbilityContainer = $FlowerAbilityContainer
 @onready var flower_buff_manager:FlowerBuffManager = $FlowerBuffManager
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
-@onready var attribute_map:GameplayAttributeMap = $GameplayAttributeMap
 
 var data:CharacterData
 var target:Vector2 = global_position
@@ -44,6 +43,11 @@ func _ready() -> void:
     
     EventBus.player_ability_activate.connect(func(_ability:FlowerAbility):
         ability_container.active_a_ability(_ability)
+        )
+    
+    EventBus.player_get_a_ability.connect(func(_ability:FlowerAbility):
+        ability_container.add_a_ability(_ability)
+        EventBus.player_ability_change.emit()
         )
     
     EventBus.enemy_die.connect(get_xp)

@@ -7,11 +7,30 @@ var player_data:CharacterData
 var relife_point:Marker2D
 
 var config
+
 var affixs:Array
 var buffs:Dictionary
+var abilitys:Dictionary
+
 var json_path:String = "res://DataBase/output/"
 
-#FIXME: 词缀装上属性不对
+const abilitys_start:int = 4001
+const abilitys_end:int = 4004
+
+# FIXME: 词缀装上属性不对
+
+func get_random_ability() -> FlowerAbility:
+    var _data = abilitys[randi_range(abilitys_start, abilitys_end)]
+    
+    var _ability:FlowerAbility = load("res://Script/Abilitys/%s.gd" % _data["script_name"]).new()
+    
+    _ability.name = _data.name
+    _ability.desc = _data.desc
+    _ability.icon = load(_data.icon_path)
+    _ability.cooldown = _data.cooldown
+    _ability.casting_time = _data.casting_time
+    
+    return _ability
 
 # 生成随机词缀
 func get_random_affix() -> AffixItem:
@@ -46,3 +65,4 @@ func _ready():
     
     affixs = config.TbAffix.get_data_list()
     buffs = config.TbBuffs.get_data_map()
+    abilitys = config.TbAbilitys.get_data_map()

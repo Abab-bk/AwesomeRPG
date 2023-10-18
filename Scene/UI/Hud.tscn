@@ -104,6 +104,15 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
 text = "技能树"
 
+[node name="GetSkillBtn" type="Button" parent="Control"]
+unique_name_in_owner = true
+offset_left = 45.0
+offset_top = 1535.0
+offset_right = 300.0
+offset_bottom = 1612.0
+theme_override_font_sizes/font_size = 25
+text = "获得技能"
+
 [node name="Inventory" parent="." instance=ExtResource("2_cil1e")]
 visible = false
 

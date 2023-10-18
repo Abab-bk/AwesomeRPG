@@ -30,6 +30,7 @@ func connect_signal() -> void:
     if _casting_timer:
         _casting_timer.timeout.connect(func():)
     _cooldown_timer.timeout.connect(_cooldown_ok)
+    current_state = STATE.IDLE
 
 func _cooldown_ok() -> void:
     current_state = STATE.IDLE

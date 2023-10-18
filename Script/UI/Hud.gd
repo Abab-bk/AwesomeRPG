@@ -6,6 +6,7 @@ extends CanvasLayer
 @onready var inventory_btn:Button = %InventoryBtn
 @onready var character_btn:Button = %CharacterBtn
 @onready var skill_tree_btn:Button = %SkillTreeBtn
+@onready var get_skill_btn:Button = %GetSkillBtn
 
 @onready var inventory_ui:Control = $Inventory
 @onready var character_panel_ui:Control = $CharacterPanel
@@ -25,13 +26,16 @@ var player_data:CharacterData
 func _ready() -> void:
     EventBus.update_ui.connect(update_ui)
     EventBus.new_drop_item.connect(new_drop_item)
+    EventBus.player_ability_change.connect(build_ability_ui)
     
     inventory_btn.pressed.connect(change_page.bind(PAGE.INVENTORY))
     character_btn.pressed.connect(change_page.bind(PAGE.CHARACTER_PANEL))
     skill_tree_btn.pressed.connect(change_page.bind(PAGE.SKILL_TREE))
+    get_skill_btn.pressed.connect(func():
+        EventBus.player_get_a_ability.emit(Master.get_random_ability())
+        )
     
-    for i in Master.player.get_ability_list().size():
-        skill_bar.add_child(Builder.builder_a_skill_btn())
+    build_ability_ui()
     
     player_data = Master.player.data
     
@@ -59,10 +63,20 @@ func change_page(_page:PAGE) -> void:
             character_panel_ui.hide()
 
 # 技能条 UI
+# FIXME: 添加多个技能，第二个技能无效
 func set_skills_ui() -> void:
     for _i in Master.player.get_ability_list().size():
         var _ability:FlowerAbility = Master.player.get_ability_list()[_i - 1]
         skill_bar.get_child(_i).set_ability(_ability)
+
+func build_ability_ui() -> void:
+    for i in skill_bar.get_children():
+        i.queue_free()
+    
+    for i in Master.player.get_ability_list().size():
+        skill_bar.add_child(Builder.builder_a_skill_btn())
+    
+    set_skills_ui()
 
 func update_ui() -> void:
     hp_bar.value = (float(player_data.hp) / float(player_data.max_hp)) * 100.0

@@ -1,0 +1,38 @@
+[
+  {
+    "id": 4001,
+    "name": "狂怒",
+    "desc": "火焰伤害 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cooldown": 1,
+    "casting_time": 0,
+    "script_name": "FireBall"
+  },
+  {
+    "id": 4002,
+    "name": "狂怒2",
+    "desc": "火焰伤害 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cooldown": 1,
+    "casting_time": 0,
+    "script_name": "FireBall"
+  },
+  {
+    "id": 4003,
+    "name": "灼烧",
+    "desc": "火焰伤害 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cooldown": 1,
+    "casting_time": 0,
+    "script_name": "FireBall"
+  },
+  {
+    "id": 4004,
+    "name": "火球术",
+    "desc": "释放一个火球。",
+    "icon_path": "res://icon.svg",
+    "cooldown": 1,
+    "casting_time": 0,
+    "script_name": "FireBall"
+  }
+]
