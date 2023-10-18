@@ -1,6 +1,8 @@
 extends Panel
 
-@onready var affixe_labels:VBoxContainer = %FrontAffixeLabels
+@onready var pre_affixe_labels:VBoxContainer = %PreAffixeLabels
+@onready var buf_affixe_labels:VBoxContainer = %BufAffixeLabels
+
 @onready var title_label:Label = %TitleLabel
 @onready var use_btn:Button = %UseBtn
 
@@ -50,10 +52,18 @@ func update_ui() -> void:
     # TODO: 一直实例化成本可能有点高，改成隐藏
     title_label.text = item.name
     
-    for _affix in affixe_labels.get_children():
+    for _affix in pre_affixe_labels.get_children():
         _affix.queue_free()
     
-    for _affix in item.affixs:
+    for _affix in buf_affixe_labels.get_children():
+        _affix.queue_free()
+    
+    for _affix in item.pre_affixs:
         var _affix_label:HBoxContainer = Builder.build_a_affix_label()
         _affix_label.set_text(_affix.desc)
-        affixe_labels.add_child(_affix_label)
+        pre_affixe_labels.add_child(_affix_label)
+
+    for _affix in item.buf_affix:
+        var _affix_label:HBoxContainer = Builder.build_a_affix_label()
+        _affix_label.set_text(_affix.desc)
+        buf_affixe_labels.add_child(_affix_label)

@@ -123,24 +123,24 @@ size_flags_vertical = 0
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="FrontAffixeLabels" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer"]
+[node name="PreAffixeLabels" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer"]
 layout_mode = 2
 
-[node name="SepBar" type="TextureRect" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/FrontAffixeLabels"]
+[node name="SepBar" type="TextureRect" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/PreAffixeLabels"]
 layout_mode = 2
 texture = ExtResource("10_7kcw6")
 stretch_mode = 4
 
-[node name="FrontAffixeLabels" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/FrontAffixeLabels"]
-unique_name_in_owner = true
+[node name="PreAffixeLabels" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/PreAffixeLabels"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/FrontAffixeLabels/FrontAffixeLabels"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/PreAffixeLabels/PreAffixeLabels"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/FrontAffixeLabels/FrontAffixeLabels/MarginContainer"]
+[node name="PreAffixeLabels" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/PreAffixeLabels/PreAffixeLabels/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="BackAffixeLabels" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer"]
@@ -151,16 +151,16 @@ layout_mode = 2
 texture = ExtResource("10_7kcw6")
 stretch_mode = 4
 
-[node name="BackAffixeLabels" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/BackAffixeLabels"]
-unique_name_in_owner = true
+[node name="BufAffixeLabels" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/BackAffixeLabels"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/BackAffixeLabels/BackAffixeLabels"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/BackAffixeLabels/BufAffixeLabels"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/BackAffixeLabels/BackAffixeLabels/MarginContainer"]
+[node name="BufAffixeLabels" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/BackAffixeLabels/BufAffixeLabels/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Space" type="Control" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content"]

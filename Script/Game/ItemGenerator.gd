@@ -3,7 +3,7 @@ class_name ItemGenerator extends Node
 func gen_a_item() -> InventoryItem:
     var _new_item:InventoryItem = InventoryItem.new()
     _new_item.name = ""
-    _new_item.type = randi_range(0, Const.EQUIPMENT_TYPE.values().size() - 1)
+    _new_item.type = Const.EQUIPMENT_TYPE.values()[randi() % Const.EQUIPMENT_TYPE.size()]
     
     match _new_item.type:
         Const.EQUIPMENT_TYPE.头盔:
@@ -28,11 +28,19 @@ func gen_a_item() -> InventoryItem:
             _new_item.name += "武器"
     
     # 随机掉落词缀数量
-    var count:int = randi_range(1, 5)
-    for i in count:
-        _new_item.affixs.append(Master.get_random_affix())
+    var count:int = randi_range(1, 3)
     
-    for i in _new_item.affixs:
+    for i in count:
+        _new_item.pre_affixs.append(Master.get_random_affix())
+    
+    count = randi_range(1, 3)
+    
+    for i in count:
+        _new_item.buf_affix.append(Master.get_random_affix())
+    
+    for i in _new_item.pre_affixs:
+        _new_item.name += i.name
+    for i in _new_item.buf_affix:
         _new_item.name += i.name
     
     return _new_item

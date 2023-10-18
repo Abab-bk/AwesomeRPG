@@ -22,8 +22,11 @@ func _ready() -> void:
         # TODO: 如果 type 是武器或者项链，选择左右手，当前为直接替换
         data.quipments[_type] = _item
         
-        # 应用 Buff
-        for i in _item.affixs:
+        # 装备装备时，应用装备 Buff
+        for i in _item.pre_affixs:
+            flower_buff_manager.add_buff(i.buff)
+        
+        for i in _item.buf_affix:
             flower_buff_manager.add_buff(i.buff)
         
         # 更新 UI
