@@ -44,6 +44,14 @@ signal hp_is_zero
 @export var atk_range:float
 @export var quipments:Dictionary = {}
 
+# TODO: 设置属性从等级
+func set_property_from_level() -> void:
+    hp += level / 2
+    max_hp += level / 2
+    magic += level / 2
+    strength += level / 2
+    wisdom += level / 2
+
 func update_next_xp() -> void:
     if level % 15 == 0:
         @warning_ignore("integer_division")

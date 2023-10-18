@@ -56,7 +56,6 @@ func _ready() -> void:
     Master.player_data = flower_buff_manager.output_data
     
     # FIXME: ？由于JSON中读取文件然后生成buff太慢，所以计算慢？
-    # FIXME: 每次掉落装备会重复计算
     compute()
 
 func compute() -> void:
@@ -73,6 +72,8 @@ func get_ability_list() -> Array:
     _list = ability_container.granted_abilities
     return _list
 
+func get_level() -> int:
+    return data.level
 
 # ======= 属性 ========
 func up_level() -> void:

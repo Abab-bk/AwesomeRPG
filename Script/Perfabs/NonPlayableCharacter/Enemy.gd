@@ -10,7 +10,13 @@ var data:CharacterData
 
 func _ready() -> void:
     data = buff_manager.compute_data
-    set_level(1)
+    # 设置属性 （每个敌人 ready 都是生成）
+    var _level:int = 1
+    
+    if Master.player.get_level() >= 5:
+        _level = Master.player.get_level() - 3
+    
+    set_level(_level)
 
 func die() -> void:
     if dead:
@@ -26,6 +32,10 @@ func die() -> void:
     EventBus.enemy_die.emit(data.level * 10)
     
     queue_free()
+
+func set_property_from_level() -> void:
+    for i in data.get_property_list():
+        pass
 
 func set_level(_value:int) -> void:
     data.level = _value

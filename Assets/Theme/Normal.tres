@@ -1,9 +1,10 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://dw7ft4xik3rji"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://dw7ft4xik3rji"]
 
 [ext_resource type="FontFile" uid="uid://cpqr3r4f0yisb" path="res://Assets/Font/SourceHanSansCN-Normal.otf" id="1_0mun2"]
 [ext_resource type="Texture2D" uid="uid://c4vfvx3pwv23n" path="res://Assets/UI/Texture/PanelBox.png" id="2_enk8w"]
 [ext_resource type="Texture2D" uid="uid://bv7f78tgjbooa" path="res://Assets/UI/Texture/Button/ButtonNormal.png" id="2_vhua5"]
 [ext_resource type="Texture2D" uid="uid://dxny6jldurgsg" path="res://Assets/UI/Texture/DeepRedClub.png" id="4_d64v8"]
+[ext_resource type="FontFile" uid="uid://c7bfs6orcmgh2" path="res://Assets/Font/SourceHanSansCN-Medium.otf" id="5_cj7mn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_432pw"]
 
@@ -23,6 +24,20 @@ texture_margin_bottom = 20.0
 modulate_color = Color(0.733333, 0.733333, 0.733333, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r3f4v"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sk2gh"]
+texture = ExtResource("4_d64v8")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cwwfk"]
+texture = ExtResource("2_vhua5")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1dmjg"]
 texture = ExtResource("2_enk8w")
@@ -46,6 +61,7 @@ texture_margin_right = 20.0
 texture_margin_bottom = 20.0
 
 [resource]
+default_font = ExtResource("5_cj7mn")
 Button/colors/font_color = Color(0.686275, 0.584314, 0.454902, 1)
 Button/colors/font_focus_color = Color(0.686275, 0.584314, 0.454902, 1)
 Button/colors/font_hover_color = Color(0.686275, 0.584314, 0.454902, 1)
@@ -63,6 +79,9 @@ EmptyBtn/styles/focus = SubResource("StyleBoxEmpty_r3f4v")
 EmptyBtn/styles/hover = SubResource("StyleBoxEmpty_r3f4v")
 EmptyBtn/styles/normal = SubResource("StyleBoxEmpty_r3f4v")
 EmptyBtn/styles/pressed = SubResource("StyleBoxEmpty_r3f4v")
+HpBar/base_type = &"ProgressBar"
+HpBar/styles/background = SubResource("StyleBoxTexture_sk2gh")
+HpBar/styles/fill = SubResource("StyleBoxTexture_cwwfk")
 Panel/styles/panel = SubResource("StyleBoxTexture_1dmjg")
 ProgressBar/styles/background = SubResource("StyleBoxTexture_mjj50")
 ProgressBar/styles/fill = SubResource("StyleBoxTexture_hhs6j")
