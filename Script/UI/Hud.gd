@@ -29,7 +29,7 @@ func _ready() -> void:
     EventBus.player_ability_change.connect(build_ability_ui)
     EventBus.show_damage_number.connect(func(_pos:Vector2, _text:String):
         var _damage_label:Label = Builder.build_a_damage_label()
-        _damage_label.global_position = _pos
+        _damage_label.position = _pos
         _damage_label.text = _text
         add_child(_damage_label)
         )
@@ -91,7 +91,7 @@ func update_ui() -> void:
 func new_drop_item(_item:InventoryItem, _pos:Vector2) -> void:
     var _new_sprite:Node2D = Builder.build_a_drop_item()
     _new_sprite.set_texture(load(_item.texture_path))
-    _new_sprite.global_position = _pos
+    _new_sprite.position = _pos
     
     add_child(_new_sprite)
     

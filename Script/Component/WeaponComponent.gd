@@ -8,7 +8,7 @@ signal animation_ok
 
 func _ready() -> void:
     $Sprite2D.rotation = 110.0
-    $Sprite2D/HitBoxComponent.damage = buff_manager.compute_data.damage
+    $Sprite2D/HitBoxComponent.buff_manager = buff_manager
 
 func run(speed:float) -> void:
     if tween:

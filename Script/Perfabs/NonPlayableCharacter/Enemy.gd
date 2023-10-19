@@ -11,7 +11,7 @@ var data:CharacterData
 
 func _ready() -> void:
     hurt_box_component.hited.connect(func(value:int):
-        EventBus.show_damage_number.emit(global_position, str(value))
+        EventBus.show_damage_number.emit(position, str(value))
         )
     
     data = buff_manager.compute_data
@@ -29,7 +29,7 @@ func die() -> void:
     dead = true
     
     var _drop_item:InventoryItem = item_generator.gen_a_item()
-    EventBus.new_drop_item.emit(_drop_item, global_position)
+    EventBus.new_drop_item.emit(_drop_item, position)
     
     $AnimationPlayer.play("Die")
     await $AnimationPlayer.animation_finished
