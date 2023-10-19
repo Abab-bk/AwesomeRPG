@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://gh4l32iqxpdq"]
+
+[ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="1_7soll"]
+[ext_resource type="Script" path="res://Script/UI/DamageLable.gd" id="2_e0xem"]
+
+[node name="DamageLable" type="Label"]
+offset_right = 72.0
+offset_bottom = 47.0
+text = "8887"
+label_settings = ExtResource("1_7soll")
+script = ExtResource("2_e0xem")

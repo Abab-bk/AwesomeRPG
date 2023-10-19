@@ -7,6 +7,11 @@ const skill_btn:String = "res://Scene/UI/SkillItem.tscn"
 const affix_label:String = "res://Scene/UI/AffixLabel.tscn"
 const skill_tree_btn:String = "res://Scene/UI/SkillTreeItem.tscn"
 const drop_item:String = "res://Scene/Perfabs/Others/DropItem.tscn"
+const damage_label:String = "res://Scene/UI/DamageLable.tscn"
+
+func build_a_damage_label() -> Label:
+    var _n:Label = load(damage_label).instantiate()
+    return _n
 
 func build_a_drop_item() -> Node2D:
     var _n:Node2D = load(drop_item).instantiate()

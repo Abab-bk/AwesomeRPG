@@ -1,6 +1,8 @@
 class_name HurtBoxComponent
 extends Area2D
 
+signal hited(value:int)
+
 @export var health_component:HealthComponent
 
 func _ready() -> void:
@@ -9,3 +11,4 @@ func _ready() -> void:
 func handle_hit(_value:int) -> void:
     health_component.damage(_value)
     EventBus.update_ui.emit()
+    hited.emit(_value)

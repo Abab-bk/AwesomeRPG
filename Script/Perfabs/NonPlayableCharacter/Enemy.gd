@@ -4,11 +4,16 @@ extends CharacterBody2D
 @onready var buff_manager:FlowerBuffManager = $FlowerBuffManager
 @onready var item_generator:ItemGenerator = $ItemGenerator
 @onready var hp_bar:ProgressBar = %HpBar
+@onready var hurt_box_component:HurtBoxComponent = $HurtBoxComponent
 
 var dead:bool = false
 var data:CharacterData
 
 func _ready() -> void:
+    hurt_box_component.hited.connect(func(value:int):
+        EventBus.show_damage_number.emit(global_position, str(value))
+        )
+    
     data = buff_manager.compute_data
     # 设置属性 （每个敌人 ready 都是生成）
     var _level:int = 1

@@ -27,6 +27,12 @@ func _ready() -> void:
     EventBus.update_ui.connect(update_ui)
     EventBus.new_drop_item.connect(new_drop_item)
     EventBus.player_ability_change.connect(build_ability_ui)
+    EventBus.show_damage_number.connect(func(_pos:Vector2, _text:String):
+        var _damage_label:Label = Builder.build_a_damage_label()
+        _damage_label.global_position = _pos
+        _damage_label.text = _text
+        add_child(_damage_label)
+        )
     
     inventory_btn.pressed.connect(change_page.bind(PAGE.INVENTORY))
     character_btn.pressed.connect(change_page.bind(PAGE.CHARACTER_PANEL))
