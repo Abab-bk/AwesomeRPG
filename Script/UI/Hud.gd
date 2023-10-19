@@ -83,8 +83,10 @@ func update_ui() -> void:
     xp_bar.value = (float(player_data.now_xp) / float(player_data.next_level_xp)) * 100.0
 
 func new_drop_item(_item:InventoryItem, _pos:Vector2) -> void:
-    var _new_sprite:Sprite2D = Sprite2D.new()
-    _new_sprite.texture = load(_item.texture_path)
+    var _new_sprite:Node2D = Builder.build_a_drop_item()
+    _new_sprite.set_texture(load(_item.texture_path))
+    _new_sprite.global_position = _pos
+    
     add_child(_new_sprite)
     
     if _pos.x >= 1080:
@@ -92,10 +94,5 @@ func new_drop_item(_item:InventoryItem, _pos:Vector2) -> void:
     if _pos.y >= 1920:
         _pos.y = 800
     
-    _new_sprite.global_position = _pos
-    
     EventBus.add_item.emit(_item)
     EventBus.update_inventory.emit()
-    
-    await get_tree().create_timer(2.0).timeout
-    _new_sprite.queue_free()

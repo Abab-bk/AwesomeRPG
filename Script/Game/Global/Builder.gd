@@ -6,6 +6,11 @@ const inventory_item := preload("res://Scene/UI/InventoryItem.tscn")
 const skill_btn:String = "res://Scene/UI/SkillItem.tscn"
 const affix_label:String = "res://Scene/UI/AffixLabel.tscn"
 const skill_tree_btn:String = "res://Scene/UI/SkillTreeItem.tscn"
+const drop_item:String = "res://Scene/Perfabs/Others/DropItem.tscn"
+
+func build_a_drop_item() -> Node2D:
+    var _n:Node2D = load(drop_item).instantiate()
+    return _n
 
 func build_a_affix_label() -> HBoxContainer:
     var _n:HBoxContainer = load(affix_label).instantiate()

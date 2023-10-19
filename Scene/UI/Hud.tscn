@@ -106,6 +106,7 @@ text = "技能树"
 
 [node name="GetSkillBtn" type="Button" parent="Control"]
 unique_name_in_owner = true
+layout_mode = 0
 offset_left = 45.0
 offset_top = 1535.0
 offset_right = 300.0

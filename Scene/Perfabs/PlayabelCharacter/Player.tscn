@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://v51c0x6v6m7h"]
+[gd_scene load_steps=30 format=3 uid="uid://v51c0x6v6m7h"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/PlayableCharacter/Player.gd" id="1_8yy7w"]
 [ext_resource type="Texture2D" uid="uid://dslvgplb0lb00" path="res://Assets/Texture/Characters/green_character.png" id="2_3w4i3"]
@@ -11,9 +11,7 @@
 [ext_resource type="Script" path="res://Script/Component/HealthComponent.gd" id="7_afrsm"]
 [ext_resource type="Script" path="res://Script/Perfabs/NonPlayableCharacter/EnemyWeapons.gd" id="7_j8fjd"]
 [ext_resource type="PackedScene" uid="uid://cwrtaokg2sgt6" path="res://Scene/Component/WeaponComponent.tscn" id="8_5wme0"]
-[ext_resource type="Script" path="res://addons/FlowerBuff/Script/FlowerComputeData.gd" id="9_25lxd"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="9_38ipv"]
-[ext_resource type="Script" path="res://addons/FlowerBuff/Script/FlowerBaseBuff.gd" id="10_k7reb"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector_reactive.gd" id="10_o822m"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence.gd" id="11_as28j"]
 [ext_resource type="Script" path="res://Script/Beehave/Action/TurnToEnemy.gd" id="14_1312a"]
@@ -95,26 +93,6 @@ radius = 137.015
 [sub_resource type="CircleShape2D" id="CircleShape2D_wcb0n"]
 radius = 198.091
 
-[sub_resource type="Resource" id="Resource_i1ek8"]
-script = ExtResource("9_25lxd")
-id = "ss"
-type = 1
-value = 3.0
-formual = ""
-target_property = "light_resistance"
-
-[sub_resource type="Resource" id="Resource_i00qv"]
-script = ExtResource("10_k7reb")
-name = "aa"
-desc = ""
-repeat = false
-repeat_count = 0
-infinite = true
-compute_values = Array[ExtResource("9_25lxd")]([SubResource("Resource_i1ek8"), SubResource("Resource_i1ek8"), SubResource("Resource_i1ek8"), SubResource("Resource_i1ek8"), SubResource("Resource_i1ek8"), SubResource("Resource_i1ek8"), SubResource("Resource_i1ek8"), SubResource("Resource_i1ek8"), SubResource("Resource_i1ek8"), SubResource("Resource_i1ek8"), SubResource("Resource_i1ek8"), SubResource("Resource_i1ek8"), SubResource("Resource_i1ek8"), SubResource("Resource_i1ek8"), SubResource("Resource_i1ek8"), SubResource("Resource_i1ek8"), SubResource("Resource_i1ek8"), SubResource("Resource_i1ek8"), SubResource("Resource_i1ek8"), SubResource("Resource_i1ek8")])
-prepare_time = 0
-active_time = 0
-cooldown_time = 0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_e07rq"]
 radius = 39.0128
 
@@ -165,7 +143,6 @@ shape = SubResource("CircleShape2D_wcb0n")
 script = ExtResource("3_nckal")
 target = NodePath("..")
 compute_data = ExtResource("4_14ux5")
-buff_list = Array[ExtResource("10_k7reb")]([SubResource("Resource_i00qv")])
 
 [node name="ConductorComponent" type="Node" parent="." node_paths=PackedStringArray("blackboard", "buff_manager", "atk_range", "vision", "weapons", "atk_cd_timer")]
 script = ExtResource("18_rbisg")

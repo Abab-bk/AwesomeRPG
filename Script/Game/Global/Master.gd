@@ -21,8 +21,8 @@ const abilitys_end:int = 4004
 
 func get_random_ability() -> FlowerAbility:
     var _data = abilitys[randi_range(abilitys_start, abilitys_end)]
-    
     var _ability:FlowerAbility = load("res://Script/Abilitys/%s.gd" % _data["script_name"]).new()
+#    var _ability:FlowerAbility = ClassDB.instantiate("FireBall").new()
     
     _ability.name = _data.name
     _ability.desc = _data.desc

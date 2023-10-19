@@ -35,10 +35,13 @@ func _ready() -> void:
         func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
             data.quipments[_type] = null
             
-            for i in _item.affixs:
-                print("移除装备")
+            # TODO: remove的时候可以先不计算，全部remove完成后再计算
+            for i in _item.pre_affixs:
+                flower_buff_manager.remove_buff(i.buff)
+            for i in _item.buf_affix:
                 flower_buff_manager.remove_buff(i.buff)
             
+            print("移除装备")
             EventBus.equipment_down_ok.emit(_type, _item))
     
     EventBus.player_ability_activate.connect(func(_ability:FlowerAbility):
@@ -55,6 +58,7 @@ func _ready() -> void:
     flower_buff_manager.compute_ok.connect(func():
         EventBus.player_data_change.emit()
         Master.player_data = flower_buff_manager.output_data
+        print("计算完成")
         )
 #    flower_buff_manager.a_buff_removed
     
@@ -66,10 +70,7 @@ func _ready() -> void:
     compute()
 
 func compute() -> void:
-    print("计算中：", Time.get_ticks_msec())
     flower_buff_manager.compute()
-    await flower_buff_manager.compute_ok
-    print("计算完成：", Time.get_ticks_msec())
 
 func _physics_process(_delta: float) -> void:
     move_and_slide()

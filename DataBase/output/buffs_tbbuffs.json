@@ -7,7 +7,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -27,7 +27,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -47,7 +47,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -67,7 +67,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -87,7 +87,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -107,7 +107,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -127,7 +127,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -147,7 +147,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -167,7 +167,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -187,7 +187,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -207,7 +207,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -227,7 +227,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -247,7 +247,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -267,7 +267,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -287,7 +287,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -307,7 +307,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -327,7 +327,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -347,7 +347,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -367,7 +367,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -387,7 +387,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -407,7 +407,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -427,7 +427,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -447,7 +447,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -467,7 +467,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -487,7 +487,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -507,7 +507,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -527,7 +527,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -547,7 +547,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -567,7 +567,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -587,7 +587,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -607,7 +607,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -627,7 +627,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -647,7 +647,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -667,7 +667,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -687,7 +687,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -707,7 +707,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -727,7 +727,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -747,7 +747,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -767,7 +767,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -787,7 +787,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -807,7 +807,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -827,7 +827,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -847,7 +847,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -867,7 +867,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -887,7 +887,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -907,7 +907,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -927,7 +927,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -947,7 +947,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -967,7 +967,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -987,7 +987,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -1007,7 +1007,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -1027,7 +1027,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -1047,7 +1047,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -1067,7 +1067,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -1087,7 +1087,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [
@@ -1107,7 +1107,7 @@
     "infinite": true,
     "repeat_count": 0,
     "prepare_time": 0,
-    "active_time": 1,
+    "active_time": 0,
     "cooldown_time": 0,
     "tigger": "empty",
     "compute_values": [

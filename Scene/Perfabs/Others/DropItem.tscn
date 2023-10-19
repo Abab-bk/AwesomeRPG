@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5mvkqu4loakm"]
+
+[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="1_jjxhb"]
+[ext_resource type="Script" path="res://Script/Perfabs/Others/DropItem.gd" id="1_ldfwe"]
+
+[node name="DropItem" type="Node2D"]
+script = ExtResource("1_ldfwe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jjxhb")
