@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=11 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dsr1p5lgdflk6" path="res://Scene/UI/SkillTree.tscn" id="5_xu7ou"]
 [ext_resource type="Texture2D" uid="uid://dne40b3tt53en" path="res://Assets/UI/Bars/MpBar.png" id="6_8gg1b"]
 [ext_resource type="LabelSettings" uid="uid://drx7d3iagcvhu" path="res://Assets/LabelSetting/ItemTitle.tres" id="6_nyfav"]
+[ext_resource type="PackedScene" uid="uid://c3iesn4gm1oum" path="res://Scene/UI/QuestPanel.tscn" id="10_f6saj"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_d15xn")
@@ -136,3 +137,10 @@ visible = false
 
 [node name="SkillTree" parent="." instance=ExtResource("5_xu7ou")]
 visible = false
+
+[node name="QuestPanel" parent="." instance=ExtResource("10_f6saj")]
+anchors_preset = -1
+anchor_top = 0.182
+anchor_bottom = 0.182
+offset_top = 0.559967
+offset_bottom = 40.56

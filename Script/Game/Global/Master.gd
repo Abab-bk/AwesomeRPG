@@ -1,5 +1,8 @@
 extends Node
 
+# TODO: 装备打造系统
+# TODO: 任务系统
+
 var world:Node2D
 
 var player:Player
@@ -16,13 +19,24 @@ var config
 var affixs:Array
 var buffs:Dictionary
 var abilitys:Dictionary
+var quests:Dictionary
 
 var json_path:String = "res://DataBase/output/"
 
 const abilitys_start:int = 4001
 const abilitys_end:int = 4004
 
-# FIXME: 词缀装上属性不对
+func get_quest_by_id(_id:int) -> QuestResource:
+    var _quest:QuestResource = QuestResource.new()
+    
+    var _data = quests[_id]
+    _quest.id = _data["id"]
+    _quest.name = _data["name"]
+    _quest.type = _data["type"]
+    _quest.need_value = _data["value"]
+    _quest.reward_value = _data["reward"]
+    
+    return _quest
 
 func get_random_ability() -> FlowerAbility:
     var _data = abilitys[randi_range(abilitys_start, abilitys_end)]
@@ -71,3 +85,4 @@ func _ready():
     affixs = config.TbAffix.get_data_list()
     buffs = config.TbBuffs.get_data_map()
     abilitys = config.TbAbilitys.get_data_map()
+    quests = config.TbQuests.get_data_map()

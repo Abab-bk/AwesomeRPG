@@ -14,6 +14,8 @@ signal player_dead
 signal player_ability_change
 signal player_ability_activate(ability:FlowerAbility)
 signal player_get_a_ability(ability:FlowerAbility)
+signal player_level_up
+
 signal equipment_up(type:Const.EQUIPMENT_TYPE, item:InventoryItem)
 signal equipment_down(type:Const.EQUIPMENT_TYPE, item:InventoryItem)
 signal equipment_down_ok(type:Const.EQUIPMENT_TYPE, item:InventoryItem)

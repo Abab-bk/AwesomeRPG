@@ -9,7 +9,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1001",
@@ -29,7 +28,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1002",
@@ -49,7 +47,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1003",
@@ -69,7 +66,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1004",
@@ -89,7 +85,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1005",
@@ -109,7 +104,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1006",
@@ -129,7 +123,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1007",
@@ -149,7 +142,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1008",
@@ -169,7 +161,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1009",
@@ -189,7 +180,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1010",
@@ -209,7 +199,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1011",
@@ -229,7 +218,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1012",
@@ -249,7 +237,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1013",
@@ -269,7 +256,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1014",
@@ -289,7 +275,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1015",
@@ -309,7 +294,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1016",
@@ -329,7 +313,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1017",
@@ -349,7 +332,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1018",
@@ -369,7 +351,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1019",
@@ -389,7 +370,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1020",
@@ -409,7 +389,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1020",
@@ -429,7 +408,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1021",
@@ -449,7 +427,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1022",
@@ -469,7 +446,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1023",
@@ -489,7 +465,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1024",
@@ -509,7 +484,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1025",
@@ -529,7 +503,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1026",
@@ -549,7 +522,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1027",
@@ -569,7 +541,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1028",
@@ -589,7 +560,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1029",
@@ -609,7 +579,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1030",
@@ -629,7 +598,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1031",
@@ -649,7 +617,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1032",
@@ -669,7 +636,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1033",
@@ -689,7 +655,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1034",
@@ -709,7 +674,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1035",
@@ -729,7 +693,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1036",
@@ -749,7 +712,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1037",
@@ -769,7 +731,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1038",
@@ -789,7 +750,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1039",
@@ -809,7 +769,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1040",
@@ -829,7 +788,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1041",
@@ -849,7 +807,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1042",
@@ -869,7 +826,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1043",
@@ -889,7 +845,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1044",
@@ -909,7 +864,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1045",
@@ -929,7 +883,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1046",
@@ -949,7 +902,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1047",
@@ -969,7 +921,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1048",
@@ -989,7 +940,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1049",
@@ -1009,7 +959,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1050",
@@ -1029,7 +978,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1051",
@@ -1049,7 +997,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1052",
@@ -1069,7 +1016,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1053",
@@ -1089,7 +1035,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1054",
@@ -1109,7 +1054,6 @@
     "prepare_time": 0,
     "active_time": 0,
     "cooldown_time": 0,
-    "tigger": "empty",
     "compute_values": [
       {
         "id": "1055",

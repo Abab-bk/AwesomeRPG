@@ -66,7 +66,6 @@ func _ready() -> void:
     flower_buff_manager.output_data = data.duplicate(true)
     Master.player_data = flower_buff_manager.output_data
     
-    # FIXME: ？由于JSON中读取文件然后生成buff太慢，所以计算慢？
     compute()
 
 func compute() -> void:
@@ -88,6 +87,7 @@ func up_level() -> void:
     data.level += 1
     data.now_xp = 0
     data.update_next_xp()
+    EventBus.player_level_up.emit()
 
 func get_xp(_value:float) -> void:
     data.now_xp += _value

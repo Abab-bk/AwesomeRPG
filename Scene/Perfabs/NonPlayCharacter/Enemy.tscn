@@ -185,6 +185,7 @@ texture = ExtResource("1_lm6s8")
 [node name="Weapons" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("atk_cd_timer")]
 unique_name_in_owner = true
 show_behind_parent = true
+position = Vector2(15, 0)
 script = ExtResource("2_f5php")
 atk_cd_timer = NodePath("../../AtkCDTimer")
 
