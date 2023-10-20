@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@onready var hp_bar:ProgressBar = %HpBar
-@onready var xp_bar:ProgressBar = %XpBar
+@onready var hp_bar:TextureProgressBar = %HpBar
+@onready var xp_bar:TextureProgressBar = %XpBar
 
 @onready var inventory_btn:Button = %InventoryBtn
 @onready var character_btn:Button = %CharacterBtn

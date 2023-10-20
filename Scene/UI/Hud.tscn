@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=9 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
 [ext_resource type="PackedScene" uid="uid://ck3r30dw3dngl" path="res://Scene/UI/Inventory.tscn" id="2_cil1e"]
-[ext_resource type="LabelSettings" uid="uid://clchsofy7wd08" path="res://Assets/LabelSetting/NormalWhite.tres" id="3_4ebfx"]
 [ext_resource type="PackedScene" uid="uid://b33g1ypyny6i5" path="res://Scene/UI/CharacterPanel.tscn" id="3_aoxj4"]
+[ext_resource type="Texture2D" uid="uid://bh164nrxvlikf" path="res://Assets/UI/Bars/StatBar.png" id="4_pwlac"]
+[ext_resource type="Texture2D" uid="uid://o87r223ypa12" path="res://Assets/UI/Bars/HpBar.png" id="5_nrxv6"]
 [ext_resource type="PackedScene" uid="uid://dsr1p5lgdflk6" path="res://Scene/UI/SkillTree.tscn" id="5_xu7ou"]
+[ext_resource type="Texture2D" uid="uid://dne40b3tt53en" path="res://Assets/UI/Bars/MpBar.png" id="6_8gg1b"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_d15xn")
@@ -18,6 +20,36 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_3ssiu")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -225.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HpBar" type="TextureProgressBar" parent="Control/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("4_pwlac")
+texture_progress = ExtResource("5_nrxv6")
+
+[node name="Control" type="Control" parent="Control/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="XpBar" type="TextureProgressBar" parent="Control/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("4_pwlac")
+texture_progress = ExtResource("6_8gg1b")
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
@@ -34,42 +66,6 @@ theme_override_constants/margin_bottom = 30
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2
 
-[node name="PlayerStat" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 300)
-layout_mode = 2
-
-[node name="HpBar" type="ProgressBar" parent="Control/MarginContainer/VBoxContainer/PlayerStat"]
-unique_name_in_owner = true
-layout_mode = 2
-show_percentage = false
-
-[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/PlayerStat/HpBar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "HP"
-label_settings = ExtResource("3_4ebfx")
-vertical_alignment = 1
-
-[node name="XpBar" type="ProgressBar" parent="Control/MarginContainer/VBoxContainer/PlayerStat"]
-unique_name_in_owner = true
-layout_mode = 2
-show_percentage = false
-
-[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/PlayerStat/XpBar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "MP"
-label_settings = ExtResource("3_4ebfx")
-vertical_alignment = 1
-
 [node name="Control" type="Control" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -79,25 +75,31 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="CharacterBtn" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CharacterBtn" type="Button" parent="Control/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
 text = "角色"
 
-[node name="InventoryBtn" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="InventoryBtn" type="Button" parent="Control/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
 text = "背包"
 
-[node name="SkillTreeBtn" type="Button" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="SkillTreeBtn" type="Button" parent="Control/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
