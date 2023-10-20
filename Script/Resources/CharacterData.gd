@@ -44,6 +44,10 @@ signal hp_is_zero
 @export var atk_range:float
 @export var quipments:Dictionary = {}
 
+func load_save(_save:Dictionary) -> void:
+    for i in _save:
+        self[str(i)] = _save[i]
+
 # TODO: 设置属性从等级
 func set_property_from_level() -> void:
     hp += float(level) / 2

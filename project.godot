@@ -25,6 +25,7 @@ EventBus="*res://Script/Game/Global/EventBus.gd"
 Builder="*res://Script/Game/Global/Builder.gd"
 BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
 BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
+SaveSystem="*res://addons/save_system/SaveSystem.gd"
 
 [display]
 
@@ -43,7 +44,7 @@ naming/scene_name_casing=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/FlowerAbility/plugin.cfg", "res://addons/FlowerBuff/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/beehave/plugin.cfg", "res://addons/worldmap_builder/plugin.cfg")
+enabled=PackedStringArray("res://addons/FlowerAbility/plugin.cfg", "res://addons/FlowerBuff/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/beehave/plugin.cfg", "res://addons/save_system/plugin.cfg", "res://addons/worldmap_builder/plugin.cfg")
 
 [input]
 

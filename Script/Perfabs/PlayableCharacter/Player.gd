@@ -55,6 +55,19 @@ func _ready() -> void:
     
     EventBus.enemy_die.connect(get_xp)
     
+    EventBus.save.connect(func():
+        print("开始存档，玩家")
+        SaveSystem.set_var("Player", data)
+#        SaveSystem.set_var("Player:Abilitys", ability_container.ability_list)
+        print("存档完毕，玩家")
+        )
+    
+    EventBus.load_save.connect(func():
+        print(SaveSystem.get_var("Player"))
+        data.load_save(SaveSystem.get_var("Player"))
+#        ability_container.ability_list = SaveSystem.get_var("Player:Abilitys")
+        )
+    
     flower_buff_manager.compute_ok.connect(func():
         EventBus.player_data_change.emit()
         Master.player_data = flower_buff_manager.output_data

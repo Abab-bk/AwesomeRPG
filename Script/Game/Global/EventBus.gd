@@ -1,5 +1,8 @@
 extends Node
 
+signal save
+signal load_save
+
 signal update_ui
 signal update_inventory
 signal change_item_tooltip_state(item:InventoryItem)

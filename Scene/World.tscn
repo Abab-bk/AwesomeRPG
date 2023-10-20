@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://3xynvu782kcm"]
+[gd_scene load_steps=12 format=3 uid="uid://3xynvu782kcm"]
 
 [ext_resource type="Texture2D" uid="uid://blncare6u6ty" path="res://Assets/Texture/Map/TileSheet.png" id="1_7qj4v"]
 [ext_resource type="Script" path="res://Script/Game/World.gd" id="1_myfhc"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bjqtnyo6c546w" path="res://Scene/UI/Hud.tscn" id="5_07fkt"]
 [ext_resource type="PackedScene" uid="uid://dx27klpp0nc4x" path="res://Scene/Perfabs/NonPlayCharacter/Enemy.tscn" id="5_t1ymi"]
 [ext_resource type="Script" path="res://addons/FlowerAbility/Script/FlowerAbilityContainer.gd" id="8_g8vox"]
+[ext_resource type="Script" path="res://Script/Perfabs/Others/SaveTimer.gd" id="9_v08bh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7roa4"]
 texture = ExtResource("1_7qj4v")
@@ -196,3 +197,8 @@ position = Vector2(1575, 1053)
 
 [node name="FlowerAbilityContainer" type="Node" parent="."]
 script = ExtResource("8_g8vox")
+
+[node name="SaveTimer" type="Timer" parent="."]
+script = ExtResource("9_v08bh")
+
+[node name="SaveCD" type="Timer" parent="SaveTimer"]
