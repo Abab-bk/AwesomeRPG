@@ -25,6 +25,7 @@ var player_data:CharacterData
 
 func _ready() -> void:
     EventBus.update_ui.connect(update_ui)
+    EventBus.show_popup.connect(show_popup)
     EventBus.new_drop_item.connect(new_drop_item)
     EventBus.player_ability_change.connect(build_ability_ui)
     EventBus.show_damage_number.connect(func(_pos:Vector2, _text:String):
@@ -38,7 +39,9 @@ func _ready() -> void:
     character_btn.pressed.connect(change_page.bind(PAGE.CHARACTER_PANEL))
     skill_tree_btn.pressed.connect(change_page.bind(PAGE.SKILL_TREE))
     get_skill_btn.pressed.connect(func():
-        EventBus.player_get_a_ability.emit(Master.get_random_ability())
+        var _ability:FlowerAbility = Master.get_random_ability()
+        EventBus.player_get_a_ability.emit(_ability)
+        EventBus.show_popup.emit("获得技能", "得到技能：%s" % _ability.name)
         )
     
     build_ability_ui()
@@ -80,7 +83,7 @@ func build_ability_ui() -> void:
         i.queue_free()
     
     for i in Master.player.get_ability_list().size():
-        skill_bar.add_child(Builder.builder_a_skill_btn())
+        skill_bar.add_child(Builder.build_a_skill_btn())
     
     set_skills_ui()
 
@@ -102,3 +105,16 @@ func new_drop_item(_item:InventoryItem, _pos:Vector2) -> void:
     
     EventBus.add_item.emit(_item)
     EventBus.update_inventory.emit()
+
+
+func show_popup(_title:String, _desc:String, _show_cancel_btn:bool = false, _yes_event:Callable = func():,
+ _cancel_event:Callable = func():) -> void:
+    var _popup:NinePatchRect = Builder.build_a_popup()
+    
+    _popup.title = _title
+    _popup.desc = _desc
+    _popup.show_cancel_btn = _show_cancel_btn
+    _popup.yes_event = _yes_event
+    _popup.cancel_event = _cancel_event
+    
+    add_child(_popup)

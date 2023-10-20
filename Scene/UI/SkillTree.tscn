@@ -50,9 +50,25 @@ label_settings = ExtResource("11_gqow1")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="WorldmapView" type="Control" parent="Panel/MarginContainer/VBoxContainer" node_paths=PackedStringArray("initial_item")]
-unique_name_in_owner = true
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SubViewport" type="SubViewport" parent="Panel/MarginContainer/VBoxContainer/SubViewportContainer"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1020, 1663)
+render_target_update_mode = 4
+
+[node name="WorldmapView" type="Control" parent="Panel/MarginContainer/VBoxContainer/SubViewportContainer/SubViewport" node_paths=PackedStringArray("initial_item")]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 30.0
+offset_top = 307.0
+offset_right = 1050.0
+offset_bottom = 1970.0
 size_flags_vertical = 3
 script = ExtResource("3_t4oc6")
 initial_item = NodePath("RootItem")
@@ -60,7 +76,7 @@ style_active = ExtResource("4_kr2x5")
 style_can_activate = ExtResource("5_c40ah")
 style_inactive = ExtResource("6_rkgqa")
 
-[node name="RootItem" type="Node2D" parent="Panel/MarginContainer/VBoxContainer/WorldmapView"]
+[node name="RootItem" type="Node2D" parent="Panel/MarginContainer/VBoxContainer/SubViewportContainer/SubViewport/WorldmapView"]
 unique_name_in_owner = true
 script = ExtResource("4_r0gjf")
 connection_mode = 1
@@ -68,9 +84,9 @@ connection_min_length = 100.0
 end_connection_nodes = Array[int]([1])
 node_count = 2
 node_0/data = ExtResource("7_006tx")
-node_0/position = Vector2(496.863, 1580.9)
+node_0/position = Vector2(500.893, 1458.39)
 node_1/data = ExtResource("7_006tx")
-node_1/position = Vector2(248.583, 1380.67)
+node_1/position = Vector2(197.888, 1150.44)
 connection_count = 1
 connection_0/nodes = Vector2i(1, 0)
 

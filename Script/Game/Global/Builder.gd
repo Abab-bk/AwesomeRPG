@@ -8,6 +8,11 @@ const affix_label:String = "res://Scene/UI/AffixLabel.tscn"
 const skill_tree_btn:String = "res://Scene/UI/SkillTreeItem.tscn"
 const drop_item:String = "res://Scene/Perfabs/Others/DropItem.tscn"
 const damage_label:String = "res://Scene/UI/DamageLable.tscn"
+const popup:String = "res://Scene/UI/Popup.tscn"
+
+func build_a_popup() -> NinePatchRect:
+    var _n:NinePatchRect = load(popup).instantiate()
+    return _n
 
 func build_a_damage_label() -> Label:
     var _n:Label = load(damage_label).instantiate()
@@ -25,18 +30,18 @@ func build_a_fireball() -> CharacterBody2D:
     var _n:CharacterBody2D = load(fireball).instantiate()
     return _n
 
-func builder_a_skill_btn() -> Panel:
+func build_a_skill_btn() -> Panel:
     var _n = load(skill_btn).instantiate()
     return _n
 
-func builder_a_enemy() -> Enemy:
+func build_a_enemy() -> Enemy:
     var _n = enemy.instantiate()
     return _n
 
-func builder_a_inventory_item() -> Panel:
+func build_a_inventory_item() -> Panel:
     var _n = inventory_item.instantiate()
     return _n
 
-func builder_a_skill_tree_item() -> NinePatchRect:
+func build_a_skill_tree_item() -> NinePatchRect:
     var _n = load(skill_tree_btn).instantiate()
     return _n
