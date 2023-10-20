@@ -7,13 +7,17 @@ var buff_manager:FlowerBuffManager:
     set(_v):
         buff_manager = _v
         if buff_manager:
-            data = buff_manager.compute_data
+            data = buff_manager.output_data
 
 @export var disable_target:Node2D
 
 var data:CharacterData
 
 func _ready() -> void:
+    buff_manager.compute_ok.connect(func():
+        data = buff_manager.output_data
+        )
+    
     set_collision_mask_value(2, true)
     area_entered.connect(handle_damage)
 
@@ -24,7 +28,7 @@ func handle_damage(body:Node) -> void:
             return
     
     if body is HurtBoxComponent:
-        var root_stats:float = 1.0
+        var root_stats:float = data.wisdom + data.agility + data.strength
         var base_damage:float = data.damage
         var sheet_damage:float = root_stats * base_damage * \
         (1.0 + data.critical_rate * data.critical_damage)

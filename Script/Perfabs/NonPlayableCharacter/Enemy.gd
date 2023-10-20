@@ -22,6 +22,7 @@ func _ready() -> void:
         _level = Master.player.get_level() - 3
     
     set_level(_level)
+    buff_manager.compute()
 
 func die() -> void:
     if dead:
@@ -37,10 +38,6 @@ func die() -> void:
     EventBus.enemy_die.emit(data.level * 10)
     
     queue_free()
-
-func set_property_from_level() -> void:
-    for i in data.get_property_list():
-        pass
 
 func set_level(_value:int) -> void:
     data.level = _value

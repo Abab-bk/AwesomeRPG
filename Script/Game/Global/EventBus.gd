@@ -6,7 +6,7 @@ signal change_item_tooltip_state(item:InventoryItem)
 # Player 的 ComputeData 改变
 signal player_data_change
 
-signal player_hited(damage:int)
+signal player_hited(damage:float)
 signal player_dead
 signal player_ability_change
 signal player_ability_activate(ability:FlowerAbility)
@@ -16,7 +16,7 @@ signal equipment_down(type:Const.EQUIPMENT_TYPE, item:InventoryItem)
 signal equipment_down_ok(type:Const.EQUIPMENT_TYPE, item:InventoryItem)
 signal equipment_up_ok(type:Const.EQUIPMENT_TYPE, item:InventoryItem)
 
-signal enemy_die(xp:int)
+signal enemy_die(xp:float)
 
 signal show_damage_number(pos:Vector2, text:String)
 

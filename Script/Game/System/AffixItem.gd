@@ -23,7 +23,7 @@ func update() -> void:
     buff.compute_values = _get_compute_datas(_buff["compute_values"])
 
 func _get_compute_datas(_value) -> Array[FlowerComputeData]:
-    var _result:Array[FlowerComputeData]
+    var _result:Array[FlowerComputeData] = []
     
     for i in _value:
         var _new_data:FlowerComputeData = FlowerComputeData.new()

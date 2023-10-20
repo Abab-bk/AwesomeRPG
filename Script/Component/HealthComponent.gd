@@ -10,5 +10,5 @@ func _ready() -> void:
     data = buff_manager.compute_data as CharacterData
     data.hp_is_zero.connect(get_parent().die)
 
-func damage(_value:int) -> void:
+func damage(_value:float) -> void:
     data.hp -= _value

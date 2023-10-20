@@ -89,7 +89,7 @@ func up_level() -> void:
     data.now_xp = 0
     data.update_next_xp()
 
-func get_xp(_value:int) -> void:
+func get_xp(_value:float) -> void:
     data.now_xp += _value
     if data.now_xp >= data.next_level_xp:
         up_level()

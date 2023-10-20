@@ -4,21 +4,21 @@ extends FlowerData
 signal hp_is_zero
 
 @export var level:int = 1
-@export var now_xp:int = 0
-@export var next_level_xp:int = 0
+@export var now_xp:float = 0
+@export var next_level_xp:float = 0
 # ======= 战斗属性
-@export var hp:int:
+@export var hp:float:
     set(v):
         hp = v
         if hp <= 0:
             hp_is_zero.emit()
-@export var max_hp:int
-@export var magic:int
+@export var max_hp:float
+@export var magic:float
 @export var strength:int
 @export var wisdom:int
 @export var agility:int
 @export var luck:float
-@export var speed:int
+@export var speed:float
 @export var damage:float
 @export var defense:float
 @export var fire_damage:float
@@ -46,11 +46,11 @@ signal hp_is_zero
 
 # TODO: 设置属性从等级
 func set_property_from_level() -> void:
-    hp += level / 2
-    max_hp += level / 2
-    magic += level / 2
-    strength += level / 2
-    wisdom += level / 2
+    hp += float(level) / 2
+    max_hp += float(level) / 2
+    magic += float(level) / 2
+    strength += float(level) / 2 as int
+    wisdom += float(level) / 2 as int
 
 func update_next_xp() -> void:
     if level % 15 == 0:
@@ -63,4 +63,4 @@ func update_next_xp() -> void:
         @warning_ignore("integer_division")
         next_level_xp = level / 5 * 10
     else:
-        next_level_xp += 100
+        next_level_xp += 100.0

@@ -1,6 +1,9 @@
 extends Node2D
 
-@export var buff_manager:FlowerBuffManager
+@export var buff_manager:FlowerBuffManager:
+    set(v):
+        buff_manager = v
+        $Sprite2D/HitBoxComponent.buff_manager = buff_manager
 
 var tween:Tween
 
@@ -8,7 +11,6 @@ signal animation_ok
 
 func _ready() -> void:
     $Sprite2D.rotation = 110.0
-    $Sprite2D/HitBoxComponent.buff_manager = buff_manager
 
 func run(speed:float) -> void:
     if tween:
