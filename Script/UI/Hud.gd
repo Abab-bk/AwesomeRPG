@@ -41,17 +41,17 @@ func _ready() -> void:
     inventory_btn.pressed.connect(change_page.bind(PAGE.INVENTORY))
     character_btn.pressed.connect(change_page.bind(PAGE.CHARACTER_PANEL))
     skill_tree_btn.pressed.connect(change_page.bind(PAGE.SKILL_TREE))
+    # 添加技能
     get_skill_btn.pressed.connect(func():
         var _ability:FlowerAbility = Master.get_random_ability()
         EventBus.player_get_a_ability.emit(_ability)
         EventBus.show_popup.emit("获得技能", "得到技能：%s" % _ability.name)
         )
     
-    build_ability_ui()
-    
     player_data = Master.player.data
     
-    set_skills_ui()
+    build_ability_ui()
+    
     update_ui()
     change_page(PAGE.HOME)
 
@@ -75,20 +75,16 @@ func change_page(_page:PAGE) -> void:
             character_panel_ui.hide()
 
 # 技能条 UI
-# FIXME: 添加多个技能，第二个技能无效
-func set_skills_ui() -> void:
-    for _i in Master.player.get_ability_list().size():
-        var _ability:FlowerAbility = Master.player.get_ability_list()[_i - 1]
-        skill_bar.get_child(_i).set_ability(_ability)
-
 func build_ability_ui() -> void:
     for i in skill_bar.get_children():
         i.queue_free()
     
     for i in Master.player.get_ability_list().size():
-        skill_bar.add_child(Builder.build_a_skill_btn())
-    
-    set_skills_ui()
+        var _skill_btn:Panel = Builder.build_a_skill_btn()
+        skill_bar.add_child(_skill_btn)
+        
+        var _ability:FlowerAbility = Master.player.get_ability_list()[i - 1]
+        _skill_btn.set_ability(_ability)
 
 func update_ui() -> void:
     hp_bar.value = (float(player_data.hp) / float(player_data.max_hp)) * 100.0

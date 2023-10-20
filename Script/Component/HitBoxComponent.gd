@@ -16,7 +16,7 @@ var data:CharacterData
 func _ready() -> void:
     buff_manager.compute_ok.connect(func():
         data = buff_manager.output_data
-        )
+    )
     
     set_collision_mask_value(2, true)
     area_entered.connect(handle_damage)

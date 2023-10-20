@@ -6,6 +6,8 @@ func active() -> void:
     super()
     var _fire_ball:CharacterBody2D = Builder.build_a_fireball()
     _fire_ball.global_position = actor.global_position
+    # 设置伤害
+    _fire_ball.set_damage(50)
     
     if actor.closest_enemy :
         _fire_ball.velocity = _fire_ball.global_position.\

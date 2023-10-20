@@ -19,7 +19,7 @@ func _init_a_ability(_ability:FlowerAbility) -> void:
         
     var _cool_down_timer:Timer = _build_a_timer(_ability.cooldown)
     add_child(_cool_down_timer)
-        
+    
     if not _ability.casting_time <= 0.0:
         var _casting_timer:Timer = _build_a_timer(_ability.casting_time)
         add_child(_casting_timer)
@@ -29,6 +29,10 @@ func _init_a_ability(_ability:FlowerAbility) -> void:
     _ability.connect_signal()
 
 func add_a_ability(_ability:FlowerAbility) -> void:
+    for i in ability_list:
+        if i.id == _ability.id:
+            return
+    
     ability_list.append(_ability)
     _init_a_ability(_ability)
 

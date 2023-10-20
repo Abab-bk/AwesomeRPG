@@ -18,7 +18,6 @@ func _ready() -> void:
 
 func set_ability(_v:FlowerAbility) -> void:
     ability = _v
-    print("set ability: ", ability.name)
 
 func _physics_process(_delta:float) -> void:
     if ability:

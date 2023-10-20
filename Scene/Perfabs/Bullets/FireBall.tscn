@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://Script/Perfabs/Bullets/FireBall.gd" id="1_605p5"]
 [ext_resource type="Texture2D" uid="uid://bb0has5er2vg2" path="res://Assets/Texture/Characters/red_character.png" id="1_gkbsb"]
-[ext_resource type="Script" path="res://Script/Component/HitBoxComponent.gd" id="2_1mk7d"]
 [ext_resource type="Script" path="res://Script/Component/VisiableQueueFreeComponent.gd" id="4_2rcw5"]
+[ext_resource type="Script" path="res://Script/Component/SimpleHitBoxComponent.gd" id="4_iqa63"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_k3cjn"]
-radius = 35.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_q4bkt"]
+radius = 38.0132
 
 [node name="FireBall" type="CharacterBody2D"]
 script = ExtResource("1_605p5")
@@ -14,13 +14,13 @@ script = ExtResource("1_605p5")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_gkbsb")
 
-[node name="HitBoxComponent" type="Area2D" parent="."]
-script = ExtResource("2_1mk7d")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
-shape = SubResource("CircleShape2D_k3cjn")
-
 [node name="VisiableQueueFreeComponent" type="VisibleOnScreenNotifier2D" parent="." node_paths=PackedStringArray("actor")]
 scale = Vector2(5.6, 5.6)
 script = ExtResource("4_2rcw5")
 actor = NodePath("..")
+
+[node name="SimpleHitBoxComponent" type="Area2D" parent="."]
+script = ExtResource("4_iqa63")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SimpleHitBoxComponent"]
+shape = SubResource("CircleShape2D_q4bkt")
