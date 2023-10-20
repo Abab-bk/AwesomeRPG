@@ -169,10 +169,10 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array()
 
-[node name="Player" parent="." instance=ExtResource("2_l5a8p")]
-position = Vector2(402, 216)
-
 [node name="RelifePoint" parent="." instance=ExtResource("4_f4kq8")]
+
+[node name="Player" parent="." instance=ExtResource("2_l5a8p")]
+position = Vector2(900, 733)
 
 [node name="EnemyHome" type="Node2D" parent="."]
 script = ExtResource("4_22mer")
@@ -181,6 +181,18 @@ script = ExtResource("4_22mer")
 
 [node name="Enemy" parent="." instance=ExtResource("5_t1ymi")]
 position = Vector2(326, 1314)
+
+[node name="Enemy2" parent="." instance=ExtResource("5_t1ymi")]
+position = Vector2(985, 1314)
+
+[node name="Enemy3" parent="." instance=ExtResource("5_t1ymi")]
+position = Vector2(296, 739)
+
+[node name="Enemy4" parent="." instance=ExtResource("5_t1ymi")]
+position = Vector2(1662, 526)
+
+[node name="Enemy5" parent="." instance=ExtResource("5_t1ymi")]
+position = Vector2(1575, 1053)
 
 [node name="FlowerAbilityContainer" type="Node" parent="."]
 script = ExtResource("8_g8vox")

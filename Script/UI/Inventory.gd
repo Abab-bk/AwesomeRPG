@@ -6,8 +6,6 @@ extends Control
 
 @export var inventory:Inventory
 
-# TODO: 实现装备装备
-
 func _ready() -> void:
     EventBus.update_inventory.connect(update_ui)
     EventBus.add_item.connect(func(_item:InventoryItem):

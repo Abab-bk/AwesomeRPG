@@ -1,7 +1,6 @@
 extends Node
 
 # TODO: 装备打造系统
-# TODO: 任务系统
 
 var world:Node2D
 

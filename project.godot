@@ -38,6 +38,7 @@ window/handheld/orientation=1
 
 [editor]
 
+movie_writer/movie_file="D:/Dev/Godot/Export/AwesomeRPG.avi"
 naming/scene_name_casing=1
 
 [editor_plugins]
