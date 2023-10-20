@@ -7,6 +7,8 @@ signal show_popup(_title:String, _desc:String, _show_cancel_btn:bool, _yes_event
 # Player 的 ComputeData 改变
 signal player_data_change
 
+signal coins_changed
+
 signal player_hited(damage:float)
 signal player_dead
 signal player_ability_change

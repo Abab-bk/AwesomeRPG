@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var hp_bar:TextureProgressBar = %HpBar
 @onready var xp_bar:TextureProgressBar = %XpBar
+@onready var coins_label:Label = %CoinsLabel
 
 @onready var inventory_btn:Button = %InventoryBtn
 @onready var character_btn:Button = %CharacterBtn
@@ -34,6 +35,8 @@ func _ready() -> void:
         _damage_label.text = _text
         add_child(_damage_label)
         )
+    EventBus.coins_changed.connect(func():
+        coins_label.text = "金币：%s" % str(Master.coins))
     
     inventory_btn.pressed.connect(change_page.bind(PAGE.INVENTORY))
     character_btn.pressed.connect(change_page.bind(PAGE.CHARACTER_PANEL))

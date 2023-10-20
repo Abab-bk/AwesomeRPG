@@ -29,14 +29,18 @@ func die() -> void:
         return
     dead = true
     
+    # 获得经验
+    EventBus.enemy_die.emit(data.level * 10)
+    
+    # TODO: 修改敌人掉落金币
+    Master.coins += 10
+    
     var _drop_item:InventoryItem = item_generator.gen_a_item()
     EventBus.new_drop_item.emit(_drop_item, get_global_transform_with_canvas().get_origin())
     
     $AnimationPlayer.play("Die")
     await $AnimationPlayer.animation_finished
-    # 获得经验
-    EventBus.enemy_die.emit(data.level * 10)
-    
+        
     queue_free()
 
 func set_level(_value:int) -> void:

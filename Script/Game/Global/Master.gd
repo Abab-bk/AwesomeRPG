@@ -6,6 +6,11 @@ var player:Player
 var player_data:CharacterData
 var relife_point:Marker2D
 
+var coins:int = 0:
+    set(v):
+        coins = v
+        EventBus.coins_changed.emit()
+
 var config
 
 var affixs:Array
