@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c60tahepslln0"]
+[gd_scene load_steps=6 format=3 uid="uid://c60tahepslln0"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_emyso"]
 [ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="1_ll2el"]
 [ext_resource type="Script" path="res://Script/UI/SkillsPanel.gd" id="2_nve80"]
+[ext_resource type="PackedScene" uid="uid://b0d80etljgc15" path="res://Scene/UI/MainSkill.tscn" id="4_0jnr5"]
+[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="5_58ksr"]
 
 [node name="SkillsPanel" type="Control"]
 layout_mode = 3
@@ -44,9 +46,94 @@ label_settings = ExtResource("1_ll2el")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+
+[node name="SkillInfo" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+
+[node name="MainSkill" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillInfo"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillInfo/MainSkill"]
+layout_mode = 2
+text = "主要技能"
+label_settings = ExtResource("5_58ksr")
+horizontal_alignment = 1
+
+[node name="MainSkill" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillInfo/MainSkill" instance=ExtResource("4_0jnr5")]
+layout_mode = 2
+
+[node name="SubSkills" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillInfo"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillInfo/SubSkills"]
+layout_mode = 2
+text = "辅助技能"
+label_settings = ExtResource("5_58ksr")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillInfo/SubSkills"]
+layout_mode = 2
+
+[node name="MainSkill2" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillInfo/SubSkills/VBoxContainer" instance=ExtResource("4_0jnr5")]
+layout_mode = 2
+
+[node name="MainSkill3" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillInfo/SubSkills/VBoxContainer" instance=ExtResource("4_0jnr5")]
+layout_mode = 2
+
+[node name="MainSkill4" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillInfo/SubSkills/VBoxContainer" instance=ExtResource("4_0jnr5")]
+layout_mode = 2
+
+[node name="MainSkill5" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillInfo/SubSkills/VBoxContainer" instance=ExtResource("4_0jnr5")]
+layout_mode = 2
+
+[node name="SkillBtns" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Skill1" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillBtns"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "技能1"
+
+[node name="Skill2" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillBtns"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "技能2"
+
+[node name="Skill3" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillBtns"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "技能3"
+
+[node name="Skill4" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillBtns"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "技能4"
+
+[node name="Skill5" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillBtns"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "技能5"
+
+[node name="Skill6" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillBtns"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "被动1"
+
+[node name="Skill7" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillBtns"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "被动2"
 
 [node name="CancelBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

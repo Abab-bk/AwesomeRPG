@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://da6w3bxe6ki1d"]
+
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_gtvi5"]
+[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="1_i1o3n"]
+[ext_resource type="Script" path="res://Script/UI/SkillBtn.gd" id="3_vbukt"]
+
+[node name="SkillBtn" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_gtvi5")
+texture = ExtResource("1_i1o3n")
+stretch_mode = 5
+script = ExtResource("3_vbukt")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"EmptyBtn"

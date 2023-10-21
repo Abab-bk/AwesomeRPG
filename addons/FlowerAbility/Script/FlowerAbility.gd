@@ -1,9 +1,9 @@
 class_name FlowerAbility extends Resource
 
-@export var id:StringName
+@export var id:int
 @export var name:String
 @export var desc:String
-@export var icon:Texture2D
+@export var icon_path:String
 @export var cooldown:float
 @export var casting_time:float
 

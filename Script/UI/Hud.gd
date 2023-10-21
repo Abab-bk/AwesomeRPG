@@ -46,6 +46,10 @@ func _ready() -> void:
         )
     EventBus.coins_changed.connect(func():
         coins_label.text = "金币：%s" % str(Master.coins))
+    EventBus.show_select_skills_panel.connect(func():
+        var _panel:Panel = Builder.build_a_select_sills_panel()
+        add_child(_panel)
+        )
     
     inventory_btn.pressed.connect(change_page.bind(PAGE.INVENTORY))
     character_btn.pressed.connect(change_page.bind(PAGE.CHARACTER_PANEL))
@@ -107,6 +111,7 @@ func change_page(_page:PAGE) -> void:
             character_panel_ui.hide()
 
 # 技能条 UI
+# FIXME: 只能添加两个技能..
 func build_ability_ui() -> void:
     for i in skill_bar.get_children():
         i.queue_free()

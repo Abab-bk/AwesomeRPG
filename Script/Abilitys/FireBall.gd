@@ -9,7 +9,7 @@ func active() -> void:
     # 设置伤害
     _fire_ball.set_damage(50)
     
-    if actor.closest_enemy :
+    if actor.closest_enemy and _fire_ball:
         _fire_ball.velocity = _fire_ball.global_position.\
         direction_to(actor.closest_enemy.global_position) * SPEED
     else:

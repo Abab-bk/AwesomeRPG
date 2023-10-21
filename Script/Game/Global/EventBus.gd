@@ -7,6 +7,7 @@ signal update_ui
 signal update_inventory
 signal change_item_tooltip_state(item:InventoryItem)
 signal show_popup(_title:String, _desc:String, _show_cancel_btn:bool, _yes_event:Callable, _cancel_event:Callable)
+signal show_select_skills_panel
 # Player 的 ComputeData 改变
 signal player_data_change
 

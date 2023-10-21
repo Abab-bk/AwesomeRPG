@@ -40,7 +40,7 @@ func active_a_ability(_ability:FlowerAbility) -> void:
     if _ability in ability_list:
         _ability.active()
 
-func active_a_ability_by_id(_id:String) -> void:
+func active_a_ability_by_id(_id:int) -> void:
     for _ability in ability_list:
         if _ability.id == _id:
             _ability.active()
@@ -53,7 +53,7 @@ func active_a_ability_by_name(_name:String) -> void:
 func remove_a_ability(_ability:FlowerAbility) -> void:
     ability_list.erase(_ability)
 
-func remove_a_ability_by_id(_id:String) -> void:
+func remove_a_ability_by_id(_id:int) -> void:
     for _ability in ability_list:
         if _ability.id == _id:
             ability_list.erase(_ability)

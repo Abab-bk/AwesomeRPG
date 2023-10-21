@@ -7,3 +7,4 @@ func _ready() -> void:
         hide()
         SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
         )
+        

@@ -25,7 +25,7 @@ func _physics_process(_delta:float) -> void:
 
 func update_ui() -> void:
     title_label.text = ability.name
-    icon.texture = ability.icon
-    progress_bar.texture_progress = ability.icon
+    icon.texture = load(ability.icon_path)
+    progress_bar.texture_progress = load(ability.icon_path)
     progress_bar.value = ability.get_cooldown_left()
     progress_bar.max_value = ability.cooldown

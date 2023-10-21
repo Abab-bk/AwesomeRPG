@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0d80etljgc15"]
+
+[ext_resource type="StyleBox" uid="uid://cqprkyus7so7t" path="res://Assets/Theme/Panel.tres" id="1_7a6rs"]
+[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="1_gat6q"]
+[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="2_ngsea"]
+[ext_resource type="Script" path="res://Script/UI/MainSkill.gd" id="2_uymcy"]
+
+[node name="MainSkill" type="Panel"]
+custom_minimum_size = Vector2(0, 150)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("1_7a6rs")
+script = ExtResource("2_uymcy")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_gat6q")
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "默认技能"
+label_settings = ExtResource("2_ngsea")
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="ChangeBtn" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "修改"
+
+[node name="DisBtn" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "卸下"

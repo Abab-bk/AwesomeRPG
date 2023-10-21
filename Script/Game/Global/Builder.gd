@@ -9,6 +9,16 @@ const skill_tree_btn:String = "res://Scene/UI/SkillTreeItem.tscn"
 const drop_item:String = "res://Scene/Perfabs/Others/DropItem.tscn"
 const damage_label:String = "res://Scene/UI/DamageLable.tscn"
 const popup:String = "res://Scene/UI/Popup.tscn"
+const select_skills_panel:String = "res://Scene/UI/SelectSkillsPanel.tscn"
+const info_skill_btn:String = "res://Scene/UI/SkillBtn.tscn"
+
+func build_a_info_skill_btn() -> TextureRect:
+    var _n:TextureRect = load(info_skill_btn).instantiate()
+    return _n
+
+func build_a_select_sills_panel() -> Panel:
+    var _n:Panel = load(select_skills_panel).instantiate()
+    return _n
 
 func build_a_popup() -> NinePatchRect:
     var _n:NinePatchRect = load(popup).instantiate()

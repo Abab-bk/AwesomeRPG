@@ -10,6 +10,7 @@ var world:Node2D
 var player:Player
 var player_data:CharacterData
 var relife_point:Marker2D
+var unlocked_skills:Array[int] = []
 
 var coins:int = 0:
     set(v):
@@ -44,12 +45,14 @@ func get_random_ability() -> FlowerAbility:
     var _data = abilitys[randi_range(abilitys_start, abilitys_end)]
     var _ability:FlowerAbility = load("res://Script/Abilitys/%s.gd" % _data["script_name"]).new()
     
-    _ability.id = str(_data.id)
+    _ability.id = _data.id
     _ability.name = _data.name
     _ability.desc = _data.desc
-    _ability.icon = load(_data.icon_path)
+    _ability.icon_path = _data.icon_path
     _ability.cooldown = _data.cooldown
     _ability.casting_time = _data.casting_time
+    
+    unlocked_skills.append(_ability.id)
     
     return _ability
 
