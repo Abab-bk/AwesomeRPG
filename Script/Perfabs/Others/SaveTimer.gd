@@ -15,8 +15,12 @@ func _ready() -> void:
         EventBus.save.emit()
         save_cd.start()
         await save_cd.timeout
+        
+        if not get_parent().save:
+            return
+        
         SaveSystem.save()
-        print(SaveSystem.current_state_dictionary)
+        print("存档完成")
         start()
         )
     

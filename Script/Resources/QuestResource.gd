@@ -38,5 +38,6 @@ func can_complete() -> bool:
     return false
 
 func complete() -> void:
+    SoundManager.play_ui_sound(load(Master.POPUP_SOUNDS))
     done = true
     Master.coins += reward_value

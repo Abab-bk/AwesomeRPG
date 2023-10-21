@@ -33,7 +33,10 @@ func _ready() -> void:
             update_ui()
             )
     
-    cancel_btn.pressed.connect(func():hide())
+    cancel_btn.pressed.connect(func():
+        SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
+        hide()
+        )
     
     set_bag()
     update_ui()

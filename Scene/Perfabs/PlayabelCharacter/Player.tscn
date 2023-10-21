@@ -1,9 +1,9 @@
 [gd_scene load_steps=30 format=3 uid="uid://v51c0x6v6m7h"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/PlayableCharacter/Player.gd" id="1_8yy7w"]
-[ext_resource type="Texture2D" uid="uid://dslvgplb0lb00" path="res://Assets/Texture/Characters/green_character.png" id="2_3w4i3"]
 [ext_resource type="Script" path="res://addons/FlowerAbility/Script/FlowerAbilityContainer.gd" id="2_8gp7m"]
 [ext_resource type="Script" path="res://addons/FlowerBuff/Script/FlowerBuffManager.gd" id="3_nckal"]
+[ext_resource type="Texture2D" uid="uid://bcvid2hgflnb" path="res://Assets/Texture/Characters/purple_character.png" id="3_ny7tj"]
 [ext_resource type="Resource" uid="uid://cxjh70teksadv" path="res://Assets/Resources/Datas/Characters/Knight.tres" id="4_14ux5"]
 [ext_resource type="Script" path="res://Script/Component/AtkRangeComponent.gd" id="5_cwveo"]
 [ext_resource type="Script" path="res://Script/Component/HurtBoxComponent.gd" id="6_mwt7r"]
@@ -112,11 +112,12 @@ libraries = {
 shape = SubResource("CircleShape2D_jqcd1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_3w4i3")
+texture = ExtResource("3_ny7tj")
 
 [node name="Weapons" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("atk_cd_timer")]
 show_behind_parent = true
-position = Vector2(20, 0)
+position = Vector2(13, -9.53674e-07)
+scale = Vector2(1, 1)
 script = ExtResource("7_j8fjd")
 atk_cd_timer = NodePath("../../AtkCDTimer")
 

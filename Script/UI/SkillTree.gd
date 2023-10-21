@@ -7,7 +7,9 @@ extends Control
 
 
 func _ready() -> void:
-    cancel_btn.pressed.connect(func():hide())
+    cancel_btn.pressed.connect(func():
+        SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
+        hide())
 
 # {3001: {xx}, 3002...}
 

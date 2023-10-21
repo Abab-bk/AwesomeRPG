@@ -1,7 +1,6 @@
 [gd_scene load_steps=24 format=3 uid="uid://dx27klpp0nc4x"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/NonPlayableCharacter/Enemy.gd" id="1_jkjmt"]
-[ext_resource type="Texture2D" uid="uid://bcvid2hgflnb" path="res://Assets/Texture/Characters/purple_character.png" id="1_lm6s8"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_6wwaj"]
 [ext_resource type="Script" path="res://Script/Game/ItemGenerator.gd" id="2_032p5"]
 [ext_resource type="Script" path="res://Script/Perfabs/NonPlayableCharacter/EnemyWeapons.gd" id="2_f5php"]
@@ -15,6 +14,7 @@
 [ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="8_6dat1"]
 [ext_resource type="Script" path="res://Script/Component/VisionComponent.gd" id="11_vux65"]
 [ext_resource type="Script" path="res://Script/Component/AtkRangeComponent.gd" id="12_21xly"]
+[ext_resource type="Texture2D" uid="uid://dslvgplb0lb00" path="res://Assets/Texture/Characters/green_character.png" id="14_8n3h7"]
 [ext_resource type="PackedScene" uid="uid://c1g2h8rr2vuds" path="res://Scene/Behavior/NormalEnemyBehavior.tscn" id="14_15x1o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3mlrj"]
@@ -180,7 +180,7 @@ blackboard = NodePath("../Blackboard")
 script = ExtResource("8_6dat1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_lm6s8")
+texture = ExtResource("14_8n3h7")
 
 [node name="Weapons" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("atk_cd_timer")]
 unique_name_in_owner = true

@@ -55,11 +55,10 @@ func _ready() -> void:
     
     EventBus.enemy_die.connect(get_xp)
     
+    # TODO: 完善存档
     EventBus.save.connect(func():
-        print("开始存档，玩家")
         SaveSystem.set_var("Player", data)
 #        SaveSystem.set_var("Player:Abilitys", ability_container.ability_list)
-        print("存档完毕，玩家")
         )
     
     EventBus.load_save.connect(func():

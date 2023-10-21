@@ -3,15 +3,18 @@ extends CanvasLayer
 @onready var hp_bar:TextureProgressBar = %HpBar
 @onready var xp_bar:TextureProgressBar = %XpBar
 @onready var coins_label:Label = %CoinsLabel
+@onready var level_label:Label = %LevelLabel
 
 @onready var inventory_btn:Button = %InventoryBtn
 @onready var character_btn:Button = %CharacterBtn
 @onready var skill_tree_btn:Button = %SkillTreeBtn
 @onready var get_skill_btn:Button = %GetSkillBtn
+@onready var setting_btn:Button = %SettingBtn
 
 @onready var inventory_ui:Control = $Inventory
 @onready var character_panel_ui:Control = $CharacterPanel
 @onready var skill_tree_ui:Control = $SkillTree
+@onready var setting_ui:Control = $SettingUI
 
 @onready var skill_bar:HBoxContainer = %SkillBar
 
@@ -19,7 +22,8 @@ enum PAGE {
     HOME,
     CHARACTER_PANEL,
     INVENTORY,
-    SKILL_TREE
+    SKILL_TREE,
+    SETTING
 }
 
 var player_data:CharacterData
@@ -29,6 +33,7 @@ func _ready() -> void:
     EventBus.show_popup.connect(show_popup)
     EventBus.new_drop_item.connect(new_drop_item)
     EventBus.player_ability_change.connect(build_ability_ui)
+    EventBus.player_dead.connect(update_ui)
     EventBus.show_damage_number.connect(func(_pos:Vector2, _text:String):
         var _damage_label:Label = Builder.build_a_damage_label()
         _damage_label.position = _pos
@@ -47,6 +52,7 @@ func _ready() -> void:
         EventBus.player_get_a_ability.emit(_ability)
         EventBus.show_popup.emit("获得技能", "得到技能：%s" % _ability.name)
         )
+    setting_btn.pressed.connect(change_page.bind(PAGE.SETTING))
     
     player_data = Master.player.data
     
@@ -56,23 +62,33 @@ func _ready() -> void:
     change_page(PAGE.HOME)
 
 func change_page(_page:PAGE) -> void:
+    SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
     match _page:
         PAGE.HOME:
             inventory_ui.hide()
             character_panel_ui.hide()
             skill_tree_ui.hide()
+            setting_ui.hide()
         PAGE.CHARACTER_PANEL:
             skill_tree_ui.hide()
             inventory_ui.hide()
+            setting_ui.hide()
             character_panel_ui.show()
         PAGE.INVENTORY:
             skill_tree_ui.hide()
             inventory_ui.show()
+            setting_ui.hide()
             character_panel_ui.hide()
         PAGE.SKILL_TREE:
             skill_tree_ui.show()
             inventory_ui.hide()
+            setting_ui.hide()
             character_panel_ui.hide()
+        PAGE.SETTING:
+            skill_tree_ui.hide()
+            inventory_ui.hide()
+            setting_ui.hide()
+            character_panel_ui.show()
 
 # 技能条 UI
 func build_ability_ui() -> void:
@@ -87,6 +103,7 @@ func build_ability_ui() -> void:
         _skill_btn.set_ability(_ability)
 
 func update_ui() -> void:
+    level_label.text = "等级：%s" % str(player_data.level)
     hp_bar.value = (float(player_data.hp) / float(player_data.max_hp)) * 100.0
     xp_bar.value = (float(player_data.now_xp) / float(player_data.next_level_xp)) * 100.0
 
@@ -108,6 +125,7 @@ func new_drop_item(_item:InventoryItem, _pos:Vector2) -> void:
 
 func show_popup(_title:String, _desc:String, _show_cancel_btn:bool = false, _yes_event:Callable = func():,
  _cancel_event:Callable = func():) -> void:
+    SoundManager.play_ui_sound(load(Master.POPUP_SOUNDS))
     var _popup:NinePatchRect = Builder.build_a_popup()
     
     _popup.title = _title
