@@ -110,6 +110,7 @@ func get_xp(_value:float) -> void:
 func relife() -> void:
     # FIXME: data是资源，不会唯一化
     data.hp = data.max_hp
+    data.magic = data.max_magic
     global_position = Master.relife_point.global_position
     animation_player.play_backwards("Die")
     await animation_player.animation_finished

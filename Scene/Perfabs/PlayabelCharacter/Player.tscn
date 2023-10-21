@@ -117,7 +117,6 @@ texture = ExtResource("3_ny7tj")
 [node name="Weapons" type="Node2D" parent="Sprite2D" node_paths=PackedStringArray("atk_cd_timer")]
 show_behind_parent = true
 position = Vector2(13, -9.53674e-07)
-scale = Vector2(1, 1)
 script = ExtResource("7_j8fjd")
 atk_cd_timer = NodePath("../../AtkCDTimer")
 

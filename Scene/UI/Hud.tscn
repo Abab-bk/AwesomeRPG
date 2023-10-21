@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=13 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -11,6 +11,7 @@
 [ext_resource type="LabelSettings" uid="uid://drx7d3iagcvhu" path="res://Assets/LabelSetting/ItemTitle.tres" id="6_nyfav"]
 [ext_resource type="PackedScene" uid="uid://c3iesn4gm1oum" path="res://Scene/UI/QuestPanel.tscn" id="10_f6saj"]
 [ext_resource type="PackedScene" uid="uid://dheui57ydhnj5" path="res://Scene/UI/SettingUi.tscn" id="11_x2eu0"]
+[ext_resource type="PackedScene" uid="uid://c60tahepslln0" path="res://Scene/UI/SkillsPanel.tscn" id="12_doksu"]
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_d15xn")
@@ -144,7 +145,14 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
-text = "技能树"
+text = "天赋树"
+
+[node name="SillsPanelBtn" type="Button" parent="Control/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 50
+text = "技能配置"
 
 [node name="GetSkillBtn" type="Button" parent="Control"]
 unique_name_in_owner = true
@@ -173,4 +181,7 @@ offset_top = 0.559967
 offset_bottom = 40.56
 
 [node name="SettingUI" parent="." instance=ExtResource("11_x2eu0")]
+visible = false
+
+[node name="SkillsPanel" parent="." instance=ExtResource("12_doksu")]
 visible = false

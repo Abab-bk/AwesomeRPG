@@ -11,11 +11,13 @@ extends CanvasLayer
 @onready var skill_tree_btn:Button = %SkillTreeBtn
 @onready var get_skill_btn:Button = %GetSkillBtn
 @onready var setting_btn:Button = %SettingBtn
+@onready var skills_panel_btn:Button = %SillsPanelBtn
 
 @onready var inventory_ui:Control = $Inventory
 @onready var character_panel_ui:Control = $CharacterPanel
 @onready var skill_tree_ui:Control = $SkillTree
 @onready var setting_ui:Control = $SettingUI
+@onready var skills_panel_ui:Control = $SkillsPanel
 
 @onready var skill_bar:HBoxContainer = %SkillBar
 
@@ -24,6 +26,7 @@ enum PAGE {
     CHARACTER_PANEL,
     INVENTORY,
     SKILL_TREE,
+    SKILLS_PANEL,
     SETTING
 }
 
@@ -46,14 +49,15 @@ func _ready() -> void:
     
     inventory_btn.pressed.connect(change_page.bind(PAGE.INVENTORY))
     character_btn.pressed.connect(change_page.bind(PAGE.CHARACTER_PANEL))
+    setting_btn.pressed.connect(change_page.bind(PAGE.SETTING))
     skill_tree_btn.pressed.connect(change_page.bind(PAGE.SKILL_TREE))
+    skills_panel_btn.pressed.connect(change_page.bind(PAGE.SKILLS_PANEL))
     # 添加技能
     get_skill_btn.pressed.connect(func():
         var _ability:FlowerAbility = Master.get_random_ability()
         EventBus.player_get_a_ability.emit(_ability)
         EventBus.show_popup.emit("获得技能", "得到技能：%s" % _ability.name)
         )
-    setting_btn.pressed.connect(change_page.bind(PAGE.SETTING))
     
     player_data = Master.player.data
     
@@ -70,26 +74,37 @@ func change_page(_page:PAGE) -> void:
             character_panel_ui.hide()
             skill_tree_ui.hide()
             setting_ui.hide()
+            skills_panel_ui.hide()
         PAGE.CHARACTER_PANEL:
             skill_tree_ui.hide()
             inventory_ui.hide()
             setting_ui.hide()
+            skills_panel_ui.hide()
             character_panel_ui.show()
         PAGE.INVENTORY:
             skill_tree_ui.hide()
             inventory_ui.show()
             setting_ui.hide()
+            skills_panel_ui.hide()
             character_panel_ui.hide()
         PAGE.SKILL_TREE:
             skill_tree_ui.show()
             inventory_ui.hide()
             setting_ui.hide()
+            skills_panel_ui.hide()
             character_panel_ui.hide()
         PAGE.SETTING:
             skill_tree_ui.hide()
             inventory_ui.hide()
             setting_ui.hide()
+            skills_panel_ui.hide()
             character_panel_ui.show()
+        PAGE.SKILLS_PANEL:
+            skill_tree_ui.hide()
+            inventory_ui.hide()
+            setting_ui.hide()
+            skills_panel_ui.show()
+            character_panel_ui.hide()
 
 # 技能条 UI
 func build_ability_ui() -> void:
