@@ -12,8 +12,10 @@ signal hp_is_zero
         hp = v
         if hp <= 0:
             hp_is_zero.emit()
+
 @export var max_hp:float
 @export var magic:float
+@export var max_magic:float
 @export var strength:int
 @export var wisdom:int
 @export var agility:int

@@ -1,7 +1,8 @@
 extends CanvasLayer
 
+@onready var mp_bar:TextureProgressBar = %MpBar
 @onready var hp_bar:TextureProgressBar = %HpBar
-@onready var xp_bar:TextureProgressBar = %XpBar
+@onready var xp_bar:ProgressBar = %XpBar
 @onready var coins_label:Label = %CoinsLabel
 @onready var level_label:Label = %LevelLabel
 
@@ -104,6 +105,7 @@ func build_ability_ui() -> void:
 
 func update_ui() -> void:
     level_label.text = "等级：%s" % str(player_data.level)
+    mp_bar.value = (float(player_data.magic) / float(player_data.max_magic)) * 100.0
     hp_bar.value = (float(player_data.hp) / float(player_data.max_hp)) * 100.0
     xp_bar.value = (float(player_data.now_xp) / float(player_data.next_level_xp)) * 100.0
 

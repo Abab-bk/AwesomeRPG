@@ -5,16 +5,17 @@
 [resource]
 script = ExtResource("1_nesea")
 level = 1
-now_xp = 1
-next_level_xp = 100
-hp = 500
-max_hp = 500
-magic = 1
+now_xp = 0.0
+next_level_xp = 0.0
+hp = 100.0
+max_hp = 100.0
+magic = 100.0
+max_magic = 100.0
 strength = 1
 wisdom = 1
 agility = 1
 luck = 1.0
-speed = 300
+speed = 200.0
 damage = 50.0
 defense = 1.0
 fire_damage = 10.0
