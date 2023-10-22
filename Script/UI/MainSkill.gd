@@ -2,9 +2,33 @@ extends Panel
 
 @onready var change_btn:Button = %ChangeBtn
 
-var data:FlowerAbility
+signal changed_ability(id:int)
+
+var parent_id:int = 0
+var sub_skill:bool = false
+var ability:FlowerAbility = null:
+    set(v):
+        ability = v
+        
+        if not ability:
+            %Icon.texture = load("res://icon.svg")
+            %NameLabel.text = "未选择技能"
+            return
+        
+        %Icon.texture = load(ability.icon_path)
+        %NameLabel.text = ability.name
+        changed_ability.emit(ability.id)
+        
+        if sub_skill:
+            EventBus.player_set_a_ability.emit(parent_id, [ability.id])
+            return
+        
+        EventBus.player_set_a_ability.emit(ability.id, [])        
 
 func _ready() -> void:
     change_btn.pressed.connect(func():
-        EventBus.show_select_skills_panel.emit()
+        EventBus.show_select_skills_panel.emit(self)
+        )
+    %DisBtn.pressed.connect(func():
+        ability = null
         )

@@ -7,6 +7,8 @@ class_name Player extends CharacterBody2D
 var data:CharacterData
 var target:Vector2 = global_position
 
+var config_skills:Dictionary = {}
+
 var closest_distance:float = 1000000
 var closest_enemy:Enemy
 var all_enemy:Array
@@ -48,8 +50,18 @@ func _ready() -> void:
         ability_container.active_a_ability(_ability)
         )
     
-    EventBus.player_get_a_ability.connect(func(_ability:FlowerAbility):
-        ability_container.add_a_ability(_ability)
+    EventBus.player_set_a_ability.connect(func(_ability_id:int,
+    _sub_ability:Array):
+        if _ability_id in config_skills:
+            config_skills[_ability_id].append_array(_sub_ability)
+            EventBus.sub_ability_changed.emit(_ability_id, _sub_ability)
+        else:
+            config_skills[_ability_id] = _sub_ability
+            EventBus.sub_ability_changed.emit(_ability_id, _sub_ability)
+        
+        for i in config_skills.keys():
+            ability_container.add_a_ability(Master.get_ability_by_id(i))
+        
         EventBus.player_ability_change.emit()
         )
     

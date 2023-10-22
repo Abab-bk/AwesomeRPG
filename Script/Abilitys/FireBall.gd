@@ -1,6 +1,6 @@
 class_name FireBall extends FlowerAbility
 
-const SPEED:float = 800.0
+var speed:float = 800.0
 
 func active() -> void:
     super()
@@ -9,11 +9,13 @@ func active() -> void:
     # 设置伤害
     _fire_ball.set_damage(50)
     
+    speed = randf_range(500, 1000)
+    
     if actor.closest_enemy and _fire_ball:
         _fire_ball.velocity = _fire_ball.global_position.\
-        direction_to(actor.closest_enemy.global_position) * SPEED
+        direction_to(actor.closest_enemy.global_position) * speed
     else:
-        _fire_ball.velocity = actor.global_position * SPEED
+        _fire_ball.velocity = actor.global_position * speed
     
     Master.world.add_child(_fire_ball)
     

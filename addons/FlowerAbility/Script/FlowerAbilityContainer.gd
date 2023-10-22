@@ -15,6 +15,7 @@ func _build_a_timer(_time:float) -> Timer:
     return _timer
 
 func _init_a_ability(_ability:FlowerAbility) -> void:
+    _ability.ability_container = self
     _ability.actor = actor
         
     var _cool_down_timer:Timer = _build_a_timer(_ability.cooldown)
@@ -34,6 +35,10 @@ func add_a_ability(_ability:FlowerAbility) -> void:
             return
     
     ability_list.append(_ability)
+    
+    if not _ability.id in Master.unlocked_skills:
+        Master.unlocked_skills.append(_ability.id)
+    
     _init_a_ability(_ability)
 
 func active_a_ability(_ability:FlowerAbility) -> void:

@@ -27,13 +27,15 @@ theme_override_constants/margin_right = 20
 layout_mode = 2
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("1_gat6q")
 stretch_mode = 5
 
 [node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "默认技能"
+text = "未选择技能"
 label_settings = ExtResource("2_ngsea")
 
 [node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]

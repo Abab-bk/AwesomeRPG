@@ -46,8 +46,9 @@ func _ready() -> void:
         )
     EventBus.coins_changed.connect(func():
         coins_label.text = "金币：%s" % str(Master.coins))
-    EventBus.show_select_skills_panel.connect(func():
+    EventBus.show_select_skills_panel.connect(func(_target:Panel):
         var _panel:Panel = Builder.build_a_select_sills_panel()
+        _panel.target_skill_panel = _target
         add_child(_panel)
         )
     
@@ -59,8 +60,9 @@ func _ready() -> void:
     # 添加技能
     get_skill_btn.pressed.connect(func():
         var _ability:FlowerAbility = Master.get_random_ability()
-        EventBus.player_get_a_ability.emit(_ability)
-        EventBus.show_popup.emit("获得技能", "得到技能：%s" % _ability.name)
+#        EventBus.player_get_a_ability.emit(_ability)
+        EventBus.unlocked_ability.emit(_ability.id)
+        EventBus.show_popup.emit("解锁技能", "解锁技能：%s" % _ability.name)
         )
     
     player_data = Master.player.data
@@ -111,12 +113,14 @@ func change_page(_page:PAGE) -> void:
             character_panel_ui.hide()
 
 # 技能条 UI
-# FIXME: 只能添加两个技能..
 func build_ability_ui() -> void:
     for i in skill_bar.get_children():
         i.queue_free()
     
     for i in Master.player.get_ability_list().size():
+        if Master.player.get_ability_list()[i - 1].is_sub_ability:
+            continue
+        
         var _skill_btn:Panel = Builder.build_a_skill_btn()
         skill_bar.add_child(_skill_btn)
         

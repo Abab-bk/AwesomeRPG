@@ -41,6 +41,22 @@ func get_quest_by_id(_id:int) -> QuestResource:
     
     return _quest
 
+func get_ability_by_id(_id:int) -> FlowerAbility:
+    var _data = abilitys[_id]
+    var _ability:FlowerAbility = load("res://Script/Abilitys/%s.gd" % _data["script_name"]).new()
+    
+    _ability.id = _data.id
+    _ability.name = _data.name
+    _ability.desc = _data.desc
+    _ability.icon_path = _data.icon_path
+    _ability.cooldown = _data.cooldown
+    _ability.casting_time = _data.casting_time
+    
+    return _ability
+
+func get_random_ability_id() -> int:
+    return abilitys[randi_range(abilitys_start, abilitys_end)]
+
 func get_random_ability() -> FlowerAbility:
     var _data = abilitys[randi_range(abilitys_start, abilitys_end)]
     var _ability:FlowerAbility = load("res://Script/Abilitys/%s.gd" % _data["script_name"]).new()
@@ -51,8 +67,6 @@ func get_random_ability() -> FlowerAbility:
     _ability.icon_path = _data.icon_path
     _ability.cooldown = _data.cooldown
     _ability.casting_time = _data.casting_time
-    
-    unlocked_skills.append(_ability.id)
     
     return _ability
 
@@ -91,3 +105,9 @@ func _ready():
     buffs = config.TbBuffs.get_data_map()
     abilitys = config.TbAbilitys.get_data_map()
     quests = config.TbQuests.get_data_map()
+
+    EventBus.unlocked_ability.connect(func(_id:int):
+        if _id in unlocked_skills:
+            return
+        unlocked_skills.append(_id)
+        )

@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://rho7mcbqxaku"]
+
+[ext_resource type="Script" path="res://Script/UI/ConfigSkillInfo.gd" id="1_12is6"]
+[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="1_ej651"]
+[ext_resource type="PackedScene" uid="uid://b0d80etljgc15" path="res://Scene/UI/MainSkill.tscn" id="2_f1vkd"]
+
+[node name="SkillInfo" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+script = ExtResource("1_12is6")
+
+[node name="MainSkill" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainSkill"]
+layout_mode = 2
+text = "主要技能"
+label_settings = ExtResource("1_ej651")
+horizontal_alignment = 1
+
+[node name="MainSkill" parent="MainSkill" instance=ExtResource("2_f1vkd")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AllSubSkills" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AllSubSkills"]
+layout_mode = 2
+text = "辅助技能"
+label_settings = ExtResource("1_ej651")
+horizontal_alignment = 1
+
+[node name="SubSkills" type="VBoxContainer" parent="AllSubSkills"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MainSkill2" parent="AllSubSkills/SubSkills" instance=ExtResource("2_f1vkd")]
+layout_mode = 2
+
+[node name="MainSkill3" parent="AllSubSkills/SubSkills" instance=ExtResource("2_f1vkd")]
+layout_mode = 2
+
+[node name="MainSkill4" parent="AllSubSkills/SubSkills" instance=ExtResource("2_f1vkd")]
+layout_mode = 2
+
+[node name="MainSkill5" parent="AllSubSkills/SubSkills" instance=ExtResource("2_f1vkd")]
+layout_mode = 2

@@ -70,13 +70,13 @@ size_flags_horizontal = 3
 [node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "技能名称"
+text = "未选择技能"
 label_settings = ExtResource("5_5m88d")
 
 [node name="MpLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "消耗 50 MP"
+text = "未选择技能"
 label_settings = ExtResource("5_5m88d")
 
 [node name="DescLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
@@ -85,7 +85,7 @@ custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "技能描述技能描述技能描述技能描述技能描述技能描述技能描述技能描述技能描述技能描述技能描述技能描述技能描述技能描述技能描述技能描述技能描述技能描述技能描述技能描述技能描述技能描述技能描述技能描述技能描述"
+text = "请选择技能"
 
 [node name="AllSkills" type="GridContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true

@@ -7,6 +7,9 @@ extends Panel
 @onready var mp_label:Label = %MpLabel
 @onready var desc_label:RichTextLabel = %DescLabel
 
+var ability:FlowerAbility
+var target_skill_panel:Panel
+
 # TODO: 待完善技能配置面板
 
 func _ready() -> void:
@@ -17,22 +20,32 @@ func _ready() -> void:
         )
     %YesBtn.pressed.connect(func():
         SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
+        EventBus.selected_skills_on_panel.emit()
+        target_skill_panel.ability = ability
         hide()
         queue_free()
         )
+    
+    if Master.unlocked_skills.is_empty():
+        var _label = Label.new()
+        _label.text = "未解锁技能"
+        all_skills.add_child(_label)
+        return
     
     for i in Master.unlocked_skills:
         var _skills:FlowerAbility = FlowerAbility.new()
         _skills.icon_path = Master.abilitys[i]["icon_path"]
         _skills.name = Master.abilitys[i]["name"]
-        _skills.desc = Master.abilitys[i]["name"]
+        _skills.desc = Master.abilitys[i]["desc"]
+        _skills.id = Master.abilitys[i]["id"]
         
         var _btn:TextureRect = Builder.build_a_info_skill_btn()
         _btn.data = _skills
         all_skills.add_child(_btn)
         
         _btn.selected.connect(func(_data:FlowerAbility):
-            icon.texture = load(_data.icon_path)
-            name_label.text = _data.name
-            desc_label.text = _data.desc
+            ability = _data
+            icon.texture = load(ability.icon_path)
+            name_label.text = ability.name
+            desc_label.text = ability.desc
             )

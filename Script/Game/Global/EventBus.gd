@@ -6,8 +6,11 @@ signal load_save
 signal update_ui
 signal update_inventory
 signal change_item_tooltip_state(item:InventoryItem)
-signal show_popup(_title:String, _desc:String, _show_cancel_btn:bool, _yes_event:Callable, _cancel_event:Callable)
-signal show_select_skills_panel
+signal show_popup(title:String, desc:String, show_cancel_btn:bool, yes_event:Callable, cancel_event:Callable)
+signal show_select_skills_panel(target:Panel)
+signal selected_skills_on_panel
+signal unlocked_ability(id:int)
+signal sub_ability_changed(_ability_id:int, _sub_ability:Array)
 # Player 的 ComputeData 改变
 signal player_data_change
 
@@ -17,7 +20,7 @@ signal player_hited(damage:float)
 signal player_dead
 signal player_ability_change
 signal player_ability_activate(ability:FlowerAbility)
-signal player_get_a_ability(ability:FlowerAbility)
+signal player_set_a_ability(ability_id:int, sub_ability:Array)
 signal player_level_up
 
 signal equipment_up(type:Const.EQUIPMENT_TYPE, item:InventoryItem)

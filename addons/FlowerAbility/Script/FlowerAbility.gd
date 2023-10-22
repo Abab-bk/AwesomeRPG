@@ -7,6 +7,11 @@ class_name FlowerAbility extends Resource
 @export var cooldown:float
 @export var casting_time:float
 
+var ability_container:FlowerAbilityContainer
+
+var is_sub_ability:bool = false
+var sub_ability:Array[FlowerAbility] = []
+
 var channeling_time:float
 var casting_duration:float
 
@@ -31,6 +36,18 @@ func connect_signal() -> void:
         _casting_timer.timeout.connect(func():)
     _cooldown_timer.timeout.connect(_cooldown_ok)
     current_state = STATE.IDLE
+    EventBus.sub_ability_changed.connect(func(_ability_id:int, _sub_ability:Array):
+        if not _ability_id == id:
+            return
+        
+        sub_ability = []
+        
+        for i in _sub_ability:
+            var _temp:FlowerAbility = Master.get_ability_by_id(i)
+            _temp.is_sub_ability = true
+            sub_ability.append(_temp)
+            ability_container.add_a_ability(_temp)
+        )
 
 func _cooldown_ok() -> void:
     current_state = STATE.IDLE
@@ -42,15 +59,18 @@ func _start_casting() -> void:
         await _casting_timer.timeout
     
     current_state = STATE.RUNNING
-    active()
 
 func active() -> void:
     if current_state == STATE.IDLE:
-        _start_casting()
-        return
+        # 此时已经冷却完毕
+        await _start_casting()
     
     if current_state != STATE.RUNNING:
         return
+    
+    for i in sub_ability:
+        i.active()
+    
     ## CUSTOME
 
 func un_active() -> void:
