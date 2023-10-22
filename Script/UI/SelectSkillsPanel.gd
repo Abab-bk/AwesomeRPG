@@ -36,6 +36,9 @@ func _ready() -> void:
         return
     
     for i in Master.unlocked_skills:
+        if Master.player.ability_container.is_in_container_by_id(i):
+            continue
+        
         var _skills:FlowerAbility = FlowerAbility.new()
         
         _skills.icon_path = Master.abilitys[i]["icon_path"]

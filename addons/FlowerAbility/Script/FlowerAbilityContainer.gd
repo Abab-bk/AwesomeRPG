@@ -67,3 +67,9 @@ func remove_a_ability_by_name(_name:String) -> void:
     for _ability in ability_list:
         if _ability.name == _name:
             ability_list.erase(_ability)
+
+func is_in_container_by_id(_id:int) -> bool:
+    for i in ability_list:
+        if _id == i.id:
+            return true
+    return false
