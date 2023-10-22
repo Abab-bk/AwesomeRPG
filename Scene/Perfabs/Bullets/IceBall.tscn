@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhcx1t30k7xln"]
+
+[ext_resource type="Script" path="res://Script/Perfabs/Bullets/IceBall.gd" id="1_6hau4"]
+[ext_resource type="Script" path="res://Script/Component/SimpleHitBoxComponent.gd" id="2_rryfk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ojfcl"]
+radius = 42.0
+
+[node name="IceBall" type="CharacterBody2D"]
+script = ExtResource("1_6hau4")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(3, 0)
+rotation = -0.396619
+color = Color(0.180392, 0.835294, 0.815686, 1)
+polygon = PackedVector2Array(-1, -39, -18, -15, -8, 35, 14, 1, 13, -20)
+
+[node name="SimpleHitBoxComponent" type="Area2D" parent="."]
+script = ExtResource("2_rryfk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SimpleHitBoxComponent"]
+shape = SubResource("CircleShape2D_ojfcl")

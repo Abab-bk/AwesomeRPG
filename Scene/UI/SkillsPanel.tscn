@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c60tahepslln0"]
+[gd_scene load_steps=4 format=3 uid="uid://c60tahepslln0"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_emyso"]
 [ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="1_ll2el"]
 [ext_resource type="Script" path="res://Script/UI/SkillsPanel.gd" id="2_nve80"]
-[ext_resource type="PackedScene" uid="uid://rho7mcbqxaku" path="res://Scene/UI/ConfigSkillInfo.tscn" id="4_v48bs"]
 
 [node name="SkillsPanel" type="Control"]
 layout_mode = 3
@@ -60,9 +59,6 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 tabs_visible = false
-
-[node name="ConfigSkillInfo" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillsPage" instance=ExtResource("4_v48bs")]
-layout_mode = 2
 
 [node name="SkillBtns" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

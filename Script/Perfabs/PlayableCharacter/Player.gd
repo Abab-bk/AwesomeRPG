@@ -92,6 +92,19 @@ func _ready() -> void:
     
     compute()
 
+func rebuild_skills() -> void:
+    ability_container.ability_list = []
+    
+    for i in config_skills:
+        var new_ability:FlowerAbility = Master.get_ability_by_id(config_skills[i])
+        ability_container.add_a_ability(new_ability)
+        for x in config_skills[i]:
+            var _sub_ability:FlowerAbility = Master.get_ability_by_id(config_skills[i])
+            _sub_ability.is_sub_ability = true
+            new_ability.sub_ability.append(_sub_ability)
+    
+    EventBus.player_ability_change.emit()
+
 func compute() -> void:
     flower_buff_manager.compute()
 

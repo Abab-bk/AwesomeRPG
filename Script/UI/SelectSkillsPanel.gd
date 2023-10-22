@@ -10,8 +10,6 @@ extends Panel
 var ability:FlowerAbility
 var target_skill_panel:Panel
 
-# TODO: 待完善技能配置面板
-
 func _ready() -> void:
     %CancelBtn.pressed.connect(func():
         SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
@@ -20,6 +18,11 @@ func _ready() -> void:
         )
     %YesBtn.pressed.connect(func():
         SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
+        
+        if Master.coins < 500:
+            EventBus.show_popup.emit("金币不足", "金币不足")
+            return
+        
         EventBus.selected_skills_on_panel.emit()
         target_skill_panel.ability = ability
         hide()

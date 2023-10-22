@@ -1,17 +1,17 @@
 [
   {
     "id": 4001,
-    "name": "狂怒",
-    "desc": "火焰伤害 + {s}。",
+    "name": "暴风雪",
+    "desc": "释放暴风雪，在范围内造成AOE伤害。",
     "icon_path": "res://icon.svg",
     "cooldown": 1,
     "casting_time": 0,
-    "script_name": "FireBall"
+    "script_name": "SnowStorms"
   },
   {
     "id": 4002,
-    "name": "狂怒2",
-    "desc": "火焰伤害 + {s}。",
+    "name": "火球术",
+    "desc": "释放一个火球。",
     "icon_path": "res://icon.svg",
     "cooldown": 1,
     "casting_time": 0,
@@ -19,16 +19,16 @@
   },
   {
     "id": 4003,
-    "name": "灼烧",
-    "desc": "火焰伤害 + {s}。",
+    "name": "相位猛冲",
+    "desc": "开冲！",
     "icon_path": "res://icon.svg",
     "cooldown": 1,
     "casting_time": 0,
-    "script_name": "FireBall"
+    "script_name": "Rush"
   },
   {
     "id": 4004,
-    "name": "火球术",
+    "name": "测试技能",
     "desc": "释放一个火球。",
     "icon_path": "res://icon.svg",
     "cooldown": 1,

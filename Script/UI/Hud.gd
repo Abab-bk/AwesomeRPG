@@ -20,6 +20,7 @@ extends CanvasLayer
 @onready var skills_panel_ui:Control = $SkillsPanel
 
 @onready var skill_bar:HBoxContainer = %SkillBar
+@onready var color_rect:ColorRect = $ColorRect
 
 enum PAGE {
     HOME,
@@ -69,6 +70,7 @@ func _ready() -> void:
     
     build_ability_ui()
     
+    hide_color_rect()
     update_ui()
     change_page(PAGE.HOME)
 
@@ -148,11 +150,19 @@ func new_drop_item(_item:InventoryItem, _pos:Vector2) -> void:
     EventBus.add_item.emit(_item)
     EventBus.update_inventory.emit()
 
+func show_color_rect() -> void:
+    color_rect.show()
+
+func hide_color_rect() -> void:
+    color_rect.hide()
 
 func show_popup(_title:String, _desc:String, _show_cancel_btn:bool = false, _yes_event:Callable = func():,
  _cancel_event:Callable = func():) -> void:
+    hide_color_rect()
     SoundManager.play_ui_sound(load(Master.POPUP_SOUNDS))
     var _popup:NinePatchRect = Builder.build_a_popup()
+    
+    _popup.closed.connect(func():hide_color_rect())
     
     _popup.title = _title
     _popup.desc = _desc

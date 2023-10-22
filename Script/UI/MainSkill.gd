@@ -8,12 +8,31 @@ var parent_id:int = 0
 var sub_skill:bool = false
 var ability:FlowerAbility = null:
     set(v):
-        ability = v
-        
-        if not ability:
+        if not v:
+            print(sub_skill)
             %Icon.texture = load("res://icon.svg")
             %NameLabel.text = "未选择技能"
+            
+            if sub_skill:
+                for i in Master.player.config_skills:
+                    if ability.id in Master.player.config_skills[i]:
+                        var _new_array:Array = Master.player.config_skills[i].duplicate(true)
+                        _new_array.erase(ability.id)
+                        Master.player.ability_container.remove_a_ability_by_id(ability.id)
+                        EventBus.sub_ability_changed.emit(i, _new_array)
+                        EventBus.player_ability_change.emit()
+            else:
+                Master.player.config_skills.erase(ability.id)
+                Master.player.ability_container.remove_a_ability_by_id(ability.id)
+                EventBus.player_ability_change.emit()
+#                Master.player.rebuild_skills()
             return
+        
+        if ability:
+            if ability.id in Master.player.config_skills:
+                Master.player.config_skills.erase(ability.id)
+                Master.player.ability_container.remove_a_ability_by_id(ability.id)
+        ability = v
         
         %Icon.texture = load(ability.icon_path)
         %NameLabel.text = ability.name

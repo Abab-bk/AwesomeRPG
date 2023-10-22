@@ -1,5 +1,7 @@
 extends NinePatchRect
 
+signal closed
+
 @onready var title_label:Label = %TitleLabel
 @onready var desc_label:RichTextLabel = %DescLabel
 @onready var yes_btn:Button = %YesBtn
@@ -21,6 +23,7 @@ func _ready() -> void:
         queue_free()
         )
     cancel_btn.pressed.connect(func():
+        closed.emit()
         cancel_event.call()
         queue_free()
         )

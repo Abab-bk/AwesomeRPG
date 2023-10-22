@@ -12,7 +12,7 @@ var player_data:CharacterData
 var relife_point:Marker2D
 var unlocked_skills:Array[int] = []
 
-var coins:int = 0:
+var coins:int = 1000:
     set(v):
         coins = v
         EventBus.coins_changed.emit()
