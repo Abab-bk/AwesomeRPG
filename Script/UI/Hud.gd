@@ -1,5 +1,8 @@
 extends CanvasLayer
 
+signal changed_to_other
+signal backed_to_home
+
 @onready var mp_bar:TextureProgressBar = %MpBar
 @onready var hp_bar:TextureProgressBar = %HpBar
 @onready var xp_bar:ProgressBar = %XpBar
@@ -18,6 +21,7 @@ extends CanvasLayer
 @onready var skill_tree_ui:Control = $SkillTree
 @onready var setting_ui:Control = $SettingUI
 @onready var skills_panel_ui:Control = $SkillsPanel
+@onready var quest_panel:Control = $QuestPanel
 
 @onready var skill_bar:HBoxContainer = %SkillBar
 @onready var color_rect:ColorRect = $ColorRect
@@ -53,6 +57,9 @@ func _ready() -> void:
         add_child(_panel)
         )
     
+    backed_to_home.connect(func():quest_panel.show())
+    changed_to_other.connect(func():quest_panel.hide())
+    
     inventory_btn.pressed.connect(change_page.bind(PAGE.INVENTORY))
     character_btn.pressed.connect(change_page.bind(PAGE.CHARACTER_PANEL))
     setting_btn.pressed.connect(change_page.bind(PAGE.SETTING))
@@ -83,36 +90,42 @@ func change_page(_page:PAGE) -> void:
             skill_tree_ui.hide()
             setting_ui.hide()
             skills_panel_ui.hide()
+            backed_to_home.emit()
         PAGE.CHARACTER_PANEL:
             skill_tree_ui.hide()
             inventory_ui.hide()
             setting_ui.hide()
             skills_panel_ui.hide()
             character_panel_ui.show()
+            changed_to_other.emit()
         PAGE.INVENTORY:
             skill_tree_ui.hide()
             inventory_ui.show()
             setting_ui.hide()
             skills_panel_ui.hide()
             character_panel_ui.hide()
+            changed_to_other.emit()
         PAGE.SKILL_TREE:
             skill_tree_ui.show()
             inventory_ui.hide()
             setting_ui.hide()
             skills_panel_ui.hide()
             character_panel_ui.hide()
+            changed_to_other.emit()
         PAGE.SETTING:
             skill_tree_ui.hide()
             inventory_ui.hide()
             setting_ui.hide()
             skills_panel_ui.hide()
             character_panel_ui.show()
+            changed_to_other.emit()
         PAGE.SKILLS_PANEL:
             skill_tree_ui.hide()
             inventory_ui.hide()
             setting_ui.hide()
             skills_panel_ui.show()
             character_panel_ui.hide()
+            changed_to_other.emit()
 
 # 技能条 UI
 func build_ability_ui() -> void:

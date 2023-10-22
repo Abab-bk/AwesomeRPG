@@ -11,6 +11,11 @@ const damage_label:String = "res://Scene/UI/DamageLable.tscn"
 const popup:String = "res://Scene/UI/Popup.tscn"
 const select_skills_panel:String = "res://Scene/UI/SelectSkillsPanel.tscn"
 const info_skill_btn:String = "res://Scene/UI/SkillBtn.tscn"
+const trail:String = "res://Scene/Perfabs/Others/Trail.tscn"
+
+func build_a_trail() -> Sprite2D:
+    var _n:Sprite2D = load(trail).instantiate()
+    return _n
 
 func build_a_info_skill_btn() -> TextureRect:
     var _n:TextureRect = load(info_skill_btn).instantiate()

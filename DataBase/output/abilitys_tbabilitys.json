@@ -2,7 +2,7 @@
   {
     "id": 4001,
     "name": "暴风雪",
-    "desc": "释放暴风雪，在范围内造成AOE伤害。",
+    "desc": "释放暴风雪，在范围内造成 AOE 伤害。",
     "icon_path": "res://icon.svg",
     "cooldown": 1,
     "casting_time": 0,
@@ -20,7 +20,7 @@
   {
     "id": 4003,
     "name": "相位猛冲",
-    "desc": "开冲！",
+    "desc": "开冲！速度 +200，持续 3 秒。",
     "icon_path": "res://icon.svg",
     "cooldown": 1,
     "casting_time": 0,
@@ -28,11 +28,11 @@
   },
   {
     "id": 4004,
-    "name": "测试技能",
-    "desc": "释放一个火球。",
+    "name": "旋风斩",
+    "desc": "释放旋风斩，造成 AOE 伤害。持续 5 秒。",
     "icon_path": "res://icon.svg",
     "cooldown": 1,
     "casting_time": 0,
-    "script_name": "FireBall"
+    "script_name": "WhirlWind"
   }
 ]

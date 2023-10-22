@@ -37,6 +37,7 @@ func _ready() -> void:
     
     for i in Master.unlocked_skills:
         var _skills:FlowerAbility = FlowerAbility.new()
+        
         _skills.icon_path = Master.abilitys[i]["icon_path"]
         _skills.name = Master.abilitys[i]["name"]
         _skills.desc = Master.abilitys[i]["desc"]

@@ -11,8 +11,6 @@ extends Control
 %ChangeSkill6,
 %ChangeSkill7]
 
-# FIXME: 在第二页配置技能没有actor
-
 func _ready() -> void:
     cancel_btn.pressed.connect(func():
         hide()
