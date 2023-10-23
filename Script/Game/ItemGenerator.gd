@@ -1,6 +1,7 @@
 class_name ItemGenerator extends Node
 
 func gen_a_item() -> InventoryItem:
+    # 掉落装备
     var _new_item:InventoryItem = InventoryItem.new()
     _new_item.name = ""
     _new_item.type = Const.EQUIPMENT_TYPE.values()[randi() % Const.EQUIPMENT_TYPE.size()]
@@ -28,15 +29,31 @@ func gen_a_item() -> InventoryItem:
             _new_item.name += "武器"
     
     # 随机掉落词缀数量
-    var count:int = randi_range(1, 3)
+    # 根据随机的品质修改词缀数量：
+    var quality:Const.EQUIPMENT_QUALITY = Const.EQUIPMENT_QUALITY.values()[randi()%Const.EQUIPMENT_QUALITY.size()]
+    _new_item.quality = quality
+    
+    var count:int
+    
+    match quality:
+        Const.EQUIPMENT_QUALITY.NORMAL:
+            count = 0
+        Const.EQUIPMENT_QUALITY.BLUE:
+            count = 1
+        Const.EQUIPMENT_QUALITY.YELLOW:
+            count = randi_range(3, 4)
+        Const.EQUIPMENT_QUALITY.DEEP_YELLO:
+            count = 5
+        Const.EQUIPMENT_QUALITY.GOLD:
+            count = 5
     
     for i in count:
-        _new_item.pre_affixs.append(Master.get_random_affix())
-    
-    count = randi_range(1, 3)
-    
-    for i in count:
-        _new_item.buf_affix.append(Master.get_random_affix())
+        var _pre_or_buf:int = randi_range(0, 1)
+        match _pre_or_buf:
+            0:
+                _new_item.pre_affixs.append(Master.get_random_affix())
+            1:
+                _new_item.buf_affix.append(Master.get_random_affix())
     
     for i in _new_item.pre_affixs:
         _new_item.name += i.name

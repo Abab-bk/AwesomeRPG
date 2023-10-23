@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Script/UI/ItemToolTip.gd" id="1_ohqf3"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_x37k0"]
-[ext_resource type="Texture2D" uid="uid://djrtllj8fg0x0" path="res://Assets/UI/Texture/Texture1.png" id="3_vqkmb"]
+[ext_resource type="Texture2D" uid="uid://djrtllj8fg0x0" path="res://Assets/UI/Texture/Color1.png" id="3_yy13s"]
 [ext_resource type="Texture2D" uid="uid://cwlnbn2b7shv4" path="res://Assets/UI/Texture/Panel1.png" id="4_7bksl"]
 [ext_resource type="Texture2D" uid="uid://b7wq6qy7yddt4" path="res://Assets/UI/Icons/Equipment/Box.png" id="5_2muug"]
 [ext_resource type="LabelSettings" uid="uid://drx7d3iagcvhu" path="res://Assets/LabelSetting/ItemTitle.tres" id="5_63f3j"]
@@ -25,15 +25,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+[node name="Color" type="NinePatchRect" parent="MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("3_vqkmb")
+texture = ExtResource("3_yy13s")
 patch_margin_left = 40
 patch_margin_top = 40
 patch_margin_right = 40
 patch_margin_bottom = 40
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/NinePatchRect"]
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Color"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -46,7 +47,7 @@ patch_margin_top = 40
 patch_margin_right = 40
 patch_margin_bottom = 40
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/NinePatchRect/NinePatchRect"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Color/NinePatchRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -58,29 +59,29 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="Content" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer"]
+[node name="Content" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Head" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content"]
+[node name="Head" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/Head"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/Head/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 12
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = -5
 
-[node name="TitleLabel" type="Label" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer2"]
+[node name="TitleLabel" type="Label" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -90,83 +91,83 @@ label_settings = ExtResource("5_63f3j")
 autowrap_mode = 1
 clip_text = true
 
-[node name="RateLabel" type="Label" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer2"]
+[node name="RateLabel" type="Label" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 text = "远古传奇铁盒"
 label_settings = ExtResource("6_puf0u")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = -5
 
-[node name="RateLabel2" type="Label" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="RateLabel2" type="Label" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "730 + 25 物品强度"
 label_settings = ExtResource("7_jb6d8")
 
-[node name="RateLabel3" type="Label" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="RateLabel3" type="Label" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "升级：5/5"
 label_settings = ExtResource("8_d5gr0")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/Head/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("5_2muug")
 stretch_mode = 3
 
-[node name="Space2" type="Control" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content"]
+[node name="Space2" type="Control" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PreAffixeLabels" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer"]
+[node name="PreAffixeLabels" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer"]
 layout_mode = 2
 
-[node name="SepBar" type="TextureRect" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/PreAffixeLabels"]
+[node name="SepBar" type="TextureRect" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/PreAffixeLabels"]
 layout_mode = 2
 texture = ExtResource("10_7kcw6")
 stretch_mode = 4
 
-[node name="PreAffixeLabels" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/PreAffixeLabels"]
+[node name="PreAffixeLabels" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/PreAffixeLabels"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/PreAffixeLabels/PreAffixeLabels"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/PreAffixeLabels/PreAffixeLabels"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 20
 
-[node name="PreAffixeLabels" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/PreAffixeLabels/PreAffixeLabels/MarginContainer"]
+[node name="PreAffixeLabels" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/PreAffixeLabels/PreAffixeLabels/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="BackAffixeLabels" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer"]
+[node name="BackAffixeLabels" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer"]
 layout_mode = 2
 
-[node name="SepBar2" type="TextureRect" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/BackAffixeLabels"]
+[node name="SepBar2" type="TextureRect" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/BackAffixeLabels"]
 layout_mode = 2
 texture = ExtResource("10_7kcw6")
 stretch_mode = 4
 
-[node name="BufAffixeLabels" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/BackAffixeLabels"]
+[node name="BufAffixeLabels" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/BackAffixeLabels"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/BackAffixeLabels/BufAffixeLabels"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/BackAffixeLabels/BufAffixeLabels"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 20
 
-[node name="BufAffixeLabels" type="VBoxContainer" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content/VBoxContainer/BackAffixeLabels/BufAffixeLabels/MarginContainer"]
+[node name="BufAffixeLabels" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/BackAffixeLabels/BufAffixeLabels/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Space" type="Control" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content"]
+[node name="Space" type="Control" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content"]
 layout_mode = 2
 
-[node name="UseBtn" type="Button" parent="MarginContainer/NinePatchRect/NinePatchRect/MarginContainer/Content"]
+[node name="UseBtn" type="Button" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2

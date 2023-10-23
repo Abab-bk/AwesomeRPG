@@ -116,6 +116,30 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/Control/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/Control/MarginContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="QuestPanel" parent="Control/MarginContainer/VBoxContainer/Control/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("10_f6saj")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Button" type="Button" parent="Control/MarginContainer/VBoxContainer/Control/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "回收装备"
+
 [node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 200
@@ -172,13 +196,6 @@ visible = false
 
 [node name="SkillTree" parent="." instance=ExtResource("5_xu7ou")]
 visible = false
-
-[node name="QuestPanel" parent="." instance=ExtResource("10_f6saj")]
-anchors_preset = -1
-anchor_top = 0.182
-anchor_bottom = 0.182
-offset_top = 0.559967
-offset_bottom = 40.56
 
 [node name="SettingUI" parent="." instance=ExtResource("11_x2eu0")]
 visible = false

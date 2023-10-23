@@ -3,6 +3,8 @@ extends Panel
 @onready var pre_affixe_labels:VBoxContainer = %PreAffixeLabels
 @onready var buf_affixe_labels:VBoxContainer = %BufAffixeLabels
 
+@onready var color:NinePatchRect = %Color
+
 @onready var title_label:Label = %TitleLabel
 @onready var use_btn:Button = %UseBtn
 
@@ -28,6 +30,18 @@ func _ready() -> void:
         
         down_state = _down
         
+        match _item.quality:
+            Const.EQUIPMENT_QUALITY.NORMAL:
+                color.texture = load("res://Assets/UI/Texture/Color4.png")
+            Const.EQUIPMENT_QUALITY.BLUE:
+                color.texture = load("res://Assets/UI/Texture/Color2.png")
+            Const.EQUIPMENT_QUALITY.YELLOW:
+                color.texture = load("res://Assets/UI/Texture/Color3.png")
+            Const.EQUIPMENT_QUALITY.DEEP_YELLO:
+                color.texture = load("res://Assets/UI/Texture/Color1.png")
+            Const.EQUIPMENT_QUALITY.GOLD:
+                color.texture = load("res://Assets/UI/Texture/Color1.png")
+          
         global_position = get_global_mouse_position()
         # TODO: 计算窗口位置
 #        print(DisplayServer.window_get_size())

@@ -21,7 +21,7 @@ signal backed_to_home
 @onready var skill_tree_ui:Control = $SkillTree
 @onready var setting_ui:Control = $SettingUI
 @onready var skills_panel_ui:Control = $SkillsPanel
-@onready var quest_panel:Control = $QuestPanel
+@onready var quest_panel:Control = %QuestPanel
 
 @onready var skill_bar:HBoxContainer = %SkillBar
 @onready var color_rect:ColorRect = $ColorRect

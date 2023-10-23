@@ -12,3 +12,11 @@ enum EQUIPMENT_TYPE {
     戒指,
     武器
 }
+
+enum EQUIPMENT_QUALITY {
+    NORMAL,
+    BLUE,
+    YELLOW,
+    DEEP_YELLO,
+    GOLD
+}
