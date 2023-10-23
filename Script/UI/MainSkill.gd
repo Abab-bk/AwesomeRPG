@@ -15,12 +15,17 @@ var ability:FlowerAbility = null:
             
             if sub_skill:
                 for i in Master.player.config_skills:
+                    print(Master.player.config_skills[i])
+                    
                     if ability.id in Master.player.config_skills[i]:
                         var _new_array:Array = Master.player.config_skills[i].duplicate(true)
+                        Master.player.config_skills[i].erase(ability.id)
                         _new_array.erase(ability.id)
                         Master.player.ability_container.remove_a_ability_by_id(ability.id)
                         EventBus.sub_ability_changed.emit(i, _new_array)
                         EventBus.player_ability_change.emit()
+                    
+                    print(Master.player.config_skills[i])                    
             else:
                 Master.player.config_skills.erase(ability.id)
                 Master.player.ability_container.remove_a_ability_by_id(ability.id)

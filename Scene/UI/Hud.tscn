@@ -123,13 +123,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 40
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/Control/MarginContainer"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/Control/MarginContainer/HBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
 alignment = 1
 
 [node name="QuestPanel" parent="Control/MarginContainer/VBoxContainer/Control/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("10_f6saj")]
@@ -204,6 +207,7 @@ visible = false
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 modulate = Color(0.0431373, 0.0431373, 0.0431373, 0.607843)
 anchors_preset = 15
 anchor_right = 1.0
