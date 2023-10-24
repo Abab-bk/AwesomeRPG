@@ -16,7 +16,7 @@
     "name": "火球术",
     "desc": "释放一个火球。",
     "icon_path": "res://icon.svg",
-    "global": false,
+    "global": true,
     "cooldown": 1,
     "casting_time": 0,
     "running_time": 5,

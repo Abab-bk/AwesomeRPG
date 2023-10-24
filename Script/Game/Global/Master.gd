@@ -53,6 +53,7 @@ func get_ability_by_id(_id:int) -> FlowerAbility:
     _ability.cooldown = _data.cooldown
     _ability.casting_time = _data.casting_time
     _ability.running_time = _data.running_time
+    _ability.global = _data.global
     _ability.scene = load("res://Scene/Perfabs/Abilitys/%s.tscn" % _data.scene_name)
     
     return _ability
@@ -72,6 +73,7 @@ func get_random_ability() -> FlowerAbility:
     _ability.cooldown = _data.cooldown
     _ability.casting_time = _data.casting_time
     _ability.running_time = _data.running_time
+    _ability.global = _data.global
     _ability.scene = load("res://Scene/Perfabs/Abilitys/%s.tscn" % _data.scene_name)
     
     return _ability
