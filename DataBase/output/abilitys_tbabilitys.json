@@ -4,35 +4,83 @@
     "name": "暴风雪",
     "desc": "释放暴风雪，在范围内造成 AOE 伤害。",
     "icon_path": "res://icon.svg",
+    "global": true,
     "cooldown": 1,
     "casting_time": 0,
-    "script_name": "SnowStorms"
+    "running_time": 5,
+    "long": false,
+    "scene_name": "SnowStorms"
   },
   {
     "id": 4002,
     "name": "火球术",
     "desc": "释放一个火球。",
     "icon_path": "res://icon.svg",
+    "global": false,
     "cooldown": 1,
     "casting_time": 0,
-    "script_name": "FireBall"
+    "running_time": 5,
+    "long": false,
+    "scene_name": "FireBall"
   },
   {
     "id": 4003,
     "name": "相位猛冲",
-    "desc": "开冲！速度 +200，持续 3 秒。",
+    "desc": "开冲！速度 +200，持续 5 秒。",
     "icon_path": "res://icon.svg",
+    "global": false,
     "cooldown": 1,
     "casting_time": 0,
-    "script_name": "Rush"
+    "running_time": 5,
+    "long": false,
+    "scene_name": "Rush"
   },
   {
     "id": 4004,
     "name": "旋风斩",
     "desc": "释放旋风斩，造成 AOE 伤害。持续 5 秒。",
     "icon_path": "res://icon.svg",
+    "global": false,
     "cooldown": 1,
     "casting_time": 0,
-    "script_name": "WhirlWind"
+    "running_time": 5,
+    "long": false,
+    "scene_name": "WhirlWind"
+  },
+  {
+    "id": 4005,
+    "name": "暴击时释放",
+    "desc": "暴击时释放绑定的辅助技能。",
+    "icon_path": "res://icon.svg",
+    "global": false,
+    "cooldown": 1,
+    "casting_time": 0,
+    "running_time": 0,
+    "long": true,
+    "scene_name": "CastOnCritical"
+  },
+  {
+    "id": 4006,
+    "name": "引导时释放",
+    "desc": "引导时释放绑定的辅助技能。",
+    "icon_path": "res://icon.svg",
+    "global": false,
+    "cooldown": 1,
+    "casting_time": 0,
+    "running_time": 0,
+    "long": true,
+    "scene_name": "CastOnCasting"
+  },
+  {
+    "id": 4007,
+    "name": "击中时施加诅咒",
+    "desc": "击中时为敌人增加绑定的诅咒。",
+    "icon_path": "res://icon.svg",
+    "global": false,
+    "cooldown": 1,
+    "casting_time": 0,
+    "running_time": 0,
+    "long": true,
+    "scene_name": "BuffOnHit"
   }
 ]

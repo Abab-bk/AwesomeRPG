@@ -1,4 +1,4 @@
-extends Node2D
+extends AbilityScene
 
 @onready var timer:Timer = $Timer
 @onready var shadow_timer:Timer = $ShadowTimer
@@ -16,5 +16,3 @@ func _ready() -> void:
 #    shadow_timer.start()
     $Sprite2D/SimpleHitBoxComponent.damage = 50
     $AnimationPlayer.play("run")
-    await timer.timeout
-    queue_free()

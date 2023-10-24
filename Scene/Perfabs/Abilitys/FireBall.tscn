@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://de7pxfa272kmn"]
+[gd_scene load_steps=7 format=3 uid="uid://de7pxfa272kmn"]
 
+[ext_resource type="Script" path="res://Script/Perfabs/Bullets/FireBall1.gd" id="1_3bp2f"]
 [ext_resource type="Script" path="res://Script/Perfabs/Bullets/FireBall.gd" id="1_605p5"]
 [ext_resource type="Texture2D" uid="uid://bb0has5er2vg2" path="res://Assets/Texture/Characters/red_character.png" id="1_gkbsb"]
 [ext_resource type="Script" path="res://Script/Component/VisiableQueueFreeComponent.gd" id="4_2rcw5"]
@@ -8,19 +9,22 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_q4bkt"]
 radius = 38.0132
 
-[node name="FireBall" type="CharacterBody2D"]
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_3bp2f")
+
+[node name="FireBall2" type="CharacterBody2D" parent="."]
 script = ExtResource("1_605p5")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="FireBall2"]
 texture = ExtResource("1_gkbsb")
 
-[node name="VisiableQueueFreeComponent" type="VisibleOnScreenNotifier2D" parent="." node_paths=PackedStringArray("actor")]
+[node name="VisiableQueueFreeComponent" type="VisibleOnScreenNotifier2D" parent="FireBall2" node_paths=PackedStringArray("actor")]
 scale = Vector2(5.6, 5.6)
 script = ExtResource("4_2rcw5")
 actor = NodePath("..")
 
-[node name="SimpleHitBoxComponent" type="Area2D" parent="."]
+[node name="SimpleHitBoxComponent" type="Area2D" parent="FireBall2"]
 script = ExtResource("4_iqa63")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SimpleHitBoxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FireBall2/SimpleHitBoxComponent"]
 shape = SubResource("CircleShape2D_q4bkt")

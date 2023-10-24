@@ -1,13 +1,11 @@
-extends Node2D
+extends AbilityScene
 
 var temp
-var actor:Player
 
 func _ready() -> void:
     temp = actor.data.speed
     actor.data.speed += 200
-    
-    await $Timer.timeout
-    
+
+func timeout() -> void:
     actor.data.speed = temp
-    queue_free()
+    super()

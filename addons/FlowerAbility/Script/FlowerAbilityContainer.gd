@@ -26,6 +26,11 @@ func _init_a_ability(_ability:FlowerAbility) -> void:
         add_child(_casting_timer)
         _ability._casting_timer = _casting_timer
     
+    if not _ability.running_time <= 0.0:
+        var _running_timer:Timer = _build_a_timer(_ability.running_time)
+        add_child(_running_timer)
+        _ability._running_timer = _running_timer
+    
     _ability._cooldown_timer = _cool_down_timer
     _ability.connect_signal()
 

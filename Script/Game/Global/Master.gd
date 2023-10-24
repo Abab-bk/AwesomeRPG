@@ -43,7 +43,8 @@ func get_quest_by_id(_id:int) -> QuestResource:
 
 func get_ability_by_id(_id:int) -> FlowerAbility:
     var _data = abilitys[_id]
-    var _ability:FlowerAbility = load("res://Script/Abilitys/%s.gd" % _data["script_name"]).new()
+    var _ability:FlowerAbility = FlowerAbility.new()
+#    var _ability:FlowerAbility = load("res://Script/Abilitys/%s.gd" % _data["script_name"]).new()
     
     _ability.id = _data.id
     _ability.name = _data.name
@@ -51,15 +52,18 @@ func get_ability_by_id(_id:int) -> FlowerAbility:
     _ability.icon_path = _data.icon_path
     _ability.cooldown = _data.cooldown
     _ability.casting_time = _data.casting_time
+    _ability.running_time = _data.running_time
+    _ability.scene = load("res://Scene/Perfabs/Abilitys/%s.tscn" % _data.scene_name)
     
     return _ability
 
 func get_random_ability_id() -> int:
-    return abilitys[randi_range(abilitys_start, abilitys_end)]
+    return abilitys[randi_range(abilitys_start, abilitys_end)]["id"]
 
 func get_random_ability() -> FlowerAbility:
     var _data = abilitys[randi_range(abilitys_start, abilitys_end)]
-    var _ability:FlowerAbility = load("res://Script/Abilitys/%s.gd" % _data["script_name"]).new()
+#    var _ability:FlowerAbility = load("res://Script/Abilitys/%s.gd" % _data["scene_name"]).new()
+    var _ability:FlowerAbility = FlowerAbility.new()
     
     _ability.id = _data.id
     _ability.name = _data.name
@@ -67,6 +71,8 @@ func get_random_ability() -> FlowerAbility:
     _ability.icon_path = _data.icon_path
     _ability.cooldown = _data.cooldown
     _ability.casting_time = _data.casting_time
+    _ability.running_time = _data.running_time
+    _ability.scene = load("res://Scene/Perfabs/Abilitys/%s.tscn" % _data.scene_name)
     
     return _ability
 

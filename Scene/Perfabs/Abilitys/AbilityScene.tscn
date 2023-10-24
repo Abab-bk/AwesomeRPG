@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ko0x1u7aexid"]
+
+[ext_resource type="Script" path="res://Script/Perfabs/Abilitys/AbilityScene.gd" id="1_dvjw7"]
+
+[node name="AbilityScene" type="Node2D"]
+script = ExtResource("1_dvjw7")

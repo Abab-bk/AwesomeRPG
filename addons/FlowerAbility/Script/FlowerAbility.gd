@@ -6,6 +6,11 @@ class_name FlowerAbility extends Resource
 @export var icon_path:String
 @export var cooldown:float
 @export var casting_time:float
+@export var running_time:float
+@export var long:bool = false
+@export var global:bool = false
+@export var scene:PackedScene
+var real_scene:AbilityScene
 
 var ability_container:FlowerAbilityContainer
 
@@ -24,6 +29,7 @@ enum STATE {
 
 var _cooldown_timer:Timer
 var _casting_timer:Timer
+var _running_timer:Timer
 
 var current_state:STATE = STATE.IDLE
 var actor:Node
@@ -34,7 +40,11 @@ func get_cooldown_left() -> float:
 func connect_signal() -> void:
     if _casting_timer:
         _casting_timer.timeout.connect(func():)
-    _cooldown_timer.timeout.connect(_cooldown_ok)
+    if _running_timer:
+        _running_timer.timeout.connect(un_active)
+    if _cooldown_timer:
+        _cooldown_timer.timeout.connect(_cooldown_ok)
+    
     current_state = STATE.IDLE
     EventBus.sub_ability_changed.connect(func(_ability_id:int, _sub_ability:Array):
         if not _ability_id == id:
@@ -71,9 +81,20 @@ func active() -> void:
     for i in sub_ability:
         i.active()
     
+    if global:
+        real_scene = scene.instantiate()
+        real_scene.actor = actor
+        Master.world.add_child(real_scene)
+    else:
+        real_scene = scene.instantiate()
+        real_scene.actor = actor
+        actor.add_child(real_scene)
+    
+    _running_timer.start()
     ## CUSTOME
 
 func un_active() -> void:
     ## CUSTOME
+    real_scene.timeout()
     current_state = STATE.COOLDOWN
     _cooldown_timer.start()

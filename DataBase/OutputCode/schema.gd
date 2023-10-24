@@ -116,18 +116,24 @@ class Abilitys:
     var name: String
     var desc: String
     var icon_path: String
+    var global: bool
     var cooldown: float
     var casting_time: float
-    var script_name: String
+    var running_time: float
+    var long: bool
+    var scene_name: String
 
     func _init(_json_) -> void:
         self.id = _json_["id"]
         self.name = _json_["name"]
         self.desc = _json_["desc"]
         self.icon_path = _json_["icon_path"]
+        self.global = _json_["global"]
         self.cooldown = _json_["cooldown"]
         self.casting_time = _json_["casting_time"]
-        self.script_name = _json_["script_name"]
+        self.running_time = _json_["running_time"]
+        self.long = _json_["long"]
+        self.scene_name = _json_["scene_name"]
 
 
 class Quests:
