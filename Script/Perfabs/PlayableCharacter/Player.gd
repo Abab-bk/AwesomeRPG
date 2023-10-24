@@ -91,6 +91,8 @@ func _ready() -> void:
     Master.player_data = flower_buff_manager.output_data
     
     compute()
+    
+    $Sprite2D/Weapons/WeaponComponent.set_dis_target(self)
 
 func rebuild_skills() -> void:
     ability_container.ability_list = []

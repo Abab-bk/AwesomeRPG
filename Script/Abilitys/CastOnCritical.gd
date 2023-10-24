@@ -1,6 +1,7 @@
-extends FlowerAbility
+extends AbilityScene
 
-func active() -> void:
-    super()
+func _ready() -> void:
     
-    un_active()
+    
+    
+    pass

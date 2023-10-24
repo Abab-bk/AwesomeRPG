@@ -12,6 +12,9 @@ signal animation_ok
 func _ready() -> void:
     $Sprite2D.rotation = 110.0
 
+func set_dis_target(_target:Node2D) -> void:
+    $Sprite2D/HitBoxComponent.disable_target = _target
+
 func run(speed:float) -> void:
     if tween:
         tween.kill()

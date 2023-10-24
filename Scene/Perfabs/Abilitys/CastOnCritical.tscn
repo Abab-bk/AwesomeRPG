@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://pxsausx7atij"]
+
+[ext_resource type="Script" path="res://Script/Abilitys/CastOnCritical.gd" id="1_5p588"]
+
+[node name="CastOnCritical" type="Node2D"]
+script = ExtResource("1_5p588")
