@@ -1,8 +1,10 @@
 extends Control
 
-@onready var items_ui:GridContainer = %Items
-@onready var cancel_btn:Button = %CancelBtn
 @onready var slots_ui:GridContainer = %Slots
+@onready var items_ui:GridContainer = %Items
+
+@onready var cancel_btn:Button = %CancelBtn
+@onready var recycle_btn:Button = %RecycleBtn
 
 @export var inventory:Inventory
 
@@ -32,6 +34,12 @@ func _ready() -> void:
             EventBus.change_item_tooltip_state.emit(null)
             update_ui()
             )
+    
+    recycle_btn.pressed.connect(func():
+        var _panel:ColorRect = Builder.build_a_recycle_panel()
+        _panel.inventory = inventory
+        add_child(_panel)
+        )
     
     cancel_btn.pressed.connect(func():
         SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))

@@ -110,6 +110,7 @@ columns = 6
 layout_mode = 2
 
 [node name="RecycleBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "一键回收"
 
@@ -123,68 +124,3 @@ text = "返回"
 [node name="ItemToolTip" parent="." instance=ExtResource("3_87o5i")]
 visible = false
 layout_mode = 0
-
-[node name="RecyclePanel" type="Panel" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -462.0
-offset_top = -507.0
-offset_right = 462.0
-offset_bottom = 507.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="RecyclePanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
-
-[node name="VBoxContainer" type="VBoxContainer" parent="RecyclePanel/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="RecyclePanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "自动回收"
-label_settings = ExtResource("4_2udfe")
-horizontal_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="RecyclePanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 10
-
-[node name="Normal" type="CheckBox" parent="RecyclePanel/MarginContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "普通品质"
-
-[node name="Normal2" type="CheckBox" parent="RecyclePanel/MarginContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "魔法品质"
-
-[node name="Normal3" type="CheckBox" parent="RecyclePanel/MarginContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "稀有品质"
-
-[node name="Normal4" type="CheckBox" parent="RecyclePanel/MarginContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "传奇品质"
-
-[node name="Normal5" type="CheckBox" parent="RecyclePanel/MarginContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-text = "暗金品质"
-
-[node name="YesBtn" type="Button" parent="RecyclePanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "确认回收"

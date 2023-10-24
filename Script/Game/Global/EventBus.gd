@@ -8,6 +8,8 @@ signal update_inventory
 signal change_item_tooltip_state(item:InventoryItem)
 signal show_popup(title:String, desc:String, show_cancel_btn:bool, yes_event:Callable, cancel_event:Callable)
 signal show_select_skills_panel(target:Panel)
+signal show_color
+signal hide_color
 signal selected_skills_on_panel
 signal unlocked_ability(id:int)
 signal sub_ability_changed(_ability_id:int, _sub_ability:Array)

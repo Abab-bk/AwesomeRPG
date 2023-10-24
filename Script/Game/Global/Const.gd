@@ -17,6 +17,6 @@ enum EQUIPMENT_QUALITY {
     NORMAL,
     BLUE,
     YELLOW,
-    DEEP_YELLO,
+    DEEP_YELLOW,
     GOLD
 }

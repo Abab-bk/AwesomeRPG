@@ -45,7 +45,7 @@ func _ready() -> void:
             Const.EQUIPMENT_QUALITY.YELLOW:
                 rate_label.text += "魔法"
                 color.texture = load("res://Assets/UI/Texture/Color3.png")
-            Const.EQUIPMENT_QUALITY.DEEP_YELLO:
+            Const.EQUIPMENT_QUALITY.DEEP_YELLOW:
                 rate_label.text += "传奇"
                 color.texture = load("res://Assets/UI/Texture/Color1.png")
             Const.EQUIPMENT_QUALITY.GOLD:

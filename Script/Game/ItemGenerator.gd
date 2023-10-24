@@ -42,7 +42,7 @@ func gen_a_item() -> InventoryItem:
             count = 1
         Const.EQUIPMENT_QUALITY.YELLOW:
             count = randi_range(3, 4)
-        Const.EQUIPMENT_QUALITY.DEEP_YELLO:
+        Const.EQUIPMENT_QUALITY.DEEP_YELLOW:
             count = 5
         Const.EQUIPMENT_QUALITY.GOLD:
             count = 5

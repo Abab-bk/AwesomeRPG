@@ -56,6 +56,8 @@ func _ready() -> void:
         _panel.target_skill_panel = _target
         add_child(_panel)
         )
+    EventBus.show_color.connect(show_color_rect)
+    EventBus.hide_color.connect(hide_color_rect)
     
     backed_to_home.connect(func():quest_panel.show())
     changed_to_other.connect(func():quest_panel.hide())
