@@ -60,4 +60,7 @@ func gen_a_item() -> InventoryItem:
     for i in _new_item.buf_affix:
         _new_item.name += i.name
     
+    # 物品价格公式
+    _new_item.price = (int(quality) + 1) * 10 * count
+    
     return _new_item

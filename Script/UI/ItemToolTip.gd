@@ -5,7 +5,10 @@ extends Panel
 
 @onready var color:NinePatchRect = %Color
 
+@onready var price_label:Label = %PriceLabel
 @onready var title_label:Label = %TitleLabel
+@onready var rate_label:Label = %RateLabel
+
 @onready var use_btn:Button = %UseBtn
 
 var item:InventoryItem
@@ -30,18 +33,30 @@ func _ready() -> void:
         
         down_state = _down
         
+        rate_label.text = ""
+        
         match _item.quality:
             Const.EQUIPMENT_QUALITY.NORMAL:
                 color.texture = load("res://Assets/UI/Texture/Color4.png")
+                rate_label.text += "普通"
             Const.EQUIPMENT_QUALITY.BLUE:
+                rate_label.text += "稀有"
                 color.texture = load("res://Assets/UI/Texture/Color2.png")
             Const.EQUIPMENT_QUALITY.YELLOW:
+                rate_label.text += "魔法"
                 color.texture = load("res://Assets/UI/Texture/Color3.png")
             Const.EQUIPMENT_QUALITY.DEEP_YELLO:
+                rate_label.text += "传奇"
                 color.texture = load("res://Assets/UI/Texture/Color1.png")
             Const.EQUIPMENT_QUALITY.GOLD:
+                rate_label.text += "暗金"
                 color.texture = load("res://Assets/UI/Texture/Color1.png")
-          
+        
+        # HACK: 待优化
+        rate_label.text += str(Const.EQUIPMENT_TYPE.keys()[_item.type])
+        
+        price_label.text = "%s $" % str(_item.price)
+        
         global_position = get_global_mouse_position()
         # TODO: 计算窗口位置
 #        print(DisplayServer.window_get_size())

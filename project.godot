@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="AwesomeRPG"
-run/main_scene="res://Scene/UI/BootSplash.tscn"
+run/main_scene="res://Scene/World.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 boot_splash/show_image=false
 boot_splash/fullsize=false

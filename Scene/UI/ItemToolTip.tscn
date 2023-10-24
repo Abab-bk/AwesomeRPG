@@ -92,6 +92,7 @@ autowrap_mode = 1
 clip_text = true
 
 [node name="RateLabel" type="Label" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "远古传奇铁盒"
 label_settings = ExtResource("6_puf0u")
@@ -105,9 +106,10 @@ layout_mode = 2
 text = "730 + 25 物品强度"
 label_settings = ExtResource("7_jb6d8")
 
-[node name="RateLabel3" type="Label" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="PriceLabel" type="Label" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "升级：5/5"
+text = "888 $"
 label_settings = ExtResource("8_d5gr0")
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer"]

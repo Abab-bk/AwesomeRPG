@@ -8,3 +8,4 @@ class_name InventoryItem extends Resource
 @export var num:int = 1
 @export var type:Const.EQUIPMENT_TYPE
 @export var quality:Const.EQUIPMENT_QUALITY
+@export var price:int = 0
