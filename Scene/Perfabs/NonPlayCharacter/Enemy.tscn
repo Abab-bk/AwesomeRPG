@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dx27klpp0nc4x"]
+[gd_scene load_steps=21 format=3 uid="uid://dx27klpp0nc4x"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/NonPlayableCharacter/Enemy.gd" id="1_jkjmt"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_6wwaj"]
@@ -7,15 +7,12 @@
 [ext_resource type="Script" path="res://addons/FlowerBuff/Script/FlowerBuffManager.gd" id="2_jei58"]
 [ext_resource type="PackedScene" uid="uid://cwrtaokg2sgt6" path="res://Scene/Component/WeaponComponent.tscn" id="3_ufpvg"]
 [ext_resource type="Script" path="res://Script/Component/PathfindComponent.gd" id="4_e4v6d"]
-[ext_resource type="Script" path="res://Script/Component/ConductorComponent.gd" id="4_wpuqm"]
 [ext_resource type="Script" path="res://Script/Component/HealthComponent.gd" id="5_bho0k"]
 [ext_resource type="Resource" uid="uid://p3ihvfils2o" path="res://Assets/Resources/Datas/Enemys/NormalEnemy.tres" id="5_iftaj"]
 [ext_resource type="Script" path="res://Script/Component/HurtBoxComponent.gd" id="6_sc1tl"]
-[ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="8_6dat1"]
 [ext_resource type="Script" path="res://Script/Component/VisionComponent.gd" id="11_vux65"]
 [ext_resource type="Script" path="res://Script/Component/AtkRangeComponent.gd" id="12_21xly"]
 [ext_resource type="Texture2D" uid="uid://dslvgplb0lb00" path="res://Assets/Texture/Characters/green_character.png" id="14_8n3h7"]
-[ext_resource type="PackedScene" uid="uid://c1g2h8rr2vuds" path="res://Scene/Behavior/NormalEnemyBehavior.tscn" id="14_15x1o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3mlrj"]
 radius = 37.054
@@ -131,15 +128,6 @@ libraries = {
 [node name="ItemGenerator" type="Node" parent="."]
 script = ExtResource("2_032p5")
 
-[node name="ConductorComponent" type="Node" parent="." node_paths=PackedStringArray("blackboard", "buff_manager", "atk_range", "vision", "weapons", "atk_cd_timer")]
-script = ExtResource("4_wpuqm")
-blackboard = NodePath("../Blackboard")
-buff_manager = NodePath("../FlowerBuffManager")
-atk_range = NodePath("../AtkRange")
-vision = NodePath("../VisionComponent")
-weapons = NodePath("../Sprite2D/Weapons")
-atk_cd_timer = NodePath("../AtkCDTimer")
-
 [node name="FlowerBuffManager" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("2_jei58")
 target = NodePath("..")
@@ -172,12 +160,6 @@ health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
 shape = SubResource("CircleShape2D_u6wmr")
-
-[node name="NormalEnemyBehavior" parent="." node_paths=PackedStringArray("blackboard") instance=ExtResource("14_15x1o")]
-blackboard = NodePath("../Blackboard")
-
-[node name="Blackboard" type="Node" parent="."]
-script = ExtResource("8_6dat1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("14_8n3h7")
