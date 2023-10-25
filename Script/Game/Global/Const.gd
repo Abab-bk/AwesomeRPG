@@ -13,6 +13,16 @@ enum EQUIPMENT_TYPE {
     武器
 }
 
+enum WEAPONS_TYPE {
+    Sword,
+    Axe,
+    Bow,
+    Hammer,
+    Spear,
+    Staff,
+    Shield
+}
+
 enum EQUIPMENT_QUALITY {
     NORMAL,
     BLUE,

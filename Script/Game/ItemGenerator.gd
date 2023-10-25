@@ -1,5 +1,34 @@
 class_name ItemGenerator extends Node
 
+
+const AXES:Array[String] = [
+    "res://Assets/Texture/Weapons/weapon_arrow.png", "res://Assets/Texture/Weapons/weapon_axe.png", "res://Assets/Texture/Weapons/weapon_axe_blades.png", "res://Assets/Texture/Weapons/weapon_axe_double.png", "res://Assets/Texture/Weapons/weapon_axe_large.png"
+]
+const BOWS:Array[String] = [
+    "res://Assets/Texture/Weapons/weapon_bow.png", "res://Assets/Texture/Weapons/weapon_bow_arrow.png"
+]
+const DAGGERS:Array[String] = [
+    "res://Assets/Texture/Weapons/weapon_dagger.png"
+]
+const HAMMERS:Array[String] = [
+    "res://Assets/Texture/Weapons/weapon_hammer.png"
+]
+const SWORDS:Array[String] = [
+    "res://Assets/Texture/Weapons/weapon_longsword.png", "res://Assets/Texture/Weapons/weapon_sword.png"
+]
+const POLES:Array[String] = [
+    "res://Assets/Texture/Weapons/weapon_pole.png"
+]
+const SPEARS:Array[String] = [
+    "res://Assets/Texture/Weapons/weapon_spear.png"
+]
+const STAFFS:Array[String] = [
+    "res://Assets/Texture/Weapons/weapon_staff.png"
+]
+const SHIELDS:Array[String] = [
+    "res://Assets/Texture/Weapons/shield_curved.png", "res://Assets/Texture/Weapons/shield_straight.png"
+]
+
 func gen_a_item() -> InventoryItem:
     # 掉落装备
     var _new_item:InventoryItem = InventoryItem.new()
@@ -26,6 +55,24 @@ func gen_a_item() -> InventoryItem:
         Const.EQUIPMENT_TYPE.戒指:
             _new_item.name += "戒指"
         Const.EQUIPMENT_TYPE.武器:
+            _new_item.weapon_type = Const.WEAPONS_TYPE.values()[randi() % Const.WEAPONS_TYPE.size()]
+            
+            match _new_item.weapon_type:
+                Const.WEAPONS_TYPE.Sword:
+                    _new_item.texture_path = SWORDS[randi_range(0, SWORDS.size() - 1)]
+                Const.WEAPONS_TYPE.Axe:
+                    _new_item.texture_path = AXES[randi_range(0, AXES.size() - 1)]
+                Const.WEAPONS_TYPE.Bow:
+                    _new_item.texture_path = BOWS[randi_range(0, BOWS.size() - 1)]
+                Const.WEAPONS_TYPE.Hammer:
+                    _new_item.texture_path = HAMMERS[randi_range(0, HAMMERS.size() - 1)]
+                Const.WEAPONS_TYPE.Spear:
+                    _new_item.texture_path = SPEARS[randi_range(0, SPEARS.size() - 1)]
+                Const.WEAPONS_TYPE.Staff:
+                    _new_item.texture_path = STAFFS[randi_range(0, STAFFS.size() - 1)]
+                Const.WEAPONS_TYPE.Shield:
+                    _new_item.texture_path = SHIELDS[randi_range(0, SHIELDS.size() - 1)]
+            
             _new_item.name += "武器"
     
     # 随机掉落词缀数量

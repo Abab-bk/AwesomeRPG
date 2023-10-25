@@ -1,5 +1,7 @@
 class_name Player extends CharacterBody2D
 
+# TODO: 优化玩家寻找敌人逻辑
+
 @onready var ability_container:FlowerAbilityContainer = $FlowerAbilityContainer
 @onready var flower_buff_manager:FlowerBuffManager = $FlowerBuffManager
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
