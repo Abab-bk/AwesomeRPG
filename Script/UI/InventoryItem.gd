@@ -12,6 +12,10 @@ func _ready() -> void:
         EventBus.change_item_tooltip_state.emit(item)
         )
 
+func clean() -> void:
+    item = null
+    update_ui()
+
 func update_ui() -> void:
     if not item:
         texture.texture = null

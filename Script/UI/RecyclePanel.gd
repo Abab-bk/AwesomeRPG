@@ -18,16 +18,15 @@ func _ready() -> void:
             )
     
     yes_btn.pressed.connect(func():
-        # FIXME: 回收装备 - 不正常
-        print(_types)
         for _type in _types:
             for _item in inventory.items:
-                if _item.type == _type:
-                    Master.coins += _item.price
-                    print("移除物品：", _item.name)
-                    inventory.remove_item(_item)
+                if not _item.quality == _type:
+                    continue
+                    
+                Master.coins += _item.price
+                inventory.remove_item(_item)
         EventBus.update_inventory.emit()
-        )
+            )
     
     cancel_btn.pressed.connect(func():
         SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))

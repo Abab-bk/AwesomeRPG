@@ -54,8 +54,11 @@ func set_bag() -> void:
         var _n = Builder.build_a_inventory_item()
         items_ui.add_child(_n)
 
-func update_ui() -> void:    
-    for item in inventory.items:
+func update_ui() -> void:
+    for item in items_ui.get_children():
+        item.clean()
+    
+    for item in inventory.items:  
         var item_ui = items_ui.get_child(inventory.items.find(item))
         item_ui.item = item
         item_ui.update_ui()
