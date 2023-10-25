@@ -40,7 +40,7 @@ func _ready() -> void:
     vision_component.target = Master.player
     
     data = buff_manager.compute_data
-    # 设置属性 （每个敌人 ready 都是生成）
+    # 设置属性 （每个敌人 ready 都是生成时）
     var _level:int = 1
     
     if Master.player.get_level() >= 5:
@@ -74,6 +74,7 @@ func die() -> void:
 
 func set_level(_value:int) -> void:
     data.level = _value
+    data.set_property_from_level()
 
 func _physics_process(_delta:float) -> void:
     if current_state == STATE.PATROL:

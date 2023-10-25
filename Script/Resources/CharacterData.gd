@@ -16,9 +16,18 @@ signal hp_is_zero
 @export var max_hp:float
 @export var magic:float
 @export var max_magic:float
-@export var strength:int
-@export var wisdom:int
-@export var agility:int
+@export var strength:int:
+    set(v):
+        defense += v - strength
+        strength = v
+@export var wisdom:int:
+    set(v):
+        max_magic += v - wisdom
+        wisdom = v
+@export var agility:int:
+    set(v):
+        evasion += ((v - agility) * 0.025)
+        agility = v
 @export var luck:float
 @export var speed:float
 @export var damage:float
@@ -52,11 +61,24 @@ func load_save(_save:Dictionary) -> void:
 
 # TODO: 设置属性从等级
 func set_property_from_level() -> void:
-    hp += float(level) / 2
-    max_hp += float(level) / 2
-    magic += float(level) / 2
-    strength += float(level) / 2 as int
-    wisdom += float(level) / 2 as int
+    max_hp += level * 6
+    max_magic += level * 3
+    evasion += level
+    
+    strength = level
+    wisdom = level
+    agility = level
+
+func level_up() -> void:
+    level += 1
+    
+    max_hp += 6
+    max_magic += 3
+    evasion += 1
+    
+    strength += 1
+    wisdom += 1
+    agility += 1
 
 func update_next_xp() -> void:
     if level % 15 == 0:

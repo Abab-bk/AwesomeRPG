@@ -125,7 +125,7 @@ func get_level() -> int:
 
 # ======= 属性 ========
 func up_level() -> void:
-    data.level += 1
+    data.level_up()
     data.now_xp = 0
     data.update_next_xp()
     EventBus.player_level_up.emit()

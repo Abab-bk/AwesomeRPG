@@ -3,24 +3,20 @@
 [sub_resource type="GDScript" id="GDScript_bfhvf"]
 script/source = "extends Node2D
 
-const file_path:String = \"user://test.save\"
+signal xx
 
-var dic:Dictionary = {}
+var value:String = \"原始值\"
 
 func _ready() -> void:
-    if FileAccess.file_exists(file_path):
-        var file = FileAccess.open(file_path, FileAccess.READ)
-        dic = file.get_var(true)
-    else:
-        var file = FileAccess.open(file_path, FileAccess.WRITE)
-        var _xx = FlowerAbility.new()
-        _xx.name = \"小王\"
-        dic[\"ok\"] = _xx
-        
-        file.store_var(dic, true)
-        file.close()
     
-    print(dic[\"ok\"][\"name\"])
+    xx.connect(func():
+        value = \"修改\")
+    
+    print(value)
+    
+    xx.emit()
+    
+    print(value)
 "
 
 [node name="Test" type="Node2D"]
