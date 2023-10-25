@@ -57,11 +57,13 @@ func _ready() -> void:
         
         price_label.text = "%s $" % str(_item.price)
         
-        global_position = get_global_mouse_position()
-        # TODO: 计算窗口位置
-#        print(DisplayServer.window_get_size())
-#        if Vector2i((global_position + size)) > DisplayServer.window_get_size():
-#            global_position = global_position - size
+        global_position = get_global_mouse_position() + Vector2(50, 50)
+        
+        if Vector2i((global_position + size)).x > get_viewport_rect().size.x:
+            global_position.x = global_position.x - size.x
+        
+        if Vector2i((global_position + size)).y > get_viewport_rect().size.y:
+            global_position.y = global_position.y - size.y
         
         item = _item
         show()

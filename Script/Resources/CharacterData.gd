@@ -59,7 +59,6 @@ func load_save(_save:Dictionary) -> void:
     for i in _save:
         self[str(i)] = _save[i]
 
-# TODO: 设置属性从等级
 func set_property_from_level() -> void:
     max_hp += level * 6
     max_magic += level * 3

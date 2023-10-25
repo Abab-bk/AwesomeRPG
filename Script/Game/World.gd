@@ -8,8 +8,8 @@ func _ready() -> void:
      
     SoundManager.play_music(load(Master.BGM), 0, "Music")
     
-    if not save:
-        return
-    if SaveSystem.has("Player"):
-        print("读档！")
-        EventBus.load_save.emit()
+#    if not save:
+#        return
+#    if SaveSystem.has("Player"):
+#        print("读档！")
+#        EventBus.load_save.emit()
