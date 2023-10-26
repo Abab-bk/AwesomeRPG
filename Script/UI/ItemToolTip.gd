@@ -52,7 +52,6 @@ func _ready() -> void:
                 rate_label.text += "暗金"
                 color.texture = load("res://Assets/UI/Texture/Color1.png")
         
-        # HACK: 待优化
         rate_label.text += str(Const.EQUIPMENT_TYPE.keys()[_item.type])
         
         price_label.text = "%s $" % str(_item.price)
