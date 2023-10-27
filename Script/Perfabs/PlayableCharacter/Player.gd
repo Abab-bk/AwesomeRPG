@@ -1,5 +1,7 @@
 class_name Player extends CharacterBody2D
 
+signal criticaled
+
 # TODO: 优化玩家寻找敌人逻辑
 
 @onready var ability_container:FlowerAbilityContainer = $FlowerAbilityContainer
@@ -7,6 +9,7 @@ class_name Player extends CharacterBody2D
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
 @onready var hurt_box_collision:CollisionShape2D = $HurtBoxComponent/CollisionShape2D
 @onready var atk_cd_timer:Timer = $AtkCDTimer
+@onready var weapon_component:Node2D = $Sprite2D/Weapons/WeaponComponent
 
 var data:CharacterData
 var target:Vector2 = global_position
@@ -91,6 +94,8 @@ func _ready() -> void:
         )
 #    flower_buff_manager.a_buff_removed
     
+    weapon_component.criticaled.connect(func(): EventBus.player_criticaled.emit())
+    
     data = flower_buff_manager.compute_data as CharacterData
     flower_buff_manager.output_data = data.duplicate(true)
     atk_cd_timer.wait_time = data.atk_speed
@@ -98,7 +103,7 @@ func _ready() -> void:
     
     compute()
     
-    $Sprite2D/Weapons/WeaponComponent.set_dis_target(self)
+    weapon_component.set_dis_target(self)
 
 func rebuild_skills() -> void:
     ability_container.ability_list = []

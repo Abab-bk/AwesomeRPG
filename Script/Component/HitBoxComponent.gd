@@ -2,6 +2,7 @@
 class_name HitBoxComponent extends Area2D
 
 signal handled_hit
+signal criticaled
 
 var buff_manager:FlowerBuffManager:
     set(_v):
@@ -45,7 +46,8 @@ func handle_damage(body:Node) -> void:
         
         if is_critical:
             critical_damage = 1.0 + data.critical_rate * data.critical_damage
-#            print("暴击！额外造成伤害：", critical_damage)
+            criticaled.emit()
+            print("暴击！额外造成伤害：", critical_damage)
         
         var sheet_damage:float = root_stats * base_damage * \
         (critical_damage)

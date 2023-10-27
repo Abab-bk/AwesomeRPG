@@ -78,20 +78,37 @@ func active() -> void:
     if current_state != STATE.RUNNING:
         return
     
+    # HACK: 待优化 COC
+    # Tags: 在这里修改特殊技能（暴击时释放等）
+    if id == 4005:
+        real_scene = scene.instantiate() as AbilityScene
+        real_scene.actor = actor
+        real_scene.ability_data = self
+        actor.add_child(real_scene)
+        return
+    
     for i in sub_ability:
         i.active()
     
     if global:
-        real_scene = scene.instantiate()
+        real_scene = scene.instantiate() as AbilityScene
         real_scene.actor = actor
+        real_scene.ability_data = self
         Master.world.add_child(real_scene)
     else:
-        real_scene = scene.instantiate()
+        real_scene = scene.instantiate() as AbilityScene
         real_scene.actor = actor
+        real_scene.ability_data = self
         actor.add_child(real_scene)
     
     _running_timer.start()
     ## CUSTOME
+
+func active_sub_abilitys() -> void:
+    print("激活子技能")
+    for i in sub_ability:
+        print("激活：", i.name)
+        i.active()
 
 func un_active() -> void:
     ## CUSTOME

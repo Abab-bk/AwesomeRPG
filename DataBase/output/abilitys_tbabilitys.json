@@ -46,5 +46,17 @@
     "running_time": 5,
     "long": false,
     "scene_name": "WhirlWind"
+  },
+  {
+    "id": 4005,
+    "name": "暴击时释放",
+    "desc": "暴击时释放绑定的辅助技能。",
+    "icon_path": "res://icon.svg",
+    "global": false,
+    "cooldown": 1,
+    "casting_time": 0,
+    "running_time": 0,
+    "long": true,
+    "scene_name": "CastOnCritical"
   }
 ]

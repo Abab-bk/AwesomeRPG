@@ -30,7 +30,7 @@ var quests:Dictionary
 var json_path:String = "res://DataBase/output/"
 
 const abilitys_start:int = 4001
-const abilitys_end:int = 4004
+const abilitys_end:int = 4005
 
 func get_quest_by_id(_id:int) -> QuestResource:
     var _quest:QuestResource = QuestResource.new()

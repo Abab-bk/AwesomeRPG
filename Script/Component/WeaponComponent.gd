@@ -1,5 +1,7 @@
 extends Node2D
 
+signal criticaled
+
 @export var buff_manager:FlowerBuffManager:
     set(v):
         buff_manager = v
@@ -10,6 +12,9 @@ signal animation_ok
 
 func _ready() -> void:
     $Sprite2D.rotation = 0.0
+    $Sprite2D/HitBoxComponent.criticaled.connect(func():
+        print("暴击，发送信号一次")
+        criticaled.emit())
 
 func set_dis_target(_target:Node2D) -> void:
     $Sprite2D/HitBoxComponent.disable_target = _target

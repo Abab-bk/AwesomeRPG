@@ -18,6 +18,7 @@ signal player_data_change
 
 signal coins_changed
 
+signal player_criticaled
 signal player_hited(damage:float)
 signal player_dead
 signal player_ability_change
