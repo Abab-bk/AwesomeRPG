@@ -165,6 +165,7 @@ func find_closest_enemy(_temp = 0) -> void:
             closest_enemy = enemy
         
         var enemy_distance = position.distance_to(enemy.position)
+        
         if enemy_distance < closest_distance:
             closest_distance = enemy_distance
             closest_enemy = enemy

@@ -1,7 +1,7 @@
 extends Node2D
 
-var max_enemy_count:int = 300
-var min_enemy_count:int = 5
+@export var max_enemy_count:int = 300
+@export var min_enemy_count:int = 5
 
 func _ready() -> void:
     EventBus.enemy_die.connect(gen_a_enemy)

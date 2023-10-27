@@ -62,14 +62,12 @@ func get_ability_by_id(_id:int) -> FlowerAbility:
     return _ability
 
 func get_random_ability_id() -> int:
-    var _rng:FairNG = FairNG.new(abilitys_end)
-    return abilitys[_rng.randi()]["id"]
-#    return abilitys[randi_range(abilitys_start, abilitys_end)]["id"]
+#    var _rng:FairNG = FairNG.new(abilitys_end)
+#    return abilitys[_rng.randi()]["id"]
+    return abilitys[randi_range(abilitys_start, abilitys_end)]["id"]
 
 func get_random_ability() -> FlowerAbility:
-    var _rng:FairNG = FairNG.new(abilitys_end)
-    var _data = abilitys[_rng.randi()]
-#    var _data = abilitys[randi_range(abilitys_start, abilitys_end)]
+    var _data = abilitys[randi_range(abilitys_start, abilitys_end)]
 #    var _ability:FlowerAbility = load("res://Script/Abilitys/%s.gd" % _data["scene_name"]).new()
     var _ability:FlowerAbility = FlowerAbility.new()
     

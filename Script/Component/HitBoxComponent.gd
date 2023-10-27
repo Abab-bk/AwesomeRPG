@@ -11,6 +11,8 @@ var buff_manager:FlowerBuffManager:
 
 @export var disable_target:Node2D
 
+var disable_target_group:String = ""
+
 var data:CharacterData
 
 func _ready() -> void:
@@ -26,6 +28,9 @@ func handle_damage(body:Node) -> void:
     if disable_target:
         if body.owner == disable_target:
             return
+    
+    if body.owner.is_in_group(disable_target_group):
+        return
     
     if body is HurtBoxComponent:
         

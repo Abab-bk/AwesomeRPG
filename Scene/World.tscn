@@ -185,6 +185,7 @@ rotation = 0.258933
 
 [node name="EnemyHome" type="Node2D" parent="."]
 script = ExtResource("4_22mer")
+min_enemy_count = 300
 
 [node name="Hud" parent="." instance=ExtResource("5_07fkt")]
 

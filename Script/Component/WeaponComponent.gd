@@ -14,6 +14,9 @@ func _ready() -> void:
 func set_dis_target(_target:Node2D) -> void:
     $Sprite2D/HitBoxComponent.disable_target = _target
 
+func set_dis_target_group(_target:String) -> void:
+    $Sprite2D/HitBoxComponent.disable_target_group = _target
+
 func run(atk_speed:float) -> void:
     var tween:Tween = create_tween().bind_node(self)
     

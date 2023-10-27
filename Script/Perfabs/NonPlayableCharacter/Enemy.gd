@@ -50,6 +50,9 @@ func _ready() -> void:
         _level = Master.player.get_level() - 3
     
     set_level(_level)
+    
+    $Sprite2D/Weapons/WeaponComponent.set_dis_target_group("Enemy")
+    
     buff_manager.compute()
 
 func move_to_player() -> void:
@@ -84,4 +87,4 @@ func _physics_process(_delta:float) -> void:
         move_to_player()
     
     move_and_slide()
-    hp_bar.value = (float(data.hp) / float(data.max_hp)) * 100.0
+#    hp_bar.value = (float(data.hp) / float(data.max_hp)) * 100.0
