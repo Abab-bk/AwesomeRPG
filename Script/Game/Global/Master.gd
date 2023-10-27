@@ -62,10 +62,14 @@ func get_ability_by_id(_id:int) -> FlowerAbility:
     return _ability
 
 func get_random_ability_id() -> int:
-    return abilitys[randi_range(abilitys_start, abilitys_end)]["id"]
+    var _rng:FairNG = FairNG.new(abilitys_end)
+    return abilitys[_rng.randi()]["id"]
+#    return abilitys[randi_range(abilitys_start, abilitys_end)]["id"]
 
 func get_random_ability() -> FlowerAbility:
-    var _data = abilitys[randi_range(abilitys_start, abilitys_end)]
+    var _rng:FairNG = FairNG.new(abilitys_end)
+    var _data = abilitys[_rng.randi()]
+#    var _data = abilitys[randi_range(abilitys_start, abilitys_end)]
 #    var _ability:FlowerAbility = load("res://Script/Abilitys/%s.gd" % _data["scene_name"]).new()
     var _ability:FlowerAbility = FlowerAbility.new()
     
@@ -84,7 +88,9 @@ func get_random_ability() -> FlowerAbility:
 # 生成随机词缀
 func get_random_affix() -> AffixItem:
     var _affix:AffixItem = AffixItem.new()
-    var _data = affixs[randi_range(0, affixs.size() - 1)]
+    var _rng:FairNG = FairNG.new(affixs.size() - 1)
+    var _data = affixs[_rng.randi()]
+#    var _data = affixs[randi_range(0, affixs.size() - 1)]
     
     _affix.name = _data.name
     _affix.target_buff_id = _data.target_buff_id

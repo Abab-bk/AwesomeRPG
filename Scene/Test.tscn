@@ -1,40 +1,106 @@
-[gd_scene load_steps=2 format=3 uid="uid://rye35gm77tbo"]
+[gd_scene load_steps=12 format=3 uid="uid://rye35gm77tbo"]
 
-[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_6hj2g"]
+[ext_resource type="Script" path="res://Script/Component/WeaponComponent.gd" id="1_putbt"]
+[ext_resource type="Texture2D" uid="uid://cgtj8kodii1q7" path="res://Assets/Texture/Weapons/weapon_axe.png" id="2_s2ngw"]
+[ext_resource type="Script" path="res://Script/Component/HurtBoxComponent.gd" id="2_se5db"]
+[ext_resource type="Script" path="res://Script/Component/SimpleHitBoxComponent.gd" id="3_4kxsg"]
+[ext_resource type="Script" path="res://addons/FlowerBuff/Script/FlowerBuffManager.gd" id="3_rtdr8"]
+[ext_resource type="Script" path="res://Script/Resources/CharacterData.gd" id="4_fr5oh"]
+[ext_resource type="Script" path="res://Script/Component/HealthComponent.gd" id="7_yay4h"]
 
-[node name="Control" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_6hj2g")
+[sub_resource type="GDScript" id="GDScript_y3g20"]
+script/source = "extends Node2D
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+func die() -> void:
+    print(\"死了\")
 
-[node name="Button" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "哈哈"
+func _ready() -> void:
+    for i in 10:
+        $WeaponComponent.run(1.0)
+        await $WeaponComponent.animation_ok
+"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "哈哈"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mmcl"]
+size = Vector2(42.1915, 36)
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "哈哈"
+[sub_resource type="CircleShape2D" id="CircleShape2D_h63wp"]
+radius = 54.3415
 
-[node name="Button4" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "哈哈"
+[sub_resource type="Resource" id="Resource_no1ux"]
+script = ExtResource("4_fr5oh")
+level = 1
+now_xp = 0.0
+next_level_xp = 0.0
+hp = 1000.0
+max_hp = 1000.0
+magic = 0.0
+max_magic = 0.0
+strength = 0
+wisdom = 0
+agility = 0
+luck = 0.0
+speed = 0.0
+damage = 10.0
+defense = 0.0
+fire_damage = 0.0
+frost_damage = 0.0
+light_damage = 0.0
+toxic_damage = 0.0
+fire_resistance = 0.0
+frost_resistance = 0.0
+light_resistance = 0.0
+toxic_resistance = 0.0
+physical_resistance = 0.0
+critical_rate = 0.0
+critical_damage = 0.0
+vulnerability_rate = 0.0
+vulnerability_damage = 0.0
+evasion = 0.0
+health_regeneration = 0.0
+healing_effciency = 0.0
+vision = 0
+atk_speed = 1.0
+atk_cd = 0.0
+atk_range = 0.0
+quipments = {}
 
-[node name="Button5" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "哈哈"
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_y3g20")
+
+[node name="WeaponComponent" type="Node2D" parent="." node_paths=PackedStringArray("buff_manager")]
+position = Vector2(206, 154)
+script = ExtResource("1_putbt")
+buff_manager = NodePath("../FlowerBuffManager")
+
+[node name="Sprite2D" type="Sprite2D" parent="WeaponComponent"]
+position = Vector2(0.0249634, 0.191467)
+texture = ExtResource("2_s2ngw")
+offset = Vector2(-0.191469, -41.975)
+
+[node name="HitBoxComponent" type="Area2D" parent="WeaponComponent/Sprite2D"]
+position = Vector2(-154.191, 206.026)
+rotation = -1.5708
+script = ExtResource("3_4kxsg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponComponent/Sprite2D/HitBoxComponent"]
+position = Vector2(275, 143.096)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_3mmcl")
+
+[node name="HurtBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+position = Vector2(364, 151)
+script = ExtResource("2_se5db")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(-33, 0)
+shape = SubResource("CircleShape2D_h63wp")
+
+[node name="FlowerBuffManager" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("3_rtdr8")
+target = NodePath("..")
+compute_data = SubResource("Resource_no1ux")
+
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("buff_manager")]
+script = ExtResource("7_yay4h")
+buff_manager = NodePath("../FlowerBuffManager")

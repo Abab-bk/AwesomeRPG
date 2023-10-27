@@ -30,6 +30,7 @@ const SHIELDS:Array[String] = [
 ]
 
 func gen_a_item() -> InventoryItem:
+    randomize()
     # 掉落装备
     var _new_item:InventoryItem = InventoryItem.new()
     _new_item.name = ""
@@ -57,8 +58,10 @@ func gen_a_item() -> InventoryItem:
         Const.EQUIPMENT_TYPE.武器:
             _new_item.weapon_type = Const.WEAPONS_TYPE.values()[randi() % Const.WEAPONS_TYPE.size()]
             
+            # TODO: 更改随机值
             match _new_item.weapon_type:
                 Const.WEAPONS_TYPE.Sword:
+                    var _rng:FairNG = FairNG.new((SWORDS.size() - 1) * 2)
                     _new_item.texture_path = SWORDS[randi_range(0, SWORDS.size() - 1)]
                 Const.WEAPONS_TYPE.Axe:
                     _new_item.texture_path = AXES[randi_range(0, AXES.size() - 1)]

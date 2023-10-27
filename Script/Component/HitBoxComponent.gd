@@ -28,6 +28,7 @@ func handle_damage(body:Node) -> void:
             return
     
     if body is HurtBoxComponent:
+        
         var root_stats:float = data.wisdom + data.agility + data.strength
         var base_damage:float = data.damage
         var critical_damage:float = 1.0
@@ -39,7 +40,7 @@ func handle_damage(body:Node) -> void:
         
         if is_critical:
             critical_damage = 1.0 + data.critical_rate * data.critical_damage
-            print("暴击！额外造成伤害：", critical_damage)
+#            print("暴击！额外造成伤害：", critical_damage)
         
         var sheet_damage:float = root_stats * base_damage * \
         (critical_damage)
