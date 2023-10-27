@@ -6,7 +6,7 @@ extends Node2D
 func _ready() -> void:
     Master.world = self
      
-    SoundManager.play_music(load(Master.BGM), 0, "Music")
+#    SoundManager.play_music(load(Master.BGM), 0, "Music")
     
 #    if not save:
 #        return

@@ -87,4 +87,4 @@ func _physics_process(_delta:float) -> void:
         move_to_player()
     
     move_and_slide()
-#    hp_bar.value = (float(data.hp) / float(data.max_hp)) * 100.0
+    hp_bar.value = (float(data.hp) / float(data.max_hp)) * 100.0

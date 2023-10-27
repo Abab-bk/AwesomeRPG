@@ -33,7 +33,7 @@ func gen_a_item() -> InventoryItem:
     randomize()
     # 掉落装备
     var _new_item:InventoryItem = InventoryItem.new()
-    _new_item.name = ""
+    _new_item.name = "{pre}"
     _new_item.type = Const.EQUIPMENT_TYPE.values()[randi() % Const.EQUIPMENT_TYPE.size()]
     
     match _new_item.type:
@@ -105,10 +105,17 @@ func gen_a_item() -> InventoryItem:
             1:
                 _new_item.buf_affix.append(Master.get_random_affix())
     
-    for i in _new_item.pre_affixs:
-        _new_item.name += i.name
-    for i in _new_item.buf_affix:
-        _new_item.name += i.name
+    _new_item.name += "{buf}"
+    
+    if _new_item.pre_affixs.size() > 0:
+        _new_item.name = _new_item.name.format({"pre": str(_new_item.pre_affixs[0].name) + " "})
+    else:
+        _new_item.name = _new_item.name.format({"pre": ""})
+    
+    if _new_item.buf_affix.size() > 0:
+        _new_item.name = _new_item.name.format({"buf": " " + str(_new_item.buf_affix[0].name)}) 
+    else:
+        _new_item.name = _new_item.name.format({"buf": ""}) 
     
     # 物品价格公式
     _new_item.price = (int(quality) + 1) * 10 * count

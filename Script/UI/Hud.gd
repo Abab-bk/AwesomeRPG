@@ -117,9 +117,9 @@ func change_page(_page:PAGE) -> void:
         PAGE.SETTING:
             skill_tree_ui.hide()
             inventory_ui.hide()
-            setting_ui.hide()
+            setting_ui.show()
             skills_panel_ui.hide()
-            character_panel_ui.show()
+            character_panel_ui.hide()
             changed_to_other.emit()
         PAGE.SKILLS_PANEL:
             skill_tree_ui.hide()

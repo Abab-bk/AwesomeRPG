@@ -65,7 +65,6 @@ theme_override_constants/separation = 20
 
 [node name="Head" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content"]
 layout_mode = 2
-size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head"]
 layout_mode = 2
@@ -83,11 +82,13 @@ theme_override_constants/separation = -5
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 50
-text = "敏捷之灵巧 铁盒敏捷之灵巧 铁盒敏捷之灵巧 铁盒"
+text = "猛击 靴子 幸运"
 label_settings = ExtResource("5_63f3j")
+vertical_alignment = 1
 autowrap_mode = 1
 clip_text = true
 
@@ -118,6 +119,7 @@ texture = ExtResource("5_2muug")
 stretch_mode = 3
 
 [node name="Space2" type="Control" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content"]
+visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 size_flags_vertical = 0
