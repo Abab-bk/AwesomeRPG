@@ -20,4 +20,3 @@ func attack(atk_speed:float) -> void:
     attacking = false
     
     EventBus.update_ui.emit()
-    

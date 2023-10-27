@@ -5,6 +5,8 @@ class_name Player extends CharacterBody2D
 @onready var ability_container:FlowerAbilityContainer = $FlowerAbilityContainer
 @onready var flower_buff_manager:FlowerBuffManager = $FlowerBuffManager
 @onready var animation_player:AnimationPlayer = $AnimationPlayer
+@onready var hurt_box_collision:CollisionShape2D = $HurtBoxComponent/CollisionShape2D
+@onready var atk_cd_timer:Timer = $AtkCDTimer
 
 var data:CharacterData
 var target:Vector2 = global_position
@@ -84,12 +86,14 @@ func _ready() -> void:
     flower_buff_manager.compute_ok.connect(func():
         EventBus.player_data_change.emit()
         Master.player_data = flower_buff_manager.output_data
+        atk_cd_timer.wait_time = data.atk_speed
         print("计算完成")
         )
 #    flower_buff_manager.a_buff_removed
     
-    data = flower_buff_manager.compute_data
+    data = flower_buff_manager.compute_data as CharacterData
     flower_buff_manager.output_data = data.duplicate(true)
+    atk_cd_timer.wait_time = data.atk_speed
     Master.player_data = flower_buff_manager.output_data
     
     compute()
@@ -143,8 +147,12 @@ func relife() -> void:
     global_position = Master.relife_point.global_position
     animation_player.play_backwards("Die")
     await animation_player.animation_finished
+    # 设置受击框，避免一直死亡造成内存溢出
+    hurt_box_collision.call_deferred("set_disabled", false)
 
 func die() -> void:
+    # FIXME: 设置受击框，避免一直死亡造成内存溢出
+    hurt_box_collision.call_deferred("set_disabled", true)
     animation_player.play("Die")
     await animation_player.animation_finished
     EventBus.player_dead.emit()

@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var atk_range:AtkRangeComponent = $AtkRange
 @onready var vision_component:VisionComponent = $VisionComponent
 @onready var weapons:Node2D = %Weapons
+@onready var atk_cd_timer:Timer = $AtkCDTimer
 
 var dead:bool = false
 var data:CharacterData
@@ -39,9 +40,11 @@ func _ready() -> void:
     atk_range.target = Master.player
     vision_component.target = Master.player
     
-    data = buff_manager.compute_data
+    data = buff_manager.compute_data as CharacterData
     # 设置属性 （每个敌人 ready 都是生成时）
     var _level:int = 1
+    
+    atk_cd_timer.wait_time = data.atk_speed
     
     if Master.player.get_level() >= 5:
         _level = Master.player.get_level() - 3

@@ -15,13 +15,13 @@ func _ready() -> void:
 func set_dis_target(_target:Node2D) -> void:
     $Sprite2D/HitBoxComponent.disable_target = _target
 
-func run(speed:float) -> void:
+func run(atk_speed:float) -> void:
     if tween:
         tween.kill()
     
     tween = create_tween().bind_node(self)
-    tween.tween_property($Sprite2D, "rotation_degrees", 50.0, speed)
-    tween.tween_property($Sprite2D, "rotation_degrees", 110.0, speed)
+    tween.tween_property($Sprite2D, "rotation_degrees", 50.0, atk_speed)
+    tween.tween_property($Sprite2D, "rotation_degrees", 110.0, atk_speed)
     await tween.finished
     tween.kill()
     
