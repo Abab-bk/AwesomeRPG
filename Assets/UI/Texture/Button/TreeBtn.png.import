@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8dsbla3pqy0u"
-path="res://.godot/imported/Boys1.png-a8ca4c5e54c2b084e0f747ae40e76a76.ctex"
+uid="uid://f1vbao16msv2"
+path="res://.godot/imported/TreeBtn.png-621da3e57c938e47d327c08d447ddab5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Texture/Characters/Boys1.png"
-dest_files=["res://.godot/imported/Boys1.png-a8ca4c5e54c2b084e0f747ae40e76a76.ctex"]
+source_file="res://Assets/UI/Texture/Button/TreeBtn.png"
+dest_files=["res://.godot/imported/TreeBtn.png-621da3e57c938e47d327c08d447ddab5.ctex"]
 
 [params]
 

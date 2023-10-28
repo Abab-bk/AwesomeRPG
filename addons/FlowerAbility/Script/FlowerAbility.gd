@@ -64,6 +64,7 @@ func _cooldown_ok() -> void:
 
 func _start_casting() -> void:
     if _casting_timer:
+        print("等待吟唱")
         _casting_timer.start()
         current_state = STATE.RUNNING
         await _casting_timer.timeout
@@ -94,12 +95,14 @@ func active() -> void:
         real_scene = scene.instantiate() as AbilityScene
         real_scene.actor = actor
         real_scene.ability_data = self
-        Master.world.add_child(real_scene)
+        Master.world.call_deferred("add_child", real_scene)
+#        Master.world.add_child(real_scene)
     else:
         real_scene = scene.instantiate() as AbilityScene
         real_scene.actor = actor
         real_scene.ability_data = self
-        actor.add_child(real_scene)
+        actor.call_deferred("add_child", real_scene)
+#        actor.add_child(real_scene)
     
     _running_timer.start()
     ## CUSTOME
@@ -115,3 +118,6 @@ func un_active() -> void:
     real_scene.timeout()
     current_state = STATE.COOLDOWN
     _cooldown_timer.start()
+    
+    if id == 4005:
+        real_scene.queue_free()

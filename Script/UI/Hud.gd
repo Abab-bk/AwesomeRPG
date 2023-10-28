@@ -11,12 +11,13 @@ signal backed_to_home
 @onready var level_label:Label = %LevelLabel
 @onready var level_level_label:Label = %LevelLevelLabel
 
-@onready var inventory_btn:Button = %InventoryBtn
-@onready var character_btn:Button = %CharacterBtn
-@onready var skill_tree_btn:Button = %SkillTreeBtn
+@onready var inventory_btn:TextureButton = %InventoryBtn
+@onready var character_btn:TextureButton = %CharacterBtn
+@onready var skill_tree_btn:TextureButton = %SkillTreeBtn
+@onready var skills_panel_btn:TextureButton = %SillsPanelBtn
+
 @onready var get_skill_btn:Button = %GetSkillBtn
 @onready var setting_btn:Button = %SettingBtn
-@onready var skills_panel_btn:Button = %SillsPanelBtn
 
 @onready var inventory_ui:Control = $Inventory
 @onready var character_panel_ui:Control = $CharacterPanel

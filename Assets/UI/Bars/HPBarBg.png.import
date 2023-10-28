@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgtcth0cpss86"
-path="res://.godot/imported/GangArmored.png-a9dc3b5cc98f1ab68f6f610246b5f078.ctex"
+uid="uid://dy1r4oa118a6o"
+path="res://.godot/imported/HPBarBg.png-a2ef9b3aeb76895eda708c35c48d9a3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Texture/Characters/GangArmored.png"
-dest_files=["res://.godot/imported/GangArmored.png-a9dc3b5cc98f1ab68f6f610246b5f078.ctex"]
+source_file="res://Assets/UI/Bars/HPBarBg.png"
+dest_files=["res://.godot/imported/HPBarBg.png-a2ef9b3aeb76895eda708c35c48d9a3f.ctex"]
 
 [params]
 

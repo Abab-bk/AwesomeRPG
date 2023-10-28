@@ -1,15 +1,21 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=20 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
 [ext_resource type="PackedScene" uid="uid://ck3r30dw3dngl" path="res://Scene/UI/Inventory.tscn" id="2_cil1e"]
+[ext_resource type="Texture2D" uid="uid://dy1r4oa118a6o" path="res://Assets/UI/Bars/HPBarBg.png" id="3_0kf2m"]
 [ext_resource type="PackedScene" uid="uid://b33g1ypyny6i5" path="res://Scene/UI/CharacterPanel.tscn" id="3_aoxj4"]
-[ext_resource type="Texture2D" uid="uid://bh164nrxvlikf" path="res://Assets/UI/Bars/StatBar.png" id="4_pwlac"]
+[ext_resource type="Texture2D" uid="uid://clbtnmxw8yitp" path="res://Assets/UI/Texture/Button/CharacterBtn.png" id="4_poiej"]
+[ext_resource type="Texture2D" uid="uid://b4oa66h6lluio" path="res://Assets/UI/Bars/MPBarBg.png" id="5_lfckr"]
 [ext_resource type="Texture2D" uid="uid://o87r223ypa12" path="res://Assets/UI/Bars/HpBar.png" id="5_nrxv6"]
+[ext_resource type="Texture2D" uid="uid://ce5icokux6373" path="res://Assets/UI/Texture/Button/BagBtn.png" id="5_nwaja"]
 [ext_resource type="PackedScene" uid="uid://dsr1p5lgdflk6" path="res://Scene/UI/SkillTree.tscn" id="5_xu7ou"]
 [ext_resource type="Texture2D" uid="uid://dne40b3tt53en" path="res://Assets/UI/Bars/MpBar.png" id="6_8gg1b"]
+[ext_resource type="Texture2D" uid="uid://f1vbao16msv2" path="res://Assets/UI/Texture/Button/TreeBtn.png" id="6_51pw4"]
 [ext_resource type="LabelSettings" uid="uid://drx7d3iagcvhu" path="res://Assets/LabelSetting/ItemTitle.tres" id="6_nyfav"]
+[ext_resource type="Texture2D" uid="uid://dpwpu8jwbma0y" path="res://Assets/UI/Texture/Button/AbilitysBtn.png" id="7_822in"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="7_sdpkl"]
+[ext_resource type="Texture2D" uid="uid://bv7f78tgjbooa" path="res://Assets/UI/Texture/Button/ButtonNormal.png" id="10_445qy"]
 [ext_resource type="PackedScene" uid="uid://c3iesn4gm1oum" path="res://Scene/UI/QuestPanel.tscn" id="10_f6saj"]
 [ext_resource type="PackedScene" uid="uid://dheui57ydhnj5" path="res://Scene/UI/SettingUi.tscn" id="11_x2eu0"]
 [ext_resource type="PackedScene" uid="uid://c60tahepslln0" path="res://Scene/UI/SkillsPanel.tscn" id="12_doksu"]
@@ -41,35 +47,104 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer"]
-layout_mode = 2
-
-[node name="HpBar" type="TextureProgressBar" parent="Control/VBoxContainer/HBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-value = 100.0
-fill_mode = 3
-texture_under = ExtResource("4_pwlac")
-texture_progress = ExtResource("5_nrxv6")
-
-[node name="Control" type="Control" parent="Control/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MpBar" type="TextureProgressBar" parent="Control/VBoxContainer/HBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-value = 100.0
-fill_mode = 3
-texture_under = ExtResource("4_pwlac")
-texture_progress = ExtResource("6_8gg1b")
-
 [node name="XpBar" type="ProgressBar" parent="Control/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 theme_type_variation = &"XpBar"
 show_percentage = false
+
+[node name="Control" type="Control" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/VBoxContainer/Control"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("10_445qy")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/Control/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CharacterBtn" type="TextureButton" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("4_poiej")
+
+[node name="InventoryBtn" type="TextureButton" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("5_nwaja")
+
+[node name="SkillTreeBtn" type="TextureButton" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("6_51pw4")
+
+[node name="SillsPanelBtn" type="TextureButton" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("7_822in")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -229.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="HpBar" type="TextureProgressBar" parent="Control/VBoxContainer/Control/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("3_0kf2m")
+texture_progress = ExtResource("5_nrxv6")
+
+[node name="Control" type="Control" parent="Control/VBoxContainer/Control/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="MpBar" type="TextureProgressBar" parent="Control/VBoxContainer/Control/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("5_lfckr")
+texture_progress = ExtResource("6_8gg1b")
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1
@@ -79,10 +154,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2
@@ -149,44 +220,6 @@ alignment = 1
 [node name="QuestPanel" parent="Control/MarginContainer/VBoxContainer/Control/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("10_f6saj")]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 200
-theme_override_constants/margin_right = 200
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/MarginContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CharacterBtn" type="Button" parent="Control/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 50
-text = "角色"
-
-[node name="InventoryBtn" type="Button" parent="Control/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 50
-text = "背包"
-
-[node name="SkillTreeBtn" type="Button" parent="Control/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 50
-text = "天赋树"
-
-[node name="SillsPanelBtn" type="Button" parent="Control/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 50
-text = "技能配置"
 
 [node name="GetSkillBtn" type="Button" parent="Control"]
 unique_name_in_owner = true

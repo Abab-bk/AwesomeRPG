@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxilk07kl4k17"
-path="res://.godot/imported/YellowClub.png-6c42e148cb9fcb4b255fd1dd42543448.ctex"
+uid="uid://b4oa66h6lluio"
+path="res://.godot/imported/MPBarBg.png-68fac66d0ccbe7a8814ce5a538af050b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Texture/YellowClub.png"
-dest_files=["res://.godot/imported/YellowClub.png-6c42e148cb9fcb4b255fd1dd42543448.ctex"]
+source_file="res://Assets/UI/Bars/MPBarBg.png"
+dest_files=["res://.godot/imported/MPBarBg.png-68fac66d0ccbe7a8814ce5a538af050b.ctex"]
 
 [params]
 

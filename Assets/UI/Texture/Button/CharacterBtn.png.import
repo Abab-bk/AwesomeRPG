@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh164nrxvlikf"
-path="res://.godot/imported/StatBar.png-fc0c36791c0b7f4ce9bb55caba9dc272.ctex"
+uid="uid://clbtnmxw8yitp"
+path="res://.godot/imported/CharacterBtn.png-c73f24b5741b78af7c56f583ab2179dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Bars/StatBar.png"
-dest_files=["res://.godot/imported/StatBar.png-fc0c36791c0b7f4ce9bb55caba9dc272.ctex"]
+source_file="res://Assets/UI/Texture/Button/CharacterBtn.png"
+dest_files=["res://.godot/imported/CharacterBtn.png-c73f24b5741b78af7c56f583ab2179dd.ctex"]
 
 [params]
 
