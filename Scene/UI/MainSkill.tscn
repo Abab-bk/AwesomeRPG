@@ -42,15 +42,23 @@ label_settings = ExtResource("2_ngsea")
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="ChangeBtn" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+[node name="ChangeBtn" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "修改"
 
-[node name="DisBtn" type="Button" parent="MarginContainer/HBoxContainer/HBoxContainer"]
+[node name="DisBtn" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "卸下"

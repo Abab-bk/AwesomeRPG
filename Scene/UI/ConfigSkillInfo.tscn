@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://rho7mcbqxaku"]
+[gd_scene load_steps=5 format=3 uid="uid://rho7mcbqxaku"]
 
 [ext_resource type="Script" path="res://Script/UI/ConfigSkillInfo.gd" id="1_12is6"]
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_85efv"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="1_ej651"]
 [ext_resource type="PackedScene" uid="uid://b0d80etljgc15" path="res://Scene/UI/MainSkill.tscn" id="2_f1vkd"]
 
@@ -11,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+theme = ExtResource("1_85efv")
 theme_override_constants/separation = 40
 script = ExtResource("1_12is6")
 

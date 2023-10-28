@@ -47,34 +47,43 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
-[node name="XpBar" type="ProgressBar" parent="Control/VBoxContainer"]
+[node name="Control" type="Control" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -128.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 170
+theme_override_constants/margin_right = 170
+
+[node name="XpBar" type="ProgressBar" parent="Control/VBoxContainer/Control/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 theme_type_variation = &"XpBar"
 show_percentage = false
 
-[node name="Control" type="Control" parent="Control/VBoxContainer"]
-custom_minimum_size = Vector2(0, 280)
-layout_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Control/VBoxContainer/Control"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/VBoxContainer/Control/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -32.0
-grow_horizontal = 2
-grow_vertical = 0
+layout_mode = 2
 texture = ExtResource("10_445qy")
 patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/Control/NinePatchRect"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/Control/VBoxContainer/NinePatchRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,30 +94,30 @@ theme_override_constants/margin_left = 200
 theme_override_constants/margin_right = 200
 theme_override_constants/margin_bottom = 40
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Control/VBoxContainer/NinePatchRect/MarginContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CharacterBtn" type="TextureButton" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="CharacterBtn" type="TextureButton" parent="Control/VBoxContainer/Control/VBoxContainer/NinePatchRect/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("4_poiej")
 
-[node name="InventoryBtn" type="TextureButton" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="InventoryBtn" type="TextureButton" parent="Control/VBoxContainer/Control/VBoxContainer/NinePatchRect/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("5_nwaja")
 
-[node name="SkillTreeBtn" type="TextureButton" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="SkillTreeBtn" type="TextureButton" parent="Control/VBoxContainer/Control/VBoxContainer/NinePatchRect/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("6_51pw4")
 
-[node name="SillsPanelBtn" type="TextureButton" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="SillsPanelBtn" type="TextureButton" parent="Control/VBoxContainer/Control/VBoxContainer/NinePatchRect/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -154,6 +163,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_constants/margin_top = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2
