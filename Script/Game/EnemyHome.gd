@@ -3,6 +3,7 @@ extends Node2D
 @export var max_enemy_count:int = 300
 @export var min_enemy_count:int = 5
 
+# TODO: 待完善 关卡系统
 var killed_enemys:int = 0
 var need_killed_enemys:int = 50
 

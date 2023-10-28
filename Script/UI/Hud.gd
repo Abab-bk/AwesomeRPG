@@ -134,16 +134,23 @@ func change_page(_page:PAGE) -> void:
 # 技能条 UI
 func build_ability_ui() -> void:
     for i in skill_bar.get_children():
+        if i.ability:
+            i.ability.un_active()
+        
         i.queue_free()
     
     for i in Master.player.get_ability_list().size():
-        if Master.player.get_ability_list()[i - 1].is_sub_ability:
+        var _ability:FlowerAbility = Master.player.get_ability_list()[i - 1]
+        
+        if _ability.is_sub_ability:
+            continue
+        
+        if _ability.id == 4005:
+            _ability.active()
             continue
         
         var _skill_btn:Panel = Builder.build_a_skill_btn()
         skill_bar.add_child(_skill_btn)
-        
-        var _ability:FlowerAbility = Master.player.get_ability_list()[i - 1]
         _skill_btn.set_ability(_ability)
 
 func update_ui() -> void:
