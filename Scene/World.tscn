@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://3xynvu782kcm"]
+[gd_scene load_steps=15 format=3 uid="uid://3xynvu782kcm"]
 
 [ext_resource type="Texture2D" uid="uid://blncare6u6ty" path="res://Assets/Texture/Map/TileSheet.png" id="1_7qj4v"]
 [ext_resource type="Script" path="res://Script/Game/World.gd" id="1_myfhc"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dx27klpp0nc4x" path="res://Scene/Perfabs/NonPlayCharacter/Enemy.tscn" id="5_t1ymi"]
 [ext_resource type="Script" path="res://addons/FlowerAbility/Script/FlowerAbilityContainer.gd" id="8_g8vox"]
 [ext_resource type="Script" path="res://Script/Perfabs/Others/SaveTimer.gd" id="9_v08bh"]
+[ext_resource type="Script" path="res://Script/Perfabs/Maps/MapBoundary.gd" id="10_cu45h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7roa4"]
 texture = ExtResource("1_7qj4v")
@@ -159,6 +160,9 @@ background_mode = 3
 tonemap_mode = 3
 glow_enabled = true
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfwtf"]
+size = Vector2(10236.5, 204)
+
 [node name="World" type="Node2D"]
 script = ExtResource("1_myfhc")
 
@@ -199,3 +203,24 @@ script = ExtResource("9_v08bh")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_iavjm")
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("10_cu45h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1199.75, -3136)
+shape = SubResource("RectangleShape2D_tfwtf")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1064, 6886)
+shape = SubResource("RectangleShape2D_tfwtf")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-4070, 1898)
+rotation = 1.58349
+shape = SubResource("RectangleShape2D_tfwtf")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(6224, 1859)
+rotation = 1.58349
+shape = SubResource("RectangleShape2D_tfwtf")

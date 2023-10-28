@@ -37,6 +37,9 @@ func _ready() -> void:
         for i in _item.buf_affix:
             flower_buff_manager.add_buff(i.buff)
         
+        if _item.weapon_type != Const.WEAPONS_TYPE.NULL:
+            change_weapons_sprite(load(_item.texture_path))
+        
         # 更新 UI
         EventBus.equipment_up_ok.emit(_type, _item))
     
@@ -131,6 +134,9 @@ func get_ability_list() -> Array:
 
 func get_level() -> int:
     return data.level
+
+func change_weapons_sprite(_sprite:Texture2D) -> void:
+    weapon_component.change_weapon_sprite(_sprite)
 
 # ======= 属性 ========
 func up_level() -> void:

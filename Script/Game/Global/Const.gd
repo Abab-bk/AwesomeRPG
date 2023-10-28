@@ -14,6 +14,7 @@ enum EQUIPMENT_TYPE {
 }
 
 enum WEAPONS_TYPE {
+    NULL,
     Sword,
     Axe,
     Bow,

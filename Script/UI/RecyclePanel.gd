@@ -20,6 +20,9 @@ func _ready() -> void:
     yes_btn.pressed.connect(func():
         for _type in _types:
             for _item in inventory.items:
+                if not _item:
+                    continue
+                
                 if not _item.quality == _type:
                     continue
                     

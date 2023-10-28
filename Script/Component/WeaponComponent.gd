@@ -22,6 +22,9 @@ func set_dis_target(_target:Node2D) -> void:
 func set_dis_target_group(_target:String) -> void:
     $Sprite2D/HitBoxComponent.disable_target_group = _target
 
+func change_weapon_sprite(_texture:Texture2D) -> void:
+    $Sprite2D.texture = _texture
+
 func run(atk_speed:float) -> void:
     var tween:Tween = create_tween().bind_node(self)
     
