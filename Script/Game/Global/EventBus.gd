@@ -10,11 +10,13 @@ signal show_popup(title:String, desc:String, show_cancel_btn:bool, yes_event:Cal
 signal show_select_skills_panel(target:Panel)
 signal show_color
 signal hide_color
+
 signal selected_skills_on_panel
 signal unlocked_ability(id:int)
 signal sub_ability_changed(_ability_id:int, _sub_ability:Array)
 # Player 的 ComputeData 改变
 signal player_data_change
+signal completed_level
 
 signal coins_changed
 

@@ -15,6 +15,8 @@ var player_data:CharacterData
 var relife_point:Marker2D
 var unlocked_skills:Array[int] = []
 
+var current_level:int = 0
+
 var coins:int = 1000:
     set(v):
         coins = v
@@ -125,4 +127,8 @@ func _ready():
         if _id in unlocked_skills:
             return
         unlocked_skills.append(_id)
+        )
+    
+    EventBus.completed_level.connect(func():
+        current_level += 1
         )

@@ -184,6 +184,7 @@ rotation = 0.258933
 [node name="RelifePoint" parent="." instance=ExtResource("4_f4kq8")]
 
 [node name="EnemyHome" type="Node2D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("4_22mer")
 
 [node name="Hud" parent="." instance=ExtResource("5_07fkt")]

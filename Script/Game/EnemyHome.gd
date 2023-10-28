@@ -3,10 +3,22 @@ extends Node2D
 @export var max_enemy_count:int = 300
 @export var min_enemy_count:int = 5
 
+var killed_enemys:int = 0
+var need_killed_enemys:int = 50
+
 func _ready() -> void:
     EventBus.enemy_die.connect(gen_a_enemy)
     EventBus.player_level_up.connect(func():
         min_enemy_count += 2
+        )
+    EventBus.completed_level.connect(func():
+        killed_enemys = 0
+        need_killed_enemys = min_enemy_count * 50
+        )
+    EventBus.enemy_die.connect(func(_temp):
+        killed_enemys += 1
+        if killed_enemys >= need_killed_enemys:
+            EventBus.completed_level.emit()
         )
 
 func gen_a_enemy(_temp = 0) -> void:
