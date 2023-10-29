@@ -1,7 +1,7 @@
 extends Panel
 
-@onready var title_label:Label = $PropertyInfoItem/TitleLabel
-@onready var value_label:Label = $PropertyInfoItem/ValueLabel
+@onready var title_label:Label = %TitleLabel
+@onready var value_label:Label = %ValueLabel
 
 @export var title:String
 @export var value_index:String

@@ -15,7 +15,10 @@ var player_data:CharacterData
 var relife_point:Marker2D
 var unlocked_skills:Array[int] = []
 
+# 关卡等级：
 var current_level:int = 0
+
+var player_name:String = "花神"
 
 var coins:int = 1000:
     set(v):

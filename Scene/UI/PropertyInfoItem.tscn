@@ -1,32 +1,63 @@
-[gd_scene load_steps=2 format=3 uid="uid://b13y6wkodkbq1"]
+[gd_scene load_steps=7 format=3 uid="uid://b13y6wkodkbq1"]
 
 [ext_resource type="Script" path="res://Script/UI/PropertyInfoItem.gd" id="1_ohx8f"]
+[ext_resource type="FontFile" uid="uid://c7bfs6orcmgh2" path="res://Assets/Font/SourceHanSansCN-Medium.otf" id="2_5d3p8"]
+[ext_resource type="FontFile" uid="uid://ri6183bsibm8" path="res://Assets/Font/SourceHanSansCN-Bold.otf" id="3_d6lvn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vwwn4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_chhjf"]
+font = ExtResource("2_5d3p8")
+font_size = 30
+font_color = Color(0.764706, 0.666667, 0.513726, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_n2m5r"]
+font = ExtResource("3_d6lvn")
+font_size = 40
+font_color = Color(0.843137, 0.843137, 0.843137, 1)
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
 
 [node name="PropertyInfoItem" type="Panel"]
-custom_minimum_size = Vector2(0, 100)
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
+custom_minimum_size = Vector2(200, 110)
+offset_right = 200.0
+offset_bottom = 110.0
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vwwn4")
 script = ExtResource("1_ohx8f")
 
-[node name="PropertyInfoItem" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(0, 80)
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = -5
 
-[node name="TitleLabel" type="Label" parent="PropertyInfoItem"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "攻击力："
+label_settings = SubResource("LabelSettings_chhjf")
 
-[node name="ValueLabel" type="Label" parent="PropertyInfoItem"]
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.764706, 0.666667, 0.513726, 1)
+
+[node name="ValueLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
-text = "0"
+text = "1988"
+label_settings = SubResource("LabelSettings_n2m5r")
