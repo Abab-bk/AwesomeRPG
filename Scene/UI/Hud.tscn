@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=24 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -12,13 +12,29 @@
 [ext_resource type="PackedScene" uid="uid://dsr1p5lgdflk6" path="res://Scene/UI/SkillTree.tscn" id="5_xu7ou"]
 [ext_resource type="Texture2D" uid="uid://dne40b3tt53en" path="res://Assets/UI/Bars/MpBar.png" id="6_8gg1b"]
 [ext_resource type="Texture2D" uid="uid://f1vbao16msv2" path="res://Assets/UI/Texture/Button/TreeBtn.png" id="6_51pw4"]
-[ext_resource type="LabelSettings" uid="uid://drx7d3iagcvhu" path="res://Assets/LabelSetting/ItemTitle.tres" id="6_nyfav"]
 [ext_resource type="Texture2D" uid="uid://dpwpu8jwbma0y" path="res://Assets/UI/Texture/Button/AbilitysBtn.png" id="7_822in"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="7_sdpkl"]
 [ext_resource type="Texture2D" uid="uid://bv7f78tgjbooa" path="res://Assets/UI/Texture/Button/ButtonNormal.png" id="10_445qy"]
 [ext_resource type="PackedScene" uid="uid://c3iesn4gm1oum" path="res://Scene/UI/QuestPanel.tscn" id="10_f6saj"]
 [ext_resource type="PackedScene" uid="uid://dheui57ydhnj5" path="res://Scene/UI/SettingUi.tscn" id="11_x2eu0"]
 [ext_resource type="PackedScene" uid="uid://c60tahepslln0" path="res://Scene/UI/SkillsPanel.tscn" id="12_doksu"]
+[ext_resource type="FontFile" uid="uid://ri6183bsibm8" path="res://Assets/Font/SourceHanSansCN-Bold.otf" id="13_xqeye"]
+[ext_resource type="Texture2D" uid="uid://bnkevqnd4alfm" path="res://Assets/UI/Icons/Coins.svg" id="14_fnq4k"]
+[ext_resource type="Texture2D" uid="uid://b4phcm1eydead" path="res://Assets/UI/Icons/Cog.svg" id="15_2c2a3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vb2v6"]
+font = ExtResource("13_xqeye")
+font_size = 40
+font_color = Color(0.843137, 0.843137, 0.843137, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dq58o"]
+font = ExtResource("13_xqeye")
+font_size = 40
+font_color = Color(0.843137, 0.843137, 0.843137, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Hud" type="CanvasLayer"]
 script = ExtResource("1_d15xn")
@@ -163,7 +179,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_top = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
 layout_mode = 2
@@ -172,29 +187,88 @@ mouse_filter = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="Panel" type="Panel" parent="Control/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 80
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="CoinsLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayerNameLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+text = "花神"
+label_settings = SubResource("LabelSettings_vb2v6")
+
+[node name="LevelLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+text = "Lv.42"
+label_settings = ExtResource("7_sdpkl")
+
+[node name="Control" type="Control" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+texture = ExtResource("14_fnq4k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CoinsLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "金币：0"
-label_settings = ExtResource("6_nyfav")
-horizontal_alignment = 1
+text = "0"
+label_settings = SubResource("LabelSettings_dq58o")
 
-[node name="LevelLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
+[node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "等级：0"
-label_settings = ExtResource("6_nyfav")
-horizontal_alignment = 1
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="SettingBtn" type="Button" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="SettingBtn" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "设置"
+texture_normal = ExtResource("15_2c2a3")
+ignore_texture_size = true
+stretch_mode = 5
 
 [node name="LevelLevelLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true

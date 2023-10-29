@@ -15,9 +15,9 @@ signal backed_to_home
 @onready var character_btn:TextureButton = %CharacterBtn
 @onready var skill_tree_btn:TextureButton = %SkillTreeBtn
 @onready var skills_panel_btn:TextureButton = %SillsPanelBtn
+@onready var setting_btn:TextureButton = %SettingBtn
 
 @onready var get_skill_btn:Button = %GetSkillBtn
-@onready var setting_btn:Button = %SettingBtn
 
 @onready var inventory_ui:Control = $Inventory
 @onready var character_panel_ui:Control = $CharacterPanel
