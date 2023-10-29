@@ -1,0 +1,21 @@
+[remap]
+
+importer="importer.scml"
+type="PackedScene"
+uid="uid://cku6qu3rbcxv6"
+path="res://.godot/imported/Animations.scml-e22c73a7c87223e67bc6b2e3d4b416b7.scn"
+
+[deps]
+
+source_file="res://Assets/Characters/GiantSkeleton2/Animations.scml"
+dest_files=["res://.godot/imported/Animations.scml-e22c73a7c87223e67bc6b2e3d4b416b7.scn"]
+
+[params]
+
+playback_speed=5
+z_as_relative=true
+loop_animations=1
+loop_wrap_interpolation=true
+optimize_for_blends=true
+rest_pose_animation="Idle"
+reparenting_solution="instance per parent"

@@ -7,8 +7,9 @@ extends CharacterBody2D
 @onready var hurt_box_component:HurtBoxComponent = $HurtBoxComponent
 @onready var atk_range:AtkRangeComponent = $AtkRange
 @onready var vision_component:VisionComponent = $VisionComponent
-@onready var weapons:Node2D = %Weapons
+#@onready var weapons:Node2D = %Weapons
 @onready var atk_cd_timer:Timer = $AtkCDTimer
+@onready var character_animation:AnimationPlayer = %CharacterAnimation
 
 var dead:bool = false
 var data:CharacterData
@@ -28,7 +29,9 @@ func _ready() -> void:
     
     atk_range.target_enter_range.connect(func():
         velocity = Vector2.ZERO
-        weapons.attack(data.atk_speed)
+        # 攻击代码
+        
+        character_animation.play("scml/Attacking")
         current_state = STATE.ATTACKING
         )
     
@@ -51,13 +54,12 @@ func _ready() -> void:
     
     set_level(_level)
     
-    $Sprite2D/Weapons/WeaponComponent.set_dis_target_group("Enemy")
-    
     buff_manager.compute()
 
 func move_to_player() -> void:
     velocity = global_position.\
     direction_to(Master.player.global_position) * data.speed
+    character_animation.play("scml/Walking")
 
 func die() -> void:
     if dead:
@@ -73,9 +75,9 @@ func die() -> void:
     var _drop_item:InventoryItem = item_generator.gen_a_item()
     EventBus.new_drop_item.emit(_drop_item, get_global_transform_with_canvas().get_origin())
     
-    $AnimationPlayer.play("Die")
-    await $AnimationPlayer.animation_finished
-        
+    character_animation.play("scml/Dying")
+    await character_animation.animation_finished
+    
     queue_free()
 
 func set_level(_value:int) -> void:

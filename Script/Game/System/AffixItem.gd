@@ -7,7 +7,13 @@ var offset:float
 
 var buff:FlowerBaseBuff = FlowerBaseBuff.new()
 
-func update() -> void:
+func update_desc(_data) -> void:
+    if offset <= 1.0 and buff.compute_values[0].type != FlowerConst.COMPUTE_TYPE.INCREASE and buff.compute_values[0].type != FlowerConst.COMPUTE_TYPE.COMPLEX_INCREASE:
+        desc = _data.desc.format({"s": str(floor(offset * 10))}) # *10 是为了显示正常，因为实际数据是 0.1 - 1.0
+    else:
+        desc = _data.desc.format({"s": str(floor(offset))})
+
+func update(_data) -> void:
     buff.name = name
     buff.desc = desc
     
@@ -21,6 +27,8 @@ func update() -> void:
     buff.cooldown_time = _buff["cooldown_time"]
     
     buff.compute_values = _get_compute_datas(_buff["compute_values"])
+    
+    update_desc(_data)
 
 func _get_compute_datas(_value) -> Array[FlowerComputeData]:
     var _result:Array[FlowerComputeData] = []

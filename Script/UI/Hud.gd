@@ -53,7 +53,7 @@ func _ready() -> void:
         add_child(_damage_label)
         )
     EventBus.coins_changed.connect(func():
-        coins_label.text = "金币：%s" % str(Master.coins))
+        coins_label.text = str(Master.coins))
     EventBus.show_select_skills_panel.connect(func(_target:Panel):
         var _panel:Panel = Builder.build_a_select_sills_panel()
         _panel.target_skill_panel = _target
@@ -157,7 +157,7 @@ func build_ability_ui() -> void:
         _skill_btn.set_ability(_ability)
 
 func update_ui() -> void:
-    level_label.text = "等级：%s" % str(player_data.level)
+    level_label.text = "Lv.%s" % str(player_data.level)
     level_level_label.text = "第 %s 关" % str(Master.current_level)
     mp_bar.value = (float(player_data.magic) / float(player_data.max_magic)) * 100.0
     hp_bar.value = (float(player_data.hp) / float(player_data.max_hp)) * 100.0

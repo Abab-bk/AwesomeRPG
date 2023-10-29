@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=25 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -21,6 +21,7 @@
 [ext_resource type="FontFile" uid="uid://ri6183bsibm8" path="res://Assets/Font/SourceHanSansCN-Bold.otf" id="13_xqeye"]
 [ext_resource type="Texture2D" uid="uid://bnkevqnd4alfm" path="res://Assets/UI/Icons/Coins.svg" id="14_fnq4k"]
 [ext_resource type="Texture2D" uid="uid://b4phcm1eydead" path="res://Assets/UI/Icons/Cog.svg" id="15_2c2a3"]
+[ext_resource type="LabelSettings" uid="uid://bhyi4hqpwnqxh" path="res://Assets/LabelSetting/UITitleGold.tres" id="16_afv1t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vb2v6"]
 font = ExtResource("13_xqeye")
@@ -274,7 +275,7 @@ stretch_mode = 5
 unique_name_in_owner = true
 layout_mode = 2
 text = "第一关"
-label_settings = ExtResource("7_sdpkl")
+label_settings = ExtResource("16_afv1t")
 horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="Control/MarginContainer/VBoxContainer"]

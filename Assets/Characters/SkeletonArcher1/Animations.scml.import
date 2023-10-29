@@ -1,0 +1,21 @@
+[remap]
+
+importer="importer.scml"
+type="PackedScene"
+uid="uid://c7nuxcbix4gjt"
+path="res://.godot/imported/Animations.scml-9b908bfb61020dd58eb9163db372019f.scn"
+
+[deps]
+
+source_file="res://Assets/Characters/SkeletonArcher1/Animations.scml"
+dest_files=["res://.godot/imported/Animations.scml-9b908bfb61020dd58eb9163db372019f.scn"]
+
+[params]
+
+playback_speed=5
+z_as_relative=true
+loop_animations=1
+loop_wrap_interpolation=true
+optimize_for_blends=true
+rest_pose_animation="Idle"
+reparenting_solution="instance per parent"

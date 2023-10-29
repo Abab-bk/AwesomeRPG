@@ -1,0 +1,21 @@
+[remap]
+
+importer="importer.scml"
+type="PackedScene"
+uid="uid://pwfr4bnflhoe"
+path="res://.godot/imported/Animations.scml-5a1f98ebe7ab0b9d4ccf473d89fc6961.scn"
+
+[deps]
+
+source_file="res://Assets/Characters/Warrior/Animations.scml"
+dest_files=["res://.godot/imported/Animations.scml-5a1f98ebe7ab0b9d4ccf473d89fc6961.scn"]
+
+[params]
+
+playback_speed=5
+z_as_relative=true
+loop_animations=1
+loop_wrap_interpolation=true
+optimize_for_blends=true
+rest_pose_animation="Idle"
+reparenting_solution="instance per parent"

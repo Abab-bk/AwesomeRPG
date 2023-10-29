@@ -4,7 +4,7 @@ class_name HitBoxComponent extends Area2D
 signal handled_hit
 signal criticaled
 
-var buff_manager:FlowerBuffManager:
+@export var buff_manager:FlowerBuffManager:
     set(_v):
         buff_manager = _v
         if buff_manager:
@@ -12,7 +12,7 @@ var buff_manager:FlowerBuffManager:
 
 @export var disable_target:Node2D
 
-var disable_target_group:String = ""
+@export var disable_target_group:String = ""
 
 var data:CharacterData
 

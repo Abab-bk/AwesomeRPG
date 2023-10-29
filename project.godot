@@ -23,8 +23,6 @@ config/icon="res://Icon.png"
 Master="*res://Script/Game/Global/Master.gd"
 EventBus="*res://Script/Game/Global/EventBus.gd"
 Builder="*res://Script/Game/Global/Builder.gd"
-BeehaveGlobalMetrics="*res://addons/beehave/metrics/beehave_global_metrics.gd"
-BeehaveGlobalDebugger="*res://addons/beehave/debug/global_debugger.gd"
 SaveSystem="*res://addons/save_system/SaveSystem.gd"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
 
@@ -45,7 +43,19 @@ naming/scene_name_casing=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/FlowerAbility/plugin.cfg", "res://addons/FlowerBuff/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/beehave/plugin.cfg", "res://addons/save_system/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/worldmap_builder/plugin.cfg")
+enabled=PackedStringArray("res://addons/FlowerAbility/plugin.cfg", "res://addons/FlowerBuff/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/import_scml/plugin.cfg", "res://addons/save_system/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/worldmap_builder/plugin.cfg")
+
+[importer_defaults]
+
+importer.scml={
+"loop_animations": 1,
+"loop_wrap_interpolation": true,
+"optimize_for_blends": true,
+"playback_speed": 5,
+"reparenting_solution": "instance per parent",
+"rest_pose_animation": "Idle",
+"z_as_relative": true
+}
 
 [input]
 

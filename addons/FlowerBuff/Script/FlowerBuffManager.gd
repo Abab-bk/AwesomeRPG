@@ -69,6 +69,25 @@ func add_buff(_buff:FlowerBaseBuff) -> void:
     buff_list.append(_buff)
     compute()
 
+func add_buff_list(_buff_list:Array[FlowerBaseBuff]) -> void:
+    buff_list.append_array(_buff_list)
+    compute()
+
+func remove_buff_list(_buff_list:Array[FlowerBaseBuff]) -> void:
+    for _buff in _buff_list:
+        if _buff.is_connected("removed", remove_buff):
+            _buff.disconnect("removed", remove_buff)
+        if _buff.is_connected("computed_values", computed_values):
+            _buff.disconnect("computed_values", computed_values)
+        if is_connected("minus_time", _buff.minus_all_time):
+            disconnect("minus_time", _buff.minus_all_time)
+        
+        if _buff in buff_list:
+            buff_list.erase(_buff)
+            a_buff_removed.emit(_buff)
+            _buff = null
+    compute()
+
 func remove_buff(_buff:FlowerBaseBuff) -> void:
     if _buff.is_connected("removed", remove_buff):
         _buff.disconnect("removed", remove_buff)
@@ -85,22 +104,10 @@ func remove_buff(_buff:FlowerBaseBuff) -> void:
     compute()
 
 func computed_values() -> void:
-    var id_counter := 1  # 用于生成新的不相同ID的计数器
-    var processed_ids := []  # 已处理的ID列表
-       
     for _buff in buff_list:
         for _value in _buff.compute_values:
-            if computer.all_data.has(_value.id):
-                # 处理存在相同ID的情况
-                var new_id := _value.id + "_" + str(id_counter)  # 生成新的不相同ID
-                
-                while new_id in processed_ids:  # 确保新ID不会重复
-                    id_counter += 1
-                    new_id = _value.id + "_" + str(id_counter)
-                
-                _value.id = new_id  # 更新值的ID
-                processed_ids.append(new_id)  # 将新ID添加到已处理列表中
-
+#            if computer.all_data.has(_value.id):
+#                continue
             computer.all_data[_value.id] = _value
     
     # 然后加入进去origin_data

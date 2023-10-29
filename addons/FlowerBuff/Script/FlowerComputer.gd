@@ -2,6 +2,7 @@ class_name FlowerComputer
 extends Node
 
 signal output_data_change
+#signal computer_ok
 
 var origin_data:FlowerData
 var output_data:FlowerData
@@ -20,6 +21,7 @@ func compute_all() -> void:
         # 如果没有这个属性
         if not origin_data.get(__modifier.target_property):
             continue
+        
         match __modifier.type:
             # 根据modifier的type计算
             FlowerConst.COMPUTE_TYPE.MORE:
@@ -34,6 +36,7 @@ func compute_all() -> void:
                 output_data_change.emit()
                 
             FlowerConst.COMPUTE_TYPE.INCREASE:
+                
                 var computed_data = origin_data.duplicate(true)
                 
                 var _target_property:String = __modifier.target_property
@@ -75,9 +78,7 @@ func compute_all() -> void:
                 output_data[_origin_index] += output_data[_origin_index] * computed_data[_origin_index]
                 
                 output_data_change.emit()
-                
     buff_manager.compute_ok.emit()
-#        print("计算完毕")
 
 func analyse_formula(_formula:String) -> String:
     # 首先通过正则解析方括号内内容：

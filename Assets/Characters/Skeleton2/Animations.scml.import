@@ -1,0 +1,21 @@
+[remap]
+
+importer="importer.scml"
+type="PackedScene"
+uid="uid://d0vdv3j2ykegh"
+path="res://.godot/imported/Animations.scml-b080053520f551cb25f8fd5643d7e461.scn"
+
+[deps]
+
+source_file="res://Assets/Characters/Skeleton2/Animations.scml"
+dest_files=["res://.godot/imported/Animations.scml-b080053520f551cb25f8fd5643d7e461.scn"]
+
+[params]
+
+playback_speed=5
+z_as_relative=true
+loop_animations=1
+loop_wrap_interpolation=true
+optimize_for_blends=true
+rest_pose_animation="Idle"
+reparenting_solution="instance per parent"

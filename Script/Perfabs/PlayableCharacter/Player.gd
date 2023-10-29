@@ -6,10 +6,24 @@ signal criticaled
 
 @onready var ability_container:FlowerAbilityContainer = $FlowerAbilityContainer
 @onready var flower_buff_manager:FlowerBuffManager = $FlowerBuffManager
-@onready var animation_player:AnimationPlayer = $AnimationPlayer
+#@onready var animation_player:AnimationPlayer = $AnimationPlayer
 @onready var hurt_box_collision:CollisionShape2D = $HurtBoxComponent/CollisionShape2D
 @onready var atk_cd_timer:Timer = $AtkCDTimer
-@onready var weapon_component:Node2D = $Sprite2D/Weapons/WeaponComponent
+#@onready var weapon_component:Node2D = $Sprite2D/Weapons/WeaponComponent
+@onready var character_animation_player:AnimationPlayer = %CharacterAnimationPlayer
+@onready var hit_box_component:HitBoxComponent = %HitBoxComponent
+@onready var atk_range:AtkRangeComponent = $AtkRangeComponent
+@onready var vision:VisionComponent = $VisionComponent
+
+
+enum STATE {
+    IDLE,
+    RUNNING,
+    ATTACKING,
+    DEAD,
+}
+
+var current_state:STATE = STATE.IDLE
 
 var data:CharacterData
 var target:Vector2 = global_position
@@ -30,15 +44,18 @@ func _ready() -> void:
         # TODO: 如果 type 是武器或者项链，选择左右手，当前为直接替换
         data.quipments[_type] = _item
         
+        var _temp:Array[FlowerBaseBuff] = []
         # 装备装备时，应用装备 Buff
         for i in _item.pre_affixs:
-            flower_buff_manager.add_buff(i.buff)
+            _temp.append(i.buff)
         
         for i in _item.buf_affix:
-            flower_buff_manager.add_buff(i.buff)
+            _temp.append(i.buff)
         
         if _item.weapon_type != Const.WEAPONS_TYPE.NULL:
             change_weapons_sprite(load(_item.texture_path))
+        
+        flower_buff_manager.add_buff_list(_temp)
         
         # 更新 UI
         EventBus.equipment_up_ok.emit(_type, _item))
@@ -47,11 +64,14 @@ func _ready() -> void:
         func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
             data.quipments[_type] = null
             
-            # TODO: remove的时候可以先不计算，全部remove完成后再计算
+            var _temp:Array[FlowerBaseBuff] = []
+            
             for i in _item.pre_affixs:
-                flower_buff_manager.remove_buff(i.buff)
+                _temp.append(i.buff)
             for i in _item.buf_affix:
-                flower_buff_manager.remove_buff(i.buff)
+                _temp.append(i.buff)
+            
+            flower_buff_manager.remove_buff_list(_temp)
             
             print("移除装备")
             EventBus.equipment_down_ok.emit(_type, _item))
@@ -85,7 +105,7 @@ func _ready() -> void:
     
     EventBus.load_save.connect(func():
         print(SaveSystem.get_var("Player"))
-        data.load_save(SaveSystem.get_var("Player"))
+#        data.load_save(SaveSystem.get_var("Player"))
 #        ability_container.ability_list = SaveSystem.get_var("Player:Abilitys")
         )
     
@@ -97,7 +117,20 @@ func _ready() -> void:
         )
 #    flower_buff_manager.a_buff_removed
     
-    weapon_component.criticaled.connect(func(): EventBus.player_criticaled.emit())
+    atk_range.target_enter_range.connect(func():
+        velocity = Vector2.ZERO
+        # 攻击代码
+        
+        character_animation_player.play("scml/Attacking")
+        current_state = STATE.ATTACKING
+        )
+    
+    vision.target_enter_range.connect(func():
+        look_at(closest_enemy.global_position)
+        move_to_enemy()
+        )
+    
+    hit_box_component.criticaled.connect(func(): EventBus.player_criticaled.emit())
     
     data = flower_buff_manager.compute_data as CharacterData
     flower_buff_manager.output_data = data.duplicate(true)
@@ -106,7 +139,7 @@ func _ready() -> void:
     
     compute()
     
-    weapon_component.set_dis_target(self)
+    find_closest_enemy()
 
 func rebuild_skills() -> void:
     ability_container.ability_list = []
@@ -124,7 +157,19 @@ func rebuild_skills() -> void:
 func compute() -> void:
     flower_buff_manager.compute()
 
+func move_to_enemy() -> void:
+    if not closest_enemy:
+        return
+    
+    velocity = global_position.\
+    direction_to(closest_enemy.global_position) * data.speed
+    
+    character_animation_player.play("scml/Walking")
+
 func _physics_process(_delta: float) -> void:
+    if current_state == STATE.IDLE:
+        move_to_enemy()
+    
     move_and_slide()
 
 func get_ability_list() -> Array:
@@ -136,7 +181,9 @@ func get_level() -> int:
     return data.level
 
 func change_weapons_sprite(_sprite:Texture2D) -> void:
-    weapon_component.change_weapon_sprite(_sprite)
+#    weapon_component.change_weapon_sprite(_sprite)
+    # TODO: 改变武器
+    pass
 
 # ======= 属性 ========
 func up_level() -> void:
@@ -156,16 +203,15 @@ func relife() -> void:
     data.hp = data.max_hp
     data.magic = data.max_magic
     global_position = Master.relife_point.global_position
-    animation_player.play_backwards("Die")
-    await animation_player.animation_finished
+    character_animation_player.play_backwards("scml/Dying")
+    await character_animation_player.animation_finished
     # 设置受击框，避免一直死亡造成内存溢出
     hurt_box_collision.call_deferred("set_disabled", false)
 
 func die() -> void:
-    # FIXME: 设置受击框，避免一直死亡造成内存溢出
     hurt_box_collision.call_deferred("set_disabled", true)
-    animation_player.play("Die")
-    await animation_player.animation_finished
+    character_animation_player.play("scml/Dying")
+    await character_animation_player.animation_finished
     EventBus.player_dead.emit()
 
 func find_closest_enemy(_temp = 0) -> void:
@@ -180,3 +226,6 @@ func find_closest_enemy(_temp = 0) -> void:
         if enemy_distance < closest_distance:
             closest_distance = enemy_distance
             closest_enemy = enemy
+    
+    atk_range.target = closest_enemy
+    vision.target = closest_enemy

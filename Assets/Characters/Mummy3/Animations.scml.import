@@ -1,0 +1,21 @@
+[remap]
+
+importer="importer.scml"
+type="PackedScene"
+uid="uid://dkcrbidintkro"
+path="res://.godot/imported/Animations.scml-e209f898e737056d28e3916fbe21fc13.scn"
+
+[deps]
+
+source_file="res://Assets/Characters/Mummy3/Animations.scml"
+dest_files=["res://.godot/imported/Animations.scml-e209f898e737056d28e3916fbe21fc13.scn"]
+
+[params]
+
+playback_speed=5
+z_as_relative=true
+loop_animations=1
+loop_wrap_interpolation=true
+optimize_for_blends=true
+rest_pose_animation="Idle"
+reparenting_solution="instance per parent"
