@@ -30,9 +30,12 @@ func _ready() -> void:
     atk_range.target_enter_range.connect(func():
         velocity = Vector2.ZERO
         # 攻击代码
-        
         character_animation.play("scml/Attacking")
         current_state = STATE.ATTACKING
+        )
+    
+    atk_range.target_exited_range.connect(func():
+        current_state = STATE.PATROL
         )
     
     vision_component.target_enter_range.connect(func():
@@ -72,6 +75,8 @@ func die() -> void:
     if dead:
         return
     dead = true
+    
+    Master.player.current_state = 0
     
     # 获得经验
     EventBus.enemy_die.emit(data.level * 10)

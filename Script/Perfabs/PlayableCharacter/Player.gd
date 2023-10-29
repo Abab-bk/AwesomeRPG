@@ -166,7 +166,16 @@ func compute() -> void:
 
 func move_to_enemy() -> void:
     if not closest_enemy:
+        find_closest_enemy()
         return
+    
+    var _dir:Vector2 = to_local(closest_enemy.global_position).normalized()
+        
+    if _dir.x > 0:
+            # Right
+        self.scale.x = 1
+    elif  _dir.x < 0:
+        self.scale.x = -1
     
     velocity = global_position.\
     direction_to(closest_enemy.global_position) * data.speed

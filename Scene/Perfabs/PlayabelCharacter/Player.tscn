@@ -39,10 +39,10 @@ _data = {
 radius = 38.3275
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_28jd6"]
-radius = 137.015
+radius = 180.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wcb0n"]
-radius = 198.091
+radius = 360.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wnox7"]
 size = Vector2(94, 158)
@@ -1722,6 +1722,7 @@ script = ExtResource("5_cwveo")
 buff_manager = NodePath("../FlowerBuffManager")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AtkRangeComponent"]
+position = Vector2(0, -46)
 shape = SubResource("CircleShape2D_28jd6")
 
 [node name="VisionComponent" type="Area2D" parent="." node_paths=PackedStringArray("buff_manager")]
