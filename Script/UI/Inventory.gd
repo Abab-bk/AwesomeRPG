@@ -1,20 +1,28 @@
 extends Control
 
-@onready var slots_ui:GridContainer = %Slots
 @onready var items_ui:GridContainer = %Items
+@onready var slots_ui_1:VBoxContainer = %SlotsUI1
+@onready var slots_ui_2:VBoxContainer = %SlotsUI2
 
 @onready var cancel_btn:Button = %CancelBtn
 @onready var recycle_btn:Button = %RecycleBtn
 
 @export var inventory:Inventory
 
+var slots:Array[Panel]
+
 func _ready() -> void:
+    for i in slots_ui_1.get_children():
+        slots.append(i)
+    for i in slots_ui_2.get_children():
+        slots.append(i)
+    
     EventBus.update_inventory.connect(update_ui)
     EventBus.add_item.connect(func(_item:InventoryItem):
         inventory.add_item(_item))
     EventBus.equipment_up_ok.connect(
         func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
-            for i in slots_ui.get_children():
+            for i in slots:
                 # 如果装备类型不匹配，进入下一次循环
                 if not i.current_equipment_type == _type:
                     continue

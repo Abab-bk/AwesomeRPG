@@ -2,7 +2,7 @@ extends Panel
 
 signal work_ok
 
-@onready var slots_img:TextureRect = $SlotsImg
+@onready var slots_img:TextureRect = $MarginContainer/SlotsImg
 @onready var button:Button = $Button
 
 @export var current_equipment_type:Const.EQUIPMENT_TYPE = Const.EQUIPMENT_TYPE.头盔

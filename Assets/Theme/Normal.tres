@@ -1,7 +1,8 @@
-[gd_resource type="Theme" load_steps=19 format=3 uid="uid://dw7ft4xik3rji"]
+[gd_resource type="Theme" load_steps=21 format=3 uid="uid://dw7ft4xik3rji"]
 
 [ext_resource type="FontFile" uid="uid://cpqr3r4f0yisb" path="res://Assets/Font/SourceHanSansCN-Normal.otf" id="1_0mun2"]
 [ext_resource type="Texture2D" uid="uid://bv7f78tgjbooa" path="res://Assets/UI/Texture/Button/ButtonNormal.png" id="2_vhua5"]
+[ext_resource type="Texture2D" uid="uid://b3ilmntnidsbi" path="res://Assets/UI/Texture/ItemBgGray.png" id="3_6r8et"]
 [ext_resource type="Texture2D" uid="uid://delt30kei8cs" path="res://Assets/UI/Texture/PopupBg.png" id="4_bx67f"]
 [ext_resource type="Texture2D" uid="uid://dxny6jldurgsg" path="res://Assets/UI/Texture/DeepRedClub.png" id="4_d64v8"]
 [ext_resource type="Texture2D" uid="uid://b0xjvmcqrjkan" path="res://Assets/UI/Bars/BqBar.png" id="5_b4kr4"]
@@ -26,6 +27,9 @@ texture_margin_bottom = 10.0
 modulate_color = Color(0.733333, 0.733333, 0.733333, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r3f4v"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uodq1"]
+texture = ExtResource("3_6r8et")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sk2gh"]
 texture = ExtResource("4_d64v8")
@@ -88,6 +92,8 @@ EmptyBtn/styles/focus = SubResource("StyleBoxEmpty_r3f4v")
 EmptyBtn/styles/hover = SubResource("StyleBoxEmpty_r3f4v")
 EmptyBtn/styles/normal = SubResource("StyleBoxEmpty_r3f4v")
 EmptyBtn/styles/pressed = SubResource("StyleBoxEmpty_r3f4v")
+EmptySlotPanel/base_type = &"Panel"
+EmptySlotPanel/styles/panel = SubResource("StyleBoxTexture_uodq1")
 HpBar/base_type = &"ProgressBar"
 HpBar/styles/background = SubResource("StyleBoxTexture_sk2gh")
 HpBar/styles/fill = SubResource("StyleBoxTexture_cwwfk")
