@@ -62,6 +62,8 @@ func _ready() -> void:
     EventBus.show_color.connect(show_color_rect)
     EventBus.hide_color.connect(hide_color_rect)
     
+    EventBus.player_level_up.connect(show_animation.bind("LevelUp"))
+    
     backed_to_home.connect(func():quest_panel.show())
     changed_to_other.connect(func():quest_panel.hide())
     
@@ -181,6 +183,11 @@ func show_color_rect() -> void:
 
 func hide_color_rect() -> void:
     color_rect.hide()
+
+func show_animation(_key:String) -> void:
+    if _key == "LevelUp":
+        var _img:Control = load("res://Scene/UI/LevelUpAnimation.tscn").instantiate()
+        add_child(_img)
 
 func show_popup(_title:String, _desc:String, _show_cancel_btn:bool = false, _yes_event:Callable = func():,
  _cancel_event:Callable = func():) -> void:
