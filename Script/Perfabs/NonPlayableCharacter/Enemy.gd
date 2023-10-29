@@ -36,7 +36,14 @@ func _ready() -> void:
         )
     
     vision_component.target_enter_range.connect(func():
-        look_at(Master.player.global_position)
+        var _dir:Vector2 = to_local(Master.player.global_position).normalized()
+        
+        if _dir.x > 0:
+            # Right
+            self.scale.x = 1
+        elif  _dir.x < 0:
+            self.scale.x = -1
+        
         move_to_player()
         )
     

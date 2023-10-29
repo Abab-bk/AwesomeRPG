@@ -21,7 +21,9 @@ func _ready() -> void:
         data = buff_manager.output_data
     )
     
-    set_collision_mask_value(2, true)
+    set_collision_mask_value(4, true)
+    collision_layer = 0
+    
     area_entered.connect(handle_damage)
 
 func handle_damage(body:Node) -> void:

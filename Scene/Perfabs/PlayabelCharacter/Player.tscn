@@ -1740,6 +1740,8 @@ compute_data = ExtResource("4_14ux5")
 zoom = Vector2(0.5, 0.5)
 
 [node name="HurtBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("6_mwt7r")
 health_component = NodePath("../HealthComponent")
 

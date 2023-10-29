@@ -126,7 +126,14 @@ func _ready() -> void:
         )
     
     vision.target_enter_range.connect(func():
-        look_at(closest_enemy.global_position)
+        var _dir:Vector2 = to_local(closest_enemy.global_position).normalized()
+        
+        if _dir.x > 0:
+            # Right
+            self.scale.x = 1
+        elif  _dir.x < 0:
+            self.scale.x = -1
+        
         move_to_enemy()
         )
     

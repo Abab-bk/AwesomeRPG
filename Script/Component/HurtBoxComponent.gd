@@ -6,7 +6,8 @@ signal hited(value:float)
 @export var health_component:HealthComponent
 
 func _ready() -> void:
-    set_collision_layer_value(2, true)
+    set_collision_layer_value(3, true)
+    collision_mask = 0
 
 func handle_hit(_value:float) -> void:
     health_component.damage(_value)
