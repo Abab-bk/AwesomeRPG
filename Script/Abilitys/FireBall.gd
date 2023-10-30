@@ -18,5 +18,3 @@ func active() -> void:
         _fire_ball.velocity = actor.global_position * speed
     
     Master.world.add_child(_fire_ball)
-    
-    un_active()

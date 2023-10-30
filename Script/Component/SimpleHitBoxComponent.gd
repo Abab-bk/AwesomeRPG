@@ -13,5 +13,4 @@ func handle_damage(body:Node) -> void:
     
     if body is HurtBoxComponent:
         body.handle_hit(damage)
-        print("打中了")
         handled_hit.emit()

@@ -98,7 +98,11 @@ func _ready() -> void:
         EventBus.player_ability_change.emit()
         )
     
-    EventBus.enemy_die.connect(get_xp)
+    EventBus.enemy_die.connect(func(_value):
+        get_xp(_value)
+        if not closest_enemy:
+            find_closest_enemy()
+        )
     
     # TODO: 完善存档
     EventBus.save.connect(func():

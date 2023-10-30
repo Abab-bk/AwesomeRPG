@@ -116,10 +116,15 @@ func active_sub_abilitys() -> void:
 func un_active() -> void:
     ## CUSTOME
     if real_scene != null:
+        print("卸载real_scene，主要是为了被动技能（COC）")
         real_scene.timeout()
     
+    print(real_scene)
+    
     current_state = STATE.COOLDOWN
-    _cooldown_timer.start()
+    
+    if _cooldown_timer:
+        _cooldown_timer.start()
     
     if id == 4005:
         real_scene.queue_free()
