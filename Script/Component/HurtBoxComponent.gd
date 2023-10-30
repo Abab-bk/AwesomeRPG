@@ -4,10 +4,14 @@ extends Area2D
 signal hited(value:float)
 
 @export var health_component:HealthComponent
+@export var is_player_hitbox:bool
 
 func _ready() -> void:
-    set_collision_layer_value(4, true)
-    set_collision_layer_value(1, false)
+    if is_player_hitbox:
+        set_collision_layer_value(6, true)
+    else:
+        set_collision_layer_value(4, true)
+    
     collision_mask = 0
 
 func handle_hit(_value:float) -> void:

@@ -2,8 +2,7 @@ class_name SimpleHitBoxComponent extends HitBoxComponent
 
 var damage:float
 
-func _ready() -> void:    
-    set_collision_mask_value(2, true)
+func _ready() -> void:
     area_entered.connect(handle_damage)
 
 func handle_damage(body:Node) -> void:
@@ -14,4 +13,5 @@ func handle_damage(body:Node) -> void:
     
     if body is HurtBoxComponent:
         body.handle_hit(damage)
+        print("[Hit] %s => %s" % [self.owner.name, body.owner.name])
         handled_hit.emit()

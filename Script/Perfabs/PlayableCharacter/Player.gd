@@ -15,6 +15,9 @@ signal criticaled
 @onready var atk_range:AtkRangeComponent = $AtkRangeComponent
 @onready var vision:VisionComponent = $VisionComponent
 
+@onready var sprites:Dictionary = {
+    "weapon": $"Warrior - 01/Skeleton/bone_004/bone_000/bone_001/Weapon"
+}
 
 enum STATE {
     IDLE,
@@ -202,9 +205,8 @@ func get_level() -> int:
     return data.level
 
 func change_weapons_sprite(_sprite:Texture2D) -> void:
-#    weapon_component.change_weapon_sprite(_sprite)
     # TODO: 改变武器
-    pass
+    sprites["weapon"].texture = _sprite
 
 # ======= 属性 ========
 func up_level() -> void:
@@ -230,6 +232,7 @@ func relife() -> void:
     hurt_box_collision.call_deferred("set_disabled", false)
     current_state = STATE.IDLE
     get_tree().paused = false
+    find_closest_enemy()
 
 func die() -> void:
     if current_state == STATE.DEAD:

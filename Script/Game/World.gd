@@ -9,7 +9,8 @@ func _ready() -> void:
     Master.world = self
     
     EventBus.completed_level.connect(func():
-        enemy_home.min_enemy_count = Master.current_level * 3
+        enemy_home.min_enemy_count = Master.current_level * 1
+        enemy_home.max_enemy_count = Master.current_level * 5
         )
     
     EventBus.completed_level.emit()

@@ -38,9 +38,11 @@ outline_size = 1
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Hud" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_d15xn")
 
 [node name="Control" type="Control" parent="."]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -317,21 +319,27 @@ theme_override_font_sizes/font_size = 25
 text = "获得技能"
 
 [node name="Inventory" parent="." instance=ExtResource("2_cil1e")]
+process_mode = 3
 visible = false
 
 [node name="CharacterPanel" parent="." instance=ExtResource("3_aoxj4")]
+process_mode = 3
 visible = false
 
 [node name="SkillTree" parent="." instance=ExtResource("5_xu7ou")]
+process_mode = 3
 visible = false
 
 [node name="SettingUI" parent="." instance=ExtResource("11_x2eu0")]
+process_mode = 3
 visible = false
 
 [node name="SkillsPanel" parent="." instance=ExtResource("12_doksu")]
+process_mode = 3
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="."]
+process_mode = 3
 visible = false
 modulate = Color(0.0431373, 0.0431373, 0.0431373, 0.607843)
 anchors_preset = 15

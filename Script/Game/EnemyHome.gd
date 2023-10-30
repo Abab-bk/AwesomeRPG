@@ -1,6 +1,13 @@
 extends Node2D
 
-@export var max_enemy_count:int = 300
+@export var max_enemy_count:int = 300:
+    set(v):
+        if v >= 300:
+            v = 300
+            max_enemy_count = v
+            return
+        max_enemy_count = v
+
 @export var min_enemy_count:int = 5
 
 # TODO: 待完善 关卡系统
@@ -27,7 +34,7 @@ func gen_a_enemy(_temp = 0) -> void:
     
     if _current_enemy_count >= max_enemy_count:
         return
-
+    
     if _current_enemy_count < min_enemy_count:
         for i in min_enemy_count - _current_enemy_count:
             spawn_a_enemy()

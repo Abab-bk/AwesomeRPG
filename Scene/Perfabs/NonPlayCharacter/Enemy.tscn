@@ -24,8 +24,8 @@
 [ext_resource type="Script" path="res://Script/Component/HitBoxComponent.gd" id="23_arv76"]
 [ext_resource type="Texture2D" uid="uid://dtu1ibnx1fj51" path="res://Assets/Characters/Skeleton1/Body.png" id="24_1aode"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_3mlrj"]
-radius = 37.054
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vn4f4"]
+size = Vector2(120, 216)
 
 [sub_resource type="Animation" id="Animation_w24fo"]
 resource_name = "Die"
@@ -1707,7 +1707,9 @@ show_percentage = false
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_3mlrj")
+position = Vector2(-2, -31)
+shape = SubResource("RectangleShape2D_vn4f4")
+debug_color = Color(0.976471, 0, 0.415686, 0.419608)
 
 [node name="AtkCDTimer" type="Timer" parent="."]
 one_shot = true
@@ -1748,6 +1750,8 @@ buff_manager = NodePath("../FlowerBuffManager")
 shape = SubResource("CircleShape2D_wll4a")
 
 [node name="HurtBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 8
+collision_mask = 0
 script = ExtResource("6_sc1tl")
 health_component = NodePath("../HealthComponent")
 
@@ -1904,9 +1908,10 @@ offset = Vector2(0, -128)
 flip_v = true
 
 [node name="HitBoxComponent" type="Area2D" parent="01" node_paths=PackedStringArray("buff_manager")]
+collision_layer = 16
+collision_mask = 32
 script = ExtResource("23_arv76")
 buff_manager = NodePath("../../FlowerBuffManager")
-disable_target_group = "Enemy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="01/HitBoxComponent"]
 position = Vector2(91.7577, -109.182)

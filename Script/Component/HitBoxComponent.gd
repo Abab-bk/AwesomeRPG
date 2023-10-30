@@ -9,7 +9,7 @@ signal criticaled
         buff_manager = _v
         if buff_manager:
             data = buff_manager.output_data
-
+@export var is_player_hitbox:bool
 @export var disable_target:Node2D
 
 @export var disable_target_group:String = ""
@@ -21,9 +21,12 @@ func _ready() -> void:
         data = buff_manager.output_data
     )
     
-    set_collision_mask_value(4, true)
-    set_collision_mask_value(1, false)
-    collision_layer = 0
+    if is_player_hitbox:
+        set_collision_layer_value(7, true)
+        set_collision_mask_value(4, true)
+    else:
+        set_collision_layer_value(5, true)
+        set_collision_mask_value(6, true)
     
     area_entered.connect(handle_damage)
 

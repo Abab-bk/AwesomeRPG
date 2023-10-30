@@ -55,6 +55,8 @@ texture = ExtResource("1_aisdm")
 offset = Vector2(-0.148247, -48.4998)
 
 [node name="SimpleHitBoxComponent" type="Area2D" parent="Sprite2D"]
+collision_layer = 64
+collision_mask = 8
 script = ExtResource("3_y7q6d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/SimpleHitBoxComponent"]
