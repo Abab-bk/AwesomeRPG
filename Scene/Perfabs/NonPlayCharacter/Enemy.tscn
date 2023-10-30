@@ -47,7 +47,7 @@ radius = 209.01
 radius = 97.1288
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38ph5"]
-size = Vector2(96, 156)
+size = Vector2(127, 230)
 
 [sub_resource type="Animation" id="Animation_d5nf7"]
 length = 0.001
@@ -1728,9 +1728,10 @@ compute_data = ExtResource("5_iftaj")
 [node name="PathFindComponent" type="Node" parent="."]
 script = ExtResource("4_e4v6d")
 
-[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("buff_manager")]
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("buff_manager", "target")]
 script = ExtResource("5_bho0k")
 buff_manager = NodePath("../FlowerBuffManager")
+target = NodePath("..")
 
 [node name="VisionComponent" type="Area2D" parent="." node_paths=PackedStringArray("buff_manager")]
 script = ExtResource("11_vux65")
@@ -1751,6 +1752,7 @@ script = ExtResource("6_sc1tl")
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(-0.5, -37)
 shape = SubResource("RectangleShape2D_38ph5")
 
 [node name="01" type="Node2D" parent="."]

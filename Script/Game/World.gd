@@ -15,7 +15,7 @@ func _ready() -> void:
     EventBus.completed_level.emit()
     EventBus.update_ui.emit()
     
-#    SoundManager.play_music(load(Master.BGM), 0, "Music")
+    SoundManager.play_music(load(Master.BGM), 0, "Music")
     
 #    if not save:
 #        return

@@ -13,7 +13,7 @@ signal animation_ok
 func _ready() -> void:
     $Sprite2D.rotation = 0.0
     $Sprite2D/HitBoxComponent.criticaled.connect(func():
-        print("暴击，发送信号一次")
+#        print("暴击，发送信号一次")
         criticaled.emit())
 
 func set_dis_target(_target:Node2D) -> void:

@@ -120,12 +120,17 @@ func _ready() -> void:
     atk_range.target_enter_range.connect(func():
         velocity = Vector2.ZERO
         # 攻击代码
+        if current_state == STATE.DEAD:
+            return
         
         character_animation_player.play("scml/Attacking")
         current_state = STATE.ATTACKING
         )
     
     vision.target_enter_range.connect(func():
+        if current_state == STATE.DEAD:        
+            return
+        
         var _dir:Vector2 = to_local(closest_enemy.global_position).normalized()
         
         if _dir.x > 0:
@@ -170,7 +175,7 @@ func move_to_enemy() -> void:
         return
     
     var _dir:Vector2 = to_local(closest_enemy.global_position).normalized()
-        
+    
     if _dir.x > 0:
             # Right
         self.scale.x = 1
@@ -223,8 +228,16 @@ func relife() -> void:
     await character_animation_player.animation_finished
     # 设置受击框，避免一直死亡造成内存溢出
     hurt_box_collision.call_deferred("set_disabled", false)
+    current_state = STATE.IDLE
+    get_tree().paused = false
 
 func die() -> void:
+    if current_state == STATE.DEAD:
+        return
+    
+    get_tree().paused = true
+    
+    current_state = STATE.DEAD
     hurt_box_collision.call_deferred("set_disabled", true)
     character_animation_player.play("scml/Dying")
     await character_animation_player.animation_finished

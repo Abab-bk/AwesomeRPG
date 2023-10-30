@@ -22,6 +22,7 @@ func _ready() -> void:
     )
     
     set_collision_mask_value(4, true)
+    set_collision_mask_value(1, false)
     collision_layer = 0
     
     area_entered.connect(handle_damage)
@@ -49,7 +50,7 @@ func handle_damage(body:Node) -> void:
         if is_critical:
             critical_damage = 1.0 + data.critical_rate * data.critical_damage
             criticaled.emit()
-            print("暴击！额外造成伤害：", critical_damage)
+#            print("暴击！额外造成伤害：", critical_damage)
         
         var sheet_damage:float = root_stats * base_damage * \
         (critical_damage)
@@ -58,3 +59,4 @@ func handle_damage(body:Node) -> void:
         
         body.handle_hit(real_damage)
         handled_hit.emit()
+        print("[Hit] %s => %s" % [self.owner.name, body.owner.name])

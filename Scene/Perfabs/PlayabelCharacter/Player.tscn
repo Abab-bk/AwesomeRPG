@@ -45,7 +45,7 @@ radius = 180.0
 radius = 360.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wnox7"]
-size = Vector2(94, 158)
+size = Vector2(99, 242)
 
 [sub_resource type="Animation" id="Animation_h1t8p"]
 length = 0.001
@@ -1700,6 +1700,7 @@ _data = {
 size = Vector2(37.6475, 218.626)
 
 [node name="Player" type="CharacterBody2D"]
+process_mode = 3
 script = ExtResource("1_8yy7w")
 
 [node name="FlowerAbilityContainer" type="Node" parent="." node_paths=PackedStringArray("actor")]
@@ -1747,12 +1748,13 @@ script = ExtResource("6_mwt7r")
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
-position = Vector2(-2, -13)
+position = Vector2(0.5, -55)
 shape = SubResource("RectangleShape2D_wnox7")
 
-[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("buff_manager")]
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("buff_manager", "target")]
 script = ExtResource("7_afrsm")
 buff_manager = NodePath("../FlowerBuffManager")
+target = NodePath("..")
 
 [node name="Warrior - 01" type="Node2D" parent="."]
 position = Vector2(0, 66)

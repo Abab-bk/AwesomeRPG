@@ -77,10 +77,10 @@ func die() -> void:
     dead = true
     
     Master.player.current_state = 0
-    
+    $CollisionShape2D.call_deferred("set_disabled", true)
     # 获得经验
     EventBus.enemy_die.emit(data.level * 10)
-    
+    $HurtBoxComponent/CollisionShape2D.call_deferred("set_disabled", true)
     # TODO: 修改敌人掉落金币
     Master.coins += 10
     
