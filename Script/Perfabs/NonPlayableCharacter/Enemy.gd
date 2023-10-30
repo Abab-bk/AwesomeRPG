@@ -89,7 +89,6 @@ func die() -> void:
 #    collision_mask = 0
     
     Master.player.current_state = Master.player.STATE.IDLE
-    print($CollisionShape2D.disabled)
     # 获得经验
     EventBus.enemy_die.emit(data.level * 10)
     # TODO: 修改敌人掉落金币

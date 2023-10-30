@@ -126,6 +126,9 @@ func _ready() -> void:
         if current_state == STATE.DEAD:
             return
         
+        if global_position != closest_enemy.marker.global_position:
+            global_position = closest_enemy.marker.global_position
+        
         character_animation_player.play("scml/Attacking")
         current_state = STATE.ATTACKING
         )
