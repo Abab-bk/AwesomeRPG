@@ -1678,6 +1678,8 @@ _data = {
 size = Vector2(25, 152.235)
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_jkjmt")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
@@ -1736,6 +1738,8 @@ buff_manager = NodePath("../FlowerBuffManager")
 target = NodePath("..")
 
 [node name="VisionComponent" type="Area2D" parent="." node_paths=PackedStringArray("buff_manager")]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("11_vux65")
 buff_manager = NodePath("../FlowerBuffManager")
 
@@ -1747,6 +1751,7 @@ script = ExtResource("12_21xly")
 buff_manager = NodePath("../FlowerBuffManager")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AtkRange"]
+position = Vector2(93, -56)
 shape = SubResource("CircleShape2D_wll4a")
 
 [node name="HurtBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]

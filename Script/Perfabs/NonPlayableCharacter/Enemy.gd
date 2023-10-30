@@ -47,7 +47,7 @@ func _ready() -> void:
         elif  _dir.x < 0:
             self.scale.x = -1
         
-        move_to_player()
+#        move_to_player()
         )
     
     atk_range.target = Master.player
@@ -66,15 +66,24 @@ func _ready() -> void:
     
     buff_manager.compute()
 
-func move_to_player() -> void:
-    velocity = global_position.\
-    direction_to(Master.player.global_position) * data.speed
+func move_to_player(_delta:float) -> void:
+    var dir:Vector2 = global_position.\
+    direction_to(Master.player.global_position)
+    var desired_velocity:Vector2 = dir * data.speed
+    
+    var steering:Vector2 = (desired_velocity - velocity) * _delta * 2.5
+    
+    velocity += steering
+    
     character_animation.play("scml/Walking")
 
 func die() -> void:
     if dead:
         return
     dead = true
+    
+    collision_layer = 0
+    collision_mask = 0
     
     Master.player.current_state = 0
     $CollisionShape2D.call_deferred("set_disabled", true)
@@ -92,13 +101,22 @@ func die() -> void:
     
     queue_free()
 
+func get_circle_pos(_random) -> Vector2:
+    var kill_circle_center:Vector2 = Master.player.global_position
+    var radius = 40
+    var angle = _random * PI * 2
+    var x = kill_circle_center.x + cos(angle) * radius
+    var y = kill_circle_center.y + cos(angle) * radius
+    
+    return Vector2(x, y)
+
 func set_level(_value:int) -> void:
     data.level = _value
     data.set_property_from_level()
 
 func _physics_process(_delta:float) -> void:
     if current_state == STATE.PATROL:
-        move_to_player()
+        move_to_player(_delta)
     
     move_and_slide()
     hp_bar.value = (float(data.hp) / float(data.max_hp)) * 100.0

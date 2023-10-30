@@ -248,12 +248,12 @@ func die() -> void:
 
 func find_closest_enemy(_temp = 0) -> void:
     all_enemy = get_tree().get_nodes_in_group("Enemy")
-    
+    closest_distance = 1000000
     for enemy in all_enemy:
         if not closest_enemy:
             closest_enemy = enemy
         
-        var enemy_distance = position.distance_to(enemy.position)
+        var enemy_distance = global_position.distance_to(enemy.global_position)
         
         if enemy_distance < closest_distance:
             closest_distance = enemy_distance

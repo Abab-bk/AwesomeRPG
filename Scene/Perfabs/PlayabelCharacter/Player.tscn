@@ -39,7 +39,7 @@ _data = {
 size = Vector2(99, 228)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_28jd6"]
-radius = 180.0
+radius = 125.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wcb0n"]
 radius = 360.0
@@ -1697,10 +1697,12 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hl0t"]
-size = Vector2(37.6475, 218.626)
+size = Vector2(37.6475, 270.625)
 
 [node name="Player" type="CharacterBody2D"]
 process_mode = 3
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_8yy7w")
 
 [node name="FlowerAbilityContainer" type="Node" parent="." node_paths=PackedStringArray("actor")]
@@ -1725,7 +1727,7 @@ script = ExtResource("5_cwveo")
 buff_manager = NodePath("../FlowerBuffManager")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AtkRangeComponent"]
-position = Vector2(0, -46)
+position = Vector2(106, -84)
 shape = SubResource("CircleShape2D_28jd6")
 
 [node name="VisionComponent" type="Area2D" parent="." node_paths=PackedStringArray("buff_manager")]
@@ -1797,7 +1799,7 @@ flip_v = true
 z_index = 7
 position = Vector2(115.945, 100.855)
 rotation = 4.73231
-texture = ExtResource("22_wecve")
+texture = ExtResource("20_idrm6")
 centered = false
 offset = Vector2(0, -128)
 flip_v = true

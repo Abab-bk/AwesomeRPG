@@ -509,7 +509,7 @@ layer_0/tile_data = PackedInt32Array(1900570, 196608, 2, 1835034, 196608, 1, 176
 [node name="Player" parent="." instance=ExtResource("2_l5a8p")]
 
 [node name="Enemy" parent="." instance=ExtResource("5_t1ymi")]
-position = Vector2(1860, 2239)
+position = Vector2(2903, 258)
 
 [node name="RelifePoint" parent="." instance=ExtResource("4_f4kq8")]
 

@@ -38,5 +38,5 @@ healing_effciency = 0.0
 vision = 360
 atk_speed = 1.0
 atk_cd = 0.5
-atk_range = 150.0
+atk_range = 125.0
 quipments = {}
