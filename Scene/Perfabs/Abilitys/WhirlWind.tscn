@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://bkikwo7ya1hpj"]
 
-[ext_resource type="Texture2D" uid="uid://dfbtjmxa3kb5l" path="res://Assets/Texture/Weapons/weapon_longsword.png" id="1_aisdm"]
 [ext_resource type="Script" path="res://Script/Perfabs/Abilitys/WhirlWind.gd" id="1_ndi8n"]
+[ext_resource type="Texture2D" uid="uid://dgum584vdy70s" path="res://Assets/Texture/Icons/Sword/Sword1.png" id="2_iltll"]
 [ext_resource type="Script" path="res://Script/Component/SimpleHitBoxComponent.gd" id="3_y7q6d"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xtwcb"]
-size = Vector2(49.2134, 117.943)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jfm7"]
+size = Vector2(291, 41)
 
 [sub_resource type="Animation" id="Animation_yfy1q"]
 length = 0.001
@@ -48,20 +48,23 @@ _data = {
 [node name="WhirlWind" type="Node2D"]
 script = ExtResource("1_ndi8n")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(99, 1.52588e-05)
-rotation = 1.56208
-texture = ExtResource("1_aisdm")
-offset = Vector2(-0.148247, -48.4998)
-
-[node name="SimpleHitBoxComponent" type="Area2D" parent="Sprite2D"]
+[node name="SimpleHitBoxComponent" type="Area2D" parent="."]
+position = Vector2(-37.2079, 2)
 collision_layer = 64
 collision_mask = 8
 script = ExtResource("3_y7q6d")
+is_player_hitbox = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/SimpleHitBoxComponent"]
-position = Vector2(-2.38419e-07, -42.0071)
-shape = SubResource("RectangleShape2D_xtwcb")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SimpleHitBoxComponent"]
+position = Vector2(135.5, -1.5)
+shape = SubResource("RectangleShape2D_2jfm7")
+debug_color = Color(1, 0.6, 0.701961, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(56.7921, 34)
+rotation = 0.786486
+texture = ExtResource("2_iltll")
+offset = Vector2(-0.148247, -48.4998)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

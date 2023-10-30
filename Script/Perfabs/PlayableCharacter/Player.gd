@@ -186,7 +186,7 @@ func move_to_enemy() -> void:
         self.scale.x = -1
     
     velocity = global_position.\
-    direction_to(closest_enemy.global_position) * data.speed
+    direction_to(closest_enemy.marker.global_position) * data.speed
     
     character_animation_player.play("scml/Walking")
 

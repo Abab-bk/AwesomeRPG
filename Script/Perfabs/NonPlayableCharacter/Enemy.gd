@@ -10,14 +10,15 @@ extends CharacterBody2D
 #@onready var weapons:Node2D = %Weapons
 @onready var atk_cd_timer:Timer = $AtkCDTimer
 @onready var character_animation:AnimationPlayer = %CharacterAnimation
+@onready var marker:Marker2D = $Marker2D
 
-var dead:bool = false
 var data:CharacterData
 
 enum STATE {
     PATROL,
     MOVE_TO_PLAYERING,
     ATTACKING,
+    DEAD,
 }
 
 var current_state:STATE = STATE.PATROL
@@ -25,6 +26,7 @@ var current_state:STATE = STATE.PATROL
 func _ready() -> void:
     hurt_box_component.hited.connect(func(value:int):
         EventBus.show_damage_number.emit(get_global_transform_with_canvas().get_origin(), str(value))
+        $AnimationPlayer.play("Hited")
         )
     
     atk_range.target_enter_range.connect(func():
@@ -78,26 +80,26 @@ func move_to_player(_delta:float) -> void:
     character_animation.play("scml/Walking")
 
 func die() -> void:
-    if dead:
+    if current_state == STATE.DEAD:
         return
-    dead = true
     
-    collision_layer = 0
-    collision_mask = 0
+    current_state = STATE.DEAD
     
-    Master.player.current_state = 0
-    $CollisionShape2D.call_deferred("set_disabled", true)
+#    collision_layer = 0
+#    collision_mask = 0
+    
+    Master.player.current_state = Master.player.STATE.IDLE
+    print($CollisionShape2D.disabled)
     # 获得经验
     EventBus.enemy_die.emit(data.level * 10)
-    $HurtBoxComponent/CollisionShape2D.call_deferred("set_disabled", true)
     # TODO: 修改敌人掉落金币
     Master.coins += 10
     
     var _drop_item:InventoryItem = item_generator.gen_a_item()
     EventBus.new_drop_item.emit(_drop_item, get_global_transform_with_canvas().get_origin())
     
-    character_animation.play("scml/Dying")
-    await character_animation.animation_finished
+#    character_animation.play("scml/Dying")
+#    await character_animation.animation_finished
     
     queue_free()
 
@@ -117,6 +119,9 @@ func set_level(_value:int) -> void:
 func _physics_process(_delta:float) -> void:
     if current_state == STATE.PATROL:
         move_to_player(_delta)
+    
+    if current_state == STATE.DEAD:
+        $CollisionShape2D.set_disabled(true)
     
     move_and_slide()
     hp_bar.value = (float(data.hp) / float(data.max_hp)) * 100.0

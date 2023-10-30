@@ -115,7 +115,8 @@ func active_sub_abilitys() -> void:
 
 func un_active() -> void:
     ## CUSTOME
-    real_scene.timeout()
+    if real_scene != null:
+        real_scene.timeout()
     
     current_state = STATE.COOLDOWN
     _cooldown_timer.start()

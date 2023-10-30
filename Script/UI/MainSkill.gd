@@ -27,6 +27,10 @@ var ability:FlowerAbility = null:
                 Master.player.ability_container.remove_a_ability_by_id(ability.id)
                 EventBus.player_ability_change.emit()
 #                Master.player.rebuild_skills()
+            
+            %DisBtn.hide()
+            %ChangeBtn.show()
+            
             return
         
         if ability:
@@ -37,6 +41,9 @@ var ability:FlowerAbility = null:
         
         %Icon.texture = load(ability.icon_path)
         %NameLabel.text = ability.name
+        %DisBtn.show()
+        %ChangeBtn.hide()
+        
         changed_ability.emit(ability.id)
         
         if sub_skill:
@@ -52,3 +59,6 @@ func _ready() -> void:
     %DisBtn.pressed.connect(func():
         ability = null
         )
+    
+    %DisBtn.hide()
+    %ChangeBtn.show()

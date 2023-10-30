@@ -62,4 +62,3 @@ func handle_damage(body:Node) -> void:
         
         body.handle_hit(real_damage)
         handled_hit.emit()
-        print("[Hit] %s => %s" % [self.owner.name, body.owner.name])

@@ -85,6 +85,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.609923]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%HitBoxComponent/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u12cb"]
 _data = {
@@ -1682,6 +1694,18 @@ tracks/13/keys = {
 "update": 0,
 "values": [ExtResource("20_idrm6")]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("%HitBoxComponent/CollisionShape2D:disabled")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nebjw"]
 _data = {
@@ -1703,6 +1727,7 @@ size = Vector2(37.6475, 270.625)
 process_mode = 3
 collision_layer = 2
 collision_mask = 4
+motion_mode = 1
 script = ExtResource("1_8yy7w")
 
 [node name="FlowerAbilityContainer" type="Node" parent="." node_paths=PackedStringArray("actor")]
@@ -1778,7 +1803,7 @@ libraries = {
 
 [node name="bone_004" type="Bone2D" parent="Warrior - 01/Skeleton"]
 position = Vector2(0.08515, 34.2817)
-rotation = 1.55138
+rotation = 1.52724
 rest = Transform2D(-0.0453701, 0.99897, -0.99897, -0.0453701, -1.01678, 37.0365)
 
 [node name="bone_005" type="Bone2D" parent="Warrior - 01/Skeleton/bone_004"]
@@ -1806,7 +1831,7 @@ flip_v = true
 
 [node name="bone_002" type="Bone2D" parent="Warrior - 01/Skeleton/bone_004"]
 position = Vector2(43.8686, 28.8767)
-rotation = 2.7742
+rotation = 2.51918
 rest = Transform2D(-0.912465, 0.409154, -0.409154, -0.912465, 46.0094, 29.6813)
 
 [node name="bone_003" type="Bone2D" parent="Warrior - 01/Skeleton/bone_004/bone_002"]
@@ -1835,7 +1860,7 @@ flip_v = true
 
 [node name="bone_000" type="Bone2D" parent="Warrior - 01/Skeleton/bone_004"]
 position = Vector2(45.7572, -16.5978)
-rotation = -2.63604
+rotation = -2.38545
 rest = Transform2D(-0.848959, -0.528459, 0.528459, -0.848959, 47.2572, -16.6659)
 
 [node name="bone_001" type="Bone2D" parent="Warrior - 01/Skeleton/bone_004/bone_000"]
@@ -1880,7 +1905,8 @@ flip_v = true
 
 [node name="bone_006" type="Bone2D" parent="Warrior - 01/Skeleton"]
 position = Vector2(-19.3814, 34.7927)
-rotation = -1.5808
+rotation = -1.17216
+scale = Vector2(1, 1)
 rest = Transform2D(-0.00999957, -0.99995, 0.99995, -0.00999957, -19.3814, 34.7927)
 
 [node name="Right Leg" type="Sprite2D" parent="Warrior - 01/Skeleton/bone_006"]
@@ -1894,7 +1920,7 @@ flip_v = true
 
 [node name="bone_007" type="Bone2D" parent="Warrior - 01/Skeleton"]
 position = Vector2(18.8063, 35.44)
-rotation = -1.55157
+rotation = -2.05377
 rest = Transform2D(0.0192273, -0.999815, 0.999815, 0.0192273, 18.8063, 35.44)
 
 [node name="Left Leg" type="Sprite2D" parent="Warrior - 01/Skeleton/bone_007"]
