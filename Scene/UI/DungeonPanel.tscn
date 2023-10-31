@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvl3x8ikri1a4"]
+
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_m8ind"]
+[ext_resource type="Texture2D" uid="uid://pd45atcqjjfu" path="res://Assets/UI/Texture/TitleBar.png" id="2_5vov1"]
+[ext_resource type="Texture2D" uid="uid://dtkji1da2ltep" path="res://Assets/UI/Texture/Club.png" id="3_ejlfq"]
+[ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="4_itlws"]
+[ext_resource type="PackedScene" uid="uid://dd7horikqh0u1" path="res://Scene/UI/DungeonItemUi.tscn" id="5_fbktt"]
+
+[node name="DungeonPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_m8ind")
+
+[node name="Content" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 200
+
+[node name="Panel" type="Panel" parent="Content"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleBar" type="NinePatchRect" parent="Content/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+texture = ExtResource("2_5vov1")
+patch_margin_left = 56
+patch_margin_top = 8
+patch_margin_right = 56
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/Panel/VBoxContainer/TitleBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/Panel/VBoxContainer/TitleBar/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Content/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_ejlfq")
+stretch_mode = 3
+
+[node name="Space" type="Control" parent="Content/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleLabel" type="Label" parent="Content/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "副本"
+label_settings = ExtResource("4_itlws")
+horizontal_alignment = 1
+
+[node name="Space2" type="Control" parent="Content/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect2" type="TextureRect" parent="Content/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_ejlfq")
+stretch_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DungeonItemUI" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("5_fbktt")]
+layout_mode = 2
+
+[node name="CancelBtn" type="Button" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "返回"
