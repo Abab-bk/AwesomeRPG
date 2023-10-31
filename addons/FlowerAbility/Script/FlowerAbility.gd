@@ -10,6 +10,7 @@ class_name FlowerAbility extends Resource
 @export var long:bool = false
 @export var global:bool = false
 @export var scene:PackedScene
+# 存实例化的
 var real_scene:AbilityScene
 
 var ability_container:FlowerAbilityContainer
@@ -81,15 +82,12 @@ func active() -> void:
     
     # HACK: 待优化 COC
     # Tags: 在这里修改特殊技能（暴击时释放等）
-    if id == 4005:
+    if id in Master.SPECIAL_ABILITYS_ID:
         real_scene = scene.instantiate() as AbilityScene
         real_scene.actor = actor
         real_scene.ability_data = self
-        actor.add_child(real_scene)
+        actor.call_deferred("add_child", real_scene)
         return
-    
-    for i in sub_ability:
-        i.active()
     
     if global:
         real_scene = scene.instantiate() as AbilityScene
@@ -102,9 +100,12 @@ func active() -> void:
         real_scene.actor = actor
         real_scene.ability_data = self
         actor.call_deferred("add_child", real_scene)
-#        actor.add_child(real_scene)
     
     _running_timer.start()
+    
+    for i in sub_ability:
+        i.active()
+    
     ## CUSTOME
 
 func active_sub_abilitys() -> void:
@@ -113,18 +114,25 @@ func active_sub_abilitys() -> void:
         print("激活：", i.name)
         i.active()
 
+func del_self() -> void:
+    if real_scene:
+        real_scene.timeout()
+    
+    var _container:FlowerAbilityContainer = Master.player.ability_container
+    
+    for i in sub_ability:
+        _container.remove_a_ability(i)
+    
+    _container.remove_a_ability(self)
+    Master.player.config_skills.erase(self.id)
+
 func un_active() -> void:
     ## CUSTOME
     if real_scene != null:
         print("卸载real_scene，主要是为了被动技能（COC）")
         real_scene.timeout()
     
-    print(real_scene)
-    
     current_state = STATE.COOLDOWN
     
     if _cooldown_timer:
         _cooldown_timer.start()
-    
-    if id == 4005:
-        real_scene.queue_free()

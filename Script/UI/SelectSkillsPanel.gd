@@ -39,12 +39,7 @@ func _ready() -> void:
         if Master.player.ability_container.is_in_container_by_id(i):
             continue
         
-        var _skills:FlowerAbility = FlowerAbility.new()
-        
-        _skills.icon_path = Master.abilitys[i]["icon_path"]
-        _skills.name = Master.abilitys[i]["name"]
-        _skills.desc = Master.abilitys[i]["desc"]
-        _skills.id = Master.abilitys[i]["id"]
+        var _skills:FlowerAbility = Master.get_ability_by_id(Master.abilitys[i]["id"])
         
         var _btn:TextureRect = Builder.build_a_info_skill_btn()
         _btn.data = _skills

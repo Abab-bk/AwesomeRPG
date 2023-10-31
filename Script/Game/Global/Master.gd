@@ -1,12 +1,15 @@
 extends Node
 
 # TODO: 装备打造系统
+# TODO: 副本、每日任务、爬塔模式
 
 const BGM:String = "res://Assets/Sounds/Music/Bgm.wav"
 const CLICK_SOUNDS:String = "res://Assets/Sounds/Click.mp3"
 const POPUP_SOUNDS:String = "res://Assets/Sounds/PopUp.mp3"
 const HURT_SOUNDS:String = "res://Assets/Sounds/Sfx/Hurt.wav"
 const HIT_SOUNDS:String = "res://Assets/Sounds/Sfx/Hit.mp3"
+
+const SPECIAL_ABILITYS_ID:Array[int] = [4005]
 
 var world:Node2D
 

@@ -83,17 +83,17 @@ func _ready() -> void:
         ability_container.active_a_ability(_ability)
         )
     
-    EventBus.player_set_a_ability.connect(func(_ability_id:int,
+    EventBus.player_set_a_ability.connect(func(_ability:FlowerAbility,
     _sub_ability:Array):
-        if _ability_id in config_skills:
-            config_skills[_ability_id].append_array(_sub_ability)
-            EventBus.sub_ability_changed.emit(_ability_id, _sub_ability)
+        if _ability.id in config_skills:
+            config_skills[_ability.id].append_array(_sub_ability)
+            EventBus.sub_ability_changed.emit(_ability.id, _sub_ability)
         else:
-            config_skills[_ability_id] = _sub_ability
-            EventBus.sub_ability_changed.emit(_ability_id, _sub_ability)
+            config_skills[_ability.id] = _sub_ability
+            EventBus.sub_ability_changed.emit(_ability.id, _sub_ability)
         
         for i in config_skills.keys():
-            ability_container.add_a_ability(Master.get_ability_by_id(i))
+            ability_container.add_a_ability(_ability)
         
         EventBus.player_ability_change.emit()
         )
