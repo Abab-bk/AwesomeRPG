@@ -1,0 +1,2 @@
+python MoveFilesToPlayerAssets.py
+pause

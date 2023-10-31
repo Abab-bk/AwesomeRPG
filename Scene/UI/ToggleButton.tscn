@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://5jtlome3fw5a"]
+
+[ext_resource type="Script" path="res://Script/UI/ToggleButton.gd" id="1_7r4di"]
+[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="1_c1dke"]
+
+[node name="ToggleButton" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7r4di")
+
+[node name="PreviousBtn" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "<"
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "眼睛1"
+label_settings = ExtResource("1_c1dke")
+horizontal_alignment = 1
+
+[node name="NextBtn" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = ">"

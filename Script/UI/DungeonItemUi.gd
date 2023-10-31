@@ -7,4 +7,6 @@ extends Panel
 var data:DungeonData
 
 func _ready() -> void:
+    if not data:
+        return
     name_label.text = data.name

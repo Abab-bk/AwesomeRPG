@@ -23,7 +23,6 @@ size = Vector2(10236.5, 204)
 script = ExtResource("1_myfhc")
 
 [node name="TileMap" type="TileMap" parent="."]
-y_sort_enabled = true
 texture_filter = 1
 scale = Vector2(15, 15)
 tile_set = ExtResource("2_xqv3x")

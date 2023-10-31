@@ -344,6 +344,7 @@ process_mode = 3
 visible = false
 
 [node name="DungeonPanel" parent="." instance=ExtResource("23_joj7t")]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="."]
 process_mode = 3
