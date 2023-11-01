@@ -118,12 +118,10 @@ func del_self() -> void:
     if real_scene:
         real_scene.timeout()
     
-    var _container:FlowerAbilityContainer = Master.player.ability_container
-    
     for i in sub_ability:
-        _container.remove_a_ability(i)
+        ability_container.remove_a_ability(i)
     
-    _container.remove_a_ability(self)
+    ability_container.remove_a_ability(self)
     Master.player.config_skills.erase(self.id)
 
 func un_active() -> void:

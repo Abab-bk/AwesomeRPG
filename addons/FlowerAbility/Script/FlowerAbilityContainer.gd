@@ -5,7 +5,7 @@ class_name FlowerAbilityContainer extends Node
 
 func _ready() -> void:
     for i in ability_list:
-        _init_a_ability(i)
+        _set_a_ability(i)
 
 func _build_a_timer(_time:float) -> Timer:
     var _timer:Timer = Timer.new()
@@ -14,10 +14,10 @@ func _build_a_timer(_time:float) -> Timer:
     _timer.autostart = false
     return _timer
 
-func _init_a_ability(_ability:FlowerAbility) -> void:
+func _set_a_ability(_ability:FlowerAbility) -> void:
     _ability.ability_container = self
     _ability.actor = actor
-        
+    
     var _cool_down_timer:Timer = _build_a_timer(_ability.cooldown)
     add_child(_cool_down_timer)
     
@@ -44,7 +44,7 @@ func add_a_ability(_ability:FlowerAbility) -> void:
     if not _ability.id in Master.unlocked_skills:
         Master.unlocked_skills.append(_ability.id)
     
-    _init_a_ability(_ability)
+    _set_a_ability(_ability)
 
 func active_a_ability(_ability:FlowerAbility) -> void:
     if _ability in ability_list:

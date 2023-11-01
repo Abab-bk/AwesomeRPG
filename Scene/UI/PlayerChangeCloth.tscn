@@ -1692,11 +1692,12 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(960, 1047)
+size = Vector2i(2, 2)
+size_2d_override_stretch = true
 render_target_update_mode = 4
 
 [node name="02" type="Node2D" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/SubViewportContainer/SubViewport"]
-position = Vector2(450, 800)
+position = Vector2(500, 800)
 scale = Vector2(2.5, 2.5)
 
 [node name="Skeleton" type="Skeleton2D" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/SubViewportContainer/SubViewport/02"]
@@ -1754,7 +1755,6 @@ rest = Transform2D(0.983955, 0.178418, -0.178418, 0.983955, 30.4353, 0)
 z_index = 8
 position = Vector2(-17.7724, -35.245)
 rotation = 1.73263
-scale = Vector2(1, 1)
 texture = ExtResource("9_pnqyl")
 centered = false
 offset = Vector2(0, -64)
@@ -1791,7 +1791,6 @@ flip_v = true
 z_index = 1
 position = Vector2(-16.8551, -36.7117)
 rotation = 1.75823
-scale = Vector2(1, 1)
 texture = ExtResource("12_epm0d")
 centered = false
 offset = Vector2(0, -64)

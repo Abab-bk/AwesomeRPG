@@ -38,7 +38,7 @@ var quests:Dictionary
 var json_path:String = "res://DataBase/output/"
 
 const abilitys_start:int = 4001
-const abilitys_end:int = 4005
+const abilitys_end:int = 4006
 
 func get_quest_by_id(_id:int) -> QuestResource:
     var _quest:QuestResource = QuestResource.new()
@@ -60,7 +60,7 @@ func get_ability_by_id(_id:int) -> FlowerAbility:
     _ability.id = _data.id
     _ability.name = _data.name
     _ability.desc = _data.desc
-    _ability.icon_path = _data.icon_path
+    _ability.icon_path = "res://Assets/Texture/Icons/Skills/%s" % _data.icon_path
     _ability.cooldown = _data.cooldown
     _ability.casting_time = _data.casting_time
     _ability.running_time = _data.running_time

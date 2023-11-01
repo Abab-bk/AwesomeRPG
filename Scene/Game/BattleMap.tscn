@@ -1,11 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://b47jpmvnsbs1d"]
+[gd_scene load_steps=6 format=3 uid="uid://b47jpmvnsbs1d"]
 
 [ext_resource type="TileSet" uid="uid://dpd3kgnq8k7b6" path="res://Assets/Maps/Tiled/World.tres" id="1_k5jlf"]
 [ext_resource type="Script" path="res://Script/Game/BattleMap.gd" id="1_ru2f4"]
+[ext_resource type="Script" path="res://Script/Resources/DungeonData.gd" id="2_2yf8c"]
 [ext_resource type="PackedScene" uid="uid://v51c0x6v6m7h" path="res://Scene/Perfabs/PlayabelCharacter/Player.tscn" id="3_1m1xx"]
+
+[sub_resource type="Resource" id="Resource_06xta"]
+script = ExtResource("2_2yf8c")
+id = &"Coins"
+name = "金币城"
+need_cost = []
+enemy_ids = Array[int]([6001])
+reward = {
+"Coins": 100
+}
 
 [node name="BattleMap" type="Node2D"]
 script = ExtResource("1_ru2f4")
+data = SubResource("Resource_06xta")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1

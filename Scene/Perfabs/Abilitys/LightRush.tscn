@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://c03lve54cex5f"]
+
+[ext_resource type="Script" path="res://Script/Perfabs/Abilitys/LightRush.gd" id="1_3rd2y"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7ulf0"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(2.71, 1, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_max = 162.1
+gravity = Vector3(0, 98, 0)
+
+[node name="LightRush" type="Node2D"]
+script = ExtResource("1_3rd2y")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(1, 1, 0.568627, 1)
+position = Vector2(-13, 0)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_7ulf0")
+trail_enabled = true
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+modulate = Color(1, 1, 0.568627, 1)
+position = Vector2(10, 0)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_7ulf0")
+trail_enabled = true

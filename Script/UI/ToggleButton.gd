@@ -24,7 +24,8 @@ var current_index:int = 0:
         changed.emit()
 
 func _ready() -> void:
-    previous_btn.pressed.connect(func():
+    previous_btn.pressed.connect(func():   
+        print("修改前", target_component.global_position)
         current_index -= 1
         
         if datas.size() > current_index:
@@ -34,8 +35,11 @@ func _ready() -> void:
             label.text = datas[current_index][0]
         
         target_component.texture = load(datas[current_index][1])
+        target_component.centered = false
+        print("修改后", target_component.global_position)        
         )
     next_btn.pressed.connect(func():
+        print("修改前", target_component.global_position)
         current_index += 1
         
         if datas.size() > current_index:
@@ -45,6 +49,8 @@ func _ready() -> void:
             label.text = datas[current_index][0]
             
         target_component.texture = load(datas[current_index][1])
+        target_component.centered = false
+        print("修改后", target_component.global_position)        
         )
 
 func set_datas() -> void:

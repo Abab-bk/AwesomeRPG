@@ -1,6 +1,6 @@
 extends Node2D
 
-var data:DungeonData
+@export var data:DungeonData
 var enemy_count:int
 var player:Player
 
