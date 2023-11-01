@@ -5,10 +5,12 @@
 [ext_resource type="Script" path="res://Script/UI/SkillBtn.gd" id="3_vbukt"]
 
 [node name="SkillBtn" type="TextureRect"]
+custom_minimum_size = Vector2(128, 128)
 offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("1_gtvi5")
 texture = ExtResource("1_i1o3n")
+expand_mode = 2
 stretch_mode = 5
 script = ExtResource("3_vbukt")
 

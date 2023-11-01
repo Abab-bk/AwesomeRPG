@@ -186,6 +186,7 @@ func hide_color_rect() -> void:
 
 func show_animation(_key:String) -> void:
     if _key == "LevelUp":
+        SoundManager.play_sound(load(Master.HAPPY_SOUNDS))
         var _img:Control = load("res://Scene/UI/LevelUpAnimation.tscn").instantiate()
         add_child(_img)
 

@@ -8,6 +8,7 @@ const CLICK_SOUNDS:String = "res://Assets/Sounds/Click.mp3"
 const POPUP_SOUNDS:String = "res://Assets/Sounds/PopUp.mp3"
 const HURT_SOUNDS:String = "res://Assets/Sounds/Sfx/Hurt.wav"
 const HIT_SOUNDS:String = "res://Assets/Sounds/Sfx/Hit.mp3"
+const HAPPY_SOUNDS:String = "res://Assets/Sounds/Sfx/Happy.ogg"
 
 const SPECIAL_ABILITYS_ID:Array[int] = [4005]
 

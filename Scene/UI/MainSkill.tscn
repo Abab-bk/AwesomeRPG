@@ -28,8 +28,10 @@ layout_mode = 2
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_gat6q")
+expand_mode = 2
 stretch_mode = 5
 
 [node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer"]

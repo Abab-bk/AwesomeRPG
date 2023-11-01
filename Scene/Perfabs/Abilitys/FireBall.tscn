@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://de7pxfa272kmn"]
+[gd_scene load_steps=8 format=3 uid="uid://de7pxfa272kmn"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/Bullets/FireBall1.gd" id="1_3bp2f"]
 [ext_resource type="Script" path="res://Script/Perfabs/Bullets/FireBall.gd" id="1_605p5"]
-[ext_resource type="Texture2D" uid="uid://bb0has5er2vg2" path="res://Assets/Texture/Characters/red_character.png" id="1_gkbsb"]
+[ext_resource type="Texture2D" uid="uid://8qlbug3umth" path="res://Assets/Texture/Vfx/spotlight_8.png" id="3_4eu21"]
+[ext_resource type="Material" uid="uid://fyi5pksr4mv0" path="res://Assets/Particles/FireBall.tres" id="3_amnu3"]
 [ext_resource type="Script" path="res://Script/Component/VisiableQueueFreeComponent.gd" id="4_2rcw5"]
 [ext_resource type="Script" path="res://Script/Component/SimpleHitBoxComponent.gd" id="4_iqa63"]
 
@@ -15,8 +16,10 @@ script = ExtResource("1_3bp2f")
 [node name="FireBall2" type="CharacterBody2D" parent="."]
 script = ExtResource("1_605p5")
 
-[node name="Sprite2D" type="Sprite2D" parent="FireBall2"]
-texture = ExtResource("1_gkbsb")
+[node name="GPUParticles2D" type="GPUParticles2D" parent="FireBall2"]
+amount = 10
+process_material = ExtResource("3_amnu3")
+texture = ExtResource("3_4eu21")
 
 [node name="VisiableQueueFreeComponent" type="VisibleOnScreenNotifier2D" parent="FireBall2" node_paths=PackedStringArray("actor")]
 scale = Vector2(5.6, 5.6)
