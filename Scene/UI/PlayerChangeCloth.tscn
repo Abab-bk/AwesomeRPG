@@ -700,7 +700,7 @@ tracks/12/keys = {
 }
 tracks/13/type = "value"
 tracks/13/imported = false
-tracks/13/enabled = true
+tracks/13/enabled = false
 tracks/13/path = NodePath("bone_004/bone_005/Face 01:texture")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
@@ -1859,42 +1859,62 @@ size_flags_vertical = 3
 [node name="ToggleButton" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Panel/ClothItems" node_paths=PackedStringArray("target_component") instance=ExtResource("18_yvpsy")]
 layout_mode = 2
 target_component = NodePath("../../../SubViewportContainer/SubViewport/02/Skeleton/bone_004/bone_005/Head")
+display_text = "头"
+signals = "Heads"
 
 [node name="ToggleButton2" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Panel/ClothItems" node_paths=PackedStringArray("target_component") instance=ExtResource("18_yvpsy")]
 layout_mode = 2
 target_component = NodePath("../../../SubViewportContainer/SubViewport/02/Skeleton/bone_004/bone_005/Face 01")
+display_text = "脸"
+signals = "Faces"
 
 [node name="ToggleButton3" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Panel/ClothItems" node_paths=PackedStringArray("target_component") instance=ExtResource("18_yvpsy")]
 layout_mode = 2
 target_component = NodePath("../../../SubViewportContainer/SubViewport/02/Skeleton/bone_004/Body")
+display_text = "身体"
+signals = "Bodys"
 
 [node name="ToggleButton4" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Panel/ClothItems" node_paths=PackedStringArray("target_component") instance=ExtResource("18_yvpsy")]
 layout_mode = 2
 target_component = NodePath("../../../SubViewportContainer/SubViewport/02/Skeleton/bone_004/bone_002/bone_003/Right Hand")
+display_text = "右手"
+signals = "RightHands"
 
 [node name="ToggleButton5" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Panel/ClothItems" node_paths=PackedStringArray("target_component") instance=ExtResource("18_yvpsy")]
 layout_mode = 2
 target_component = NodePath("../../../SubViewportContainer/SubViewport/02/Skeleton/bone_004/bone_002/Right Arm")
+display_text = "右臂"
+signals = "RightArms"
 
 [node name="ToggleButton6" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Panel/ClothItems" node_paths=PackedStringArray("target_component") instance=ExtResource("18_yvpsy")]
 layout_mode = 2
 target_component = NodePath("../../../SubViewportContainer/SubViewport/02/Skeleton/bone_004/bone_000/bone_001/Left Hand")
+display_text = "左手"
+signals = "LeftHands"
 
 [node name="ToggleButton7" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Panel/ClothItems" node_paths=PackedStringArray("target_component") instance=ExtResource("18_yvpsy")]
 layout_mode = 2
 target_component = NodePath("../../../SubViewportContainer/SubViewport/02/Skeleton/bone_004/bone_000/Left Arm")
+display_text = "左臂"
+signals = "LeftArms"
 
 [node name="ToggleButton8" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Panel/ClothItems" node_paths=PackedStringArray("target_component") instance=ExtResource("18_yvpsy")]
 layout_mode = 2
-target_component = NodePath("../../../SubViewportContainer/SubViewport/02/Skeleton/bone_004/Body")
+target_component = NodePath("../../../SubViewportContainer/SubViewport/02/Skeleton/bone_004/bone_000/bone_001/Weapon")
+display_text = "武器"
+signals = "Weapons"
 
 [node name="ToggleButton9" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Panel/ClothItems" node_paths=PackedStringArray("target_component") instance=ExtResource("18_yvpsy")]
 layout_mode = 2
 target_component = NodePath("../../../SubViewportContainer/SubViewport/02/Skeleton/bone_006/Right Leg")
+display_text = "右腿"
+signals = "RightLegs"
 
 [node name="ToggleButton10" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/Panel/ClothItems" node_paths=PackedStringArray("target_component") instance=ExtResource("18_yvpsy")]
 layout_mode = 2
 target_component = NodePath("../../../SubViewportContainer/SubViewport/02/Skeleton/bone_007/Left Leg")
+display_text = "左腿"
+signals = "LeftLegs"
 
 [node name="CancelBtn" type="Button" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
