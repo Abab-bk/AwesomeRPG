@@ -1,5 +1,6 @@
 class_name ItemGenerator extends Node
 
+# TODO
 
 const AXES:Array[String] = [
     "res://Assets/Texture/Weapons/weapon_arrow.png", "res://Assets/Texture/Weapons/weapon_axe.png", "res://Assets/Texture/Weapons/weapon_axe_blades.png", "res://Assets/Texture/Weapons/weapon_axe_double.png", "res://Assets/Texture/Weapons/weapon_axe_large.png"
@@ -28,6 +29,15 @@ const STAFFS:Array[String] = [
 const SHIELDS:Array[String] = [
     "res://Assets/Texture/Weapons/shield_curved.png", "res://Assets/Texture/Weapons/shield_straight.png"
 ]
+const 头盔:Array[String] = []
+const 护腕:Array[String] = []
+const 胸甲:Array[String] = []
+const 手套:Array[String] = []
+const 靴子:Array[String] = []
+const 皮带:Array[String] = []
+const 裤子:Array[String] = []
+const 护身符:Array[String] = []
+const 戒指:Array[String] = []
 
 func gen_a_item() -> InventoryItem:
     randomize()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtd36pn6evoy1"
-path="res://.godot/imported/Whirlwind.png-03f9bd6ad496adaddc9cbab298a73892.ctex"
+uid="uid://y8mih8rcmg35"
+path="res://.godot/imported/Head.png-e2ebfcdb3e91f6137f8b7ac53bdea36e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Texture/Icons/Skills/Whirlwind.png"
-dest_files=["res://.godot/imported/Whirlwind.png-03f9bd6ad496adaddc9cbab298a73892.ctex"]
+source_file="res://Assets/Texture/Icons/头盔/Head.png"
+dest_files=["res://.godot/imported/Head.png-e2ebfcdb3e91f6137f8b7ac53bdea36e.ctex"]
 
 [params]
 

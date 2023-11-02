@@ -113,7 +113,8 @@ layout_mode = 2
 text = "888 $"
 label_settings = ExtResource("8_d5gr0")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer"]
+[node name="Icon" type="TextureRect" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("5_2muug")
 stretch_mode = 3

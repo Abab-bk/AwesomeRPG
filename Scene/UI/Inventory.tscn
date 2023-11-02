@@ -1720,7 +1720,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/Player/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(2, 2)
+size = Vector2i(652, 916)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
@@ -1733,10 +1733,10 @@ rotation = -3.14159
 scale = Vector2(-1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/Player/SubViewportContainer/SubViewport/Warrior - 01/Skeleton"]
-speed_scale = 5.0
 libraries = {
 "scml": SubResource("AnimationLibrary_nebjw")
 }
+speed_scale = 5.0
 
 [node name="bone_004" type="Bone2D" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/Player/SubViewportContainer/SubViewport/Warrior - 01/Skeleton"]
 position = Vector2(0.08515, 34.2817)
@@ -1898,7 +1898,11 @@ size_flags_vertical = 3
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Items" type="GridContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Items" type="GridContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3

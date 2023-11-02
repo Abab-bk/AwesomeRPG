@@ -8,6 +8,7 @@ extends Panel
 @onready var price_label:Label = %PriceLabel
 @onready var title_label:Label = %TitleLabel
 @onready var rate_label:Label = %RateLabel
+@onready var icon:TextureRect = %Icon
 
 @onready var use_btn:Button = %UseBtn
 
@@ -53,8 +54,9 @@ func _ready() -> void:
                 color.texture = load("res://Assets/UI/Texture/Color1.png")
         
         rate_label.text += str(Const.EQUIPMENT_TYPE.keys()[_item.type])
-        
         price_label.text = "%s $" % str(_item.price)
+        
+        icon.texture = load(_item.texture_path)
         
         global_position = get_global_mouse_position() + Vector2(50, 50)
         

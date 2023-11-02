@@ -2,6 +2,7 @@ import os
 import shutil
 
 _temp_path = "D:\Dev\Godot\AwesomeRPG\Assets\Characters\PlayerAssets"
+_icon_path = "D:\Dev\Godot\AwesomeRPG\Assets\Texture\Icons"
 
 input_folder = r"D:\Dev\Godot\AwesomeRPG\Assets\Characters\TempAssets"
 

@@ -99,8 +99,10 @@ func die() -> void:
     # TODO: 修改敌人掉落金币
     Master.coins += 10
     
-    var _drop_item:InventoryItem = item_generator.gen_a_item()
-    EventBus.new_drop_item.emit(_drop_item, get_global_transform_with_canvas().get_origin())
+    # 随机掉落装备
+    if randi_range(0, 100) >= 50:
+        var _drop_item:InventoryItem = item_generator.gen_a_item()
+        EventBus.new_drop_item.emit(_drop_item, get_global_transform_with_canvas().get_origin())
     
     queue_free()
 
