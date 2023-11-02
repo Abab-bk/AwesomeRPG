@@ -3,9 +3,11 @@ extends AbilityScene
 var temp:float
 
 func _ready() -> void:
-    temp = actor.data.speed
-    actor.data.speed += 200
+    temp = actor.compute_data.speed
+    actor.compute_data.speed += 200
+    actor.compute()
 
 func timeout() -> void:
-    actor.data.speed = temp
+    actor.compute_data.speed = temp
+    actor.compute()
     super()

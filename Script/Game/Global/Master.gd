@@ -70,6 +70,8 @@ func get_ability_by_id(_id:int) -> FlowerAbility:
     _ability.running_time = _data.running_time
     _ability.global = _data.global
     _ability.scene = load("res://Scene/Perfabs/Abilitys/%s.tscn" % _data.scene_name)
+    _ability.cost_type = _data.cost_type
+    _ability.cost_value = _data.cost_value
     
     return _ability
 
@@ -92,6 +94,8 @@ func get_random_ability() -> FlowerAbility:
     _ability.running_time = _data.running_time
     _ability.global = _data.global
     _ability.scene = load("res://Scene/Perfabs/Abilitys/%s.tscn" % _data.scene_name)
+    _ability.cost_type = _data.cost_type
+    _ability.cost_value = _data.cost_value
     
     return _ability
 

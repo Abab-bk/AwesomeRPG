@@ -4,7 +4,7 @@ extends Panel
 
 @onready var icon:TextureRect = %Icon
 @onready var name_label:Label = %NameLabel
-@onready var mp_label:Label = %MpLabel
+@onready var cost_label:Label = %CostLabel
 @onready var desc_label:RichTextLabel = %DescLabel
 
 var ability:FlowerAbility
@@ -50,4 +50,9 @@ func _ready() -> void:
             icon.texture = load(ability.icon_path)
             name_label.text = ability.name
             desc_label.text = ability.desc
+            match ability.cost_type:
+                0:
+                    cost_label.text = "消耗 %s 生命" % str(ability.cost_value)
+                1:
+                    cost_label.text = "消耗 %s 魔力" % str(ability.cost_value)                    
             )

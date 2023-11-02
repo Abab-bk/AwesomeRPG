@@ -12,8 +12,20 @@ var ability:FlowerAbility:
 
 func _ready() -> void:
     button.pressed.connect(func():
-        if progress_bar.value <= 0.0:
-            EventBus.player_ability_activate.emit(ability)
+        if not progress_bar.value <= 0.0:
+            return
+        
+        match ability.cost_type:
+            0:
+                if not Master.player_output_data.hp >= ability.cost_value:
+                    EventBus.new_tips.emit("血量不足，无法释放")
+                    return
+            1:
+                if not Master.player_output_data.magic >= ability.cost_value:
+                    EventBus.new_tips.emit("魔力不足，无法释放")
+                    return
+        
+        EventBus.player_ability_activate.emit(ability)
         )
 
 func set_ability(_v:FlowerAbility) -> void:
@@ -21,7 +33,7 @@ func set_ability(_v:FlowerAbility) -> void:
 
 func _physics_process(_delta:float) -> void:
     if ability:
-        progress_bar.value = ability.get_cooldown_left()    
+        progress_bar.value = ability.get_cooldown_left() 
 
 func update_ui() -> void:
     title_label.text = ability.name

@@ -120,7 +120,7 @@ layout_mode = 2
 text = "未选择技能"
 label_settings = ExtResource("5_5m88d")
 
-[node name="MpLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="CostLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "未选择技能"

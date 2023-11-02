@@ -126,8 +126,6 @@ func _ready() -> void:
         
         atk_cd_timer.wait_time = output_data.atk_speed
         
-        output_data.hp_is_zero.connect(die)
-        
         print("计算完成")
         )
     

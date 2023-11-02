@@ -30,6 +30,13 @@ enum QuestsEQuestType
 }
 
 
+enum BuffsECostType
+{
+    HP = 0,
+    MP = 1,
+}
+
+
 class Buffs:
     ## 这是id
     var id: int
@@ -117,6 +124,8 @@ class Abilitys:
     var desc: String
     var icon_path: String
     var global: bool
+    var cost_type: int
+    var cost_value: float
     var cooldown: float
     var casting_time: float
     var running_time: float
@@ -129,6 +138,8 @@ class Abilitys:
         self.desc = _json_["desc"]
         self.icon_path = _json_["icon_path"]
         self.global = _json_["global"]
+        self.cost_type = _json_["cost_type"]
+        self.cost_value = _json_["cost_value"]
         self.cooldown = _json_["cooldown"]
         self.casting_time = _json_["casting_time"]
         self.running_time = _json_["running_time"]

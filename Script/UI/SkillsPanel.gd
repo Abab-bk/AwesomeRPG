@@ -13,8 +13,9 @@ extends Control
 
 func _ready() -> void:
     cancel_btn.pressed.connect(func():
-        hide()
+        owner.change_page(owner.PAGE.HOME)
         SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
+        
         )
     
     for i in 7:

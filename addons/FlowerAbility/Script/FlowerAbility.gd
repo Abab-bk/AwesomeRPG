@@ -1,5 +1,10 @@
 class_name FlowerAbility extends Resource
 
+enum COST_TYPE {
+    HP,
+    MP
+}
+
 @export var id:int
 @export var name:String
 @export var desc:String
@@ -10,6 +15,8 @@ class_name FlowerAbility extends Resource
 @export var long:bool = false
 @export var global:bool = false
 @export var scene:PackedScene
+@export var cost_type:COST_TYPE = COST_TYPE.MP
+@export var cost_value:float = 0
 # 存实例化的
 var real_scene:AbilityScene
 
@@ -79,6 +86,17 @@ func active() -> void:
     
     if current_state != STATE.RUNNING:
         return
+    
+    match cost_type:
+        0:
+            # HP
+            if not Master.player_output_data.hp >= cost_value:
+                return
+            Master.player_output_data.hp -= cost_value
+        1:
+            if not Master.player_output_data.magic >= cost_value:
+                return
+            Master.player_output_data.magic -= cost_value
     
     # HACK: 待优化 COC
     # Tags: 在这里修改特殊技能（暴击时释放等）

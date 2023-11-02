@@ -9,7 +9,7 @@ extends Control
 func _ready() -> void:
     cancel_btn.pressed.connect(func():
         SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
-        hide())
+        owner.change_page(owner.PAGE.HOME))
 
 # {3001: {xx}, 3002...}
 

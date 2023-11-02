@@ -10,6 +10,7 @@ signal show_popup(title:String, desc:String, show_cancel_btn:bool, yes_event:Cal
 signal show_select_skills_panel(target:Panel)
 signal show_color
 signal hide_color
+signal new_tips(text:String)
 
 signal selected_skills_on_panel
 signal unlocked_ability(id:int)
