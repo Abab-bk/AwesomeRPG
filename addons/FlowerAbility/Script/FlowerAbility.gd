@@ -106,6 +106,11 @@ func active() -> void:
     for i in sub_ability:
         i.active()
     
+    current_state = STATE.COOLDOWN
+    
+    if _cooldown_timer:
+        _cooldown_timer.start()
+
     ## CUSTOME
 
 func active_sub_abilitys() -> void:
@@ -129,8 +134,3 @@ func un_active() -> void:
     if real_scene != null:
         print("卸载real_scene，主要是为了被动技能（COC）")
         real_scene.timeout()
-    
-    current_state = STATE.COOLDOWN
-    
-    if _cooldown_timer:
-        _cooldown_timer.start()
