@@ -9,6 +9,6 @@ func _ready() -> void:
         SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
         hide())
     visibility_changed.connect(func():
-        level_label.text = str(Master.player_data.level)
+        level_label.text = str(Master.player_output_data.level)
         player_name_label.text = Master.player_name
         )

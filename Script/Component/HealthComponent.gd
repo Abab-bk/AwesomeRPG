@@ -8,8 +8,7 @@ extends Node
 var data:CharacterData
 
 func _ready() -> void:
-    data = buff_manager.compute_data as CharacterData
-    data.hp_is_zero.connect(func():target.die())
+    data = buff_manager.output_data
 
 func damage(_value:float) -> void:
     data.hp -= _value

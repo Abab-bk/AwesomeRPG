@@ -9,6 +9,7 @@ signal criticaled
         buff_manager = _v
         if buff_manager:
             data = buff_manager.output_data
+            
 @export var is_player_hitbox:bool
 @export var disable_target:Node2D
 
@@ -53,7 +54,6 @@ func handle_damage(body:Node) -> void:
         if is_critical:
             critical_damage = 1.0 + data.critical_rate * data.critical_damage
             criticaled.emit()
-#            print("暴击！额外造成伤害：", critical_damage)
         
         var sheet_damage:float = root_stats * base_damage * \
         (critical_damage)

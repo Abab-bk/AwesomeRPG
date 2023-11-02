@@ -80,7 +80,7 @@ func _ready() -> void:
         EventBus.show_popup.emit("解锁技能", "解锁技能：%s" % _ability.name)
         )
     
-    player_data = Master.player.data
+    player_data = Master.player.output_data
     
     build_ability_ui()
     

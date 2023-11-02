@@ -16,6 +16,7 @@ var world:Node2D
 
 var player:Player
 var player_data:CharacterData
+var player_output_data:CharacterData
 var relife_point:Marker2D
 var unlocked_skills:Array[int] = []
 
@@ -28,6 +29,8 @@ var coins:int = 1000:
     set(v):
         coins = v
         EventBus.coins_changed.emit()
+
+var next_reward_player_level:int = 1
 
 var config
 
@@ -133,4 +136,12 @@ func _ready():
     
     EventBus.completed_level.connect(func():
         current_level += 1
+        )
+    
+    EventBus.player_level_up.connect(func():
+        if player.compute_data.level >= next_reward_player_level:
+            var _ability:FlowerAbility = Master.get_random_ability()
+            EventBus.unlocked_ability.emit(_ability.id)
+            EventBus.show_popup.emit("升级！获得奖励", "解锁技能：%s" % _ability.name)
+            next_reward_player_level += 5
         )

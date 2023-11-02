@@ -4,7 +4,7 @@ extends Control
 @onready var timer:Timer = $Timer
 
 func _ready() -> void:
-    level_label.text = str(Master.player_data.level)
+    level_label.text = str(Master.player_output_data.level)
     
     timer.start()
     await timer.timeout

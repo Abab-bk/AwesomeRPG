@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://v51c0x6v6m7h"]
+[gd_scene load_steps=44 format=3 uid="uid://v51c0x6v6m7h"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/PlayableCharacter/Player.gd" id="1_8yy7w"]
 [ext_resource type="Script" path="res://addons/FlowerAbility/Script/FlowerAbilityContainer.gd" id="2_8gp7m"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Script/Component/AtkRangeComponent.gd" id="5_cwveo"]
 [ext_resource type="Script" path="res://Script/Component/HurtBoxComponent.gd" id="6_mwt7r"]
 [ext_resource type="Script" path="res://Script/Component/VisionComponent.gd" id="6_r1tqh"]
+[ext_resource type="Script" path="res://Script/Resources/CharacterData.gd" id="7_6v44f"]
 [ext_resource type="Script" path="res://Script/Component/HealthComponent.gd" id="7_afrsm"]
 [ext_resource type="Texture2D" uid="uid://5x6qq80rbgd" path="res://Assets/Characters/Warrior/Face 01.png" id="20_idrm6"]
 [ext_resource type="Texture2D" uid="uid://dnm62umeu36qg" path="res://Assets/Characters/Warrior/Face 02.png" id="21_vc6ln"]
@@ -43,6 +44,44 @@ radius = 125.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wcb0n"]
 radius = 360.0
+
+[sub_resource type="Resource" id="Resource_sdq8t"]
+script = ExtResource("7_6v44f")
+level = 1
+now_xp = 0.0
+next_level_xp = 0.0
+hp = 500.0
+max_hp = 500.0
+magic = 100.0
+max_magic = 100.0
+strength = 10
+wisdom = 10
+agility = 10
+luck = 1.0
+speed = 800.0
+damage = 50.0
+defense = 1.0
+fire_damage = 10.0
+frost_damage = 10.0
+light_damage = 1.0
+toxic_damage = 1.0
+fire_resistance = 1.0
+frost_resistance = 1.0
+light_resistance = 1.0
+toxic_resistance = 1.0
+physical_resistance = 1.0
+critical_rate = 0.5
+critical_damage = 10.0
+vulnerability_rate = 0.0
+vulnerability_damage = 0.0
+evasion = 1.0
+health_regeneration = 1.0
+healing_effciency = 1.0
+vision = 360
+atk_speed = 0.5
+atk_cd = 0.5
+atk_range = 125.0
+quipments = {}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wnox7"]
 size = Vector2(99, 242)
@@ -1766,6 +1805,7 @@ shape = SubResource("CircleShape2D_wcb0n")
 script = ExtResource("3_nckal")
 target = NodePath("..")
 compute_data = ExtResource("4_14ux5")
+output_data = SubResource("Resource_sdq8t")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
@@ -1795,11 +1835,11 @@ scale = Vector2(-1, 1)
 
 [node name="CharacterAnimationPlayer" type="AnimationPlayer" parent="Warrior - 01/Skeleton"]
 unique_name_in_owner = true
-speed_scale = 5.0
 libraries = {
 "": SubResource("AnimationLibrary_u12cb"),
 "scml": SubResource("AnimationLibrary_nebjw")
 }
+speed_scale = 5.0
 
 [node name="bone_004" type="Bone2D" parent="Warrior - 01/Skeleton"]
 position = Vector2(0.08515, 34.2817)

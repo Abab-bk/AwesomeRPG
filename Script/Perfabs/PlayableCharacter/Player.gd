@@ -28,7 +28,8 @@ enum STATE {
 
 var current_state:STATE = STATE.IDLE
 
-var data:CharacterData
+var compute_data:CharacterData
+var output_data:CharacterData
 var target:Vector2 = global_position
 
 var config_skills:Dictionary = {}
@@ -45,7 +46,7 @@ func _ready() -> void:
         func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
         # 装备装备
         # TODO: 如果 type 是武器或者项链，选择左右手，当前为直接替换
-        data.quipments[_type] = _item
+        compute_data.quipments[_type] = _item
         
         var _temp:Array[FlowerBaseBuff] = []
         # 装备装备时，应用装备 Buff
@@ -65,7 +66,7 @@ func _ready() -> void:
     
     EventBus.equipment_down.connect(
         func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
-            data.quipments[_type] = null
+            compute_data.quipments[_type] = null
             
             var _temp:Array[FlowerBaseBuff] = []
             
@@ -106,7 +107,7 @@ func _ready() -> void:
     
     # TODO: 完善存档
     EventBus.save.connect(func():
-        SaveSystem.set_var("Player", data)
+        SaveSystem.set_var("Player", compute_data)
 #        SaveSystem.set_var("Player:Abilitys", ability_container.ability_list)
         )
     
@@ -118,20 +119,29 @@ func _ready() -> void:
     
     flower_buff_manager.compute_ok.connect(func():
         EventBus.player_data_change.emit()
-        Master.player_data = flower_buff_manager.output_data
-        atk_cd_timer.wait_time = data.atk_speed
+        Master.player_output_data = flower_buff_manager.output_data
+        
+        compute_data = flower_buff_manager.compute_data as CharacterData
+        output_data = flower_buff_manager.output_data as CharacterData
+        
+        atk_cd_timer.wait_time = output_data.atk_speed
+        
+        output_data.hp_is_zero.connect(die)
+        
         print("计算完成")
         )
-#    flower_buff_manager.a_buff_removed
     
     atk_range.target_enter_range.connect(func():
         velocity = Vector2.ZERO
+        
         # 攻击代码
         if current_state == STATE.DEAD:
             return
         
         if global_position != closest_enemy.marker.global_position:
             global_position = closest_enemy.marker.global_position
+        
+        turn_to_closest_enemy()
         
         character_animation_player.play("scml/Attacking")
         current_state = STATE.ATTACKING
@@ -141,25 +151,25 @@ func _ready() -> void:
         if current_state == STATE.DEAD:        
             return
         
-        var _dir:Vector2 = to_local(closest_enemy.global_position).normalized()
-        
-        if _dir.x > 0:
-            # Right
-            self.scale.x = 1
-        elif  _dir.x < 0:
-            self.scale.x = -1
+        turn_to_closest_enemy()
         
         move_to_enemy()
         )
     
     hit_box_component.criticaled.connect(func(): EventBus.player_criticaled.emit())
     
-    data = flower_buff_manager.compute_data as CharacterData
-    flower_buff_manager.output_data = data.duplicate(true)
-    atk_cd_timer.wait_time = data.atk_speed
-    Master.player_data = flower_buff_manager.output_data
+    compute_data = flower_buff_manager.compute_data as CharacterData
+    output_data = flower_buff_manager.output_data as CharacterData
     
-    compute()
+    flower_buff_manager.output_data = compute_data.duplicate(true)
+    atk_cd_timer.wait_time = compute_data.atk_speed
+    
+    output_data.hp_is_zero.connect(die)
+    
+    compute()    
+    
+    Master.player_output_data = flower_buff_manager.output_data
+    Master.player_data = flower_buff_manager.compute_data
     
     find_closest_enemy()
 
@@ -184,6 +194,14 @@ func move_to_enemy() -> void:
         find_closest_enemy()
         return
     
+    turn_to_closest_enemy()
+    
+    velocity = global_position.\
+    direction_to(closest_enemy.marker.global_position) * output_data.speed
+    
+    character_animation_player.play("scml/Walking")
+
+func turn_to_closest_enemy() -> void:
     var _dir:Vector2 = to_local(closest_enemy.global_position).normalized()
     
     if _dir.x > 0:
@@ -191,11 +209,6 @@ func move_to_enemy() -> void:
         self.scale.x = 1
     elif  _dir.x < 0:
         self.scale.x = -1
-    
-    velocity = global_position.\
-    direction_to(closest_enemy.marker.global_position) * data.speed
-    
-    character_animation_player.play("scml/Walking")
 
 func _physics_process(_delta: float) -> void:
     if current_state == STATE.IDLE:
@@ -209,7 +222,7 @@ func get_ability_list() -> Array:
     return _list
 
 func get_level() -> int:
-    return data.level
+    return output_data.level
 
 func change_weapons_sprite(_sprite:Texture2D) -> void:
     # TODO: 改变武器
@@ -217,21 +230,21 @@ func change_weapons_sprite(_sprite:Texture2D) -> void:
 
 # ======= 属性 ========
 func up_level() -> void:
-    data.level_up()
-    data.now_xp = 0
-    data.update_next_xp()
+    output_data.level_up()
+    output_data.now_xp = 0
+    output_data.update_next_xp()
     EventBus.player_level_up.emit()
 
 func get_xp(_value:float) -> void:
-    data.now_xp += _value
-    if data.now_xp >= data.next_level_xp:
+    output_data.now_xp += _value
+    if output_data.now_xp >= output_data.next_level_xp:
         up_level()
 
 # ======= 战斗 ========
 func relife() -> void:
     # FIXME: data是资源，不会唯一化
-    data.hp = data.max_hp
-    data.magic = data.max_magic
+    compute_data.hp = output_data.max_hp
+    compute_data.magic = output_data.max_magic
     global_position = Master.relife_point.global_position
     character_animation_player.play_backwards("scml/Dying")
     await character_animation_player.animation_finished
