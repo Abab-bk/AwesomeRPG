@@ -39,6 +39,10 @@ func _ready() -> void:
         # 攻击代码
         character_animation.play("scml/Attacking")
         current_state = STATE.ATTACKING
+        
+        if global_position != Master.player.marker.global_position:
+            global_position = Master.player.marker.global_position
+        
         )
     
     atk_range.target_exited_range.connect(func():
@@ -83,7 +87,7 @@ func _ready() -> void:
 
 func move_to_player(_delta:float) -> void:
     var dir:Vector2 = global_position.\
-    direction_to(Master.player.global_position)
+    direction_to(Master.player.marker.global_position)
     var desired_velocity:Vector2 = dir * data.speed
     
     var steering:Vector2 = (desired_velocity - velocity) * _delta * 2.5

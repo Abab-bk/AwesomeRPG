@@ -16,6 +16,7 @@ signal criticaled
 @onready var atk_range:AtkRangeComponent = $AtkRangeComponent
 @onready var vision:VisionComponent = $VisionComponent
 @onready var ray_cast:RayCast2D = $RayCast2D
+@onready var marker:Marker2D = $Marker2D
 
 @onready var sprites:Dictionary = {
     "weapon": $"Warrior - 01/Skeleton/bone_004/bone_000/bone_001/Weapon"
@@ -202,6 +203,7 @@ func move_to_enemy() -> void:
     character_animation_player.play("scml/Walking")
     
     if ray_cast.is_colliding():
+        print("ok")
         attack()
 
 func attack() -> void:
@@ -300,6 +302,7 @@ func die() -> void:
 func find_closest_enemy(_temp = 0) -> void:
     all_enemy = get_tree().get_nodes_in_group("Enemy")
     closest_distance = 1000000
+    
     for enemy in all_enemy:
         if not closest_enemy:
             closest_enemy = enemy
