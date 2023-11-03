@@ -1,6 +1,6 @@
 extends TextureRect
 
-signal selected
+signal selected(data:FlowerAbility)
 
 var data:FlowerAbility:
     set(v):

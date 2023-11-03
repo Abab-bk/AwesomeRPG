@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxc7hc1jk1l0j"]
+
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_gvaxm"]
+[ext_resource type="LabelSettings" uid="uid://mgahdqv1o26h" path="res://Assets/LabelSetting/BigGray.tres" id="1_hgh8j"]
+[ext_resource type="Script" path="res://Script/UI/SkillStore.gd" id="2_25jub"]
+[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="2_q0m1v"]
+[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="3_yy5bl"]
+
+[node name="SkillStore" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme = ExtResource("1_gvaxm")
+script = ExtResource("2_25jub")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "技能商店"
+label_settings = ExtResource("1_hgh8j")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("2_q0m1v")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "未选择技能"
+label_settings = ExtResource("3_yy5bl")
+
+[node name="CostLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "未选择技能"
+label_settings = ExtResource("3_yy5bl")
+
+[node name="Items" type="GridContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+columns = 6
+
+[node name="BuyBtn" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "购买"

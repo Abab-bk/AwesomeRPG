@@ -1,16 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3eudud6jrt0r"]
+[gd_scene load_steps=7 format=3 uid="uid://d3eudud6jrt0r"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_mfmcj"]
 [ext_resource type="Texture2D" uid="uid://pd45atcqjjfu" path="res://Assets/UI/Texture/TitleBar.png" id="2_266po"]
+[ext_resource type="Script" path="res://Script/UI/StoreUi.gd" id="2_h1r5g"]
 [ext_resource type="Texture2D" uid="uid://dtkji1da2ltep" path="res://Assets/UI/Texture/Club.png" id="3_1ob2t"]
 [ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="4_0f64f"]
-[ext_resource type="LabelSettings" uid="uid://mgahdqv1o26h" path="res://Assets/LabelSetting/BigGray.tres" id="5_gwxg2"]
-[ext_resource type="PackedScene" uid="uid://v2fgwbl2yjp4" path="res://Scene/UI/SkillItem.tscn" id="6_1mauu"]
-[ext_resource type="Texture2D" uid="uid://djrtllj8fg0x0" path="res://Assets/UI/Texture/Color1.png" id="7_r3mi5"]
-[ext_resource type="Texture2D" uid="uid://cwlnbn2b7shv4" path="res://Assets/UI/Texture/Panel1.png" id="8_m0lex"]
-[ext_resource type="LabelSettings" uid="uid://drx7d3iagcvhu" path="res://Assets/LabelSetting/ItemTitle.tres" id="9_yvbq1"]
-[ext_resource type="LabelSettings" uid="uid://b3iaonf7dvcft" path="res://Assets/LabelSetting/ItemSubTitle.tres" id="10_lrnxo"]
-[ext_resource type="Texture2D" uid="uid://b7wq6qy7yddt4" path="res://Assets/UI/Icons/Equipment/Box.png" id="12_jj6ca"]
+[ext_resource type="PackedScene" uid="uid://dxc7hc1jk1l0j" path="res://Scene/UI/SkillStore.tscn" id="6_iffuo"]
 
 [node name="StoreUI" type="Control"]
 layout_mode = 3
@@ -20,6 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_mfmcj")
+script = ExtResource("2_h1r5g")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -72,7 +68,7 @@ size_flags_horizontal = 3
 [node name="TitleLabel" type="Label" parent="Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "人物信息"
+text = "商店"
 label_settings = ExtResource("4_0f64f")
 horizontal_alignment = 1
 
@@ -96,46 +92,13 @@ theme_override_constants/margin_bottom = 30
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="TabContainer" type="TabContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-tabs_visible = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer"]
+[node name="Stores" type="Control" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer"]
-layout_mode = 2
-text = "技能商店"
-label_settings = ExtResource("5_gwxg2")
-horizontal_alignment = 1
-
-[node name="GridContainer" type="GridContainer" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-columns = 6
-
-[node name="SkillItem" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/GridContainer" instance=ExtResource("6_1mauu")]
-layout_mode = 2
-
-[node name="SkillItem2" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/GridContainer" instance=ExtResource("6_1mauu")]
-layout_mode = 2
-
-[node name="SkillItem3" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/GridContainer" instance=ExtResource("6_1mauu")]
-layout_mode = 2
-
-[node name="SkillItem4" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/GridContainer" instance=ExtResource("6_1mauu")]
-layout_mode = 2
-
-[node name="SkillItem5" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/GridContainer" instance=ExtResource("6_1mauu")]
-layout_mode = 2
-
-[node name="SkillItem6" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/GridContainer" instance=ExtResource("6_1mauu")]
-layout_mode = 2
-
-[node name="SkillItem7" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/GridContainer" instance=ExtResource("6_1mauu")]
-layout_mode = 2
+[node name="SkillStore" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer/Stores" instance=ExtResource("6_iffuo")]
+layout_mode = 1
 
 [node name="CancelBtn" type="Button" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -143,127 +106,3 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "返回"
-
-[node name="ItemToolTip" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.44
-anchor_right = 0.5
-anchor_bottom = 0.44
-offset_left = -285.0
-offset_top = -200.0
-offset_right = 286.0
-offset_bottom = 199.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_mfmcj")
-
-[node name="MarginContainer" type="MarginContainer" parent="ItemToolTip"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Color" type="NinePatchRect" parent="ItemToolTip/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-texture = ExtResource("7_r3mi5")
-patch_margin_left = 40
-patch_margin_top = 40
-patch_margin_right = 40
-patch_margin_bottom = 40
-
-[node name="NinePatchRect" type="NinePatchRect" parent="ItemToolTip/MarginContainer/Color"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("8_m0lex")
-patch_margin_left = 40
-patch_margin_top = 40
-patch_margin_right = 40
-patch_margin_bottom = 40
-
-[node name="MarginContainer" type="MarginContainer" parent="ItemToolTip/MarginContainer/Color/NinePatchRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
-
-[node name="Content" type="VBoxContainer" parent="ItemToolTip/MarginContainer/Color/NinePatchRect/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Head" type="VBoxContainer" parent="ItemToolTip/MarginContainer/Color/NinePatchRect/MarginContainer/Content"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ItemToolTip/MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ItemToolTip/MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 12
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="ItemToolTip/MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = -5
-
-[node name="TitleLabel" type="Label" parent="ItemToolTip/MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer2"]
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/font_size = 50
-text = "xxx"
-label_settings = ExtResource("9_yvbq1")
-vertical_alignment = 1
-autowrap_mode = 1
-clip_text = true
-
-[node name="RateLabel" type="Label" parent="ItemToolTip/MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "消耗 50 魔力"
-label_settings = ExtResource("10_lrnxo")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ItemToolTip/MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = -5
-
-[node name="PriceLabel" type="Label" parent="ItemToolTip/MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "释放暴风雪"
-label_settings = ExtResource("5_gwxg2")
-
-[node name="Icon" type="TextureRect" parent="ItemToolTip/MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-texture = ExtResource("12_jj6ca")
-stretch_mode = 3
-
-[node name="Space2" type="Control" parent="ItemToolTip/MarginContainer/Color/NinePatchRect/MarginContainer/Content"]
-visible = false
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="UseBtn" type="Button" parent="ItemToolTip/MarginContainer/Color/NinePatchRect/MarginContainer/Content"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "装备"

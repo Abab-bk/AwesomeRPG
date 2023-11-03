@@ -16,6 +16,7 @@ signal backed_to_home
 @onready var skill_tree_btn:TextureButton = %SkillTreeBtn
 @onready var skills_panel_btn:TextureButton = %SillsPanelBtn
 @onready var setting_btn:TextureButton = %SettingBtn
+@onready var store_btn:TextureButton = %StoreBtn
 
 @onready var get_skill_btn:Button = %GetSkillBtn
 
@@ -25,6 +26,7 @@ signal backed_to_home
 @onready var setting_ui:Control = $SettingUI
 @onready var skills_panel_ui:Control = $SkillsPanel
 @onready var quest_panel:Control = %QuestPanel
+@onready var store_ui:Control = $StoreUI
 
 @onready var skill_bar:HBoxContainer = %SkillBar
 @onready var color_rect:ColorRect = $ColorRect
@@ -35,7 +37,8 @@ enum PAGE {
     INVENTORY,
     SKILL_TREE,
     SKILLS_PANEL,
-    SETTING
+    SETTING,
+    STORE
 }
 
 var player_data:CharacterData
@@ -73,6 +76,7 @@ func _ready() -> void:
     setting_btn.pressed.connect(change_page.bind(PAGE.SETTING))
     skill_tree_btn.pressed.connect(change_page.bind(PAGE.SKILL_TREE))
     skills_panel_btn.pressed.connect(change_page.bind(PAGE.SKILLS_PANEL))
+    store_btn.pressed.connect(change_page.bind(PAGE.STORE))
     # 添加技能
     get_skill_btn.pressed.connect(func():
         var _ability:FlowerAbility = Master.get_random_ability()
@@ -98,6 +102,7 @@ func change_page(_page:PAGE) -> void:
             skill_tree_ui.hide()
             setting_ui.hide()
             skills_panel_ui.hide()
+            store_ui.hide()
             backed_to_home.emit()
         PAGE.CHARACTER_PANEL:
             skill_tree_ui.hide()
@@ -105,6 +110,7 @@ func change_page(_page:PAGE) -> void:
             setting_ui.hide()
             skills_panel_ui.hide()
             character_panel_ui.show()
+            store_ui.hide()
             changed_to_other.emit()
         PAGE.INVENTORY:
             skill_tree_ui.hide()
@@ -112,6 +118,7 @@ func change_page(_page:PAGE) -> void:
             setting_ui.hide()
             skills_panel_ui.hide()
             character_panel_ui.hide()
+            store_ui.hide()
             changed_to_other.emit()
         PAGE.SKILL_TREE:
             skill_tree_ui.show()
@@ -119,6 +126,7 @@ func change_page(_page:PAGE) -> void:
             setting_ui.hide()
             skills_panel_ui.hide()
             character_panel_ui.hide()
+            store_ui.hide()
             changed_to_other.emit()
         PAGE.SETTING:
             skill_tree_ui.hide()
@@ -126,6 +134,7 @@ func change_page(_page:PAGE) -> void:
             setting_ui.show()
             skills_panel_ui.hide()
             character_panel_ui.hide()
+            store_ui.hide()
             changed_to_other.emit()
         PAGE.SKILLS_PANEL:
             skill_tree_ui.hide()
@@ -133,6 +142,15 @@ func change_page(_page:PAGE) -> void:
             setting_ui.hide()
             skills_panel_ui.show()
             character_panel_ui.hide()
+            store_ui.hide()
+            changed_to_other.emit()
+        PAGE.STORE:
+            skill_tree_ui.hide()
+            inventory_ui.hide()
+            setting_ui.hide()
+            skills_panel_ui.hide()
+            character_panel_ui.hide()
+            store_ui.show()
             changed_to_other.emit()
 
 # 技能条 UI

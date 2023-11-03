@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=27 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://b4phcm1eydead" path="res://Assets/UI/Icons/Cog.svg" id="15_2c2a3"]
 [ext_resource type="LabelSettings" uid="uid://bhyi4hqpwnqxh" path="res://Assets/LabelSetting/UITitleGold.tres" id="16_afv1t"]
 [ext_resource type="PackedScene" uid="uid://cvl3x8ikri1a4" path="res://Scene/UI/DungeonPanel.tscn" id="23_joj7t"]
+[ext_resource type="PackedScene" uid="uid://d3eudud6jrt0r" path="res://Scene/UI/StoreUi.tscn" id="24_wrqlk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vb2v6"]
 font = ExtResource("13_xqeye")
@@ -136,6 +137,13 @@ size_flags_horizontal = 3
 texture_normal = ExtResource("5_nwaja")
 
 [node name="SkillTreeBtn" type="TextureButton" parent="Control/VBoxContainer/Control/VBoxContainer/NinePatchRect/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("6_51pw4")
+
+[node name="StoreBtn" type="TextureButton" parent="Control/VBoxContainer/Control/VBoxContainer/NinePatchRect/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -341,6 +349,9 @@ visible = false
 
 [node name="SkillsPanel" parent="." instance=ExtResource("12_doksu")]
 process_mode = 3
+visible = false
+
+[node name="StoreUI" parent="." instance=ExtResource("24_wrqlk")]
 visible = false
 
 [node name="DungeonPanel" parent="." instance=ExtResource("23_joj7t")]

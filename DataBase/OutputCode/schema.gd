@@ -123,6 +123,7 @@ class Abilitys:
     var name: String
     var desc: String
     var icon_path: String
+    var cost: int
     var global: bool
     var cost_type: int
     var cost_value: float
@@ -137,6 +138,7 @@ class Abilitys:
         self.name = _json_["name"]
         self.desc = _json_["desc"]
         self.icon_path = _json_["icon_path"]
+        self.cost = _json_["cost"]
         self.global = _json_["global"]
         self.cost_type = _json_["cost_type"]
         self.cost_value = _json_["cost_value"]

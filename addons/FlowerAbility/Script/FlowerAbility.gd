@@ -15,6 +15,7 @@ enum COST_TYPE {
 @export var long:bool = false
 @export var global:bool = false
 @export var scene:PackedScene
+@export var cost:int = 100
 @export var cost_type:COST_TYPE = COST_TYPE.MP
 @export var cost_value:float = 0
 # 存实例化的

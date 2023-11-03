@@ -19,9 +19,10 @@ func _ready() -> void:
     %YesBtn.pressed.connect(func():
         SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
         
-        if Master.coins < 500:
-            EventBus.show_popup.emit("金币不足", "金币不足")
-            return
+        # TODO: Maybe 装备技能也需要金币
+        #if Master.coins < 500:
+            #EventBus.show_popup.emit("金币不足", "金币不足")
+            #return
         
         EventBus.selected_skills_on_panel.emit()
         target_skill_panel.ability = ability
@@ -54,5 +55,5 @@ func _ready() -> void:
                 0:
                     cost_label.text = "消耗 %s 生命" % str(ability.cost_value)
                 1:
-                    cost_label.text = "消耗 %s 魔力" % str(ability.cost_value)                    
+                    cost_label.text = "消耗 %s 魔力" % str(ability.cost_value)     
             )
