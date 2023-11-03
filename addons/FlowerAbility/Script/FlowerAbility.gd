@@ -129,7 +129,9 @@ func active() -> void:
     
     if _cooldown_timer:
         _cooldown_timer.start()
-
+    
+    EventBus.update_ui.emit()
+    
     ## CUSTOME
 
 func active_sub_abilitys() -> void:
