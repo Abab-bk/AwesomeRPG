@@ -197,14 +197,16 @@ func move_to_enemy() -> void:
     
     turn_to_closest_enemy()
     
+    if ray_cast.is_colliding():
+        print("ok")
+        attack()
+        return
+    
     velocity = global_position.\
     direction_to(closest_enemy.marker.global_position) * output_data.speed
     
     character_animation_player.play("scml/Walking")
-    
-    if ray_cast.is_colliding():
-        print("ok")
-        attack()
+
 
 func attack() -> void:
     velocity = Vector2.ZERO

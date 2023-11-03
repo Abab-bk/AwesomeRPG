@@ -2009,8 +2009,8 @@ buff_manager = NodePath("../../FlowerBuffManager")
 is_player_hitbox = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Warrior - 01/HitBoxComponent"]
-position = Vector2(98, -136)
-rotation = 0.609923
+position = Vector2(98.5756, -73.4152)
+rotation = 1.04301
 shape = SubResource("RectangleShape2D_5hl0t")
 disabled = true
 
