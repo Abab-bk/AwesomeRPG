@@ -139,7 +139,7 @@ func active_sub_abilitys() -> void:
         i.active()
 
 func del_self() -> void:
-    if real_scene:
+    if real_scene and not weakref(real_scene):
         real_scene.timeout()
     
     for i in sub_ability:
@@ -151,5 +151,5 @@ func del_self() -> void:
 func un_active() -> void:
     ## CUSTOME
     if real_scene != null:
-        print("卸载real_scene，主要是为了被动技能（COC）")
+        #print("卸载real_scene，主要是为了被动技能（COC）")
         real_scene.timeout()

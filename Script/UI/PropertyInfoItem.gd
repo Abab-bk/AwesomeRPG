@@ -14,6 +14,4 @@ func _ready() -> void:
     update_value()
 
 func update_value() -> void:
-    # FIXME: 如果数太小会吞掉部分数字显示
-    
-    value_label.text = str(roundf(Master.player_output_data[value_index]))
+    value_label.text = str(Master.player_output_data[value_index]).pad_decimals(2)

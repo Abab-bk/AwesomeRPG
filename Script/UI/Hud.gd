@@ -67,6 +67,9 @@ func _ready() -> void:
     EventBus.new_tips.connect(new_tip)
     
     EventBus.player_level_up.connect(show_animation.bind("LevelUp"))
+    EventBus.player_data_change.connect(func():
+        player_data = Master.player.output_data
+        )
     
     backed_to_home.connect(func():quest_panel.show())
     changed_to_other.connect(func():quest_panel.hide())

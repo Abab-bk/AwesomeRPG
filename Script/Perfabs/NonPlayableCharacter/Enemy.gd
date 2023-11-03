@@ -32,6 +32,10 @@ func _ready() -> void:
     
     atk_range.target_enter_range.connect(func():
         velocity = Vector2.ZERO
+        
+        if current_state == STATE.DEAD:
+            return
+        
         # 攻击代码
         character_animation.play("scml/Attacking")
         current_state = STATE.ATTACKING
@@ -51,29 +55,30 @@ func _ready() -> void:
             self.scale.x = -1
         )
     
+    atk_range.target = Master.player
+    vision_component.target = Master.player
+    
     buff_manager.compute_ok.connect(func():
         print("计算完成")
         data = buff_manager.compute_data as CharacterData
         output_data = buff_manager.output_data as CharacterData
         $HealthComponent.data = output_data
+        
+        if output_data.is_connected("hp_is_zero", die):
+            return
         output_data.hp_is_zero.connect(die)
         )
     
-    buff_manager.compute()
-    
-    await buff_manager.compute_ok
-    
-    atk_range.target = Master.player
-    vision_component.target = Master.player
-    
-    # 设置属性 （每个敌人 ready 都是生成时）
     var _level:int = 1
+    
+    buff_manager.compute()
     
     atk_cd_timer.wait_time = data.atk_speed
     
     if Master.player.get_level() >= 5:
         _level = Master.player.get_level() - 3
     
+    # 设置属性 （每个敌人 ready 都是生成时）
     set_level(_level)
 
 func move_to_player(_delta:float) -> void:
@@ -114,9 +119,6 @@ func set_level(_value:int) -> void:
 func _physics_process(_delta:float) -> void:
     if current_state == STATE.PATROL:
         move_to_player(_delta)
-    
-    if current_state == STATE.DEAD:
-        $CollisionShape2D.set_disabled(true)
     
     move_and_slide()
     hp_bar.value = (float(data.hp) / float(data.max_hp)) * 100.0

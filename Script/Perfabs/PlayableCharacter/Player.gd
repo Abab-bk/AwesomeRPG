@@ -8,12 +8,14 @@ signal criticaled
 @onready var flower_buff_manager:FlowerBuffManager = $FlowerBuffManager
 #@onready var animation_player:AnimationPlayer = $AnimationPlayer
 @onready var hurt_box_collision:CollisionShape2D = $HurtBoxComponent/CollisionShape2D
+@onready var hurt_box_component:HurtBoxComponent = $HurtBoxComponent
 @onready var atk_cd_timer:Timer = $AtkCDTimer
 #@onready var weapon_component:Node2D = $Sprite2D/Weapons/WeaponComponent
 @onready var character_animation_player:AnimationPlayer = %CharacterAnimationPlayer
 @onready var hit_box_component:HitBoxComponent = %HitBoxComponent
 @onready var atk_range:AtkRangeComponent = $AtkRangeComponent
 @onready var vision:VisionComponent = $VisionComponent
+@onready var ray_cast:RayCast2D = $RayCast2D
 
 @onready var sprites:Dictionary = {
     "weapon": $"Warrior - 01/Skeleton/bone_004/bone_000/bone_001/Weapon"
@@ -118,31 +120,26 @@ func _ready() -> void:
         )
     
     flower_buff_manager.compute_ok.connect(func():
-        EventBus.player_data_change.emit()
         Master.player_output_data = flower_buff_manager.output_data
         
         compute_data = flower_buff_manager.compute_data as CharacterData
         output_data = flower_buff_manager.output_data as CharacterData
         
+        ray_cast.target_position.x = output_data.atk_range
+        
         atk_cd_timer.wait_time = output_data.atk_speed
         
+        EventBus.player_data_change.emit()
+
         print("计算完成")
+        
+        if output_data.is_connected("hp_is_zero", die):
+            return
+        output_data.hp_is_zero.connect(die)        
         )
     
     atk_range.target_enter_range.connect(func():
-        velocity = Vector2.ZERO
-        
-        # 攻击代码
-        if current_state == STATE.DEAD:
-            return
-        
-        if global_position != closest_enemy.marker.global_position:
-            global_position = closest_enemy.marker.global_position
-        
-        turn_to_closest_enemy()
-        
-        character_animation_player.play("scml/Attacking")
-        current_state = STATE.ATTACKING
+        attack()
         )
     
     vision.target_enter_range.connect(func():
@@ -152,6 +149,11 @@ func _ready() -> void:
         turn_to_closest_enemy()
         
         move_to_enemy()
+        )
+    
+    hurt_box_component.hited.connect(func(_v):
+        $AnimationPlayer.play("oh_hit")
+        EventBus.update_ui.emit()
         )
     
     hit_box_component.criticaled.connect(func(): EventBus.player_criticaled.emit())
@@ -198,6 +200,24 @@ func move_to_enemy() -> void:
     direction_to(closest_enemy.marker.global_position) * output_data.speed
     
     character_animation_player.play("scml/Walking")
+    
+    if ray_cast.is_colliding():
+        attack()
+
+func attack() -> void:
+    velocity = Vector2.ZERO
+    
+    # 攻击代码
+    if current_state == STATE.DEAD:
+        return
+    
+    if global_position != closest_enemy.marker.global_position:
+        global_position = closest_enemy.marker.global_position
+    
+    turn_to_closest_enemy()
+    
+    character_animation_player.play("scml/Attacking")
+    current_state = STATE.ATTACKING
 
 func turn_to_closest_enemy() -> void:
     var _dir:Vector2 = to_local(closest_enemy.global_position).normalized()
@@ -235,28 +255,41 @@ func up_level() -> void:
 
 func get_xp(_value:float) -> void:
     output_data.now_xp += _value
-    if output_data.now_xp >= output_data.next_level_xp:
-        up_level()
+    
+    if not output_data.now_xp >= output_data.next_level_xp:
+        return
+    
+    if output_data.level >= 100 + (Master.fly_count * 10):
+        EventBus.new_tips.emit("达到等级上限！请转生以提升等级上限！")
+        return
+    
+    up_level()
 
 # ======= 战斗 ========
 func relife() -> void:
-    # FIXME: data是资源，不会唯一化
-    compute_data.hp = output_data.max_hp
-    compute_data.magic = output_data.max_magic
+    # FIXME: data是资源，不会唯一化    
     global_position = Master.relife_point.global_position
     character_animation_player.play_backwards("scml/Dying")
     await character_animation_player.animation_finished
-    # 设置受击框，避免一直死亡造成内存溢出
-    hurt_box_collision.call_deferred("set_disabled", false)
+    
+    output_data.hp = output_data.max_hp
+    output_data.magic = output_data.max_magic
+    
+    EventBus.update_ui.emit()
+    
     current_state = STATE.IDLE
-    get_tree().paused = false
+    
+    #get_tree().paused = false
+    compute()
+    
+    hurt_box_collision.call_deferred("set_disabled", false)
     find_closest_enemy()
 
 func die() -> void:
     if current_state == STATE.DEAD:
         return
     
-    get_tree().paused = true
+    #get_tree().paused = true
     
     current_state = STATE.DEAD
     hurt_box_collision.call_deferred("set_disabled", true)
