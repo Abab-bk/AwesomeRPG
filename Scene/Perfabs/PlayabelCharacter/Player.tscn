@@ -1789,7 +1789,6 @@ size = Vector2(37.6475, 270.625)
 [node name="Player" type="CharacterBody2D"]
 process_mode = 3
 collision_layer = 2
-collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_8yy7w")
 
@@ -2009,8 +2008,8 @@ buff_manager = NodePath("../../FlowerBuffManager")
 is_player_hitbox = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Warrior - 01/HitBoxComponent"]
-position = Vector2(98.5756, -73.4152)
-rotation = 1.04301
+position = Vector2(98, -136)
+rotation = 0.609923
 shape = SubResource("RectangleShape2D_5hl0t")
 disabled = true
 

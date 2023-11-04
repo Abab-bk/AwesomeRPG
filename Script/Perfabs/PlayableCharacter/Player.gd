@@ -134,9 +134,9 @@ func _ready() -> void:
 
         print("计算完成")
         
-        if output_data.is_connected("hp_is_zero", die):
-            return
-        output_data.hp_is_zero.connect(die)        
+        if not output_data.is_connected("hp_is_zero", die):
+            print("连接信号")
+            output_data.hp_is_zero.connect(die)
         )
     
     atk_range.target_enter_range.connect(func():
@@ -200,6 +200,7 @@ func move_to_enemy() -> void:
     if ray_cast.is_colliding():
         print("ok")
         attack()
+        closest_enemy = ray_cast.get_collider()
         return
     
     velocity = global_position.\
@@ -279,13 +280,13 @@ func relife() -> void:
     output_data.hp = output_data.max_hp
     output_data.magic = output_data.max_magic
     
+    compute()
+    
     EventBus.update_ui.emit()
     
     current_state = STATE.IDLE
     
-    #get_tree().paused = false
-    compute()
-    
+    #get_tree().paused = false    
     hurt_box_collision.call_deferred("set_disabled", false)
     find_closest_enemy()
 
@@ -302,6 +303,13 @@ func die() -> void:
     EventBus.player_dead.emit()
 
 func find_closest_enemy(_temp = 0) -> void:
+    if ray_cast.is_colliding():
+        print("ok")
+        closest_enemy = ray_cast.get_collider().owner
+        attack()
+        turn_to_closest_enemy()
+        return
+    
     all_enemy = get_tree().get_nodes_in_group("Enemy")
     closest_distance = 1000000
     

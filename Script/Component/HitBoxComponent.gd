@@ -22,6 +22,9 @@ func _ready() -> void:
         data = buff_manager.output_data
     )
     
+    collision_layer = 0
+    collision_mask = 0
+    
     if is_player_hitbox:
         set_collision_layer_value(7, true)
         set_collision_mask_value(4, true)

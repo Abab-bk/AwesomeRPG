@@ -51,6 +51,7 @@ folder_colors={
 "res://Assets/": "green",
 "res://Assets/Characters/PlayerAssets/": "red",
 "res://Scene/": "orange",
+"res://Scene/Perfabs/Abilitys/": "purple",
 "res://Scene/UI/": "blue",
 "res://Script/": "pink"
 }

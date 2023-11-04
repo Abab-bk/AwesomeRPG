@@ -7,5 +7,8 @@ func _ready() -> void:
     await get_tree().create_timer(1.0).timeout
     queue_free()
 
+func set_damage(value:float) -> void:
+    $SimpleHitBoxComponent.damage = value
+
 func _physics_process(delta: float) -> void:
     move_and_slide()

@@ -36,12 +36,14 @@ func _ready() -> void:
         if current_state == STATE.DEAD:
             return
         
+        turn_to_player()
+            
         # 攻击代码
         character_animation.play("scml/Attacking")
         current_state = STATE.ATTACKING
         
-        if global_position != Master.player.marker.global_position:
-            global_position = Master.player.marker.global_position
+        #if global_position != Master.player.marker.global_position:
+            #global_position = Master.player.marker.global_position
         
         )
     
@@ -50,13 +52,7 @@ func _ready() -> void:
         )
     
     vision_component.target_enter_range.connect(func():
-        var _dir:Vector2 = to_local(Master.player.global_position).normalized()
-        
-        if _dir.x > 0:
-            # Right
-            self.scale.x = 1
-        elif  _dir.x < 0:
-            self.scale.x = -1
+        turn_to_player()
         )
     
     atk_range.target = Master.player
@@ -85,9 +81,20 @@ func _ready() -> void:
     # 设置属性 （每个敌人 ready 都是生成时）
     set_level(_level)
 
+func turn_to_player() -> void:
+    var _dir:Vector2 = to_local(Master.player.global_position).normalized()
+        
+    if _dir.x > 0:
+        # Right
+        self.scale.x = 1
+    elif  _dir.x < 0:
+        self.scale.x = -1
+
 func move_to_player(_delta:float) -> void:
+    turn_to_player()
+    
     var dir:Vector2 = global_position.\
-    direction_to(Master.player.marker.global_position)
+    direction_to(Master.player.global_position)
     var desired_velocity:Vector2 = dir * data.speed
     
     var steering:Vector2 = (desired_velocity - velocity) * _delta * 2.5
