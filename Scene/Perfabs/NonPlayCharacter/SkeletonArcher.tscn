@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dk0o6dg4b53ey"]
+
+[ext_resource type="PackedScene" uid="uid://c7nuxcbix4gjt" path="res://Assets/Characters/SkeletonArcher1/Animations.scml" id="1_risvg"]
+
+[node name="03" instance=ExtResource("1_risvg")]

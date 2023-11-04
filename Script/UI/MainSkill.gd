@@ -2,9 +2,9 @@ extends Panel
 
 @onready var change_btn:Button = %ChangeBtn
 
-signal changed_ability(id:int)
+signal changed_ability(ability:FlowerAbility)
 
-var parent_id:int = 0
+var parent:FlowerAbility
 var sub_skill:bool = false
 var ability:FlowerAbility = null:
     set(v):
@@ -46,10 +46,10 @@ var ability:FlowerAbility = null:
         %ChangeBtn.hide()
         
         # 通过技能面板刷新 sub skill 的 parent
-        changed_ability.emit(ability.id)
+        changed_ability.emit(ability)
         
         if sub_skill:
-            EventBus.player_set_a_ability.emit(parent_id, [ability.id])
+            EventBus.player_set_a_ability.emit(parent, [ability.id])
             return
         
         # 真正添加技能到容器

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dugxo25l3rdcj"]
+
+[ext_resource type="Script" path="res://Script/Perfabs/Abilitys/FlamingMeteor.gd" id="1_700x5"]
+[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="2_f268m"]
+
+[node name="FlamingMeteor" type="Node2D"]
+script = ExtResource("1_700x5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.231373)
+z_index = -1
+position = Vector2(0, 1)
+scale = Vector2(10, 5.68522)
+texture = ExtResource("2_f268m")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2

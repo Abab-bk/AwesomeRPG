@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu1itf58sclw0"]
+
+[ext_resource type="PackedScene" uid="uid://bii53o7hmy14j" path="res://Assets/Characters/GiantSkeleton3/Animations.scml" id="1_ow862"]
+
+[node name="03" instance=ExtResource("1_ow862")]
+
+[node name="bone_003" parent="Skeleton/bone_006/bone_002" index="0"]
+rotation = -0.0261152
+
+[node name="bone_001" parent="Skeleton/bone_006/bone_000" index="0"]
+scale = Vector2(1, 1)

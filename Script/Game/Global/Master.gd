@@ -11,6 +11,19 @@ const HIT_SOUNDS:String = "res://Assets/Sounds/Sfx/Hit.mp3"
 const HAPPY_SOUNDS:String = "res://Assets/Sounds/Sfx/Happy.ogg"
 
 const SPECIAL_ABILITYS_ID:Array[int] = [4005]
+const ENEMYS_SKINS:Array[String] = [
+    "res://Scene/Perfabs/NonPlayCharacter/GitanSkeleton1.tscn",
+    "res://Scene/Perfabs/NonPlayCharacter/GitanSkeleton2.tscn",
+    "res://Scene/Perfabs/NonPlayCharacter/GitanSkeleton3.tscn",
+    "res://Scene/Perfabs/NonPlayCharacter/Mummy1.tscn",
+    "res://Scene/Perfabs/NonPlayCharacter/Mummy2.tscn",
+    "res://Scene/Perfabs/NonPlayCharacter/Mummy3.tscn",
+    "res://Scene/Perfabs/NonPlayCharacter/Skeleton2.tscn",
+    "res://Scene/Perfabs/NonPlayCharacter/Skeleton3.tscn",
+    "res://Scene/Perfabs/NonPlayCharacter/SkeletonArcher2.tscn",
+    "res://Scene/Perfabs/NonPlayCharacter/SkeletonArcher3.tscn",
+    "res://Scene/Perfabs/NonPlayCharacter/SkeletonArcher.tscn"
+]
 
 var world:Node2D
 
@@ -39,11 +52,12 @@ var affixs:Array
 var buffs:Dictionary
 var abilitys:Dictionary
 var quests:Dictionary
+var ability_buffs:Dictionary
 
 var json_path:String = "res://DataBase/output/"
 
 const abilitys_start:int = 4001
-const abilitys_end:int = 4006
+const abilitys_end:int = 4008
 
 func get_quest_by_id(_id:int) -> QuestResource:
     var _quest:QuestResource = QuestResource.new()
@@ -76,6 +90,38 @@ func get_ability_by_id(_id:int) -> FlowerAbility:
     _ability.cost_value = _data.cost_value
     
     return _ability
+
+func get_buff_by_id(_target_buff_id:int) -> FlowerBaseBuff:
+    var buff:FlowerBaseBuff = FlowerBaseBuff.new()
+    var _buff = ability_buffs[_target_buff_id]
+    
+    buff.name = _buff.name
+    buff.desc = _buff.desc
+    buff.repeat = _buff["repeat"]
+    buff.infinite = _buff["infinite"]
+    buff.repeat_count = _buff["repeat_count"]
+    buff.prepare_time = _buff["prepare_time"]
+    buff.active_time = _buff["active_time"]
+    buff.cooldown_time = _buff["cooldown_time"]
+    
+    buff.compute_values = _get_compute_datas(_buff["compute_values"])
+    
+    return buff
+
+func _get_compute_datas(_value) -> Array[FlowerComputeData]:
+    var _result:Array[FlowerComputeData] = []
+    
+    for i in _value:
+        var _new_data:FlowerComputeData = FlowerComputeData.new()
+        _new_data.id = i["id"]
+        _new_data.type = i["type"]
+        _new_data.value = i["value"]
+        _new_data.formual = i.formual
+        _new_data.target_property = i["target_property"]
+        
+        _result.append(_new_data)
+        
+    return _result
 
 func get_random_ability_id() -> int:
 #    var _rng:FairNG = FairNG.new(abilitys_end)
@@ -134,6 +180,7 @@ func _ready():
     buffs = config.TbBuffs.get_data_map()
     abilitys = config.TbAbilitys.get_data_map()
     quests = config.TbQuests.get_data_map()
+    ability_buffs = config.TbAbilityBuffs.get_data_map()
 
     EventBus.unlocked_ability.connect(func(_id:int):
         if _id in unlocked_skills:

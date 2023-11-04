@@ -77,12 +77,14 @@ class BuffsComputeData:
     var id: String
     var type: int
     var value: float
+    var formual: String
     var target_property: String
 
     func _init(_json_) -> void:
         self.id = _json_["id"]
         self.type = _json_["type"]
         self.value = _json_["value"]
+        self.formual = _json_["formual"]
         self.target_property = _json_["target_property"]
 
 
@@ -162,6 +164,42 @@ class Quests:
         self.type = _json_["type"]
         self.value = _json_["value"]
         self.reward = _json_["reward"]
+
+
+class AbilityBuffs:
+    ## 这是id
+    var id: int
+    ## 名称
+    var name: String
+    ## 描述
+    var desc: String
+    ## 是否重复
+    var repeat: bool
+    ## 是否无限时间
+    var infinite: bool
+    ## 重复次数
+    var repeat_count: int
+    ## 准备时间
+    var prepare_time: int
+    ## 生效时间
+    var active_time: int
+    ## 冷却时间
+    var cooldown_time: int
+    ## 计算数据
+    var compute_values: Array[BuffsComputeData]
+
+    func _init(_json_) -> void:
+        self.id = _json_["id"]
+        self.name = _json_["name"]
+        self.desc = _json_["desc"]
+        self.repeat = _json_["repeat"]
+        self.infinite = _json_["infinite"]
+        self.repeat_count = _json_["repeat_count"]
+        self.prepare_time = _json_["prepare_time"]
+        self.active_time = _json_["active_time"]
+        self.cooldown_time = _json_["cooldown_time"]
+        self.compute_values = []
+        for _ele in _json_["compute_values"]: var _e: BuffsComputeData; _e = BuffsComputeData.new(_ele); self.compute_values.append(_e)
 
 
 class BuffsTbBuffs:
@@ -269,12 +307,34 @@ class QuestsTbQuests:
         return self._data_map.get(key)
 
 
+class AbilityBuffsTbAbilityBuffs:
+    var _data_list: Array[AbilityBuffs]
+    var _data_map: Dictionary
+    
+    func _init(_json_) -> void:
+        for _json2_ in _json_:
+            var _v: AbilityBuffs
+            _v = AbilityBuffs.new(_json2_)
+            self._data_list.append(_v)
+            self._data_map[_v.id] = _v
+
+    func get_data_list() -> Array[AbilityBuffs]:
+        return self._data_list
+
+    func get_data_map() -> Dictionary:
+        return self._data_map
+
+    func get_item(key) -> AbilityBuffs:
+        return self._data_map.get(key)
+
+
 class CfgTables:
     var TbBuffs: BuffsTbBuffs
     var TbAffix: AffixsTbAffix
     var TbSkills: SkillTreeTbSkills
     var TbAbilitys: AbilitysTbAbilitys
     var TbQuests: QuestsTbQuests
+    var TbAbilityBuffs: AbilityBuffsTbAbilityBuffs
     
     func _init(loader: Callable) -> void:
         self.TbBuffs = BuffsTbBuffs.new(loader.call('buffs_tbbuffs'))
@@ -282,4 +342,5 @@ class CfgTables:
         self.TbSkills = SkillTreeTbSkills.new(loader.call('skilltree_tbskills'))
         self.TbAbilitys = AbilitysTbAbilitys.new(loader.call('abilitys_tbabilitys'))
         self.TbQuests = QuestsTbQuests.new(loader.call('quests_tbquests'))
+        self.TbAbilityBuffs = AbilityBuffsTbAbilityBuffs.new(loader.call('abilitybuffs_tbabilitybuffs'))
 

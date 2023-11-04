@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb0has5er2vg2"
-path="res://.godot/imported/red_character.png-8a749b0369bf95379566496faee9dfaa.ctex"
+uid="uid://bvoe7qqn2ya8f"
+path="res://.godot/imported/BloodDance.png-daf2a394da4dab66ccbadfa619f0cad1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Texture/Characters/red_character.png"
-dest_files=["res://.godot/imported/red_character.png-8a749b0369bf95379566496faee9dfaa.ctex"]
+source_file="res://Assets/Texture/Icons/Skills/BloodDance.png"
+dest_files=["res://.godot/imported/BloodDance.png-daf2a394da4dab66ccbadfa619f0cad1.ctex"]
 
 [params]
 

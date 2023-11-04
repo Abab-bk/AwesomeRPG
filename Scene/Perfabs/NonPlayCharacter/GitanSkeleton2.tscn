@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnj2kwoottc8c"]
+
+[ext_resource type="PackedScene" uid="uid://cku6qu3rbcxv6" path="res://Assets/Characters/GiantSkeleton2/Animations.scml" id="1_rsblg"]
+
+[node name="03" instance=ExtResource("1_rsblg")]
+
+[node name="bone_006" parent="Skeleton" index="3"]
+scale = Vector2(1, 1)

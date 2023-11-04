@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcvid2hgflnb"
-path="res://.godot/imported/purple_character.png-c928bbab946d033e969f1e1354a77cf2.ctex"
+uid="uid://udu6pqkervld"
+path="res://.godot/imported/BooldDance.png-a277cfbecd03bffc47c61d1592608529.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Texture/Characters/purple_character.png"
-dest_files=["res://.godot/imported/purple_character.png-c928bbab946d033e969f1e1354a77cf2.ctex"]
+source_file="res://Assets/Texture/Icons/Skills/BooldDance.png"
+dest_files=["res://.godot/imported/BooldDance.png-a277cfbecd03bffc47c61d1592608529.ctex"]
 
 [params]
 

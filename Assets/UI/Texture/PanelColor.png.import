@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0k04vhho8c8"
-path="res://.godot/imported/yellow_hand.png-cb18c8ec0bc859f587cbb36b6a8a4278.ctex"
+uid="uid://dgkink7d41ovi"
+path="res://.godot/imported/PanelColor.png-8e9ef31b737f57fee6046693490ca5bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Texture/Characters/yellow_hand.png"
-dest_files=["res://.godot/imported/yellow_hand.png-cb18c8ec0bc859f587cbb36b6a8a4278.ctex"]
+source_file="res://Assets/UI/Texture/PanelColor.png"
+dest_files=["res://.godot/imported/PanelColor.png-8e9ef31b737f57fee6046693490ca5bb.ctex"]
 
 [params]
 

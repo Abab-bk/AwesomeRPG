@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gmqeibaycahy"
-path="res://.godot/imported/green_hand.png-61da52c7ea0c44c124cf0f13975576ea.ctex"
+uid="uid://dhvdr2nokpx5t"
+path="res://.godot/imported/FlamingMeteor.png-63bcef9e63ff12d89daaa90ee45eedcd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Texture/Characters/green_hand.png"
-dest_files=["res://.godot/imported/green_hand.png-61da52c7ea0c44c124cf0f13975576ea.ctex"]
+source_file="res://Assets/Texture/Icons/Skills/FlamingMeteor.png"
+dest_files=["res://.godot/imported/FlamingMeteor.png-63bcef9e63ff12d89daaa90ee45eedcd.ctex"]
 
 [params]
 

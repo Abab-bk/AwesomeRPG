@@ -2,7 +2,7 @@
   {
     "id": 4001,
     "name": "暴风雪",
-    "desc": "释放暴风雪，在范围内造成 AOE 伤害。",
+    "desc": "释放暴风雪，在范围内造成 10% 冰霜伤害。",
     "icon_path": "Blizzard.png",
     "cost": 200,
     "global": true,
@@ -88,5 +88,35 @@
     "running_time": 5,
     "long": false,
     "scene_name": "LightRush"
+  },
+  {
+    "id": 4007,
+    "name": "火焰流星",
+    "desc": "召唤一群火焰流星。每颗流星造成 10% 的火焰伤害。",
+    "icon_path": "FlamingMeteor.png",
+    "cost": 300,
+    "global": false,
+    "cost_type": 1,
+    "cost_value": 20,
+    "cooldown": 1,
+    "casting_time": 0,
+    "running_time": 5,
+    "long": false,
+    "scene_name": "FlamingMeteor"
+  },
+  {
+    "id": 4008,
+    "name": "鲜血舞蹈",
+    "desc": "每损失 100 点生命，获得 10% 的攻速、速度、伤害加成。持续 3 秒。",
+    "icon_path": "BloodDance.png",
+    "cost": 300,
+    "global": false,
+    "cost_type": 1,
+    "cost_value": 20,
+    "cooldown": 1,
+    "casting_time": 0,
+    "running_time": 3,
+    "long": false,
+    "scene_name": "BloodDance"
   }
 ]

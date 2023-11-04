@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7qxtg5hc2ehg"]
+
+[ext_resource type="Script" path="res://Script/Perfabs/Bullets/FlamingMeteorBullet.gd" id="1_lwq5v"]
+[ext_resource type="Script" path="res://Script/Component/SimpleHitBoxComponent.gd" id="2_345bk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_185vp"]
+radius = 35.4401
+
+[node name="FlamingMeteorBullet" type="CharacterBody2D"]
+script = ExtResource("1_lwq5v")
+
+[node name="SimpleHitBoxComponent" type="Area2D" parent="."]
+script = ExtResource("2_345bk")
+is_player_hitbox = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SimpleHitBoxComponent"]
+shape = SubResource("CircleShape2D_185vp")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(3, 0)
+rotation = -0.396619
+color = Color(1, 0.623529, 0.478431, 1)
+polygon = PackedVector2Array(-1, -39, -18, -15, -8, 35, 14, 1, 13, -20)

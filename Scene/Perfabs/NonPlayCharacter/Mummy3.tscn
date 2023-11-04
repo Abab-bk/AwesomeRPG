@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://rgnt2iq82d0f"]
+
+[ext_resource type="PackedScene" uid="uid://bts4pg2xjgei5" path="res://Assets/Characters/Mummy2/Animations.scml" id="1_w4j3k"]
+
+[node name="02" instance=ExtResource("1_w4j3k")]
+
+[node name="bone_003" parent="Skeleton/bone_006/bone_002" index="0"]
+rotation = -0.0261152
+
+[node name="bone_001" parent="Skeleton/bone_006/bone_000" index="0"]
+scale = Vector2(1, 1)

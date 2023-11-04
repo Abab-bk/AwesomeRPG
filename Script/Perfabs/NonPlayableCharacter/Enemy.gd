@@ -9,7 +9,7 @@ extends CharacterBody2D
 @onready var vision_component:VisionComponent = $VisionComponent
 #@onready var weapons:Node2D = %Weapons
 @onready var atk_cd_timer:Timer = $AtkCDTimer
-@onready var character_animation:AnimationPlayer = %CharacterAnimation
+@onready var character_animation:AnimationPlayer = $Display/Skeleton/CharacterAnimation
 @onready var marker:Marker2D = $Marker2D
 
 var data:CharacterData
@@ -25,6 +25,13 @@ enum STATE {
 var current_state:STATE = STATE.PATROL
 
 func _ready() -> void:
+    # 设置皮肤
+    $Display.get_node("Skeleton").queue_free()
+    randomize()
+    var new_node = load(Master.ENEMYS_SKINS[randi_range(0, Master.ENEMYS_SKINS.size() - 1)]).instantiate()
+    $Display.add_child(new_node)
+    character_animation = new_node.get_node("Skeleton").get_node("AnimationPlayer")
+    
     hurt_box_component.hited.connect(func(value:int):
         EventBus.show_damage_number.emit(get_global_transform_with_canvas().get_origin(), str(value))
         $AnimationPlayer.play("Hited")
@@ -39,7 +46,8 @@ func _ready() -> void:
         turn_to_player()
             
         # 攻击代码
-        character_animation.play("scml/Attacking")
+        if character_animation.has_animation("scml/Attacking"):
+            character_animation.play("scml/Attacking")
         current_state = STATE.ATTACKING
         
         #if global_position != Master.player.marker.global_position:
@@ -76,7 +84,7 @@ func _ready() -> void:
     atk_cd_timer.wait_time = data.atk_speed
     
     if Master.player.get_level() >= 5:
-        _level = Master.player.get_level() - 3
+        _level = Master.player.get_level() - 1
     
     # 设置属性 （每个敌人 ready 都是生成时）
     set_level(_level)
@@ -101,7 +109,8 @@ func move_to_player(_delta:float) -> void:
     
     velocity += steering
     
-    character_animation.play("scml/Walking")
+    if character_animation:    
+        character_animation.play("scml/Walking")
 
 func die() -> void:
     if current_state == STATE.DEAD:
@@ -111,9 +120,9 @@ func die() -> void:
     
     Master.player.current_state = Master.player.STATE.IDLE
     # 获得经验
-    EventBus.enemy_die.emit(data.level * 10)
+    EventBus.enemy_die.emit(data.level * data.level * data.level * 3 * (1 + Master.fly_count * 0.1))
     # TODO: 修改敌人掉落金币
-    Master.coins += 10
+    Master.coins += data.level * randi_range(0, 5)
     
     # 随机掉落装备
     if randi_range(0, 100) >= 50:

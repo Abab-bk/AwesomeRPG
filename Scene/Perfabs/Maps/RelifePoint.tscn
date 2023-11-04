@@ -1,11 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlpspce2dr6hw"]
+[gd_scene load_steps=2 format=3 uid="uid://dlpspce2dr6hw"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/Maps/RelifePoint.gd" id="1_5lpbu"]
-[ext_resource type="Texture2D" uid="uid://hfv1feh7b7vm" path="res://Assets/Texture/Characters/red_hand.png" id="1_6hi62"]
 
 [node name="RelifePoint" type="Marker2D"]
 script = ExtResource("1_5lpbu")
-
-[node name="RelifePoint" type="Sprite2D" parent="."]
-position = Vector2(899, 731)
-texture = ExtResource("1_6hi62")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://olr5n0ejh2qc"]
+
+[ext_resource type="PackedScene" uid="uid://d0vdv3j2ykegh" path="res://Assets/Characters/Skeleton2/Animations.scml" id="1_a76pn"]
+
+[node name="02" instance=ExtResource("1_a76pn")]
+
+[node name="bone_003" parent="Skeleton/bone_006/bone_002" index="0"]
+rotation = -0.0261152
+
+[node name="bone_001" parent="Skeleton/bone_006/bone_000" index="0"]
+scale = Vector2(1, 1)

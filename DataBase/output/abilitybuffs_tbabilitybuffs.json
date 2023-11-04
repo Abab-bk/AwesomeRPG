@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1001,
+    "name": "鲜血舞蹈",
+    "desc": "",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "1001",
+        "type": 2,
+        "value": 0,
+        "formual": "([max_hp] - [hp])/100",
+        "target_property": "speed"
+      },
+      {
+        "id": "1002",
+        "type": 2,
+        "value": 0,
+        "formual": "([max_hp] - [hp])/100",
+        "target_property": "damage"
+      },
+      {
+        "id": "1003",
+        "type": 2,
+        "value": 0,
+        "formual": "([max_hp] - [hp])/100",
+        "target_property": "atk_speed"
+      }
+    ]
+  }
+]

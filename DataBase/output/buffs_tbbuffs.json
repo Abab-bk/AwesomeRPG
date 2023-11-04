@@ -14,6 +14,7 @@
         "id": "1001",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "fire_damage"
       }
     ]
@@ -33,6 +34,7 @@
         "id": "1002",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "frost_damage"
       }
     ]
@@ -52,6 +54,7 @@
         "id": "1003",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "light_damage"
       }
     ]
@@ -71,6 +74,7 @@
         "id": "1004",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "toxic_damage"
       }
     ]
@@ -90,6 +94,7 @@
         "id": "1005",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "damage"
       }
     ]
@@ -109,6 +114,7 @@
         "id": "1006",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "fire_resistance"
       }
     ]
@@ -128,6 +134,7 @@
         "id": "1007",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "frost_resistance"
       }
     ]
@@ -147,6 +154,7 @@
         "id": "1008",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "light_resistance"
       }
     ]
@@ -166,6 +174,7 @@
         "id": "1009",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "toxic_resistance"
       }
     ]
@@ -185,6 +194,7 @@
         "id": "1010",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "physical_resistance"
       }
     ]
@@ -204,6 +214,7 @@
         "id": "1011",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "fire_damage"
       }
     ]
@@ -223,6 +234,7 @@
         "id": "1012",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "frost_damage"
       }
     ]
@@ -242,6 +254,7 @@
         "id": "1013",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "light_damage"
       }
     ]
@@ -261,6 +274,7 @@
         "id": "1014",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "toxic_damage"
       }
     ]
@@ -280,6 +294,7 @@
         "id": "1015",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "damage"
       }
     ]
@@ -299,6 +314,7 @@
         "id": "1016",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "fire_resistance"
       }
     ]
@@ -318,6 +334,7 @@
         "id": "1017",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "frost_resistance"
       }
     ]
@@ -337,6 +354,7 @@
         "id": "1018",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "light_resistance"
       }
     ]
@@ -356,6 +374,7 @@
         "id": "1019",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "toxic_resistance"
       }
     ]
@@ -375,6 +394,7 @@
         "id": "1020",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "physical_resistance"
       }
     ]
@@ -394,6 +414,7 @@
         "id": "1020",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "max_hp"
       }
     ]
@@ -413,6 +434,7 @@
         "id": "1021",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "health_regeneration"
       }
     ]
@@ -432,6 +454,7 @@
         "id": "1022",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "defense"
       }
     ]
@@ -451,6 +474,7 @@
         "id": "1023",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "evasion"
       }
     ]
@@ -470,6 +494,7 @@
         "id": "1024",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "luck"
       }
     ]
@@ -489,6 +514,7 @@
         "id": "1025",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "speed"
       }
     ]
@@ -508,6 +534,7 @@
         "id": "1026",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "healing_effciency"
       }
     ]
@@ -527,6 +554,7 @@
         "id": "1027",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "critical_rate"
       }
     ]
@@ -546,6 +574,7 @@
         "id": "1028",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "critical_damage"
       }
     ]
@@ -565,6 +594,7 @@
         "id": "1029",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "vulnerability_damage"
       }
     ]
@@ -584,6 +614,7 @@
         "id": "1030",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "vulnerability_rate"
       }
     ]
@@ -603,6 +634,7 @@
         "id": "1031",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "magic"
       }
     ]
@@ -622,6 +654,7 @@
         "id": "1032",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "atk_speed"
       }
     ]
@@ -641,6 +674,7 @@
         "id": "1033",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "strength"
       }
     ]
@@ -660,6 +694,7 @@
         "id": "1034",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "wisdom"
       }
     ]
@@ -679,6 +714,7 @@
         "id": "1035",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "agility"
       }
     ]
@@ -698,6 +734,7 @@
         "id": "1036",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "atk_range"
       }
     ]
@@ -717,6 +754,7 @@
         "id": "1037",
         "type": 1,
         "value": 0,
+        "formual": "",
         "target_property": "vision"
       }
     ]
@@ -736,6 +774,7 @@
         "id": "1038",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "max_hp"
       }
     ]
@@ -755,6 +794,7 @@
         "id": "1039",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "health_regeneration"
       }
     ]
@@ -774,6 +814,7 @@
         "id": "1040",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "defense"
       }
     ]
@@ -793,6 +834,7 @@
         "id": "1041",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "evasion"
       }
     ]
@@ -812,6 +854,7 @@
         "id": "1042",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "luck"
       }
     ]
@@ -831,6 +874,7 @@
         "id": "1043",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "speed"
       }
     ]
@@ -850,6 +894,7 @@
         "id": "1044",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "healing_effciency"
       }
     ]
@@ -869,6 +914,7 @@
         "id": "1045",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "critical_rate"
       }
     ]
@@ -888,6 +934,7 @@
         "id": "1046",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "critical_damage"
       }
     ]
@@ -907,6 +954,7 @@
         "id": "1047",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "vulnerability_damage"
       }
     ]
@@ -926,6 +974,7 @@
         "id": "1048",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "vulnerability_rate"
       }
     ]
@@ -945,6 +994,7 @@
         "id": "1049",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "magic"
       }
     ]
@@ -964,6 +1014,7 @@
         "id": "1050",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "atk_speed"
       }
     ]
@@ -983,6 +1034,7 @@
         "id": "1051",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "strength"
       }
     ]
@@ -1002,6 +1054,7 @@
         "id": "1052",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "wisdom"
       }
     ]
@@ -1021,6 +1074,7 @@
         "id": "1053",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "agility"
       }
     ]
@@ -1040,6 +1094,7 @@
         "id": "1054",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "atk_range"
       }
     ]
@@ -1059,6 +1114,7 @@
         "id": "1055",
         "type": 0,
         "value": 0,
+        "formual": "",
         "target_property": "vision"
       }
     ]

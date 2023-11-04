@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxc7hc1jk1l0j"]
+[gd_scene load_steps=7 format=3 uid="uid://dxc7hc1jk1l0j"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_gvaxm"]
-[ext_resource type="LabelSettings" uid="uid://mgahdqv1o26h" path="res://Assets/LabelSetting/BigGray.tres" id="1_hgh8j"]
 [ext_resource type="Script" path="res://Script/UI/SkillStore.gd" id="2_25jub"]
-[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="2_q0m1v"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="3_yy5bl"]
+[ext_resource type="Texture2D" uid="uid://cq0ojl5wdlg2l" path="res://Assets/UI/Texture/PopupTop.png" id="4_f37n5"]
+[ext_resource type="Texture2D" uid="uid://bvoe7qqn2ya8f" path="res://Assets/Texture/Icons/Skills/BloodDance.png" id="4_vfa4u"]
+[ext_resource type="Texture2D" uid="uid://p4yi3v7h2f85" path="res://Assets/UI/Texture/PopupBottom.png" id="6_y3iib"]
 
 [node name="SkillStore" type="VBoxContainer"]
 anchors_preset = 15
@@ -16,46 +17,83 @@ size_flags_vertical = 3
 theme = ExtResource("1_gvaxm")
 script = ExtResource("2_25jub")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 2
-text = "技能商店"
-label_settings = ExtResource("1_hgh8j")
-horizontal_alignment = 1
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Panel" type="NinePatchRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
+texture = ExtResource("4_f37n5")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
 
-[node name="Icon" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(128, 128)
-layout_mode = 2
-texture = ExtResource("2_q0m1v")
-expand_mode = 2
-stretch_mode = 5
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="NameLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="VBoxContainer/Panel/HBoxContainer/VBoxContainer2/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("4_vfa4u")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/Panel/HBoxContainer/VBoxContainer2/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "未选择技能"
+text = "鲜血舞蹈"
+label_settings = ExtResource("3_yy5bl")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CostLabel" type="Label" parent="VBoxContainer/Panel/HBoxContainer/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "消耗：50 生命"
 label_settings = ExtResource("3_yy5bl")
 
-[node name="CostLabel" type="Label" parent="VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="DescLabel" type="Label" parent="VBoxContainer/Panel/HBoxContainer/VBoxContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "未选择技能"
+size_flags_vertical = 3
+text = "每损失 100 点生命，获得 10% 的攻速、速度、伤害加成。持续 3 秒。"
 label_settings = ExtResource("3_yy5bl")
 
-[node name="Items" type="GridContainer" parent="VBoxContainer"]
+[node name="Panel2" type="NinePatchRect" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("6_y3iib")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Items" type="GridContainer" parent="VBoxContainer/Panel2"]
 unique_name_in_owner = true
 layout_mode = 2
+offset_top = 504.0
+offset_right = 1080.0
+offset_bottom = 2284.0
 size_flags_vertical = 3
 columns = 6
 
