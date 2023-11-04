@@ -2,33 +2,15 @@ class_name ItemGenerator extends Node
 
 # TODO
 
-const AXES:Array[String] = [
-    "res://Assets/Texture/Weapons/weapon_arrow.png", "res://Assets/Texture/Weapons/weapon_axe.png", "res://Assets/Texture/Weapons/weapon_axe_blades.png", "res://Assets/Texture/Weapons/weapon_axe_double.png", "res://Assets/Texture/Weapons/weapon_axe_large.png"
-]
-const BOWS:Array[String] = [
-    "res://Assets/Texture/Weapons/weapon_bow.png", "res://Assets/Texture/Weapons/weapon_bow_arrow.png"
-]
-const DAGGERS:Array[String] = [
-    "res://Assets/Texture/Weapons/weapon_dagger.png"
-]
-const HAMMERS:Array[String] = [
-    "res://Assets/Texture/Weapons/weapon_hammer.png"
-]
-const SWORDS:Array[String] = [
-    "res://Assets/Texture/Weapons/weapon_longsword.png", "res://Assets/Texture/Weapons/weapon_sword.png"
-]
-const POLES:Array[String] = [
-    "res://Assets/Texture/Weapons/weapon_pole.png"
-]
-const SPEARS:Array[String] = [
-    "res://Assets/Texture/Weapons/weapon_spear.png"
-]
-const STAFFS:Array[String] = [
-    "res://Assets/Texture/Weapons/weapon_staff.png"
-]
-const SHIELDS:Array[String] = [
-    "res://Assets/Texture/Weapons/shield_curved.png", "res://Assets/Texture/Weapons/shield_straight.png"
-]
+const AXES:String = "res://Assets/Texture/Icons/Axes/"
+const BOWS:String = "res://Assets/Texture/Icons/Bows/"
+const DAGGERS:String = "res://Assets/Texture/Icons/Daggers/"
+const HAMMERS:String = "res://Assets/Texture/Icons/Hammers/"
+const SWORDS:String = "res://Assets/Texture/Icons/Sword/"
+const POLES:String = "res://Assets/Texture/Icons/Poles/"
+const SPEARS:String = "res://Assets/Texture/Icons/Spears/"
+const STAFFS:String = "res://Assets/Texture/Icons/Staffs/"
+const SHIELDS:String = "res://Assets/Texture/Icons/Shields/"
 const 头盔:String = "res://Assets/Texture/Icons/头盔/"
 const 护腕:String = "res://Assets/Texture/Icons/护腕/"
 const 胸甲:String = "res://Assets/Texture/Icons/胸甲/"
@@ -80,20 +62,19 @@ func gen_a_item() -> InventoryItem:
             # TODO: 更改随机值
             match _new_item.weapon_type:
                 Const.WEAPONS_TYPE.Sword:
-                    var _rng:FairNG = FairNG.new((SWORDS.size() - 1) * 2)
-                    _new_item.texture_path = SWORDS[randi_range(0, SWORDS.size() - 1)]
+                    _new_item.texture_path = get_random_icon_path(SWORDS)
                 Const.WEAPONS_TYPE.Axe:
-                    _new_item.texture_path = AXES[randi_range(0, AXES.size() - 1)]
+                    _new_item.texture_path = get_random_icon_path(AXES)
                 Const.WEAPONS_TYPE.Bow:
-                    _new_item.texture_path = BOWS[randi_range(0, BOWS.size() - 1)]
+                    _new_item.texture_path = get_random_icon_path(BOWS)
                 Const.WEAPONS_TYPE.Hammer:
-                    _new_item.texture_path = HAMMERS[randi_range(0, HAMMERS.size() - 1)]
+                    _new_item.texture_path = get_random_icon_path(HAMMERS)
                 Const.WEAPONS_TYPE.Spear:
-                    _new_item.texture_path = SPEARS[randi_range(0, SPEARS.size() - 1)]
+                    _new_item.texture_path = get_random_icon_path(SPEARS)
                 Const.WEAPONS_TYPE.Staff:
-                    _new_item.texture_path = STAFFS[randi_range(0, STAFFS.size() - 1)]
+                    _new_item.texture_path = get_random_icon_path(STAFFS)
                 Const.WEAPONS_TYPE.Shield:
-                    _new_item.texture_path = SHIELDS[randi_range(0, SHIELDS.size() - 1)]
+                    _new_item.texture_path = get_random_icon_path(SHIELDS)
             
             _new_item.name += "武器"
     
@@ -142,13 +123,14 @@ func gen_a_item() -> InventoryItem:
     return _new_item
 
 func get_random_icon_path(_dir_path:String) -> String:
-    var dir:DirAccess = DirAccess.open(_dir_path)
-    var _file_name = dir.get_files()[randi_range(0, dir.get_files().size() - 1)]
+    var names:Array = DirAccess.get_files_at(_dir_path)
     
-    while true:
-        randomize()
-        _file_name = dir.get_files()[randi_range(0, dir.get_files().size() - 1)]
-        if not _file_name in ".import":
-            break
+    for i in names:
+        if ".import" in i:
+            names.erase(i)
+    
+    print(names)
+    
+    var _file_name = names[randi_range(0, names.size() - 1)]
     
     return _dir_path + "/" + _file_name
