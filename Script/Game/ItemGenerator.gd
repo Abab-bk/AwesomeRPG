@@ -29,15 +29,15 @@ const STAFFS:Array[String] = [
 const SHIELDS:Array[String] = [
     "res://Assets/Texture/Weapons/shield_curved.png", "res://Assets/Texture/Weapons/shield_straight.png"
 ]
-const 头盔:Array[String] = []
-const 护腕:Array[String] = []
-const 胸甲:Array[String] = []
-const 手套:Array[String] = []
-const 靴子:Array[String] = []
-const 皮带:Array[String] = []
-const 裤子:Array[String] = []
-const 护身符:Array[String] = []
-const 戒指:Array[String] = []
+const 头盔:String = "res://Assets/Texture/Icons/头盔/"
+const 护腕:String = "res://Assets/Texture/Icons/护腕/"
+const 胸甲:String = "res://Assets/Texture/Icons/胸甲/"
+const 手套:String = "res://Assets/Texture/Icons/手套/"
+const 靴子:String = "res://Assets/Texture/Icons/靴子/"
+const 皮带:String = "res://Assets/Texture/Icons/皮带/"
+const 裤子:String = "res://Assets/Texture/Icons/裤子/"
+const 护身符:String = "res://Assets/Texture/Icons/护身符/"
+const 戒指:String = "res://Assets/Texture/Icons/戒指/"
 
 func gen_a_item() -> InventoryItem:
     randomize()
@@ -49,22 +49,31 @@ func gen_a_item() -> InventoryItem:
     match _new_item.type:
         Const.EQUIPMENT_TYPE.头盔:
             _new_item.name += "头盔"
+            _new_item.texture_path = get_random_icon_path(头盔)
         Const.EQUIPMENT_TYPE.护腕:
             _new_item.name += "护腕"
+            _new_item.texture_path = get_random_icon_path(护腕)
         Const.EQUIPMENT_TYPE.手套:
             _new_item.name += "手套"
+            _new_item.texture_path = get_random_icon_path(手套)
         Const.EQUIPMENT_TYPE.靴子:
             _new_item.name += "靴子"
+            _new_item.texture_path = get_random_icon_path(靴子)
         Const.EQUIPMENT_TYPE.胸甲:
             _new_item.name += "胸甲"
+            _new_item.texture_path = get_random_icon_path(胸甲)
         Const.EQUIPMENT_TYPE.皮带:
             _new_item.name += "皮带"
+            _new_item.texture_path = get_random_icon_path(皮带)
         Const.EQUIPMENT_TYPE.裤子:
             _new_item.name += "裤子"
+            _new_item.texture_path = get_random_icon_path(裤子)
         Const.EQUIPMENT_TYPE.护身符:
             _new_item.name += "护身符"
+            _new_item.texture_path = get_random_icon_path(护身符)
         Const.EQUIPMENT_TYPE.戒指:
             _new_item.name += "戒指"
+            _new_item.texture_path = get_random_icon_path(戒指)
         Const.EQUIPMENT_TYPE.武器:
             _new_item.weapon_type = Const.WEAPONS_TYPE.values()[randi() % Const.WEAPONS_TYPE.size()]
             
@@ -131,3 +140,15 @@ func gen_a_item() -> InventoryItem:
     _new_item.price = (int(quality) + 1) * 10 * count
     
     return _new_item
+
+func get_random_icon_path(_dir_path:String) -> String:
+    var dir:DirAccess = DirAccess.open(_dir_path)
+    var _file_name = dir.get_files()[randi_range(0, dir.get_files().size() - 1)]
+    
+    while true:
+        randomize()
+        _file_name = dir.get_files()[randi_range(0, dir.get_files().size() - 1)]
+        if not _file_name in ".import":
+            break
+    
+    return _dir_path + "/" + _file_name
