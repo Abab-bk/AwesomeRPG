@@ -19,7 +19,7 @@ func _ready() -> void:
         if not get_parent().save:
             return
         
-        SaveSystem.save()
+        #SaveSystem.save()
         print("存档完成")
         start()
         )

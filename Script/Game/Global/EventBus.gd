@@ -39,5 +39,6 @@ signal enemy_die(xp:float)
 signal show_damage_number(pos:Vector2, text:String)
 
 signal add_item(item:InventoryItem)
+signal remove_item(item:InventoryItem)
 # 新掉落物品（在游戏世界里）
 signal new_drop_item(item:InventoryItem, pos:Vector2)

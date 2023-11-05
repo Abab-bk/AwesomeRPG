@@ -110,12 +110,12 @@ func _ready() -> void:
     
     # TODO: 完善存档
     EventBus.save.connect(func():
-        SaveSystem.set_var("Player", compute_data)
+        #SaveSystem.set_var("Player", compute_data)
 #        SaveSystem.set_var("Player:Abilitys", ability_container.ability_list)
         )
     
     EventBus.load_save.connect(func():
-        print(SaveSystem.get_var("Player"))
+        #print(SaveSystem.get_var("Player"))
 #        data.load_save(SaveSystem.get_var("Player"))
 #        ability_container.ability_list = SaveSystem.get_var("Player:Abilitys")
         )

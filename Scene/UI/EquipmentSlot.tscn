@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Script/UI/EquipmentSlot.gd" id="1_5rdfu"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_vdyxs"]
-[ext_resource type="Texture2D" uid="uid://b8bt7c0g3o2kg" path="res://Assets/UI/Icons/Equipment/Helm.png" id="2_hosma"]
+[ext_resource type="Texture2D" uid="uid://dgn7wnyxb5yef" path="res://Assets/Texture/Icons/Sword/Sword1.png" id="3_hfrko"]
 
 [node name="EquipmentSlot" type="Panel"]
 custom_minimum_size = Vector2(180, 180)
@@ -27,8 +27,9 @@ theme_override_constants/margin_bottom = 20
 modulate = Color(0.388235, 0.388235, 0.388235, 1)
 texture_filter = 1
 layout_mode = 2
-texture = ExtResource("2_hosma")
-stretch_mode = 4
+texture = ExtResource("3_hfrko")
+expand_mode = 2
+stretch_mode = 5
 flip_h = true
 
 [node name="Button" type="Button" parent="."]

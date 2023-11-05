@@ -21,25 +21,25 @@ func _ready() -> void:
 func __set_() -> void:
     match current_equipment_type:
         Const.EQUIPMENT_TYPE.头盔:
-            slots_img.texture = load("res://Assets/UI/Icons/Equipment/IronHelmet.png")
+            slots_img.texture = load("res://Assets/Texture/Icons/头盔/3.png")
         Const.EQUIPMENT_TYPE.护腕:
-            slots_img.texture = load("res://Assets/UI/Icons/Equipment/WoodenArmor.png")
+            slots_img.texture = load("res://Assets/Texture/Icons/护腕/1.png")
         Const.EQUIPMENT_TYPE.胸甲:
-            slots_img.texture = load("res://Assets/UI/Icons/Equipment/IronArmor.png")
+            slots_img.texture = load("res://Assets/Texture/Icons/胸甲/1.png")
         Const.EQUIPMENT_TYPE.手套:
-            slots_img.texture = load("res://Assets/UI/Icons/Equipment/Helm.png")
+            slots_img.texture = load("res://Assets/Texture/Icons/手套/7.png")
         Const.EQUIPMENT_TYPE.靴子:
-            slots_img.texture = load("res://Assets/UI/Icons/Equipment/IronBoot.png")
+            slots_img.texture = load("res://Assets/Texture/Icons/靴子/1.png")
         Const.EQUIPMENT_TYPE.皮带:
-            slots_img.texture = load("res://Assets/UI/Icons/Equipment/Belt.png")
+            slots_img.texture = load("res://Assets/Texture/Icons/皮带/1.png")
         Const.EQUIPMENT_TYPE.裤子:
-            slots_img.texture = load("res://Assets/UI/Icons/Equipment/LeatherBoot.png")
+            slots_img.texture = load("res://Assets/Texture/Icons/裤子/1.png")
         Const.EQUIPMENT_TYPE.护身符:
-            slots_img.texture = load("res://Assets/UI/Icons/Equipment/Pearl.png")
+            slots_img.texture = load("res://Assets/Texture/Icons/护身符/25.png")
         Const.EQUIPMENT_TYPE.戒指:
-            slots_img.texture = load("res://Assets/UI/Icons/Equipment/Crystal.png")
+            slots_img.texture = load("res://Assets/Texture/Icons/戒指/1.png")
         Const.EQUIPMENT_TYPE.武器:
-            slots_img.texture = load("res://Assets/UI/Icons/Equipment/IronSword.png")
+            slots_img.texture = load("res://Assets/Texture/Icons/Sword/Sword1.png")
 
 func set_item(_item:InventoryItem) -> void:
     if _item == null:

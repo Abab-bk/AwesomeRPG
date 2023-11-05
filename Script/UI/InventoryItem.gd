@@ -13,6 +13,7 @@ func _ready() -> void:
         )
 
 func clean() -> void:
+    EventBus.remove_item.emit(item)
     item = null
     update_ui()
 

@@ -18,8 +18,12 @@ func _ready() -> void:
         slots.append(i)
     
     EventBus.update_inventory.connect(update_ui)
+    
     EventBus.add_item.connect(func(_item:InventoryItem):
         inventory.add_item(_item))
+    EventBus.remove_item.connect(func(_item:InventoryItem):
+        inventory.remove_item(_item))
+    
     EventBus.equipment_up_ok.connect(
         func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
             for i in slots:
