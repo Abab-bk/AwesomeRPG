@@ -1,0 +1,278 @@
+[gd_scene load_steps=10 format=3 uid="uid://702o3tls624e"]
+
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_jgehe"]
+[ext_resource type="Texture2D" uid="uid://pd45atcqjjfu" path="res://Assets/UI/Texture/TitleBar.png" id="1_q044c"]
+[ext_resource type="Script" path="res://Script/UI/ForgeRoom.gd" id="2_le0yr"]
+[ext_resource type="Texture2D" uid="uid://dtkji1da2ltep" path="res://Assets/UI/Texture/Club.png" id="2_lrnb3"]
+[ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="3_spcq0"]
+[ext_resource type="Texture2D" uid="uid://dp0iy2awe2e3l" path="res://Icon.png" id="5_ixsdd"]
+[ext_resource type="LabelSettings" uid="uid://bhyi4hqpwnqxh" path="res://Assets/LabelSetting/UITitleGold.tres" id="6_7jmu2"]
+[ext_resource type="PackedScene" uid="uid://by1vhdyin8n8" path="res://Scene/UI/ForgeAffix.tscn" id="7_j3gyy"]
+[ext_resource type="Script" path="res://Script/UI/SelectItem.gd" id="9_stcic"]
+
+[node name="ForgeRoom" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jgehe")
+script = ExtResource("2_le0yr")
+
+[node name="Content" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 200
+
+[node name="Panel" type="Panel" parent="Content"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleBar" type="NinePatchRect" parent="Content/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+texture = ExtResource("1_q044c")
+patch_margin_left = 56
+patch_margin_top = 8
+patch_margin_right = 56
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/Panel/VBoxContainer/TitleBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/Panel/VBoxContainer/TitleBar/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Content/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_lrnb3")
+stretch_mode = 3
+
+[node name="Space" type="Control" parent="Content/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleLabel" type="Label" parent="Content/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "打造装备"
+label_settings = ExtResource("3_spcq0")
+horizontal_alignment = 1
+
+[node name="Space2" type="Control" parent="Content/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect2" type="TextureRect" parent="Content/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_lrnb3")
+stretch_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="ItemIcon" type="TextureRect" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+texture = ExtResource("5_ixsdd")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="SelectItemBtn" type="Button" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer/ItemIcon"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"EmptyBtn"
+
+[node name="ItemNameLabel" type="Label" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "选择装备"
+label_settings = ExtResource("6_7jmu2")
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PreAffixs" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ForgeAffix" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/PreAffixs" instance=ExtResource("7_j3gyy")]
+layout_mode = 2
+
+[node name="ForgeAffix2" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/PreAffixs" instance=ExtResource("7_j3gyy")]
+layout_mode = 2
+
+[node name="ForgeAffix3" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/PreAffixs" instance=ExtResource("7_j3gyy")]
+layout_mode = 2
+
+[node name="BufAffixs" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ForgeAffix" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/BufAffixs" instance=ExtResource("7_j3gyy")]
+layout_mode = 2
+
+[node name="ForgeAffix2" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/BufAffixs" instance=ExtResource("7_j3gyy")]
+layout_mode = 2
+
+[node name="ForgeAffix3" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/BufAffixs" instance=ExtResource("7_j3gyy")]
+layout_mode = 2
+
+[node name="ForgeBtn" type="Button" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "打造"
+
+[node name="CancelBtn" type="Button" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "返回"
+
+[node name="SelectItem" type="MarginContainer" parent="." node_paths=PackedStringArray("forge_room")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 500
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 500
+script = ExtResource("9_stcic")
+forge_room = NodePath("..")
+
+[node name="Panel" type="Panel" parent="SelectItem"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SelectItem/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleBar" type="NinePatchRect" parent="SelectItem/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+texture = ExtResource("1_q044c")
+patch_margin_left = 56
+patch_margin_top = 8
+patch_margin_right = 56
+patch_margin_bottom = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="SelectItem/Panel/VBoxContainer/TitleBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SelectItem/Panel/VBoxContainer/TitleBar/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="SelectItem/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_lrnb3")
+stretch_mode = 3
+
+[node name="Space" type="Control" parent="SelectItem/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleLabel" type="Label" parent="SelectItem/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "打造装备"
+label_settings = ExtResource("3_spcq0")
+horizontal_alignment = 1
+
+[node name="Space2" type="Control" parent="SelectItem/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect2" type="TextureRect" parent="SelectItem/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_lrnb3")
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SelectItem/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SItems" type="GridContainer" parent="SelectItem/Panel/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+columns = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SelectItem/Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="SYesBtn" type="Button" parent="SelectItem/Panel/VBoxContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "确认"
+
+[node name="SCancelBtn" type="Button" parent="SelectItem/Panel/VBoxContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "返回"

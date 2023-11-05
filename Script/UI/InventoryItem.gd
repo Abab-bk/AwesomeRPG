@@ -1,5 +1,7 @@
 extends Panel
 
+signal pressed(item:InventoryItem)
+
 @export var item:InventoryItem
 @onready var texture:TextureRect = %Texture
 @onready var name_label:Label = %NameLabel
@@ -10,6 +12,7 @@ var checked:bool = false
 func _ready() -> void:
     button.pressed.connect(func():
         EventBus.change_item_tooltip_state.emit(item)
+        pressed.emit(item)
         )
 
 func clean() -> void:

@@ -58,6 +58,8 @@ func _ready() -> void:
         owner.change_page(owner.PAGE.HOME)
         )
     
+    Master.player_inventory = inventory
+    
     set_bag()
     update_ui()
 

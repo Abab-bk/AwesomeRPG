@@ -1,7 +1,7 @@
 extends Node
 
 # TODO: 装备打造系统
-# TODO: 副本、每日任务、爬塔模式
+# TODO: 每日任务、爬塔模式
 
 const BGM:String = "res://Assets/Sounds/Music/Bgm.wav"
 const CLICK_SOUNDS:String = "res://Assets/Sounds/Click.mp3"
@@ -27,6 +27,7 @@ const ENEMYS_SKINS:Array[String] = [
 
 var world:Node2D
 
+var player_inventory:Inventory
 var player:Player
 var player_data:CharacterData
 var player_output_data:CharacterData
