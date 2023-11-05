@@ -1,0 +1,10 @@
+[
+  {
+    "id": 6001,
+    "name": "金币城",
+    "enemy_id": 7005,
+    "reward_type": "Coins",
+    "need_cost": 200,
+    "reward_value": 100
+  }
+]

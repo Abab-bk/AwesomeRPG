@@ -4,11 +4,11 @@
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_x37k0"]
 [ext_resource type="Texture2D" uid="uid://djrtllj8fg0x0" path="res://Assets/UI/Texture/Color1.png" id="3_yy13s"]
 [ext_resource type="Texture2D" uid="uid://cwlnbn2b7shv4" path="res://Assets/UI/Texture/Panel1.png" id="4_7bksl"]
-[ext_resource type="Texture2D" uid="uid://b7wq6qy7yddt4" path="res://Assets/UI/Icons/Equipment/Box.png" id="5_2muug"]
 [ext_resource type="LabelSettings" uid="uid://drx7d3iagcvhu" path="res://Assets/LabelSetting/ItemTitle.tres" id="5_63f3j"]
 [ext_resource type="LabelSettings" uid="uid://b3iaonf7dvcft" path="res://Assets/LabelSetting/ItemSubTitle.tres" id="6_puf0u"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="7_jb6d8"]
 [ext_resource type="LabelSettings" uid="uid://mgahdqv1o26h" path="res://Assets/LabelSetting/BigGray.tres" id="8_d5gr0"]
+[ext_resource type="Texture2D" uid="uid://cq2kbhi5w81jf" path="res://Assets/Characters/PlayerAssets/Heads/Head1.png" id="9_ikghb"]
 [ext_resource type="Texture2D" uid="uid://bamsime04ygsh" path="res://Assets/UI/Texture/SepBar.png" id="10_7kcw6"]
 
 [node name="ItemToolTip" type="Panel"]
@@ -116,7 +116,8 @@ label_settings = ExtResource("8_d5gr0")
 [node name="Icon" type="TextureRect" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("5_2muug")
+texture = ExtResource("9_ikghb")
+expand_mode = 2
 stretch_mode = 3
 
 [node name="Space2" type="Control" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content"]

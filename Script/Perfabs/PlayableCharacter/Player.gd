@@ -19,7 +19,9 @@ signal criticaled
 @onready var marker:Marker2D = $Marker2D
 
 @onready var sprites:Dictionary = {
-    "weapon": $"Warrior - 01/Skeleton/bone_004/bone_000/bone_001/Weapon"
+    "weapon": $"Warrior - 01/Skeleton/bone_004/bone_000/bone_001/Weapon",
+    "head": $"Warrior - 01/Skeleton/bone_004/bone_005/Head",
+    "body": $"Warrior - 01/Skeleton/bone_004/Body"
 }
 
 enum STATE {
@@ -48,7 +50,6 @@ func _ready() -> void:
     EventBus.equipment_up.connect(
         func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
         # 装备装备
-        # TODO: 如果 type 是武器或者项链，选择左右手，当前为直接替换
         compute_data.quipments[_type] = _item
         
         var _temp:Array[FlowerBaseBuff] = []
@@ -59,8 +60,13 @@ func _ready() -> void:
         for i in _item.buf_affix:
             _temp.append(i.buff)
         
-        if _item.weapon_type != Const.WEAPONS_TYPE.NULL:
-            change_weapons_sprite(load(_item.texture_path))
+        match _item.type:
+            Const.EQUIPMENT_TYPE.头盔:
+                change_head_sprite(load(_item.texture_path))
+            Const.EQUIPMENT_TYPE.武器:
+                change_weapons_sprite(load(_item.texture_path))
+            Const.EQUIPMENT_TYPE.胸甲:
+                change_body_sprite(load(_item.texture_path))
         
         flower_buff_manager.add_buff_list(_temp)
         
@@ -81,6 +87,15 @@ func _ready() -> void:
             flower_buff_manager.remove_buff_list(_temp)
             
             print("移除装备")
+            
+            match _item.type:
+                Const.EQUIPMENT_TYPE.头盔:
+                    change_head_sprite(load("res://Assets/Characters/Warrior/Head.png"))
+                Const.EQUIPMENT_TYPE.武器:
+                    change_weapons_sprite(load("res://Assets/Characters/Warrior/Weapon.png"))
+                Const.EQUIPMENT_TYPE.胸甲:
+                    change_body_sprite(load("res://Assets/Characters/Warrior/Body.png"))
+            
             EventBus.equipment_down_ok.emit(_type, _item))
     
     EventBus.player_ability_activate.connect(func(_ability:FlowerAbility):
@@ -248,8 +263,13 @@ func get_level() -> int:
     return output_data.level
 
 func change_weapons_sprite(_sprite:Texture2D) -> void:
-    # TODO: 改变武器
     sprites["weapon"].texture = _sprite
+
+func change_head_sprite(_sprite:Texture2D) -> void:
+    sprites["head"].texture = _sprite
+
+func change_body_sprite(_sprite:Texture2D) -> void:
+    sprites["body"].texture = _sprite
 
 # ======= 属性 ========
 func up_level() -> void:

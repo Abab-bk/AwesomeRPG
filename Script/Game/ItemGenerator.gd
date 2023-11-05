@@ -1,7 +1,5 @@
 class_name ItemGenerator extends Node
 
-# TODO
-
 const AXES:String = "res://Assets/Texture/Icons/Axes/"
 const BOWS:String = "res://Assets/Texture/Icons/Bows/"
 const DAGGERS:String = "res://Assets/Texture/Icons/Daggers/"
@@ -125,6 +123,7 @@ func gen_a_item() -> InventoryItem:
 func get_random_icon_path(_dir_path:String) -> String:
     var names:Array = DirAccess.get_files_at(_dir_path)
     
+    # FIXME: 无法正确排除
     for i in names:
         if ".import" in i:
             names.erase(i)

@@ -1,7 +1,8 @@
 class_name DungeonData extends Resource
 
-@export var id:StringName
+@export var id:int
 @export var name:String
-@export var need_cost:Array = []
-@export var enemy_ids:Array[int] = []
-@export var reward:Dictionary = {}
+@export var enemy_id:int
+@export var reward_type:String
+@export var need_cost:int
+@export var reward_value:int

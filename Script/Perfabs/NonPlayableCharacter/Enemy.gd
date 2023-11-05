@@ -1,6 +1,8 @@
 class_name Enemy
 extends CharacterBody2D
 
+signal dead
+
 @onready var buff_manager:FlowerBuffManager = $FlowerBuffManager
 @onready var item_generator:ItemGenerator = $ItemGenerator
 @onready var hp_bar:ProgressBar = %HpBar
@@ -12,6 +14,8 @@ extends CharacterBody2D
 @onready var character_animation:AnimationPlayer = $Display/Skeleton/CharacterAnimation
 @onready var marker:Marker2D = $Marker2D
 
+var seted_data:CharacterData
+var skin_name:String = ""
 var data:CharacterData
 var output_data:CharacterData
 
@@ -25,12 +29,7 @@ enum STATE {
 var current_state:STATE = STATE.PATROL
 
 func _ready() -> void:
-    # 设置皮肤
-    $Display.get_node("Skeleton").queue_free()
-    randomize()
-    var new_node = load(Master.ENEMYS_SKINS[randi_range(0, Master.ENEMYS_SKINS.size() - 1)]).instantiate()
-    $Display.add_child(new_node)
-    character_animation = new_node.get_node("Skeleton").get_node("AnimationPlayer")
+    set_skin()
     
     hurt_box_component.hited.connect(func(value:int):
         EventBus.show_damage_number.emit(get_global_transform_with_canvas().get_origin(), str(value))
@@ -79,6 +78,9 @@ func _ready() -> void:
     
     var _level:int = 1
     
+    if seted_data:
+        buff_manager.compute_data = seted_data
+    
     buff_manager.compute()
     
     atk_cd_timer.wait_time = data.atk_speed
@@ -88,6 +90,18 @@ func _ready() -> void:
     
     # 设置属性 （每个敌人 ready 都是生成时）
     set_level(_level)
+
+func set_data(_data:CharacterData) -> void:
+    seted_data = _data
+
+func set_skin() -> void:
+    # 设置皮肤
+    if skin_name == "" or "默认":
+        return
+    $Display.get_node("Skeleton").queue_free()
+    var new_node = load("res://Scene/Perfabs/NonPlayCharacter/%s.tscn" % skin_name).instantiate()
+    $Display.add_child(new_node)
+    character_animation = new_node.get_node("Skeleton").get_node("AnimationPlayer")
 
 func turn_to_player() -> void:
     var _dir:Vector2 = to_local(Master.player.global_position).normalized()
@@ -123,6 +137,8 @@ func die() -> void:
     EventBus.enemy_die.emit(data.level * data.level * data.level * 3 * (1 + Master.fly_count * 0.1))
     # TODO: 修改敌人掉落金币
     Master.coins += data.level * randi_range(0, 5)
+    
+    dead.emit()
     
     # 随机掉落装备
     if randi_range(0, 100) >= 50:

@@ -57,8 +57,6 @@ position = Vector2(1686, 276)
 unique_name_in_owner = true
 script = ExtResource("4_22mer")
 
-[node name="Hud" parent="." instance=ExtResource("5_07fkt")]
-
 [node name="SaveTimer" type="Timer" parent="."]
 script = ExtResource("9_v08bh")
 
@@ -88,3 +86,5 @@ shape = SubResource("RectangleShape2D_tfwtf")
 position = Vector2(6224, 1859)
 rotation = 1.58349
 shape = SubResource("RectangleShape2D_tfwtf")
+
+[node name="Hud" parent="." instance=ExtResource("5_07fkt")]

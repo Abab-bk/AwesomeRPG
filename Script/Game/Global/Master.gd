@@ -33,6 +33,8 @@ var player_output_data:CharacterData
 var relife_point:Marker2D
 var unlocked_skills:Array[int] = []
 
+var in_dungeon:bool = false
+
 # 关卡等级：
 var current_level:int = 0
 # 转生次数
@@ -53,11 +55,25 @@ var buffs:Dictionary
 var abilitys:Dictionary
 var quests:Dictionary
 var ability_buffs:Dictionary
+var dungeons:Dictionary
+var enemys:Dictionary
 
 var json_path:String = "res://DataBase/output/"
 
 const abilitys_start:int = 4001
 const abilitys_end:int = 4008
+
+func get_dungeon_by_id(_id:int) -> DungeonData:
+    var _dungeon:DungeonData = DungeonData.new()
+    
+    _dungeon.id = dungeons[_id]["id"]
+    _dungeon.name = dungeons[_id]["name"]
+    _dungeon.enemy_id = dungeons[_id]["enemy_id"]
+    _dungeon.reward_type = dungeons[_id]["reward_type"]
+    _dungeon.need_cost = dungeons[_id]["need_cost"]
+    _dungeon.reward_value = dungeons[_id]["reward_value"]
+    
+    return _dungeon
 
 func get_quest_by_id(_id:int) -> QuestResource:
     var _quest:QuestResource = QuestResource.new()
@@ -181,6 +197,8 @@ func _ready():
     abilitys = config.TbAbilitys.get_data_map()
     quests = config.TbQuests.get_data_map()
     ability_buffs = config.TbAbilityBuffs.get_data_map()
+    enemys = config.TbEnemys.get_data_map()
+    dungeons = config.TbDungeons.get_data_map()
 
     EventBus.unlocked_ability.connect(func(_id:int):
         if _id in unlocked_skills:

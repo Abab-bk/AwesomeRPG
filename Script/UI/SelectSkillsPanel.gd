@@ -19,11 +19,11 @@ func _ready() -> void:
     %YesBtn.pressed.connect(func():
         SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
         
-        # TODO: Maybe 装备技能也需要金币
-        #if Master.coins < 500:
-            #EventBus.show_popup.emit("金币不足", "金币不足")
-            #return
+        if Master.coins < 500:
+            EventBus.show_popup.emit("金币不足", "金币不足")
+            return
         
+        Master.coins -= 500
         EventBus.selected_skills_on_panel.emit()
         target_skill_panel.ability = ability
         hide()
