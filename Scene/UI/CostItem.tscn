@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bbs8ucocbh5vk"]
+
+[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="1_2sh5q"]
+[ext_resource type="Script" path="res://Script/UI/CostItem.gd" id="1_ytsou"]
+[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="2_3swfk"]
+
+[node name="Cost1" type="VBoxContainer"]
+custom_minimum_size = Vector2(160, 0)
+script = ExtResource("1_ytsou")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_2sh5q")
+expand_mode = 4
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "初火源质 3"
+label_settings = ExtResource("2_3swfk")
+horizontal_alignment = 1

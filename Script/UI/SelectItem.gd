@@ -21,7 +21,10 @@ func _ready() -> void:
         )
     cancel_btn.pressed.connect(func():hide())
     yes_btn.pressed.connect(func():
-        forge_room.current_item = selected_item
+        # 现在拿到的并非原来的实例
+        forge_room.current_item = selected_item.duplicate(true)
+        # 现在拿到的是原来的实例
+        forge_room.ture_item = selected_item
         hide()
         )
     

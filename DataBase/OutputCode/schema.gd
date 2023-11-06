@@ -252,6 +252,17 @@ class Dungeons:
         self.reward_value = _json_["reward_value"]
 
 
+class Goods:
+    var id: int
+    var name: String
+    var desc: String
+
+    func _init(_json_) -> void:
+        self.id = _json_["id"]
+        self.name = _json_["name"]
+        self.desc = _json_["desc"]
+
+
 class BuffsTbBuffs:
     var _data_list: Array[Buffs]
     var _data_map: Dictionary
@@ -420,6 +431,27 @@ class DungeonsTbDungeons:
         return self._data_map.get(key)
 
 
+class GoodsTbGoods:
+    var _data_list: Array[Goods]
+    var _data_map: Dictionary
+    
+    func _init(_json_) -> void:
+        for _json2_ in _json_:
+            var _v: Goods
+            _v = Goods.new(_json2_)
+            self._data_list.append(_v)
+            self._data_map[_v.id] = _v
+
+    func get_data_list() -> Array[Goods]:
+        return self._data_list
+
+    func get_data_map() -> Dictionary:
+        return self._data_map
+
+    func get_item(key) -> Goods:
+        return self._data_map.get(key)
+
+
 class CfgTables:
     var TbBuffs: BuffsTbBuffs
     var TbAffix: AffixsTbAffix
@@ -429,6 +461,7 @@ class CfgTables:
     var TbAbilityBuffs: AbilityBuffsTbAbilityBuffs
     var TbEnemys: EnemysTbEnemys
     var TbDungeons: DungeonsTbDungeons
+    var TbGoods: GoodsTbGoods
     
     func _init(loader: Callable) -> void:
         self.TbBuffs = BuffsTbBuffs.new(loader.call('buffs_tbbuffs'))
@@ -439,4 +472,5 @@ class CfgTables:
         self.TbAbilityBuffs = AbilityBuffsTbAbilityBuffs.new(loader.call('abilitybuffs_tbabilitybuffs'))
         self.TbEnemys = EnemysTbEnemys.new(loader.call('enemys_tbenemys'))
         self.TbDungeons = DungeonsTbDungeons.new(loader.call('dungeons_tbdungeons'))
+        self.TbGoods = GoodsTbGoods.new(loader.call('goods_tbgoods'))
 

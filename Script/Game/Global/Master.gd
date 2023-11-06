@@ -46,6 +46,12 @@ var coins:int = 1000:
     set(v):
         coins = v
         EventBus.coins_changed.emit()
+var moneys:Dictionary = {
+    "white": 0,
+    "blue": 0,
+    "purle": 0,
+    "yellow": 0,
+}
 
 var next_reward_player_level:int = 1
 
@@ -58,6 +64,7 @@ var quests:Dictionary
 var ability_buffs:Dictionary
 var dungeons:Dictionary
 var enemys:Dictionary
+var goods:Dictionary
 
 var json_path:String = "res://DataBase/output/"
 
@@ -200,6 +207,7 @@ func _ready():
     ability_buffs = config.TbAbilityBuffs.get_data_map()
     enemys = config.TbEnemys.get_data_map()
     dungeons = config.TbDungeons.get_data_map()
+    #goods = config.TbGoods.get_data_map()
 
     EventBus.unlocked_ability.connect(func(_id:int):
         if _id in unlocked_skills:

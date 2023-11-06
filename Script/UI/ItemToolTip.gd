@@ -1,5 +1,7 @@
 extends Panel
 
+@export var hide_yes_btn:bool = false
+
 @onready var pre_affixe_labels:VBoxContainer = %PreAffixeLabels
 @onready var buf_affixe_labels:VBoxContainer = %BufAffixeLabels
 
@@ -71,6 +73,9 @@ func _ready() -> void:
         update_ui())
     
     use_btn.pressed.connect(use)
+    
+    if hide_yes_btn:
+        use_btn.hide()
     
     hide()
 

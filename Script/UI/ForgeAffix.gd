@@ -3,6 +3,7 @@ extends Panel
 @onready var lock_btn:Button = %LockBtn
 @onready var desc_label:Label = %DescLabel
 
+# 拿到的 current_affix 是原来的实例，改变会反映
 var current_affix:AffixItem
 var forged_affix:AffixItem
 
@@ -24,9 +25,15 @@ func random_change_affix() -> void:
     forged_affix = Master.get_random_affix()
     update_ui("forged_affix")
 
+func clean() -> void:
+    current_affix = null
+    forged_affix = null
+    update_ui("current_affix")
+
 func update_ui(_key:String) -> void:
     if _key == "current_affix":
         if not current_affix:
+            desc_label.text = "空词缀"
             return
         desc_label.text = current_affix.desc
     if _key == "forged_affix":

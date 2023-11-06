@@ -16,8 +16,10 @@ func _ready() -> void:
         )
 
 func clean() -> void:
-    EventBus.remove_item.emit(item)
+    #EventBus.remove_item.emit(item)
+    
     item = null
+    #item.free()
     update_ui()
 
 func update_ui() -> void:
