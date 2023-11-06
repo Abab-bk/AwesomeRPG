@@ -1,6 +1,5 @@
 extends Node
 
-# TODO: 装备打造系统
 # TODO: 每日任务、爬塔模式
 
 const BGM:String = "res://Assets/Sounds/Music/Bgm.wav"

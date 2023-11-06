@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=30 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dy1r4oa118a6o" path="res://Assets/UI/Bars/HPBarBg.png" id="3_0kf2m"]
 [ext_resource type="PackedScene" uid="uid://b33g1ypyny6i5" path="res://Scene/UI/CharacterPanel.tscn" id="3_aoxj4"]
 [ext_resource type="Texture2D" uid="uid://clbtnmxw8yitp" path="res://Assets/UI/Texture/Button/CharacterBtn.png" id="4_poiej"]
+[ext_resource type="Texture2D" uid="uid://n8hx8sfbjlhf" path="res://Assets/UI/Texture/Button/DungeonBtn.png" id="5_lcouc"]
 [ext_resource type="Texture2D" uid="uid://b4oa66h6lluio" path="res://Assets/UI/Bars/MPBarBg.png" id="5_lfckr"]
 [ext_resource type="Texture2D" uid="uid://o87r223ypa12" path="res://Assets/UI/Bars/HpBar.png" id="5_nrxv6"]
 [ext_resource type="Texture2D" uid="uid://ce5icokux6373" path="res://Assets/UI/Texture/Button/BagBtn.png" id="5_nwaja"]
@@ -18,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://c3iesn4gm1oum" path="res://Scene/UI/QuestPanel.tscn" id="10_f6saj"]
 [ext_resource type="PackedScene" uid="uid://dheui57ydhnj5" path="res://Scene/UI/SettingUi.tscn" id="11_x2eu0"]
 [ext_resource type="PackedScene" uid="uid://c60tahepslln0" path="res://Scene/UI/SkillsPanel.tscn" id="12_doksu"]
+[ext_resource type="Texture2D" uid="uid://c1d5y2wleo475" path="res://Assets/UI/Texture/Button/CharacterBtn-1.png" id="13_x8fy0"]
 [ext_resource type="FontFile" uid="uid://ri6183bsibm8" path="res://Assets/Font/SourceHanSansCN-Bold.otf" id="13_xqeye"]
 [ext_resource type="Texture2D" uid="uid://bnkevqnd4alfm" path="res://Assets/UI/Icons/Coins.svg" id="14_fnq4k"]
 [ext_resource type="Texture2D" uid="uid://b4phcm1eydead" path="res://Assets/UI/Icons/Cog.svg" id="15_2c2a3"]
@@ -132,25 +134,29 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("4_poiej")
+texture_normal = ExtResource("5_lcouc")
+stretch_mode = 5
 
 [node name="InventoryBtn" type="TextureButton" parent="Control/VBoxContainer/Control/VBoxContainer/NinePatchRect/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("5_nwaja")
+stretch_mode = 5
 
 [node name="StoreBtn" type="TextureButton" parent="Control/VBoxContainer/Control/VBoxContainer/NinePatchRect/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("6_51pw4")
+stretch_mode = 5
 
 [node name="SillsPanelBtn" type="TextureButton" parent="Control/VBoxContainer/Control/VBoxContainer/NinePatchRect/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("7_822in")
+stretch_mode = 5
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer/Control"]
 layout_mode = 1
@@ -228,15 +234,16 @@ layout_mode = 2
 
 [node name="SkillTreeBtn" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/HBoxContainer2"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("6_51pw4")
+texture_normal = ExtResource("7_822in")
 
 [node name="CharacterBtn" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("4_poiej")
+texture_normal = ExtResource("13_x8fy0")
 
 [node name="ForgeBtn" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/HBoxContainer2"]
 unique_name_in_owner = true
