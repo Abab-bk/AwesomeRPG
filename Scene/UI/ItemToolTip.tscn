@@ -102,9 +102,10 @@ label_settings = ExtResource("6_puf0u")
 layout_mode = 2
 theme_override_constants/separation = -5
 
-[node name="RateLabel2" type="Label" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="MainBuffLabel" type="Label" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "730 + 25 物品强度"
+text = "+ 88 伤害"
 label_settings = ExtResource("7_jb6d8")
 
 [node name="PriceLabel" type="Label" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer"]

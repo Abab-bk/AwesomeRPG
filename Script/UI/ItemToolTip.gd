@@ -11,6 +11,7 @@ extends Panel
 @onready var title_label:Label = %TitleLabel
 @onready var rate_label:Label = %RateLabel
 @onready var icon:TextureRect = %Icon
+@onready var main_buff_label:Label = %MainBuffLabel
 
 @onready var use_btn:Button = %UseBtn
 
@@ -57,6 +58,7 @@ func _ready() -> void:
         
         rate_label.text += str(Const.EQUIPMENT_TYPE.keys()[_item.type])
         price_label.text = "%s $" % str(_item.price)
+        main_buff_label.text = _item.main_buffs.desc
         
         icon.texture = load(_item.texture_path)
         

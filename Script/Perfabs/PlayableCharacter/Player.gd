@@ -54,6 +54,8 @@ func _ready() -> void:
         
         var _temp:Array[FlowerBaseBuff] = []
         # 装备装备时，应用装备 Buff
+        _temp.append(_item.main_buffs)
+        
         for i in _item.pre_affixs:
             _temp.append(i.buff)
         

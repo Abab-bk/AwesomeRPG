@@ -95,6 +95,8 @@ func gen_a_item() -> InventoryItem:
         Const.EQUIPMENT_QUALITY.GOLD:
             count = 5
     
+    _new_item.main_buffs = Master.get_random_main_affix()
+    
     for i in count:
         var _pre_or_buf:int = randi_range(0, 1)
         match _pre_or_buf:

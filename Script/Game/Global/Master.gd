@@ -64,6 +64,7 @@ var ability_buffs:Dictionary
 var dungeons:Dictionary
 var enemys:Dictionary
 var goods:Dictionary
+var main_buffs:Array
 
 var json_path:String = "res://DataBase/output/"
 
@@ -171,6 +172,24 @@ func get_random_ability() -> FlowerAbility:
     
     return _ability
 
+func get_random_main_affix() -> AffixItem:
+    var _affix:AffixItem = AffixItem.new()
+    randomize()
+    var _data = main_buffs[randi_range(0, main_buffs.size() - 1)]
+    
+    _affix.name = _data.name
+    _affix.target_buff_id = _data.target_buff_id
+    
+    var _offset:float = randf_range(_data.offset[0], _data.offset[1])
+    # 决定词缀描述
+    # HACK: 临时修复？ - 词缀如果是 INC 类型也会 * 10，导致显示错误
+    
+    _affix.offset = _offset
+    
+    _affix.update(_data)
+    
+    return _affix
+
 # 生成随机词缀
 func get_random_affix() -> AffixItem:
     var _affix:AffixItem = AffixItem.new()
@@ -206,6 +225,7 @@ func _ready():
     ability_buffs = config.TbAbilityBuffs.get_data_map()
     enemys = config.TbEnemys.get_data_map()
     dungeons = config.TbDungeons.get_data_map()
+    main_buffs = config.TbMainBuffs.get_data_list()
     #goods = config.TbGoods.get_data_map()
 
     EventBus.unlocked_ability.connect(func(_id:int):
