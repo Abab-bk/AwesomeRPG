@@ -7,6 +7,7 @@ extends Panel
 @onready var cost_label:Label = %CostLabel
 @onready var reward_label:Label = %RewardLabel
 
+@export var show_info_panel:Panel
 @export var data:DungeonData
 
 func _ready() -> void:
@@ -20,9 +21,5 @@ func _ready() -> void:
             reward_label.text = "奖励：%s 金币" % str(data.reward_value)
     
     enter_btn.pressed.connect(func():
-        if Master.coins < data.need_cost:
-            EventBus.show_popup.emit("金币不足", "买不起门票啦")
-        
-        Master.coins -= data.need_cost
-        EventBus.enter_dungeon.emit(data)
+        show_info_panel.show_dungeon(data)
         )

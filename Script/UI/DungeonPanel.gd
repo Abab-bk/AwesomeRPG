@@ -10,6 +10,7 @@ func _ready() -> void:
         var _node = load("res://Scene/UI/DungeonItemUi.tscn").instantiate()
         
         _node.data = Master.get_dungeon_by_id(Master.dungeons[Master.dungeons.keys()[i - 1]].id)
+        _node.show_info_panel = %DungeonInfoPanel
         
         itmes.add_child(_node)
 
