@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bg6v85bgdcucf"]
+
+[ext_resource type="Script" path="res://Script/Perfabs/Abilitys/IceShot.gd" id="1_6ns8j"]
+
+[node name="IceShot" type="Node2D"]
+script = ExtResource("1_6ns8j")
