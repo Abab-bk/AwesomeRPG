@@ -264,12 +264,15 @@ func get_level() -> int:
 
 func change_weapons_sprite(_sprite:Texture2D) -> void:
     sprites["weapon"].texture = _sprite
+    sprites["weapon"].centered = false
 
 func change_head_sprite(_sprite:Texture2D) -> void:
     sprites["head"].texture = _sprite
+    sprites["head"].centered = false
 
 func change_body_sprite(_sprite:Texture2D) -> void:
     sprites["body"].texture = _sprite
+    sprites["body"].centered = false
 
 # ======= 属性 ========
 func up_level() -> void:

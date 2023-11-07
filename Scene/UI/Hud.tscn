@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=31 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -19,9 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://c3iesn4gm1oum" path="res://Scene/UI/QuestPanel.tscn" id="10_f6saj"]
 [ext_resource type="PackedScene" uid="uid://dheui57ydhnj5" path="res://Scene/UI/SettingUi.tscn" id="11_x2eu0"]
 [ext_resource type="PackedScene" uid="uid://c60tahepslln0" path="res://Scene/UI/SkillsPanel.tscn" id="12_doksu"]
-[ext_resource type="Texture2D" uid="uid://c1d5y2wleo475" path="res://Assets/UI/Texture/Button/CharacterBtn-1.png" id="13_x8fy0"]
 [ext_resource type="FontFile" uid="uid://ri6183bsibm8" path="res://Assets/Font/SourceHanSansCN-Bold.otf" id="13_xqeye"]
+[ext_resource type="Texture2D" uid="uid://410kqkhx5cn7" path="res://Assets/UI/Texture/Button/CharacterFront.png" id="14_a6r33"]
 [ext_resource type="Texture2D" uid="uid://bnkevqnd4alfm" path="res://Assets/UI/Icons/Coins.svg" id="14_fnq4k"]
+[ext_resource type="Texture2D" uid="uid://b3lgtsrhbms7h" path="res://Assets/UI/Texture/Button/CharacterBtnPre.png" id="14_hxmel"]
 [ext_resource type="Texture2D" uid="uid://b4phcm1eydead" path="res://Assets/UI/Icons/Cog.svg" id="15_2c2a3"]
 [ext_resource type="LabelSettings" uid="uid://bhyi4hqpwnqxh" path="res://Assets/LabelSetting/UITitleGold.tres" id="16_afv1t"]
 [ext_resource type="PackedScene" uid="uid://cvl3x8ikri1a4" path="res://Scene/UI/DungeonPanel.tscn" id="23_joj7t"]
@@ -78,39 +79,19 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 280)
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/Control"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -128.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/separation = 0
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/Control/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 170
-theme_override_constants/margin_right = 170
-
-[node name="XpBar" type="ProgressBar" parent="Control/VBoxContainer/Control/VBoxContainer/MarginContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 24)
-layout_mode = 2
-theme_type_variation = &"XpBar"
-show_percentage = false
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Control/VBoxContainer/Control/VBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/VBoxContainer/Control"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+offset_top = 152.0
+offset_right = 1080.0
+offset_bottom = 252.0
 texture = ExtResource("10_445qy")
 patch_margin_left = 16
 patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/Control/VBoxContainer/NinePatchRect"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/Control/NinePatchRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -125,33 +106,33 @@ theme_override_constants/margin_left = 200
 theme_override_constants/margin_right = 200
 theme_override_constants/margin_bottom = 40
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Control/VBoxContainer/NinePatchRect/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="DungeonBtn" type="TextureButton" parent="Control/VBoxContainer/Control/VBoxContainer/NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="DungeonBtn" type="TextureButton" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("5_lcouc")
 stretch_mode = 5
 
-[node name="InventoryBtn" type="TextureButton" parent="Control/VBoxContainer/Control/VBoxContainer/NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="InventoryBtn" type="TextureButton" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("5_nwaja")
 stretch_mode = 5
 
-[node name="StoreBtn" type="TextureButton" parent="Control/VBoxContainer/Control/VBoxContainer/NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="StoreBtn" type="TextureButton" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("6_51pw4")
 stretch_mode = 5
 
-[node name="SillsPanelBtn" type="TextureButton" parent="Control/VBoxContainer/Control/VBoxContainer/NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="SillsPanelBtn" type="TextureButton" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -216,6 +197,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 116.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -223,14 +205,56 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/margin_left = 40
 theme_override_constants/margin_right = 80
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3"]
 layout_mode = 2
+
+[node name="CharacterBtn" type="Button" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/HBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(216, 216)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"EmptyBtn"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/HBoxContainer2/CharacterBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+
+[node name="XpBar" type="TextureProgressBar" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/HBoxContainer2/CharacterBtn/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+value = 20.0
+fill_mode = 8
+texture_under = ExtResource("4_poiej")
+texture_over = ExtResource("14_a6r33")
+texture_progress = ExtResource("14_hxmel")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/HBoxContainer2/CharacterBtn/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="PlayerNameLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/HBoxContainer2/CharacterBtn/MarginContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+text = "你你你你"
+label_settings = SubResource("LabelSettings_vb2v6")
+horizontal_alignment = 1
+clip_text = true
 
 [node name="SkillTreeBtn" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/HBoxContainer2"]
 unique_name_in_owner = true
@@ -239,17 +263,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("7_822in")
 
-[node name="CharacterBtn" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/HBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-texture_normal = ExtResource("13_x8fy0")
-
 [node name="ForgeBtn" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("4_poiej")
+texture_normal = ExtResource("7_822in")
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3"]
 layout_mode = 2
@@ -257,13 +275,6 @@ theme_override_constants/margin_bottom = 20
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer"]
 layout_mode = 2
-
-[node name="PlayerNameLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/HBoxContainer3"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 8
-text = "你"
-label_settings = SubResource("LabelSettings_vb2v6")
 
 [node name="LevelLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/HBoxContainer3"]
 unique_name_in_owner = true

@@ -174,21 +174,26 @@ layout_mode = 2
 [node name="ForgeAffix3" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/BufAffixs" instance=ExtResource("7_j3gyy")]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_bottom = 80
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Cost1" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/HBoxContainer" instance=ExtResource("9_x86y3")]
+[node name="Cost1" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("9_x86y3")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Cost2" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/HBoxContainer" instance=ExtResource("9_x86y3")]
+[node name="Cost2" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("9_x86y3")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Cost3" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/HBoxContainer" instance=ExtResource("9_x86y3")]
+[node name="Cost3" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("9_x86y3")]
 unique_name_in_owner = true
 layout_mode = 2
 

@@ -86,7 +86,6 @@ func use() -> void:
     EventBus.equipment_up.emit(item.type, item)
 
 func update_ui() -> void:
-    # TODO: 一直实例化成本可能有点高，改成隐藏
     title_label.text = item.name
     
     for _affix in pre_affixe_labels.get_children():

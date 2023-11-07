@@ -27,6 +27,8 @@ func connect_signals() -> void:
             EventBus.enemy_die.connect(get_progres)
         QUEST_TYPE.LEVEL_UP:
             EventBus.player_level_up.connect(get_progres)
+        QUEST_TYPE.ENHANCE_QUIPMENT:
+            EventBus.enhance_a_equipment.connect(get_progres)
     value_changed.emit()
 
 func get_progres(_temp = null) -> void:

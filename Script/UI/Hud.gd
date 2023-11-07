@@ -5,14 +5,14 @@ signal backed_to_home
 
 @onready var mp_bar:TextureProgressBar = %MpBar
 @onready var hp_bar:TextureProgressBar = %HpBar
-@onready var xp_bar:ProgressBar = %XpBar
+@onready var xp_bar:TextureProgressBar = %XpBar
 
 @onready var coins_label:Label = %CoinsLabel
 @onready var level_label:Label = %LevelLabel
 @onready var level_level_label:Label = %LevelLevelLabel
 
 @onready var inventory_btn:TextureButton = %InventoryBtn
-@onready var character_btn:TextureButton = %CharacterBtn
+@onready var character_btn:Button = %CharacterBtn
 @onready var skill_tree_btn:TextureButton = %SkillTreeBtn
 @onready var skills_panel_btn:TextureButton = %SillsPanelBtn
 @onready var setting_btn:TextureButton = %SettingBtn

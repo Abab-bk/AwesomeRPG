@@ -149,8 +149,10 @@ func forge() -> void:
     
     origin_tooltip.update_ui()
     forged_tooltip.update_ui()
-
+    
     tooltips.show()
+    
+    EventBus.enhance_a_equipment.emit()
     
     # update_ui()
 
