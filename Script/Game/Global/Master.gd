@@ -69,7 +69,7 @@ var main_buffs:Array
 var json_path:String = "res://DataBase/output/"
 
 const abilitys_start:int = 4001
-const abilitys_end:int = 4008
+const abilitys_end:int = 4009
 
 func get_dungeon_by_id(_id:int) -> DungeonData:
     var _dungeon:DungeonData = DungeonData.new()

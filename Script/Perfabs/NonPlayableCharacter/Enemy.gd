@@ -28,12 +28,16 @@ enum STATE {
 
 var current_state:STATE = STATE.PATROL
 
+func show_damage_label(value:int) -> void:
+    EventBus.show_damage_number.emit(get_global_transform_with_canvas().get_origin(), str(value))
+    if $AnimationPlayer:
+        $AnimationPlayer.play("Hited")
+
 func _ready() -> void:
     set_skin()
     
     hurt_box_component.hited.connect(func(value:int):
-        EventBus.show_damage_number.emit(get_global_transform_with_canvas().get_origin(), str(value))
-        $AnimationPlayer.play("Hited")
+        show_damage_label(value)
         )
     
     atk_range.target_enter_range.connect(func():
@@ -90,6 +94,9 @@ func _ready() -> void:
     
     # 设置属性 （每个敌人 ready 都是生成时）
     set_level(_level)
+
+func accept_damage(_value:float) -> void:
+    output_data.hp -= _value
 
 func set_data(_data:CharacterData) -> void:
     seted_data = _data

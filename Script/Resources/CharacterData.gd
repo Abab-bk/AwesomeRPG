@@ -50,6 +50,8 @@ signal hp_is_zero
 @export var health_regeneration:float
 @export var healing_effciency:float
 
+@export var weapon_damage:float
+
 @export var vision:int = 360
 @export var atk_speed:float = 0.5
 @export var atk_cd:float = 0.5

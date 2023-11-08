@@ -12,6 +12,11 @@ const popup:String = "res://Scene/UI/Popup.tscn"
 const select_skills_panel:String = "res://Scene/UI/SelectSkillsPanel.tscn"
 const info_skill_btn:String = "res://Scene/UI/SkillBtn.tscn"
 const trail:String = "res://Scene/Perfabs/Others/Trail.tscn"
+const animation_vfx:String = "res://Scene/Perfabs/Vfx/AnimationVFX.tscn"
+
+func build_a_sprite_vfx() -> AnimatedSprite2D:
+    var _n:AnimatedSprite2D = load(animation_vfx).instantiate()
+    return _n
 
 func build_a_recycle_panel() -> ColorRect:
     var _n:ColorRect = load("res://Scene/UI/RecyclePanel.tscn").instantiate()

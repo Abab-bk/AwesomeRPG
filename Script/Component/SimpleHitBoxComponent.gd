@@ -1,9 +1,7 @@
 class_name SimpleHitBoxComponent extends HitBoxComponent
 
-var damage:float
-
 func _ready() -> void:
-    area_entered.connect(handle_damage)
+    super()
 
 func handle_damage(body:Node) -> void:
     # 主要是匹配玩家
@@ -12,5 +10,5 @@ func handle_damage(body:Node) -> void:
             return
     
     if body is HurtBoxComponent:
-        body.handle_hit(damage)
-        handled_hit.emit()
+        print("处理伤害   ", body.owner.name)
+        handled_hit.emit(SuperComputer.handle_damage(damage_data, body.owner.output_data), body.owner)

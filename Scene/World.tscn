@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://3xynvu782kcm"]
+[gd_scene load_steps=13 format=3 uid="uid://3xynvu782kcm"]
 
 [ext_resource type="Script" path="res://Script/Game/World.gd" id="1_myfhc"]
+[ext_resource type="Script" path="res://Script/Game/Debuger.gd" id="2_84kal"]
 [ext_resource type="PackedScene" uid="uid://v51c0x6v6m7h" path="res://Scene/Perfabs/PlayabelCharacter/Player.tscn" id="2_l5a8p"]
 [ext_resource type="TileSet" uid="uid://dpd3kgnq8k7b6" path="res://Assets/Maps/Tiled/World.tres" id="2_xqv3x"]
 [ext_resource type="Script" path="res://Script/Game/EnemyHome.gd" id="4_22mer"]
@@ -20,6 +21,9 @@ size = Vector2(10236.5, 204)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_myfhc")
+
+[node name="Debuger" type="Node" parent="."]
+script = ExtResource("2_84kal")
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1

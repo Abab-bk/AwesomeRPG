@@ -118,5 +118,20 @@
     "running_time": 3,
     "long": false,
     "scene_name": "BloodDance"
+  },
+  {
+    "id": 4009,
+    "name": "冰锥",
+    "desc": "释放该技能向前发射 1 个冰锥，击中时造成 240% 武器攻击伤害。\n冰锥击中敌人后产生爆炸，击中时造成 120% 武器攻击伤害。\n该技能 20% 物理伤害转化为冰冷伤害。",
+    "icon_path": "FlamingMeteor.png",
+    "cost": 3300,
+    "global": false,
+    "cost_type": 1,
+    "cost_value": 5,
+    "cooldown": 1,
+    "casting_time": 0,
+    "running_time": 3,
+    "long": false,
+    "scene_name": "IceShot"
   }
 ]
