@@ -238,6 +238,11 @@ func attack() -> void:
     
     turn_to_closest_enemy()
     
+    if not ability_container.ability_list.is_empty():
+        ability_container.active_a_ability(ability_container.ability_list[0])
+        current_state = STATE.ATTACKING
+        return
+    
     character_animation_player.play("scml/Attacking")
     current_state = STATE.ATTACKING
 

@@ -150,9 +150,30 @@ func die() -> void:
     # 随机掉落装备
     if randi_range(0, 100) >= 50:
         var _drop_item:InventoryItem = item_generator.gen_a_item()
-        EventBus.new_drop_item.emit(_drop_item, get_global_transform_with_canvas().get_origin())
-    
+        EventBus.new_drop_item.emit(_drop_item, get_drop_item_position())
     queue_free()
+
+func get_drop_item_position() -> Vector2:
+    var _result:Vector2 = get_global_transform_with_canvas().get_origin()
+    
+    # 判断 _result 是否已经存在drop_item
+    while is_position_occupied(_result):
+        _result += Vector2(randf_range(-20.0, 20.0), randf_range(-20.0, 20.0)) 
+        
+        if _result.x > 500 || _result.y > 500:
+            _result = _result
+            break
+    # 如果已经存在，那个尝试在该坐标的上下左右再次判断，循环往复，如果坐标超过最大限制，就改变坐标为原点
+    # 最后把新坐标赋值给 _result
+    
+    return _result
+
+func is_position_occupied(_position: Vector2) -> bool:
+    for occupied in Master.occupied_positions:
+        if _position.distance_to(occupied) < 20:
+            return true
+    
+    return false
 
 func set_level(_value:int) -> void:
     data.level = _value

@@ -4,7 +4,11 @@ var ice_ball := load("res://Scene/Perfabs/Bullets/IceBall.tscn")
 
 func _ready() -> void:
     var _new_ball = ice_ball.instantiate() as IceBall
-    _new_ball.velocity = actor.velocity * 3
+    
+    if actor.velocity == Vector2.ZERO:
+        _new_ball.velocity = Vector2(400, 400)
+    else:
+        _new_ball.velocity = actor.velocity * 3        
     
     # 造成伤害：击中时造成 240% 武器攻击伤害。20% 物理伤害转化为冰冷伤害。
     var _damage_data:CharacterData = CharacterData.new()

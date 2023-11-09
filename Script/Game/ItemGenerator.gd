@@ -123,12 +123,14 @@ func gen_a_item() -> InventoryItem:
     return _new_item
 
 func get_random_icon_path(_dir_path:String) -> String:
-    var dir = DirAccess.open(_dir_path)
-    var names:Array = dir.get_files()
     
-    for i in names:
+    var dir = DirAccess.open(_dir_path)
+    var names:Array = []
+    
+    for i in dir.get_files():
         if "import" in i:
-            names.erase(i)
+            continue
+        names.append(i)
     
     var _file_name = names[randi_range(0, names.size() - 1)]
     

@@ -17,10 +17,12 @@ func _ready() -> void:
     for i in slots_ui_2.get_children():
         slots.append(i)
     
-    EventBus.update_inventory.connect(update_ui)
+    #EventBus.update_inventory.connect(update_ui)
     
     EventBus.add_item.connect(func(_item:InventoryItem):
-        inventory.add_item(_item))
+        inventory.add_item(_item)
+        update_ui()
+        )
     EventBus.remove_item.connect(func(_item:InventoryItem):
         inventory.remove_item(_item))
     
@@ -46,6 +48,11 @@ func _ready() -> void:
             EventBus.change_item_tooltip_state.emit(null)
             update_ui()
             )
+    
+    visibility_changed.connect(func():
+        if visible:
+            update_ui()
+        )
     
     recycle_btn.pressed.connect(func():
         var _panel:ColorRect = Builder.build_a_recycle_panel()

@@ -54,6 +54,9 @@ var moneys:Dictionary = {
 
 var next_reward_player_level:int = 1
 
+# 用来存储drop_item位置的数组
+var occupied_positions:Array
+
 var config
 
 var affixs:Array

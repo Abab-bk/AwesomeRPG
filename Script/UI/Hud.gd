@@ -224,7 +224,7 @@ func update_ui() -> void:
 
 func new_drop_item(_item:InventoryItem, _pos:Vector2) -> void:
     var _new_sprite:Node2D = Builder.build_a_drop_item()
-    _new_sprite.set_texture(load(_item.texture_path))
+    _new_sprite.set_item(_item)
     _new_sprite.position = _pos
     
     add_child(_new_sprite)
@@ -234,7 +234,6 @@ func new_drop_item(_item:InventoryItem, _pos:Vector2) -> void:
     if _pos.y >= 1920:
         _pos.y = 800
     
-    EventBus.add_item.emit(_item)
     EventBus.update_inventory.emit()
 
 func show_color_rect() -> void:
