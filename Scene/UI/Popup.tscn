@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://omjtfduo1ant"]
+[gd_scene load_steps=5 format=3 uid="uid://omjtfduo1ant"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_u50pa"]
-[ext_resource type="Texture2D" uid="uid://delt30kei8cs" path="res://Assets/UI/Texture/PopupBg.png" id="2_aw7n1"]
+[ext_resource type="Texture2D" uid="uid://b48ep8bouw3hg" path="res://Assets/UI/Texture/Panel.png" id="2_bghac"]
 [ext_resource type="Script" path="res://Script/UI/Popup.gd" id="3_xbvla"]
-[ext_resource type="Texture2D" uid="uid://pd45atcqjjfu" path="res://Assets/UI/Texture/TitleBar.png" id="5_gpb0q"]
 [ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="6_alnu5"]
 
 [node name="Popup" type="NinePatchRect"]
@@ -20,64 +19,36 @@ offset_bottom = 264.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_u50pa")
-texture = ExtResource("2_aw7n1")
-patch_margin_left = 44
-patch_margin_top = 44
-patch_margin_right = 44
-patch_margin_bottom = 44
+texture = ExtResource("2_bghac")
+patch_margin_left = 85
+patch_margin_top = 85
+patch_margin_right = 85
+patch_margin_bottom = 85
 script = ExtResource("3_xbvla")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 40
-
-[node name="Control" type="Control" parent="VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_gpb0q")
-stretch_mode = 5
-
-[node name="TitleLabel" type="Label" parent="VBoxContainer/Control/TextureRect"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "标题"
-label_settings = ExtResource("6_alnu5")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
-layout_mode = 2
+offset_right = 834.0
+offset_bottom = 528.0
 size_flags_vertical = 3
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer2"]
-layout_mode = 2
-
-[node name="Body" type="VBoxContainer" parent="VBoxContainer/MarginContainer2/VBoxContainer"]
+[node name="Body" type="VBoxContainer" parent="MarginContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="DescLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer2/VBoxContainer/Body"]
+[node name="TitleLabel" type="Label" parent="MarginContainer2/Body"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "标题"
+label_settings = ExtResource("6_alnu5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescLabel" type="RichTextLabel" parent="MarginContainer2/Body"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -87,15 +58,15 @@ bbcode_enabled = true
 text = "[center]你的账号已经被封禁，请不要尝试解封。[/center]"
 scroll_active = false
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer2/VBoxContainer/Body"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/Body"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2/VBoxContainer/Body/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/Body/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="YesBtn" type="Button" parent="VBoxContainer/MarginContainer2/VBoxContainer/Body/MarginContainer/HBoxContainer"]
+[node name="YesBtn" type="Button" parent="MarginContainer2/Body/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
@@ -104,7 +75,7 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 40
 text = "确认"
 
-[node name="CancelBtn" type="Button" parent="VBoxContainer/MarginContainer2/VBoxContainer/Body/MarginContainer/HBoxContainer"]
+[node name="CancelBtn" type="Button" parent="MarginContainer2/Body/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2

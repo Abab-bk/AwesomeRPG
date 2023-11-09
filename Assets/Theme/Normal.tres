@@ -3,33 +3,33 @@
 [ext_resource type="FontFile" uid="uid://cpqr3r4f0yisb" path="res://Assets/Font/SourceHanSansCN-Normal.otf" id="1_0mun2"]
 [ext_resource type="Texture2D" uid="uid://bv7f78tgjbooa" path="res://Assets/UI/Texture/Button/ButtonNormal.png" id="2_vhua5"]
 [ext_resource type="Texture2D" uid="uid://b3ilmntnidsbi" path="res://Assets/UI/Texture/ItemBgGray.png" id="3_6r8et"]
-[ext_resource type="Texture2D" uid="uid://delt30kei8cs" path="res://Assets/UI/Texture/PopupBg.png" id="4_bx67f"]
 [ext_resource type="Texture2D" uid="uid://dxny6jldurgsg" path="res://Assets/UI/Texture/DeepRedClub.png" id="4_d64v8"]
 [ext_resource type="Texture2D" uid="uid://b0xjvmcqrjkan" path="res://Assets/UI/Bars/BqBar.png" id="5_b4kr4"]
 [ext_resource type="FontFile" uid="uid://c7bfs6orcmgh2" path="res://Assets/Font/SourceHanSansCN-Medium.otf" id="5_cj7mn"]
+[ext_resource type="Texture2D" uid="uid://b48ep8bouw3hg" path="res://Assets/UI/Texture/Panel.png" id="5_y6rns"]
 [ext_resource type="Texture2D" uid="uid://m7sidseojnkd" path="res://Assets/UI/Bars/BarHealth.png" id="6_2l7w8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_432pw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_71goe"]
-bg_color = Color(0.121569, 0.113725, 0.0980392, 1)
+bg_color = Color(0.196078, 0.184314, 0.156863, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(1, 0.827451, 0.494118, 1)
+border_color = Color(0.321569, 0.294118, 0.270588, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrj45"]
-bg_color = Color(0.184314, 0.172549, 0.152941, 1)
+bg_color = Color(0.419608, 0.172549, 0.137255, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(1, 0.803922, 0.411765, 1)
+border_color = Color(0.662745, 0.560784, 0.415686, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -55,13 +55,11 @@ texture_margin_right = 10.0
 texture_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1dmjg"]
-texture = ExtResource("4_bx67f")
-texture_margin_left = 20.0
-texture_margin_top = 20.0
-texture_margin_right = 20.0
-texture_margin_bottom = 20.0
-axis_stretch_horizontal = 1
-axis_stretch_vertical = 2
+texture = ExtResource("5_y6rns")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mjj50"]
 texture = ExtResource("2_vhua5")
@@ -85,11 +83,11 @@ texture = ExtResource("6_2l7w8")
 
 [resource]
 default_font = ExtResource("5_cj7mn")
-Button/colors/font_color = Color(1, 0.827451, 0.494118, 1)
-Button/colors/font_focus_color = Color(1, 0.827451, 0.494118, 1)
-Button/colors/font_hover_color = Color(1, 0.827451, 0.494118, 1)
-Button/colors/font_hover_pressed_color = Color(0.996078, 0.733333, 0, 1)
-Button/colors/font_pressed_color = Color(0.905882, 0.666667, 0, 1)
+Button/colors/font_color = Color(0.85098, 0.835294, 0.788235, 1)
+Button/colors/font_focus_color = Color(0.85098, 0.835294, 0.788235, 1)
+Button/colors/font_hover_color = Color(0.85098, 0.835294, 0.788235, 1)
+Button/colors/font_hover_pressed_color = Color(0.701961, 0.678431, 0.607843, 1)
+Button/colors/font_pressed_color = Color(1, 0.886275, 0.698039, 1)
 Button/font_sizes/font_size = 30
 Button/fonts/font = ExtResource("1_0mun2")
 Button/styles/disabled = null
