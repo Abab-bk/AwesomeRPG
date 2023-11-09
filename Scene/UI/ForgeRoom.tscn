@@ -37,64 +37,28 @@ theme_override_constants/margin_bottom = 200
 
 [node name="Panel" type="Panel" parent="Content"]
 layout_mode = 2
+theme_type_variation = &"SharpPanel"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Content/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_top = 50
 
-[node name="TitleBar" type="NinePatchRect" parent="Content/Panel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel/MarginContainer"]
 layout_mode = 2
-texture = ExtResource("1_q044c")
-patch_margin_left = 56
-patch_margin_top = 8
-patch_margin_right = 56
-patch_margin_bottom = 6
 
-[node name="MarginContainer" type="MarginContainer" parent="Content/Panel/VBoxContainer/TitleBar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_right = 30
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Content/Panel/VBoxContainer/TitleBar/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="Content/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("2_lrnb3")
-stretch_mode = 3
-
-[node name="Space" type="Control" parent="Content/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TitleLabel" type="Label" parent="Content/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
+[node name="TitleLabel" type="Label" parent="Content/Panel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "打造装备"
 label_settings = ExtResource("3_spcq0")
 horizontal_alignment = 1
 
-[node name="Space2" type="Control" parent="Content/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect2" type="TextureRect" parent="Content/Panel/VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("2_lrnb3")
-stretch_mode = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="Content/Panel/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Content/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 30
@@ -102,22 +66,22 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="TabContainer" type="TabContainer" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="TabContainer" type="TabContainer" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 tabs_visible = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="ItemIcon" type="TextureRect" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer"]
+[node name="ItemIcon" type="TextureRect" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
@@ -125,7 +89,7 @@ texture = ExtResource("5_ixsdd")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="SelectItemBtn" type="Button" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer/ItemIcon"]
+[node name="SelectItemBtn" type="Button" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer/ItemIcon"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -135,74 +99,74 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"EmptyBtn"
 
-[node name="ItemNameLabel" type="Label" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer"]
+[node name="ItemNameLabel" type="Label" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "选择装备"
 label_settings = ExtResource("6_7jmu2")
 horizontal_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PreAffixs" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2"]
+[node name="PreAffixs" type="VBoxContainer" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ForgeAffix" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/PreAffixs" instance=ExtResource("7_j3gyy")]
+[node name="ForgeAffix" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/PreAffixs" instance=ExtResource("7_j3gyy")]
 layout_mode = 2
 
-[node name="ForgeAffix2" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/PreAffixs" instance=ExtResource("7_j3gyy")]
+[node name="ForgeAffix2" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/PreAffixs" instance=ExtResource("7_j3gyy")]
 layout_mode = 2
 
-[node name="ForgeAffix3" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/PreAffixs" instance=ExtResource("7_j3gyy")]
+[node name="ForgeAffix3" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/PreAffixs" instance=ExtResource("7_j3gyy")]
 layout_mode = 2
 
-[node name="BufAffixs" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2"]
+[node name="BufAffixs" type="VBoxContainer" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ForgeAffix" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/BufAffixs" instance=ExtResource("7_j3gyy")]
+[node name="ForgeAffix" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/BufAffixs" instance=ExtResource("7_j3gyy")]
 layout_mode = 2
 
-[node name="ForgeAffix2" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/BufAffixs" instance=ExtResource("7_j3gyy")]
+[node name="ForgeAffix2" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/BufAffixs" instance=ExtResource("7_j3gyy")]
 layout_mode = 2
 
-[node name="ForgeAffix3" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/BufAffixs" instance=ExtResource("7_j3gyy")]
+[node name="ForgeAffix3" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/BufAffixs" instance=ExtResource("7_j3gyy")]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_bottom = 80
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Cost1" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("9_x86y3")]
+[node name="Cost1" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("9_x86y3")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Cost2" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("9_x86y3")]
+[node name="Cost2" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("9_x86y3")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Cost3" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("9_x86y3")]
+[node name="Cost3" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/MarginContainer/HBoxContainer" instance=ExtResource("9_x86y3")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ForgeBtn" type="Button" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer"]
+[node name="ForgeBtn" type="Button" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "打造"
 
-[node name="CancelBtn" type="Button" parent="Content/Panel/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="CancelBtn" type="Button" parent="Content/Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50

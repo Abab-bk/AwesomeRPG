@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=21 format=3 uid="uid://dw7ft4xik3rji"]
+[gd_resource type="Theme" load_steps=23 format=3 uid="uid://dw7ft4xik3rji"]
 
 [ext_resource type="FontFile" uid="uid://cpqr3r4f0yisb" path="res://Assets/Font/SourceHanSansCN-Normal.otf" id="1_0mun2"]
 [ext_resource type="Texture2D" uid="uid://bv7f78tgjbooa" path="res://Assets/UI/Texture/Button/ButtonNormal.png" id="2_vhua5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b0xjvmcqrjkan" path="res://Assets/UI/Bars/BqBar.png" id="5_b4kr4"]
 [ext_resource type="Texture2D" uid="uid://c5trom4ylic3b" path="res://Assets/UI/Texture/ClubButtonNormal.png" id="5_c5qod"]
 [ext_resource type="FontFile" uid="uid://c7bfs6orcmgh2" path="res://Assets/Font/SourceHanSansCN-Medium.otf" id="5_cj7mn"]
+[ext_resource type="Texture2D" uid="uid://qursjkoneci6" path="res://Assets/UI/Texture/NormalPanel.png" id="6_0av2v"]
 [ext_resource type="Texture2D" uid="uid://m7sidseojnkd" path="res://Assets/UI/Bars/BarHealth.png" id="6_2l7w8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_432pw"]
@@ -75,6 +76,13 @@ texture_margin_top = 20.0
 texture_margin_right = 20.0
 texture_margin_bottom = 20.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4utcw"]
+texture = ExtResource("6_0av2v")
+texture_margin_left = 46.0
+texture_margin_top = 110.0
+texture_margin_right = 46.0
+texture_margin_bottom = 46.0
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5qqtr"]
 texture = ExtResource("5_b4kr4")
 
@@ -112,6 +120,8 @@ Panel/styles/panel = SubResource("StyleBoxTexture_1dmjg")
 ProgressBar/styles/background = SubResource("StyleBoxTexture_mjj50")
 ProgressBar/styles/fill = SubResource("StyleBoxTexture_hhs6j")
 RichTextLabel/colors/default_color = Color(0.741176, 0.741176, 0.741176, 1)
+SharpPanel/base_type = &"Panel"
+SharpPanel/styles/panel = SubResource("StyleBoxTexture_4utcw")
 XpBar/base_type = &"ProgressBar"
 XpBar/styles/background = SubResource("StyleBoxTexture_5qqtr")
 XpBar/styles/fill = SubResource("StyleBoxTexture_xhkco")
