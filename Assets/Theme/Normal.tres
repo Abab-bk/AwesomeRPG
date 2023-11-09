@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://b3ilmntnidsbi" path="res://Assets/UI/Texture/ItemBgGray.png" id="3_6r8et"]
 [ext_resource type="Texture2D" uid="uid://dxny6jldurgsg" path="res://Assets/UI/Texture/DeepRedClub.png" id="4_d64v8"]
 [ext_resource type="Texture2D" uid="uid://b0xjvmcqrjkan" path="res://Assets/UI/Bars/BqBar.png" id="5_b4kr4"]
+[ext_resource type="Texture2D" uid="uid://c5trom4ylic3b" path="res://Assets/UI/Texture/ClubButtonNormal.png" id="5_c5qod"]
 [ext_resource type="FontFile" uid="uid://c7bfs6orcmgh2" path="res://Assets/Font/SourceHanSansCN-Medium.otf" id="5_cj7mn"]
-[ext_resource type="Texture2D" uid="uid://b48ep8bouw3hg" path="res://Assets/UI/Texture/Panel.png" id="5_y6rns"]
 [ext_resource type="Texture2D" uid="uid://m7sidseojnkd" path="res://Assets/UI/Bars/BarHealth.png" id="6_2l7w8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_432pw"]
@@ -55,11 +55,11 @@ texture_margin_right = 10.0
 texture_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1dmjg"]
-texture = ExtResource("5_y6rns")
-texture_margin_left = 10.0
-texture_margin_top = 10.0
-texture_margin_right = 10.0
-texture_margin_bottom = 10.0
+texture = ExtResource("5_c5qod")
+texture_margin_left = 40.0
+texture_margin_top = 40.0
+texture_margin_right = 40.0
+texture_margin_bottom = 40.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mjj50"]
 texture = ExtResource("2_vhua5")

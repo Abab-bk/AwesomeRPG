@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxc7hc1jk1l0j"]
+[gd_scene load_steps=6 format=3 uid="uid://dxc7hc1jk1l0j"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_gvaxm"]
 [ext_resource type="Script" path="res://Script/UI/SkillStore.gd" id="2_25jub"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="3_yy5bl"]
-[ext_resource type="Texture2D" uid="uid://cq0ojl5wdlg2l" path="res://Assets/UI/Texture/PopupTop.png" id="4_f37n5"]
 [ext_resource type="Texture2D" uid="uid://bvoe7qqn2ya8f" path="res://Assets/Texture/Icons/Skills/BloodDance.png" id="4_vfa4u"]
-[ext_resource type="Texture2D" uid="uid://p4yi3v7h2f85" path="res://Assets/UI/Texture/PopupBottom.png" id="6_y3iib"]
+[ext_resource type="Texture2D" uid="uid://c5trom4ylic3b" path="res://Assets/UI/Texture/ClubButtonNormal.png" id="6_vi4op"]
 
 [node name="SkillStore" type="VBoxContainer"]
 anchors_preset = 15
@@ -25,7 +24,7 @@ theme_override_constants/separation = 0
 [node name="Panel" type="NinePatchRect" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
-texture = ExtResource("4_f37n5")
+texture = ExtResource("6_vi4op")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20
@@ -82,7 +81,7 @@ label_settings = ExtResource("3_yy5bl")
 [node name="Panel2" type="NinePatchRect" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("6_y3iib")
+texture = ExtResource("6_vi4op")
 patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 20

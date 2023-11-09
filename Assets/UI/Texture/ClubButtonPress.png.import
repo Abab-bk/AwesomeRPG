@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cq0ojl5wdlg2l"
-path="res://.godot/imported/PopupTop.png-771a13f55c6ec226af5fe4b67635669a.ctex"
+uid="uid://b6xg3h861h8bg"
+path="res://.godot/imported/ClubButtonPress.png-535be157f1ff6d12e582e408030504bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/Texture/PopupTop.png"
-dest_files=["res://.godot/imported/PopupTop.png-771a13f55c6ec226af5fe4b67635669a.ctex"]
+source_file="res://Assets/UI/Texture/ClubButtonPress.png"
+dest_files=["res://.godot/imported/ClubButtonPress.png-535be157f1ff6d12e582e408030504bd.ctex"]
 
 [params]
 
