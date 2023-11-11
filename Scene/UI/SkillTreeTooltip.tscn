@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://4y6x4r0kc53l"]
+
+[ext_resource type="Script" path="res://Script/UI/SkillTreeTooltip.gd" id="1_qltds"]
+[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="2_txvxc"]
+
+[node name="SkillTreeTooltip" type="Panel"]
+offset_right = 514.0
+offset_bottom = 256.0
+script = ExtResource("1_qltds")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = ExtResource("2_txvxc")
+
+[node name="DescLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+label_settings = ExtResource("2_txvxc")

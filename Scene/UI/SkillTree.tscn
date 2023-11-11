@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dsr1p5lgdflk6"]
+[gd_scene load_steps=13 format=3 uid="uid://dsr1p5lgdflk6"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_dn14h"]
 [ext_resource type="Script" path="res://Script/UI/SkillTree.gd" id="2_gk725"]
@@ -10,10 +10,12 @@
 [ext_resource type="Script" path="res://addons/worldmap_builder/resource_types/worldmap_node_data.gd" id="9_s7o4x"]
 [ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="10_lu4c4"]
 [ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="10_tectx"]
+[ext_resource type="PackedScene" uid="uid://4y6x4r0kc53l" path="res://Scene/UI/SkillTreeTooltip.tscn" id="11_73tv5"]
 
 [sub_resource type="Resource" id="Resource_d6trn"]
+resource_local_to_scene = true
 script = ExtResource("9_s7o4x")
-id = &"3001"
+id = &"0"
 texture = ExtResource("10_lu4c4")
 color = Color(1, 1, 1, 1)
 name = "Hey"
@@ -89,3 +91,7 @@ text = "返回"
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(528, 2099)
+
+[node name="SkillTreeTooltip" parent="." instance=ExtResource("11_73tv5")]
+unique_name_in_owner = true
+layout_mode = 0

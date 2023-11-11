@@ -3,12 +3,16 @@
     "id": 0,
     "name": "狂怒",
     "desc": "火焰伤害 + {s}。",
+    "icon_path": "res://Assets/Texture/Icons/Skills/Blizzard.png",
+    "cost": 1,
     "child_skills": []
   },
   {
     "id": 1,
     "name": "狂怒2",
     "desc": "火焰伤害 + {s}。",
+    "icon_path": "res://Assets/Texture/Icons/Skills/BloodDance.png",
+    "cost": 1,
     "child_skills": [
       2,
       3
@@ -18,24 +22,59 @@
     "id": 2,
     "name": "灼烧",
     "desc": "火焰伤害 + {s}。",
+    "icon_path": "res://Assets/Texture/Icons/Skills/BloodDance.png",
+    "cost": 1,
     "child_skills": []
   },
   {
     "id": 3,
     "name": "猛冲",
     "desc": "物理伤害 + {s}。",
+    "icon_path": "res://Assets/Texture/Icons/Skills/BloodDance.png",
+    "cost": 1,
     "child_skills": []
   },
   {
     "id": 4,
     "name": "厉害",
     "desc": "好好好",
+    "icon_path": "res://Assets/Texture/Icons/Skills/BloodDance.png",
+    "cost": 1,
     "child_skills": []
   },
   {
     "id": 5,
     "name": "强大",
     "desc": "aa",
+    "icon_path": "res://Assets/Texture/Icons/Skills/BloodDance.png",
+    "cost": 1,
+    "child_skills": []
+  },
+  {
+    "id": 6,
+    "name": "aa",
+    "desc": "aaa",
+    "icon_path": "res://Assets/Texture/Icons/Skills/BloodDance.png",
+    "cost": 1,
+    "child_skills": [
+      7,
+      8
+    ]
+  },
+  {
+    "id": 7,
+    "name": "bb",
+    "desc": "",
+    "icon_path": "res://Assets/Texture/Icons/Skills/BloodDance.png",
+    "cost": 1,
+    "child_skills": []
+  },
+  {
+    "id": 8,
+    "name": "cc",
+    "desc": "",
+    "icon_path": "res://Assets/Texture/Icons/Skills/BloodDance.png",
+    "cost": 1,
     "child_skills": []
   }
 ]
