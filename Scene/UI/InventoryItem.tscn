@@ -11,7 +11,7 @@ offset_bottom = 40.0
 theme = ExtResource("1_eew5n")
 script = ExtResource("1_er7k6")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="Background" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

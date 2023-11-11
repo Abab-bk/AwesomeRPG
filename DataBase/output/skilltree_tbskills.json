@@ -1,33 +1,41 @@
 [
   {
-    "id": 3001,
+    "id": 0,
     "name": "狂怒",
     "desc": "火焰伤害 + {s}。",
-    "next_skill_id": 3002,
     "child_skills": []
   },
   {
-    "id": 3002,
+    "id": 1,
     "name": "狂怒2",
     "desc": "火焰伤害 + {s}。",
-    "next_skill_id": 0,
     "child_skills": [
-      3003,
-      3004
+      2,
+      3
     ]
   },
   {
-    "id": 3003,
+    "id": 2,
     "name": "灼烧",
     "desc": "火焰伤害 + {s}。",
-    "next_skill_id": 0,
     "child_skills": []
   },
   {
-    "id": 3004,
+    "id": 3,
     "name": "猛冲",
     "desc": "物理伤害 + {s}。",
-    "next_skill_id": 0,
+    "child_skills": []
+  },
+  {
+    "id": 4,
+    "name": "厉害",
+    "desc": "好好好",
+    "child_skills": []
+  },
+  {
+    "id": 5,
+    "name": "强大",
+    "desc": "aa",
     "child_skills": []
   }
 ]

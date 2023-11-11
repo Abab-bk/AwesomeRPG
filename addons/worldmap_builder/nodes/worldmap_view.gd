@@ -146,7 +146,7 @@ func _draw():
             if cur_item_activatable[j]:
                 cur_styles[j] = style_can_activate
 
-            elif cur_item_states[j] != 0:
+            elif cur_item_states.has(j) and cur_item_states[j] != 0:
                 cur_styles[j] = style_active
 
             else:
@@ -346,15 +346,17 @@ func _update_activatable_local(item_path : NodePath):
             # it can if AT LEAST one connection activates it.
             continue
 
-        if nodes_state[x.y] > 0 && nodes_state[x.x] <= 0:
-            var cost : float = item.get_connection_cost(x.y, x.x)
-            if max_unlock_cost >= cost:
-                nodes_activatable[x.x] = true
+        if nodes_state.has(x.y):
+            if nodes_state[x.y] > 0 && nodes_state[x.x] <= 0:
+                var cost : float = item.get_connection_cost(x.y, x.x)
+                if max_unlock_cost >= cost:
+                    nodes_activatable[x.x] = true
 
-        if nodes_state[x.x] > 0 && nodes_state[x.y] <= 0:
-            var cost : float = item.get_connection_cost(x.x, x.y)
-            if max_unlock_cost >= cost:
-                nodes_activatable[x.y] = true
+        if nodes_state.has(x.x):
+            if nodes_state[x.x] > 0 && nodes_state[x.y] <= 0:
+                var cost : float = item.get_connection_cost(x.x, x.y)
+                if max_unlock_cost >= cost:
+                    nodes_activatable[x.y] = true
 
 
 func _update_activatable_interitem(connection : ConnectionPoint):

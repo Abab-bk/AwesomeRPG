@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dsr1p5lgdflk6"]
+[gd_scene load_steps=12 format=3 uid="uid://dsr1p5lgdflk6"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_dn14h"]
 [ext_resource type="Script" path="res://Script/UI/SkillTree.gd" id="2_gk725"]
@@ -7,8 +7,21 @@
 [ext_resource type="Script" path="res://addons/worldmap_builder/nodes/worldmap_graph.gd" id="4_r0gjf"]
 [ext_resource type="Resource" uid="uid://dniiltq2u7uo7" path="res://Assets/Resources/Styles/SkillTree/CanActive.tres" id="5_c40ah"]
 [ext_resource type="Resource" uid="uid://cpgs2kbj8rqgg" path="res://Assets/Resources/Styles/SkillTree/InActive.tres" id="6_rkgqa"]
-[ext_resource type="Resource" uid="uid://bsy6npdrkd5a" path="res://example/skills/example.tres" id="7_006tx"]
-[ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="11_gqow1"]
+[ext_resource type="Script" path="res://addons/worldmap_builder/resource_types/worldmap_node_data.gd" id="9_s7o4x"]
+[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="10_lu4c4"]
+[ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="10_tectx"]
+
+[sub_resource type="Resource" id="Resource_d6trn"]
+script = ExtResource("9_s7o4x")
+id = &"3001"
+texture = ExtResource("10_lu4c4")
+color = Color(1, 1, 1, 1)
+name = "Hey"
+desc = "HeyHey"
+size_tier = 0
+cost = 1
+tags = Array[StringName]([])
+data = Array[Resource]([])
 
 [node name="SkillTree" type="Control"]
 layout_mode = 3
@@ -43,55 +56,36 @@ theme_override_constants/margin_bottom = 30
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="TitleBar" parent="Panel/MarginContainer/VBoxContainer" instance=ExtResource("10_tectx")]
 layout_mode = 2
-text = "天赋树"
-label_settings = ExtResource("11_gqow1")
-horizontal_alignment = 1
-vertical_alignment = 1
+title_text = "天赋树"
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="SubViewport" type="SubViewport" parent="Panel/MarginContainer/VBoxContainer/SubViewportContainer"]
-disable_3d = true
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1020, 1663)
-render_target_update_mode = 4
-
-[node name="WorldmapView" type="Control" parent="Panel/MarginContainer/VBoxContainer/SubViewportContainer/SubViewport" node_paths=PackedStringArray("initial_item")]
+[node name="WorldmapView" type="Control" parent="Panel/MarginContainer/VBoxContainer" node_paths=PackedStringArray("initial_item")]
 unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 0
-offset_left = 30.0
-offset_top = 307.0
-offset_right = 1050.0
-offset_bottom = 1970.0
+layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("3_t4oc6")
 initial_item = NodePath("RootItem")
+initial_node = 0
+initial_node_value = 0
 style_active = ExtResource("4_kr2x5")
 style_can_activate = ExtResource("5_c40ah")
 style_inactive = ExtResource("6_rkgqa")
 
-[node name="RootItem" type="Node2D" parent="Panel/MarginContainer/VBoxContainer/SubViewportContainer/SubViewport/WorldmapView"]
+[node name="RootItem" type="Node2D" parent="Panel/MarginContainer/VBoxContainer/WorldmapView"]
 unique_name_in_owner = true
 script = ExtResource("4_r0gjf")
 connection_mode = 1
-connection_min_length = 100.0
-end_connection_nodes = Array[int]([1])
-node_count = 2
-node_0/data = ExtResource("7_006tx")
-node_0/position = Vector2(500.893, 1458.39)
-node_1/data = ExtResource("7_006tx")
-node_1/position = Vector2(197.888, 1150.44)
-connection_count = 1
-connection_0/nodes = Vector2i(1, 0)
+node_count = 1
+node_0/data = SubResource("Resource_d6trn")
+node_0/position = Vector2(496.329, 1953.74)
+connection_count = 0
 
 [node name="CancelBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "返回"
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(528, 2099)

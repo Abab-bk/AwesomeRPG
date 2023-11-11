@@ -333,16 +333,20 @@ initial_item = NodePath("WorldmapGraph")
 
 [node name="WorldmapGraph" type="Node2D" parent="WorldmapView"]
 script = ExtResource("7_miljq")
-node_count = 3
+node_count = 4
 node_0/data = ExtResource("15_dscy4")
-node_0/position = Vector2(897.775, 288.077)
+node_0/position = Vector2(541.891, 2166.52)
 node_1/data = ExtResource("15_dscy4")
-node_1/position = Vector2(576.689, 477.16)
+node_1/position = Vector2(545.091, 1829.22)
 node_2/data = ExtResource("15_dscy4")
-node_2/position = Vector2(933.451, 705.488)
-connection_count = 2
+node_2/position = Vector2(210.597, 1672.07)
+node_3/data = ExtResource("15_dscy4")
+node_3/position = Vector2(857.135, 1692.27)
+connection_count = 4
 connection_0/nodes = Vector2i(1, 0)
-connection_1/nodes = Vector2i(2, 0)
+connection_1/nodes = Vector2i(0, 0)
+connection_2/nodes = Vector2i(1, 3)
+connection_3/nodes = Vector2i(1, 2)
 
 [connection signal="node_gui_input" from="Map" to="InputHandler" method="_on_map_node_gui_input"]
 [connection signal="node_mouse_entered" from="Map" to="InputHandler" method="_on_map_node_mouse_entered"]

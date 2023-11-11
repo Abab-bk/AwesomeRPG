@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bbp1iqow5k0b3"]
+[gd_scene load_steps=10 format=3 uid="uid://bbp1iqow5k0b3"]
 
 [ext_resource type="Script" path="res://Script/UI/ItemToolTip.gd" id="1_ohqf3"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_x37k0"]
@@ -9,7 +9,6 @@
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="7_jb6d8"]
 [ext_resource type="LabelSettings" uid="uid://mgahdqv1o26h" path="res://Assets/LabelSetting/BigGray.tres" id="8_d5gr0"]
 [ext_resource type="Texture2D" uid="uid://cq2kbhi5w81jf" path="res://Assets/Characters/PlayerAssets/Heads/Head1.png" id="9_ikghb"]
-[ext_resource type="Texture2D" uid="uid://bamsime04ygsh" path="res://Assets/UI/Texture/SepBar.png" id="10_7kcw6"]
 
 [node name="ItemToolTip" type="Panel"]
 offset_right = 571.0
@@ -119,7 +118,7 @@ unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("9_ikghb")
 expand_mode = 2
-stretch_mode = 3
+stretch_mode = 5
 
 [node name="Space2" type="Control" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content"]
 visible = false
@@ -131,43 +130,14 @@ size_flags_vertical = 0
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PreAffixeLabels" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer"]
+[node name="AffixeLabels" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer"]
 layout_mode = 2
 
-[node name="SepBar" type="TextureRect" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/PreAffixeLabels"]
-layout_mode = 2
-texture = ExtResource("10_7kcw6")
-stretch_mode = 4
-
-[node name="PreAffixeLabels" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/PreAffixeLabels"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/PreAffixeLabels/PreAffixeLabels"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 20
-
-[node name="PreAffixeLabels" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/PreAffixeLabels/PreAffixeLabels/MarginContainer"]
+[node name="PreAffixeLabels" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/AffixeLabels"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="BackAffixeLabels" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer"]
-layout_mode = 2
-
-[node name="SepBar2" type="TextureRect" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/BackAffixeLabels"]
-layout_mode = 2
-texture = ExtResource("10_7kcw6")
-stretch_mode = 4
-
-[node name="BufAffixeLabels" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/BackAffixeLabels"]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/BackAffixeLabels/BufAffixeLabels"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/margin_left = 20
-
-[node name="BufAffixeLabels" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/BackAffixeLabels/BufAffixeLabels/MarginContainer"]
+[node name="BufAffixeLabels" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/AffixeLabels"]
 unique_name_in_owner = true
 layout_mode = 2
 
