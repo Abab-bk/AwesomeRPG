@@ -22,15 +22,15 @@ signal backed_to_home
 
 @onready var get_skill_btn:Button = %GetSkillBtn
 
-@onready var inventory_ui:Control = $Inventory
-@onready var character_panel_ui:Control = $CharacterPanel
-@onready var skill_tree_ui:Control = $SkillTree
-@onready var setting_ui:Control = $SettingUI
-@onready var skills_panel_ui:Control = $SkillsPanel
+@onready var inventory_ui:Control = $Pages/Inventory
+@onready var character_panel_ui:Control = $Pages/CharacterPanel
+@onready var skill_tree_ui:Control = $Pages/SkillTree
+@onready var setting_ui:Control = $Pages/SettingUI
+@onready var skills_panel_ui:Control = $Pages/SkillsPanel
 @onready var quest_panel:Control = %QuestPanel
-@onready var store_ui:Control = $StoreUI
+@onready var store_ui:Control = $Pages/StoreUI
 @onready var dungeon_ui:Control = $DungeonPanel
-@onready var forge_room:Control = $ForgeRoom
+@onready var forge_room:Control = $Pages/ForgeRoom
 
 @onready var skill_bar:HBoxContainer = %SkillBar
 @onready var color_rect:ColorRect = $ColorRect

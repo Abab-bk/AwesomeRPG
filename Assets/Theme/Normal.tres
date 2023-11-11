@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=23 format=3 uid="uid://dw7ft4xik3rji"]
+[gd_resource type="Theme" load_steps=24 format=3 uid="uid://dw7ft4xik3rji"]
 
 [ext_resource type="FontFile" uid="uid://cpqr3r4f0yisb" path="res://Assets/Font/SourceHanSansCN-Normal.otf" id="1_0mun2"]
 [ext_resource type="Texture2D" uid="uid://bv7f78tgjbooa" path="res://Assets/UI/Texture/Button/ButtonNormal.png" id="2_vhua5"]
@@ -83,6 +83,8 @@ texture_margin_top = 110.0
 texture_margin_right = 46.0
 texture_margin_bottom = 46.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vj735"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5qqtr"]
 texture = ExtResource("5_b4kr4")
 
@@ -122,6 +124,7 @@ ProgressBar/styles/fill = SubResource("StyleBoxTexture_hhs6j")
 RichTextLabel/colors/default_color = Color(0.741176, 0.741176, 0.741176, 1)
 SharpPanel/base_type = &"Panel"
 SharpPanel/styles/panel = SubResource("StyleBoxTexture_4utcw")
+TabContainer/styles/panel = SubResource("StyleBoxEmpty_vj735")
 XpBar/base_type = &"ProgressBar"
 XpBar/styles/background = SubResource("StyleBoxTexture_5qqtr")
 XpBar/styles/fill = SubResource("StyleBoxTexture_xhkco")

@@ -338,31 +338,49 @@ offset_bottom = 1477.0
 theme_override_font_sizes/font_size = 25
 text = "获得技能"
 
-[node name="Inventory" parent="." instance=ExtResource("2_cil1e")]
+[node name="Pages" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Inventory" parent="Pages" instance=ExtResource("2_cil1e")]
 process_mode = 3
 visible = false
+layout_mode = 2
 
-[node name="CharacterPanel" parent="." instance=ExtResource("3_aoxj4")]
+[node name="CharacterPanel" parent="Pages" instance=ExtResource("3_aoxj4")]
 process_mode = 3
 visible = false
+layout_mode = 2
 
-[node name="SkillTree" parent="." instance=ExtResource("5_xu7ou")]
+[node name="SkillTree" parent="Pages" instance=ExtResource("5_xu7ou")]
 process_mode = 3
 visible = false
+layout_mode = 2
 
-[node name="SettingUI" parent="." instance=ExtResource("11_x2eu0")]
+[node name="SettingUI" parent="Pages" instance=ExtResource("11_x2eu0")]
 process_mode = 3
 visible = false
+layout_mode = 2
 
-[node name="SkillsPanel" parent="." instance=ExtResource("12_doksu")]
+[node name="SkillsPanel" parent="Pages" instance=ExtResource("12_doksu")]
 process_mode = 3
 visible = false
+layout_mode = 2
 
-[node name="StoreUI" parent="." instance=ExtResource("24_wrqlk")]
+[node name="StoreUI" parent="Pages" instance=ExtResource("24_wrqlk")]
 visible = false
+layout_mode = 2
 
-[node name="ForgeRoom" parent="." instance=ExtResource("25_3wlxv")]
+[node name="ForgeRoom" parent="Pages" instance=ExtResource("25_3wlxv")]
 visible = false
+layout_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
 process_mode = 3
