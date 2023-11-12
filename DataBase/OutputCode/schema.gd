@@ -110,6 +110,7 @@ class SkillTree:
     var desc: String
     var icon_path: String
     var cost: int
+    var buff_id: int
     var child_skills: Array[int]
 
     func _init(_json_) -> void:
@@ -118,6 +119,7 @@ class SkillTree:
         self.desc = _json_["desc"]
         self.icon_path = _json_["icon_path"]
         self.cost = _json_["cost"]
+        self.buff_id = _json_["buff_id"]
         self.child_skills = []
         for _ele in _json_["child_skills"]: var _e: int; _e = _ele; self.child_skills.append(_e)
 

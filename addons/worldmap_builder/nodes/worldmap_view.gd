@@ -58,6 +58,13 @@ signal node_mouse_exited(path : NodePath, node_in_path : int, resource : Worldma
 ## When hovering over a node, highlight nodes with the same [WorldmapNodeData] object.
 # @export var highlight_similar := true
 
+## If [code]true[/code], auto-updates the minimum size to enclose all nodes. Disable to make it custom. [br]
+## [b]Note:[/b] if disabled, may sometimes not display all child nodes.
+@export var auto_minsize := true:
+    set(v):
+        auto_minsize = v
+        queue_redraw()
+
 ## Toggle to update and show the map in the editor.
 @export var editor_preview := false:
     set(v):
@@ -99,28 +106,43 @@ func _ready():
 
 
 func _draw():
-    if Engine.is_editor_hint() && !editor_preview:
+    var children := get_children()
+    if children.size() == 0:
         return
 
+    if auto_minsize:
+        var full_map_rect := get_node_minimum_rect()
+        full_map_rect.position = full_map_rect.position.floor()
+        full_map_rect.size = full_map_rect.size.ceil()
+
+        if full_map_rect.position.x != 0.0:
+            for x in children:
+                if x is WorldmapViewItem:
+                    x.offset_all_nodes(Vector2(-full_map_rect.position.x, 0.0))
+
+            position.x += full_map_rect.position.x
+            full_map_rect.position.x = 0
+
+        if full_map_rect.position.y != 0.0:
+            for x in children:
+                if x is WorldmapViewItem:
+                    x.offset_all_nodes(Vector2(0.0, -full_map_rect.position.y))
+
+            position.y += full_map_rect.position.y
+            full_map_rect.position.y = 0
+
+        custom_minimum_size = full_map_rect.size
+        size = custom_minimum_size
+
+    if Engine.is_editor_hint() && !editor_preview: return
     if _worldmap_can_activate.size() == 0: return
 
     var node_positions : Array[Array] = []
     var node_datas : Array[Array] = []
     var node_styles : Array[Array] = []
-
-    var children := get_children()
-    if children.size() == 0: return
-
-    var full_map_rect := Rect2(children[0].get_node_position(0), Vector2.ZERO)
     node_positions.resize(children.size())
     node_datas.resize(children.size())
     node_styles.resize(children.size())
-    for i in children.size():
-        var cur_child := children[i]
-        for j in cur_child.get_node_count():
-            full_map_rect = full_map_rect.expand(cur_child.get_node_position(j))
-
-    custom_minimum_size = full_map_rect.size + full_map_rect.position * 2
     for i in children.size():
         var x := children[i]
         var cur_positions : Array[Vector2] = []
@@ -146,7 +168,7 @@ func _draw():
             if cur_item_activatable[j]:
                 cur_styles[j] = style_can_activate
 
-            elif cur_item_states.has(j) and cur_item_states[j] != 0:
+            elif cur_item_states[j] != 0:
                 cur_styles[j] = style_active
 
             else:
@@ -164,6 +186,30 @@ func _draw():
         var cur_styles : Array[WorldmapStyle] = node_styles[i]
         for j in cur_positions.size():
             cur_styles[j].draw_node(self, cur_datas[j], cur_positions[j])
+
+## Returns the rect that encloses all nodes on this worldmap graph, taking into account their texture size.
+func get_node_minimum_rect() -> Rect2:
+    var full_map_rect := Rect2(Vector2.ZERO, Vector2.ZERO)
+    var first_found := false
+    for x in get_children():
+        if !x is WorldmapViewItem:
+            continue
+
+        if !first_found:
+            full_map_rect.position = x.get_node_position(0)
+            first_found = true
+
+        for j in x.get_node_count():
+            var node_pos : Vector2 = x.get_node_position(j)
+            var node_data : WorldmapNodeData = x.get_node_data(j)
+            if node_data == null || node_data.texture == null:
+                continue
+
+            var node_tex_half_size := node_data.texture.get_size() * 0.5
+            full_map_rect = full_map_rect.expand(node_pos - node_tex_half_size)
+            full_map_rect = full_map_rect.expand(node_pos + node_tex_half_size)
+
+    return full_map_rect
 
 ## Resets all unlocks, leaving just the starting node.
 func reset():
@@ -184,6 +230,9 @@ func recalculate_map():
     _connections_by_items.clear()
     _connections_all.clear()
     for x in get_children():
+        if !x is WorldmapViewItem:
+            continue
+
         var connectable_positions : Array[Vector2] = x.get_end_connection_positions()
         var connectable_indices : Array[int] = x.get_end_connection_indices()
         var connecting_to_points : Array[ConnectionPoint] = []
@@ -346,17 +395,15 @@ func _update_activatable_local(item_path : NodePath):
             # it can if AT LEAST one connection activates it.
             continue
 
-        if nodes_state.has(x.y):
-            if nodes_state[x.y] > 0 && nodes_state[x.x] <= 0:
-                var cost : float = item.get_connection_cost(x.y, x.x)
-                if max_unlock_cost >= cost:
-                    nodes_activatable[x.x] = true
+        if nodes_state[x.y] > 0 && nodes_state[x.x] <= 0:
+            var cost : float = item.get_connection_cost(x.y, x.x)
+            if max_unlock_cost >= cost:
+                nodes_activatable[x.x] = true
 
-        if nodes_state.has(x.x):
-            if nodes_state[x.x] > 0 && nodes_state[x.y] <= 0:
-                var cost : float = item.get_connection_cost(x.x, x.y)
-                if max_unlock_cost >= cost:
-                    nodes_activatable[x.y] = true
+        if nodes_state[x.x] > 0 && nodes_state[x.y] <= 0:
+            var cost : float = item.get_connection_cost(x.x, x.y)
+            if max_unlock_cost >= cost:
+                nodes_activatable[x.y] = true
 
 
 func _update_activatable_interitem(connection : ConnectionPoint):
