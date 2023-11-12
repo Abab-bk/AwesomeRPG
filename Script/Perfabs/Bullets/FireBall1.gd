@@ -2,7 +2,12 @@ extends AbilityScene
 
 func _ready() -> void:
     global_position = actor.global_position
-    set_damage(actor.flower_buff_manager.output_data.damage)
+    
+    var _damage_data:CharacterData = CharacterData.new()
+    _damage_data.damage = (actor.output_data.weapon_damage * 2.4) * 0.8
+    
+    $FireBall2/SimpleHitBoxComponent.set_damage_data(_damage_data)
+    
     var speed = randf_range(500, 1000)
     
     if actor.closest_enemy:
@@ -10,6 +15,3 @@ func _ready() -> void:
         direction_to(actor.closest_enemy.global_position) * speed
     else:
         $FireBall2.velocity = actor.global_position * speed
-
-func set_damage(_v:float) -> void:
-    $FireBall2/SimpleHitBoxComponent.damage = _v

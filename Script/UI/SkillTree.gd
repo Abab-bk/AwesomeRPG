@@ -33,23 +33,27 @@ func get_skill_node_data(_id:int) -> WorldmapNodeData:
     
     return _data
 
-func add_a_skill_node(_parent_id:int, _id:String) -> void:
-    root_item.add_node(node_pos, _parent_id)
+func add_a_skill_node(_parent_id:int, _id:int) -> void:
+    root_item.add_node(node_pos, _parent_id, get_skill_node_data(_id))
     skills_ui.recalculate_map()
 
-func add_a_sub_skill_node(_parent_id:int, _id:String, _node_pos:Vector2) -> void:
-    root_item.add_node(_node_pos, _parent_id)    
+func add_a_sub_skill_node(_parent_id:int, _id:int, _node_pos:Vector2) -> void:
+    root_item.add_node(_node_pos, _parent_id, get_skill_node_data(_id))
     skills_ui.recalculate_map()
 
 func _ready() -> void:
     cancel_btn.pressed.connect(func():
         SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
         owner.change_page(owner.PAGE.HOME))
-    
-    return
+    $Panel/Button.pressed.connect(gen_trees)
     
     skills_ui.node_gui_input.connect(_on_node_gui_input)
+    skills_ui.max_unlock_cost = 100
+    skills_ui.recalculate_map()
     
+    update_ui()
+
+func gen_trees() -> void:
     for i in Master.ability_trees.keys():
         if str(i) == str(0):
             last_parent_id = 0
@@ -63,29 +67,15 @@ func _ready() -> void:
         
         node_pos += normal_node_offset
         
-        add_a_skill_node(last_parent_id, str(i))
+        add_a_skill_node(last_parent_id, i)
         last_parent_id = i
         
         var _offset:Vector2 = Vector2(0, 0)
         for child_id in Master.ability_trees[i]["child_skills"]:    
             var _pos:Vector2 = node_pos + Vector2(250, 0) + _offset
-            add_a_sub_skill_node(i, str(i), _pos)
+            add_a_sub_skill_node(i, child_id, _pos)
             added_sub_nodes.append(child_id)
             _offset += sub_node_offset
-    
-    var _temp_count:int = -1
-    for i in root_item.node_datas.size():
-        _temp_count += 1
-        root_item.node_datas[_temp_count] = get_skill_node_data(_temp_count)
-    
-    skills_ui.recalculate_map()
-    skills_ui.max_unlock_cost = 100
-    
-    print(root_item.get_child(1).name)
-    #skills_ui.set_node_state(root_item.get_child(1).get_path(), 2, 1)
-    skills_ui.recalculate_map()
-        
-    update_ui()
 
 func _on_node_gui_input(_event:InputEvent, _path:NodePath, _node_in_path:int, _resource:WorldmapNodeData) -> void:
     if _event is InputEventMouseMotion:
@@ -95,13 +85,9 @@ func _on_node_gui_input(_event:InputEvent, _path:NodePath, _node_in_path:int, _r
         if _event.button_index == MOUSE_BUTTON_LEFT && _event.pressed:
             update_ui()
             if skills_ui.can_activate(_path, _node_in_path):
-                #skill_tree_tooltip.show()
                 print("可以解锁")
                 skills_ui.max_unlock_cost -= skills_ui.set_node_state(_path, _node_in_path, 1)        
                 update_ui()
             else:
                 print("不能解锁，需要：", _resource.cost)
-            update_ui()            
-
-
-    
+            update_ui()

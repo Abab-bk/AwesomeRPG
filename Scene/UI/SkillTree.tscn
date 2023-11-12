@@ -13,15 +13,15 @@
 [ext_resource type="PackedScene" uid="uid://4y6x4r0kc53l" path="res://Scene/UI/SkillTreeTooltip.tscn" id="11_73tv5"]
 [ext_resource type="LabelSettings" uid="uid://bhyi4hqpwnqxh" path="res://Assets/LabelSetting/UITitleGold.tres" id="11_bnpdi"]
 
-[sub_resource type="Resource" id="Resource_yc40j"]
+[sub_resource type="Resource" id="Resource_qeqt6"]
 script = ExtResource("9_s7o4x")
 id = &"0"
 texture = ExtResource("10_lu4c4")
 color = Color(1, 1, 1, 1)
-name = "Hey"
-desc = "HeyHeyHey"
+name = "aa"
+desc = "aa"
 size_tier = 0
-cost = 0
+cost = 1
 tags = Array[StringName]([])
 data = Array[Resource]([])
 
@@ -79,8 +79,8 @@ style_inactive = ExtResource("6_rkgqa")
 unique_name_in_owner = true
 script = ExtResource("4_r0gjf")
 node_count = 1
-node_0/data = SubResource("Resource_yc40j")
-node_0/position = Vector2(231.642, 854.673)
+node_0/data = SubResource("Resource_qeqt6")
+node_0/position = Vector2(488.188, 1830.74)
 connection_count = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
@@ -98,6 +98,14 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "返回"
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 317.0
+offset_right = 479.0
+offset_bottom = 517.0
+text = "生成技能树"
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(528, 2099)
