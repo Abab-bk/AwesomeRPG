@@ -48,7 +48,7 @@ layout_mode = 2
 
 [node name="TitleBar" parent="Panel/MarginContainer/VBoxContainer" instance=ExtResource("4_a0e4k")]
 layout_mode = 2
-title_text = "打造装备"
+title_text = "地下城"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2

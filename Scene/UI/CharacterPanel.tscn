@@ -41,6 +41,7 @@ layout_mode = 2
 
 [node name="TitleBar" parent="Panel/MarginContainer/VBoxContainer" instance=ExtResource("3_j28y6")]
 layout_mode = 2
+title_text = "人物信息"
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
