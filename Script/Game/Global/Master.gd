@@ -120,6 +120,23 @@ func get_ability_by_id(_id:int) -> FlowerAbility:
     
     return _ability
 
+func get_talent_buff_by_id(_target_buff_id:int) -> FlowerBaseBuff:
+    var buff:FlowerBaseBuff = FlowerBaseBuff.new()
+    var _buff = talent_buffs[_target_buff_id]
+    
+    buff.name = _buff.name
+    buff.desc = ""
+    buff.repeat = _buff["repeat"]
+    buff.infinite = _buff["infinite"]
+    buff.repeat_count = _buff["repeat_count"]
+    buff.prepare_time = _buff["prepare_time"]
+    buff.active_time = _buff["active_time"]
+    buff.cooldown_time = _buff["cooldown_time"]
+    
+    buff.compute_values = _get_compute_datas(_buff["compute_values"])
+    
+    return buff
+
 func get_buff_by_id(_target_buff_id:int) -> FlowerBaseBuff:
     var buff:FlowerBaseBuff = FlowerBaseBuff.new()
     var _buff = ability_buffs[_target_buff_id]
@@ -194,6 +211,7 @@ func get_random_main_affix() -> AffixItem:
     _affix.update(_data)
     
     return _affix
+
 
 # 生成随机词缀
 func get_random_affix() -> AffixItem:

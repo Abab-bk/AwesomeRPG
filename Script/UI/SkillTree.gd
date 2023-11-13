@@ -23,7 +23,8 @@ func update_ui() -> void:
 
 func get_skill_node_data(_id:int) -> WorldmapNodeData:
     var _data:WorldmapNodeData = WorldmapNodeData.new()
-    var _ability_data = Master.talent_buffs[Master.talent_buffs.keys().pick_random()]
+    var _data_id:int = Master.talent_buffs.keys().pick_random()
+    var _ability_data = Master.talent_buffs[_data_id]
     
     var _offset:float = randf_range(0.1, 1.0)
     
@@ -31,6 +32,8 @@ func get_skill_node_data(_id:int) -> WorldmapNodeData:
     _data.texture = load(_ability_data["icon_path"])
     _data.name = _ability_data["name"].format({"s": str(_offset * 10).pad_decimals(1)})
     _data.cost = _ability_data["cost"]
+    
+    _data.data.append(Master.get_talent_buff_by_id(_data_id))
     
     return _data
 
@@ -102,7 +105,8 @@ func _on_node_gui_input(_event:InputEvent, _path:NodePath, _node_in_path:int, _r
             update_ui()
             if skills_ui.can_activate(_path, _node_in_path):
                 print("可以解锁")
-                skills_ui.max_unlock_cost -= skills_ui.set_node_state(_path, _node_in_path, 1)        
+                skills_ui.max_unlock_cost -= skills_ui.set_node_state(_path, _node_in_path, 1)
+                Master.player.flower_buff_manager.add_buff(_resource.data[0])   
                 update_ui()
             else:
                 print("不能解锁，需要：", _resource.cost)
