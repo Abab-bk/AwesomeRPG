@@ -20,10 +20,12 @@ func _ready() -> void:
     next_level_btn.pressed.connect(func():
         if current_dungeon:
             current_dungeon.next_level()
+            update_ui()
         )
     un_next_level_btn.pressed.connect(func():
         if current_dungeon:
             current_dungeon.previous_level()
+            update_ui()
         )
     enter_btn.pressed.connect(func():
         if Master.coins < current_dungeon.need_cost:
@@ -37,6 +39,9 @@ func _ready() -> void:
 func update_ui() -> void:
     name_label.text = current_dungeon.name
     cost_label.text = "门票钱：%s" % str(current_dungeon.need_cost)
+    match current_dungeon.reward_type:
+        "Coins":
+            reward_label.text = "奖励： %s 金币" % str(current_dungeon.reward_value)
 
 func show_dungeon(_data:DungeonData) -> void:
     if current_dungeon == _data:

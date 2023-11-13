@@ -5,6 +5,7 @@
     "enemy_id": 7005,
     "reward_type": "Coins",
     "need_cost": 200,
-    "reward_value": 100
+    "reward_value": 100,
+    "max_level": 20
   }
 ]

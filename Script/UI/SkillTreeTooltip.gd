@@ -1,8 +1,8 @@
 extends Panel
 
 @onready var title_label:Label = %TitleLabel
-@onready var desc_label:Label = %DescLabel
+@onready var cost_label:Label = %CostLabel
 
 func show_skill(_data:WorldmapNodeData) -> void:
     title_label.text = _data.name
-    desc_label.text = _data.desc
+    cost_label.text = "消耗 %s 天赋点" % str(_data.cost)

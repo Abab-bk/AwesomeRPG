@@ -243,6 +243,7 @@ class Dungeons:
     var reward_type: String
     var need_cost: int
     var reward_value: int
+    var max_level: int
 
     func _init(_json_) -> void:
         self.id = _json_["id"]
@@ -251,6 +252,7 @@ class Dungeons:
         self.reward_type = _json_["reward_type"]
         self.need_cost = _json_["need_cost"]
         self.reward_value = _json_["reward_value"]
+        self.max_level = _json_["max_level"]
 
 
 class Goods:

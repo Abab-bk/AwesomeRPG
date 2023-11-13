@@ -80,11 +80,14 @@ func get_dungeon_by_id(_id:int) -> DungeonData:
     var _dungeon:DungeonData = DungeonData.new()
     
     _dungeon.id = dungeons[_id]["id"]
-    _dungeon.name = dungeons[_id]["name"]
+    _dungeon.name = dungeons[_id]["name"] + " Lv. 1"
     _dungeon.enemy_id = dungeons[_id]["enemy_id"]
     _dungeon.reward_type = dungeons[_id]["reward_type"]
-    _dungeon.need_cost = dungeons[_id]["need_cost"]
-    _dungeon.reward_value = dungeons[_id]["reward_value"]
+    _dungeon.base_cost = dungeons[_id]["need_cost"]
+    _dungeon.base_reward = dungeons[_id]["reward_value"]
+    _dungeon.max_level = dungeons[_id]["max_level"]
+    
+    _dungeon.set_level(1)
     
     return _dungeon
 

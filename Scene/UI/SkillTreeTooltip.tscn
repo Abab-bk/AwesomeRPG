@@ -19,10 +19,11 @@ grow_vertical = 2
 [node name="TitleLabel" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+text = "你好"
 label_settings = ExtResource("2_txvxc")
 
-[node name="DescLabel" type="Label" parent="VBoxContainer"]
+[node name="CostLabel" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
+text = "消耗 %s 天赋点"
 label_settings = ExtResource("2_txvxc")
