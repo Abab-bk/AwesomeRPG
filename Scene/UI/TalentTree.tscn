@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://i21m8ej8ttu2"]
+
+[ext_resource type="Script" path="res://Script/UI/TalentTree.gd" id="1_b2y4m"]
+[ext_resource type="Script" path="res://addons/worldmap_builder/nodes/worldmap_view.gd" id="1_eo23a"]
+[ext_resource type="Resource" uid="uid://bcrbi1uvmegoo" path="res://Assets/Resources/Styles/SkillTree/Active.tres" id="2_f57cu"]
+[ext_resource type="Resource" uid="uid://dniiltq2u7uo7" path="res://Assets/Resources/Styles/SkillTree/CanActive.tres" id="3_oh866"]
+[ext_resource type="Resource" uid="uid://cpgs2kbj8rqgg" path="res://Assets/Resources/Styles/SkillTree/InActive.tres" id="4_fk7qa"]
+[ext_resource type="Script" path="res://addons/worldmap_builder/nodes/worldmap_graph.gd" id="5_q0t1h"]
+[ext_resource type="Script" path="res://addons/worldmap_builder/resource_types/worldmap_node_data.gd" id="6_teg4y"]
+[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="7_62a0q"]
+
+[sub_resource type="Resource" id="Resource_qeqt6"]
+script = ExtResource("6_teg4y")
+id = &"0"
+texture = ExtResource("7_62a0q")
+color = Color(1, 1, 1, 1)
+name = "aa"
+desc = "aa"
+size_tier = 0
+cost = 1
+tags = Array[StringName]([])
+data = Array[Resource]([])
+
+[node name="TalentTree" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b2y4m")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="WorldmapView" type="Control" parent="." node_paths=PackedStringArray("initial_item")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_eo23a")
+initial_item = NodePath("RootItem")
+initial_node = 0
+auto_minsize = false
+style_active = ExtResource("2_f57cu")
+style_can_activate = ExtResource("3_oh866")
+style_inactive = ExtResource("4_fk7qa")
+
+[node name="RootItem" type="Node2D" parent="WorldmapView"]
+unique_name_in_owner = true
+script = ExtResource("5_q0t1h")
+node_count = 1
+node_0/data = SubResource("Resource_qeqt6")
+node_0/position = Vector2(538.505, 254.761)
+connection_count = 0

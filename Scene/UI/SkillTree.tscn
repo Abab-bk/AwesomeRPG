@@ -1,29 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dsr1p5lgdflk6"]
+[gd_scene load_steps=7 format=3 uid="uid://dsr1p5lgdflk6"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_dn14h"]
 [ext_resource type="Script" path="res://Script/UI/SkillTree.gd" id="2_gk725"]
-[ext_resource type="Script" path="res://addons/worldmap_builder/nodes/worldmap_view.gd" id="3_t4oc6"]
-[ext_resource type="Resource" uid="uid://bcrbi1uvmegoo" path="res://Assets/Resources/Styles/SkillTree/Active.tres" id="4_kr2x5"]
-[ext_resource type="Script" path="res://addons/worldmap_builder/nodes/worldmap_graph.gd" id="4_r0gjf"]
-[ext_resource type="Resource" uid="uid://dniiltq2u7uo7" path="res://Assets/Resources/Styles/SkillTree/CanActive.tres" id="5_c40ah"]
-[ext_resource type="Resource" uid="uid://cpgs2kbj8rqgg" path="res://Assets/Resources/Styles/SkillTree/InActive.tres" id="6_rkgqa"]
-[ext_resource type="Script" path="res://addons/worldmap_builder/resource_types/worldmap_node_data.gd" id="9_s7o4x"]
-[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="10_lu4c4"]
+[ext_resource type="PackedScene" uid="uid://i21m8ej8ttu2" path="res://Scene/UI/TalentTree.tscn" id="4_ym8hi"]
 [ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="10_tectx"]
 [ext_resource type="PackedScene" uid="uid://4y6x4r0kc53l" path="res://Scene/UI/SkillTreeTooltip.tscn" id="11_73tv5"]
 [ext_resource type="LabelSettings" uid="uid://bhyi4hqpwnqxh" path="res://Assets/LabelSetting/UITitleGold.tres" id="11_bnpdi"]
-
-[sub_resource type="Resource" id="Resource_qeqt6"]
-script = ExtResource("9_s7o4x")
-id = &"0"
-texture = ExtResource("10_lu4c4")
-color = Color(1, 1, 1, 1)
-name = "aa"
-desc = "aa"
-size_tier = 0
-cost = 1
-tags = Array[StringName]([])
-data = Array[Resource]([])
 
 [node name="SkillTree" type="Control"]
 layout_mode = 3
@@ -62,26 +44,18 @@ layout_mode = 2
 layout_mode = 2
 title_text = "天赋树"
 
-[node name="WorldmapView" type="Control" parent="Panel/MarginContainer/VBoxContainer" node_paths=PackedStringArray("initial_item")]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(128, 128)
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-script = ExtResource("3_t4oc6")
-initial_item = NodePath("RootItem")
-initial_node = 0
-auto_minsize = false
-style_active = ExtResource("4_kr2x5")
-style_can_activate = ExtResource("5_c40ah")
-style_inactive = ExtResource("6_rkgqa")
+stretch = true
 
-[node name="RootItem" type="Node2D" parent="Panel/MarginContainer/VBoxContainer/WorldmapView"]
+[node name="SubViewport" type="SubViewport" parent="Panel/MarginContainer/VBoxContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1020, 2078)
+render_target_update_mode = 4
+
+[node name="TalentTree" parent="Panel/MarginContainer/VBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("4_ym8hi")]
 unique_name_in_owner = true
-script = ExtResource("4_r0gjf")
-node_count = 1
-node_0/data = SubResource("Resource_qeqt6")
-node_0/position = Vector2(488.188, 1830.74)
-connection_count = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
