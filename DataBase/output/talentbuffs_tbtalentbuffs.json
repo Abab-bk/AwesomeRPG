@@ -1,8 +1,149 @@
 [
   {
-    "id": 1001,
-    "name": "火焰",
-    "desc": "火焰伤害 + 3",
+    "id": 0,
+    "name": "开始！+1 物理伤害。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 0,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "1001",
+        "type": 1,
+        "value": 1,
+        "formual": "",
+        "target_property": "damage"
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "name": "力量、智慧、敏捷 + 5",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 0,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "1001",
+        "type": 1,
+        "value": 5,
+        "formual": "",
+        "target_property": "strength"
+      },
+      {
+        "id": "1002",
+        "type": 1,
+        "value": 5,
+        "formual": "",
+        "target_property": "wisdom"
+      },
+      {
+        "id": "1003",
+        "type": 1,
+        "value": 5,
+        "formual": "",
+        "target_property": "agility"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "伤害 + {s}",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 0,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "1004",
+        "type": 1,
+        "value": 10,
+        "formual": "",
+        "target_property": "damage"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "所有元素伤害 + 10",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 0,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "1005",
+        "type": 1,
+        "value": 10,
+        "formual": "",
+        "target_property": "frost_damage"
+      },
+      {
+        "id": "1006",
+        "type": 1,
+        "value": 10,
+        "formual": "",
+        "target_property": "fire_damage"
+      },
+      {
+        "id": "1007",
+        "type": 1,
+        "value": 10,
+        "formual": "",
+        "target_property": "toxic_damage"
+      },
+      {
+        "id": "1008",
+        "type": 1,
+        "value": 10,
+        "formual": "",
+        "target_property": "light_damage"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "闪避率 + 10%",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 0,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "1009",
+        "type": 0,
+        "value": 0.1,
+        "formual": "",
+        "target_property": "evasion"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "name": "火焰伤害 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -20,9 +161,10 @@
     ]
   },
   {
-    "id": 1002,
-    "name": "冰霜",
-    "desc": "冰霜伤害 + 3",
+    "id": 6,
+    "name": "冰霜伤害 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -40,9 +182,10 @@
     ]
   },
   {
-    "id": 1003,
-    "name": "闪电",
-    "desc": "闪电伤害 + 3",
+    "id": 7,
+    "name": "闪电伤害 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -60,9 +203,10 @@
     ]
   },
   {
-    "id": 1004,
-    "name": "毒素",
-    "desc": "毒素伤害 + 3",
+    "id": 8,
+    "name": "毒素伤害 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -80,9 +224,10 @@
     ]
   },
   {
-    "id": 1005,
-    "name": "物理",
-    "desc": "物理伤害 + 3",
+    "id": 9,
+    "name": "物理伤害 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -100,9 +245,10 @@
     ]
   },
   {
-    "id": 1006,
-    "name": "燃烧",
-    "desc": "火焰抗性 + 3",
+    "id": 10,
+    "name": "火焰抗性 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -120,9 +266,10 @@
     ]
   },
   {
-    "id": 1007,
-    "name": "冰霜",
-    "desc": "冰霜伤害 + 3",
+    "id": 11,
+    "name": "冰霜抗性 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -140,9 +287,10 @@
     ]
   },
   {
-    "id": 1008,
-    "name": "雷电",
-    "desc": "闪电抗性 + 3",
+    "id": 12,
+    "name": "闪电抗性 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -160,9 +308,10 @@
     ]
   },
   {
-    "id": 1009,
-    "name": "剧毒",
-    "desc": "毒素抗性 + 3",
+    "id": 13,
+    "name": "毒素抗性 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -180,9 +329,10 @@
     ]
   },
   {
-    "id": 1010,
-    "name": "坚固",
-    "desc": "物理抗性 + 3",
+    "id": 14,
+    "name": "物理抗性 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -200,9 +350,10 @@
     ]
   },
   {
-    "id": 1011,
-    "name": "烈焰",
-    "desc": "火焰伤害 + 3%",
+    "id": 15,
+    "name": "火焰 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -220,9 +371,10 @@
     ]
   },
   {
-    "id": 1012,
-    "name": "寒霜",
-    "desc": "冰霜伤害 + 3%",
+    "id": 16,
+    "name": "冰霜 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -240,9 +392,10 @@
     ]
   },
   {
-    "id": 1013,
-    "name": "惊雷",
-    "desc": "闪电伤害 + 3%",
+    "id": 17,
+    "name": "闪电 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -260,9 +413,10 @@
     ]
   },
   {
-    "id": 1014,
-    "name": "毒药",
-    "desc": "毒素伤害 + 3%",
+    "id": 18,
+    "name": "毒素 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -280,9 +434,10 @@
     ]
   },
   {
-    "id": 1015,
-    "name": "顽石",
-    "desc": "物理伤害 + 3%",
+    "id": 19,
+    "name": "物理 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -300,9 +455,10 @@
     ]
   },
   {
-    "id": 1016,
-    "name": "火苗",
-    "desc": "火焰抗性 + 3%",
+    "id": 20,
+    "name": "火焰抗性 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -320,9 +476,10 @@
     ]
   },
   {
-    "id": 1017,
-    "name": "冰锥",
-    "desc": "冰霜伤害 + 3%",
+    "id": 21,
+    "name": "冰霜抗性 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -340,9 +497,10 @@
     ]
   },
   {
-    "id": 1018,
-    "name": "绝缘",
-    "desc": "闪电抗性 + 3%",
+    "id": 22,
+    "name": "闪电抗性 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -360,9 +518,10 @@
     ]
   },
   {
-    "id": 1019,
-    "name": "体质",
-    "desc": "毒素抗性 + 3%",
+    "id": 23,
+    "name": "毒素抗性 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -380,9 +539,10 @@
     ]
   },
   {
-    "id": 1020,
-    "name": "体质",
-    "desc": "物理抗性百分比",
+    "id": 24,
+    "name": "物理抗性 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -400,9 +560,10 @@
     ]
   },
   {
-    "id": 1021,
-    "name": "顽强",
-    "desc": "最大生命值",
+    "id": 25,
+    "name": "最大生命值 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -420,9 +581,10 @@
     ]
   },
   {
-    "id": 1022,
-    "name": "回复",
-    "desc": "生命回复",
+    "id": 26,
+    "name": "生命回复 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -440,9 +602,10 @@
     ]
   },
   {
-    "id": 1023,
-    "name": "防御",
-    "desc": "防御",
+    "id": 27,
+    "name": "防御 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -460,9 +623,10 @@
     ]
   },
   {
-    "id": 1024,
-    "name": "闪避",
-    "desc": "闪避",
+    "id": 28,
+    "name": "闪避 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -480,9 +644,10 @@
     ]
   },
   {
-    "id": 1025,
-    "name": "幸运",
-    "desc": "幸运",
+    "id": 29,
+    "name": "幸运 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -500,9 +665,10 @@
     ]
   },
   {
-    "id": 1026,
-    "name": "速度",
-    "desc": "速度",
+    "id": 30,
+    "name": "速度 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -520,9 +686,10 @@
     ]
   },
   {
-    "id": 1027,
-    "name": "复活",
-    "desc": "治疗效率",
+    "id": 31,
+    "name": "治疗效率 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -540,9 +707,10 @@
     ]
   },
   {
-    "id": 1028,
-    "name": "打击",
-    "desc": "暴击率",
+    "id": 32,
+    "name": "暴击率 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -560,9 +728,10 @@
     ]
   },
   {
-    "id": 1029,
-    "name": "猛击",
-    "desc": "暴击伤害",
+    "id": 33,
+    "name": "暴击伤害 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -580,9 +749,10 @@
     ]
   },
   {
-    "id": 1030,
-    "name": "弱点",
-    "desc": "易伤伤害",
+    "id": 34,
+    "name": "易伤伤害 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -600,9 +770,10 @@
     ]
   },
   {
-    "id": 1031,
-    "name": "易伤",
-    "desc": "易伤率",
+    "id": 35,
+    "name": "易伤率 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -620,9 +791,10 @@
     ]
   },
   {
-    "id": 1032,
-    "name": "魔力",
-    "desc": "魔力",
+    "id": 36,
+    "name": "魔力 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -640,9 +812,10 @@
     ]
   },
   {
-    "id": 1033,
-    "name": "攻速",
-    "desc": "攻击速度",
+    "id": 37,
+    "name": "攻击速度 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -660,9 +833,10 @@
     ]
   },
   {
-    "id": 1034,
-    "name": "力量",
-    "desc": "力量",
+    "id": 38,
+    "name": "力量 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -680,9 +854,10 @@
     ]
   },
   {
-    "id": 1035,
-    "name": "智慧",
-    "desc": "智慧",
+    "id": 39,
+    "name": "智慧 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -700,9 +875,10 @@
     ]
   },
   {
-    "id": 1036,
-    "name": "敏捷",
-    "desc": "敏捷",
+    "id": 40,
+    "name": "敏捷 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -720,9 +896,10 @@
     ]
   },
   {
-    "id": 1037,
-    "name": "视野",
-    "desc": "攻击范围",
+    "id": 41,
+    "name": "攻击范围 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -740,9 +917,10 @@
     ]
   },
   {
-    "id": 1038,
-    "name": "视野",
-    "desc": "视野",
+    "id": 42,
+    "name": "视野 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -760,9 +938,10 @@
     ]
   },
   {
-    "id": 1039,
-    "name": "远见",
-    "desc": "攻击范围百分比",
+    "id": 43,
+    "name": "攻击范围 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -780,9 +959,10 @@
     ]
   },
   {
-    "id": 1040,
-    "name": "开阔",
-    "desc": "视野百分比",
+    "id": 44,
+    "name": "视野 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -800,9 +980,10 @@
     ]
   },
   {
-    "id": 1041,
-    "name": "嗯哼",
-    "desc": "最大生命值百分比",
+    "id": 45,
+    "name": "最大生命值 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -820,9 +1001,10 @@
     ]
   },
   {
-    "id": 1042,
-    "name": "重生",
-    "desc": "生命回复百分比",
+    "id": 46,
+    "name": "生命回复 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -840,9 +1022,10 @@
     ]
   },
   {
-    "id": 1043,
-    "name": "护盾",
-    "desc": "防御百分比",
+    "id": 47,
+    "name": "防御 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -860,9 +1043,10 @@
     ]
   },
   {
-    "id": 1044,
-    "name": "逃避",
-    "desc": "闪避百分比",
+    "id": 48,
+    "name": "闪避 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -880,9 +1064,10 @@
     ]
   },
   {
-    "id": 1045,
-    "name": "狗",
-    "desc": "幸运百分比",
+    "id": 49,
+    "name": "幸运 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -900,9 +1085,10 @@
     ]
   },
   {
-    "id": 1046,
-    "name": "猫",
-    "desc": "速度百分比",
+    "id": 50,
+    "name": "速度 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -920,9 +1106,10 @@
     ]
   },
   {
-    "id": 1047,
-    "name": "鼠",
-    "desc": "治疗效率百分比",
+    "id": 51,
+    "name": "治疗效率 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -940,9 +1127,10 @@
     ]
   },
   {
-    "id": 1048,
-    "name": "酱",
-    "desc": "暴击率百分比",
+    "id": 52,
+    "name": "暴击率 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -960,9 +1148,10 @@
     ]
   },
   {
-    "id": 1049,
-    "name": "可恶",
-    "desc": "暴击伤害百分比",
+    "id": 53,
+    "name": "暴击伤害 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -980,9 +1169,10 @@
     ]
   },
   {
-    "id": 1050,
-    "name": "厉害",
-    "desc": "易伤伤害百分比",
+    "id": 54,
+    "name": "易伤伤害 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -1000,9 +1190,10 @@
     ]
   },
   {
-    "id": 1051,
-    "name": "不错",
-    "desc": "易伤率百分比",
+    "id": 55,
+    "name": "易伤率 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -1020,9 +1211,10 @@
     ]
   },
   {
-    "id": 1052,
-    "name": "好",
-    "desc": "魔力百分比",
+    "id": 56,
+    "name": "魔力 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -1040,9 +1232,10 @@
     ]
   },
   {
-    "id": 1053,
-    "name": "激素",
-    "desc": "攻击速度百分比",
+    "id": 57,
+    "name": "攻击速度 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -1060,9 +1253,10 @@
     ]
   },
   {
-    "id": 1054,
-    "name": "力量",
-    "desc": "力量百分比",
+    "id": 58,
+    "name": "力量 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -1080,9 +1274,10 @@
     ]
   },
   {
-    "id": 1055,
-    "name": "智慧",
-    "desc": "智慧百分比",
+    "id": 59,
+    "name": "智慧 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -1100,9 +1295,10 @@
     ]
   },
   {
-    "id": 1056,
-    "name": "敏捷",
-    "desc": "敏捷百分比",
+    "id": 60,
+    "name": "敏捷 + {s}%。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -1120,29 +1316,10 @@
     ]
   },
   {
-    "id": 1057,
-    "name": "伤害 + %s",
-    "desc": "伤害",
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "1056",
-        "type": 1,
-        "value": 0,
-        "formual": "",
-        "target_property": "damage"
-      }
-    ]
-  },
-  {
-    "id": 1058,
-    "name": "防御 + %s",
-    "desc": "防御",
+    "id": 61,
+    "name": "防御 + {s}。",
+    "icon_path": "res://icon.svg",
+    "cost": 1,
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,

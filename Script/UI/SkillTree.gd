@@ -1,5 +1,7 @@
 extends Control
 
+@export var step_count:int = 100
+
 @onready var skills_ui:WorldmapView
 @onready var root_item:WorldmapGraph
 
@@ -8,16 +10,10 @@ extends Control
 
 @onready var talent_point_label:Label = %TalentPointLabel
 
-var sub_node_offset:Vector2 = Vector2(0, 150)
-var normal_node_offset:Vector2 = Vector2(0, 300)
-
 var node_pos:Vector2 = Vector2(509, 953)
-
 var last_parent_id:int = 0
-var next_skill_id:int
 
 var added_sub_nodes:Array[int] = []
-
 var added_node_pos:Array[Vector2] = []
 
 
@@ -27,13 +23,14 @@ func update_ui() -> void:
 
 func get_skill_node_data(_id:int) -> WorldmapNodeData:
     var _data:WorldmapNodeData = WorldmapNodeData.new()
-    var _ability_data = Master.buffs[Master.buffs.keys().pick_random()]
+    var _ability_data = Master.talent_buffs[Master.talent_buffs.keys().pick_random()]
+    
+    var _offset:float = randf_range(0.1, 1.0)
     
     _data.id = str(_id)
-    _data.texture = load("res://icon.svg") #_ability_data["icon_path"]
-    _data.name = _ability_data["name"]
-    _data.desc = _ability_data["desc"]
-    _data.cost = 1 # _ability_data["cost"]
+    _data.texture = load(_ability_data["icon_path"])
+    _data.name = _ability_data["name"].format({"s": str(_offset * 10).pad_decimals(1)})
+    _data.cost = _ability_data["cost"]
     
     return _data
 
@@ -52,7 +49,7 @@ func _ready() -> void:
     cancel_btn.pressed.connect(func():
         SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
         owner.change_page(owner.PAGE.HOME))
-    $Panel/Button.pressed.connect(gen_trees_by_walker.bind(100))
+    $Panel/Button.pressed.connect(gen_trees_by_walker.bind(step_count))
     
     skills_ui = %TalentTree.worldmap_view
     root_item = %TalentTree.root_item
@@ -67,7 +64,7 @@ func _ready() -> void:
 
 
 func gen_trees_by_walker(_step:int) -> void:
-    var _step_size:Vector2 = Vector2(150, 0)
+    var _step_size:Vector2 = Vector2(300, 0)
     
     for i in _step:
         # 判断是否要转向
@@ -75,16 +72,16 @@ func gen_trees_by_walker(_step:int) -> void:
         match _dir:
             # 向左转
             0:
-                _step_size = Vector2(150, 0)
+                _step_size = Vector2(300, 0)
             # 向右转
             1:
-                _step_size = Vector2(-150, 0)
+                _step_size = Vector2(-300, 0)
             # 向上转
             2:
-                _step_size = Vector2(0, 150)
+                _step_size = Vector2(0, 300)
             # 向下转
             3:
-                _step_size = Vector2(0, -150)
+                _step_size = Vector2(0, -300)
         
         while node_pos in added_node_pos:
             node_pos += _step_size
@@ -94,31 +91,6 @@ func gen_trees_by_walker(_step:int) -> void:
         add_a_skill_node(last_parent_id, _id)
         added_node_pos.append(node_pos)
         last_parent_id = _id
-
-
-func gen_trees() -> void:
-    for i in Master.ability_trees.keys():
-        if str(i) == str(0):
-            last_parent_id = 0
-            continue
-        
-        if i in added_sub_nodes:
-            print("Skip：  ", i)
-            continue
-        
-        print("Current：  ", i)
-        
-        node_pos += normal_node_offset
-        
-        add_a_skill_node(last_parent_id, i)
-        last_parent_id = i
-        
-        var _offset:Vector2 = Vector2(0, 0)
-        for child_id in Master.ability_trees[i]["child_skills"]:    
-            var _pos:Vector2 = node_pos + Vector2(250, 0) + _offset
-            add_a_sub_skill_node(i, child_id, _pos)
-            added_sub_nodes.append(child_id)
-            _offset += sub_node_offset
 
 
 func _on_node_gui_input(_event:InputEvent, _path:NodePath, _node_in_path:int, _resource:WorldmapNodeData) -> void:
@@ -135,3 +107,4 @@ func _on_node_gui_input(_event:InputEvent, _path:NodePath, _node_in_path:int, _r
             else:
                 print("不能解锁，需要：", _resource.cost)
             update_ui()
+

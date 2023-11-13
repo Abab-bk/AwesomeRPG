@@ -61,6 +61,7 @@ var config
 
 var affixs:Array
 var buffs:Dictionary
+var talent_buffs:Dictionary
 var ability_trees:Dictionary
 var abilitys:Dictionary
 var quests:Dictionary
@@ -230,7 +231,8 @@ func _ready():
     enemys = config.TbEnemys.get_data_map()
     dungeons = config.TbDungeons.get_data_map()
     main_buffs = config.TbMainBuffs.get_data_list()
-    ability_trees = config.TbSkills.get_data_map()
+    talent_buffs = config.TbTalentBuffs.get_data_map()
+    #ability_trees = config.TbSkills.get_data_map()
     #goods = config.TbGoods.get_data_map()
 
     EventBus.unlocked_ability.connect(func(_id:int):
