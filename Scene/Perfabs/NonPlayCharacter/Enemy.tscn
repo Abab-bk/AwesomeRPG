@@ -1752,11 +1752,6 @@ libraries = {
 [node name="ItemGenerator" type="Node" parent="."]
 script = ExtResource("2_032p5")
 
-[node name="FlowerBuffManager" type="Node" parent="." node_paths=PackedStringArray("target")]
-script = ExtResource("2_jei58")
-target = NodePath("..")
-compute_data = ExtResource("5_iftaj")
-
 [node name="PathFindComponent" type="Node" parent="."]
 script = ExtResource("4_e4v6d")
 
@@ -1950,3 +1945,8 @@ buff_manager = NodePath("../../FlowerBuffManager")
 position = Vector2(91.7577, -109.182)
 rotation = 1.39884
 shape = SubResource("RectangleShape2D_qwqhu")
+
+[node name="FlowerBuffManager" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("2_jei58")
+target = NodePath("..")
+compute_data = ExtResource("5_iftaj")

@@ -72,45 +72,6 @@ radius = 125.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_wcb0n"]
 radius = 360.0
 
-[sub_resource type="Resource" id="Resource_sdq8t"]
-script = ExtResource("7_6v44f")
-level = 1
-now_xp = 0.0
-next_level_xp = 0.0
-hp = 500.0
-max_hp = 500.0
-magic = 100.0
-max_magic = 100.0
-strength = 10
-wisdom = 10
-agility = 10
-luck = 1.0
-speed = 800.0
-damage = 50.0
-defense = 1.0
-fire_damage = 10.0
-frost_damage = 10.0
-light_damage = 1.0
-toxic_damage = 1.0
-fire_resistance = 1.0
-frost_resistance = 1.0
-light_resistance = 1.0
-toxic_resistance = 1.0
-physical_resistance = 1.0
-critical_rate = 0.5
-critical_damage = 10.0
-vulnerability_rate = 0.0
-vulnerability_damage = 0.0
-evasion = 1.0
-health_regeneration = 1.0
-healing_effciency = 1.0
-weapon_damage = 0.0
-vision = 360
-atk_speed = 0.5
-atk_cd = 0.5
-atk_range = 125.0
-quipments = {}
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wnox7"]
 size = Vector2(139, 242)
 
@@ -1790,6 +1751,45 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hl0t"]
 size = Vector2(37.6475, 270.625)
 
+[sub_resource type="Resource" id="Resource_sdq8t"]
+script = ExtResource("7_6v44f")
+level = 1
+now_xp = 0.0
+next_level_xp = 0.0
+hp = 500.0
+max_hp = 500.0
+magic = 100.0
+max_magic = 100.0
+strength = 10
+wisdom = 10
+agility = 10
+luck = 1.0
+speed = 800.0
+damage = 50.0
+defense = 1.0
+fire_damage = 10.0
+frost_damage = 10.0
+light_damage = 1.0
+toxic_damage = 1.0
+fire_resistance = 1.0
+frost_resistance = 1.0
+light_resistance = 1.0
+toxic_resistance = 1.0
+physical_resistance = 1.0
+critical_rate = 0.5
+critical_damage = 10.0
+vulnerability_rate = 0.0
+vulnerability_damage = 0.0
+evasion = 1.0
+health_regeneration = 1.0
+healing_effciency = 1.0
+weapon_damage = 0.0
+vision = 360
+atk_speed = 0.5
+atk_cd = 0.5
+atk_range = 125.0
+quipments = {}
+
 [node name="Player" type="CharacterBody2D"]
 process_mode = 3
 collision_layer = 2
@@ -1830,12 +1830,6 @@ buff_manager = NodePath("../FlowerBuffManager")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisionComponent"]
 shape = SubResource("CircleShape2D_wcb0n")
-
-[node name="FlowerBuffManager" type="Node" parent="." node_paths=PackedStringArray("target")]
-script = ExtResource("3_nckal")
-target = NodePath("..")
-compute_data = ExtResource("4_14ux5")
-output_data = SubResource("Resource_sdq8t")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
@@ -2030,3 +2024,9 @@ texture = ExtResource("24_mu2r6")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(361, 1)
 collision_mask = 8
+
+[node name="FlowerBuffManager" type="Node" parent="." node_paths=PackedStringArray("target")]
+script = ExtResource("3_nckal")
+target = NodePath("..")
+compute_data = ExtResource("4_14ux5")
+output_data = SubResource("Resource_sdq8t")

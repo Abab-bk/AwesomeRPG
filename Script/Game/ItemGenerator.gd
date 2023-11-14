@@ -127,7 +127,6 @@ func gen_a_item() -> InventoryItem:
     return _new_item
 
 func get_random_icon_path(_dir_path:String) -> String:
-    
     var dir = DirAccess.open(_dir_path)
     var names:Array = []
     
@@ -137,5 +136,7 @@ func get_random_icon_path(_dir_path:String) -> String:
         names.append(i)
     
     var _file_name = names[randi_range(0, names.size() - 1)]
+    
+    #print(_file_name, "  ", names)
     
     return _dir_path + "/" + _file_name

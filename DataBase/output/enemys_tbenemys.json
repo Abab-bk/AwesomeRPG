@@ -13,7 +13,7 @@
     "frost_resistance": 10,
     "toxic_resistance": 10,
     "light_resistance": 10,
-    "speed": 300
+    "speed": 400
   },
   {
     "id": 7002,
@@ -29,7 +29,7 @@
     "frost_resistance": 10,
     "toxic_resistance": 10,
     "light_resistance": 10,
-    "speed": 300
+    "speed": 400
   },
   {
     "id": 7003,
@@ -45,7 +45,7 @@
     "frost_resistance": 10,
     "toxic_resistance": 10,
     "light_resistance": 10,
-    "speed": 300
+    "speed": 400
   },
   {
     "id": 7004,
@@ -61,7 +61,7 @@
     "frost_resistance": 10,
     "toxic_resistance": 10,
     "light_resistance": 10,
-    "speed": 300
+    "speed": 400
   },
   {
     "id": 7005,
@@ -77,7 +77,7 @@
     "frost_resistance": 10,
     "toxic_resistance": 10,
     "light_resistance": 10,
-    "speed": 300
+    "speed": 400
   },
   {
     "id": 7006,
@@ -93,7 +93,7 @@
     "frost_resistance": 10,
     "toxic_resistance": 10,
     "light_resistance": 10,
-    "speed": 300
+    "speed": 400
   },
   {
     "id": 7007,
@@ -109,7 +109,7 @@
     "frost_resistance": 10,
     "toxic_resistance": 10,
     "light_resistance": 10,
-    "speed": 300
+    "speed": 400
   },
   {
     "id": 7008,
@@ -125,7 +125,7 @@
     "frost_resistance": 10,
     "toxic_resistance": 10,
     "light_resistance": 10,
-    "speed": 300
+    "speed": 400
   },
   {
     "id": 7009,
@@ -141,7 +141,7 @@
     "frost_resistance": 10,
     "toxic_resistance": 10,
     "light_resistance": 10,
-    "speed": 300
+    "speed": 400
   },
   {
     "id": 7010,
@@ -157,7 +157,7 @@
     "frost_resistance": 10,
     "toxic_resistance": 10,
     "light_resistance": 10,
-    "speed": 300
+    "speed": 400
   },
   {
     "id": 7011,
@@ -173,7 +173,7 @@
     "frost_resistance": 10,
     "toxic_resistance": 10,
     "light_resistance": 10,
-    "speed": 300
+    "speed": 400
   },
   {
     "id": 7012,
@@ -189,6 +189,6 @@
     "frost_resistance": 10,
     "toxic_resistance": 10,
     "light_resistance": 10,
-    "speed": 300
+    "speed": 400
   }
 ]

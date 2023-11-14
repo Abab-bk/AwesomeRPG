@@ -264,6 +264,9 @@ func turn_to_closest_enemy() -> void:
 func _physics_process(_delta: float) -> void:
     if current_state == STATE.IDLE:
         move_to_enemy()
+    if current_state == STATE.ATTACKING:
+        if not closest_enemy:
+            find_closest_enemy()
     move_and_slide()
 
 func get_ability_list() -> Array:

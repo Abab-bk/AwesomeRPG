@@ -118,12 +118,13 @@ func computed_values() -> void:
 func compute() -> void:
     # 防止清空buff后不计算
     output_data = compute_data
-    compute_ok.emit()
-    
+
     for _buff in buff_list:
         if not _buff:
-            return
+            break
         update_buff_tree()
         _buff.activate(target, compute_data, output_data)
         # 给用户用的信号
         a_buff_activated.emit(_buff)
+
+    compute_ok.emit()

@@ -70,7 +70,6 @@ func _ready() -> void:
     vision_component.target = Master.player
     
     buff_manager.compute_ok.connect(func():
-        print("计算完成")
         data = buff_manager.compute_data as CharacterData
         output_data = buff_manager.output_data as CharacterData
         $HealthComponent.data = output_data
@@ -124,11 +123,11 @@ func move_to_player(_delta:float) -> void:
     
     var dir:Vector2 = global_position.\
     direction_to(Master.player.global_position)
-    var desired_velocity:Vector2 = dir * data.speed
+    var desired_velocity:Vector2 = dir * output_data.speed
     
-    var steering:Vector2 = (desired_velocity - velocity) * _delta * 2.5
-    
-    velocity += steering
+    #var steering:Vector2 = (desired_velocity - velocity) * _delta * 2.5
+    #velocity += steering
+    velocity = desired_velocity
     
     if character_animation:    
         character_animation.play("scml/Walking")
