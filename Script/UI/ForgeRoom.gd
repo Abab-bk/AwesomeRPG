@@ -168,6 +168,7 @@ func accept_forged() -> void:
     ture_item.num = forged_item.num
     ture_item.type = forged_item.type
     ture_item.weapon_type = forged_item.weapon_type
+    ture_item.ranged_weapon_type = forged_item.ranged_weapon_type
     ture_item.quality = forged_item.quality
     ture_item.price = forged_item.price
     

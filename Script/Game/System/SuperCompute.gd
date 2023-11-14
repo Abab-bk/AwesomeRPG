@@ -17,7 +17,7 @@ static func handle_fire_damage(actor:CharacterData, target:CharacterData) -> voi
 static func handle_frost_damage(actor:CharacterData, target:CharacterData) -> void:
     target.hp -= actor.frost_damage - target.frost_resistance
 
-static func get_defens(who:CharacterData) -> float:
+static func get_defens(_who:CharacterData) -> float:
     return 0.0
 
 static func get_damage(who:CharacterData) -> float:
@@ -36,7 +36,8 @@ static func get_damage(who:CharacterData) -> float:
         critical_damage = 1.0 + who.critical_rate * who.critical_damage
         #criticaled.emit()
     
-    var sheet_damage:float = root_stats * base_damage * \
+    # element_damage 可能有问题？ 请查看公式
+    var sheet_damage:float = root_stats * element_damage * base_damage * \
     (critical_damage)
     
     var real_damage:float = sheet_damage

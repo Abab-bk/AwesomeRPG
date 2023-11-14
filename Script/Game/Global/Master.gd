@@ -1,6 +1,6 @@
 extends Node
 
-# TODO: 每日任务、爬塔模式
+# TODO: 每日任务、爬塔模式、自动拾取、换装备对比Tooltip
 
 const BGM:String = "res://Assets/Sounds/Music/Bgm.wav"
 const CLICK_SOUNDS:String = "res://Assets/Sounds/Click.mp3"

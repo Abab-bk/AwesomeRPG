@@ -51,7 +51,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Panel/MarginContainer/VBoxContainer/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(1020, 2078)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="TalentTree" parent="Panel/MarginContainer/VBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("4_ym8hi")]

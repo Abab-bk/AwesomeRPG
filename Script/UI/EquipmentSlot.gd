@@ -7,7 +7,13 @@ signal work_ok
 
 @export var current_equipment_type:Const.EQUIPMENT_TYPE = Const.EQUIPMENT_TYPE.头盔
 
-var item:InventoryItem
+var item:InventoryItem:
+    set(v):
+        item = v
+        if item:
+            $MarginContainer/SlotsImg.modulate = Color("FFFFFF")
+        else:
+            $MarginContainer/SlotsImg.modulate = Color("636363")
 
 func _ready() -> void:
     EventBus.equipment_down.connect(func(_xx, _xxx):set_item(null))
@@ -22,8 +28,6 @@ func __set_() -> void:
     match current_equipment_type:
         Const.EQUIPMENT_TYPE.头盔:
             slots_img.texture = load("res://Assets/Texture/Icons/头盔/3.png")
-        Const.EQUIPMENT_TYPE.护腕:
-            slots_img.texture = load("res://Assets/Texture/Icons/护腕/1.png")
         Const.EQUIPMENT_TYPE.胸甲:
             slots_img.texture = load("res://Assets/Texture/Icons/胸甲/1.png")
         Const.EQUIPMENT_TYPE.手套:

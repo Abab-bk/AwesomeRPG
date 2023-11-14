@@ -10,7 +10,6 @@ const SPEARS:String = "res://Assets/Texture/Icons/Spears/"
 const STAFFS:String = "res://Assets/Texture/Icons/Staffs/"
 const SHIELDS:String = "res://Assets/Texture/Icons/Shields/"
 const 头盔:String = "res://Assets/Texture/Icons/头盔/"
-const 护腕:String = "res://Assets/Texture/Icons/护腕/"
 const 胸甲:String = "res://Assets/Texture/Icons/胸甲/"
 const 手套:String = "res://Assets/Texture/Icons/手套/"
 const 靴子:String = "res://Assets/Texture/Icons/靴子/"
@@ -27,12 +26,21 @@ func gen_a_item() -> InventoryItem:
     _new_item.type = Const.EQUIPMENT_TYPE.values()[randi() % Const.EQUIPMENT_TYPE.size()]
     
     match _new_item.type:
+        Const.EQUIPMENT_TYPE.远程武器:
+            match _new_item.ranged_weapon_type:
+                Const.RANGED_WEAPONS_TYPE.Bow:
+                    _new_item.name += "弓"            
+                    _new_item.texture_path = get_random_icon_path(BOWS)
+                Const.RANGED_WEAPONS_TYPE.Spear:
+                    _new_item.name += "法杖"            
+                    _new_item.texture_path = get_random_icon_path(SPEARS)
+                Const.RANGED_WEAPONS_TYPE.Staff:
+                    _new_item.name += "短杖"            
+                    _new_item.texture_path = get_random_icon_path(STAFFS)
+        
         Const.EQUIPMENT_TYPE.头盔:
             _new_item.name += "头盔"
             _new_item.texture_path = get_random_icon_path(头盔)
-        Const.EQUIPMENT_TYPE.护腕:
-            _new_item.name += "护腕"
-            _new_item.texture_path = get_random_icon_path(护腕)
         Const.EQUIPMENT_TYPE.手套:
             _new_item.name += "手套"
             _new_item.texture_path = get_random_icon_path(手套)
@@ -60,21 +68,17 @@ func gen_a_item() -> InventoryItem:
             # TODO: 更改随机值
             match _new_item.weapon_type:
                 Const.WEAPONS_TYPE.Sword:
+                    _new_item.name += "剑"            
                     _new_item.texture_path = get_random_icon_path(SWORDS)
                 Const.WEAPONS_TYPE.Axe:
                     _new_item.texture_path = get_random_icon_path(AXES)
-                Const.WEAPONS_TYPE.Bow:
-                    _new_item.texture_path = get_random_icon_path(BOWS)
+                    _new_item.name += "斧"            
                 Const.WEAPONS_TYPE.Hammer:
+                    _new_item.name += "锤"            
                     _new_item.texture_path = get_random_icon_path(HAMMERS)
-                Const.WEAPONS_TYPE.Spear:
-                    _new_item.texture_path = get_random_icon_path(SPEARS)
-                Const.WEAPONS_TYPE.Staff:
-                    _new_item.texture_path = get_random_icon_path(STAFFS)
                 Const.WEAPONS_TYPE.Shield:
+                    _new_item.name += "盾"            
                     _new_item.texture_path = get_random_icon_path(SHIELDS)
-            
-            _new_item.name += "武器"
     
     # 随机掉落词缀数量
     # 根据随机的品质修改词缀数量：

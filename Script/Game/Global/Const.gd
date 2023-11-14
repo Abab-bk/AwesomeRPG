@@ -2,7 +2,6 @@ class_name Const extends Node
 
 enum EQUIPMENT_TYPE {
     头盔,
-    护腕,
     胸甲,
     手套,
     靴子,
@@ -10,17 +9,20 @@ enum EQUIPMENT_TYPE {
     裤子,
     护身符,
     戒指,
-    武器
+    武器,
+    远程武器
+}
+
+enum RANGED_WEAPONS_TYPE {
+    Spear,
+    Staff,
+    Bow,
 }
 
 enum WEAPONS_TYPE {
-    NULL,
     Sword,
     Axe,
-    Bow,
     Hammer,
-    Spear,
-    Staff,
     Shield
 }
 
