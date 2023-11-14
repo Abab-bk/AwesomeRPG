@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://v51c0x6v6m7h"]
+[gd_scene load_steps=47 format=3 uid="uid://v51c0x6v6m7h"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/PlayableCharacter/Player.gd" id="1_8yy7w"]
 [ext_resource type="Script" path="res://addons/FlowerAbility/Script/FlowerAbilityContainer.gd" id="2_8gp7m"]
@@ -13,7 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://dnm62umeu36qg" path="res://Assets/Characters/Warrior/Face 02.png" id="21_vc6ln"]
 [ext_resource type="Texture2D" uid="uid://gnv2aue7wxeu" path="res://Assets/Characters/Warrior/Face 03.png" id="22_wecve"]
 [ext_resource type="Texture2D" uid="uid://y4egfdfc5bsy" path="res://Assets/Characters/Warrior/Head.png" id="23_h8k8s"]
+[ext_resource type="Script" path="res://Script/Component/RangedWeaponComponent.gd" id="23_no4cg"]
 [ext_resource type="Texture2D" uid="uid://bpuvoal8yx2kf" path="res://Assets/Characters/Warrior/Right Hand.png" id="24_cexiw"]
+[ext_resource type="Texture2D" uid="uid://bd4nu0ou873i6" path="res://Assets/Texture/Icons/Bows/1.png" id="24_mu2r6"]
+[ext_resource type="PackedScene" uid="uid://dx25tod3kk4rk" path="res://Scene/Perfabs/Bullets/NormalBullet.tscn" id="24_ycdye"]
 [ext_resource type="Texture2D" uid="uid://bmhmh7lhdf355" path="res://Assets/Characters/Warrior/Right Arm.png" id="25_1tnc2"]
 [ext_resource type="Texture2D" uid="uid://bjdpfagkiuguw" path="res://Assets/Characters/Warrior/Weapon.png" id="26_exb10"]
 [ext_resource type="Texture2D" uid="uid://dkmra012p11ao" path="res://Assets/Characters/Warrior/Left Hand.png" id="27_3bxdk"]
@@ -1811,7 +1814,6 @@ shape = SubResource("RectangleShape2D_5nit3")
 debug_color = Color(0.760784, 0.45098, 0, 0.419608)
 
 [node name="AtkCDTimer" type="Timer" parent="."]
-one_shot = true
 
 [node name="AtkRangeComponent" type="Area2D" parent="." node_paths=PackedStringArray("buff_manager")]
 script = ExtResource("5_cwveo")
@@ -2013,6 +2015,16 @@ position = Vector2(98, -136)
 rotation = 0.609923
 shape = SubResource("RectangleShape2D_5hl0t")
 disabled = true
+
+[node name="RangedWeaponComponent" type="Node2D" parent="."]
+position = Vector2(-126, -57)
+script = ExtResource("23_no4cg")
+bullet = ExtResource("24_ycdye")
+
+[node name="Sprite2D" type="Sprite2D" parent="RangedWeaponComponent"]
+rotation = 1.5708
+scale = Vector2(2, 2)
+texture = ExtResource("24_mu2r6")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(361, 1)

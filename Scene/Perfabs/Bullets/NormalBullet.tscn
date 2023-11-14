@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx25tod3kk4rk"]
+
+[ext_resource type="Script" path="res://Script/Component/BulletComponent.gd" id="1_lo6st"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y0v2e"]
+radius = 48.0937
+
+[node name="BulletComponent" type="CharacterBody2D"]
+script = ExtResource("1_lo6st")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(-4, -3)
+color = Color(0.843137, 0.443137, 0.443137, 1)
+polygon = PackedVector2Array(3, -36, 60, 4, 5, 43, -40, 22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_y0v2e")

@@ -17,6 +17,7 @@ signal criticaled
 @onready var vision:VisionComponent = $VisionComponent
 @onready var ray_cast:RayCast2D = $RayCast2D
 @onready var marker:Marker2D = $Marker2D
+@onready var ranged_weapon:RangedWeaponComponent = $RangedWeaponComponent
 
 @onready var sprites:Dictionary = {
     "weapon": $"Warrior - 01/Skeleton/bone_004/bone_000/bone_001/Weapon",
@@ -165,7 +166,6 @@ func _ready() -> void:
             return
         
         turn_to_closest_enemy()
-        
         move_to_enemy()
         )
     
@@ -173,6 +173,8 @@ func _ready() -> void:
         $AnimationPlayer.play("oh_hit")
         EventBus.update_ui.emit()
         )
+    
+    atk_cd_timer.timeout.connect(ranged_attack)
     
     hit_box_component.criticaled.connect(func(): EventBus.player_criticaled.emit())
     
@@ -190,6 +192,8 @@ func _ready() -> void:
     Master.player_data = flower_buff_manager.compute_data
     
     find_closest_enemy()
+    
+    atk_cd_timer.start()
 
 func rebuild_skills() -> void:
     ability_container.ability_list = []
@@ -225,6 +229,8 @@ func move_to_enemy() -> void:
     
     character_animation_player.play("scml/Walking")
 
+func ranged_attack() -> void:
+    ranged_weapon.attack()
 
 func attack() -> void:
     velocity = Vector2.ZERO
@@ -258,7 +264,6 @@ func turn_to_closest_enemy() -> void:
 func _physics_process(_delta: float) -> void:
     if current_state == STATE.IDLE:
         move_to_enemy()
-    
     move_and_slide()
 
 func get_ability_list() -> Array:
@@ -352,6 +357,8 @@ func find_closest_enemy(_temp = 0) -> void:
         if enemy_distance < closest_distance:
             closest_distance = enemy_distance
             closest_enemy = enemy
+    
+    ranged_weapon.target_position = closest_enemy.global_position
     
     atk_range.target = closest_enemy
     vision.target = closest_enemy
