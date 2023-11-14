@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dx25tod3kk4rk"]
+[gd_scene load_steps=5 format=3 uid="uid://dx25tod3kk4rk"]
 
 [ext_resource type="Script" path="res://Script/Component/BulletComponent.gd" id="1_lo6st"]
+[ext_resource type="Script" path="res://Script/Component/SimpleHitBoxComponent.gd" id="2_1ynof"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y0v2e"]
 radius = 48.0937
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xscup"]
+size = Vector2(102, 62)
 
 [node name="BulletComponent" type="CharacterBody2D"]
 script = ExtResource("1_lo6st")
@@ -15,3 +19,11 @@ polygon = PackedVector2Array(3, -36, 60, 4, 5, 43, -40, 22)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_y0v2e")
+
+[node name="SimpleHitBoxComponent" type="Area2D" parent="."]
+script = ExtResource("2_1ynof")
+is_player_hitbox = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SimpleHitBoxComponent"]
+position = Vector2(3, 0)
+shape = SubResource("RectangleShape2D_xscup")
