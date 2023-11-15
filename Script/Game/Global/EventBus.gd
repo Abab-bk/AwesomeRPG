@@ -38,7 +38,7 @@ signal enhance_a_equipment
 
 signal enemy_die(xp:float)
 
-signal show_damage_number(pos:Vector2, text:String)
+signal show_damage_number(pos:Vector2, text:String, crit:bool)
 
 signal enter_dungeon(dungeon:DungeonData)
 

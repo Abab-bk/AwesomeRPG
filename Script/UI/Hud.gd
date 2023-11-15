@@ -55,10 +55,11 @@ func _ready() -> void:
     EventBus.new_drop_item.connect(new_drop_item)
     EventBus.player_ability_change.connect(build_ability_ui)
     EventBus.player_dead.connect(update_ui)
-    EventBus.show_damage_number.connect(func(_pos:Vector2, _text:String):
+    EventBus.show_damage_number.connect(func(_pos:Vector2, _text:String, _crit = false):
         var _damage_label:Label = Builder.build_a_damage_label()
         _damage_label.position = _pos
         _damage_label.text = _text
+        _damage_label.crit = _crit
         add_child(_damage_label)
         )
     EventBus.coins_changed.connect(func():

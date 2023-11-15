@@ -1,12 +1,14 @@
 class_name HurtBoxComponent
 extends Area2D
 
-signal hited(value:float)
+signal hited(value:float, crit:bool)
 
 @export var health_component:HealthComponent
 @export var is_player_hitbox:bool
 
 func _ready() -> void:
+    collision_layer = 0
+    
     if is_player_hitbox:
         set_collision_layer_value(6, true)
     else:
@@ -14,8 +16,9 @@ func _ready() -> void:
     
     collision_mask = 0
 
-func handle_hit(_value:float) -> void:
-    health_component.damage(_value)
+func handle_hit(_crit:bool, _value:float = 0.0) -> void:
+    #health_component.damage(_value)
     #EventBus.update_ui.emit()
-    hited.emit(_value)
+    hited.emit(_value, _crit)
+    print("[%s] 接收暴击 " % owner.name, _crit)
     SoundManager.play_sound(load(Master.HIT_SOUNDS), "GameBus")

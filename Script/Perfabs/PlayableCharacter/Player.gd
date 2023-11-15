@@ -169,7 +169,7 @@ func _ready() -> void:
         move_to_enemy()
         )
     
-    hurt_box_component.hited.connect(func(_v):
+    hurt_box_component.hited.connect(func(_v, _v1):
         $AnimationPlayer.play("oh_hit")
         EventBus.update_ui.emit()
         )

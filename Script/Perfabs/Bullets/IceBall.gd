@@ -6,7 +6,7 @@ var hited_function:Callable = func():pass
 
 func _ready() -> void:
     hit_box.disable_target = Master.player
-    hit_box.handled_hit.connect(func(_temp, _temp2):
+    hit_box.handled_hit.connect(func(_temp, _temp2, _temp3):
         hited_function.call()
         )
 

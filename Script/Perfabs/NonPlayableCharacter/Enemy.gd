@@ -28,16 +28,16 @@ enum STATE {
 
 var current_state:STATE = STATE.PATROL
 
-func show_damage_label(value:int) -> void:
-    EventBus.show_damage_number.emit(get_global_transform_with_canvas().get_origin(), str(value))
+func show_damage_label(value:int, crit:bool) -> void:
+    EventBus.show_damage_number.emit(get_global_transform_with_canvas().get_origin(), str(value), crit)
     if $AnimationPlayer:
         $AnimationPlayer.play("Hited")
 
 func _ready() -> void:
     set_skin()
     
-    hurt_box_component.hited.connect(func(value:int):
-        show_damage_label(value)
+    hurt_box_component.hited.connect(func(value:int, crit:bool):
+        show_damage_label(value, crit)
         )
     
     atk_range.target_enter_range.connect(func():
@@ -108,6 +108,7 @@ func set_skin() -> void:
     var new_node = load("res://Scene/Perfabs/NonPlayCharacter/%s.tscn" % skin_name).instantiate()
     $Display.add_child(new_node)
     character_animation = new_node.get_node("Skeleton").get_node("AnimationPlayer")
+    
 
 func turn_to_player() -> void:
     var _dir:Vector2 = to_local(Master.player.global_position).normalized()

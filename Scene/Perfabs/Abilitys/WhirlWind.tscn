@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bkikwo7ya1hpj"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/Abilitys/WhirlWind.gd" id="1_ndi8n"]
-[ext_resource type="Texture2D" uid="uid://dgum584vdy70s" path="res://Assets/Texture/Icons/Sword/Sword1.png" id="2_iltll"]
+[ext_resource type="Texture2D" uid="uid://dgn7wnyxb5yef" path="res://Assets/Texture/Icons/Sword/Sword1.png" id="2_iltll"]
 [ext_resource type="Script" path="res://Script/Component/SimpleHitBoxComponent.gd" id="3_y7q6d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2jfm7"]
@@ -61,8 +61,7 @@ shape = SubResource("RectangleShape2D_2jfm7")
 debug_color = Color(1, 0.6, 0.701961, 0.419608)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(56.7921, 34)
-rotation = 0.786486
+position = Vector2(63, 51)
 texture = ExtResource("2_iltll")
 offset = Vector2(-0.148247, -48.4998)
 
