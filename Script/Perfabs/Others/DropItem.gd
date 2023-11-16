@@ -11,15 +11,15 @@ func set_item(_item:InventoryItem) -> void:
     
     match _item.quality:
         Const.EQUIPMENT_QUALITY.NORMAL:
-            $ColorRect.color = Color.GRAY
+            $ColorRect.color = Const.COLORS.Normal
         Const.EQUIPMENT_QUALITY.BLUE:
-            $ColorRect.color = Color.BLUE
+            $ColorRect.color = Const.COLORS.Blue
         Const.EQUIPMENT_QUALITY.YELLOW:
-            $ColorRect.color = Color.YELLOW
+            $ColorRect.color = Const.COLORS.Yellow
         Const.EQUIPMENT_QUALITY.DEEP_YELLOW:
-            $ColorRect.color = Color.PURPLE
+            $ColorRect.color = Const.COLORS.DeepYellow
         Const.EQUIPMENT_QUALITY.GOLD:
-            $ColorRect.color = Color.GOLD
+            $ColorRect.color = Const.COLORS.Gold
     
     $ColorRect/Label.text = _item.name
     $ColorRect/Label.set("theme_override_colors/font_color", Color(1.0 - $ColorRect.color.r, 1.0 - $ColorRect.color.g, 1.0 - $ColorRect.color.b))

@@ -5,6 +5,8 @@ extends Panel
 @onready var pre_affixe_labels:VBoxContainer = %PreAffixeLabels
 @onready var buf_affixe_labels:VBoxContainer = %BufAffixeLabels
 
+@onready var item_color:ColorRect = %ItemColor
+
 @onready var price_label:Label = %PriceLabel
 @onready var title_label:Label = %TitleLabel
 @onready var rate_label:Label = %RateLabel
@@ -85,3 +87,18 @@ func update_ui() -> void:
         var _affix_label:HBoxContainer = Builder.build_a_affix_label()
         _affix_label.set_text(_affix.desc)
         buf_affixe_labels.add_child(_affix_label)
+
+    if item:
+        match item.quality:
+            Const.EQUIPMENT_QUALITY.NORMAL:
+                item_color.color = Const.COLORS.Normal
+            Const.EQUIPMENT_QUALITY.BLUE:
+                item_color.color = Const.COLORS.Blue
+            Const.EQUIPMENT_QUALITY.YELLOW:
+                item_color.color = Const.COLORS.Yellow
+            Const.EQUIPMENT_QUALITY.DEEP_YELLOW:
+                item_color.color = Const.COLORS.DeepYellow
+            Const.EQUIPMENT_QUALITY.GOLD:
+                item_color.color = Const.COLORS.Gold
+    else:
+        item_color.color = Const.COLORS.Normal

@@ -1,5 +1,13 @@
 class_name Const extends Node
 
+const COLORS:Dictionary = {
+    "Normal": Color("757575"),
+    "Blue": Color("7896BA"),
+    "Yellow": Color("366F42"),
+    "DeepYellow": Color("543460"),
+    "Gold": Color("C3A438"),
+}
+
 enum EQUIPMENT_TYPE {
     头盔,
     胸甲,
