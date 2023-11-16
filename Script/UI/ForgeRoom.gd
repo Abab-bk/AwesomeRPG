@@ -8,6 +8,7 @@ signal item_changed
 @onready var forge_btn:Button = %ForgeBtn
 
 @onready var item_name_label:Label = %ItemNameLabel
+@onready var rate_label:Label = %RateLabel
 
 @onready var pre_affixs:VBoxContainer = %PreAffixs
 @onready var buf_affixs:VBoxContainer = %BufAffixs
@@ -116,6 +117,8 @@ func update_ui() -> void:
         var _new_node = load(FORGE_AFFIX_PATH).instantiate()
         _new_node.current_affix = affix
         buf_affixs.add_child(_new_node)
+    
+    rate_label.text = Master.get_rate_text_from_item(current_item)
 
 func forge() -> void:
     if Master.moneys.white < cost.white:

@@ -235,6 +235,48 @@ func get_random_affix() -> AffixItem:
     
     return _affix
 
+
+func get_rate_text_from_item(_item:InventoryItem) -> String:
+        if not _item:
+            return ""
+        
+        var _result = ""
+        
+        match _item.quality:
+            Const.EQUIPMENT_QUALITY.NORMAL:
+                _result += "普通"
+            Const.EQUIPMENT_QUALITY.BLUE:
+                _result += "稀有"
+            Const.EQUIPMENT_QUALITY.YELLOW:
+                _result += "魔法"
+            Const.EQUIPMENT_QUALITY.DEEP_YELLOW:
+                _result += "传奇"
+            Const.EQUIPMENT_QUALITY.GOLD:
+                _result += "暗金"
+        
+        if _item.type == Const.EQUIPMENT_TYPE.武器:
+            match _item.weapon_type:
+                Const.WEAPONS_TYPE.Sword:
+                    _result += "剑"
+                Const.WEAPONS_TYPE.Axe:
+                    _result += "斧"
+                Const.WEAPONS_TYPE.Hammer:
+                    _result += "锤"
+                Const.WEAPONS_TYPE.Shield:
+                    _result += "盾"
+        elif _item.type == Const.EQUIPMENT_TYPE.远程武器:
+            match _item.ranged_weapon_type:
+                Const.RANGED_WEAPONS_TYPE.Bow:
+                    _result += "弓"
+                Const.RANGED_WEAPONS_TYPE.Spear:
+                    _result += "法杖"
+                Const.RANGED_WEAPONS_TYPE.Staff:
+                    _result += "短杖"
+        else:
+            _result += str(Const.EQUIPMENT_TYPE.keys()[_item.type])
+        
+        return _result
+
 func loader(file_name:String):
     var json_file = FileAccess.open(self.json_path + file_name + ".json", FileAccess.READ)
     var json_text = json_file.get_as_text()

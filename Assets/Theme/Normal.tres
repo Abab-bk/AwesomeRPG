@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=30 format=3 uid="uid://dw7ft4xik3rji"]
+[gd_resource type="Theme" load_steps=31 format=3 uid="uid://dw7ft4xik3rji"]
 
 [ext_resource type="FontFile" uid="uid://cpqr3r4f0yisb" path="res://Assets/Font/SourceHanSansCN-Normal.otf" id="1_0mun2"]
 [ext_resource type="Texture2D" uid="uid://b6t473s2l5r7v" path="res://Assets/UI/Texture/ItemBgBlue.png" id="2_0txvg"]
@@ -68,6 +68,14 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(1, 1, 1, 0.360784)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqmdo"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.823529, 0.737255, 0.607843, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_27coi"]
 bg_color = Color(0.145098, 0.141176, 0.168627, 1)
 border_width_left = 4
@@ -100,6 +108,11 @@ texture_margin_bottom = 20.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_he87w"]
 bg_color = Color(0.145098, 0.141176, 0.168627, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.823529, 0.737255, 0.607843, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_418dk"]
 bg_color = Color(0.160784, 0.160784, 0.160784, 1)
@@ -159,6 +172,8 @@ ItemPanel/base_type = &"Panel"
 ItemPanel/styles/panel = SubResource("StyleBoxFlat_45xaf")
 Label/colors/font_color = Color(0.741176, 0.741176, 0.741176, 1)
 Label/font_sizes/font_size = 16
+Outline/base_type = &"Panel"
+Outline/styles/panel = SubResource("StyleBoxFlat_tqmdo")
 Panel/styles/panel = SubResource("StyleBoxFlat_27coi")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_epe6b")
 ProgressBar/styles/background = SubResource("StyleBoxTexture_mjj50")
