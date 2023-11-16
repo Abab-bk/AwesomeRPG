@@ -4,31 +4,49 @@
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_u4u7s"]
 [ext_resource type="Script" path="res://Script/UI/ForgeAffix.gd" id="2_kqn6c"]
 
-[node name="ForgeAffix" type="Panel"]
+[node name="ForgeAffix" type="HBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 theme = ExtResource("1_u4u7s")
+theme_override_constants/separation = 10
 script = ExtResource("2_kqn6c")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_type_variation = &"SmallClub"
+
+[node name="LockBtn" type="Button" parent="Panel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="LockBtn" type="Button" parent="HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
 text = "锁定"
 
-[node name="DescLabel" type="Label" parent="HBoxContainer"]
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SmallClub"
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+
+[node name="DescLabel" type="Label" parent="Panel2/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "词啊啊"
 label_settings = ExtResource("1_pffis")
+vertical_alignment = 1

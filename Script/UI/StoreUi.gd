@@ -1,14 +1,14 @@
 extends Control
 
 @onready var stores:Control = %Stores
-@onready var cancel_btn:Button = %CancelBtn
+@onready var title_bar:MarginContainer = $Panel/MarginContainer/VBoxContainer/TitleBar
+
+var cancel_event:Callable = func():
+    SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
+    owner.change_page(owner.PAGE.HOME)
 
 func _ready() -> void:
-    cancel_btn.pressed.connect(func():
-        hide()
-        owner.change_page(0)
-        SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
-        )
+    title_bar.cancel_callable = cancel_event
     
     visibility_changed.connect(func():
         if visible:

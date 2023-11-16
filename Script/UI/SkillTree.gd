@@ -5,16 +5,21 @@ extends Control
 @onready var skills_ui:WorldmapView
 @onready var root_item:WorldmapGraph
 
-@onready var cancel_btn:Button = %CancelBtn
 @onready var skill_tree_tooltip:Panel = %SkillTreeTooltip
 
 @onready var talent_point_label:Label = %TalentPointLabel
+
+@onready var title_bar:MarginContainer = $Panel/MarginContainer/VBoxContainer/TitleBar
 
 var node_pos:Vector2 = Vector2(509, 953)
 var last_parent_id:int = 0
 
 var added_sub_nodes:Array[int] = []
 var added_node_pos:Array[Vector2] = []
+
+var cancel_event:Callable = func():
+    SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
+    owner.change_page(owner.PAGE.HOME)
 
 
 func update_ui() -> void:
@@ -49,10 +54,8 @@ func add_a_sub_skill_node(_parent_id:int, _id:int, _node_pos:Vector2) -> void:
 
 
 func _ready() -> void:
-    cancel_btn.pressed.connect(func():
-        SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
-        owner.change_page(owner.PAGE.HOME))
     $Panel/Button.pressed.connect(gen_trees_by_walker.bind(step_count))
+    title_bar.cancel_callable = cancel_event
     
     skills_ui = %TalentTree.worldmap_view
     root_item = %TalentTree.root_item

@@ -263,10 +263,3 @@ value_index = "fire_resistance"
 layout_mode = 2
 title = "物理伤害"
 value_index = "toxic_resistance"
-
-[node name="CancelBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "返回"

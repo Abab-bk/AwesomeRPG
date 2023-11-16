@@ -4,12 +4,17 @@ extends Control
 @onready var slots_ui_1:VBoxContainer = %SlotsUI1
 @onready var slots_ui_2:VBoxContainer = %SlotsUI2
 
-@onready var cancel_btn:Button = %CancelBtn
+@onready var title_bar:MarginContainer = $Panel/MarginContainer/VBoxContainer/TitleBar
+
 @onready var recycle_btn:Button = %RecycleBtn
 
 @export var inventory:Inventory
 
 var slots:Array[Panel]
+
+var cancel_event:Callable = func():
+    SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
+    owner.change_page(owner.PAGE.HOME)
 
 func _ready() -> void:
     for i in slots_ui_1.get_children():
@@ -49,6 +54,8 @@ func _ready() -> void:
             update_ui()
             )
     
+    title_bar.cancel_callable = cancel_event
+    
     visibility_changed.connect(func():
         if visible:
             update_ui()
@@ -58,11 +65,6 @@ func _ready() -> void:
         var _panel:ColorRect = Builder.build_a_recycle_panel()
         _panel.inventory = inventory
         add_child(_panel)
-        )
-    
-    cancel_btn.pressed.connect(func():
-        SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
-        owner.change_page(owner.PAGE.HOME)
         )
     
     Master.player_inventory = inventory

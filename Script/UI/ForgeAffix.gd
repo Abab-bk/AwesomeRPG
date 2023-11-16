@@ -1,4 +1,4 @@
-extends Panel
+extends HBoxContainer
 
 @onready var lock_btn:Button = %LockBtn
 @onready var desc_label:Label = %DescLabel

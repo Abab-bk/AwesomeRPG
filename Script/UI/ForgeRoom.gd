@@ -4,7 +4,6 @@ signal item_changed
 
 @onready var item_icon:TextureRect = %ItemIcon
 
-@onready var cancel_btn:Button = %CancelBtn
 @onready var select_item_btn:Button = %SelectItemBtn
 @onready var forge_btn:Button = %ForgeBtn
 
@@ -18,6 +17,7 @@ signal item_changed
 
 @onready var tooltips:MarginContainer = %Tooltips
 @onready var select_item_panel:MarginContainer = $SelectItem
+@onready var title_bar:MarginContainer = $Content/Panel/VBoxContainer/TitleBar
 
 @onready var cost_1:VBoxContainer = %Cost1
 @onready var cost_2:VBoxContainer = %Cost2
@@ -43,6 +43,10 @@ var current_item:InventoryItem:
             return
         update_cost()
         update_ui()
+
+var cancel_event:Callable = func():
+    SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
+    owner.change_page(owner.PAGE.HOME)
 
 func update_cost() -> void:    
     cost.white = 0
@@ -176,13 +180,12 @@ func accept_forged() -> void:
 
 
 func _ready() -> void:
-    cancel_btn.pressed.connect(func():
-        hide()
-        )
     select_item_btn.pressed.connect(func():
         select_item_panel.show()
         )
     forge_btn.pressed.connect(forge)
+    
+    title_bar.cancel_callable = cancel_event
     
     select_item_panel.hide()
     tooltips.hide()

@@ -1,9 +1,11 @@
 extends Control
 
-@onready var cancel_btn:Button = %CancelBtn
+@onready var title_bar:MarginContainer = $Panel/MarginContainer/VBoxContainer/TitleBar
+
+var cancel_event:Callable = func():
+    SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
+    owner.change_page(owner.PAGE.HOME)
+
 
 func _ready() -> void:
-    cancel_btn.pressed.connect(func():
-        SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
-        owner.change_page(owner.PAGE.HOME)
-        )
+    title_bar.cancel_callable = cancel_event

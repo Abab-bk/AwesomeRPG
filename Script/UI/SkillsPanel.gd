@@ -1,7 +1,8 @@
 extends Control
 
-@onready var cancel_btn:Button = %CancelBtn
 @onready var skills_page:TabContainer = %SkillsPage
+
+@onready var title_bar:MarginContainer = $Panel/MarginContainer/VBoxContainer/TitleBar
 
 @onready var change_skills:Array = [%ChangeSkill1,
 %ChangeSkill2,
@@ -11,12 +12,12 @@ extends Control
 %ChangeSkill6,
 %ChangeSkill7]
 
+var cancel_event:Callable = func():
+    SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
+    owner.change_page(owner.PAGE.HOME)
+
 func _ready() -> void:
-    cancel_btn.pressed.connect(func():
-        owner.change_page(owner.PAGE.HOME)
-        SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
-        
-        )
+    title_bar.cancel_callable = cancel_event
     
     for i in 7:
         var _new_config_panel:VBoxContainer = load("res://Scene/UI/ConfigSkillInfo.tscn").instantiate()
