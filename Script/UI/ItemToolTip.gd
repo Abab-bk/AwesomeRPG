@@ -5,8 +5,6 @@ extends Panel
 @onready var pre_affixe_labels:VBoxContainer = %PreAffixeLabels
 @onready var buf_affixe_labels:VBoxContainer = %BufAffixeLabels
 
-@onready var color:NinePatchRect = %Color
-
 @onready var price_label:Label = %PriceLabel
 @onready var title_label:Label = %TitleLabel
 @onready var rate_label:Label = %RateLabel
@@ -39,22 +37,22 @@ func _ready() -> void:
         
         rate_label.text = ""
         
-        match _item.quality:
-            Const.EQUIPMENT_QUALITY.NORMAL:
-                color.texture = load("res://Assets/UI/Texture/Color4.png")
-                rate_label.text += "普通"
-            Const.EQUIPMENT_QUALITY.BLUE:
-                rate_label.text += "稀有"
-                color.texture = load("res://Assets/UI/Texture/Color2.png")
-            Const.EQUIPMENT_QUALITY.YELLOW:
-                rate_label.text += "魔法"
-                color.texture = load("res://Assets/UI/Texture/Color3.png")
-            Const.EQUIPMENT_QUALITY.DEEP_YELLOW:
-                rate_label.text += "传奇"
-                color.texture = load("res://Assets/UI/Texture/Color1.png")
-            Const.EQUIPMENT_QUALITY.GOLD:
-                rate_label.text += "暗金"
-                color.texture = load("res://Assets/UI/Texture/Color1.png")
+        #match _item.quality:
+            #Const.EQUIPMENT_QUALITY.NORMAL:
+                #color.texture = load("res://Assets/UI/Texture/Color4.png")
+                #rate_label.text += "普通"
+            #Const.EQUIPMENT_QUALITY.BLUE:
+                #rate_label.text += "稀有"
+                #color.texture = load("res://Assets/UI/Texture/Color2.png")
+            #Const.EQUIPMENT_QUALITY.YELLOW:
+                #rate_label.text += "魔法"
+                #color.texture = load("res://Assets/UI/Texture/Color3.png")
+            #Const.EQUIPMENT_QUALITY.DEEP_YELLOW:
+                #rate_label.text += "传奇"
+                #color.texture = load("res://Assets/UI/Texture/Color1.png")
+            #Const.EQUIPMENT_QUALITY.GOLD:
+                #rate_label.text += "暗金"
+                #color.texture = load("res://Assets/UI/Texture/Color1.png")
         
         if _item.type == Const.EQUIPMENT_TYPE.武器:
             match _item.weapon_type:

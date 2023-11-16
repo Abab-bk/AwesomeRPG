@@ -24,6 +24,7 @@ func clean() -> void:
     update_ui()
 
 func update_ui() -> void:
+    # HACK: 待优化背包刷新物品逻辑
     if not item:
         background.texture = load("res://Assets/UI/Texture/ItemBgGray.png")
         texture.texture = null
@@ -41,8 +42,6 @@ func update_ui() -> void:
             background.texture = load("res://Assets/UI/Texture/ItemBgPurple.png")
         Const.EQUIPMENT_QUALITY.GOLD:
             background.texture = load("res://Assets/UI/Texture/ItemBgGold.png")
-    
-    print("更新背包 UI  ", item.quality)
     
     texture.texture = load(item.texture_path)
     name_label.text = item.name

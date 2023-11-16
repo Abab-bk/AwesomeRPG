@@ -2,19 +2,49 @@
 
 [ext_resource type="Script" path="res://Script/UI/TitleBar.gd" id="1_5unbu"]
 [ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="1_d634p"]
-[ext_resource type="Texture2D" uid="uid://dy5ltnpphyajt" path="res://Assets/UI/Texture/TitleLine.png" id="2_rb1ou"]
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_lo14e"]
 
-[node name="TitleBar" type="VBoxContainer"]
+[node name="TitleBar" type="MarginContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
 script = ExtResource("1_5unbu")
 
-[node name="TitleLabel" type="Label" parent="."]
+[node name="TitleBar" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme = ExtResource("1_lo14e")
+theme_type_variation = &"TitleBar"
+
+[node name="MarginContainer" type="MarginContainer" parent="TitleBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TitleBar/MarginContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="TitleBar/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 text = "人物信息"
 label_settings = ExtResource("1_d634p")
-horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="TitleBar/MarginContainer/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("2_rb1ou")
-stretch_mode = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Button" type="Button" parent="TitleBar/MarginContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_type_variation = &"CancelBtn"
+text = "X"

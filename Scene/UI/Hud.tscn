@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=38 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dy1r4oa118a6o" path="res://Assets/UI/Bars/HPBarBg.png" id="3_0kf2m"]
 [ext_resource type="PackedScene" uid="uid://b33g1ypyny6i5" path="res://Scene/UI/CharacterPanel.tscn" id="3_aoxj4"]
 [ext_resource type="Texture2D" uid="uid://clbtnmxw8yitp" path="res://Assets/UI/Texture/Button/CharacterBtn.png" id="4_poiej"]
-[ext_resource type="Texture2D" uid="uid://c5trom4ylic3b" path="res://Assets/UI/Texture/ClubButtonNormal.png" id="4_tso8t"]
 [ext_resource type="Texture2D" uid="uid://n8hx8sfbjlhf" path="res://Assets/UI/Texture/Button/DungeonBtn.png" id="5_lcouc"]
 [ext_resource type="Texture2D" uid="uid://b4oa66h6lluio" path="res://Assets/UI/Bars/MPBarBg.png" id="5_lfckr"]
 [ext_resource type="Texture2D" uid="uid://o87r223ypa12" path="res://Assets/UI/Bars/HpBar.png" id="5_nrxv6"]
@@ -81,7 +80,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 280)
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Control/VBoxContainer/Control"]
+[node name="Panel" type="Panel" parent="Control/VBoxContainer/Control"]
 custom_minimum_size = Vector2(0, 130)
 layout_mode = 1
 anchors_preset = 12
@@ -91,13 +90,9 @@ anchor_bottom = 1.0
 offset_top = -177.0
 grow_horizontal = 2
 grow_vertical = 0
-texture = ExtResource("4_tso8t")
-patch_margin_left = 40
-patch_margin_top = 40
-patch_margin_right = 40
-patch_margin_bottom = 40
+theme_type_variation = &"BlackPanel"
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/Control/NinePatchRect"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/Control/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -107,14 +102,14 @@ grow_vertical = 2
 theme_override_constants/margin_left = 200
 theme_override_constants/margin_right = 200
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/Control/Panel/MarginContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="DungeonBtn" type="TextureButton" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="DungeonBtn" type="TextureButton" parent="Control/VBoxContainer/Control/Panel/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -123,7 +118,7 @@ texture_normal = ExtResource("5_lcouc")
 texture_pressed = ExtResource("6_8gagx")
 stretch_mode = 5
 
-[node name="InventoryBtn" type="TextureButton" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="InventoryBtn" type="TextureButton" parent="Control/VBoxContainer/Control/Panel/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -132,7 +127,7 @@ texture_normal = ExtResource("7_e3mha")
 texture_pressed = ExtResource("8_kywne")
 stretch_mode = 5
 
-[node name="StoreBtn" type="TextureButton" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="StoreBtn" type="TextureButton" parent="Control/VBoxContainer/Control/Panel/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -141,7 +136,7 @@ texture_normal = ExtResource("9_isgj1")
 texture_pressed = ExtResource("10_6lp67")
 stretch_mode = 5
 
-[node name="SillsPanelBtn" type="TextureButton" parent="Control/VBoxContainer/Control/NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="SillsPanelBtn" type="TextureButton" parent="Control/VBoxContainer/Control/Panel/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -268,32 +263,49 @@ horizontal_alignment = 1
 [node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/margin_bottom = 115
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_bottom = 135
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/HBoxContainer"]
+[node name="Panel" type="Panel" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_type_variation = &"ItemPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/HBoxContainer/Panel/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/HBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 texture = ExtResource("14_fnq4k")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="CoinsLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/HBoxContainer/HBoxContainer"]
+[node name="CoinsLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/HBoxContainer/Panel/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0"
 label_settings = SubResource("LabelSettings_dq58o")
+horizontal_alignment = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/Panel/HBoxContainer"]
 layout_mode = 2
@@ -403,10 +415,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
 
 [node name="Inventory" parent="Pages" instance=ExtResource("2_cil1e")]
 process_mode = 3

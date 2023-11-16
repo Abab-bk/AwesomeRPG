@@ -5,6 +5,6 @@
 [resource]
 font = ExtResource("1_v8sno")
 font_size = 24
-font_color = Color(0.843137, 0.843137, 0.843137, 1)
+font_color = Color(0.85098, 0.85098, 0.85098, 1)
 outline_size = 1
 outline_color = Color(0, 0, 0, 1)

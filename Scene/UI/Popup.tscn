@@ -1,11 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://omjtfduo1ant"]
+[gd_scene load_steps=4 format=3 uid="uid://omjtfduo1ant"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_u50pa"]
-[ext_resource type="Texture2D" uid="uid://b48ep8bouw3hg" path="res://Assets/UI/Texture/Panel.png" id="2_bghac"]
 [ext_resource type="Script" path="res://Script/UI/Popup.gd" id="3_xbvla"]
 [ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="6_alnu5"]
 
-[node name="Popup" type="NinePatchRect"]
+[node name="Popup" type="Panel"]
 custom_minimum_size = Vector2(834, 418)
 anchors_preset = 8
 anchor_left = 0.5
@@ -19,11 +18,6 @@ offset_bottom = 264.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_u50pa")
-texture = ExtResource("2_bghac")
-patch_margin_left = 85
-patch_margin_top = 85
-patch_margin_right = 85
-patch_margin_bottom = 85
 script = ExtResource("3_xbvla")
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
@@ -52,7 +46,7 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/default_color = Color(0.85098, 0.835294, 0.788235, 1)
+theme_override_colors/default_color = Color(0.705882, 0.607843, 0.4, 1)
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[center]你的账号已经被封禁，请不要尝试解封。[/center]"

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsr1p5lgdflk6"]
+[gd_scene load_steps=8 format=3 uid="uid://dsr1p5lgdflk6"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_dn14h"]
 [ext_resource type="Script" path="res://Script/UI/SkillTree.gd" id="2_gk725"]
 [ext_resource type="PackedScene" uid="uid://i21m8ej8ttu2" path="res://Scene/UI/TalentTree.tscn" id="4_ym8hi"]
+[ext_resource type="PackedScene" uid="uid://e6c3mvni3t74" path="res://Scene/UI/OverLayer.tscn" id="7_g3byv"]
 [ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="10_tectx"]
 [ext_resource type="PackedScene" uid="uid://4y6x4r0kc53l" path="res://Scene/UI/SkillTreeTooltip.tscn" id="11_73tv5"]
 [ext_resource type="LabelSettings" uid="uid://bhyi4hqpwnqxh" path="res://Assets/LabelSetting/UITitleGold.tres" id="11_bnpdi"]
@@ -87,3 +88,6 @@ position = Vector2(528, 2099)
 [node name="SkillTreeTooltip" parent="." instance=ExtResource("11_73tv5")]
 unique_name_in_owner = true
 layout_mode = 0
+
+[node name="OverLayer" parent="." instance=ExtResource("7_g3byv")]
+layout_mode = 1

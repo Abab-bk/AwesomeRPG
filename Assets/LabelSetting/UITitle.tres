@@ -4,6 +4,7 @@
 
 [resource]
 font = ExtResource("1_enakh")
-font_size = 35
-font_color = Color(1, 0.886275, 0.698039, 1)
-shadow_size = 0
+font_size = 50
+font_color = Color(0.992157, 0.945098, 0.827451, 1)
+shadow_color = Color(0, 0, 0, 0.25098)
+shadow_offset = Vector2(0, 2)

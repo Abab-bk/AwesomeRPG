@@ -32,13 +32,6 @@ func _ready() -> void:
     if is_player_hitbox:
         set_collision_layer_value(7, true)
         set_collision_mask_value(4, true)
-        
-        #handled_hit.connect(func(value:float, enemy:Enemy, crit:bool):
-            ## FIXME
-            #print("[%s] 真实接收暴击 " % enemy.name, crit)
-            #if enemy is Enemy:
-                #enemy.show_damage_label(int(value), crit)
-            #)
     else:
         set_collision_layer_value(6, true)
         set_collision_mask_value(5, true)
@@ -59,8 +52,5 @@ func handle_damage(body:Node) -> void:
     
     if body is HurtBoxComponent:
         var _damage_data:Dictionary = SuperComputer.handle_damage_dic(damage_data, body.owner.output_data)
-        handled_hit.emit(_damage_data.damage, body.owner, _damage_data.crit) #_damage_data["crit"])
+        handled_hit.emit(_damage_data.damage, body.owner, _damage_data.crit)
         body.handle_hit(_damage_data.crit, _damage_data.damage)
-        print("[%s] 传入暴击 " % body.owner.name, _damage_data.crit)
-        #print("伤害传入 ", _damage_data.damage)
-        #print("目标传入 ", body.name)

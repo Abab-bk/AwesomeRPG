@@ -34,8 +34,8 @@ func build_a_select_sills_panel() -> Panel:
     var _n:Panel = load(select_skills_panel).instantiate()
     return _n
 
-func build_a_popup() -> NinePatchRect:
-    var _n:NinePatchRect = load(popup).instantiate()
+func build_a_popup() -> Panel:
+    var _n:Panel = load(popup).instantiate()
     return _n
 
 func build_a_damage_label() -> Label:

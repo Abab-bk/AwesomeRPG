@@ -1,14 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbp1iqow5k0b3"]
+[gd_scene load_steps=9 format=3 uid="uid://bbp1iqow5k0b3"]
 
 [ext_resource type="Script" path="res://Script/UI/ItemToolTip.gd" id="1_ohqf3"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_x37k0"]
-[ext_resource type="Texture2D" uid="uid://djrtllj8fg0x0" path="res://Assets/UI/Texture/Color1.png" id="3_yy13s"]
-[ext_resource type="Texture2D" uid="uid://cwlnbn2b7shv4" path="res://Assets/UI/Texture/Panel1.png" id="4_7bksl"]
 [ext_resource type="LabelSettings" uid="uid://drx7d3iagcvhu" path="res://Assets/LabelSetting/ItemTitle.tres" id="5_63f3j"]
 [ext_resource type="LabelSettings" uid="uid://b3iaonf7dvcft" path="res://Assets/LabelSetting/ItemSubTitle.tres" id="6_puf0u"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="7_jb6d8"]
 [ext_resource type="LabelSettings" uid="uid://mgahdqv1o26h" path="res://Assets/LabelSetting/BigGray.tres" id="8_d5gr0"]
 [ext_resource type="Texture2D" uid="uid://cq2kbhi5w81jf" path="res://Assets/Characters/PlayerAssets/Heads/Head1.png" id="9_ikghb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2mds4"]
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.823529, 0.737255, 0.607843, 1)
 
 [node name="ItemToolTip" type="Panel"]
 offset_right = 571.0
@@ -16,7 +22,7 @@ offset_bottom = 688.0
 theme = ExtResource("1_x37k0")
 script = ExtResource("1_ohqf3")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -24,129 +30,117 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Color" type="NinePatchRect" parent="MarginContainer"]
-unique_name_in_owner = true
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
-texture = ExtResource("3_yy13s")
-patch_margin_left = 40
-patch_margin_top = 40
-patch_margin_right = 40
-patch_margin_bottom = 40
+color = Color(0.219608, 0.207843, 0.176471, 1)
 
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/Color"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_7bksl")
-patch_margin_left = 40
-patch_margin_top = 40
-patch_margin_right = 40
-patch_margin_bottom = 40
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Color/NinePatchRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
-
-[node name="Content" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="Head" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ColorRect/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ColorRect/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 12
+theme_override_constants/separation = -10
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = -5
-
-[node name="TitleLabel" type="Label" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer2"]
+[node name="TitleLabel" type="Label" parent="VBoxContainer/ColorRect/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 2
 theme_override_font_sizes/font_size = 50
-text = "猛击 靴子 幸运"
+text = "辉煌旅途"
 label_settings = ExtResource("5_63f3j")
 vertical_alignment = 1
-autowrap_mode = 1
 clip_text = true
 
-[node name="RateLabel" type="Label" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer2"]
+[node name="RateLabel" type="Label" parent="VBoxContainer/ColorRect/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 2
 text = "远古传奇铁盒"
 label_settings = ExtResource("6_puf0u")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = -5
-
-[node name="MainBuffLabel" type="Label" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "+ 88 伤害"
-label_settings = ExtResource("7_jb6d8")
-
-[node name="PriceLabel" type="Label" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer/VBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "888 $"
-label_settings = ExtResource("8_d5gr0")
-
-[node name="Icon" type="TextureRect" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/Head/HBoxContainer"]
+[node name="Icon" type="TextureRect" parent="VBoxContainer/ColorRect/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("9_ikghb")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="Space2" type="Control" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content"]
-visible = false
-custom_minimum_size = Vector2(0, 20)
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 0
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="AffixeLabels" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer"]
+[node name="MainBuffLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "+ 88 伤害"
+label_settings = ExtResource("7_jb6d8")
+
+[node name="AffixeLabels" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="PreAffixeLabels" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/AffixeLabels"]
+[node name="PreAffixeLabels" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/AffixeLabels"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="BufAffixeLabels" type="VBoxContainer" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content/VBoxContainer/AffixeLabels"]
+[node name="BufAffixeLabels" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/AffixeLabels"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Space" type="Control" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="UseBtn" type="Button" parent="MarginContainer/Color/NinePatchRect/MarginContainer/Content"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 50)
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -5
+
+[node name="PriceLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "888 $"
+label_settings = ExtResource("8_d5gr0")
+
+[node name="UseBtn" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 30
 text = "装备"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2mds4")

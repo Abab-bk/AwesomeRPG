@@ -1,4 +1,4 @@
-extends VBoxContainer
+extends MarginContainer
 
 @export var title_text:String = "默认"
 

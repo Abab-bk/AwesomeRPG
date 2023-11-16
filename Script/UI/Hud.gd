@@ -258,7 +258,7 @@ func show_popup(_title:String, _desc:String, _show_cancel_btn:bool = false, _yes
  _cancel_event:Callable = func():) -> void:
     hide_color_rect()
     SoundManager.play_ui_sound(load(Master.POPUP_SOUNDS))
-    var _popup:NinePatchRect = Builder.build_a_popup()
+    var _popup:Panel = Builder.build_a_popup()
     
     _popup.closed.connect(func():hide_color_rect())
     
