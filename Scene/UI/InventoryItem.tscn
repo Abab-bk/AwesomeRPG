@@ -8,6 +8,7 @@
 custom_minimum_size = Vector2(160, 160)
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
 theme = ExtResource("1_eew5n")
 script = ExtResource("1_er7k6")
 
@@ -59,4 +60,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_type_variation = &"EmptyBtn"

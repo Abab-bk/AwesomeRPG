@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=37 format=3 uid="uid://dw7ft4xik3rji"]
+[gd_resource type="Theme" load_steps=43 format=3 uid="uid://dw7ft4xik3rji"]
 
 [ext_resource type="FontFile" uid="uid://cpqr3r4f0yisb" path="res://Assets/Font/SourceHanSansCN-Normal.otf" id="1_0mun2"]
 [ext_resource type="Texture2D" uid="uid://cxa6xde2sdlug" path="res://Assets/UI/Texture/Button/NormalButton.png" id="2_i82n3"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dxny6jldurgsg" path="res://Assets/UI/Texture/DeepRedClub.png" id="4_d64v8"]
 [ext_resource type="Texture2D" uid="uid://bv8271q5m47d6" path="res://Assets/UI/Texture/ItemBgNull.png" id="4_tk6di"]
 [ext_resource type="Texture2D" uid="uid://b0xjvmcqrjkan" path="res://Assets/UI/Bars/BqBar.png" id="5_b4kr4"]
+[ext_resource type="Texture2D" uid="uid://dl3tpdsr3t2ui" path="res://Assets/UI/Icons/MiniClub.png" id="5_bx06u"]
 [ext_resource type="Texture2D" uid="uid://c5trom4ylic3b" path="res://Assets/UI/Texture/ClubButtonNormal.png" id="5_c4i0h"]
 [ext_resource type="FontFile" uid="uid://c7bfs6orcmgh2" path="res://Assets/Font/SourceHanSansCN-Medium.otf" id="5_cj7mn"]
 [ext_resource type="Texture2D" uid="uid://m7sidseojnkd" path="res://Assets/UI/Bars/BarHealth.png" id="6_2l7w8"]
@@ -52,6 +53,19 @@ shadow_offset = Vector2(0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uodq1"]
 texture = ExtResource("4_tk6di")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ksgqb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qff6t"]
+bg_color = Color(0.992157, 0.945098, 0.827451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h5y0p"]
+bg_color = Color(0.984314, 0.901961, 0.694118, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p3cs1"]
+bg_color = Color(0.431373, 0.407843, 0.360784, 1)
+border_width_top = 10
+border_width_bottom = 10
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sk2gh"]
 texture = ExtResource("4_d64v8")
@@ -134,6 +148,8 @@ texture_margin_left = 14.0
 texture_margin_top = 14.0
 texture_margin_right = 14.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dgkay"]
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5qqtr"]
 texture = ExtResource("5_b4kr4")
 
@@ -168,6 +184,16 @@ EmptyBtn/styles/normal = SubResource("StyleBoxEmpty_r3f4v")
 EmptyBtn/styles/pressed = SubResource("StyleBoxEmpty_r3f4v")
 EmptySlotPanel/base_type = &"Panel"
 EmptySlotPanel/styles/panel = SubResource("StyleBoxTexture_uodq1")
+HScrollBar/styles/grabber = SubResource("StyleBoxEmpty_ksgqb")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_ksgqb")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_ksgqb")
+HScrollBar/styles/scroll = SubResource("StyleBoxEmpty_ksgqb")
+HScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_ksgqb")
+HSlider/icons/grabber = ExtResource("5_bx06u")
+HSlider/icons/grabber_highlight = ExtResource("5_bx06u")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_qff6t")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_h5y0p")
+HSlider/styles/slider = SubResource("StyleBoxFlat_p3cs1")
 HpBar/base_type = &"ProgressBar"
 HpBar/styles/background = SubResource("StyleBoxTexture_sk2gh")
 HpBar/styles/fill = SubResource("StyleBoxTexture_cwwfk")
@@ -191,6 +217,11 @@ SubPanel/styles/panel = SubResource("StyleBoxTexture_apg8w")
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_vj735")
 TitleBar/base_type = &"Panel"
 TitleBar/styles/panel = SubResource("StyleBoxTexture_uc1na")
+VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_dgkay")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_dgkay")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_dgkay")
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_dgkay")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_dgkay")
 XpBar/base_type = &"ProgressBar"
 XpBar/styles/background = SubResource("StyleBoxTexture_5qqtr")
 XpBar/styles/fill = SubResource("StyleBoxTexture_xhkco")

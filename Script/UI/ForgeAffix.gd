@@ -13,10 +13,8 @@ var locked:bool = false:
     set(v):
         locked = v
         if locked:
-            lock_btn.text = "解锁"
             icon.texture = load("res://Assets/UI/Icons/Lock.svg")
         else:
-            lock_btn.text = "锁定"
             icon.texture = load("res://Assets/UI/Icons/UnLock.svg")
 
 func _ready() -> void:

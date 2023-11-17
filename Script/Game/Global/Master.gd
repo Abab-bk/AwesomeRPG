@@ -316,6 +316,7 @@ func _ready():
     
     EventBus.completed_level.connect(func():
         current_level += 1
+        EventBus.update_ui.emit()
         )
     
     EventBus.player_level_up.connect(func():

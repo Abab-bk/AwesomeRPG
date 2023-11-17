@@ -152,6 +152,8 @@ func _ready() -> void:
 
         print("计算完成")
         
+        EventBus.update_ui.emit()
+        
         if not output_data.is_connected("hp_is_zero", die):
             print("连接信号")
             output_data.hp_is_zero.connect(die)
@@ -267,6 +269,8 @@ func _physics_process(_delta: float) -> void:
     if current_state == STATE.ATTACKING:
         if not closest_enemy:
             find_closest_enemy()
+        if global_position.distance_to(closest_enemy.global_position) >= 1000.0:
+            find_closest_enemy()
     move_and_slide()
 
 func get_ability_list() -> Array:
@@ -295,9 +299,11 @@ func up_level() -> void:
     output_data.now_xp = 0
     output_data.update_next_xp()
     EventBus.player_level_up.emit()
+    EventBus.update_ui.emit()
 
 func get_xp(_value:float) -> void:
     output_data.now_xp += _value
+    EventBus.update_ui.emit()
     
     if not output_data.now_xp >= output_data.next_level_xp:
         return

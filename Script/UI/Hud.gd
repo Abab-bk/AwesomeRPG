@@ -49,8 +49,6 @@ enum PAGE {
     FORGE,
 }
 
-var player_data:CharacterData
-
 func _ready() -> void:
     EventBus.update_ui.connect(update_ui)
     EventBus.show_popup.connect(show_popup)
@@ -76,9 +74,6 @@ func _ready() -> void:
     EventBus.new_tips.connect(new_tip)
     
     EventBus.player_level_up.connect(show_animation.bind("LevelUp"))
-    EventBus.player_data_change.connect(func():
-        player_data = Master.player.output_data
-        )
     
     backed_to_home.connect(func():quest_panel.show())
     changed_to_other.connect(func():quest_panel.hide())
@@ -98,8 +93,6 @@ func _ready() -> void:
         EventBus.unlocked_ability.emit(_ability.id)
         EventBus.show_popup.emit("解锁技能", "解锁技能：%s" % _ability.name)
         )
-    
-    player_data = Master.player.output_data
     
     build_ability_ui()
     
@@ -219,11 +212,11 @@ func build_ability_ui() -> void:
         _skill_btn.set_ability(_ability)
 
 func update_ui() -> void:
-    level_label.text = "Lv.%s" % str(player_data.level)
+    level_label.text = "Lv.%s" % str(Master.player_data.level)
     level_level_label.text = "第 %s 关" % str(Master.current_level)
-    mp_bar.value = (float(player_data.magic) / float(player_data.max_magic)) * 100.0
-    hp_bar.value = (float(player_data.hp) / float(player_data.max_hp)) * 100.0
-    xp_bar.value = (float(player_data.now_xp) / float(player_data.next_level_xp)) * 100.0
+    mp_bar.value = (float(Master.player_data.magic) / float(Master.player_data.max_magic)) * 100.0
+    hp_bar.value = (float(Master.player_data.hp) / float(Master.player_data.max_hp)) * 100.0
+    xp_bar.value = (float(Master.player_data.now_xp) / float(Master.player_data.next_level_xp)) * 100.0
     player_name_label.text = Master.player_name
 
 func new_drop_item(_item:InventoryItem, _pos:Vector2) -> void:

@@ -210,6 +210,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 40
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer"]
 layout_mode = 2
@@ -221,6 +222,7 @@ layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 50
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 160)
@@ -278,7 +280,6 @@ layout_mode = 2
 theme_override_constants/separation = -20
 
 [node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer/CoinsPanel"]
-z_index = 1
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("14_fnq4k")
@@ -337,14 +338,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 8
 show_percentage = false
 
-[node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 120
-
-[node name="SettingBtn" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2"]
+[node name="SettingBtn" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(60, 0)
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture_normal = ExtResource("23_echk2")
 texture_pressed = ExtResource("24_g3prg")
@@ -466,9 +462,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 50
+theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
+theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 50
 
 [node name="Inventory" parent="Pages" instance=ExtResource("2_cil1e")]
