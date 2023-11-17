@@ -76,6 +76,16 @@ var json_path:String = "res://DataBase/output/"
 const abilitys_start:int = 4001
 const abilitys_end:int = 4009
 
+func get_player_level_up_info() -> Dictionary:
+    var _result:Dictionary
+    
+    var _form_data:CharacterData = player_data.duplicate(true) as CharacterData
+    
+    _form_data.level -= 1
+    _result = _form_data.level_up()
+    
+    return _result
+
 func get_dungeon_by_id(_id:int) -> DungeonData:
     var _dungeon:DungeonData = DungeonData.new()
     

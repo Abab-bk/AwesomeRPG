@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://fx8hu1u3y603"]
+
+[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="1_16qrs"]
+[ext_resource type="Script" path="res://Script/UI/PropertyUpArrow.gd" id="1_fwlyg"]
+[ext_resource type="Texture2D" uid="uid://c8p0b2fluvtb1" path="res://Assets/UI/Icons/Arrow.svg" id="2_hfjwh"]
+[ext_resource type="FontFile" uid="uid://ri6183bsibm8" path="res://Assets/Font/SourceHanSansCN-Bold.otf" id="3_683va"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lf07q"]
+font = ExtResource("3_683va")
+font_size = 40
+font_color = Color(0.211765, 0.435294, 0.258824, 1)
+outline_size = 1
+outline_color = Color(0.0941176, 0.101961, 0.0705882, 1)
+
+[node name="PropertyUpArrow" type="HBoxContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 59.0
+grow_horizontal = 2
+alignment = 1
+script = ExtResource("1_fwlyg")
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "物理伤害"
+label_settings = ExtResource("1_16qrs")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="OriginLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "555"
+label_settings = ExtResource("1_16qrs")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("2_hfjwh")
+stretch_mode = 4
+
+[node name="NewLabel" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "888"
+label_settings = SubResource("LabelSettings_lf07q")

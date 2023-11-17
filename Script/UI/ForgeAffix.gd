@@ -3,6 +3,8 @@ extends HBoxContainer
 @onready var lock_btn:Button = %LockBtn
 @onready var desc_label:Label = %DescLabel
 
+@onready var icon:TextureRect = $Panel/LockBtn/MarginContainer/Icon
+
 # 拿到的 current_affix 是原来的实例，改变会反映
 var current_affix:AffixItem
 var forged_affix:AffixItem
@@ -12,8 +14,10 @@ var locked:bool = false:
         locked = v
         if locked:
             lock_btn.text = "解锁"
+            icon.texture = load("res://Assets/UI/Icons/Lock.svg")
         else:
             lock_btn.text = "锁定"
+            icon.texture = load("res://Assets/UI/Icons/UnLock.svg")
 
 func _ready() -> void:
     lock_btn.pressed.connect(func():

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=34 format=3 uid="uid://dw7ft4xik3rji"]
+[gd_resource type="Theme" load_steps=37 format=3 uid="uid://dw7ft4xik3rji"]
 
 [ext_resource type="FontFile" uid="uid://cpqr3r4f0yisb" path="res://Assets/Font/SourceHanSansCN-Normal.otf" id="1_0mun2"]
 [ext_resource type="Texture2D" uid="uid://cxa6xde2sdlug" path="res://Assets/UI/Texture/Button/NormalButton.png" id="2_i82n3"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://c5trom4ylic3b" path="res://Assets/UI/Texture/ClubButtonNormal.png" id="5_c4i0h"]
 [ext_resource type="FontFile" uid="uid://c7bfs6orcmgh2" path="res://Assets/Font/SourceHanSansCN-Medium.otf" id="5_cj7mn"]
 [ext_resource type="Texture2D" uid="uid://m7sidseojnkd" path="res://Assets/UI/Bars/BarHealth.png" id="6_2l7w8"]
+[ext_resource type="Texture2D" uid="uid://bnx1df88nefyb" path="res://Assets/UI/Texture/Outline.png" id="7_mt373"]
+[ext_resource type="Texture2D" uid="uid://pd45atcqjjfu" path="res://Assets/UI/Texture/TitleBar.png" id="8_ohu34"]
+[ext_resource type="Texture2D" uid="uid://b5hie2risgo6u" path="res://Assets/UI/Texture/SubPanel.png" id="9_7i562"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3dqn"]
 bg_color = Color(0, 0, 0, 0.501961)
@@ -72,13 +75,13 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(1, 1, 1, 0.360784)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f3snp"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0cbip"]
+texture = ExtResource("7_mt373")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
 draw_center = false
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.823529, 0.737255, 0.607843, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h0c20"]
 texture = ExtResource("5_c4i0h")
@@ -116,14 +119,20 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.831373, 0.737255, 0.592157, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rf8nk"]
-bg_color = Color(0.772549, 0.772549, 0.709804, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_apg8w"]
+texture = ExtResource("9_7i562")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vj735"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2oq02"]
-bg_color = Color(0.231373, 0.211765, 0.282353, 1)
-border_color = Color(0.470588, 0.470588, 0.439216, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uc1na"]
+texture = ExtResource("8_ohu34")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5qqtr"]
 texture = ExtResource("5_b4kr4")
@@ -167,7 +176,7 @@ ItemPanel/styles/panel = SubResource("StyleBoxFlat_45xaf")
 Label/colors/font_color = Color(0.741176, 0.741176, 0.741176, 1)
 Label/font_sizes/font_size = 16
 Outline/base_type = &"Panel"
-Outline/styles/panel = SubResource("StyleBoxFlat_f3snp")
+Outline/styles/panel = SubResource("StyleBoxTexture_0cbip")
 Panel/styles/panel = SubResource("StyleBoxTexture_h0c20")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_epe6b")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_p6x0t")
@@ -178,10 +187,10 @@ SharpPanel/styles/panel = SubResource("StyleBoxTexture_3ndgy")
 SmallClub/base_type = &"Panel"
 SmallClub/styles/panel = SubResource("StyleBoxFlat_418dk")
 SubPanel/base_type = &"Panel"
-SubPanel/styles/panel = SubResource("StyleBoxFlat_rf8nk")
+SubPanel/styles/panel = SubResource("StyleBoxTexture_apg8w")
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_vj735")
 TitleBar/base_type = &"Panel"
-TitleBar/styles/panel = SubResource("StyleBoxFlat_2oq02")
+TitleBar/styles/panel = SubResource("StyleBoxTexture_uc1na")
 XpBar/base_type = &"ProgressBar"
 XpBar/styles/background = SubResource("StyleBoxTexture_5qqtr")
 XpBar/styles/fill = SubResource("StyleBoxTexture_xhkco")

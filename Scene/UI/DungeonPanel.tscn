@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvl3x8ikri1a4"]
+[gd_scene load_steps=11 format=3 uid="uid://cvl3x8ikri1a4"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_m8ind"]
 [ext_resource type="Script" path="res://Script/UI/DungeonPanel.gd" id="2_yqkn2"]
 [ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="4_a0e4k"]
 [ext_resource type="Texture2D" uid="uid://dp0iy2awe2e3l" path="res://Icon.png" id="6_e8yfv"]
 [ext_resource type="Script" path="res://Script/UI/DungeonInfoPanel.gd" id="6_pebq8"]
+[ext_resource type="Texture2D" uid="uid://c4h84bsb46845" path="res://Assets/UI/Texture/Button/PreBtn.png" id="7_f1kvr"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="7_hjtc4"]
+[ext_resource type="Texture2D" uid="uid://dr5adtpgmnen3" path="res://Assets/UI/Texture/Button/PreBtnPre.png" id="8_gct7u"]
+[ext_resource type="Texture2D" uid="uid://dhl2pdm4lbdco" path="res://Assets/UI/Texture/Button/NextBtn.png" id="9_3il5w"]
+[ext_resource type="Texture2D" uid="uid://cxdx7eyqms8k0" path="res://Assets/UI/Texture/Button/NextBtnPre.png" id="10_iaewg"]
 
 [node name="DungeonPanel" type="Control"]
 layout_mode = 3
@@ -58,7 +62,7 @@ theme_override_constants/separation = 40
 
 [node name="DungeonInfoPanel" type="Panel" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 400)
+custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 theme_type_variation = &"SubPanel"
 script = ExtResource("6_pebq8")
@@ -79,11 +83,13 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = -50
+alignment = 2
 
 [node name="Icon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/VBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+size_flags_vertical = 3
 texture = ExtResource("6_e8yfv")
 expand_mode = 2
 stretch_mode = 6
@@ -91,56 +97,91 @@ stretch_mode = 6
 [node name="NameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Name"
+text = "金币城"
 label_settings = ExtResource("7_hjtc4")
 horizontal_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2"]
 layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
 
-[node name="UnNextLevelBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/HBoxContainer2"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="UnNextLevelBtn" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/MarginContainer/HBoxContainer2"]
 unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("7_f1kvr")
+texture_pressed = ExtResource("8_gct7u")
+
+[node name="Panel" type="Panel" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/MarginContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "上一级"
 
-[node name="CurrentLevelLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/HBoxContainer2"]
+[node name="CurrentLevelLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/MarginContainer/HBoxContainer2/Panel"]
 unique_name_in_owner = true
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 text = "Lv 1"
 label_settings = ExtResource("7_hjtc4")
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="NextLevelBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/HBoxContainer2"]
+[node name="NextLevelBtn" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/MarginContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-text = "下一级"
+texture_normal = ExtResource("9_3il5w")
+texture_pressed = ExtResource("10_iaewg")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2"]
+[node name="Desc" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 100
+alignment = 1
 
-[node name="CostLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/VBoxContainer"]
+[node name="CostLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/Desc"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "门票钱：200"
 label_settings = ExtResource("7_hjtc4")
 horizontal_alignment = 1
 
-[node name="RewardLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/VBoxContainer"]
+[node name="RewardLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/Desc"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "奖励：300 金币"
 label_settings = ExtResource("7_hjtc4")
 horizontal_alignment = 1
 
-[node name="EnterBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 20
+
+[node name="EnterBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 text = "进入"
+
+[node name="Panel" type="Panel" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_type_variation = &"Outline"
 
 [node name="Itmes" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

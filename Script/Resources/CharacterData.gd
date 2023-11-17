@@ -80,7 +80,7 @@ func set_property_from_level() -> void:
     wisdom += level
     agility += level
 
-func level_up() -> void:
+func level_up() -> Dictionary:
     level += 1
     
     max_hp += 6
@@ -90,6 +90,16 @@ func level_up() -> void:
     strength += 1
     wisdom += 1
     agility += 1
+
+    return {
+        "等级": [level - 1, level],
+        "最大血量": [max_hp - 6, max_hp],
+        "最大魔力": [max_magic - 3, max_magic],
+        "闪避": [evasion - 1, evasion],
+        "力量": [strength - 1, strength],
+        "智慧": [wisdom - 1, wisdom],
+        "敏捷": [agility - 1, agility],
+    }
 
 func update_next_xp() -> void:
     if level % 15 == 0:

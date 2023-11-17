@@ -77,6 +77,7 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "每损失 100 点生命，获得 10% 的攻速、速度、伤害加成。持续 3 秒。"
 label_settings = ExtResource("3_yy5bl")
+autowrap_mode = 3
 
 [node name="Panel2" type="NinePatchRect" parent="VBoxContainer"]
 layout_mode = 2
@@ -98,5 +99,6 @@ columns = 6
 
 [node name="BuyBtn" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 text = "购买"

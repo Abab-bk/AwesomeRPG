@@ -5,8 +5,8 @@ extends Panel
 @onready var cost_label:Label = %CostLabel
 @onready var reward_label:Label = %RewardLabel
 @onready var enter_btn:Button = %EnterBtn
-@onready var un_next_level_btn:Button = %UnNextLevelBtn
-@onready var next_level_btn:Button = %NextLevelBtn
+@onready var un_next_level_btn:TextureButton = %UnNextLevelBtn
+@onready var next_level_btn:TextureButton = %NextLevelBtn
 @onready var current_level_label:Label = %CurrentLevelLabel
 
 var current_dungeon:DungeonData:

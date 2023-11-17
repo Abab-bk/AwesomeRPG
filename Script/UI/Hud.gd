@@ -229,16 +229,15 @@ func update_ui() -> void:
 func new_drop_item(_item:InventoryItem, _pos:Vector2) -> void:
     var _new_sprite:Node2D = Builder.build_a_drop_item()
     _new_sprite.set_item(_item)
-    _new_sprite.position = _pos
-    
-    add_child(_new_sprite)
+    _new_sprite.global_position = _pos
     
     if _pos.x >= 1080:
         _pos.x = 600
     if _pos.y >= 1920:
         _pos.y = 800
     
-    EventBus.update_inventory.emit()
+    Master.world.add_child(_new_sprite)
+    #EventBus.update_inventory.emit()
 
 func show_color_rect() -> void:
     color_rect.show()

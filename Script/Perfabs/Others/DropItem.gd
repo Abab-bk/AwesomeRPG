@@ -25,11 +25,7 @@ func set_item(_item:InventoryItem) -> void:
     $ColorRect/Label.set("theme_override_colors/font_color", Color(1.0 - $ColorRect.color.r, 1.0 - $ColorRect.color.g, 1.0 - $ColorRect.color.b))
 
 func _ready() -> void:
-    $Button.pressed.connect(func():
-        Master.occupied_positions.erase(global_position)
-        EventBus.add_item.emit(item)
-        queue_free()
-        )
+    $Button.pressed.connect(get_item)
     Master.occupied_positions.append(global_position)
     
     $Sprite2D.scale.x = icon_max_size.x / $Sprite2D.texture.get_width()
@@ -39,5 +35,13 @@ func _ready() -> void:
     tween.tween_property(self, "global_position", global_position + Vector2(188, -94), 0.2)
     tween.tween_property(self, "global_position", global_position + Vector2(366, 0), 0.2)
     await tween.finished
-    #queue_free()
     
+    await get_tree().create_timer(1.0).timeout
+    get_item()
+    
+    queue_free()
+    
+func get_item() -> void:
+    Master.occupied_positions.erase(global_position)
+    EventBus.add_item.emit(item)
+    queue_free()

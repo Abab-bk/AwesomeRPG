@@ -74,7 +74,7 @@ func gen_trees_by_walker(_step:int) -> void:
     
     for i in _step:
         # 判断是否要转向
-        var _dir:int = [0, 1, 2, 3].pick_random()
+        var _dir:int = [0, 1, 2].pick_random()
         match _dir:
             # 向左转
             0:
@@ -97,6 +97,21 @@ func gen_trees_by_walker(_step:int) -> void:
         add_a_skill_node(last_parent_id, _id)
         added_node_pos.append(node_pos)
         last_parent_id = _id
+
+        ## 判断是否要添加子节点
+        #var _need_sub:bool = [true, false].pick_random()
+        #
+        #if not _need_sub:
+            #continue
+        #
+        ## 添加子节点数量
+        #var _sub_count:int = randi_range(1, 3)
+        ## 添加子节点
+        #for x in _sub_count:
+            #_id += 1
+            #add_a_skill_node(last_parent_id, _id)
+            #last_parent_id = _id
+            #added_node_pos.append(node_pos)
 
 
 func _on_node_gui_input(_event:InputEvent, _path:NodePath, _node_in_path:int, _resource:WorldmapNodeData) -> void:

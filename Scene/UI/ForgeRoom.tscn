@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://702o3tls624e"]
+[gd_scene load_steps=14 format=3 uid="uid://702o3tls624e"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_jgehe"]
 [ext_resource type="Texture2D" uid="uid://pd45atcqjjfu" path="res://Assets/UI/Texture/TitleBar.png" id="1_q044c"]
@@ -9,16 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://d01dfpcsejskg" path="res://Assets/Texture/Icons/Daggers/2.png" id="4_bsdkm"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="5_b0m8w"]
 [ext_resource type="PackedScene" uid="uid://by1vhdyin8n8" path="res://Scene/UI/ForgeAffix.tscn" id="7_j3gyy"]
-[ext_resource type="Shader" path="res://Assets/Shaders/Mask.gdshader" id="9_lfcvh"]
 [ext_resource type="Script" path="res://Script/UI/SelectItem.gd" id="9_stcic"]
 [ext_resource type="PackedScene" uid="uid://bbs8ucocbh5vk" path="res://Scene/UI/CostItem.tscn" id="9_x86y3"]
-[ext_resource type="Texture2D" uid="uid://c5trom4ylic3b" path="res://Assets/UI/Texture/ClubButtonNormal.png" id="10_50mdv"]
 [ext_resource type="PackedScene" uid="uid://bbp1iqow5k0b3" path="res://Scene/UI/ItemToolTip.tscn" id="10_jdoih"]
 [ext_resource type="Script" path="res://Scene/UI/ForgedTooltips.gd" id="10_nqlei"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5i1uc"]
-shader = ExtResource("9_lfcvh")
-shader_parameter/mask_texture = ExtResource("10_50mdv")
 
 [node name="ForgeRoom" type="Control"]
 layout_mode = 3
@@ -61,9 +55,9 @@ title_text = "打造装备"
 [node name="MarginContainer2" type="MarginContainer" parent="Content/Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_left = 30
+theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 80
-theme_override_constants/margin_right = 30
+theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2"]
@@ -179,7 +173,6 @@ theme_override_constants/margin_bottom = 80
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 20
-alignment = 1
 
 [node name="Cost1" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("9_x86y3")]
 unique_name_in_owner = true
@@ -201,17 +194,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "打造"
-
-[node name="Panel" type="Panel" parent="Content/Panel"]
-material = SubResource("ShaderMaterial_5i1uc")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme_type_variation = &"Outline"
 
 [node name="SelectItem" type="MarginContainer" parent="." node_paths=PackedStringArray("forge_room")]
 visible = false
