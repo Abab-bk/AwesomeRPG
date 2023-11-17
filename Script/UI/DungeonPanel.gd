@@ -1,11 +1,19 @@
 extends Control
 
-@onready var cancel_btn:Button = %CancelBtn
 @onready var itmes:VBoxContainer = %Itmes
+@onready var title_bar:MarginContainer = %TitleBar
+
+var close_event:Callable = func():
+        var tween:Tween = get_tree().create_tween()
+        tween.tween_property($Panel, "global_position", $Panel.global_position + Vector2(0, 1160), 0.2)
+        await tween.finished
+        hide()
 
 func _ready() -> void:
     hide()
-    cancel_btn.pressed.connect(close)
+    
+    title_bar.cancel_callable = close_event
+    
     for i in Master.dungeons.keys().size():
         var _node = load("res://Scene/UI/DungeonItemUi.tscn").instantiate()
         
@@ -14,15 +22,9 @@ func _ready() -> void:
         
         itmes.add_child(_node)
 
-func close() -> void:
-    var tween:Tween = get_tree().create_tween()
-    tween.tween_property($Panel, "global_position", $Panel.global_position + Vector2(0, 1160), 0.2)
-    await tween.finished
-    hide()
-
 func show_popup() -> void:
     if visible:
-        close()
+        close_event.call()
         return
     show()
     

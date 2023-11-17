@@ -43,7 +43,7 @@ var player_name:String = "花神"
 
 var coins:int = 1000:
     set(v):
-        coins = v
+        coins = max(v, 0)
         EventBus.coins_changed.emit()
 var moneys:Dictionary = {
     "white": 0,
@@ -80,7 +80,7 @@ func get_dungeon_by_id(_id:int) -> DungeonData:
     var _dungeon:DungeonData = DungeonData.new()
     
     _dungeon.id = dungeons[_id]["id"]
-    _dungeon.name = dungeons[_id]["name"] + " Lv. 1"
+    _dungeon.name = dungeons[_id]["name"]
     _dungeon.enemy_id = dungeons[_id]["enemy_id"]
     _dungeon.reward_type = dungeons[_id]["reward_type"]
     _dungeon.base_cost = dungeons[_id]["need_cost"]

@@ -40,19 +40,9 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="TitleBar" parent="Panel/MarginContainer/VBoxContainer" instance=ExtResource("4_a0e4k")]
-layout_mode = 2
-title_text = "地下城"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="CancelBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_type_variation = &"CancelBtn"
-theme_override_font_sizes/font_size = 50
-text = "返回"
+title_text = "地下城"
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -68,7 +58,7 @@ theme_override_constants/separation = 40
 
 [node name="DungeonInfoPanel" type="Panel" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 300)
+custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 theme_type_variation = &"SubPanel"
 script = ExtResource("6_pebq8")
@@ -81,68 +71,76 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content"]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = -50
 
-[node name="Icon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/HBoxContainer/HBoxContainer"]
+[node name="Icon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/VBoxContainer2"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 texture = ExtResource("6_e8yfv")
 expand_mode = 2
-stretch_mode = 5
+stretch_mode = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="NameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/HBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="NameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Name"
 label_settings = ExtResource("7_hjtc4")
+horizontal_alignment = 1
 
-[node name="CostLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/HBoxContainer/HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "门票钱：200"
-label_settings = ExtResource("7_hjtc4")
-
-[node name="RewardLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/HBoxContainer/HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "奖励：300 金币"
-label_settings = ExtResource("7_hjtc4")
-
-[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="EnterBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-text = "进入"
-
-[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2"]
 layout_mode = 2
 
-[node name="UnNextLevelBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/HBoxContainer2"]
+[node name="UnNextLevelBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "上一级"
 
-[node name="NextLevelBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/HBoxContainer2"]
+[node name="CurrentLevelLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lv 1"
+label_settings = ExtResource("7_hjtc4")
+horizontal_alignment = 1
+
+[node name="NextLevelBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "下一级"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CostLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "门票钱：200"
+label_settings = ExtResource("7_hjtc4")
+horizontal_alignment = 1
+
+[node name="RewardLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "奖励：300 金币"
+label_settings = ExtResource("7_hjtc4")
+horizontal_alignment = 1
+
+[node name="EnterBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "进入"
 
 [node name="Itmes" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true

@@ -12,6 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://m7sidseojnkd" path="res://Assets/UI/Bars/BarHealth.png" id="6_2l7w8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s3dqn"]
+bg_color = Color(0, 0, 0, 0.501961)
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.992157, 0.945098, 0.827451, 0.501961)
+expand_margin_left = 20.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_432pw"]
 
@@ -89,19 +95,11 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.831373, 0.737255, 0.592157, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mjj50"]
-texture = ExtResource("2_vhua5")
-texture_margin_left = 20.0
-texture_margin_top = 20.0
-texture_margin_right = 20.0
-texture_margin_bottom = 20.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p6x0t"]
+bg_color = Color(0.431373, 0.407843, 0.360784, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hhs6j"]
-texture = ExtResource("4_d64v8")
-texture_margin_left = 20.0
-texture_margin_top = 20.0
-texture_margin_right = 20.0
-texture_margin_bottom = 20.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpm12"]
+bg_color = Color(0.992157, 0.945098, 0.827451, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ndgy"]
 texture = ExtResource("5_c4i0h")
@@ -172,8 +170,8 @@ Outline/base_type = &"Panel"
 Outline/styles/panel = SubResource("StyleBoxFlat_f3snp")
 Panel/styles/panel = SubResource("StyleBoxTexture_h0c20")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_epe6b")
-ProgressBar/styles/background = SubResource("StyleBoxTexture_mjj50")
-ProgressBar/styles/fill = SubResource("StyleBoxTexture_hhs6j")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_p6x0t")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_bpm12")
 RichTextLabel/colors/default_color = Color(0.741176, 0.741176, 0.741176, 1)
 SharpPanel/base_type = &"Panel"
 SharpPanel/styles/panel = SubResource("StyleBoxTexture_3ndgy")

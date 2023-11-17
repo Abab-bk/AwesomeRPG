@@ -5,11 +5,13 @@ signal backed_to_home
 
 @onready var mp_bar:TextureProgressBar = %MpBar
 @onready var hp_bar:TextureProgressBar = %HpBar
-@onready var xp_bar:TextureProgressBar = %XpBar
+
+@onready var xp_bar:ProgressBar = %XpBar
 
 @onready var coins_label:Label = %CoinsLabel
 @onready var level_label:Label = %LevelLabel
 @onready var level_level_label:Label = %LevelLevelLabel
+@onready var player_name_label:Label = %PlayerNameLabel
 
 @onready var inventory_btn:TextureButton = %InventoryBtn
 @onready var character_btn:Button = %CharacterBtn
@@ -222,6 +224,7 @@ func update_ui() -> void:
     mp_bar.value = (float(player_data.magic) / float(player_data.max_magic)) * 100.0
     hp_bar.value = (float(player_data.hp) / float(player_data.max_hp)) * 100.0
     xp_bar.value = (float(player_data.now_xp) / float(player_data.next_level_xp)) * 100.0
+    player_name_label.text = Master.player_name
 
 func new_drop_item(_item:InventoryItem, _pos:Vector2) -> void:
     var _new_sprite:Node2D = Builder.build_a_drop_item()

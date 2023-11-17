@@ -62,6 +62,7 @@ func set_datas() -> void:
     
     for file_name in dir.get_files():
         if ".import" in file_name:
-            continue
-        datas.append([origin_signals, signals + "/" + file_name])
+            var x = file_name.replace(".import", "")
+            datas.append([origin_signals, signals + "/" + x])
+            print(x)
         

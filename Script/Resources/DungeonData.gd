@@ -28,7 +28,7 @@ func next_level() -> void:
     
     current_level += 1
     
-    name = Master.dungeons[id]["name"] + " Lv.%s" % str(current_level)
+    #name = Master.dungeons[id]["name"] + " Lv.%s" % str(current_level)
     
     need_cost = base_cost * current_level
     reward_value = base_reward * current_level
@@ -40,7 +40,7 @@ func previous_level() -> void:
     
     current_level -= 1
     
-    name = Master.dungeons[id]["name"] + " Lv.%s" % str(current_level)
+    #name = Master.dungeons[id]["name"] + " Lv.%s" % str(current_level)
     
     need_cost = base_cost * current_level
     reward_value = base_reward * current_level

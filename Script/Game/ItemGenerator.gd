@@ -132,11 +132,8 @@ func get_random_icon_path(_dir_path:String) -> String:
     
     for i in dir.get_files():
         if "import" in i:
-            continue
-        names.append(i)
+            var x = i.replace(".import", "")
+            names.append(x)
     
     var _file_name = names[randi_range(0, names.size() - 1)]
-    
-    #print(_file_name, "  ", names)
-    
     return _dir_path + "/" + _file_name

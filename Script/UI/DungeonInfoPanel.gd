@@ -7,6 +7,7 @@ extends Panel
 @onready var enter_btn:Button = %EnterBtn
 @onready var un_next_level_btn:Button = %UnNextLevelBtn
 @onready var next_level_btn:Button = %NextLevelBtn
+@onready var current_level_label:Label = %CurrentLevelLabel
 
 var current_dungeon:DungeonData:
     set(v):
@@ -30,6 +31,7 @@ func _ready() -> void:
     enter_btn.pressed.connect(func():
         if Master.coins < current_dungeon.need_cost:
                 EventBus.show_popup.emit("金币不足", "买不起门票啦")
+                return
         
         Master.coins -= current_dungeon.need_cost
         EventBus.enter_dungeon.emit(current_dungeon)
@@ -42,6 +44,8 @@ func update_ui() -> void:
     match current_dungeon.reward_type:
         "Coins":
             reward_label.text = "奖励： %s 金币" % str(current_dungeon.reward_value)
+    
+    current_level_label.text = "Lv. %s" % str(current_dungeon.current_level)
 
 func show_dungeon(_data:DungeonData) -> void:
     if current_dungeon == _data:
