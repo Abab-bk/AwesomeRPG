@@ -4,7 +4,7 @@ extends CharacterBody2D
 signal dead
 
 @onready var buff_manager:FlowerBuffManager = $FlowerBuffManager
-@onready var item_generator:ItemGenerator = $ItemGenerator
+@onready var item_generator:ItemGenerator = $ItemGenerator as ItemGenerator
 @onready var hp_bar:ProgressBar = %HpBar
 @onready var hurt_box_component:HurtBoxComponent = $HurtBoxComponent
 @onready var atk_range:AtkRangeComponent = $AtkRange
@@ -141,14 +141,15 @@ func die() -> void:
     
     Master.player.current_state = Master.player.STATE.IDLE
     # 获得经验
-    EventBus.enemy_die.emit(data.level * data.level * data.level * 3 * (1 + Master.fly_count * 0.1))
+    #EventBus.enemy_die.emit(data.level * data.level * data.level * 3 * (1 + Master.fly_count * 0.1))
+    EventBus.enemy_die.emit(((Master.player_data.level * 3) + 15) * (1 + Master.fly_count * 0.1))
     # TODO: 修改敌人掉落金币
     Master.coins += data.level * randi_range(0, 5)
     
     dead.emit()
     
     # 随机掉落装备
-    if randi_range(0, 100) >= 50:
+    if randf_range(0.0, 100.0) <= 16.0:
         var _drop_item:InventoryItem = item_generator.gen_a_item()
         EventBus.new_drop_item.emit(_drop_item, get_drop_item_position())
     queue_free()

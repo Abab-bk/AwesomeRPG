@@ -127,7 +127,6 @@ func activate(_actor:Node, _compute_data:FlowerData, _output_data:FlowerData) ->
     activated.emit()
 
 func take_effect() -> void:
-    print("buff开始计算：", Time.get_ticks_msec())
 #    print("buff生效，名称：", name)
     # 拿一个属性：
 #    var xxx = get_data_from_values("血量")

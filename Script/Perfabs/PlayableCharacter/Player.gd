@@ -155,7 +155,6 @@ func _ready() -> void:
         EventBus.update_ui.emit()
         
         if not output_data.is_connected("hp_is_zero", die):
-            print("连接信号")
             output_data.hp_is_zero.connect(die)
         )
     
@@ -371,3 +370,5 @@ func find_closest_enemy(_temp = 0) -> void:
     
     atk_range.target = closest_enemy
     vision.target = closest_enemy
+
+    current_state = STATE.IDLE

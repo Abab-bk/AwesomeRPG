@@ -93,6 +93,9 @@ func _ready() -> void:
         EventBus.unlocked_ability.emit(_ability.id)
         EventBus.show_popup.emit("解锁技能", "解锁技能：%s" % _ability.name)
         )
+    %GetFreeBtn.pressed.connect(func():
+        Master.player.global_position = Vector2(0, 0)
+        )
     
     build_ability_ui()
     
