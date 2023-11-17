@@ -112,12 +112,12 @@ func gen_a_item() -> InventoryItem:
     _new_item.name += "{buf}"
     
     if _new_item.pre_affixs.size() > 0:
-        _new_item.name = _new_item.name.format({"pre": str(_new_item.pre_affixs[0].name) + " "})
+        _new_item.name = _new_item.name.format({"pre": str(_new_item.pre_affixs[0].name)})
     else:
         _new_item.name = _new_item.name.format({"pre": ""})
     
     if _new_item.buf_affix.size() > 0:
-        _new_item.name = _new_item.name.format({"buf": " " + str(_new_item.buf_affix[0].name)}) 
+        _new_item.name = _new_item.name.format({"buf": str(_new_item.buf_affix[0].name)}) 
     else:
         _new_item.name = _new_item.name.format({"buf": ""}) 
     

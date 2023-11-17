@@ -1,7 +1,7 @@
 [
   {
     "id": 1001,
-    "name": "火焰",
+    "name": "杀手",
     "desc": "火焰伤害 + {s}。",
     "target_buff_id": 1001,
     "offset": [
@@ -11,7 +11,7 @@
   },
   {
     "id": 1002,
-    "name": "冰霜",
+    "name": "圣歌",
     "desc": "冰霜伤害 + {s}。",
     "target_buff_id": 1002,
     "offset": [
@@ -21,7 +21,7 @@
   },
   {
     "id": 1003,
-    "name": "闪电",
+    "name": "星星",
     "desc": "闪电伤害 + {s}。",
     "target_buff_id": 1003,
     "offset": [
@@ -31,7 +31,7 @@
   },
   {
     "id": 1004,
-    "name": "毒素",
+    "name": "歌声",
     "desc": "毒素伤害 + {s}。",
     "target_buff_id": 1004,
     "offset": [
@@ -41,7 +41,7 @@
   },
   {
     "id": 1005,
-    "name": "物理",
+    "name": "箴言",
     "desc": "物理伤害 + {s}。",
     "target_buff_id": 1005,
     "offset": [
@@ -51,7 +51,7 @@
   },
   {
     "id": 1006,
-    "name": "燃烧",
+    "name": "标记",
     "desc": "火焰抗性 + {s}。",
     "target_buff_id": 1006,
     "offset": [
@@ -61,7 +61,7 @@
   },
   {
     "id": 1007,
-    "name": "冰霜",
+    "name": "哭泣",
     "desc": "冰霜抗性 + {s}。",
     "target_buff_id": 1007,
     "offset": [
@@ -71,7 +71,7 @@
   },
   {
     "id": 1008,
-    "name": "雷电",
+    "name": "祸根",
     "desc": "闪电抗性 + {s}。",
     "target_buff_id": 1008,
     "offset": [
@@ -81,7 +81,7 @@
   },
   {
     "id": 1009,
-    "name": "剧毒",
+    "name": "壁垒",
     "desc": "毒素抗性 + {s}。",
     "target_buff_id": 1009,
     "offset": [
@@ -91,7 +91,7 @@
   },
   {
     "id": 1010,
-    "name": "坚固",
+    "name": "职责",
     "desc": "物理抗性 + {s}。",
     "target_buff_id": 1010,
     "offset": [
@@ -101,7 +101,7 @@
   },
   {
     "id": 1011,
-    "name": "烈焰",
+    "name": "真诚",
     "desc": "火焰 + {s}%。",
     "target_buff_id": 1011,
     "offset": [
@@ -111,7 +111,7 @@
   },
   {
     "id": 1012,
-    "name": "寒霜",
+    "name": "勇敢",
     "desc": "冰霜 + {s}%。",
     "target_buff_id": 1012,
     "offset": [
@@ -121,7 +121,7 @@
   },
   {
     "id": 1013,
-    "name": "惊雷",
+    "name": "孪生",
     "desc": "闪电 + {s}%。",
     "target_buff_id": 1013,
     "offset": [
@@ -131,7 +131,7 @@
   },
   {
     "id": 1014,
-    "name": "毒药",
+    "name": "皇冠",
     "desc": "毒素 + {s}%。",
     "target_buff_id": 1014,
     "offset": [
@@ -141,7 +141,7 @@
   },
   {
     "id": 1015,
-    "name": "顽石",
+    "name": "纹章",
     "desc": "物理 + {s}%。",
     "target_buff_id": 1015,
     "offset": [
@@ -151,7 +151,7 @@
   },
   {
     "id": 1016,
-    "name": "火苗",
+    "name": "火漆",
     "desc": "火焰抗性 + {s}%。",
     "target_buff_id": 1016,
     "offset": [
@@ -161,7 +161,7 @@
   },
   {
     "id": 1017,
-    "name": "冰锥",
+    "name": "监视",
     "desc": "冰霜抗性 + {s}%。",
     "target_buff_id": 1017,
     "offset": [
@@ -171,7 +171,7 @@
   },
   {
     "id": 1018,
-    "name": "绝缘",
+    "name": "雷暴",
     "desc": "闪电抗性 + {s}%。",
     "target_buff_id": 1018,
     "offset": [
@@ -181,7 +181,7 @@
   },
   {
     "id": 1019,
-    "name": "体质",
+    "name": "斗篷",
     "desc": "毒素抗性 + {s}%。",
     "target_buff_id": 1019,
     "offset": [
@@ -191,7 +191,7 @@
   },
   {
     "id": 1020,
-    "name": "体质",
+    "name": "怒火",
     "desc": "物理抗性 + {s}%。",
     "target_buff_id": 1020,
     "offset": [
@@ -201,7 +201,7 @@
   },
   {
     "id": 1021,
-    "name": "顽强",
+    "name": "布条",
     "desc": "最大生命值 + {s}。",
     "target_buff_id": 1021,
     "offset": [
@@ -211,7 +211,7 @@
   },
   {
     "id": 1022,
-    "name": "回复",
+    "name": "厕纸",
     "desc": "生命回复 + {s}。",
     "target_buff_id": 1022,
     "offset": [
@@ -221,7 +221,7 @@
   },
   {
     "id": 1023,
-    "name": "防御",
+    "name": "面纱",
     "desc": "防御 + {s}。",
     "target_buff_id": 1023,
     "offset": [
@@ -231,7 +231,7 @@
   },
   {
     "id": 1024,
-    "name": "闪避",
+    "name": "步伐",
     "desc": "闪避 + {s}。",
     "target_buff_id": 1024,
     "offset": [
@@ -241,7 +241,7 @@
   },
   {
     "id": 1025,
-    "name": "幸运",
+    "name": "火花",
     "desc": "幸运 + {s}。",
     "target_buff_id": 1025,
     "offset": [
@@ -251,7 +251,7 @@
   },
   {
     "id": 1026,
-    "name": "速度",
+    "name": "追逐",
     "desc": "速度 + {s}。",
     "target_buff_id": 1026,
     "offset": [
@@ -261,7 +261,7 @@
   },
   {
     "id": 1027,
-    "name": "复活",
+    "name": "让步",
     "desc": "治疗效率 + {s}。",
     "target_buff_id": 1027,
     "offset": [
@@ -271,7 +271,7 @@
   },
   {
     "id": 1028,
-    "name": "打击",
+    "name": "踏步",
     "desc": "暴击率 + {s}。",
     "target_buff_id": 1028,
     "offset": [
@@ -281,7 +281,7 @@
   },
   {
     "id": 1029,
-    "name": "猛击",
+    "name": "敦促",
     "desc": "暴击伤害 + {s}。",
     "target_buff_id": 1029,
     "offset": [
@@ -291,7 +291,7 @@
   },
   {
     "id": 1030,
-    "name": "弱点",
+    "name": "古代",
     "desc": "易伤伤害 + {s}。",
     "target_buff_id": 1030,
     "offset": [
@@ -301,7 +301,7 @@
   },
   {
     "id": 1031,
-    "name": "易伤",
+    "name": "召唤",
     "desc": "易伤率 + {s}。",
     "target_buff_id": 1031,
     "offset": [
@@ -311,7 +311,7 @@
   },
   {
     "id": 1032,
-    "name": "魔力",
+    "name": "愿望",
     "desc": "魔力 + {s}。",
     "target_buff_id": 1032,
     "offset": [
@@ -321,7 +321,7 @@
   },
   {
     "id": 1033,
-    "name": "攻速",
+    "name": "串烧",
     "desc": "攻击速度 + {s}。",
     "target_buff_id": 1033,
     "offset": [
@@ -331,7 +331,7 @@
   },
   {
     "id": 1034,
-    "name": "力量",
+    "name": "围城",
     "desc": "力量 + {s}。",
     "target_buff_id": 1034,
     "offset": [
@@ -341,7 +341,7 @@
   },
   {
     "id": 1035,
-    "name": "智慧",
+    "name": "划痕",
     "desc": "智慧 + {s}。",
     "target_buff_id": 1035,
     "offset": [
@@ -351,7 +351,7 @@
   },
   {
     "id": 1036,
-    "name": "敏捷",
+    "name": "暗影",
     "desc": "敏捷 + {s}。",
     "target_buff_id": 1036,
     "offset": [
@@ -361,7 +361,7 @@
   },
   {
     "id": 1037,
-    "name": "视野",
+    "name": "破甲",
     "desc": "攻击范围 + {s}。",
     "target_buff_id": 1037,
     "offset": [
@@ -371,7 +371,7 @@
   },
   {
     "id": 1038,
-    "name": "视野",
+    "name": "聚能",
     "desc": "视野 + {s}。",
     "target_buff_id": 1038,
     "offset": [
@@ -381,7 +381,7 @@
   },
   {
     "id": 1039,
-    "name": "远见",
+    "name": "抵抗",
     "desc": "攻击范围 + {s}%。",
     "target_buff_id": 1039,
     "offset": [
@@ -391,7 +391,7 @@
   },
   {
     "id": 1040,
-    "name": "开阔",
+    "name": "闪避",
     "desc": "视野 + {s}%。",
     "target_buff_id": 1040,
     "offset": [
@@ -401,7 +401,7 @@
   },
   {
     "id": 1041,
-    "name": "嗯哼",
+    "name": "炼金",
     "desc": "最大生命值 + {s}%。",
     "target_buff_id": 1041,
     "offset": [
@@ -411,7 +411,7 @@
   },
   {
     "id": 1042,
-    "name": "重生",
+    "name": "凌风",
     "desc": "生命回复 + {s}%。",
     "target_buff_id": 1042,
     "offset": [
@@ -421,7 +421,7 @@
   },
   {
     "id": 1043,
-    "name": "护盾",
+    "name": "占星",
     "desc": "防御 + {s}%。",
     "target_buff_id": 1043,
     "offset": [
@@ -431,7 +431,7 @@
   },
   {
     "id": 1044,
-    "name": "逃避",
+    "name": "龙血",
     "desc": "闪避 + {s}%。",
     "target_buff_id": 1044,
     "offset": [
@@ -441,7 +441,7 @@
   },
   {
     "id": 1045,
-    "name": "狗",
+    "name": "魔咒",
     "desc": "幸运 + {s}%。",
     "target_buff_id": 1045,
     "offset": [
@@ -451,7 +451,7 @@
   },
   {
     "id": 1046,
-    "name": "猫",
+    "name": "恶魔",
     "desc": "速度 + {s}%。",
     "target_buff_id": 1046,
     "offset": [
@@ -461,7 +461,7 @@
   },
   {
     "id": 1047,
-    "name": "鼠",
+    "name": "黑暗",
     "desc": "治疗效率 + {s}%。",
     "target_buff_id": 1047,
     "offset": [
@@ -471,7 +471,7 @@
   },
   {
     "id": 1048,
-    "name": "酱",
+    "name": "狡诈",
     "desc": "暴击率 + {s}%。",
     "target_buff_id": 1048,
     "offset": [
@@ -481,7 +481,7 @@
   },
   {
     "id": 1049,
-    "name": "可恶",
+    "name": "幻影",
     "desc": "暴击伤害 + {s}%。",
     "target_buff_id": 1049,
     "offset": [
@@ -491,7 +491,7 @@
   },
   {
     "id": 1050,
-    "name": "厉害",
+    "name": "混沌",
     "desc": "易伤伤害 + {s}%。",
     "target_buff_id": 1050,
     "offset": [
@@ -501,7 +501,7 @@
   },
   {
     "id": 1051,
-    "name": "不错",
+    "name": "奥术",
     "desc": "易伤率 + {s}%。",
     "target_buff_id": 1051,
     "offset": [
@@ -511,7 +511,7 @@
   },
   {
     "id": 1052,
-    "name": "好",
+    "name": "狂野",
     "desc": "魔力 + {s}%。",
     "target_buff_id": 1052,
     "offset": [
@@ -521,7 +521,7 @@
   },
   {
     "id": 1053,
-    "name": "激素",
+    "name": "灾厄",
     "desc": "攻击速度 + {s}%。",
     "target_buff_id": 1053,
     "offset": [
@@ -531,7 +531,7 @@
   },
   {
     "id": 1054,
-    "name": "力量",
+    "name": "神速",
     "desc": "力量 + {s}%。",
     "target_buff_id": 1054,
     "offset": [
@@ -541,7 +541,7 @@
   },
   {
     "id": 1055,
-    "name": "智慧",
+    "name": "狂舞",
     "desc": "智慧 + {s}%。",
     "target_buff_id": 1055,
     "offset": [
@@ -551,7 +551,7 @@
   },
   {
     "id": 1056,
-    "name": "敏捷",
+    "name": "鬼魅",
     "desc": "敏捷 + {s}%。",
     "target_buff_id": 1056,
     "offset": [

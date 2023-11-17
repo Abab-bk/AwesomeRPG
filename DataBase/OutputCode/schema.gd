@@ -321,6 +321,17 @@ class TalentBuffs:
         for _ele in _json_["compute_values"]: var _e: BuffsComputeData; _e = BuffsComputeData.new(_ele); self.compute_values.append(_e)
 
 
+class GoldNames:
+    var id: int
+    var name: String
+    var type: String
+
+    func _init(_json_) -> void:
+        self.id = _json_["id"]
+        self.name = _json_["name"]
+        self.type = _json_["type"]
+
+
 class BuffsTbBuffs:
     var _data_list: Array[Buffs]
     var _data_map: Dictionary
@@ -552,6 +563,27 @@ class TalentBuffsTbTalentBuffs:
         return self._data_map.get(key)
 
 
+class GoldNamesTbGoldNames:
+    var _data_list: Array[GoldNames]
+    var _data_map: Dictionary
+    
+    func _init(_json_) -> void:
+        for _json2_ in _json_:
+            var _v: GoldNames
+            _v = GoldNames.new(_json2_)
+            self._data_list.append(_v)
+            self._data_map[_v.id] = _v
+
+    func get_data_list() -> Array[GoldNames]:
+        return self._data_list
+
+    func get_data_map() -> Dictionary:
+        return self._data_map
+
+    func get_item(key) -> GoldNames:
+        return self._data_map.get(key)
+
+
 class CfgTables:
     var TbBuffs: BuffsTbBuffs
     var TbAffix: AffixsTbAffix
@@ -564,6 +596,7 @@ class CfgTables:
     var TbGoods: GoodsTbGoods
     var TbMainBuffs: MainBuffsTbMainBuffs
     var TbTalentBuffs: TalentBuffsTbTalentBuffs
+    var TbGoldNames: GoldNamesTbGoldNames
     
     func _init(loader: Callable) -> void:
         self.TbBuffs = BuffsTbBuffs.new(loader.call('buffs_tbbuffs'))
@@ -577,4 +610,5 @@ class CfgTables:
         self.TbGoods = GoodsTbGoods.new(loader.call('goods_tbgoods'))
         self.TbMainBuffs = MainBuffsTbMainBuffs.new(loader.call('mainbuffs_tbmainbuffs'))
         self.TbTalentBuffs = TalentBuffsTbTalentBuffs.new(loader.call('talentbuffs_tbtalentbuffs'))
+        self.TbGoldNames = GoldNamesTbGoldNames.new(loader.call('goldnames_tbgoldnames'))
 

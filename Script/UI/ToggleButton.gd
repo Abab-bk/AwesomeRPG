@@ -64,5 +64,4 @@ func set_datas() -> void:
         if ".import" in file_name:
             var x = file_name.replace(".import", "")
             datas.append([origin_signals, signals + "/" + x])
-            print(x)
         

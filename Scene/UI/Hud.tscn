@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=37 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://balim71s72hfu" path="res://Assets/UI/Texture/Button/AbilitysBtnPre.png" id="12_eo77r"]
 [ext_resource type="FontFile" uid="uid://ri6183bsibm8" path="res://Assets/Font/SourceHanSansCN-Bold.otf" id="13_xqeye"]
 [ext_resource type="Texture2D" uid="uid://bnkevqnd4alfm" path="res://Assets/UI/Icons/Coins.svg" id="14_fnq4k"]
+[ext_resource type="Texture2D" uid="uid://cqhj0exwwwxr8" path="res://Assets/Characters/PlayerAssets/Heads/Head.png" id="16_xu31i"]
 [ext_resource type="Texture2D" uid="uid://bb2g3mgq8fil7" path="res://Assets/UI/Texture/Button/Cog.png" id="23_echk2"]
 [ext_resource type="PackedScene" uid="uid://cvl3x8ikri1a4" path="res://Scene/UI/DungeonPanel.tscn" id="23_joj7t"]
 [ext_resource type="Texture2D" uid="uid://xip7b5yiydq4" path="res://Assets/UI/Texture/Button/CogPress.png" id="24_g3prg"]
@@ -234,8 +235,20 @@ theme_override_constants/separation = 40
 
 [node name="CharacterBtn" type="Button" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 100)
+custom_minimum_size = Vector2(130, 100)
 layout_mode = 2
+theme_type_variation = &"EmptyBtn"
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/CharacterBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_xu31i")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3"]
 layout_mode = 2
