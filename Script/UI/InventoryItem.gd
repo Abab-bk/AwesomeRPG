@@ -16,11 +16,10 @@ func _ready() -> void:
         EventBus.change_item_tooltip_state.emit(item)
         pressed.emit(item)
         )
+    update_ui()
 
 func clean() -> void:
-    #EventBus.remove_item.emit(item)
     item = null
-    #item.free()
     update_ui()
 
 func update_ui() -> void:
@@ -30,7 +29,7 @@ func update_ui() -> void:
         texture.texture = null
         name_label.text = ""
         return
-        
+    
     match item.quality:
         Const.EQUIPMENT_QUALITY.NORMAL:
             background.texture = load("res://Assets/UI/Texture/ItemBgGray.png")

@@ -10,3 +10,5 @@ func add_item(_item:InventoryItem) -> void:
 
 func remove_item(_item:InventoryItem) -> void:
     items.erase(_item)
+    #items[_item] = null
+    items.append(null)

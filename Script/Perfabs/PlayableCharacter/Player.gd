@@ -71,14 +71,23 @@ func _ready() -> void:
             Const.EQUIPMENT_TYPE.胸甲:
                 change_body_sprite(load(_item.texture_path))
         
-        flower_buff_manager.add_buff_list(_temp)
+        var _info = flower_buff_manager.add_buff_list(_temp)
+        EventBus.show_animation.emit("PropertyContrast", _info)
+        
+        # 移出背包
+        EventBus.remove_item.emit(_item)
         
         # 更新 UI
         EventBus.equipment_up_ok.emit(_type, _item))
     
     EventBus.equipment_down.connect(
         func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
-            compute_data.quipments[_type] = null
+            var _inentorry = Master.player_inventory as Inventory
+            if _inentorry.items.size() >= _inentorry.size:
+                EventBus.new_tips.emit("背包已满")
+                return
+            
+            compute_data.quipments[_type] = null            
             
             var _temp:Array[FlowerBaseBuff] = []
             

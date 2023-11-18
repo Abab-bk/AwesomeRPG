@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqd2kn8echn77"]
+[gd_scene load_steps=6 format=3 uid="uid://cqd2kn8echn77"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_82cyy"]
 [ext_resource type="Script" path="res://Script/UI/SelectSkillsPanel.gd" id="2_jrnva"]
-[ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="2_niacq"]
-[ext_resource type="Texture2D" uid="uid://pd45atcqjjfu" path="res://Assets/UI/Texture/TitleBar.png" id="3_pkp17"]
-[ext_resource type="Texture2D" uid="uid://dtkji1da2ltep" path="res://Assets/UI/Texture/Club.png" id="4_bccbh"]
 [ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="4_gsdpm"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="5_5m88d"]
+[ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="5_y862a"]
 
 [node name="SelectSkillsPanel" type="Panel"]
 anchors_preset = 8
@@ -31,53 +29,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TitleBar" type="NinePatchRect" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 80)
+[node name="TitleBar" parent="VBoxContainer" instance=ExtResource("5_y862a")]
 layout_mode = 2
-texture = ExtResource("3_pkp17")
-patch_margin_left = 56
-patch_margin_top = 8
-patch_margin_right = 56
-patch_margin_bottom = 6
-
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/TitleBar"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_right = 30
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TitleBar/MarginContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("4_bccbh")
-stretch_mode = 3
-
-[node name="Space" type="Control" parent="VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TitleLabel" type="Label" parent="VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "技能选择"
-label_settings = ExtResource("2_niacq")
-horizontal_alignment = 1
-
-[node name="Space2" type="Control" parent="VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/TitleBar/MarginContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("4_bccbh")
-stretch_mode = 3
+title_text = "选择技能"
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -147,8 +101,3 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 text = "确定 消耗500金币"
-
-[node name="CancelBtn" type="Button" parent="VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "返回"

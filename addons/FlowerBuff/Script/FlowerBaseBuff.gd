@@ -113,6 +113,24 @@ func minus_prepare_time() -> void:
     
     prepare_time_temp -= 1
 
+func get_origin_compute_datas() -> Array:
+    var _result:Array
+   
+    for i in compute_values:
+        _result.append(i.target_property)
+        _result.append(origin_data[i.target_property])
+    
+    return _result
+
+func get_computed_compute_datas() -> Array:
+    var _result:Array
+   
+    for i in compute_values:
+        _result.append(i.target_property)
+        _result.append(output_data[i.target_property])
+    
+    return _result
+
 func get_data_from_values(_id:String) -> FlowerComputeData:
     for i in compute_values:
         if compute_values[i].id == _id:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3ts6cj14tj0l"]
+[gd_scene load_steps=5 format=3 uid="uid://c3ts6cj14tj0l"]
 
 [ext_resource type="Script" path="res://Script/UI/EquipmentSlot.gd" id="1_5rdfu"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_vdyxs"]
 [ext_resource type="Texture2D" uid="uid://dgn7wnyxb5yef" path="res://Assets/Texture/Icons/Sword/Sword1.png" id="3_hfrko"]
+[ext_resource type="Texture2D" uid="uid://b3ilmntnidsbi" path="res://Assets/UI/Texture/ItemBgGray.png" id="3_qap3m"]
 
 [node name="EquipmentSlot" type="Panel"]
 custom_minimum_size = Vector2(180, 180)
@@ -10,6 +11,19 @@ size_flags_vertical = 4
 theme = ExtResource("1_vdyxs")
 theme_type_variation = &"EmptySlotPanel"
 script = ExtResource("1_5rdfu")
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_qap3m")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

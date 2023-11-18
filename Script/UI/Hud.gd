@@ -74,6 +74,7 @@ func _ready() -> void:
     EventBus.new_tips.connect(new_tip)
     
     EventBus.player_level_up.connect(show_animation.bind("LevelUp"))
+    EventBus.show_animation.connect(show_animation)
     
     backed_to_home.connect(func():quest_panel.show())
     changed_to_other.connect(func():quest_panel.hide())
@@ -95,6 +96,10 @@ func _ready() -> void:
         )
     %GetFreeBtn.pressed.connect(func():
         Master.player.global_position = Vector2(0, 0)
+        )
+    %GetEquipmentBtn.pressed.connect(func():
+        var _drop_item:InventoryItem = $Control/GetEquipmentBtn/ItemGenerator.gen_a_item()
+        EventBus.new_drop_item.emit(_drop_item, Vector2(0, 0))
         )
     
     build_ability_ui()
@@ -241,11 +246,16 @@ func show_color_rect() -> void:
 func hide_color_rect() -> void:
     color_rect.hide()
 
-func show_animation(_key:String) -> void:
+func show_animation(_key:String, _info:Dictionary = {}) -> void:
     if _key == "LevelUp":
-        SoundManager.play_sound(load(Master.HAPPY_SOUNDS))
+        SoundManager.play_sound(load(Master.HAPPY_SOUNDS),  "GameBus")
         var _img:Control = load("res://Scene/UI/LevelUpAnimation.tscn").instantiate()
         add_child(_img)
+    if _key == "PropertyContrast":
+        SoundManager.play_sound(load(Master.HAPPY_SOUNDS),  "GameBus")
+        var _img:Control = load("res://Scene/UI/PropertyContrast.tscn").instantiate()
+        add_child(_img)
+        _img.show_animation(_info)
 
 func new_tip(_text:String) -> void:
     var _n = load("res://Scene/UI/Tips.tscn").instantiate()

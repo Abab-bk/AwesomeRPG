@@ -4,6 +4,7 @@ signal work_ok
 
 @onready var slots_img:TextureRect = $MarginContainer/SlotsImg
 @onready var button:Button = $Button
+@onready var background:NinePatchRect = $Background
 
 @export var current_equipment_type:Const.EQUIPMENT_TYPE = Const.EQUIPMENT_TYPE.头盔
 
@@ -44,6 +45,8 @@ func __set_() -> void:
             slots_img.texture = load("res://Assets/Texture/Icons/戒指/1.png")
         Const.EQUIPMENT_TYPE.武器:
             slots_img.texture = load("res://Assets/Texture/Icons/Sword/Sword1.png")
+    update_color()
+
 
 func set_item(_item:InventoryItem) -> void:
     if _item == null:
@@ -52,7 +55,27 @@ func set_item(_item:InventoryItem) -> void:
         return
     
     item = _item
+    
+    update_color()
     set_img(item.texture_path)
+
+func update_color() -> void:
+    if not item:
+        background.texture = load("res://Assets/UI/Texture/ItemBgNull.png")
+        return
+    
+    match item.quality:
+        Const.EQUIPMENT_QUALITY.NORMAL:
+            background.texture = load("res://Assets/UI/Texture/ItemBgGray.png")
+        Const.EQUIPMENT_QUALITY.BLUE:
+            background.texture = load("res://Assets/UI/Texture/ItemBgBlue.png")
+        Const.EQUIPMENT_QUALITY.YELLOW:
+            background.texture = load("res://Assets/UI/Texture/ItemBgGreen.png")
+        Const.EQUIPMENT_QUALITY.DEEP_YELLOW:
+            background.texture = load("res://Assets/UI/Texture/ItemBgPurple.png")
+        Const.EQUIPMENT_QUALITY.GOLD:
+            background.texture = load("res://Assets/UI/Texture/ItemBgGod.png")
+
 
 func set_img(_path:String) -> void:
     slots_img.texture = load(_path)

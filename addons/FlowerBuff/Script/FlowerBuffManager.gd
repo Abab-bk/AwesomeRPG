@@ -10,8 +10,16 @@ signal compute_values
 signal compute_ok
 
 @export var target:Node
-@export var compute_data:FlowerData
-@export var output_data:FlowerData
+@export var compute_data:FlowerData:
+    set(v):
+        compute_data = v
+        for i in buff_list:
+            i.origin_data = compute_data
+@export var output_data:FlowerData:
+    set(v):
+        output_data = v
+        for i in buff_list:
+            i.output_data = output_data
 @export var buff_list:Array[FlowerBaseBuff] = []
 #@export var tags:Array[String]
 
@@ -66,12 +74,30 @@ func update_buff_tree() -> void:
         # i.removed.connect(func():a_buff_removed.emit())
 
 func add_buff(_buff:FlowerBaseBuff) -> void:
+    _buff.origin_data = compute_data
+    _buff.output_data = output_data
     buff_list.append(_buff)
     compute()
 
-func add_buff_list(_buff_list:Array[FlowerBaseBuff]) -> void:
+func add_buff_list(_buff_list:Array[FlowerBaseBuff]) -> Dictionary:
+    for i in _buff_list:
+        i.origin_data = compute_data
+        i.output_data = output_data
+    
     buff_list.append_array(_buff_list)
+    
+    # {属性：[原值，计算后值]}
+    var _result:Dictionary
+    
+    for i in buff_list:
+        var _origin_datas:Array = i.get_origin_compute_datas()
+        var _computed_datas:Array = i.get_computed_compute_datas()
+        # 拿到key
+        _result[_origin_datas[0]] = [_origin_datas[1], _computed_datas[1]]
+    
     compute()
+    
+    return _result
 
 func remove_buff_list(_buff_list:Array[FlowerBaseBuff]) -> void:
     for _buff in _buff_list:

@@ -7,15 +7,17 @@ extends Panel
 @onready var cost_label:Label = %CostLabel
 @onready var desc_label:RichTextLabel = %DescLabel
 
+@onready var title_bar:MarginContainer = $VBoxContainer/TitleBar
+
 var ability:FlowerAbility
 var target_skill_panel:Panel
 
+var cancel_event:Callable = func():
+    SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
+    hide()
+    queue_free()
+
 func _ready() -> void:
-    %CancelBtn.pressed.connect(func():
-        SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
-        hide()
-        queue_free()
-        )
     %YesBtn.pressed.connect(func():
         SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
         
@@ -29,6 +31,8 @@ func _ready() -> void:
         hide()
         queue_free()
         )
+    
+    title_bar.cancel_callable = cancel_event
     
     if Master.unlocked_skills.is_empty():
         var _label = Label.new()

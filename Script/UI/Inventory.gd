@@ -78,11 +78,21 @@ func set_bag() -> void:
         items_ui.add_child(_n)
 
 func update_ui() -> void:
-    for item in items_ui.get_children():
-        item.clean()
+    for item_index in items_ui.get_child_count():
+        #item.clean()
+        var _node = items_ui.get_child(item_index)
+        _node.item = null
+        
+        if inventory.items.size() - 1 < item_index:
+            _node.update_ui()
+            return
+        
+        _node.item = inventory.items[item_index]
+        _node.update_ui()
     
-    for item in inventory.items:  
-        var item_ui = items_ui.get_child(inventory.items.find(item))
-        item_ui.item = item
-        item_ui.update_ui()
+    #for item_index in inventory.items.size():
+        #
+        #var item_ui = items_ui.get_child(item_index)
+        #item_ui.item = inventory.items[item_index]
+        #item_ui.update_ui()
          

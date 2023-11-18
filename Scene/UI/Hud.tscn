@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=38 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bb2g3mgq8fil7" path="res://Assets/UI/Texture/Button/Cog.png" id="23_echk2"]
 [ext_resource type="PackedScene" uid="uid://cvl3x8ikri1a4" path="res://Scene/UI/DungeonPanel.tscn" id="23_joj7t"]
 [ext_resource type="Texture2D" uid="uid://xip7b5yiydq4" path="res://Assets/UI/Texture/Button/CogPress.png" id="24_g3prg"]
+[ext_resource type="Script" path="res://Script/Game/ItemGenerator.gd" id="24_w5dur"]
 [ext_resource type="PackedScene" uid="uid://d3eudud6jrt0r" path="res://Scene/UI/StoreUi.tscn" id="24_wrqlk"]
 [ext_resource type="PackedScene" uid="uid://702o3tls624e" path="res://Scene/UI/ForgeRoom.tscn" id="25_3wlxv"]
 [ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="25_cglqj"]
@@ -422,6 +423,18 @@ offset_top = 794.0
 offset_right = 1051.0
 offset_bottom = 889.0
 text = "卡死点我"
+
+[node name="GetEquipmentBtn" type="Button" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 861.0
+offset_top = 916.0
+offset_right = 1045.0
+offset_bottom = 1012.0
+text = "得到装备"
+
+[node name="ItemGenerator" type="Node" parent="Control/GetEquipmentBtn"]
+script = ExtResource("24_w5dur")
 
 [node name="SubFunction" type="Panel" parent="Control"]
 custom_minimum_size = Vector2(150, 0)

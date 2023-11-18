@@ -41,6 +41,7 @@ horizontal_alignment = 1
 [node name="SubSkills" type="VBoxContainer" parent="AllSubSkills"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="MainSkill2" parent="AllSubSkills/SubSkills" instance=ExtResource("2_f1vkd")]
 layout_mode = 2

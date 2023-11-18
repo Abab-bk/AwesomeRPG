@@ -8,10 +8,12 @@ var offset:float
 var buff:FlowerBaseBuff = FlowerBaseBuff.new()
 
 func update_desc(_data) -> void:
-    if offset <= 1.0 and buff.compute_values[0].type != FlowerConst.COMPUTE_TYPE.INCREASE and buff.compute_values[0].type != FlowerConst.COMPUTE_TYPE.COMPLEX_INCREASE:
-        desc = _data.desc.format({"s": str(floor(offset * 10))}) # *10 是为了显示正常，因为实际数据是 0.1 - 1.0
+    if offset <= 1.0 and buff.compute_values[0].type == FlowerConst.COMPUTE_TYPE.MORE or buff.compute_values[0].type == FlowerConst.COMPUTE_TYPE.COMPLEX_MORE:
+        #desc = _data.desc.format({"s": str(floor(offset * 10))}) # *10 是为了显示正常，因为实际数据是 0.1 - 1.0
+        desc = _data.desc.format({"s": str(offset * 10).pad_decimals(2)})
+        #print("物品值：", buff.compute_values)
     else:
-        desc = _data.desc.format({"s": str(floor(offset))})
+        desc = _data.desc.format({"s": str(offset).pad_decimals(2)})
 
 func update(_data) -> void:
     buff.name = name

@@ -30,8 +30,9 @@ func _ready() -> void:
 func change_audio_db(_value:float, _key:SETTING_KEYS) -> void:
     match _key:
         SETTING_KEYS.AUDIO_MAIN:
-            SoundManager.set_music_volume(_value)
-        SETTING_KEYS.AUDIO_SFX:
-            SoundManager.set_sound_volume(_value)
-        SETTING_KEYS.AUDIO_MAIN:
             AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), linear_to_db(_value))
+        SETTING_KEYS.AUDIO_SFX:
+            AudioServer.set_bus_volume_db(AudioServer.get_bus_index("GameBus"), linear_to_db(_value))
+            AudioServer.set_bus_volume_db(AudioServer.get_bus_index("UIBus"), linear_to_db(_value))
+        SETTING_KEYS.AUDIO_MUSIC:
+            AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), linear_to_db(_value))

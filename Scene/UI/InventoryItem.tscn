@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_eew5n"]
 [ext_resource type="Script" path="res://Script/UI/InventoryItem.gd" id="1_er7k6"]
-[ext_resource type="Texture2D" uid="uid://yqsbjlx1pybe" path="res://Assets/UI/Texture/ItemBgGold.png" id="3_jmfw7"]
+[ext_resource type="Texture2D" uid="uid://bv8271q5m47d6" path="res://Assets/UI/Texture/ItemBgNull.png" id="3_hodp2"]
 
 [node name="InventoryItem" type="Panel"]
 custom_minimum_size = Vector2(160, 160)
@@ -19,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_jmfw7")
+texture = ExtResource("3_hodp2")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
