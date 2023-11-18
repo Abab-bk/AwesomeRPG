@@ -153,6 +153,9 @@ func _ready() -> void:
         compute_data = flower_buff_manager.compute_data as CharacterData
         output_data = flower_buff_manager.output_data as CharacterData
         
+        Master.player_data = flower_buff_manager.compute_data
+        Master.player_output_data = flower_buff_manager.output_data
+        
         ray_cast.target_position.x = output_data.atk_range
         
         atk_cd_timer.wait_time = output_data.atk_speed

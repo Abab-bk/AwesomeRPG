@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://to6wvbxby0e3"]
+
+[ext_resource type="Script" path="res://Script/UI/CoinsPanel.gd" id="1_50dhi"]
+[ext_resource type="Texture2D" uid="uid://bnkevqnd4alfm" path="res://Assets/UI/Icons/Coins.svg" id="1_718o2"]
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_a1mb7"]
+[ext_resource type="FontFile" uid="uid://ri6183bsibm8" path="res://Assets/Font/SourceHanSansCN-Bold.otf" id="2_wrhfq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dq58o"]
+font = ExtResource("2_wrhfq")
+font_size = 40
+font_color = Color(0.843137, 0.843137, 0.843137, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[node name="CoinsPanel" type="HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+offset_right = 222.0
+offset_bottom = 58.0
+theme = ExtResource("1_a1mb7")
+theme_override_constants/separation = -20
+script = ExtResource("1_50dhi")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 1
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+texture = ExtResource("1_718o2")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"BlackPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 10
+
+[node name="CoinsLabel" type="Label" parent="MarginContainer/Panel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+label_settings = SubResource("LabelSettings_dq58o")
+horizontal_alignment = 2

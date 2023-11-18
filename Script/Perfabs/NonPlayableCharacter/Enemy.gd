@@ -88,7 +88,7 @@ func _ready() -> void:
     
     atk_cd_timer.wait_time = data.atk_speed
     
-    if Master.player.get_level() >= 5:
+    if Master.player.get_level() >= 2:
         _level = Master.player.get_level() - 1
     
     # 设置属性 （每个敌人 ready 都是生成时）
@@ -142,7 +142,9 @@ func die() -> void:
     Master.player.current_state = Master.player.STATE.IDLE
     # 获得经验
     #EventBus.enemy_die.emit(data.level * data.level * data.level * 3 * (1 + Master.fly_count * 0.1))
-    EventBus.enemy_die.emit(((Master.player_data.level * 3) + 15) * (1 + Master.fly_count * 0.1))
+    #EventBus.enemy_die.emit(((Master.player_data.level * 3) + 15) * (1 + Master.fly_count * 0.1))
+    #EventBus.enemy_die.emit((data.level * 3) * (1 + Master.fly_count * 0.1))
+    EventBus.enemy_die.emit(float((Master.player_data.level * Master.player_data.level)) / float((Master.player_data.level + data.level)) * (1 + Master.fly_count * 0.1))
     # TODO: 修改敌人掉落金币
     Master.coins += data.level * randi_range(0, 5)
     

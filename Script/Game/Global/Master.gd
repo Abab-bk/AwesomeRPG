@@ -1,6 +1,8 @@
 extends Node
 
 # TODO: 每日任务、爬塔模式、自动拾取、换装备对比Tooltip
+# TODO: 天赋树、飞升
+# TODO: 七天签到
 
 const BGM:String = "res://Assets/Sounds/Music/Bgm.wav"
 const CLICK_SOUNDS:String = "res://Assets/Sounds/Click.mp3"
@@ -260,9 +262,9 @@ func get_rate_text_from_item(_item:InventoryItem) -> String:
             Const.EQUIPMENT_QUALITY.YELLOW:
                 _result += "魔法"
             Const.EQUIPMENT_QUALITY.DEEP_YELLOW:
-                _result += "传奇"
+                _result += "史诗"
             Const.EQUIPMENT_QUALITY.GOLD:
-                _result += "暗金"
+                _result += "传奇"
         
         if _item.type == Const.EQUIPMENT_TYPE.武器:
             match _item.weapon_type:

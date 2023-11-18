@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=37 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -22,8 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://c60tahepslln0" path="res://Scene/UI/SkillsPanel.tscn" id="12_doksu"]
 [ext_resource type="Texture2D" uid="uid://balim71s72hfu" path="res://Assets/UI/Texture/Button/AbilitysBtnPre.png" id="12_eo77r"]
 [ext_resource type="FontFile" uid="uid://ri6183bsibm8" path="res://Assets/Font/SourceHanSansCN-Bold.otf" id="13_xqeye"]
-[ext_resource type="Texture2D" uid="uid://bnkevqnd4alfm" path="res://Assets/UI/Icons/Coins.svg" id="14_fnq4k"]
 [ext_resource type="Texture2D" uid="uid://cqhj0exwwwxr8" path="res://Assets/Characters/PlayerAssets/Heads/Head.png" id="16_xu31i"]
+[ext_resource type="PackedScene" uid="uid://to6wvbxby0e3" path="res://Scene/UI/CoinsPanel.tscn" id="18_y3jei"]
 [ext_resource type="Texture2D" uid="uid://bb2g3mgq8fil7" path="res://Assets/UI/Texture/Button/Cog.png" id="23_echk2"]
 [ext_resource type="PackedScene" uid="uid://cvl3x8ikri1a4" path="res://Scene/UI/DungeonPanel.tscn" id="23_joj7t"]
 [ext_resource type="Texture2D" uid="uid://xip7b5yiydq4" path="res://Assets/UI/Texture/Button/CogPress.png" id="24_g3prg"]
@@ -35,13 +35,6 @@
 [ext_resource type="Texture2D" uid="uid://dyhphsqm83xwx" path="res://Assets/UI/Texture/Button/TreeBtnPre.png" id="27_jvatt"]
 [ext_resource type="Texture2D" uid="uid://bsggabdbdgw3j" path="res://Assets/UI/Texture/Button/ForgeBtn.png" id="28_iq72c"]
 [ext_resource type="Texture2D" uid="uid://dn7xjyek2ps1n" path="res://Assets/UI/Texture/Button/ForgeBtnPre.png" id="29_4kesd"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_dq58o"]
-font = ExtResource("13_xqeye")
-font_size = 40
-font_color = Color(0.843137, 0.843137, 0.843137, 1)
-outline_size = 1
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4vukb"]
 font = ExtResource("13_xqeye")
@@ -195,15 +188,15 @@ mouse_filter = 2
 layout_mode = 2
 mouse_filter = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+[node name="TopBar" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="TopBar" type="Panel" parent="Control/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="TopBar" type="Panel" parent="Control/MarginContainer/VBoxContainer/TopBar"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -213,36 +206,36 @@ grow_vertical = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer"]
 layout_mode = 2
 alignment = 2
 
-[node name="Space" type="Control" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer"]
+[node name="Space" type="Control" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 160)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 40
 
-[node name="CharacterBtn" type="Button" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3"]
+[node name="CharacterBtn" type="Button" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(130, 100)
 layout_mode = 2
 theme_type_variation = &"EmptyBtn"
 
-[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/CharacterBtn"]
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/CharacterBtn"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -253,72 +246,36 @@ texture = ExtResource("16_xu31i")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_top = 15
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PlayerNameLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="PlayerNameLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "花神"
 label_settings = ExtResource("7_sdpkl")
 
-[node name="Control" type="Control" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CoinsPanel" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
+[node name="CoinsPanel" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("18_y3jei")]
 layout_mode = 2
-theme_override_constants/separation = -20
+target = "coins"
 
-[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer/CoinsPanel"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-texture = ExtResource("14_fnq4k")
-expand_mode = 1
-stretch_mode = 6
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer/CoinsPanel"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Panel" type="Panel" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer/CoinsPanel/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_type_variation = &"BlackPanel"
-
-[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer/CoinsPanel/MarginContainer/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_right = 10
-
-[node name="CoinsLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer/CoinsPanel/MarginContainer/Panel/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-text = "0"
-label_settings = SubResource("LabelSettings_dq58o")
-horizontal_alignment = 2
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="LevelLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="LevelLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
@@ -326,12 +283,12 @@ text = "Lv.42"
 label_settings = SubResource("LabelSettings_4vukb")
 vertical_alignment = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/margin_bottom = 9
 
-[node name="XpBar" type="ProgressBar" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer"]
+[node name="XpBar" type="ProgressBar" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -339,7 +296,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 8
 show_percentage = false
 
-[node name="SettingBtn" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/TopBar/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="SettingBtn" type="TextureButton" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
@@ -348,29 +305,25 @@ texture_pressed = ExtResource("24_g3prg")
 ignore_texture_size = true
 stretch_mode = 5
 
-[node name="LevelPanel" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 400
-
-[node name="Panel2" type="Panel" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/LevelPanel"]
-custom_minimum_size = Vector2(0, 60)
+[node name="LevelPanel" type="CenterContainer" parent="Control/MarginContainer/VBoxContainer/TopBar"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/LevelPanel/Panel2"]
+[node name="Panel2" type="Panel" parent="Control/MarginContainer/VBoxContainer/TopBar/LevelPanel"]
+custom_minimum_size = Vector2(400, 60)
+layout_mode = 2
+
+[node name="LevelLevelLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/TopBar/LevelPanel/Panel2"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_right = 50
-
-[node name="LevelLevelLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/VBoxContainer/LevelPanel/Panel2/MarginContainer"]
-unique_name_in_owner = true
-layout_mode = 2
+size_flags_vertical = 1
 text = "第一关"
 label_settings = ExtResource("25_cglqj")
-horizontal_alignment = 2
+horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -478,6 +431,7 @@ texture_pressed = ExtResource("29_4kesd")
 stretch_mode = 5
 
 [node name="Pages" type="MarginContainer" parent="."]
+z_index = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

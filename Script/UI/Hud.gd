@@ -8,7 +8,6 @@ signal backed_to_home
 
 @onready var xp_bar:ProgressBar = %XpBar
 
-@onready var coins_label:Label = %CoinsLabel
 @onready var level_label:Label = %LevelLabel
 @onready var level_level_label:Label = %LevelLevelLabel
 @onready var player_name_label:Label = %PlayerNameLabel
@@ -62,8 +61,6 @@ func _ready() -> void:
         _damage_label.crit = _crit
         add_child(_damage_label)
         )
-    EventBus.coins_changed.connect(func():
-        coins_label.text = str(Master.coins))
     EventBus.show_select_skills_panel.connect(func(_target:Panel):
         var _panel:Panel = Builder.build_a_select_sills_panel()
         _panel.target_skill_panel = _target
@@ -220,11 +217,11 @@ func build_ability_ui() -> void:
         _skill_btn.set_ability(_ability)
 
 func update_ui() -> void:
-    level_label.text = "Lv.%s" % str(Master.player_data.level)
+    level_label.text = "Lv.%s" % str(Master.player_output_data.level)
     level_level_label.text = "第 %s 关" % str(Master.current_level)
-    mp_bar.value = (float(Master.player_data.magic) / float(Master.player_data.max_magic)) * 100.0
-    hp_bar.value = (float(Master.player_data.hp) / float(Master.player_data.max_hp)) * 100.0
-    xp_bar.value = (float(Master.player_data.now_xp) / float(Master.player_data.next_level_xp)) * 100.0
+    mp_bar.value = (float(Master.player_output_data.magic) / float(Master.player_output_data.max_magic)) * 100.0
+    hp_bar.value = (float(Master.player_output_data.hp) / float(Master.player_output_data.max_hp)) * 100.0
+    xp_bar.value = (float(Master.player_output_data.now_xp) / float(Master.player_output_data.next_level_xp)) * 100.0
     player_name_label.text = Master.player_name
 
 func new_drop_item(_item:InventoryItem, _pos:Vector2) -> void:
