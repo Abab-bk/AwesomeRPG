@@ -103,7 +103,8 @@ func level_up() -> Dictionary:
 
 # TODO: 以任务为主要经验来源
 func update_next_xp() -> void:
-    next_level_xp = (level + (level + 2)) * 50
+    #next_level_xp = 50 * (pow(level, 3))
+    next_level_xp = (15 + (level ** 3)) * (1.07 ** (level - 1))
     #if level % 15 == 0:
         #@warning_ignore("integer_division")
         #next_level_xp = level / 15 * 1000

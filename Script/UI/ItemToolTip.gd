@@ -15,12 +15,18 @@ extends Panel
 
 @onready var use_btn:Button = %UseBtn
 
+enum STATE {
+    MOVE,
+    DOWN,
+    UP
+}
+
 var item:InventoryItem
 var temp_item:InventoryItem = InventoryItem.new()
-var down_state:bool
+var current_state:STATE = STATE.UP
 
 func _ready() -> void:
-    EventBus.change_item_tooltip_state.connect(func(_item:InventoryItem, _down:bool = false):
+    EventBus.change_item_tooltip_state.connect(func(_item:InventoryItem, _down:bool = false, _move:bool = false):
         if _item == null:
             hide()
             return
@@ -32,10 +38,14 @@ func _ready() -> void:
         
         if _down:
             use_btn.text = "卸下"
+            current_state = STATE.DOWN        
         else:
             use_btn.text = "装备"
+            current_state = STATE.UP
         
-        down_state = _down
+        if _move:
+            use_btn.text = "移动"
+            current_state = STATE.MOVE
         
         rate_label.text = Master.get_rate_text_from_item(_item)
         
@@ -64,10 +74,14 @@ func _ready() -> void:
     hide()
 
 func use() -> void:
-    if down_state:
-        EventBus.equipment_down.emit(item.type, item)
-        return
-    EventBus.equipment_up.emit(item.type, item)
+    match current_state:
+        STATE.DOWN:
+            EventBus.equipment_down.emit(item.type, item)
+        STATE.MOVE:
+            EventBus.move_item.emit(item)
+        STATE.UP:
+            EventBus.equipment_up.emit(item.type, item)
+    hide()
 
 func update_ui() -> void:
     title_label.text = item.name

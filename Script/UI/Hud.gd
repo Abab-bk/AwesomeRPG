@@ -20,6 +20,7 @@ signal backed_to_home
 @onready var store_btn:TextureButton = %StoreBtn
 @onready var dungeon_btn:TextureButton = %DungeonBtn
 @onready var forge_btn:TextureButton = %ForgeBtn
+@onready var repo_btn:TextureButton = %RepoBtn
 
 @onready var get_skill_btn:Button = %GetSkillBtn
 
@@ -32,6 +33,7 @@ signal backed_to_home
 @onready var store_ui:Control = $Pages/StoreUI
 @onready var dungeon_ui:Control = $DungeonPanel
 @onready var forge_room:Control = $Pages/ForgeRoom
+@onready var repository:Control = $Pages/Repository
 
 @onready var skill_bar:HBoxContainer = %SkillBar
 @onready var color_rect:ColorRect = $ColorRect
@@ -46,6 +48,7 @@ enum PAGE {
     STORE,
     DUNGEON,
     FORGE,
+    REPO,
 }
 
 func _ready() -> void:
@@ -84,6 +87,7 @@ func _ready() -> void:
     store_btn.pressed.connect(change_page.bind(PAGE.STORE))
     dungeon_btn.pressed.connect(change_page.bind(PAGE.DUNGEON))
     forge_btn.pressed.connect(change_page.bind(PAGE.FORGE))
+    repo_btn.pressed.connect(change_page.bind(PAGE.REPO))
     # 添加技能
     get_skill_btn.pressed.connect(func():
         var _ability:FlowerAbility = Master.get_random_ability()
@@ -116,6 +120,7 @@ func change_page(_page:PAGE) -> void:
             skills_panel_ui.hide()
             store_ui.hide()
             dungeon_ui.hide()
+            repository.hide()
             forge_room.hide()
             backed_to_home.emit()
         PAGE.CHARACTER_PANEL:
@@ -126,6 +131,7 @@ func change_page(_page:PAGE) -> void:
             character_panel_ui.show()
             store_ui.hide()
             changed_to_other.emit()
+            repository.hide()
             forge_room.hide()
             dungeon_ui.hide()
         PAGE.INVENTORY:
@@ -136,6 +142,7 @@ func change_page(_page:PAGE) -> void:
             character_panel_ui.hide()
             store_ui.hide()
             changed_to_other.emit()
+            repository.hide()
             forge_room.hide()
             dungeon_ui.hide()
         PAGE.SKILL_TREE:
@@ -147,6 +154,7 @@ func change_page(_page:PAGE) -> void:
             store_ui.hide()
             changed_to_other.emit()
             forge_room.hide()
+            repository.hide()
             dungeon_ui.hide()
         PAGE.SETTING:
             skill_tree_ui.hide()
@@ -157,6 +165,7 @@ func change_page(_page:PAGE) -> void:
             store_ui.hide()
             dungeon_ui.hide()
             forge_room.hide()
+            repository.hide()
             changed_to_other.emit()
         PAGE.SKILLS_PANEL:
             skill_tree_ui.hide()
@@ -166,6 +175,7 @@ func change_page(_page:PAGE) -> void:
             character_panel_ui.hide()
             store_ui.hide()
             dungeon_ui.hide()
+            repository.hide()
             forge_room.hide()
             changed_to_other.emit()
         PAGE.STORE:
@@ -177,6 +187,7 @@ func change_page(_page:PAGE) -> void:
             store_ui.show()
             dungeon_ui.hide()
             forge_room.hide()
+            repository.hide()
             changed_to_other.emit()
         PAGE.FORGE:
             skill_tree_ui.hide()
@@ -186,7 +197,19 @@ func change_page(_page:PAGE) -> void:
             character_panel_ui.hide()
             store_ui.hide()
             dungeon_ui.hide()
+            repository.hide()
             forge_room.show()
+            changed_to_other.emit()
+        PAGE.REPO:
+            skill_tree_ui.hide()
+            inventory_ui.hide()
+            setting_ui.hide()
+            skills_panel_ui.hide()
+            character_panel_ui.hide()
+            store_ui.hide()
+            dungeon_ui.hide()
+            forge_room.hide()
+            repository.show()
             changed_to_other.emit()
         PAGE.DUNGEON:
             if Master.in_dungeon:

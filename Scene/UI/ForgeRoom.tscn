@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://702o3tls624e"]
+[gd_scene load_steps=13 format=3 uid="uid://702o3tls624e"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_jgehe"]
 [ext_resource type="Texture2D" uid="uid://pd45atcqjjfu" path="res://Assets/UI/Texture/TitleBar.png" id="1_q044c"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dtkji1da2ltep" path="res://Assets/UI/Texture/Club.png" id="2_lrnb3"]
 [ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="3_gc5le"]
 [ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="3_spcq0"]
-[ext_resource type="Texture2D" uid="uid://d01dfpcsejskg" path="res://Assets/Texture/Icons/Daggers/2.png" id="4_bsdkm"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="5_b0m8w"]
 [ext_resource type="PackedScene" uid="uid://by1vhdyin8n8" path="res://Scene/UI/ForgeAffix.tscn" id="7_j3gyy"]
 [ext_resource type="Script" path="res://Script/UI/SelectItem.gd" id="9_stcic"]
@@ -83,7 +82,6 @@ layout_mode = 2
 [node name="ItemIcon" type="TextureRect" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/HBoxContainer/Panel"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("4_bsdkm")
 expand_mode = 1
 stretch_mode = 5
 
@@ -132,6 +130,7 @@ size_flags_vertical = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 10
 
 [node name="ForgeAffix" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/Affixs/VBoxContainer2/PreAffixs" instance=ExtResource("7_j3gyy")]
 layout_mode = 2
@@ -146,6 +145,7 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 10
 
 [node name="ForgeAffix" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/Affixs/VBoxContainer2/BufAffixs" instance=ExtResource("7_j3gyy")]
 layout_mode = 2

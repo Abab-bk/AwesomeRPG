@@ -102,7 +102,9 @@ func update_ui() -> void:
         i.queue_free()
     
     if not current_item:
-        print("物品无效")
+        item_name_label.text = "选择装备"
+        rate_label.text = ""
+        item_icon.texture = null
         return
     
     item_name_label.text = current_item.name
@@ -185,6 +187,11 @@ func accept_forged() -> void:
 func _ready() -> void:
     select_item_btn.pressed.connect(func():
         select_item_panel.show()
+        )
+    visibility_changed.connect(func():
+        current_item = null
+        ture_item = null
+        update_ui()
         )
     forge_btn.pressed.connect(forge)
     

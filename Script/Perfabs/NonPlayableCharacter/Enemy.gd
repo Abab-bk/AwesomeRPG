@@ -144,7 +144,8 @@ func die() -> void:
     #EventBus.enemy_die.emit(data.level * data.level * data.level * 3 * (1 + Master.fly_count * 0.1))
     #EventBus.enemy_die.emit(((Master.player_data.level * 3) + 15) * (1 + Master.fly_count * 0.1))
     #EventBus.enemy_die.emit((data.level * 3) * (1 + Master.fly_count * 0.1))
-    EventBus.enemy_die.emit(float((Master.player_data.level * Master.player_data.level)) / float((Master.player_data.level + data.level)) * (1 + Master.fly_count * 0.1))
+    var _get_xp:float = (3 * data.level * 1.5) * (1 + Master.fly_count * 0.1)
+    EventBus.enemy_die.emit(_get_xp)
     # TODO: 修改敌人掉落金币
     Master.coins += data.level * randi_range(0, 5)
     

@@ -5,7 +5,7 @@ signal load_save
 
 signal update_ui
 signal update_inventory
-signal change_item_tooltip_state(item:InventoryItem)
+signal change_item_tooltip_state(item:InventoryItem, down:bool, move:bool)
 signal show_popup(title:String, desc:String, show_cancel_btn:bool, yes_event:Callable, cancel_event:Callable)
 signal show_select_skills_panel(target:Panel)
 signal show_color
@@ -45,5 +45,7 @@ signal enter_dungeon(dungeon:DungeonData)
 
 signal add_item(item:InventoryItem)
 signal remove_item(item:InventoryItem)
+# 移动到仓库
+signal move_item(item:InventoryItem)
 # 新掉落物品（在游戏世界里）
 signal new_drop_item(item:InventoryItem, pos:Vector2)

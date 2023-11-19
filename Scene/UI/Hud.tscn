@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=39 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -35,6 +35,8 @@
 [ext_resource type="Texture2D" uid="uid://dyhphsqm83xwx" path="res://Assets/UI/Texture/Button/TreeBtnPre.png" id="27_jvatt"]
 [ext_resource type="Texture2D" uid="uid://bsggabdbdgw3j" path="res://Assets/UI/Texture/Button/ForgeBtn.png" id="28_iq72c"]
 [ext_resource type="Texture2D" uid="uid://dn7xjyek2ps1n" path="res://Assets/UI/Texture/Button/ForgeBtnPre.png" id="29_4kesd"]
+[ext_resource type="PackedScene" uid="uid://dklre5rf5vnqa" path="res://Scene/UI/Repository.tscn" id="36_x4b5l"]
+[ext_resource type="PackedScene" uid="uid://bbp1iqow5k0b3" path="res://Scene/UI/ItemToolTip.tscn" id="37_hqe6n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4vukb"]
 font = ExtResource("13_xqeye")
@@ -430,8 +432,15 @@ texture_normal = ExtResource("28_iq72c")
 texture_pressed = ExtResource("29_4kesd")
 stretch_mode = 5
 
+[node name="RepoBtn" type="TextureButton" parent="Control/SubFunction/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("28_iq72c")
+texture_pressed = ExtResource("29_4kesd")
+stretch_mode = 5
+
 [node name="Pages" type="MarginContainer" parent="."]
-z_index = 2
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -476,6 +485,10 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
+[node name="Repository" parent="Pages" instance=ExtResource("36_x4b5l")]
+visible = false
+layout_mode = 2
+
 [node name="ColorRect" type="ColorRect" parent="."]
 process_mode = 3
 visible = false
@@ -485,3 +498,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ItemToolTip" parent="." instance=ExtResource("37_hqe6n")]
+visible = false

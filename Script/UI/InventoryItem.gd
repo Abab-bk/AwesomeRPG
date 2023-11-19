@@ -10,9 +10,15 @@ signal pressed(item:InventoryItem)
 @onready var background:NinePatchRect = $Background
 
 var checked:bool = false
+var press_mode:String = ""
 
 func _ready() -> void:
     button.pressed.connect(func():
+        if press_mode == "move":
+            EventBus.change_item_tooltip_state.emit(item, false, true)
+            pressed.emit(item)
+            return
+        
         EventBus.change_item_tooltip_state.emit(item)
         pressed.emit(item)
         )
