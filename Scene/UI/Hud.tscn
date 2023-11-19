@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=41 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://bsggabdbdgw3j" path="res://Assets/UI/Texture/Button/ForgeBtn.png" id="28_iq72c"]
 [ext_resource type="Texture2D" uid="uid://dn7xjyek2ps1n" path="res://Assets/UI/Texture/Button/ForgeBtnPre.png" id="29_4kesd"]
 [ext_resource type="PackedScene" uid="uid://dklre5rf5vnqa" path="res://Scene/UI/Repository.tscn" id="36_x4b5l"]
+[ext_resource type="PackedScene" uid="uid://c760kqfsi2h5u" path="res://Scene/UI/DaysCheckIn.tscn" id="37_7ckrf"]
 [ext_resource type="PackedScene" uid="uid://bbp1iqow5k0b3" path="res://Scene/UI/ItemToolTip.tscn" id="37_hqe6n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4vukb"]
@@ -44,6 +45,8 @@ font_size = 30
 font_color = Color(0.992157, 0.945098, 0.827451, 1)
 outline_size = 1
 outline_color = Color(0.0941176, 0.101961, 0.0705882, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w0x7s"]
 
 [node name="Hud" type="CanvasLayer"]
 process_mode = 3
@@ -402,7 +405,7 @@ anchor_bottom = 0.5
 offset_left = -206.0
 offset_top = -880.0
 offset_right = -56.0
-offset_bottom = -485.0
+offset_bottom = -279.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -440,6 +443,14 @@ texture_normal = ExtResource("28_iq72c")
 texture_pressed = ExtResource("29_4kesd")
 stretch_mode = 5
 
+[node name="7DaysCheckinBtn" type="TextureButton" parent="Control/SubFunction/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("28_iq72c")
+texture_pressed = ExtResource("29_4kesd")
+stretch_mode = 5
+
 [node name="Pages" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -452,40 +463,55 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 50
 
-[node name="Inventory" parent="Pages" instance=ExtResource("2_cil1e")]
+[node name="Pages" type="TabContainer" parent="Pages"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_w0x7s")
+tabs_visible = false
+
+[node name="Home" type="Control" parent="Pages/Pages"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Inventory" parent="Pages/Pages" instance=ExtResource("2_cil1e")]
 process_mode = 3
 visible = false
 layout_mode = 2
 
-[node name="CharacterPanel" parent="Pages" instance=ExtResource("3_aoxj4")]
+[node name="CharacterPanel" parent="Pages/Pages" instance=ExtResource("3_aoxj4")]
 process_mode = 3
 visible = false
 layout_mode = 2
 
-[node name="SkillTree" parent="Pages" instance=ExtResource("5_xu7ou")]
+[node name="SkillTree" parent="Pages/Pages" instance=ExtResource("5_xu7ou")]
 process_mode = 3
 visible = false
 layout_mode = 2
 
-[node name="SettingUI" parent="Pages" instance=ExtResource("11_x2eu0")]
+[node name="SettingUI" parent="Pages/Pages" instance=ExtResource("11_x2eu0")]
 process_mode = 3
 visible = false
 layout_mode = 2
 
-[node name="SkillsPanel" parent="Pages" instance=ExtResource("12_doksu")]
+[node name="SkillsPanel" parent="Pages/Pages" instance=ExtResource("12_doksu")]
 process_mode = 3
 visible = false
 layout_mode = 2
 
-[node name="StoreUI" parent="Pages" instance=ExtResource("24_wrqlk")]
+[node name="StoreUI" parent="Pages/Pages" instance=ExtResource("24_wrqlk")]
 visible = false
 layout_mode = 2
 
-[node name="ForgeRoom" parent="Pages" instance=ExtResource("25_3wlxv")]
+[node name="ForgeRoom" parent="Pages/Pages" instance=ExtResource("25_3wlxv")]
 visible = false
 layout_mode = 2
 
-[node name="Repository" parent="Pages" instance=ExtResource("36_x4b5l")]
+[node name="Repository" parent="Pages/Pages" instance=ExtResource("36_x4b5l")]
+visible = false
+layout_mode = 2
+
+[node name="DaysCheckIn" parent="Pages/Pages" instance=ExtResource("37_7ckrf")]
 visible = false
 layout_mode = 2
 

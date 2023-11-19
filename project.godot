@@ -24,6 +24,7 @@ Master="*res://Script/Game/Global/Master.gd"
 EventBus="*res://Script/Game/Global/EventBus.gd"
 Builder="*res://Script/Game/Global/Builder.gd"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
+TimeManager="*res://addons/TimeManager/TimeManager.gd"
 
 [display]
 
@@ -42,7 +43,7 @@ naming/scene_name_casing=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/FlowerAbility/plugin.cfg", "res://addons/FlowerBuff/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/import_scml/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/worldmap_builder/plugin.cfg")
+enabled=PackedStringArray("res://addons/FlowerAbility/plugin.cfg", "res://addons/FlowerBuff/plugin.cfg", "res://addons/TimeManager/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/import_scml/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/worldmap_builder/plugin.cfg")
 
 [file_customization]
 

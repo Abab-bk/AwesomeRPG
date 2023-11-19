@@ -101,7 +101,6 @@ func level_up() -> Dictionary:
         "敏捷": [agility - 1, agility],
     }
 
-# TODO: 以任务为主要经验来源
 func update_next_xp() -> void:
     #next_level_xp = 50 * (pow(level, 3))
     next_level_xp = (15 + (level ** 3)) * (1.07 ** (level - 1))

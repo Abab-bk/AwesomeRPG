@@ -1,7 +1,7 @@
 extends Node
 
 # TODO: 每日任务、爬塔模式、换装备对比Tooltip
-# TODO: 天赋树、飞升
+# TODO: 飞升
 # TODO: 七天签到
 
 const BGM:String = "res://Assets/Sounds/Music/Bgm.wav"
@@ -53,6 +53,8 @@ var moneys:Dictionary = {
     "purle": 0,
     "yellow": 0,
 }
+
+var last_checkin_time:TimeResource
 
 var next_reward_player_level:int = 1
 
@@ -328,3 +330,6 @@ func _ready():
             EventBus.show_popup.emit("升级！获得奖励", "解锁技能：%s" % _ability.name)
             next_reward_player_level += 5
         )
+
+    last_checkin_time = TimeManager.get_current_time_resource() as TimeResource
+    last_checkin_time = last_checkin_time.get_next_day_time().get_next_day_time()

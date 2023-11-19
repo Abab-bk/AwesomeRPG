@@ -12,6 +12,8 @@ signal backed_to_home
 @onready var level_level_label:Label = %LevelLevelLabel
 @onready var player_name_label:Label = %PlayerNameLabel
 
+@onready var pages:TabContainer = %Pages
+
 @onready var inventory_btn:TextureButton = %InventoryBtn
 @onready var character_btn:Button = %CharacterBtn
 @onready var skill_tree_btn:TextureButton = %SkillTreeBtn
@@ -21,34 +23,36 @@ signal backed_to_home
 @onready var dungeon_btn:TextureButton = %DungeonBtn
 @onready var forge_btn:TextureButton = %ForgeBtn
 @onready var repo_btn:TextureButton = %RepoBtn
+@onready var days_checkin_btn:TextureButton = %"7DaysCheckinBtn"
 
 @onready var get_skill_btn:Button = %GetSkillBtn
 
-@onready var inventory_ui:Control = $Pages/Inventory
-@onready var character_panel_ui:Control = $Pages/CharacterPanel
-@onready var skill_tree_ui:Control = $Pages/SkillTree
-@onready var setting_ui:Control = $Pages/SettingUI
-@onready var skills_panel_ui:Control = $Pages/SkillsPanel
+@onready var inventory_ui:Control = $Pages/Pages/Inventory
+@onready var character_panel_ui:Control = $Pages/Pages/CharacterPanel
+@onready var skill_tree_ui:Control = $Pages/Pages/SkillTree
+@onready var setting_ui:Control = $Pages/Pages/SettingUI
+@onready var skills_panel_ui:Control = $Pages/Pages/SkillsPanel
 @onready var quest_panel:Control = %QuestPanel
-@onready var store_ui:Control = $Pages/StoreUI
+@onready var store_ui:Control = $Pages/Pages/StoreUI
 @onready var dungeon_ui:Control = $DungeonPanel
-@onready var forge_room:Control = $Pages/ForgeRoom
-@onready var repository:Control = $Pages/Repository
+@onready var forge_room:Control = $Pages/Pages/ForgeRoom
+@onready var repository:Control = $Pages/Pages/Repository
 
 @onready var skill_bar:HBoxContainer = %SkillBar
 @onready var color_rect:ColorRect = $ColorRect
 
 enum PAGE {
     HOME,
-    CHARACTER_PANEL,
     INVENTORY,
+    CHARACTER_PANEL,
     SKILL_TREE,
-    SKILLS_PANEL,
     SETTING,
+    SKILLS_PANEL,
     STORE,
-    DUNGEON,
     FORGE,
     REPO,
+    DAYS_CHICKIN,
+    DUNGEON,
 }
 
 func _ready() -> void:
@@ -93,6 +97,7 @@ func _ready() -> void:
     dungeon_btn.pressed.connect(change_page.bind(PAGE.DUNGEON))
     forge_btn.pressed.connect(change_page.bind(PAGE.FORGE))
     repo_btn.pressed.connect(change_page.bind(PAGE.REPO))
+    days_checkin_btn.pressed.connect(change_page.bind(PAGE.DAYS_CHICKIN))
     # 添加技能
     get_skill_btn.pressed.connect(func():
         var _ability:FlowerAbility = Master.get_random_ability()
@@ -116,111 +121,15 @@ func _ready() -> void:
 
 func change_page(_page:PAGE) -> void:
     SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
-    match _page:
-        PAGE.HOME:
-            inventory_ui.hide()
-            character_panel_ui.hide()
-            skill_tree_ui.hide()
-            setting_ui.hide()
-            skills_panel_ui.hide()
-            store_ui.hide()
-            dungeon_ui.hide()
-            repository.hide()
-            forge_room.hide()
-            backed_to_home.emit()
-        PAGE.CHARACTER_PANEL:
-            skill_tree_ui.hide()
-            inventory_ui.hide()
-            setting_ui.hide()
-            skills_panel_ui.hide()
-            character_panel_ui.show()
-            store_ui.hide()
-            changed_to_other.emit()
-            repository.hide()
-            forge_room.hide()
-            dungeon_ui.hide()
-        PAGE.INVENTORY:
-            skill_tree_ui.hide()
-            inventory_ui.show()
-            setting_ui.hide()
-            skills_panel_ui.hide()
-            character_panel_ui.hide()
-            store_ui.hide()
-            changed_to_other.emit()
-            repository.hide()
-            forge_room.hide()
-            dungeon_ui.hide()
-        PAGE.SKILL_TREE:
-            skill_tree_ui.show()
-            inventory_ui.hide()
-            setting_ui.hide()
-            skills_panel_ui.hide()
-            character_panel_ui.hide()
-            store_ui.hide()
-            changed_to_other.emit()
-            forge_room.hide()
-            repository.hide()
-            dungeon_ui.hide()
-        PAGE.SETTING:
-            skill_tree_ui.hide()
-            inventory_ui.hide()
-            setting_ui.show()
-            skills_panel_ui.hide()
-            character_panel_ui.hide()
-            store_ui.hide()
-            dungeon_ui.hide()
-            forge_room.hide()
-            repository.hide()
-            changed_to_other.emit()
-        PAGE.SKILLS_PANEL:
-            skill_tree_ui.hide()
-            inventory_ui.hide()
-            setting_ui.hide()
-            skills_panel_ui.show()
-            character_panel_ui.hide()
-            store_ui.hide()
-            dungeon_ui.hide()
-            repository.hide()
-            forge_room.hide()
-            changed_to_other.emit()
-        PAGE.STORE:
-            skill_tree_ui.hide()
-            inventory_ui.hide()
-            setting_ui.hide()
-            skills_panel_ui.hide()
-            character_panel_ui.hide()
-            store_ui.show()
-            dungeon_ui.hide()
-            forge_room.hide()
-            repository.hide()
-            changed_to_other.emit()
-        PAGE.FORGE:
-            skill_tree_ui.hide()
-            inventory_ui.hide()
-            setting_ui.hide()
-            skills_panel_ui.hide()
-            character_panel_ui.hide()
-            store_ui.hide()
-            dungeon_ui.hide()
-            repository.hide()
-            forge_room.show()
-            changed_to_other.emit()
-        PAGE.REPO:
-            skill_tree_ui.hide()
-            inventory_ui.hide()
-            setting_ui.hide()
-            skills_panel_ui.hide()
-            character_panel_ui.hide()
-            store_ui.hide()
-            dungeon_ui.hide()
-            forge_room.hide()
-            repository.show()
-            changed_to_other.emit()
-        PAGE.DUNGEON:
-            if Master.in_dungeon:
-                return
-            dungeon_ui.show_popup()
-            changed_to_other.emit()
+    if _page == PAGE.DUNGEON:
+        if Master.in_dungeon:
+            return
+        dungeon_ui.show_popup()
+        changed_to_other.emit()
+        return
+    
+    pages.current_tab = int(_page)
+
 
 # 技能条 UI
 func build_ability_ui() -> void:

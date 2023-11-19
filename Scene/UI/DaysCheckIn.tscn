@@ -1,0 +1,90 @@
+[gd_scene load_steps=5 format=3 uid="uid://c760kqfsi2h5u"]
+
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_7oth6"]
+[ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="1_jhpa8"]
+[ext_resource type="Script" path="res://Script/UI/DaysCheckIn.gd" id="2_8en55"]
+[ext_resource type="PackedScene" uid="uid://dq05nbfsn08h2" path="res://Scene/UI/CheckInItem.tscn" id="3_qp3ae"]
+
+[node name="DaysCheckIn" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7oth6")
+script = ExtResource("2_8en55")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleBar" parent="Panel/VBoxContainer" instance=ExtResource("1_jhpa8")]
+unique_name_in_owner = true
+layout_mode = 2
+title_text = "七天签到"
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Items" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="CheckInItem" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/Items" instance=ExtResource("3_qp3ae")]
+layout_mode = 2
+current_day = 1
+reward_value = 100
+
+[node name="CheckInItem2" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/Items" instance=ExtResource("3_qp3ae")]
+layout_mode = 2
+current_day = 2
+reward_value = 100
+
+[node name="CheckInItem3" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/Items" instance=ExtResource("3_qp3ae")]
+layout_mode = 2
+current_day = 3
+reward_value = 100
+
+[node name="CheckInItem4" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/Items" instance=ExtResource("3_qp3ae")]
+layout_mode = 2
+current_day = 4
+reward_value = 100
+
+[node name="CheckInItem5" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/Items" instance=ExtResource("3_qp3ae")]
+layout_mode = 2
+current_day = 5
+reward_value = 100
+
+[node name="CheckInItem6" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/Items" instance=ExtResource("3_qp3ae")]
+layout_mode = 2
+current_day = 6
+reward_value = 100
+
+[node name="CheckInItem7" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/Items" instance=ExtResource("3_qp3ae")]
+layout_mode = 2
+current_day = 7
+reward_value = 100
