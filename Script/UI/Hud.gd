@@ -76,6 +76,11 @@ func _ready() -> void:
     EventBus.player_level_up.connect(show_animation.bind("LevelUp"))
     EventBus.show_animation.connect(show_animation)
     
+    EventBus.unlock_new_function.connect(func(_key:String):
+        if _key == "talent_tree":
+            skill_tree_ui.gen_trees_by_walker()
+        )
+    
     backed_to_home.connect(func():quest_panel.show())
     changed_to_other.connect(func():quest_panel.hide())
     

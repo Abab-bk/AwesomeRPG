@@ -1,6 +1,6 @@
 extends Node
 
-# TODO: 每日任务、爬塔模式、自动拾取、换装备对比Tooltip
+# TODO: 每日任务、爬塔模式、换装备对比Tooltip
 # TODO: 天赋树、飞升
 # TODO: 七天签到
 

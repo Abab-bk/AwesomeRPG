@@ -49,3 +49,5 @@ signal remove_item(item:InventoryItem)
 signal move_item(item:InventoryItem)
 # 新掉落物品（在游戏世界里）
 signal new_drop_item(item:InventoryItem, pos:Vector2)
+
+signal unlock_new_function(key:String)
