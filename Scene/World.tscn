@@ -21,6 +21,8 @@ size = Vector2(10236.5, 204)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_myfhc")
+save = true
+load_save = true
 
 [node name="Debuger" type="Node" parent="."]
 script = ExtResource("2_84kal")

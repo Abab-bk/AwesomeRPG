@@ -5,7 +5,6 @@ extends Control
 @onready var title_bar:MarginContainer = $Panel/VBoxContainer/TitleBar
 
 @export var repo:Inventory
-var inventory:Inventory
 
 var cancel_event:Callable = func():
     SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
@@ -13,8 +12,6 @@ var cancel_event:Callable = func():
 
 
 func _ready() -> void:
-    inventory = Master.player_inventory
-    
     gen_slots()
     
     EventBus.move_item.connect(func(_item:InventoryItem):
@@ -25,6 +22,14 @@ func _ready() -> void:
             move_item(_item, "Inventory")
             return
         )
+    
+    EventBus.save.connect(func():
+        FlowerSaver.set_data("repo", repo)
+        )
+    EventBus.load_save.connect(func():
+        repo = FlowerSaver.get_data("repo", Master.current_save_slot)
+        )
+    
     visibility_changed.connect(update_ui)
     
     title_bar.cancel_callable = cancel_event
@@ -45,7 +50,7 @@ func move_item(_item:InventoryItem, _to:String) -> void:
 
 
 func gen_slots() -> void:
-    for i in inventory.size:
+    for i in Master.player_inventory.size:
         var _n = Builder.build_a_inventory_item()
         inventory_items_ui.add_child(_n)
         _n.press_mode = "move"
@@ -62,11 +67,11 @@ func update_ui() -> void:
         var _node = inventory_items_ui.get_child(item_index)
         _node.item = null
         
-        if inventory.items.size() - 1 < item_index:
+        if Master.player_inventory.items.size() - 1 < item_index:
             _node.update_ui()
             break
         
-        _node.item = inventory.items[item_index]
+        _node.item = Master.player_inventory.items[item_index]
         _node.update_ui()
     
     for item_index in repo_items_ui.get_child_count():

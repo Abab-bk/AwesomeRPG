@@ -1,0 +1,122 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwnb2gkequqts"]
+
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_d1eks"]
+[ext_resource type="Script" path="res://Script/UI/MainMenu.gd" id="2_ahtec"]
+[ext_resource type="Texture2D" uid="uid://cgpftqksgjq5v" path="res://Assets/UI/Logo.png" id="2_c6yka"]
+[ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="4_1vhqh"]
+[ext_resource type="Script" path="res://Script/UI/SavePanel.gd" id="4_cjs57"]
+[ext_resource type="PackedScene" uid="uid://cwfkgj3v17v05" path="res://Scene/UI/SavePanelItem.tscn" id="5_02p3b"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_d1eks")
+script = ExtResource("2_ahtec")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 300
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Logo" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_c6yka")
+stretch_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_right = 300
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="StartBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "开始游戏"
+
+[node name="ExitBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "退出游戏"
+
+[node name="SavePanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -436.0
+offset_top = -718.0
+offset_right = 436.0
+offset_bottom = 718.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"SubPanel"
+script = ExtResource("4_cjs57")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SavePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SaveTitleBar" parent="SavePanel/VBoxContainer" instance=ExtResource("4_1vhqh")]
+unique_name_in_owner = true
+layout_mode = 2
+title_text = "读取存档"
+
+[node name="MarginContainer" type="MarginContainer" parent="SavePanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="SavePanels" type="VBoxContainer" parent="SavePanel/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+
+[node name="SavePanelItem" parent="SavePanel/VBoxContainer/MarginContainer/SavePanels" instance=ExtResource("5_02p3b")]
+layout_mode = 2
+slot = 1
+
+[node name="SavePanelItem2" parent="SavePanel/VBoxContainer/MarginContainer/SavePanels" instance=ExtResource("5_02p3b")]
+layout_mode = 2
+slot = 2
+
+[node name="SavePanelItem3" parent="SavePanel/VBoxContainer/MarginContainer/SavePanels" instance=ExtResource("5_02p3b")]
+layout_mode = 2
+slot = 3

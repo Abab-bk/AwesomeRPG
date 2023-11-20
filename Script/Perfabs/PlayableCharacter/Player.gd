@@ -137,14 +137,26 @@ func _ready() -> void:
     
     # TODO: 完善存档
     EventBus.save.connect(func():
-        #SaveSystem.set_var("Player", compute_data)
-#        SaveSystem.set_var("Player:Abilitys", ability_container.ability_list)
+        FlowerSaver.set_data("player_compute_data", flower_buff_manager.compute_data)
+        FlowerSaver.set_data("player_output_data", flower_buff_manager.output_data)
+        FlowerSaver.set_data("config_skills", config_skills)
         )
     
     EventBus.load_save.connect(func():
-        #print(SaveSystem.get_var("Player"))
-#        data.load_save(SaveSystem.get_var("Player"))
-#        ability_container.ability_list = SaveSystem.get_var("Player:Abilitys")
+        print("加载存档 - 玩家")
+        compute_data = FlowerSaver.get_data("player_compute_data", Master.current_save_slot)
+        output_data = FlowerSaver.get_data("player_output_data", Master.current_save_slot)
+        flower_buff_manager.compute_data = compute_data
+        flower_buff_manager.output_data = output_data
+        Master.player_output_data = flower_buff_manager.output_data        
+        config_skills = FlowerSaver.get_data("config_skills", Master.current_save_slot)
+        print("加载完毕：", output_data.damage)
+        )
+    
+    EventBus.flyed.connect(func():
+        Master.player_inventory.remove_all_item()
+        flower_buff_manager.compute_data = load("res://Assets/Resources/Datas/Characters/Player.tres")
+        flower_buff_manager.output_data = load("res://Assets/Resources/Datas/Characters/Player.tres")
         )
     
     flower_buff_manager.compute_ok.connect(func():

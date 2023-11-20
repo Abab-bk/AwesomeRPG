@@ -4,7 +4,12 @@ var hours:int = 0
 var minutes:int = 0
 var seconds:int = 0
 
-func _init(_hours:int, _minutes:int, _seconds:int):
+@warning_ignore("native_method_override")
+func get_class() -> String:
+    return "res://addons/TimeManager/TimeResource.gd"
+
+
+func _init(_hours:int = 0, _minutes:int = 0, _seconds:int = 0):
     hours = _hours
     minutes = _minutes
     seconds = _seconds

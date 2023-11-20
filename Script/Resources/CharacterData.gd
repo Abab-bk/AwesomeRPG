@@ -58,6 +58,10 @@ signal hp_is_zero
 @export var atk_range:float = 125
 @export var quipments:Dictionary = {}
 
+func get_class() -> String:
+    print("get_class")
+    return "res://Script/Resources/CharacterData.gd"
+
 func load_save(_save:Dictionary) -> void:
     for i in _save:
         self[str(i)] = _save[i]

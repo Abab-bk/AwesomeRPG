@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmw1ntlbrgj3d"]
+
+[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="1_6cga3"]
+[ext_resource type="Script" path="res://Script/Game/FlyAnimation.gd" id="1_pqstd"]
+
+[sub_resource type="Animation" id="Animation_qohp7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(539, 1170)]
+}
+
+[sub_resource type="Animation" id="Animation_bjloa"]
+resource_name = "run"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8, 1.9, 3.1, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(539, 1170), Vector2(360, 1339), Vector2(870, 953), Vector2(821, 1529), Vector2(584, 659), Vector2(234, 678)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rddkh"]
+_data = {
+"RESET": SubResource("Animation_qohp7"),
+"run": SubResource("Animation_bjloa")
+}
+
+[node name="FlyAnimation" type="Node2D"]
+script = ExtResource("1_pqstd")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(539, 1170)
+texture = ExtResource("1_6cga3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rddkh")
+}

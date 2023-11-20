@@ -1,8 +1,7 @@
 extends Node
 
 # TODO: 每日任务、爬塔模式、换装备对比Tooltip
-# TODO: 飞升
-# TODO: 七天签到
+# TODO: 飞升、存档、读档、离线收益
 
 const BGM:String = "res://Assets/Sounds/Music/Bgm.wav"
 const CLICK_SOUNDS:String = "res://Assets/Sounds/Click.mp3"
@@ -35,6 +34,8 @@ var player_output_data:CharacterData
 var relife_point:Marker2D
 var unlocked_skills:Array[int] = []
 
+var should_load:bool = false
+
 var in_dungeon:bool = false
 
 # 关卡等级：
@@ -61,6 +62,8 @@ var next_reward_player_level:int = 1
 # 用来存储drop_item位置的数组
 var occupied_positions:Array
 
+var current_save_slot:String
+
 var config
 
 var affixs:Array
@@ -79,6 +82,16 @@ var json_path:String = "res://DataBase/output/"
 
 const abilitys_start:int = 4001
 const abilitys_end:int = 4009
+
+func yes_fly() -> void:
+    coins = 0
+    unlocked_skills = []
+    current_level = 0
+    moneys.white = 0
+    moneys.blue = 0
+    moneys.purle = 0
+    moneys.yellow = 0
+    in_dungeon = false    
 
 func get_player_level_up_info() -> Dictionary:
     var _result:Dictionary
@@ -331,5 +344,27 @@ func _ready():
             next_reward_player_level += 5
         )
 
+    EventBus.save.connect(func():
+        FlowerSaver.set_data("unlocked_skills", unlocked_skills)
+        FlowerSaver.set_data("current_level", current_level)
+        FlowerSaver.set_data("player_name", player_name)
+        FlowerSaver.set_data("coins", coins)
+        FlowerSaver.set_data("moneys", moneys)
+        FlowerSaver.set_data("next_reward_player_level", next_reward_player_level)
+        FlowerSaver.set_data("fly_count", fly_count)
+        FlowerSaver.set_data("last_checkin_time", last_checkin_time)
+        )
+
+    EventBus.load_save.connect(func():
+        unlocked_skills = FlowerSaver.get_data("unlocked_skills", current_save_slot)
+        current_level = FlowerSaver.get_data("current_level", current_save_slot)
+        player_name = FlowerSaver.get_data("player_name", current_save_slot)
+        coins = FlowerSaver.get_data("coins", current_save_slot)
+        moneys = FlowerSaver.get_data("moneys", current_save_slot)
+        next_reward_player_level = FlowerSaver.get_data("next_reward_player_level", current_save_slot)
+        fly_count = FlowerSaver.get_data("fly_count", current_save_slot)
+        last_checkin_time = FlowerSaver.get_data("last_checkin_time", current_save_slot)
+        )
+    
     last_checkin_time = TimeManager.get_current_time_resource() as TimeResource
     last_checkin_time = last_checkin_time.get_next_day_time().get_next_day_time()

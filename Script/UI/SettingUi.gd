@@ -18,6 +18,21 @@ var cancel_event:Callable = func():
 
 
 func _ready() -> void:
+    EventBus.save.connect(func():
+        FlowerSaver.set_data("setting_main_sound", main_sound_slider.value)
+        FlowerSaver.set_data("setting_sfx_sound", sfx_slider.value)
+        FlowerSaver.set_data("setting_music_sound", music_slider.value)
+        )
+    EventBus.load_save.connect(func():
+        main_sound_slider.value = FlowerSaver.get_data("setting_main_sound", Master.current_save_slot)
+        sfx_slider.value = FlowerSaver.get_data("setting_sfx_sound", Master.current_save_slot)
+        music_slider.value = FlowerSaver.get_data("setting_music_sound", Master.current_save_slot)
+        
+        change_audio_db(main_sound_slider.value, SETTING_KEYS.AUDIO_MAIN)
+        change_audio_db(sfx_slider.value, SETTING_KEYS.AUDIO_SFX)
+        change_audio_db(music_slider.value, SETTING_KEYS.AUDIO_MUSIC)
+        )
+    
     title_bar.cancel_callable = cancel_event
     main_sound_slider.value_changed.connect(change_audio_db.bind(SETTING_KEYS.AUDIO_MAIN))
     sfx_slider.value_changed.connect(change_audio_db.bind(SETTING_KEYS.AUDIO_SFX))

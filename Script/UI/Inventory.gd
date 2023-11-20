@@ -53,6 +53,14 @@ func _ready() -> void:
             EventBus.change_item_tooltip_state.emit(null)
             update_ui()
             )
+    EventBus.save.connect(func():
+        FlowerSaver.set_data("inventory", inventory)
+        )
+    EventBus.load_save.connect(func():
+        inventory = FlowerSaver.get_data("inventory", Master.current_save_slot)
+        Master.player_inventory = inventory
+        update_ui()
+        )
     
     title_bar.cancel_callable = cancel_event
     

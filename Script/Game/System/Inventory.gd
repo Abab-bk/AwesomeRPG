@@ -12,3 +12,10 @@ func remove_item(_item:InventoryItem) -> void:
     items.erase(_item)
     #items[_item] = null
     items.append(null)
+
+func remove_all_item() -> void:
+    items.clear()
+
+@warning_ignore("native_method_override")
+func get_class() -> String:
+    return "res://Script/Game/System/Inventory.gd"

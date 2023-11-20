@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://br6k60nl3syc"]
 
 [ext_resource type="Script" path="res://Script/UI/BootSplash.gd" id="1_bu3ff"]
-[ext_resource type="Texture2D" uid="uid://bv7f78tgjbooa" path="res://Assets/UI/Texture/Button/ButtonNormal.png" id="1_sc7dt"]
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_j0dui"]
 [ext_resource type="Texture2D" uid="uid://u5edw5f50jvc" path="res://Assets/UI/AcidWallLogo.png" id="2_pexge"]
 [ext_resource type="Texture2D" uid="uid://dgforyovbwm7w" path="res://Assets/UI/GodotLogo.png" id="3_0nxdf"]
 
@@ -73,20 +73,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_j0dui")
 script = ExtResource("1_bu3ff")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="NinePatchRect" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_sc7dt")
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 20
-patch_margin_bottom = 20
 
 [node name="AcidWall" type="TextureRect" parent="NinePatchRect"]
 layout_mode = 1

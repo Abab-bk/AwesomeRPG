@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=42 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -38,6 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://dklre5rf5vnqa" path="res://Scene/UI/Repository.tscn" id="36_x4b5l"]
 [ext_resource type="PackedScene" uid="uid://c760kqfsi2h5u" path="res://Scene/UI/DaysCheckIn.tscn" id="37_7ckrf"]
 [ext_resource type="PackedScene" uid="uid://bbp1iqow5k0b3" path="res://Scene/UI/ItemToolTip.tscn" id="37_hqe6n"]
+[ext_resource type="PackedScene" uid="uid://cjjwuxcdb323h" path="res://Scene/UI/Fly.tscn" id="38_kc5l2"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4vukb"]
 font = ExtResource("13_xqeye")
@@ -365,6 +366,7 @@ mouse_filter = 2
 
 [node name="GetSkillBtn" type="Button" parent="Control"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 45.0
 offset_top = 1400.0
@@ -375,6 +377,7 @@ text = "获得技能"
 
 [node name="GetFreeBtn" type="Button" parent="Control"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 778.0
 offset_top = 794.0
@@ -384,6 +387,7 @@ text = "卡死点我"
 
 [node name="GetEquipmentBtn" type="Button" parent="Control"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 861.0
 offset_top = 916.0
@@ -405,7 +409,7 @@ anchor_bottom = 0.5
 offset_left = -206.0
 offset_top = -880.0
 offset_right = -56.0
-offset_bottom = -279.0
+offset_bottom = -87.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -444,6 +448,14 @@ texture_pressed = ExtResource("29_4kesd")
 stretch_mode = 5
 
 [node name="7DaysCheckinBtn" type="TextureButton" parent="Control/SubFunction/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("28_iq72c")
+texture_pressed = ExtResource("29_4kesd")
+stretch_mode = 5
+
+[node name="FlyBtn" type="TextureButton" parent="Control/SubFunction/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -512,6 +524,10 @@ visible = false
 layout_mode = 2
 
 [node name="DaysCheckIn" parent="Pages/Pages" instance=ExtResource("37_7ckrf")]
+visible = false
+layout_mode = 2
+
+[node name="Fly" parent="Pages/Pages" instance=ExtResource("38_kc5l2")]
 visible = false
 layout_mode = 2
 

@@ -28,6 +28,7 @@ func _ready() -> void:
         if killed_enemys >= need_killed_enemys:
             EventBus.completed_level.emit()
         )
+    EventBus.flyed.connect(kill_all_enemy)
 
 func kill_all_enemy() -> void:
     for i in get_children():
