@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://Script/Perfabs/PlayableCharacter/Player.gd" id="1_8yy7w"]
 [ext_resource type="Script" path="res://addons/FlowerAbility/Script/FlowerAbilityContainer.gd" id="2_8gp7m"]
 [ext_resource type="Script" path="res://addons/FlowerBuff/Script/FlowerBuffManager.gd" id="3_nckal"]
-[ext_resource type="Resource" uid="uid://cxjh70teksadv" path="res://Assets/Resources/Datas/Characters/Knight.tres" id="4_14ux5"]
 [ext_resource type="Script" path="res://Script/Component/AtkRangeComponent.gd" id="5_cwveo"]
 [ext_resource type="Script" path="res://Script/Component/HurtBoxComponent.gd" id="6_mwt7r"]
 [ext_resource type="Script" path="res://Script/Component/VisionComponent.gd" id="6_r1tqh"]
@@ -1751,7 +1750,46 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hl0t"]
 size = Vector2(37.6475, 270.625)
 
-[sub_resource type="Resource" id="Resource_sdq8t"]
+[sub_resource type="Resource" id="Resource_xmmv7"]
+script = ExtResource("7_6v44f")
+level = 1
+now_xp = 0.0
+next_level_xp = 0.0
+hp = 200.0
+max_hp = 200.0
+magic = 100.0
+max_magic = 100.0
+strength = 3
+wisdom = 3
+agility = 3
+luck = 1.0
+speed = 800.0
+damage = 10.0
+defense = 0.1
+fire_damage = 0.1
+frost_damage = 0.1
+light_damage = 0.1
+toxic_damage = 0.1
+fire_resistance = 0.1
+frost_resistance = 0.1
+light_resistance = 0.1
+toxic_resistance = 0.1
+physical_resistance = 0.1
+critical_rate = 0.1
+critical_damage = 0.1
+vulnerability_rate = 0.1
+vulnerability_damage = 0.1
+evasion = 0.1
+health_regeneration = 0.1
+healing_effciency = 0.1
+weapon_damage = 0.0
+vision = 800
+atk_speed = 0.5
+atk_cd = 0.5
+atk_range = 125.0
+quipments = {}
+
+[sub_resource type="Resource" id="Resource_5gjap"]
 script = ExtResource("7_6v44f")
 level = 1
 now_xp = 0.0
@@ -2028,5 +2066,5 @@ collision_mask = 8
 [node name="FlowerBuffManager" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("3_nckal")
 target = NodePath("..")
-compute_data = ExtResource("4_14ux5")
-output_data = SubResource("Resource_sdq8t")
+compute_data = SubResource("Resource_xmmv7")
+output_data = SubResource("Resource_5gjap")

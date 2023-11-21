@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=45 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://dyhphsqm83xwx" path="res://Assets/UI/Texture/Button/TreeBtnPre.png" id="27_jvatt"]
 [ext_resource type="Texture2D" uid="uid://bsggabdbdgw3j" path="res://Assets/UI/Texture/Button/ForgeBtn.png" id="28_iq72c"]
 [ext_resource type="Texture2D" uid="uid://dn7xjyek2ps1n" path="res://Assets/UI/Texture/Button/ForgeBtnPre.png" id="29_4kesd"]
+[ext_resource type="Script" path="res://Script/Game/System/Inventory.gd" id="30_a74rk"]
 [ext_resource type="PackedScene" uid="uid://dklre5rf5vnqa" path="res://Scene/UI/Repository.tscn" id="36_x4b5l"]
 [ext_resource type="PackedScene" uid="uid://c760kqfsi2h5u" path="res://Scene/UI/DaysCheckIn.tscn" id="37_7ckrf"]
 [ext_resource type="PackedScene" uid="uid://bbp1iqow5k0b3" path="res://Scene/UI/ItemToolTip.tscn" id="37_hqe6n"]
@@ -48,6 +49,16 @@ outline_size = 1
 outline_color = Color(0.0941176, 0.101961, 0.0705882, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w0x7s"]
+
+[sub_resource type="Resource" id="Resource_euf2j"]
+script = ExtResource("30_a74rk")
+items = Array[Resource("res://Script/Game/System/InventoryItem.gd")]([])
+size = 50
+
+[sub_resource type="Resource" id="Resource_lu25w"]
+script = ExtResource("30_a74rk")
+items = Array[Resource("res://Script/Game/System/InventoryItem.gd")]([])
+size = 50
 
 [node name="Hud" type="CanvasLayer"]
 process_mode = 3
@@ -490,6 +501,7 @@ mouse_filter = 2
 process_mode = 3
 visible = false
 layout_mode = 2
+inventory = SubResource("Resource_euf2j")
 
 [node name="CharacterPanel" parent="Pages/Pages" instance=ExtResource("3_aoxj4")]
 process_mode = 3
@@ -522,6 +534,7 @@ layout_mode = 2
 [node name="Repository" parent="Pages/Pages" instance=ExtResource("36_x4b5l")]
 visible = false
 layout_mode = 2
+repo = SubResource("Resource_lu25w")
 
 [node name="DaysCheckIn" parent="Pages/Pages" instance=ExtResource("37_7ckrf")]
 visible = false

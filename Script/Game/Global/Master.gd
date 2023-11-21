@@ -55,7 +55,7 @@ var moneys:Dictionary = {
     "yellow": 0,
 }
 
-var last_checkin_time:TimeResource
+var last_checkin_time:TimeResource = TimeResource.new(0, 0, 0)
 
 var next_reward_player_level:int = 1
 

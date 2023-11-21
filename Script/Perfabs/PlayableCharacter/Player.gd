@@ -140,17 +140,18 @@ func _ready() -> void:
         FlowerSaver.set_data("player_compute_data", flower_buff_manager.compute_data)
         FlowerSaver.set_data("player_output_data", flower_buff_manager.output_data)
         FlowerSaver.set_data("config_skills", config_skills)
+        print("玩家存档：", flower_buff_manager.output_data.level)
         )
     
     EventBus.load_save.connect(func():
-        print("加载存档 - 玩家")
         compute_data = FlowerSaver.get_data("player_compute_data", Master.current_save_slot)
         output_data = FlowerSaver.get_data("player_output_data", Master.current_save_slot)
         flower_buff_manager.compute_data = compute_data
         flower_buff_manager.output_data = output_data
-        Master.player_output_data = flower_buff_manager.output_data        
+        Master.player_output_data = flower_buff_manager.output_data
+        compute()
         config_skills = FlowerSaver.get_data("config_skills", Master.current_save_slot)
-        print("加载完毕：", output_data.damage)
+        print("玩家存档加载完毕：", output_data.level)
         )
     
     EventBus.flyed.connect(func():

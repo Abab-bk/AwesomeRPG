@@ -1,8 +1,8 @@
 class_name TimeResource extends Resource
 
-var hours:int = 0
-var minutes:int = 0
-var seconds:int = 0
+@export var hours:int = 0
+@export var minutes:int = 0
+@export var seconds:int = 0
 
 @warning_ignore("native_method_override")
 func get_class() -> String:

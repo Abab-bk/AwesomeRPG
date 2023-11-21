@@ -9,17 +9,17 @@ enum QUEST_TYPE {
     NONE,
 }
 
-var id:int = 0
-var name:String = ""
-var desc:String = ""
-var type:QUEST_TYPE = QUEST_TYPE.NONE
-var reward_value:int = 0
-var need_value:int = 0
-var current_value:int = 0:
+@export var id:int = 0
+@export var name:String = ""
+@export var desc:String = ""
+@export var type:QUEST_TYPE = QUEST_TYPE.NONE
+@export var reward_value:int = 0
+@export var need_value:int = 0
+@export var current_value:int = 0:
     set(v):
         current_value = v
         value_changed.emit()
-var done:bool = false
+@export var done:bool = false
 
 func connect_signals() -> void:
     match type:

@@ -1,9 +1,9 @@
 class_name AffixItem extends Resource
 
-var name:String
-var desc:String
-var target_buff_id:int
-var offset:float
+@export var name:String
+@export var desc:String
+@export var target_buff_id:int
+@export var offset:float
 
 var buff:FlowerBaseBuff = FlowerBaseBuff.new()
 
