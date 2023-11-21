@@ -15,6 +15,13 @@ func _init(_hours:int = 0, _minutes:int = 0, _seconds:int = 0):
     seconds = _seconds
 
 
+func get_distance_to_a(_a:TimeResource) -> int:
+    var _total_sec:int = (hours * 3600) + (minutes * 60) + seconds
+    var _a_total_sec:int = (_a.hours * 3600) + (_a.minutes * 60) + _a.seconds
+    
+    return _total_sec - _a_total_sec
+
+
 func get_time_string() -> String:
     var time_string:String = ""
     

@@ -3,7 +3,7 @@ extends Timer
 @onready var save_cd:Timer = $SaveCD
 
 func _ready() -> void:
-    wait_time = 3.0
+    wait_time = 2.0
     one_shot = true
     autostart = false
     

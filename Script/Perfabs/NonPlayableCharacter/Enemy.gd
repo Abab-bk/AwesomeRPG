@@ -147,14 +147,22 @@ func die() -> void:
     var _get_xp:float = (3 * data.level * 1.5) * (1 + Master.fly_count * 0.1)
     EventBus.enemy_die.emit(_get_xp)
     # TODO: 修改敌人掉落金币
+    randomize()
     Master.coins += data.level * randi_range(0, 5)
     
     dead.emit()
     
+    randomize()
     # 随机掉落装备
     if randf_range(0.0, 100.0) <= 16.0:
         var _drop_item:InventoryItem = item_generator.gen_a_item()
         EventBus.new_drop_item.emit(_drop_item, get_drop_item_position())
+    if randf_range(0.0, 100.0) <= 10:
+        # 爆金币了
+        var _new_money_key = Master.moneys.keys().pick_random()
+        var _random_value:int = randi_range(1, 10)
+        # TODO: get_money
+        EventBus.get_money.emit(_new_money_key, _random_value)
     queue_free()
 
 func get_drop_item_position() -> Vector2:

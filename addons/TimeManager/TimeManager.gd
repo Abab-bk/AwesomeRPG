@@ -1,6 +1,5 @@
 extends Node
 
-
 func a_is_larger_than_b(a:TimeResource, b:TimeResource) -> bool:
     if a.hours > b.hours:
         return true

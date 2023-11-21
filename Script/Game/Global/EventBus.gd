@@ -31,6 +31,9 @@ signal player_ability_activate(ability:FlowerAbility)
 signal player_set_a_ability(ability:FlowerAbility, sub_ability:Array)
 signal player_level_up
 
+# 这里是爆出打造装备需要的金币
+signal get_money(key:String, value:int)
+
 signal flyed
 
 signal equipment_up(type:Const.EQUIPMENT_TYPE, item:InventoryItem)

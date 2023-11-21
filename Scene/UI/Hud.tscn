@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=49 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -34,8 +34,12 @@
 [ext_resource type="Texture2D" uid="uid://f1vbao16msv2" path="res://Assets/UI/Texture/Button/TreeBtn.png" id="26_e01sv"]
 [ext_resource type="Texture2D" uid="uid://dyhphsqm83xwx" path="res://Assets/UI/Texture/Button/TreeBtnPre.png" id="27_jvatt"]
 [ext_resource type="Texture2D" uid="uid://bsggabdbdgw3j" path="res://Assets/UI/Texture/Button/ForgeBtn.png" id="28_iq72c"]
+[ext_resource type="Texture2D" uid="uid://bex7e764x4i65" path="res://Assets/UI/Texture/Button/RepoBtn.png" id="29_2sfva"]
 [ext_resource type="Texture2D" uid="uid://dn7xjyek2ps1n" path="res://Assets/UI/Texture/Button/ForgeBtnPre.png" id="29_4kesd"]
 [ext_resource type="Script" path="res://Script/Game/System/Inventory.gd" id="30_a74rk"]
+[ext_resource type="Texture2D" uid="uid://bfitc77f4gvhe" path="res://Assets/UI/Texture/Button/RepoBtnPre.png" id="30_di66f"]
+[ext_resource type="Texture2D" uid="uid://b5b2xouca1d3d" path="res://Assets/UI/Texture/Button/DaysCheckin.png" id="31_r2t82"]
+[ext_resource type="Texture2D" uid="uid://d2u888scrwjac" path="res://Assets/UI/Texture/Button/DaysCheckinPre.png" id="32_dgm5u"]
 [ext_resource type="PackedScene" uid="uid://dklre5rf5vnqa" path="res://Scene/UI/Repository.tscn" id="36_x4b5l"]
 [ext_resource type="PackedScene" uid="uid://c760kqfsi2h5u" path="res://Scene/UI/DaysCheckIn.tscn" id="37_7ckrf"]
 [ext_resource type="PackedScene" uid="uid://bbp1iqow5k0b3" path="res://Scene/UI/ItemToolTip.tscn" id="37_hqe6n"]
@@ -419,7 +423,7 @@ anchor_bottom = 0.5
 offset_left = -206.0
 offset_top = -880.0
 offset_right = -56.0
-offset_bottom = -87.0
+offset_bottom = -240.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -453,20 +457,21 @@ stretch_mode = 5
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("28_iq72c")
-texture_pressed = ExtResource("29_4kesd")
+texture_normal = ExtResource("29_2sfva")
+texture_pressed = ExtResource("30_di66f")
 stretch_mode = 5
 
 [node name="7DaysCheckinBtn" type="TextureButton" parent="Control/SubFunction/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("28_iq72c")
-texture_pressed = ExtResource("29_4kesd")
+texture_normal = ExtResource("31_r2t82")
+texture_pressed = ExtResource("32_dgm5u")
 stretch_mode = 5
 
 [node name="FlyBtn" type="TextureButton" parent="Control/SubFunction/VBoxContainer2"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("28_iq72c")

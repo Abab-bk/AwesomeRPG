@@ -21,12 +21,13 @@ func _ready() -> void:
         if Master.last_checkin_time.is_larger_than_time(target_time):
             print("签到成功")
             get_reward()
+            Master.last_checkin_time = target_time
             check_btn.hide()
             return
         print("时间不到，无法签到")
         )
     
-    title_label.text = "第 %s 天" % str(current_day)
+    title_label.text = "第 %s 天" % str(current_day + 1)
     target_time = TimeManager.get_current_time_resource() as TimeResource
     reward_label.text = "x%s" % str(reward_value)
     

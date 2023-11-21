@@ -56,6 +56,7 @@ var moneys:Dictionary = {
 }
 
 var last_checkin_time:TimeResource = TimeResource.new(0, 0, 0)
+var last_leave_time:TimeResource = TimeResource.new(0, 0, 0)
 
 var next_reward_player_level:int = 1
 
@@ -353,6 +354,7 @@ func _ready():
         FlowerSaver.set_data("next_reward_player_level", next_reward_player_level)
         FlowerSaver.set_data("fly_count", fly_count)
         FlowerSaver.set_data("last_checkin_time", last_checkin_time)
+        FlowerSaver.set_data("last_leave_time", last_leave_time)
         )
 
     EventBus.load_save.connect(func():
@@ -364,7 +366,37 @@ func _ready():
         next_reward_player_level = FlowerSaver.get_data("next_reward_player_level", current_save_slot)
         fly_count = FlowerSaver.get_data("fly_count", current_save_slot)
         last_checkin_time = FlowerSaver.get_data("last_checkin_time", current_save_slot)
+        last_leave_time = FlowerSaver.get_data("last_leave_time", current_save_slot)
+        # 得到离线奖励
+        get_offline_reward()
         )
     
-    last_checkin_time = TimeManager.get_current_time_resource() as TimeResource
-    last_checkin_time = last_checkin_time.get_next_day_time().get_next_day_time()
+    EventBus.get_money.connect(func(_key:String, _value:int):
+        moneys[_key] += _value
+        )
+
+func get_offline_reward() -> void:
+    var _distance:int = last_leave_time.get_distance_to_a(TimeManager.get_current_time_resource())
+    
+    var _level:int = Master.player.get_level() - 1
+    
+    var _get_xp:float = ((3 * _level * 1.5) * (1 + Master.fly_count * 0.1)) * 0.8
+    var _get_coins:int = floor((_level * randi_range(0, 5)) * 0.8)
+    
+    Master.coins += _get_coins
+    Master.player.get_xp(_get_xp)
+    
+    EventBus.show_popup.emit("离线奖励", """
+    离线奖励：
+    金币 %s
+    经验 %s
+    """ % [str(_get_coins), str(_get_xp).pad_decimals(0)])
+
+
+func _notification(_what:int) -> void:
+    if _what == NOTIFICATION_WM_CLOSE_REQUEST:
+        last_leave_time = TimeManager.get_current_time_resource()
+        EventBus.save.emit()
+    if _what == NOTIFICATION_WM_GO_BACK_REQUEST:
+        last_leave_time = TimeManager.get_current_time_resource()
+        EventBus.save.emit()
