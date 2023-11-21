@@ -189,7 +189,6 @@ func show_animation(_key:String, _info:Dictionary = {}) -> void:
         var _img:Control = load("res://Scene/UI/LevelUpAnimation.tscn").instantiate()
         add_child(_img)
     if _key == "PropertyContrast":
-        SoundManager.play_sound(load(Master.HAPPY_SOUNDS),  "GameBus")
         var _img:Control = load("res://Scene/UI/PropertyContrast.tscn").instantiate()
         add_child(_img)
         _img.show_animation(_info)
