@@ -1,6 +1,7 @@
 extends Panel
 
-signal enter
+signal enter_creat
+signal enter_game
 
 @export var slot:int
 
@@ -15,10 +16,10 @@ func _ready() -> void:
         if enter_btn.text == "进入":
             Master.current_save_slot = get_slot_path()
             Master.should_load = true
-            enter.emit()
+            enter_game.emit()
             return
         Master.current_save_slot = get_slot_path()        
-        enter.emit()
+        enter_creat.emit()
         )
     del_btn.pressed.connect(func():
         FlowerSaver.del_save(get_slot_path())

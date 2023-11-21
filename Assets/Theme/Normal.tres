@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=43 format=3 uid="uid://dw7ft4xik3rji"]
+[gd_resource type="Theme" load_steps=45 format=3 uid="uid://dw7ft4xik3rji"]
 
 [ext_resource type="FontFile" uid="uid://cpqr3r4f0yisb" path="res://Assets/Font/SourceHanSansCN-Normal.otf" id="1_0mun2"]
 [ext_resource type="Texture2D" uid="uid://cxa6xde2sdlug" path="res://Assets/UI/Texture/Button/NormalButton.png" id="2_i82n3"]
@@ -88,6 +88,22 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(1, 1, 1, 0.360784)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8dfac"]
+bg_color = Color(0.231373, 0.211765, 0.282353, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.992157, 0.945098, 0.827451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8uie"]
+bg_color = Color(0.231373, 0.211765, 0.282353, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.986517, 0.906897, 0.707823, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0cbip"]
 texture = ExtResource("7_mt373")
@@ -201,6 +217,9 @@ ItemPanel/base_type = &"Panel"
 ItemPanel/styles/panel = SubResource("StyleBoxFlat_45xaf")
 Label/colors/font_color = Color(0.741176, 0.741176, 0.741176, 1)
 Label/font_sizes/font_size = 16
+LineEdit/font_sizes/font_size = 40
+LineEdit/styles/focus = SubResource("StyleBoxFlat_8dfac")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_v8uie")
 Outline/base_type = &"Panel"
 Outline/styles/panel = SubResource("StyleBoxTexture_0cbip")
 Panel/styles/panel = SubResource("StyleBoxTexture_h0c20")

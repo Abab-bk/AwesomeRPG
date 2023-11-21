@@ -388,12 +388,11 @@ text = "获得技能"
 
 [node name="GetFreeBtn" type="Button" parent="Control"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
-offset_left = 778.0
-offset_top = 794.0
-offset_right = 1051.0
-offset_bottom = 889.0
+offset_left = 43.0
+offset_top = 358.0
+offset_right = 316.0
+offset_bottom = 453.0
 text = "卡死点我"
 
 [node name="GetEquipmentBtn" type="Button" parent="Control"]

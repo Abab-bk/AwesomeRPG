@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cwnb2gkequqts"]
+[gd_scene load_steps=8 format=3 uid="uid://cwnb2gkequqts"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_d1eks"]
 [ext_resource type="Script" path="res://Script/UI/MainMenu.gd" id="2_ahtec"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="4_1vhqh"]
 [ext_resource type="Script" path="res://Script/UI/SavePanel.gd" id="4_cjs57"]
 [ext_resource type="PackedScene" uid="uid://cwfkgj3v17v05" path="res://Scene/UI/SavePanelItem.tscn" id="5_02p3b"]
+[ext_resource type="PackedScene" uid="uid://dhyobuuga8504" path="res://Scene/UI/CreatCharacter.tscn" id="7_56mi5"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -120,3 +121,7 @@ slot = 2
 [node name="SavePanelItem3" parent="SavePanel/VBoxContainer/MarginContainer/SavePanels" instance=ExtResource("5_02p3b")]
 layout_mode = 2
 slot = 3
+
+[node name="CreatCharacter" parent="." instance=ExtResource("7_56mi5")]
+visible = false
+layout_mode = 1
