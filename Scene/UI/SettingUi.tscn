@@ -93,6 +93,7 @@ layout_mode = 2
 size_flags_vertical = 1
 max_value = 1.0
 step = 0.01
+value = 0.8
 
 [node name="Sep" type="ColorRect" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer2"]
 custom_minimum_size = Vector2(600, 2)
@@ -125,6 +126,7 @@ layout_mode = 2
 size_flags_vertical = 1
 max_value = 1.0
 step = 0.01
+value = 0.8
 
 [node name="Sep2" type="ColorRect" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer2"]
 custom_minimum_size = Vector2(600, 2)
@@ -157,6 +159,7 @@ layout_mode = 2
 size_flags_vertical = 1
 max_value = 1.0
 step = 0.01
+value = 0.8
 
 [node name="Sep3" type="ColorRect" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer2"]
 custom_minimum_size = Vector2(600, 2)

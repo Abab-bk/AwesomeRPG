@@ -83,6 +83,8 @@ func _ready() -> void:
     
     update_ui()
 
+    await get_tree().create_timer(1.0).timeout
+    gen_trees_by_walker()
 
 func gen_trees_by_walker() -> void:
     var _step_size:Vector2 = Vector2(300, 0)

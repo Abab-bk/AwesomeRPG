@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://cwfkgj3v17v05"]
 
-[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="1_4t3an"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_k23va"]
 [ext_resource type="Script" path="res://Script/UI/SavePanelItem.gd" id="2_ecbb5"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="2_kskh0"]
+[ext_resource type="Texture2D" uid="uid://cqhj0exwwwxr8" path="res://Assets/Characters/PlayerAssets/Heads/Head.png" id="3_mhggv"]
 
 [node name="SavePanelItem" type="Panel"]
 custom_minimum_size = Vector2(0, 364)
@@ -31,7 +31,8 @@ layout_mode = 2
 [node name="PlayerImage" type="TextureRect" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-texture = ExtResource("1_4t3an")
+texture = ExtResource("3_mhggv")
+expand_mode = 1
 stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]

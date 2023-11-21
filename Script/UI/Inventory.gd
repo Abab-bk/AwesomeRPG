@@ -87,7 +87,6 @@ func set_bag() -> void:
 
 func update_ui() -> void:
     for item_index in items_ui.get_child_count():
-        #item.clean()
         var _node = items_ui.get_child(item_index)
         _node.item = null
         

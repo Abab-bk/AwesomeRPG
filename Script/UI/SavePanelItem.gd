@@ -23,6 +23,7 @@ func _ready() -> void:
         )
     del_btn.pressed.connect(func():
         FlowerSaver.del_save(get_slot_path())
+        update_ui(FlowerSaver.get_data_but_load("player_output_data", get_slot_path()))
         )
     update_ui(FlowerSaver.get_data_but_load("player_output_data", get_slot_path()))
 
@@ -49,6 +50,6 @@ func update_ui(_data:Variant) -> void:
     _data = _data as CharacterData
     
     player_level_label.text = str(_data.level)
-    player_name_label.text = str("花神")
+    player_name_label.text = str(FlowerSaver.get_data_but_load("player_name", get_slot_path()))
     enter_btn.text = "进入"
     del_btn.show()

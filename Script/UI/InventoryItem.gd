@@ -19,6 +19,9 @@ func _ready() -> void:
             pressed.emit(item)
             return
         
+        if press_mode == "display":
+            EventBus.change_item_tooltip_state.emit(item, false, false, false)
+        
         EventBus.change_item_tooltip_state.emit(item)
         pressed.emit(item)
         )

@@ -26,7 +26,7 @@ var temp_item:InventoryItem = InventoryItem.new()
 var current_state:STATE = STATE.UP
 
 func _ready() -> void:
-    EventBus.change_item_tooltip_state.connect(func(_item:InventoryItem, _down:bool = false, _move:bool = false):
+    EventBus.change_item_tooltip_state.connect(func(_item:InventoryItem, _down:bool = false, _move:bool = false, _display = false):
         if _item == null:
             hide()
             return
@@ -35,6 +35,9 @@ func _ready() -> void:
             hide()
             item = temp_item
             return
+        
+        if _display:
+            use_btn.hide()
         
         if _down:
             use_btn.text = "卸下"

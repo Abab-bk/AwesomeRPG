@@ -151,6 +151,7 @@ func _ready() -> void:
         Master.player_output_data = flower_buff_manager.output_data
         compute()
         config_skills = FlowerSaver.get_data("config_skills", Master.current_save_slot)
+        Master.get_offline_reward()
         print("玩家存档加载完毕：", output_data.level)
         )
     
@@ -324,9 +325,6 @@ func up_level() -> void:
     output_data.update_next_xp()
     EventBus.player_level_up.emit()
     EventBus.update_ui.emit()
-    
-    if output_data.level == 2:
-        EventBus.unlock_new_function.emit("talent_tree")
 
 func get_xp(_value:float) -> void:
     output_data.now_xp += _value

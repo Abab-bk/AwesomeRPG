@@ -3,7 +3,7 @@ extends Node
 # TODO: 每日任务、爬塔模式、换装备对比Tooltip
 # TODO: 飞升、存档、读档、离线收益
 
-const BGM:String = "res://Assets/Sounds/Music/Bgm.wav"
+const BGM:String = "res://Assets/Sounds/Music/KleptoLindaMountainA.wav"
 const CLICK_SOUNDS:String = "res://Assets/Sounds/Click.mp3"
 const POPUP_SOUNDS:String = "res://Assets/Sounds/PopUp.mp3"
 const HURT_SOUNDS:String = "res://Assets/Sounds/Sfx/Hurt.wav"
@@ -367,8 +367,6 @@ func _ready():
         fly_count = FlowerSaver.get_data("fly_count", current_save_slot)
         last_checkin_time = FlowerSaver.get_data("last_checkin_time", current_save_slot)
         last_leave_time = FlowerSaver.get_data("last_leave_time", current_save_slot)
-        # 得到离线奖励
-        get_offline_reward()
         )
     
     EventBus.get_money.connect(func(_key:String, _value:int):

@@ -7,7 +7,7 @@ signal change_scene(who:Node, to:String)
 
 signal update_ui
 signal update_inventory
-signal change_item_tooltip_state(item:InventoryItem, down:bool, move:bool)
+signal change_item_tooltip_state(item:InventoryItem, down:bool, move:bool, display:bool)
 signal show_popup(title:String, desc:String, show_cancel_btn:bool, yes_event:Callable, cancel_event:Callable)
 signal show_select_skills_panel(target:Panel)
 signal show_color

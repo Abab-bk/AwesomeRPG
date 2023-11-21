@@ -26,13 +26,13 @@ func _ready() -> void:
     EventBus.completed_level.emit()
     EventBus.update_ui.emit()
     EventBus.load_save.connect(completed_level)
+
+    SoundManager.play_music(load(Master.BGM), 0, "Music")
     
     if Master.should_load:
         FlowerSaver.load_save(Master.current_save_slot)
         print("加载存档 - 世界")
-        EventBus.load_save.emit()
-    
-    #SoundManager.play_music(load(Master.BGM), 0, "Music")
+        EventBus.load_save.emit()    
 
 func completed_level() -> void:
     enemy_home.min_enemy_count = Master.current_level * 1

@@ -68,7 +68,7 @@ func get_data_but_load(key:String, path:String) -> Variant:
     return _result
     
 
-func get_data(key:String, path:String) -> Variant:
+func get_data(key:String, path:String = "") -> Variant:
     if not loaded_data.data.has(key):
         return false
     
