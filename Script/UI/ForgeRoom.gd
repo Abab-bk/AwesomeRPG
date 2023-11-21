@@ -63,37 +63,37 @@ func update_cost() -> void:
             cost.white = 10
             cost.blue = 10
             cost.purple = 10
-            cost_1.set_content("白：10")
-            cost_2.set_content("蓝：10")
-            cost_3.set_content("紫：10")
+            cost_1.set_content("奉献之灰：10")
+            cost_2.set_content("天堂之尘：10")
+            cost_3.set_content("赦罪之血：10")
         Const.EQUIPMENT_QUALITY.BLUE:
             cost.blue = 10
             cost.purple = 10
             cost.yellow = 10
-            cost_1.set_content("蓝：10")
-            cost_2.set_content("紫：10")
-            cost_3.set_content("黄：10")
+            cost_1.set_content("天堂之尘：10")
+            cost_2.set_content("赦罪之血：10")
+            cost_3.set_content("天使之泪：10")
         Const.EQUIPMENT_QUALITY.YELLOW:
             cost.blue = 500
             cost.purple = 50
             cost.yellow = 50
-            cost_1.set_content("蓝：500")
-            cost_2.set_content("紫：50")
-            cost_3.set_content("黄：50")
+            cost_1.set_content("天堂之尘：500")
+            cost_2.set_content("赦罪之血：50")
+            cost_3.set_content("天使之泪：50")
         Const.EQUIPMENT_QUALITY.DEEP_YELLOW:
             cost.blue = 5000
             cost.purple = 60
             cost.yellow = 500
-            cost_1.set_content("蓝：5000")
-            cost_2.set_content("紫：60")
-            cost_3.set_content("黄：500")
+            cost_1.set_content("天堂之尘：5000")
+            cost_2.set_content("赦罪之血：60")
+            cost_3.set_content("天使之泪：500")
         Const.EQUIPMENT_QUALITY.GOLD:
             cost.blue = 50000
             cost.purple = 1000
             cost.yellow = 10000
-            cost_1.set_content("蓝：50000")
-            cost_2.set_content("紫：1000")
-            cost_3.set_content("黄：10000")
+            cost_1.set_content("天堂之尘：50000")
+            cost_2.set_content("赦罪之血：1000")
+            cost_3.set_content("天使之泪：10000")
 
 func update_ui() -> void:    
     for i in pre_affixs.get_children():
