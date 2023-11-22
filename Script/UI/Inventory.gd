@@ -22,7 +22,7 @@ func _ready() -> void:
     for i in slots_ui_2.get_children():
         slots.append(i)
     
-    #EventBus.update_inventory.connect(update_ui)
+    EventBus.update_inventory.connect(update_ui)
     
     EventBus.add_item.connect(func(_item:InventoryItem):
         inventory.add_item(_item)

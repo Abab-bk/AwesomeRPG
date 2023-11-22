@@ -4,9 +4,9 @@ extends ColorRect
 @onready var yes_btn:Button = %YesBtn
 @onready var cancel_btn:Button = %CancelBtn
 
+var _types:Array[Const.EQUIPMENT_QUALITY] = []
+
 func _ready() -> void:
-    var _types:Array[int] = []
-        
     for i in filter.get_children():
         i.toggled.connect(func(_pressed:bool):
             if _pressed:
@@ -26,6 +26,7 @@ func _ready() -> void:
                     
                 Master.coins += _item.price
                 Master.player_inventory.remove_item(_item)
+                
         EventBus.update_inventory.emit()
             )
     
