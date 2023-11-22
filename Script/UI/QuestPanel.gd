@@ -5,7 +5,7 @@ extends Control
 @onready var reward_label:Label = %RewardLabel
 @onready var button:Button = %Button
 
-var current_quest:QuestResource = null:
+@export var current_quest:QuestResource = null:
     set(v):
         current_quest = v
         if not current_quest:
@@ -24,6 +24,14 @@ func _ready() -> void:
             current_quest.complete()
             get_new_quest()
             )
+    
+    EventBus.save.connect(func():
+        FlowerSaver.set_data("quest_current_quest", current_quest)
+        )
+    EventBus.load_save.connect(func():
+        current_quest = FlowerSaver.get_data("quest_current_quest")
+        update_ui()
+        )
     
     get_new_quest()
 
