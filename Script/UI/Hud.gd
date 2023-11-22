@@ -132,6 +132,9 @@ func change_page(_page:PAGE) -> void:
         changed_to_other.emit()
         return
     
+    if _page == 0:
+        EventBus.change_item_tooltip_state.emit(null)
+    
     pages.current_tab = int(_page)
 
 

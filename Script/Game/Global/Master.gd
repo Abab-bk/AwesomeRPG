@@ -2,6 +2,8 @@ extends Node
 
 # TODO: 每日任务、爬塔模式、换装备对比Tooltip
 # TODO: 飞升
+# FIXME: 回收无法使用
+# HACK: 升级音效短一点
 
 const BGM:String = "res://Assets/Sounds/Music/KleptoLindaMountainA.wav"
 const CLICK_SOUNDS:String = "res://Assets/Sounds/Click.mp3"

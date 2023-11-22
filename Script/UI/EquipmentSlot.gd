@@ -12,13 +12,18 @@ signal work_ok
     set(v):
         item = v
         if item:
+            set_img(item.texture_path)
             $MarginContainer/SlotsImg.modulate = Color("FFFFFF")
         else:
+            __set_()
             $MarginContainer/SlotsImg.modulate = Color("636363")
 @export var id:String = ""
 
 func _ready() -> void:
-    EventBus.equipment_down.connect(func(_xx, _xxx):set_item(null))
+    EventBus.equipment_down_ok.connect(func(_type, _item):
+        if current_equipment_type == _type:
+            item = null
+        )
     EventBus.save.connect(func():
         FlowerSaver.set_data("epuipment_slot_%s" % id, item)
         )
@@ -29,7 +34,6 @@ func _ready() -> void:
     
     button.pressed.connect(func():
         EventBus.change_item_tooltip_state.emit(item, true)
-        set_img(item.texture_path)
         )
     
     __set_()

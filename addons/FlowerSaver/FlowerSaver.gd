@@ -24,7 +24,6 @@ func del_save(path:String) -> void:
 
 
 func save(path:String) -> void:
-    print(path)
     ResourceSaver.save(save_data, path)
 
 
@@ -90,5 +89,4 @@ func get_all_data() -> SaveResource:
 
 
 func get_class_name_by_dic(_data:Dictionary) -> String:
-    print(_data["class_name"]) 
     return _data["class_name"]

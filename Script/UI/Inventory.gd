@@ -8,7 +8,10 @@ extends Control
 
 @onready var recycle_btn:Button = %RecycleBtn
 
-@export var inventory:Inventory
+@export var inventory:Inventory:
+    set(v):
+        inventory = v
+        Master.player_inventory = inventory
 
 var slots:Array[Panel]
 
@@ -39,7 +42,6 @@ func _ready() -> void:
                     continue
                 
                 # 装备
-                #inventory.add_item(i.item)
                 i.set_item(_item)
                 inventory.remove_item(_item)
                 
@@ -85,12 +87,16 @@ func set_bag() -> void:
         items_ui.add_child(_n)
 
 func update_ui() -> void:
+    print("背包大小：", inventory.items.size())
     for item_index in items_ui.get_child_count():
         var _node = items_ui.get_child(item_index)
         _node.item = null
+        _node.update_ui()
+
+    for item_index in items_ui.get_child_count():
+        var _node = items_ui.get_child(item_index)
         
-        if inventory.items.size() - 1 < item_index:
-            _node.update_ui()
+        if inventory.items.size() - 1 < item_index:    
             return
         
         _node.item = inventory.items[item_index]

@@ -20,7 +20,7 @@ func _ready() -> void:
             return
         
         FlowerSaver.save(Master.current_save_slot)
-        print("存档完成")
+        #print("存档完成")
         start()
         )
     

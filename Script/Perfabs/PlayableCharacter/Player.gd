@@ -108,7 +108,8 @@ func _ready() -> void:
                 Const.EQUIPMENT_TYPE.胸甲:
                     change_body_sprite(load("res://Assets/Characters/Warrior/Body.png"))
             
-            EventBus.equipment_down_ok.emit(_type, _item))
+            EventBus.equipment_down_ok.emit(_type, _item)
+            )
     
     EventBus.player_ability_activate.connect(func(_ability:FlowerAbility):
         ability_container.active_a_ability(_ability)

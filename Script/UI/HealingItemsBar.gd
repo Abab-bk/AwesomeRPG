@@ -8,11 +8,15 @@ extends HBoxContainer
 
 func _ready() -> void:
     hp_potion.pressed.connect(func():
+        if not Master.player_healing_items.hp_potion > 0:
+            return
         Master.player_output_data.hp += 200
         Master.player_healing_items.hp_potion -= 1
         update_ui()
         )
     magic_potion.pressed.connect(func():
+        if not Master.player_healing_items.mp_potion > 0:
+            return
         Master.player_output_data.magic += 200
         Master.player_healing_items.mp_potion -= 1
         update_ui()

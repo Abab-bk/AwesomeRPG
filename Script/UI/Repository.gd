@@ -63,24 +63,30 @@ func gen_slots() -> void:
 
 func update_ui() -> void:
     for item_index in inventory_items_ui.get_child_count():
-        #item.clean()
         var _node = inventory_items_ui.get_child(item_index)
         _node.item = null
-        
+        _node.update_ui()
+    
+    for item_index in inventory_items_ui.get_child_count():
+        #item.clean()
+        var _node = inventory_items_ui.get_child(item_index)
         if Master.player_inventory.items.size() - 1 < item_index:
-            _node.update_ui()
             break
         
         _node.item = Master.player_inventory.items[item_index]
         _node.update_ui()
     
+    
     for item_index in repo_items_ui.get_child_count():
-        #item.clean()
         var _node = repo_items_ui.get_child(item_index)
         _node.item = null
         
+        _node.update_ui()
+    
+    for item_index in repo_items_ui.get_child_count():
+        var _node = repo_items_ui.get_child(item_index)
+        
         if repo.items.size() - 1 < item_index:
-            _node.update_ui()
             break
         
         _node.item = repo.items[item_index]
