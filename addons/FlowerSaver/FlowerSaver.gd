@@ -44,6 +44,12 @@ func _resource_to_dict(resource:Resource) -> Dictionary:
     return dict
 
 
+func has_key(key:String) -> bool:
+    if loaded_data.data.has(key):
+        return true
+    return false
+
+
 func get_data_but_load(key:String, path:String) -> Variant:
     var _file
     

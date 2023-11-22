@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://bu8mx5plub8xv"]
+
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_lraej"]
+[ext_resource type="Texture2D" uid="uid://bfx0q64b0bpj0" path="res://Assets/UI/Icons/HealthPotion.png" id="1_ruaj6"]
+[ext_resource type="Texture2D" uid="uid://bdulmbkhghent" path="res://Assets/UI/Icons/MagicPotion.png" id="2_bhfn2"]
+[ext_resource type="Script" path="res://Script/UI/HealingItemsBar.gd" id="2_g8wpp"]
+[ext_resource type="FontFile" uid="uid://ri6183bsibm8" path="res://Assets/Font/SourceHanSansCN-Bold.otf" id="5_17xun"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ue1hd"]
+font = ExtResource("5_17xun")
+font_size = 40
+font_color = Color(0.992157, 0.945098, 0.827451, 1)
+outline_size = 1
+outline_color = Color(0.0941176, 0.101961, 0.0705882, 1)
+
+[node name="HealingItemsBar" type="HBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+theme = ExtResource("1_lraej")
+theme_override_constants/separation = 30
+alignment = 1
+script = ExtResource("2_g8wpp")
+
+[node name="HpPotion" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HpPotion"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TextureRect" type="TextureRect" parent="HpPotion/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_ruaj6")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HpPotionNumLabel" type="Label" parent="HpPotion/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "10"
+label_settings = SubResource("LabelSettings_ue1hd")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="MagicPotion" type="Button" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MagicPotion"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TextureRect" type="TextureRect" parent="MagicPotion/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_bhfn2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MpPotionNumLabel" type="Label" parent="MagicPotion/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "10"
+label_settings = SubResource("LabelSettings_ue1hd")
+horizontal_alignment = 1
+vertical_alignment = 2

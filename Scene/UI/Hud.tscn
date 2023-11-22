@@ -1,10 +1,11 @@
-[gd_scene load_steps=48 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=49 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
 [ext_resource type="PackedScene" uid="uid://ck3r30dw3dngl" path="res://Scene/UI/Inventory.tscn" id="2_cil1e"]
 [ext_resource type="Texture2D" uid="uid://dy1r4oa118a6o" path="res://Assets/UI/Bars/HPBarBg.png" id="3_0kf2m"]
 [ext_resource type="PackedScene" uid="uid://b33g1ypyny6i5" path="res://Scene/UI/CharacterPanel.tscn" id="3_aoxj4"]
+[ext_resource type="PackedScene" uid="uid://bu8mx5plub8xv" path="res://Scene/UI/HealingItemsBar.tscn" id="4_aqrcm"]
 [ext_resource type="Texture2D" uid="uid://n8hx8sfbjlhf" path="res://Assets/UI/Texture/Button/DungeonBtn.png" id="5_lcouc"]
 [ext_resource type="Texture2D" uid="uid://b4oa66h6lluio" path="res://Assets/UI/Bars/MPBarBg.png" id="5_lfckr"]
 [ext_resource type="Texture2D" uid="uid://o87r223ypa12" path="res://Assets/UI/Bars/HpBar.png" id="5_nrxv6"]
@@ -80,7 +81,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("2_3ssiu")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="BottomBar" type="VBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -90,16 +91,22 @@ offset_top = -225.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="SkillBar" type="HBoxContainer" parent="Control/VBoxContainer"]
+[node name="FunctionBar" type="VBoxContainer" parent="Control/BottomBar"]
+layout_mode = 2
+
+[node name="HealingItemsBar" parent="Control/BottomBar/FunctionBar" instance=ExtResource("4_aqrcm")]
+layout_mode = 2
+
+[node name="SkillBar" type="HBoxContainer" parent="Control/BottomBar/FunctionBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
-[node name="BottomBar" type="Control" parent="Control/VBoxContainer"]
+[node name="BottomBar" type="Control" parent="Control/BottomBar"]
 custom_minimum_size = Vector2(0, 280)
 layout_mode = 2
 
-[node name="BottomBar" type="Panel" parent="Control/VBoxContainer/BottomBar"]
+[node name="BottomBar" type="Panel" parent="Control/BottomBar/BottomBar"]
 custom_minimum_size = Vector2(0, 130)
 layout_mode = 1
 anchors_preset = 12
@@ -110,7 +117,7 @@ offset_top = -177.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/BottomBar/BottomBar"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/BottomBar/BottomBar/BottomBar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -120,14 +127,14 @@ grow_vertical = 2
 theme_override_constants/margin_left = 200
 theme_override_constants/margin_right = 200
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/BottomBar/BottomBar/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/BottomBar/BottomBar/BottomBar/MarginContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="DungeonBtn" type="TextureButton" parent="Control/VBoxContainer/BottomBar/BottomBar/MarginContainer/HBoxContainer"]
+[node name="DungeonBtn" type="TextureButton" parent="Control/BottomBar/BottomBar/BottomBar/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -136,7 +143,7 @@ texture_normal = ExtResource("5_lcouc")
 texture_pressed = ExtResource("6_8gagx")
 stretch_mode = 5
 
-[node name="InventoryBtn" type="TextureButton" parent="Control/VBoxContainer/BottomBar/BottomBar/MarginContainer/HBoxContainer"]
+[node name="InventoryBtn" type="TextureButton" parent="Control/BottomBar/BottomBar/BottomBar/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -145,7 +152,7 @@ texture_normal = ExtResource("7_e3mha")
 texture_pressed = ExtResource("8_kywne")
 stretch_mode = 5
 
-[node name="StoreBtn" type="TextureButton" parent="Control/VBoxContainer/BottomBar/BottomBar/MarginContainer/HBoxContainer"]
+[node name="StoreBtn" type="TextureButton" parent="Control/BottomBar/BottomBar/BottomBar/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -154,7 +161,7 @@ texture_normal = ExtResource("9_isgj1")
 texture_pressed = ExtResource("10_6lp67")
 stretch_mode = 5
 
-[node name="SillsPanelBtn" type="TextureButton" parent="Control/VBoxContainer/BottomBar/BottomBar/MarginContainer/HBoxContainer"]
+[node name="SillsPanelBtn" type="TextureButton" parent="Control/BottomBar/BottomBar/BottomBar/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -163,7 +170,7 @@ texture_normal = ExtResource("7_822in")
 texture_pressed = ExtResource("12_eo77r")
 stretch_mode = 5
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer/BottomBar"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/BottomBar/BottomBar"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -174,7 +181,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="HpBar" type="TextureProgressBar" parent="Control/VBoxContainer/BottomBar/HBoxContainer2"]
+[node name="HpBar" type="TextureProgressBar" parent="Control/BottomBar/BottomBar/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 value = 100.0
@@ -182,12 +189,12 @@ fill_mode = 3
 texture_under = ExtResource("3_0kf2m")
 texture_progress = ExtResource("5_nrxv6")
 
-[node name="Control" type="Control" parent="Control/VBoxContainer/BottomBar/HBoxContainer2"]
+[node name="Control" type="Control" parent="Control/BottomBar/BottomBar/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="MpBar" type="TextureProgressBar" parent="Control/VBoxContainer/BottomBar/HBoxContainer2"]
+[node name="MpBar" type="TextureProgressBar" parent="Control/BottomBar/BottomBar/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 value = 100.0

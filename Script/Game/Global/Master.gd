@@ -27,6 +27,11 @@ const ENEMYS_SKINS:Array[String] = [
 
 var world:Node2D
 
+var player_healing_items:Dictionary = {
+    "hp_potion": 0,
+    "mp_potion": 0,
+}
+
 var player_inventory:Inventory
 var player:Player
 var player_data:CharacterData
@@ -358,6 +363,7 @@ func _ready():
         FlowerSaver.set_data("fly_count", fly_count)
         FlowerSaver.set_data("last_checkin_time", last_checkin_time)
         FlowerSaver.set_data("last_leave_time", last_leave_time)
+        FlowerSaver.set_data("player_healing_items", player_healing_items)
         )
 
     EventBus.load_save.connect(func():
@@ -370,10 +376,26 @@ func _ready():
         fly_count = FlowerSaver.get_data("fly_count", current_save_slot)
         last_checkin_time = FlowerSaver.get_data("last_checkin_time", current_save_slot)
         last_leave_time = FlowerSaver.get_data("last_leave_time", current_save_slot)
+        
+        if FlowerSaver.has_key("player_healing_items"):
+            player_healing_items = FlowerSaver.get_data("player_healing_items")
+        
         )
     
     EventBus.get_money.connect(func(_key:String, _value:int):
         moneys[_key] += _value
+        )
+    EventBus.player_get_healing_potion.connect(func(_key:String, num:int):
+        if _key == "hp":
+            if player_healing_items.hp_potion >= 10:
+                return
+            player_healing_items.hp_potion += num
+            return
+        if _key == "mp":
+            if player_healing_items.mp_potion >= 10:
+                return
+            player_healing_items.mp_potion += num
+            return
         )
 
 func get_offline_reward() -> void:

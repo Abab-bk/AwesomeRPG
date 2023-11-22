@@ -23,7 +23,8 @@ func _ready() -> void:
             get_data_reward(_data)
             Master.in_dungeon = false, _data.enemy_id))
     
-    EventBus.completed_level.emit()
+    if Master.current_level == 0:
+        EventBus.completed_level.emit()
     EventBus.update_ui.emit()
     EventBus.load_save.connect(completed_level)
 

@@ -1,12 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbs8ucocbh5vk"]
+[gd_scene load_steps=4 format=3 uid="uid://bbs8ucocbh5vk"]
 
-[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="1_2sh5q"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_pv7o8"]
 [ext_resource type="Script" path="res://Script/UI/CostItem.gd" id="1_ytsou"]
 [ext_resource type="LabelSettings" uid="uid://mgahdqv1o26h" path="res://Assets/LabelSetting/BigGray.tres" id="3_oga02"]
 
 [node name="Cost1" type="VBoxContainer"]
-custom_minimum_size = Vector2(160, 0)
+custom_minimum_size = Vector2(240, 0)
 theme = ExtResource("1_pv7o8")
 script = ExtResource("1_ytsou")
 
@@ -24,9 +23,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
-texture = ExtResource("1_2sh5q")
-expand_mode = 4
-stretch_mode = 3
+expand_mode = 1
+stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

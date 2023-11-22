@@ -9,13 +9,22 @@ signal hp_is_zero
 # ======= 战斗属性
 @export var hp:float:
     set(v):
-        hp = v
+        if v > max_hp:
+            hp = max_hp
+        else:
+            hp = v
+        
         if hp <= 0:
             hp = 0
             hp_is_zero.emit()
 
 @export var max_hp:float
-@export var magic:float
+@export var magic:float:
+    set(v):
+        if v > max_magic:
+            magic = max_magic
+            return
+        magic = v
 @export var max_magic:float
 @export var strength:int:
     set(v):
@@ -58,9 +67,6 @@ signal hp_is_zero
 @export var atk_range:float = 125
 @export var quipments:Dictionary = {}
 
-func get_class() -> String:
-    print("get_class")
-    return "res://Script/Resources/CharacterData.gd"
 
 func load_save(_save:Dictionary) -> void:
     for i in _save:

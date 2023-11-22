@@ -163,6 +163,11 @@ func die() -> void:
         var _random_value:int = randi_range(1, 10)
         # TODO: get_money
         EventBus.get_money.emit(_new_money_key, _random_value)
+    
+    var _drop_potion:bool = [true, false].pick_random()
+    if _drop_potion:
+        EventBus.player_get_healing_potion.emit(["hp", "mp"].pick_random(), 1)
+    
     queue_free()
 
 func get_drop_item_position() -> Vector2:
