@@ -26,16 +26,16 @@ signal computed_values
         cooldown_time = v
         cooldown_time_temp = cooldown_time
 
-var prepare_time_temp:int = 0
-var active_time_temp:int = 0
-var cooldown_time_temp:int = 0
-var repeated_count:int = 0
+@export var prepare_time_temp:int = 0
+@export var active_time_temp:int = 0
+@export var cooldown_time_temp:int = 0
+@export var repeated_count:int = 0
 
 var actor:Node
-var origin_data:FlowerData
-var output_data:FlowerData
+@export var origin_data:FlowerData
+@export var output_data:FlowerData
 
-var current_state:STATE = STATE.PREPARE
+@export var current_state:STATE = STATE.PREPARE
 
 enum STATE {
     RUNNING,

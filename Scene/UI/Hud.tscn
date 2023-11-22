@@ -485,9 +485,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 40
+theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 40
+theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 50
 
 [node name="Pages" type="TabContainer" parent="Pages"]

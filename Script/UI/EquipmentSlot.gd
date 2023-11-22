@@ -8,22 +8,32 @@ signal work_ok
 
 @export var current_equipment_type:Const.EQUIPMENT_TYPE = Const.EQUIPMENT_TYPE.头盔
 
-var item:InventoryItem:
+@export var item:InventoryItem:
     set(v):
         item = v
         if item:
             $MarginContainer/SlotsImg.modulate = Color("FFFFFF")
         else:
             $MarginContainer/SlotsImg.modulate = Color("636363")
+@export var id:String = ""
 
 func _ready() -> void:
     EventBus.equipment_down.connect(func(_xx, _xxx):set_item(null))
+    EventBus.save.connect(func():
+        FlowerSaver.set_data("epuipment_slot_%s" % id, item)
+        )
+    EventBus.load_save.connect(func():
+        item = FlowerSaver.get_data("epuipment_slot_%s" % id)
+        update_color()
+        )
     
     button.pressed.connect(func():
         EventBus.change_item_tooltip_state.emit(item, true)
+        set_img(item.texture_path)
         )
     
     __set_()
+    
 
 func __set_() -> void:
     match current_equipment_type:

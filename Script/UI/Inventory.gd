@@ -39,7 +39,7 @@ func _ready() -> void:
                     continue
                 
                 # 装备
-                inventory.add_item(i.item)
+                #inventory.add_item(i.item)
                 i.set_item(_item)
                 inventory.remove_item(_item)
                 
@@ -96,10 +96,3 @@ func update_ui() -> void:
         
         _node.item = inventory.items[item_index]
         _node.update_ui()
-    
-    #for item_index in inventory.items.size():
-        #
-        #var item_ui = items_ui.get_child(item_index)
-        #item_ui.item = inventory.items[item_index]
-        #item_ui.update_ui()
-         

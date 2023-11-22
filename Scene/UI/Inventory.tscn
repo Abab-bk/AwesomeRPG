@@ -72,22 +72,27 @@ layout_mode = 2
 
 [node name="EquipmentSlot" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/Player/SlotsUI1" instance=ExtResource("3_83k28")]
 layout_mode = 2
+id = "1"
 
 [node name="EquipmentSlot2" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/Player/SlotsUI1" instance=ExtResource("3_83k28")]
 layout_mode = 2
 current_equipment_type = 1
+id = "2"
 
 [node name="EquipmentSlot3" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/Player/SlotsUI1" instance=ExtResource("3_83k28")]
 layout_mode = 2
 current_equipment_type = 2
+id = "3"
 
 [node name="EquipmentSlot4" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/Player/SlotsUI1" instance=ExtResource("3_83k28")]
 layout_mode = 2
 current_equipment_type = 3
+id = "4"
 
 [node name="EquipmentSlot5" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/Player/SlotsUI1" instance=ExtResource("3_83k28")]
 layout_mode = 2
 current_equipment_type = 8
+id = "5"
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/Player"]
 layout_mode = 2
@@ -96,7 +101,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/Player/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(2, 2)
+size = Vector2i(652, 916)
 size_2d_override_stretch = true
 render_target_update_mode = 4
 
@@ -109,22 +114,27 @@ layout_mode = 2
 [node name="EquipmentSlot6" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/Player/SlotsUI2" instance=ExtResource("3_83k28")]
 layout_mode = 2
 current_equipment_type = 4
+id = "6"
 
 [node name="EquipmentSlot7" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/Player/SlotsUI2" instance=ExtResource("3_83k28")]
 layout_mode = 2
 current_equipment_type = 5
+id = "7"
 
 [node name="EquipmentSlot8" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/Player/SlotsUI2" instance=ExtResource("3_83k28")]
 layout_mode = 2
 current_equipment_type = 6
+id = "8"
 
 [node name="EquipmentSlot9" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/Player/SlotsUI2" instance=ExtResource("3_83k28")]
 layout_mode = 2
 current_equipment_type = 7
+id = "9"
 
 [node name="EquipmentSlot10" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer/Player/SlotsUI2" instance=ExtResource("3_83k28")]
 layout_mode = 2
 current_equipment_type = 9
+id = "10"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2

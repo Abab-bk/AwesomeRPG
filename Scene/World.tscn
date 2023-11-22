@@ -67,6 +67,7 @@ script = ExtResource("4_22mer")
 script = ExtResource("9_v08bh")
 
 [node name="SaveCD" type="Timer" parent="SaveTimer"]
+wait_time = 0.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_iavjm")
