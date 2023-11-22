@@ -22,9 +22,11 @@ func _ready() -> void:
     EventBus.completed_level.connect(func():
         killed_enemys = 0
         need_killed_enemys = min_enemy_count * 50
+        Master.next_level_need_kill_count = need_killed_enemys - killed_enemys
         )
     EventBus.enemy_die.connect(func(_temp):
         killed_enemys += 1
+        Master.next_level_need_kill_count = need_killed_enemys - killed_enemys
         if killed_enemys >= need_killed_enemys:
             EventBus.completed_level.emit()
         )

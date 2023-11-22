@@ -53,37 +53,45 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 10
+theme_override_constants/separation = 20
 
 [node name="NORMAL" type="CheckBox" parent="RecyclePanel/MarginContainer/VBoxContainer/Filter"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "普通品质"
 
 [node name="BLUE" type="CheckBox" parent="RecyclePanel/MarginContainer/VBoxContainer/Filter"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "魔法品质"
 
 [node name="YELLOW" type="CheckBox" parent="RecyclePanel/MarginContainer/VBoxContainer/Filter"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "稀有品质"
 
 [node name="DEEP_YELLOW" type="CheckBox" parent="RecyclePanel/MarginContainer/VBoxContainer/Filter"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "传奇品质"
 
 [node name="GOLD" type="CheckBox" parent="RecyclePanel/MarginContainer/VBoxContainer/Filter"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "暗金品质"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="RecyclePanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="YesBtn" type="Button" parent="RecyclePanel/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "确认回收"
 
 [node name="CancelBtn" type="Button" parent="RecyclePanel/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "返回"

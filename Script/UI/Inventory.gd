@@ -71,7 +71,6 @@ func _ready() -> void:
     
     recycle_btn.pressed.connect(func():
         var _panel:ColorRect = Builder.build_a_recycle_panel()
-        _panel.inventory = inventory
         add_child(_panel)
         )
     

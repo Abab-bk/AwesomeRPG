@@ -38,8 +38,16 @@ func completed_level() -> void:
     enemy_home.min_enemy_count = Master.current_level * 1
     enemy_home.max_enemy_count = Master.current_level * 5
 
-# TODO: 副本得到奖励
+
 func get_data_reward(_data:DungeonData) -> void:
     match _data.reward_type:
         "Coins":
             Master.coins += _data.reward_value
+        "MoneyWhite":
+            Master.moneys.white += _data.reward_value
+        "MoneyBlue":
+            Master.moneys.blue += _data.reward_value
+        "MoneyPurple":
+            Master.moneys.purple += _data.reward_value
+        "MoneyYellow":
+            Master.moneys.yellow += _data.reward_value

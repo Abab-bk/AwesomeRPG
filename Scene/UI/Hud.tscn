@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=48 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -30,7 +30,6 @@
 [ext_resource type="Script" path="res://Script/Game/ItemGenerator.gd" id="24_w5dur"]
 [ext_resource type="PackedScene" uid="uid://d3eudud6jrt0r" path="res://Scene/UI/StoreUi.tscn" id="24_wrqlk"]
 [ext_resource type="PackedScene" uid="uid://702o3tls624e" path="res://Scene/UI/ForgeRoom.tscn" id="25_3wlxv"]
-[ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="25_cglqj"]
 [ext_resource type="Texture2D" uid="uid://f1vbao16msv2" path="res://Assets/UI/Texture/Button/TreeBtn.png" id="26_e01sv"]
 [ext_resource type="Texture2D" uid="uid://dyhphsqm83xwx" path="res://Assets/UI/Texture/Button/TreeBtnPre.png" id="27_jvatt"]
 [ext_resource type="Texture2D" uid="uid://bsggabdbdgw3j" path="res://Assets/UI/Texture/Button/ForgeBtn.png" id="28_iq72c"]
@@ -330,20 +329,32 @@ stretch_mode = 5
 layout_mode = 2
 
 [node name="Panel2" type="Panel" parent="Control/MarginContainer/VBoxContainer/TopBar/LevelPanel"]
-custom_minimum_size = Vector2(400, 60)
+custom_minimum_size = Vector2(600, 60)
 layout_mode = 2
 
-[node name="LevelLevelLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/TopBar/LevelPanel/Panel2"]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/TopBar/LevelPanel/Panel2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="LevelLevelLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/TopBar/LevelPanel/Panel2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 1
 text = "第一关"
-label_settings = ExtResource("25_cglqj")
+label_settings = ExtResource("7_sdpkl")
+horizontal_alignment = 1
+
+[node name="NextLvelTipLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/TopBar/LevelPanel/Panel2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "余剩：6 只怪物"
+label_settings = ExtResource("7_sdpkl")
 horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="Control/MarginContainer/VBoxContainer"]

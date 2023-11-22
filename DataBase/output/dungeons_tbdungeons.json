@@ -1,11 +1,47 @@
 [
   {
     "id": 6001,
-    "name": "金币城",
+    "name": "黄金宝库",
     "enemy_id": 7005,
     "reward_type": "Coins",
-    "need_cost": 200,
-    "reward_value": 100,
+    "need_cost": 100,
+    "reward_value": 200,
+    "max_level": 20
+  },
+  {
+    "id": 6002,
+    "name": "奉献之城",
+    "enemy_id": 7006,
+    "reward_type": "MoneyWhite",
+    "need_cost": 1000,
+    "reward_value": 10,
+    "max_level": 20
+  },
+  {
+    "id": 6003,
+    "name": "天堂阶梯",
+    "enemy_id": 7007,
+    "reward_type": "MoneyBlue",
+    "need_cost": 2000,
+    "reward_value": 10,
+    "max_level": 20
+  },
+  {
+    "id": 6004,
+    "name": "赦罪教堂",
+    "enemy_id": 7008,
+    "reward_type": "MoneyPurple",
+    "need_cost": 3000,
+    "reward_value": 10,
+    "max_level": 20
+  },
+  {
+    "id": 6005,
+    "name": "天使之家",
+    "enemy_id": 7009,
+    "reward_type": "MoneyYellow",
+    "need_cost": 5000,
+    "reward_value": 10,
     "max_level": 20
   }
 ]

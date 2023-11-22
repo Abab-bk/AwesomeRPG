@@ -19,6 +19,14 @@ func _ready() -> void:
     match data.reward_type:
         "Coins":
             reward_label.text = "奖励：%s 金币" % str(data.reward_value)
+        "MoneyWhite":
+            reward_label.text = "奖励：%s 奉献之灰" % str(data.reward_value)            
+        "MoneyBlue":
+            reward_label.text = "奖励：%s 天堂之灰" % str(data.reward_value)
+        "MoneyPurple":
+            reward_label.text = "奖励：%s 赦罪之血" % str(data.reward_value)
+        "MoneyYellow":
+            reward_label.text = "奖励：%s 天使之泪" % str(data.reward_value)
     
     enter_btn.pressed.connect(func():
         show_info_panel.show_dungeon(data)

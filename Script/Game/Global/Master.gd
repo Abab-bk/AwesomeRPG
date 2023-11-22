@@ -1,7 +1,7 @@
 extends Node
 
 # TODO: 每日任务、爬塔模式、换装备对比Tooltip
-# TODO: 飞升、存档、读档、离线收益
+# TODO: 飞升
 
 const BGM:String = "res://Assets/Sounds/Music/KleptoLindaMountainA.wav"
 const CLICK_SOUNDS:String = "res://Assets/Sounds/Click.mp3"
@@ -40,6 +40,8 @@ var in_dungeon:bool = false
 
 # 关卡等级：
 var current_level:int = 0
+# 进入下一关需要击杀的怪物数量
+var next_level_need_kill_count:int = 0
 # 转生次数
 var fly_count:int = 0
 var player_name:String = "花神"

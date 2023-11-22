@@ -4,8 +4,6 @@ extends ColorRect
 @onready var yes_btn:Button = %YesBtn
 @onready var cancel_btn:Button = %CancelBtn
 
-var inventory:Inventory
-
 func _ready() -> void:
     var _types:Array[int] = []
         
@@ -19,7 +17,7 @@ func _ready() -> void:
     
     yes_btn.pressed.connect(func():
         for _type in _types:
-            for _item in inventory.items:
+            for _item in Master.player_inventory.items:
                 if not _item:
                     continue
                 
@@ -27,7 +25,7 @@ func _ready() -> void:
                     continue
                     
                 Master.coins += _item.price
-                inventory.remove_item(_item)
+                Master.player_inventory.remove_item(_item)
         EventBus.update_inventory.emit()
             )
     

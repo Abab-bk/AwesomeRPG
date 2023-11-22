@@ -11,6 +11,7 @@ signal backed_to_home
 @onready var level_label:Label = %LevelLabel
 @onready var level_level_label:Label = %LevelLevelLabel
 @onready var player_name_label:Label = %PlayerNameLabel
+@onready var next_lvel_tip_label:Label = %NextLvelTipLabel
 
 @onready var pages:TabContainer = %Pages
 
@@ -162,6 +163,7 @@ func update_ui() -> void:
     mp_bar.value = (float(Master.player_output_data.magic) / float(Master.player_output_data.max_magic)) * 100.0
     hp_bar.value = (float(Master.player_output_data.hp) / float(Master.player_output_data.max_hp)) * 100.0
     xp_bar.value = (float(Master.player_output_data.now_xp) / float(Master.player_output_data.next_level_xp)) * 100.0
+    next_lvel_tip_label.text = "余剩：%s 只怪物" % str(Master.next_level_need_kill_count)
     player_name_label.text = Master.player_name
 
 func new_drop_item(_item:InventoryItem, _pos:Vector2) -> void:
