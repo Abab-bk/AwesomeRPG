@@ -15,7 +15,11 @@ extends Control
 
 func update_ui() -> void:
     title_label.text = current_quest.name
-    reward_label.text = "%s 金币" % current_quest.reward_value
+    match current_quest.reward_type:
+        "Coins":
+            reward_label.text = "%s 金币" % current_quest.reward_value
+        "Xp":
+            reward_label.text = "%s 经验" % current_quest.reward_value
     progress_label.text = "%s / %s" % [str(current_quest.current_value), str(current_quest.need_value)]
 
 func _ready() -> void:

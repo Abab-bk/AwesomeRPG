@@ -14,6 +14,7 @@ enum QUEST_TYPE {
 @export var desc:String = ""
 @export var type:QUEST_TYPE = QUEST_TYPE.NONE
 @export var reward_value:int = 0
+@export var reward_type:String = ""
 @export var need_value:int = 0
 @export var current_value:int = 0:
     set(v):
@@ -42,4 +43,8 @@ func can_complete() -> bool:
 func complete() -> void:
     SoundManager.play_ui_sound(load(Master.POPUP_SOUNDS))
     done = true
-    Master.coins += reward_value
+    match reward_type:
+        "Coins":
+            Master.coins += reward_value
+        "Xp":
+            Master.player.get_xp(reward_value)

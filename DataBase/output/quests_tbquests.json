@@ -4,20 +4,767 @@
     "name": "击杀 1 个怪物",
     "type": 0,
     "value": 1,
+    "reward_type": "Coins",
     "reward": 100
   },
   {
     "id": 5002,
-    "name": "提升 10 级",
-    "type": 2,
-    "value": 10,
-    "reward": 200
+    "name": "击杀 5 个怪物",
+    "type": 0,
+    "value": 5,
+    "reward_type": "Xp",
+    "reward": 100
   },
   {
     "id": 5003,
-    "name": "打造 1 次装备",
-    "type": 1,
-    "value": 1,
+    "name": "击杀 10 个怪物",
+    "type": 0,
+    "value": 10,
+    "reward_type": "Coins",
     "reward": 100
+  },
+  {
+    "id": 5004,
+    "name": "击杀 15 个怪物",
+    "type": 0,
+    "value": 15,
+    "reward_type": "Xp",
+    "reward": 100
+  },
+  {
+    "id": 5005,
+    "name": "击杀 1 个怪物",
+    "type": 0,
+    "value": 1,
+    "reward_type": "Coins",
+    "reward": 100
+  },
+  {
+    "id": 5006,
+    "name": "击杀 5 个怪物",
+    "type": 0,
+    "value": 5,
+    "reward_type": "Xp",
+    "reward": 100
+  },
+  {
+    "id": 5007,
+    "name": "击杀 10 个怪物",
+    "type": 0,
+    "value": 10,
+    "reward_type": "Coins",
+    "reward": 100
+  },
+  {
+    "id": 5008,
+    "name": "击杀 15 个怪物",
+    "type": 0,
+    "value": 15,
+    "reward_type": "Xp",
+    "reward": 100
+  },
+  {
+    "id": 5009,
+    "name": "击杀 1 个怪物",
+    "type": 0,
+    "value": 1,
+    "reward_type": "Coins",
+    "reward": 100
+  },
+  {
+    "id": 5010,
+    "name": "击杀 5 个怪物",
+    "type": 0,
+    "value": 5,
+    "reward_type": "Xp",
+    "reward": 100
+  },
+  {
+    "id": 5011,
+    "name": "击杀 10 个怪物",
+    "type": 0,
+    "value": 10,
+    "reward_type": "Coins",
+    "reward": 100
+  },
+  {
+    "id": 5012,
+    "name": "击杀 15 个怪物",
+    "type": 0,
+    "value": 15,
+    "reward_type": "Xp",
+    "reward": 100
+  },
+  {
+    "id": 5013,
+    "name": "击杀 1 个怪物",
+    "type": 0,
+    "value": 1,
+    "reward_type": "Coins",
+    "reward": 100
+  },
+  {
+    "id": 5014,
+    "name": "击杀 5 个怪物",
+    "type": 0,
+    "value": 5,
+    "reward_type": "Xp",
+    "reward": 100
+  },
+  {
+    "id": 5015,
+    "name": "击杀 10 个怪物",
+    "type": 0,
+    "value": 10,
+    "reward_type": "Coins",
+    "reward": 100
+  },
+  {
+    "id": 5016,
+    "name": "击杀 15 个怪物",
+    "type": 0,
+    "value": 15,
+    "reward_type": "Xp",
+    "reward": 100
+  },
+  {
+    "id": 5017,
+    "name": "击杀 16 个怪物",
+    "type": 0,
+    "value": 16,
+    "reward_type": "Coins",
+    "reward": 101
+  },
+  {
+    "id": 5018,
+    "name": "击杀 17 个怪物",
+    "type": 0,
+    "value": 17,
+    "reward_type": "Xp",
+    "reward": 102
+  },
+  {
+    "id": 5019,
+    "name": "击杀 18 个怪物",
+    "type": 0,
+    "value": 18,
+    "reward_type": "Coins",
+    "reward": 103
+  },
+  {
+    "id": 5020,
+    "name": "击杀 19 个怪物",
+    "type": 0,
+    "value": 19,
+    "reward_type": "Xp",
+    "reward": 104
+  },
+  {
+    "id": 5021,
+    "name": "击杀 20 个怪物",
+    "type": 0,
+    "value": 20,
+    "reward_type": "Coins",
+    "reward": 105
+  },
+  {
+    "id": 5022,
+    "name": "击杀 21 个怪物",
+    "type": 0,
+    "value": 21,
+    "reward_type": "Xp",
+    "reward": 106
+  },
+  {
+    "id": 5023,
+    "name": "击杀 22 个怪物",
+    "type": 0,
+    "value": 22,
+    "reward_type": "Coins",
+    "reward": 107
+  },
+  {
+    "id": 5024,
+    "name": "击杀 23 个怪物",
+    "type": 0,
+    "value": 23,
+    "reward_type": "Xp",
+    "reward": 108
+  },
+  {
+    "id": 5025,
+    "name": "击杀 24 个怪物",
+    "type": 0,
+    "value": 24,
+    "reward_type": "Coins",
+    "reward": 109
+  },
+  {
+    "id": 5026,
+    "name": "击杀 25 个怪物",
+    "type": 0,
+    "value": 25,
+    "reward_type": "Xp",
+    "reward": 110
+  },
+  {
+    "id": 5027,
+    "name": "击杀 26 个怪物",
+    "type": 0,
+    "value": 26,
+    "reward_type": "Coins",
+    "reward": 111
+  },
+  {
+    "id": 5028,
+    "name": "击杀 27 个怪物",
+    "type": 0,
+    "value": 27,
+    "reward_type": "Xp",
+    "reward": 112
+  },
+  {
+    "id": 5029,
+    "name": "击杀 28 个怪物",
+    "type": 0,
+    "value": 28,
+    "reward_type": "Coins",
+    "reward": 113
+  },
+  {
+    "id": 5030,
+    "name": "击杀 29 个怪物",
+    "type": 0,
+    "value": 29,
+    "reward_type": "Xp",
+    "reward": 114
+  },
+  {
+    "id": 5031,
+    "name": "击杀 30 个怪物",
+    "type": 0,
+    "value": 30,
+    "reward_type": "Coins",
+    "reward": 115
+  },
+  {
+    "id": 5032,
+    "name": "击杀 31 个怪物",
+    "type": 0,
+    "value": 31,
+    "reward_type": "Xp",
+    "reward": 116
+  },
+  {
+    "id": 5033,
+    "name": "击杀 32 个怪物",
+    "type": 0,
+    "value": 32,
+    "reward_type": "Coins",
+    "reward": 117
+  },
+  {
+    "id": 5034,
+    "name": "击杀 33 个怪物",
+    "type": 0,
+    "value": 33,
+    "reward_type": "Xp",
+    "reward": 118
+  },
+  {
+    "id": 5035,
+    "name": "击杀 34 个怪物",
+    "type": 0,
+    "value": 34,
+    "reward_type": "Coins",
+    "reward": 119
+  },
+  {
+    "id": 5036,
+    "name": "击杀 35 个怪物",
+    "type": 0,
+    "value": 35,
+    "reward_type": "Xp",
+    "reward": 120
+  },
+  {
+    "id": 5037,
+    "name": "击杀 36 个怪物",
+    "type": 0,
+    "value": 36,
+    "reward_type": "Coins",
+    "reward": 121
+  },
+  {
+    "id": 5038,
+    "name": "击杀 37 个怪物",
+    "type": 0,
+    "value": 37,
+    "reward_type": "Xp",
+    "reward": 122
+  },
+  {
+    "id": 5039,
+    "name": "击杀 38 个怪物",
+    "type": 0,
+    "value": 38,
+    "reward_type": "Coins",
+    "reward": 123
+  },
+  {
+    "id": 5040,
+    "name": "击杀 39 个怪物",
+    "type": 0,
+    "value": 39,
+    "reward_type": "Xp",
+    "reward": 124
+  },
+  {
+    "id": 5041,
+    "name": "击杀 40 个怪物",
+    "type": 0,
+    "value": 40,
+    "reward_type": "Coins",
+    "reward": 125
+  },
+  {
+    "id": 5042,
+    "name": "击杀 41 个怪物",
+    "type": 0,
+    "value": 41,
+    "reward_type": "Xp",
+    "reward": 126
+  },
+  {
+    "id": 5043,
+    "name": "击杀 42 个怪物",
+    "type": 0,
+    "value": 42,
+    "reward_type": "Coins",
+    "reward": 127
+  },
+  {
+    "id": 5044,
+    "name": "击杀 43 个怪物",
+    "type": 0,
+    "value": 43,
+    "reward_type": "Xp",
+    "reward": 128
+  },
+  {
+    "id": 5045,
+    "name": "击杀 44 个怪物",
+    "type": 0,
+    "value": 44,
+    "reward_type": "Coins",
+    "reward": 129
+  },
+  {
+    "id": 5046,
+    "name": "击杀 45 个怪物",
+    "type": 0,
+    "value": 45,
+    "reward_type": "Xp",
+    "reward": 130
+  },
+  {
+    "id": 5047,
+    "name": "击杀 46 个怪物",
+    "type": 0,
+    "value": 46,
+    "reward_type": "Coins",
+    "reward": 131
+  },
+  {
+    "id": 5048,
+    "name": "击杀 47 个怪物",
+    "type": 0,
+    "value": 47,
+    "reward_type": "Xp",
+    "reward": 132
+  },
+  {
+    "id": 5049,
+    "name": "击杀 48 个怪物",
+    "type": 0,
+    "value": 48,
+    "reward_type": "Coins",
+    "reward": 133
+  },
+  {
+    "id": 5050,
+    "name": "击杀 49 个怪物",
+    "type": 0,
+    "value": 49,
+    "reward_type": "Xp",
+    "reward": 134
+  },
+  {
+    "id": 5051,
+    "name": "击杀 50 个怪物",
+    "type": 0,
+    "value": 50,
+    "reward_type": "Coins",
+    "reward": 135
+  },
+  {
+    "id": 5052,
+    "name": "击杀 51 个怪物",
+    "type": 0,
+    "value": 51,
+    "reward_type": "Xp",
+    "reward": 136
+  },
+  {
+    "id": 5053,
+    "name": "击杀 52 个怪物",
+    "type": 0,
+    "value": 52,
+    "reward_type": "Coins",
+    "reward": 137
+  },
+  {
+    "id": 5054,
+    "name": "击杀 53 个怪物",
+    "type": 0,
+    "value": 53,
+    "reward_type": "Xp",
+    "reward": 138
+  },
+  {
+    "id": 5055,
+    "name": "击杀 54 个怪物",
+    "type": 0,
+    "value": 54,
+    "reward_type": "Coins",
+    "reward": 139
+  },
+  {
+    "id": 5056,
+    "name": "击杀 55 个怪物",
+    "type": 0,
+    "value": 55,
+    "reward_type": "Xp",
+    "reward": 140
+  },
+  {
+    "id": 5057,
+    "name": "击杀 56 个怪物",
+    "type": 0,
+    "value": 56,
+    "reward_type": "Coins",
+    "reward": 141
+  },
+  {
+    "id": 5058,
+    "name": "击杀 57 个怪物",
+    "type": 0,
+    "value": 57,
+    "reward_type": "Xp",
+    "reward": 142
+  },
+  {
+    "id": 5059,
+    "name": "击杀 58 个怪物",
+    "type": 0,
+    "value": 58,
+    "reward_type": "Coins",
+    "reward": 143
+  },
+  {
+    "id": 5060,
+    "name": "击杀 59 个怪物",
+    "type": 0,
+    "value": 59,
+    "reward_type": "Xp",
+    "reward": 144
+  },
+  {
+    "id": 5061,
+    "name": "击杀 60 个怪物",
+    "type": 0,
+    "value": 60,
+    "reward_type": "Coins",
+    "reward": 145
+  },
+  {
+    "id": 5062,
+    "name": "击杀 61 个怪物",
+    "type": 0,
+    "value": 61,
+    "reward_type": "Xp",
+    "reward": 146
+  },
+  {
+    "id": 5063,
+    "name": "击杀 62 个怪物",
+    "type": 0,
+    "value": 62,
+    "reward_type": "Coins",
+    "reward": 147
+  },
+  {
+    "id": 5064,
+    "name": "击杀 63 个怪物",
+    "type": 0,
+    "value": 63,
+    "reward_type": "Xp",
+    "reward": 148
+  },
+  {
+    "id": 5065,
+    "name": "击杀 64 个怪物",
+    "type": 0,
+    "value": 64,
+    "reward_type": "Coins",
+    "reward": 149
+  },
+  {
+    "id": 5066,
+    "name": "击杀 65 个怪物",
+    "type": 0,
+    "value": 65,
+    "reward_type": "Xp",
+    "reward": 150
+  },
+  {
+    "id": 5067,
+    "name": "击杀 66 个怪物",
+    "type": 0,
+    "value": 66,
+    "reward_type": "Coins",
+    "reward": 151
+  },
+  {
+    "id": 5068,
+    "name": "击杀 67 个怪物",
+    "type": 0,
+    "value": 67,
+    "reward_type": "Xp",
+    "reward": 152
+  },
+  {
+    "id": 5069,
+    "name": "击杀 68 个怪物",
+    "type": 0,
+    "value": 68,
+    "reward_type": "Coins",
+    "reward": 153
+  },
+  {
+    "id": 5070,
+    "name": "击杀 69 个怪物",
+    "type": 0,
+    "value": 69,
+    "reward_type": "Xp",
+    "reward": 154
+  },
+  {
+    "id": 5071,
+    "name": "击杀 70 个怪物",
+    "type": 0,
+    "value": 70,
+    "reward_type": "Coins",
+    "reward": 155
+  },
+  {
+    "id": 5072,
+    "name": "击杀 71 个怪物",
+    "type": 0,
+    "value": 71,
+    "reward_type": "Xp",
+    "reward": 156
+  },
+  {
+    "id": 5073,
+    "name": "击杀 72 个怪物",
+    "type": 0,
+    "value": 72,
+    "reward_type": "Coins",
+    "reward": 157
+  },
+  {
+    "id": 5074,
+    "name": "击杀 73 个怪物",
+    "type": 0,
+    "value": 73,
+    "reward_type": "Xp",
+    "reward": 158
+  },
+  {
+    "id": 5075,
+    "name": "击杀 74 个怪物",
+    "type": 0,
+    "value": 74,
+    "reward_type": "Coins",
+    "reward": 159
+  },
+  {
+    "id": 5076,
+    "name": "击杀 75 个怪物",
+    "type": 0,
+    "value": 75,
+    "reward_type": "Xp",
+    "reward": 160
+  },
+  {
+    "id": 5077,
+    "name": "击杀 76 个怪物",
+    "type": 0,
+    "value": 76,
+    "reward_type": "Coins",
+    "reward": 161
+  },
+  {
+    "id": 5078,
+    "name": "击杀 77 个怪物",
+    "type": 0,
+    "value": 77,
+    "reward_type": "Xp",
+    "reward": 162
+  },
+  {
+    "id": 5079,
+    "name": "击杀 78 个怪物",
+    "type": 0,
+    "value": 78,
+    "reward_type": "Coins",
+    "reward": 163
+  },
+  {
+    "id": 5080,
+    "name": "击杀 79 个怪物",
+    "type": 0,
+    "value": 79,
+    "reward_type": "Xp",
+    "reward": 164
+  },
+  {
+    "id": 5081,
+    "name": "击杀 80 个怪物",
+    "type": 0,
+    "value": 80,
+    "reward_type": "Coins",
+    "reward": 165
+  },
+  {
+    "id": 5082,
+    "name": "击杀 81 个怪物",
+    "type": 0,
+    "value": 81,
+    "reward_type": "Xp",
+    "reward": 166
+  },
+  {
+    "id": 5083,
+    "name": "击杀 82 个怪物",
+    "type": 0,
+    "value": 82,
+    "reward_type": "Coins",
+    "reward": 167
+  },
+  {
+    "id": 5084,
+    "name": "击杀 83 个怪物",
+    "type": 0,
+    "value": 83,
+    "reward_type": "Xp",
+    "reward": 168
+  },
+  {
+    "id": 5085,
+    "name": "击杀 84 个怪物",
+    "type": 0,
+    "value": 84,
+    "reward_type": "Coins",
+    "reward": 169
+  },
+  {
+    "id": 5086,
+    "name": "击杀 85 个怪物",
+    "type": 0,
+    "value": 85,
+    "reward_type": "Xp",
+    "reward": 170
+  },
+  {
+    "id": 5087,
+    "name": "击杀 86 个怪物",
+    "type": 0,
+    "value": 86,
+    "reward_type": "Coins",
+    "reward": 171
+  },
+  {
+    "id": 5088,
+    "name": "击杀 87 个怪物",
+    "type": 0,
+    "value": 87,
+    "reward_type": "Xp",
+    "reward": 172
+  },
+  {
+    "id": 5089,
+    "name": "击杀 88 个怪物",
+    "type": 0,
+    "value": 88,
+    "reward_type": "Coins",
+    "reward": 173
+  },
+  {
+    "id": 5090,
+    "name": "击杀 89 个怪物",
+    "type": 0,
+    "value": 89,
+    "reward_type": "Xp",
+    "reward": 174
+  },
+  {
+    "id": 5091,
+    "name": "击杀 90 个怪物",
+    "type": 0,
+    "value": 90,
+    "reward_type": "Coins",
+    "reward": 175
+  },
+  {
+    "id": 5092,
+    "name": "击杀 91 个怪物",
+    "type": 0,
+    "value": 91,
+    "reward_type": "Xp",
+    "reward": 176
+  },
+  {
+    "id": 5093,
+    "name": "击杀 92 个怪物",
+    "type": 0,
+    "value": 92,
+    "reward_type": "Coins",
+    "reward": 177
+  },
+  {
+    "id": 5094,
+    "name": "击杀 93 个怪物",
+    "type": 0,
+    "value": 93,
+    "reward_type": "Xp",
+    "reward": 178
+  },
+  {
+    "id": 5095,
+    "name": "击杀 94 个怪物",
+    "type": 0,
+    "value": 94,
+    "reward_type": "Coins",
+    "reward": 179
+  },
+  {
+    "id": 5096,
+    "name": "击杀 95 个怪物",
+    "type": 0,
+    "value": 95,
+    "reward_type": "Xp",
+    "reward": 180
   }
 ]

@@ -157,6 +157,7 @@ class Quests:
     var name: String
     var type: int
     var value: int
+    var reward_type: String
     var reward: int
 
     func _init(_json_) -> void:
@@ -164,6 +165,7 @@ class Quests:
         self.name = _json_["name"]
         self.type = _json_["type"]
         self.value = _json_["value"]
+        self.reward_type = _json_["reward_type"]
         self.reward = _json_["reward"]
 
 

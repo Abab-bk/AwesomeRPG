@@ -128,6 +128,7 @@ func get_quest_by_id(_id:int) -> QuestResource:
     _quest.type = _data["type"]
     _quest.need_value = _data["value"]
     _quest.reward_value = _data["reward"]
+    _quest.reward_type = _data["reward_type"]
     
     return _quest
 
