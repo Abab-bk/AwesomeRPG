@@ -421,12 +421,11 @@ text = "卡死点我"
 
 [node name="GetEquipmentBtn" type="Button" parent="Control"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
-offset_left = 861.0
-offset_top = 916.0
-offset_right = 1045.0
-offset_bottom = 1012.0
+offset_left = 43.0
+offset_top = 509.0
+offset_right = 318.0
+offset_bottom = 605.0
 text = "得到装备"
 
 [node name="ItemGenerator" type="Node" parent="Control/GetEquipmentBtn"]

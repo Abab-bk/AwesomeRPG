@@ -116,6 +116,7 @@ func _ready() -> void:
         flower_buff_manager.output_data = output_data
         #flower_buff_manager.add_buff_list(FlowerSaver.get_data("player_buff_list"))
         flower_buff_manager.buff_list = FlowerSaver.get_data("player_buff_list")
+        
         Master.player_output_data = flower_buff_manager.output_data
         
         config_skills = FlowerSaver.get_data("config_skills", Master.current_save_slot)
@@ -129,7 +130,9 @@ func _ready() -> void:
         
         update_equipment_textures()
         
+        # 更新 UI 信号
         EventBus.player_data_change.emit()
+        rebuild_skills()
         #compute_all_euipment()
         )
     
@@ -190,7 +193,8 @@ func euipment_up(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
     
     var _temp:Array[FlowerBaseBuff] = []
     # 装备装备时，应用装备 Buff
-    _temp.append(_item.main_buffs.buff)
+    var _main_buff:FlowerBaseBuff = _item.main_buffs.buff
+    _temp.append(_main_buff)
     
     for i in _item.pre_affixs:
         _temp.append(i.buff)
@@ -267,26 +271,31 @@ func compute_all_euipment() -> void:
         #EventBus.equipment_up_ok.emit(_item.type, _item)
 
 func update_equipment_textures() -> void:
+    var _data:Dictionary = {}
+    
     for equipment_index in compute_data.quipments.keys():
         var _item = compute_data.quipments[equipment_index]
         match _item.type:
             Const.EQUIPMENT_TYPE.头盔:
-                print("匹配头盔")
                 change_head_sprite(load(_item.texture_path))
+                _data["head"] = _item.texture_path
             Const.EQUIPMENT_TYPE.武器:
-                print("匹配武器")
                 change_weapons_sprite(load(_item.texture_path))
+                _data["weapon"] = _item.texture_path
             Const.EQUIPMENT_TYPE.胸甲:
-                print("匹配胸甲")
                 change_body_sprite(load(_item.texture_path))
+                _data["body"] = _item.texture_path
+    
+    EventBus.player_changed_display.emit(_data)
 
 
 func rebuild_skills() -> void:
     ability_container.ability_list = []
     
     for i in config_skills:
-        var new_ability:FlowerAbility = Master.get_ability_by_id(config_skills[i])
+        var new_ability:FlowerAbility = Master.get_ability_by_id(i)# config_skills[i])
         ability_container.add_a_ability(new_ability)
+        
         for x in config_skills[i]:
             var _sub_ability:FlowerAbility = Master.get_ability_by_id(config_skills[i])
             _sub_ability.is_sub_ability = true

@@ -27,6 +27,14 @@ func _ready() -> void:
                 change_body_sprite(load("res://Assets/Characters/Warrior/Body.png"))
         )
 
+    EventBus.player_changed_display.connect(func(_data:Dictionary):
+        if _data.has("head"):
+            change_head_sprite(load(_data.head))
+        if _data.has("weapon"):
+            change_weapons_sprite(load(_data.weapon))
+        if _data.has("body"):
+            change_body_sprite(load(_data.body))
+        )
 
 func change_weapons_sprite(_sprite:Texture2D) -> void:
     sprites["weapon"].texture = _sprite

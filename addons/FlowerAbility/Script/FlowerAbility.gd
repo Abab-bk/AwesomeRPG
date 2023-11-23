@@ -23,11 +23,11 @@ var real_scene:AbilityScene
 
 var ability_container:FlowerAbilityContainer
 
-var is_sub_ability:bool = false
-var sub_ability:Array[FlowerAbility] = []
+@export var is_sub_ability:bool = false
+@export var sub_ability:Array[FlowerAbility] = []
 
-var channeling_time:float
-var casting_duration:float
+@export var channeling_time:float
+@export var casting_duration:float
 
 enum STATE {
     CASTING,

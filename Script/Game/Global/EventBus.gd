@@ -32,6 +32,7 @@ signal player_ability_activate(ability:FlowerAbility)
 signal player_set_a_ability(ability:FlowerAbility, sub_ability:Array)
 signal player_level_up
 signal player_get_healing_potion(key:String, num:int)
+signal player_changed_display
 
 # 这里是爆出打造装备需要的金币
 signal get_money(key:String, value:int)

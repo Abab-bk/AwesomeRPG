@@ -24,6 +24,11 @@ func _ready() -> void:
         Master.unlocked_skills.append(ability.id)
         Master.coins -= ability.cost
         EventBus.show_popup.emit("购买成功", "购买成功，消耗：%s 金币" % str(ability.cost))
+        
+        name_label.text = "请选择技能"
+        cost_label.text = ""
+        buy_btn.hide()
+        
         update_ui()        
         )
 
@@ -52,5 +57,6 @@ func change_info(_ability:FlowerAbility) -> void:
             cost_label.text = "消耗 %s 魔力" % str(_ability.cost_value)
     
     buy_btn.text = "%s金币 购买" % str(_ability.cost)
+    buy_btn.show()
     
     ability = _ability

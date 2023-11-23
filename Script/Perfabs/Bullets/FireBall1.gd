@@ -4,7 +4,7 @@ func _ready() -> void:
     global_position = actor.global_position
     
     var _damage_data:CharacterData = CharacterData.new()
-    _damage_data.damage = (actor.output_data.weapon_damage * 2.4) * 0.8
+    _damage_data.damage = (actor.output_data.damage * 2.4) * 0.8
     
     $FireBall2/SimpleHitBoxComponent.set_damage_data(_damage_data)
     

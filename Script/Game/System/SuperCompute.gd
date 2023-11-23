@@ -51,7 +51,7 @@ static func get_damage(who:CharacterData) -> float:
     return real_damage
 
 static func get_damage_dic(who:CharacterData) -> Dictionary:
-    var root_stats:float = (who.wisdom + who.agility + who.strength) * 0.5
+    var root_stats:float = max(1.0, (who.wisdom + who.agility + who.strength) * 0.5)
     var base_damage:float = who.damage
     var critical_damage:float = 1.0
     
@@ -65,8 +65,6 @@ static func get_damage_dic(who:CharacterData) -> Dictionary:
         
     if is_critical:
         critical_damage = 1.0 + who.critical_rate * who.critical_damage
-        #criticaled.emit()
-        #EventBus.player_criticaled.emit()
     
     # element_damage 可能有问题？ 请查看公式
     var sheet_damage:float = root_stats * element_damage * base_damage * critical_damage

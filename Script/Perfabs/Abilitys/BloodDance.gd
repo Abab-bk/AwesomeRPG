@@ -14,7 +14,7 @@ func _ready() -> void:
     var _buff:FlowerBaseBuff = Master.get_buff_by_id(1001)
     actor.flower_buff_manager.add_buff(_buff)
     
-    $Timer.start()    
+    $Timer.start()
     #base_data = actor.output_data.duplicate(true)
     #multiper = (actor.output_data.max_hp - actor.output_data.hp) / 100
     #

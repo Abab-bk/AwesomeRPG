@@ -24,6 +24,20 @@ func _ready() -> void:
         if current_equipment_type == _type:
             item = null
         )
+    EventBus.equipment_up_ok.connect(
+        func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):         
+            if not current_equipment_type == _type:
+                return
+            
+            if item != null:
+                # 加入背包原来的装备
+                EventBus.add_item.emit(item)
+            
+            set_item(_item)
+            EventBus.change_item_tooltip_state.emit(null)
+            EventBus.update_inventory.emit()
+            )
+    
     EventBus.save.connect(func():
         FlowerSaver.set_data("epuipment_slot_%s" % id, item)
         )

@@ -34,21 +34,21 @@ func _ready() -> void:
     EventBus.remove_item.connect(func(_item:InventoryItem):
         inventory.remove_item(_item))
     
-    EventBus.equipment_up_ok.connect(
-        func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
-            for i in slots:
-                # 如果装备类型不匹配，进入下一次循环
-                if not i.current_equipment_type == _type:
-                    continue
-                
-                # 装备
-                i.set_item(_item)
-                inventory.remove_item(_item)
-                
-                EventBus.change_item_tooltip_state.emit(null)
-                
-                update_ui()
-            )
+    #EventBus.equipment_up_ok.connect(
+        #func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
+            #for i in slots:
+                ## 如果装备类型不匹配，进入下一次循环
+                #if not i.current_equipment_type == _type:
+                    #continue
+                #
+                ## 装备
+                #i.set_item(_item)
+                ##inventory.remove_item(_item)
+                #
+                #EventBus.change_item_tooltip_state.emit(null)
+                #
+                #update_ui()
+            #)
     EventBus.equipment_down_ok.connect(
         func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
             inventory.add_item(_item)
