@@ -34,8 +34,8 @@ enum STATE {
 
 var current_state:STATE = STATE.IDLE
 
-var compute_data:CharacterData
-var output_data:CharacterData
+@export var compute_data:CharacterData
+@export var output_data:CharacterData
 var target:Vector2 = global_position
 
 var config_skills:Dictionary = {}
@@ -46,7 +46,7 @@ var all_enemy:Array
 
 func _ready() -> void:
     Master.player = self
-    EventBus.player_dead.connect(relife)
+    #EventBus.player_dead.connect(relife)
     EventBus.enemy_die.connect(find_closest_enemy)
     EventBus.equipment_up.connect(euipment_up)
     
@@ -120,7 +120,14 @@ func _ready() -> void:
         
         config_skills = FlowerSaver.get_data("config_skills", Master.current_save_slot)
         Master.get_offline_reward()
+        
+        compute_data.hp = compute_data.max_hp
+        compute_data.magic = compute_data.max_magic
+        output_data.hp = output_data.max_hp
+        output_data.magic = output_data.max_magic        
         compute()
+        
+        update_equipment_textures()
         
         EventBus.player_data_change.emit()
         #compute_all_euipment()
@@ -169,6 +176,12 @@ func _ready() -> void:
     find_closest_enemy()
     
     atk_cd_timer.start()
+    
+    compute_data.hp = compute_data.max_hp
+    compute_data.magic = compute_data.max_magic
+    output_data.hp = output_data.max_hp
+    output_data.magic = output_data.max_magic
+    compute()
 
 
 func euipment_up(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
@@ -252,6 +265,20 @@ func compute_all_euipment() -> void:
         var _info = flower_buff_manager.add_buff_list(_temp)
         # 更新 UI
         #EventBus.equipment_up_ok.emit(_item.type, _item)
+
+func update_equipment_textures() -> void:
+    for equipment_index in compute_data.quipments.keys():
+        var _item = compute_data.quipments[equipment_index]
+        match _item.type:
+            Const.EQUIPMENT_TYPE.头盔:
+                print("匹配头盔")
+                change_head_sprite(load(_item.texture_path))
+            Const.EQUIPMENT_TYPE.武器:
+                print("匹配武器")
+                change_weapons_sprite(load(_item.texture_path))
+            Const.EQUIPMENT_TYPE.胸甲:
+                print("匹配胸甲")
+                change_body_sprite(load(_item.texture_path))
 
 
 func rebuild_skills() -> void:
@@ -388,21 +415,22 @@ func relife() -> void:
     
     current_state = STATE.IDLE
     
-    #get_tree().paused = false    
-    hurt_box_collision.call_deferred("set_disabled", false)
+    #get_tree().paused = false
+    #hurt_box_collision.call_deferred("set_disabled", false)
     find_closest_enemy()
+    EventBus.player_relife.emit()
 
 func die() -> void:
     if current_state == STATE.DEAD:
         return
-    
-    #get_tree().paused = true
+
+    EventBus.player_dead.emit()
     
     current_state = STATE.DEAD
-    hurt_box_collision.call_deferred("set_disabled", true)
+    #hurt_box_collision.call_deferred("set_disabled", true)
     character_animation_player.play("scml/Dying")
     await character_animation_player.animation_finished
-    EventBus.player_dead.emit()
+    relife()
 
 func find_closest_enemy(_temp = 0) -> void:
     if ray_cast.is_colliding():

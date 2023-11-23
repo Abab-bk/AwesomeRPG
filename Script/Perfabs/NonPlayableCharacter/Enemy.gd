@@ -24,6 +24,7 @@ enum STATE {
     MOVE_TO_PLAYERING,
     ATTACKING,
     DEAD,
+    SLEEP
 }
 
 var current_state:STATE = STATE.PATROL
@@ -79,6 +80,13 @@ func _ready() -> void:
         output_data.hp_is_zero.connect(die)
         )
     
+    EventBus.player_dead.connect(func():
+        current_state = STATE.SLEEP
+        )
+    EventBus.player_relife.connect(func():
+        current_state = STATE.PATROL
+        )
+    
     var _level:int = 1
     
     if seted_data:
@@ -88,8 +96,8 @@ func _ready() -> void:
     
     atk_cd_timer.wait_time = data.atk_speed
     
-    if Master.player.get_level() >= 2:
-        _level = Master.player.get_level() - 1
+    if Master.player.get_level() >= 8:
+        _level = Master.player.get_level() - 7
     
     # 设置属性 （每个敌人 ready 都是生成时）
     set_level(_level)
@@ -104,6 +112,7 @@ func set_skin() -> void:
     # 设置皮肤
     if skin_name == "" or "默认":
         return
+    print("设置皮肤")
     $Display.get_node("Skeleton").queue_free()
     var new_node = load("res://Scene/Perfabs/NonPlayCharacter/%s.tscn" % skin_name).instantiate()
     $Display.add_child(new_node)
@@ -200,6 +209,9 @@ func set_level(_value:int) -> void:
 func _physics_process(_delta:float) -> void:
     if current_state == STATE.PATROL:
         move_to_player(_delta)
+    
+    if current_state == STATE.SLEEP:
+        velocity = Vector2(0, 0)
     
     move_and_slide()
     hp_bar.value = (float(data.hp) / float(data.max_hp)) * 100.0

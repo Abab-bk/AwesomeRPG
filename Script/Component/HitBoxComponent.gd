@@ -33,15 +33,15 @@ func _ready() -> void:
         set_collision_layer_value(7, true)
         set_collision_mask_value(4, true)
     else:
-        set_collision_layer_value(6, true)
-        set_collision_mask_value(5, true)
+        set_collision_layer_value(5, true)
+        set_collision_mask_value(6, true)
     
-    area_entered.connect(handle_damage)
+    area_shape_entered.connect(handle_damage)
 
 func get_enemys() -> Array:
     return get_overlapping_bodies()
 
-func handle_damage(body:Node) -> void:
+func handle_damage(_temp, body:Node, _x, _xx) -> void:
     # 主要是匹配玩家
     if disable_target:
         if body.owner == disable_target:

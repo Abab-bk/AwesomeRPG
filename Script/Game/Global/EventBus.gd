@@ -26,6 +26,7 @@ signal coins_changed
 signal player_criticaled
 signal player_hited(damage:float)
 signal player_dead
+signal player_relife
 signal player_ability_change
 signal player_ability_activate(ability:FlowerAbility)
 signal player_set_a_ability(ability:FlowerAbility, sub_ability:Array)

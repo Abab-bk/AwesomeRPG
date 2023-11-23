@@ -77,18 +77,18 @@ func set_property_from_level() -> void:
     max_magic += level * 3
     evasion += level
     
-    fire_damage += level * 2
-    frost_damage += level * 2
-    toxic_damage += level * 2
-    light_damage += level * 2
-    fire_resistance += level * 2
-    frost_resistance += level * 2
-    toxic_resistance += level * 2
+    fire_damage += level * 0.01
+    frost_damage += level * 0.01
+    toxic_damage += level * 0.01
+    light_damage += level * 0.01
+    fire_resistance += level * 0.01
+    frost_resistance += level * 0.01
+    toxic_resistance += level * 0.01
     speed += level * (1.0 + randf_range(0.0, 2.0))
     
-    strength += level
-    wisdom += level
-    agility += level
+    strength += floor(float(level) / 2.0)
+    wisdom += floor(float(level) / 2.0)
+    agility += floor(float(level) / 2.0)
 
 func level_up() -> Dictionary:
     level += 1
