@@ -5,7 +5,7 @@ signal criticaled
 # TODO: 优化玩家寻找敌人逻辑
 
 @onready var ability_container:FlowerAbilityContainer = $FlowerAbilityContainer
-@onready var flower_buff_manager:FlowerBuffManager = $FlowerBuffManager
+@onready var flower_buff_manager:FlowerBuffManager = $FlowerBuffManager as FlowerBuffManager
 #@onready var animation_player:AnimationPlayer = $AnimationPlayer
 @onready var hurt_box_collision:CollisionShape2D = $HurtBoxComponent/CollisionShape2D
 @onready var hurt_box_component:HurtBoxComponent = $HurtBoxComponent
@@ -48,68 +48,9 @@ func _ready() -> void:
     Master.player = self
     EventBus.player_dead.connect(relife)
     EventBus.enemy_die.connect(find_closest_enemy)
-    EventBus.equipment_up.connect(
-        func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
-        # 装备装备
-        compute_data.quipments[_type] = _item
-        
-        var _temp:Array[FlowerBaseBuff] = []
-        # 装备装备时，应用装备 Buff
-        _temp.append(_item.main_buffs.buff)
-        
-        for i in _item.pre_affixs:
-            _temp.append(i.buff)
-        
-        for i in _item.buf_affix:
-            _temp.append(i.buff)
-        
-        match _item.type:
-            Const.EQUIPMENT_TYPE.头盔:
-                change_head_sprite(load(_item.texture_path))
-            Const.EQUIPMENT_TYPE.武器:
-                change_weapons_sprite(load(_item.texture_path))
-            Const.EQUIPMENT_TYPE.胸甲:
-                change_body_sprite(load(_item.texture_path))
-        
-        var _info = flower_buff_manager.add_buff_list(_temp)
-        EventBus.show_animation.emit("PropertyContrast", _info)
-        
-        # 移出背包
-        EventBus.remove_item.emit(_item)
-        
-        # 更新 UI
-        EventBus.equipment_up_ok.emit(_type, _item))
+    EventBus.equipment_up.connect(euipment_up)
     
-    EventBus.equipment_down.connect(
-        func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
-            var _inentorry = Master.player_inventory as Inventory
-            if _inentorry.items.size() >= _inentorry.size:
-                EventBus.new_tips.emit("背包已满")
-                return
-            
-            compute_data.quipments[_type] = null            
-            
-            var _temp:Array[FlowerBaseBuff] = []
-            
-            for i in _item.pre_affixs:
-                _temp.append(i.buff)
-            for i in _item.buf_affix:
-                _temp.append(i.buff)
-            
-            flower_buff_manager.remove_buff_list(_temp)
-            
-            print("移除装备")
-            
-            match _item.type:
-                Const.EQUIPMENT_TYPE.头盔:
-                    change_head_sprite(load("res://Assets/Characters/Warrior/Head.png"))
-                Const.EQUIPMENT_TYPE.武器:
-                    change_weapons_sprite(load("res://Assets/Characters/Warrior/Weapon.png"))
-                Const.EQUIPMENT_TYPE.胸甲:
-                    change_body_sprite(load("res://Assets/Characters/Warrior/Body.png"))
-            
-            EventBus.equipment_down_ok.emit(_type, _item)
-            )
+    EventBus.equipment_down.connect(equipment_down)
     
     EventBus.player_ability_activate.connect(func(_ability:FlowerAbility):
         ability_container.active_a_ability(_ability)
@@ -136,34 +77,6 @@ func _ready() -> void:
             find_closest_enemy()
         )
     
-    # TODO: 完善存档
-    EventBus.save.connect(func():
-        FlowerSaver.set_data("player_compute_data", flower_buff_manager.compute_data)
-        FlowerSaver.set_data("player_output_data", flower_buff_manager.output_data)
-        FlowerSaver.set_data("config_skills", config_skills)
-        FlowerSaver.set_data("player_buff_list", flower_buff_manager.buff_list)
-        #print("玩家存档：", flower_buff_manager.output_data.level)
-        )
-    
-    EventBus.load_save.connect(func():
-        compute_data = FlowerSaver.get_data("player_compute_data", Master.current_save_slot)
-        output_data = FlowerSaver.get_data("player_output_data", Master.current_save_slot)
-        flower_buff_manager.buff_list = FlowerSaver.get_data("player_buff_list")
-        flower_buff_manager.compute_data = compute_data
-        flower_buff_manager.output_data = output_data
-        Master.player_output_data = flower_buff_manager.output_data
-        compute()
-        config_skills = FlowerSaver.get_data("config_skills", Master.current_save_slot)
-        Master.get_offline_reward()
-        #print("玩家存档加载完毕：", output_data.level)
-        )
-    
-    EventBus.flyed.connect(func():
-        Master.player_inventory.remove_all_item()
-        flower_buff_manager.compute_data = load("res://Assets/Resources/Datas/Characters/Player.tres")
-        flower_buff_manager.output_data = load("res://Assets/Resources/Datas/Characters/Player.tres")
-        )
-    
     flower_buff_manager.compute_ok.connect(func():
         Master.player_output_data = flower_buff_manager.output_data
         
@@ -187,6 +100,38 @@ func _ready() -> void:
             output_data.hp_is_zero.connect(die)
         )
     
+    # TODO: 完善存档
+    EventBus.save.connect(func():
+        FlowerSaver.set_data("player_compute_data", flower_buff_manager.compute_data)
+        FlowerSaver.set_data("player_output_data", flower_buff_manager.output_data)
+        FlowerSaver.set_data("config_skills", config_skills)
+        FlowerSaver.set_data("player_buff_list", flower_buff_manager.buff_list)
+        #print("玩家存档：", flower_buff_manager.output_data.level)
+        )
+    
+    EventBus.load_save.connect(func():
+        compute_data = FlowerSaver.get_data("player_compute_data", Master.current_save_slot)
+        output_data = FlowerSaver.get_data("player_output_data", Master.current_save_slot)
+        flower_buff_manager.compute_data = compute_data
+        flower_buff_manager.output_data = output_data
+        #flower_buff_manager.add_buff_list(FlowerSaver.get_data("player_buff_list"))
+        flower_buff_manager.buff_list = FlowerSaver.get_data("player_buff_list")
+        Master.player_output_data = flower_buff_manager.output_data
+        
+        config_skills = FlowerSaver.get_data("config_skills", Master.current_save_slot)
+        Master.get_offline_reward()
+        compute()
+        
+        EventBus.player_data_change.emit()
+        #compute_all_euipment()
+        )
+    
+    EventBus.flyed.connect(func():
+        Master.player_inventory.remove_all_item()
+        flower_buff_manager.compute_data = load("res://Assets/Resources/Datas/Characters/Player.tres")
+        flower_buff_manager.output_data = load("res://Assets/Resources/Datas/Characters/Player.tres")
+        )
+        
     atk_range.target_enter_range.connect(func():
         attack()
         )
@@ -216,7 +161,7 @@ func _ready() -> void:
     
     output_data.hp_is_zero.connect(die)
     
-    compute()    
+    compute()
     
     Master.player_output_data = flower_buff_manager.output_data
     Master.player_data = flower_buff_manager.compute_data
@@ -224,6 +169,90 @@ func _ready() -> void:
     find_closest_enemy()
     
     atk_cd_timer.start()
+
+
+func euipment_up(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
+    # 装备装备
+    compute_data.quipments[_type] = _item
+    
+    var _temp:Array[FlowerBaseBuff] = []
+    # 装备装备时，应用装备 Buff
+    _temp.append(_item.main_buffs.buff)
+    
+    for i in _item.pre_affixs:
+        _temp.append(i.buff)
+    
+    for i in _item.buf_affix:
+        _temp.append(i.buff)
+    
+    match _item.type:
+        Const.EQUIPMENT_TYPE.头盔:
+            change_head_sprite(load(_item.texture_path))
+        Const.EQUIPMENT_TYPE.武器:
+            change_weapons_sprite(load(_item.texture_path))
+        Const.EQUIPMENT_TYPE.胸甲:
+            change_body_sprite(load(_item.texture_path))
+    
+    var _info = flower_buff_manager.add_buff_list(_temp)
+    EventBus.show_animation.emit("PropertyContrast", _info)
+    
+    # 移出背包
+    EventBus.remove_item.emit(_item)
+    
+    # 更新 UI
+    EventBus.equipment_up_ok.emit(_type, _item)
+
+
+func equipment_down(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem) -> void:
+    var _inentorry = Master.player_inventory as Inventory
+    if _inentorry.items.size() >= _inentorry.size:
+        EventBus.new_tips.emit("背包已满")
+        return
+    
+    compute_data.quipments[_type] = null            
+    
+    var _temp:Array[FlowerBaseBuff] = []
+    
+    for i in _item.pre_affixs:
+        _temp.append(i.buff)
+    for i in _item.buf_affix:
+        _temp.append(i.buff)
+    
+    flower_buff_manager.remove_buff_list(_temp)
+    
+    print("移除装备")
+    
+    match _item.type:
+        Const.EQUIPMENT_TYPE.头盔:
+            change_head_sprite(load("res://Assets/Characters/Warrior/Head.png"))
+        Const.EQUIPMENT_TYPE.武器:
+            change_weapons_sprite(load("res://Assets/Characters/Warrior/Weapon.png"))
+        Const.EQUIPMENT_TYPE.胸甲:
+            change_body_sprite(load("res://Assets/Characters/Warrior/Body.png"))
+    
+    EventBus.equipment_down_ok.emit(_type, _item)
+
+
+func compute_all_euipment() -> void:
+    # 装备装备
+    for equipment_index in compute_data.quipments.keys():
+        print("计算所有装备：%s" % str(equipment_index))
+        var _item = compute_data.quipments[equipment_index]
+        
+        var _temp:Array[FlowerBaseBuff] = []
+        # 装备装备时，应用装备 Buff
+        _temp.append(_item.main_buffs.buff)
+    
+        for i in _item.pre_affixs:
+            _temp.append(i.buff)
+    
+        for i in _item.buf_affix:
+            _temp.append(i.buff)
+    
+        var _info = flower_buff_manager.add_buff_list(_temp)
+        # 更新 UI
+        #EventBus.equipment_up_ok.emit(_item.type, _item)
+
 
 func rebuild_skills() -> void:
     ability_container.ability_list = []
@@ -327,6 +356,7 @@ func up_level() -> void:
     output_data.now_xp = 0
     output_data.update_next_xp()
     EventBus.player_level_up.emit()
+    EventBus.player_data_change.emit()
     EventBus.update_ui.emit()
 
 func get_xp(_value:float) -> void:

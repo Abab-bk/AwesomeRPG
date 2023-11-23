@@ -36,7 +36,7 @@ signal backed_to_home
 @onready var skills_panel_ui:Control = $Pages/Pages/SkillsPanel
 @onready var quest_panel:Control = %QuestPanel
 @onready var store_ui:Control = $Pages/Pages/StoreUI
-@onready var dungeon_ui:Control = $DungeonPanel
+@onready var dungeon_ui:Control = $Pages/Pages/DungeonPanel
 @onready var forge_room:Control = $Pages/Pages/ForgeRoom
 @onready var repository:Control = $Pages/Pages/Repository
 
@@ -125,18 +125,13 @@ func _ready() -> void:
 
 func change_page(_page:PAGE) -> void:
     SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
-    if _page == PAGE.DUNGEON:
-        if Master.in_dungeon:
-            return
-        dungeon_ui.show_popup()
-        changed_to_other.emit()
-        return
     
     if _page == 0:
         EventBus.change_item_tooltip_state.emit(null)
+        %HealingItemsBar.show()
     
     pages.current_tab = int(_page)
-
+    %HealingItemsBar.show()
 
 # 技能条 UI
 func build_ability_ui() -> void:

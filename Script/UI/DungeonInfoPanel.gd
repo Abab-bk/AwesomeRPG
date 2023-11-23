@@ -35,6 +35,7 @@ func _ready() -> void:
         
         Master.coins -= current_dungeon.need_cost
         EventBus.enter_dungeon.emit(current_dungeon)
+        owner.close_event.call()
         )
     hide()
 

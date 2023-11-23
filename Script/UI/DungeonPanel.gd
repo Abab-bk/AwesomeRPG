@@ -4,9 +4,7 @@ extends Control
 @onready var title_bar:MarginContainer = %TitleBar
 
 var close_event:Callable = func():
-        var tween:Tween = get_tree().create_tween()
-        tween.tween_property($Panel, "global_position", $Panel.global_position + Vector2(0, 1160), 0.2)
-        await tween.finished
+        owner.change_page(0)
         hide()
 
 func _ready() -> void:
@@ -27,7 +25,4 @@ func show_popup() -> void:
         close_event.call()
         return
     show()
-    
-    var tween:Tween = get_tree().create_tween()    
-    tween.tween_property($Panel, "global_position", $Panel.global_position - Vector2(0, 1160), 0.2)
     

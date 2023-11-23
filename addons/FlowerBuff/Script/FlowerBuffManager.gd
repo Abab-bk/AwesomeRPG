@@ -93,7 +93,8 @@ func add_buff_list(_buff_list:Array[FlowerBaseBuff]) -> Dictionary:
         var _origin_datas:Array = i.get_origin_compute_datas()
         var _computed_datas:Array = i.get_computed_compute_datas()
         # 拿到key
-        _result[_origin_datas[0]] = [_origin_datas[1], _computed_datas[1]]
+        if _origin_datas.size() >= 2 and _computed_datas.size() >= 2:
+            _result[_origin_datas[0]] = [_origin_datas[1], _computed_datas[1]]
     
     compute()
     

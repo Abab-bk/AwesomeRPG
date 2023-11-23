@@ -1,5 +1,12 @@
 class_name Const extends Node
 
+const MONEYS_NAME:Dictionary = {
+    "white": "奉献之灰",
+    "blue": "天堂之尘",
+    "purple": "赦罪之血",
+    "yellow": "天使之泪"
+}
+
 const COLORS:Dictionary = {
     "Normal": Color("757575"),
     "Blue": Color("7896BA"),

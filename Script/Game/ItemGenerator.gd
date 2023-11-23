@@ -85,13 +85,13 @@ func gen_a_item() -> InventoryItem:
     var quality:Const.EQUIPMENT_QUALITY # = Const.EQUIPMENT_QUALITY.values()[randi()%Const.EQUIPMENT_QUALITY.size()]
     
     var _rng:float = randf_range(0, 100.0)
-    if _rng <= 30.0:
+    if _rng <= 50.0:
         quality = Const.EQUIPMENT_QUALITY.BLUE
-    elif _rng <= 20.0:
+    elif _rng <= 40.0:
         quality = Const.EQUIPMENT_QUALITY.YELLOW
-    elif _rng <= 10.0:
+    elif _rng <= 30.0:
         quality = Const.EQUIPMENT_QUALITY.DEEP_YELLOW
-    elif _rng <= 1.0:
+    elif _rng <= 10.0:
         quality = Const.EQUIPMENT_QUALITY.GOLD
     else:
         quality = Const.EQUIPMENT_QUALITY.NORMAL

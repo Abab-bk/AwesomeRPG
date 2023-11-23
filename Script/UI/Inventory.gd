@@ -87,7 +87,6 @@ func set_bag() -> void:
         items_ui.add_child(_n)
 
 func update_ui() -> void:
-    print("背包大小：", inventory.items.size())
     for item_index in items_ui.get_child_count():
         var _node = items_ui.get_child(item_index)
         _node.item = null

@@ -68,8 +68,6 @@ size = 50
 process_mode = 3
 script = ExtResource("1_d15xn")
 
-[node name="DungeonPanel" parent="." instance=ExtResource("23_joj7t")]
-
 [node name="Control" type="Control" parent="."]
 process_mode = 3
 layout_mode = 3
@@ -90,17 +88,21 @@ anchor_bottom = 1.0
 offset_top = -225.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 
 [node name="FunctionBar" type="VBoxContainer" parent="Control/BottomBar"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="HealingItemsBar" parent="Control/BottomBar/FunctionBar" instance=ExtResource("4_aqrcm")]
+unique_name_in_owner = true
 layout_mode = 2
 
 [node name="SkillBar" type="HBoxContainer" parent="Control/BottomBar/FunctionBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="BottomBar" type="Control" parent="Control/BottomBar"]
 custom_minimum_size = Vector2(0, 280)
@@ -563,6 +565,10 @@ visible = false
 layout_mode = 2
 
 [node name="Fly" parent="Pages/Pages" instance=ExtResource("38_kc5l2")]
+visible = false
+layout_mode = 2
+
+[node name="DungeonPanel" parent="Pages/Pages" instance=ExtResource("23_joj7t")]
 visible = false
 layout_mode = 2
 

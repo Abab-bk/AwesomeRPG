@@ -44,11 +44,16 @@ func get_data_reward(_data:DungeonData) -> void:
     match _data.reward_type:
         "Coins":
             Master.coins += _data.reward_value
+            EventBus.show_popup.emit("挑战成功！", "获得奖励：%s 金币" % str(_data.reward_value))
         "MoneyWhite":
             Master.moneys.white += _data.reward_value
+            EventBus.show_popup.emit("挑战成功！", "获得奖励：%s %s" % [str(_data.reward_value), Const.MONEYS_NAME.white])
         "MoneyBlue":
             Master.moneys.blue += _data.reward_value
+            EventBus.show_popup.emit("挑战成功！", "获得奖励：%s %s" % [str(_data.reward_value), Const.MONEYS_NAME.blue])
         "MoneyPurple":
             Master.moneys.purple += _data.reward_value
+            EventBus.show_popup.emit("挑战成功！", "获得奖励：%s %s" % [str(_data.reward_value), Const.MONEYS_NAME.purple])
         "MoneyYellow":
             Master.moneys.yellow += _data.reward_value
+            EventBus.show_popup.emit("挑战成功！", "获得奖励：%s %s" % [str(_data.reward_value), Const.MONEYS_NAME.yellow])

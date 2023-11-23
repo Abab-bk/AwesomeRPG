@@ -2,8 +2,9 @@ extends Node
 
 # TODO: 每日任务、爬塔模式、换装备对比Tooltip
 # TODO: 飞升
-# FIXME: 回收无法使用
 # HACK: 升级音效短一点
+# FIXME: 任务做到一定程度，就完不成咯
+# FIXME: 读档，伤害（玩家属性）会改变，但是更换装备是正常的
 
 const BGM:String = "res://Assets/Sounds/Music/KleptoLindaMountainA.wav"
 const CLICK_SOUNDS:String = "res://Assets/Sounds/Click.mp3"
@@ -60,7 +61,7 @@ var coins:int = 1000:
 var moneys:Dictionary = {
     "white": 0,
     "blue": 0,
-    "purle": 0,
+    "purple": 0,
     "yellow": 0,
 }
 
@@ -99,7 +100,7 @@ func yes_fly() -> void:
     current_level = 0
     moneys.white = 0
     moneys.blue = 0
-    moneys.purle = 0
+    moneys.purple = 0
     moneys.yellow = 0
     in_dungeon = false    
 

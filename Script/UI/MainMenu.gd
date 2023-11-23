@@ -4,8 +4,11 @@ var world := preload("res://Scene/World.tscn")
 
 @onready var start_btn:Button = %StartBtn
 @onready var exit_btn:Button = %ExitBtn
+@onready var credits_cancel_btn:Button = %CreditsCancelBtn
+@onready var credits_btn:Button = %CreditsBtn
 
 @onready var save_panel:Panel = $SavePanel
+@onready var credits_panel:Panel = $Credits
 
 @onready var creat_character:Control = $CreatCharacter
 
@@ -30,6 +33,13 @@ func _ready() -> void:
         )
     exit_btn.pressed.connect(func():
         get_tree().quit()
+        )
+    
+    credits_btn.pressed.connect(func():
+        credits_panel.show()
+        )
+    credits_cancel_btn.pressed.connect(func():
+        credits_panel.hide()
         )
     
     for i in save_panels.get_children():

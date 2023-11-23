@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cwnb2gkequqts"]
+[gd_scene load_steps=10 format=3 uid="uid://cwnb2gkequqts"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_d1eks"]
 [ext_resource type="Script" path="res://Script/UI/MainMenu.gd" id="2_ahtec"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://Script/UI/SavePanel.gd" id="4_cjs57"]
 [ext_resource type="PackedScene" uid="uid://cwfkgj3v17v05" path="res://Scene/UI/SavePanelItem.tscn" id="5_02p3b"]
 [ext_resource type="PackedScene" uid="uid://dhyobuuga8504" path="res://Scene/UI/CreatCharacter.tscn" id="7_56mi5"]
+[ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="8_rit84"]
+[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="9_6aiv1"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -60,6 +62,12 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "开始游戏"
 
+[node name="CreditsBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "关于"
+
 [node name="ExitBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
@@ -67,6 +75,7 @@ layout_mode = 2
 text = "退出游戏"
 
 [node name="SavePanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -124,3 +133,96 @@ slot = 3
 [node name="CreatCharacter" parent="." instance=ExtResource("7_56mi5")]
 visible = false
 layout_mode = 1
+
+[node name="Credits" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Credits/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 100
+
+[node name="Title" type="Label" parent="Credits/MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "关于"
+label_settings = ExtResource("8_rit84")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="Sub1" type="VBoxContainer" parent="Credits/MarginContainer/VBoxContainer2/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Credits/MarginContainer/VBoxContainer2/VBoxContainer/VBoxContainer/Sub1"]
+layout_mode = 2
+text = "程序"
+label_settings = ExtResource("8_rit84")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Credits/MarginContainer/VBoxContainer2/VBoxContainer/VBoxContainer/Sub1"]
+layout_mode = 2
+text = "AcidWall Studio"
+label_settings = ExtResource("9_6aiv1")
+horizontal_alignment = 1
+
+[node name="Sub2" type="VBoxContainer" parent="Credits/MarginContainer/VBoxContainer2/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Credits/MarginContainer/VBoxContainer2/VBoxContainer/VBoxContainer/Sub2"]
+layout_mode = 2
+text = "特别鸣谢"
+label_settings = ExtResource("8_rit84")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Credits/MarginContainer/VBoxContainer2/VBoxContainer/VBoxContainer/Sub2"]
+layout_mode = 2
+text = "上善若水
+猫咪爱吃辣
+我想你
+阿健
+嘉
+南南南
+SunMoonStar
+水原千鹤
+谢子沐
+月满西楼
+猪白菜滑滑板
+竹马已老
+/
+K.M 天
+左手指月
+㻞㧃"
+label_settings = ExtResource("9_6aiv1")
+horizontal_alignment = 1
+
+[node name="CreditsCancelBtn" type="Button" parent="Credits/MarginContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "返回"
