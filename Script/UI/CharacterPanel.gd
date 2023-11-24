@@ -3,7 +3,7 @@ extends Control
 @onready var level_label:Label = %LevelLabel
 @onready var player_name_label:Label = %PlayerNameLabel
 
-@onready var title_bar:MarginContainer = $Panel/MarginContainer/VBoxContainer/TitleBar
+@onready var title_bar:MarginContainer = $Panel/VBoxContainer/TitleBar
 
 
 var cancel_event:Callable = func():
