@@ -124,9 +124,7 @@ func set_data(_data:CharacterData) -> void:
 func set_skin() -> void:
     # 设置皮肤
     if skin_name == "" or skin_name == "默认":
-        print("皮肤名称：", skin_name)
         return
-    print("设置皮肤")
     
     $Display.get_node("Skeleton").queue_free()
     var new_node = load("res://Scene/Perfabs/NonPlayCharacter/%s.tscn" % skin_name).instantiate() as OtherEnemy

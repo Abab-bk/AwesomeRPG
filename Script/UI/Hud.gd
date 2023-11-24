@@ -156,6 +156,9 @@ func build_ability_ui() -> void:
         _skill_btn.set_ability(_ability)
 
 func update_ui() -> void:
+    if not Master.player_output_data:
+        return
+    
     level_label.text = "Lv.%s" % str(Master.player_output_data.level)
     level_level_label.text = "第 %s 关" % str(Master.current_level)
     mp_bar.value = (float(Master.player_output_data.magic) / float(Master.player_output_data.max_magic)) * 100.0

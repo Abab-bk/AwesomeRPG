@@ -42,6 +42,9 @@ func _ready() -> void:
         FlowerSaver.set_data("epuipment_slot_%s" % id, item)
         )
     EventBus.load_save.connect(func():
+        if FlowerSaver.has_key("flyed_just_now"):
+            if FlowerSaver.get_data("flyed_just_now") == true:
+                return
         item = FlowerSaver.get_data("epuipment_slot_%s" % id)
         update_color()
         )

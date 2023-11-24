@@ -1,5 +1,7 @@
 extends Node
 
+signal save_ok
+
 const save_path:String = "user://awesomerpg.tres"
 const save_path2:String = "user://awesomerpg2.tres"
 const save_path3:String = "user://awesomerpg3.tres"
@@ -24,7 +26,8 @@ func del_save(path:String) -> void:
 
 
 func save(path:String) -> void:
-    ResourceSaver.save(save_data, path)
+    if ResourceSaver.save(save_data, path) == OK:
+        save_ok.emit()
 
 
 func set_data(key:String, value) -> void:

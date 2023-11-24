@@ -64,10 +64,8 @@ unique_name_in_owner = true
 script = ExtResource("4_22mer")
 
 [node name="SaveTimer" type="Timer" parent="."]
+autostart = true
 script = ExtResource("9_v08bh")
-
-[node name="SaveCD" type="Timer" parent="SaveTimer"]
-wait_time = 0.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_iavjm")

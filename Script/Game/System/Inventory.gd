@@ -4,7 +4,6 @@ class_name Inventory extends Resource
 @export var size:int
 
 func add_item(_item:InventoryItem) -> void:
-    print("添加装备：", _item)
     if items.size() >= size:
         return
     items.append(_item)

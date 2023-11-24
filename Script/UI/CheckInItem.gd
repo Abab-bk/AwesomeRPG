@@ -36,6 +36,9 @@ func _ready() -> void:
         FlowerSaver.set_data("days_check_%s_checked" % str(current_day), checked)        
         )
     EventBus.load_save.connect(func():
+        if FlowerSaver.has_key("flyed_just_now"):
+            if FlowerSaver.get_data("flyed_just_now") == true:
+                return
         target_time = FlowerSaver.get_data("days_check_%s_time" % str(current_day))
         checked = FlowerSaver.get_data("days_check_%s_checked" % str(current_day))
         if checked:

@@ -59,6 +59,10 @@ func _ready() -> void:
         FlowerSaver.set_data("inventory", inventory)
         )
     EventBus.load_save.connect(func():
+        if FlowerSaver.has_key("flyed_just_now"):
+            if FlowerSaver.get_data("flyed_just_now") == true:
+                return
+                
         inventory = FlowerSaver.get_data("inventory", Master.current_save_slot)
         Master.player_inventory = inventory
         update_ui()

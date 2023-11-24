@@ -34,6 +34,8 @@ signal player_level_up
 signal player_get_healing_potion(key:String, num:int)
 signal player_changed_display
 
+signal rework_level_enemy_count
+
 # 这里是爆出打造装备需要的金币
 signal get_money(key:String, value:int)
 

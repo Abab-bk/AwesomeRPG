@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=51 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -40,6 +40,8 @@
 [ext_resource type="Texture2D" uid="uid://bfitc77f4gvhe" path="res://Assets/UI/Texture/Button/RepoBtnPre.png" id="30_di66f"]
 [ext_resource type="Texture2D" uid="uid://b5b2xouca1d3d" path="res://Assets/UI/Texture/Button/DaysCheckin.png" id="31_r2t82"]
 [ext_resource type="Texture2D" uid="uid://d2u888scrwjac" path="res://Assets/UI/Texture/Button/DaysCheckinPre.png" id="32_dgm5u"]
+[ext_resource type="Texture2D" uid="uid://dp156caw8k8f7" path="res://Assets/UI/Texture/Button/FlyBtn.png" id="32_f0iak"]
+[ext_resource type="Texture2D" uid="uid://g0ge1pomi354" path="res://Assets/UI/Texture/Button/FlyBtnPre.png" id="33_r5k0t"]
 [ext_resource type="PackedScene" uid="uid://dklre5rf5vnqa" path="res://Scene/UI/Repository.tscn" id="36_x4b5l"]
 [ext_resource type="PackedScene" uid="uid://c760kqfsi2h5u" path="res://Scene/UI/DaysCheckIn.tscn" id="37_7ckrf"]
 [ext_resource type="PackedScene" uid="uid://bbp1iqow5k0b3" path="res://Scene/UI/ItemToolTip.tscn" id="37_hqe6n"]
@@ -421,6 +423,7 @@ text = "卡死点我"
 
 [node name="GetEquipmentBtn" type="Button" parent="Control"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 43.0
 offset_top = 509.0
@@ -442,7 +445,7 @@ anchor_bottom = 0.5
 offset_left = -206.0
 offset_top = -880.0
 offset_right = -56.0
-offset_bottom = -240.0
+offset_bottom = -90.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -490,11 +493,10 @@ stretch_mode = 5
 
 [node name="FlyBtn" type="TextureButton" parent="Control/SubFunction/VBoxContainer2"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
-texture_normal = ExtResource("28_iq72c")
-texture_pressed = ExtResource("29_4kesd")
+texture_normal = ExtResource("32_f0iak")
+texture_pressed = ExtResource("33_r5k0t")
 stretch_mode = 5
 
 [node name="Pages" type="MarginContainer" parent="."]

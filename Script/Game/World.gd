@@ -8,6 +8,7 @@ extends Node2D
 func _ready() -> void:
     Master.world = self
     
+    EventBus.rework_level_enemy_count.connect(rework_level_enemy_count)
     EventBus.completed_level.connect(completed_level)
     EventBus.flyed.connect(func():
         completed_level()
@@ -26,14 +27,18 @@ func _ready() -> void:
     if Master.current_level == 0:
         EventBus.completed_level.emit()
     EventBus.update_ui.emit()
-    EventBus.load_save.connect(completed_level)
+    #EventBus.load_save.connect(completed_level)
 
     SoundManager.play_music(load(Master.BGM), 0, "Music")
     
     if Master.should_load:
         FlowerSaver.load_save(Master.current_save_slot)
         print("加载存档 - 世界")
-        EventBus.load_save.emit()    
+        EventBus.load_save.emit()
+        Master.should_load = false
+
+func rework_level_enemy_count() -> void:
+    completed_level()
 
 func completed_level() -> void:
     enemy_home.min_enemy_count = Master.current_level * 1

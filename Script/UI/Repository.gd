@@ -27,6 +27,10 @@ func _ready() -> void:
         FlowerSaver.set_data("repo", repo)
         )
     EventBus.load_save.connect(func():
+        if FlowerSaver.has_key("flyed_just_now"):
+            if FlowerSaver.get_data("flyed_just_now") == true:
+                return
+        
         repo = FlowerSaver.get_data("repo", Master.current_save_slot)
         )
     

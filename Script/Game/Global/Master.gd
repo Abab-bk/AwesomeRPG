@@ -1,7 +1,7 @@
 extends Node
 
 # TODO: 每日任务、爬塔模式、换装备对比Tooltip
-# TODO: 飞升
+# TODO: 飞升、飞升技能树
 # HACK: 升级音效短一点
 # FIXME: 任务做到一定程度，就完不成咯
 # FIXME: 读档，伤害（玩家属性）会改变，但是更换装备是正常的
@@ -52,6 +52,7 @@ var current_level:int = 0
 var next_level_need_kill_count:int = 0
 # 转生次数
 var fly_count:int = 0
+var flyed_just_now:bool = false
 var player_name:String = "花神"
 
 var coins:int = 1000:
@@ -357,32 +358,60 @@ func _ready():
         )
 
     EventBus.save.connect(func():
+        FlowerSaver.set_data("fly_count", fly_count)
         FlowerSaver.set_data("unlocked_skills", unlocked_skills)
         FlowerSaver.set_data("current_level", current_level)
         FlowerSaver.set_data("player_name", player_name)
         FlowerSaver.set_data("coins", coins)
         FlowerSaver.set_data("moneys", moneys)
         FlowerSaver.set_data("next_reward_player_level", next_reward_player_level)
-        FlowerSaver.set_data("fly_count", fly_count)
         FlowerSaver.set_data("last_checkin_time", last_checkin_time)
         FlowerSaver.set_data("last_leave_time", last_leave_time)
         FlowerSaver.set_data("player_healing_items", player_healing_items)
+        FlowerSaver.set_data("flyed_just_now", flyed_just_now)
         )
 
     EventBus.load_save.connect(func():
-        unlocked_skills = FlowerSaver.get_data("unlocked_skills", current_save_slot)
-        current_level = FlowerSaver.get_data("current_level", current_save_slot)
-        player_name = FlowerSaver.get_data("player_name", current_save_slot)
-        coins = FlowerSaver.get_data("coins", current_save_slot)
-        moneys = FlowerSaver.get_data("moneys", current_save_slot)
-        next_reward_player_level = FlowerSaver.get_data("next_reward_player_level", current_save_slot)
-        fly_count = FlowerSaver.get_data("fly_count", current_save_slot)
-        last_checkin_time = FlowerSaver.get_data("last_checkin_time", current_save_slot)
-        last_leave_time = FlowerSaver.get_data("last_leave_time", current_save_slot)
+        if FlowerSaver.has_key("flyed_just_now"):
+            flyed_just_now = FlowerSaver.get_data("flyed_just_now")
+        
+        if flyed_just_now:
+            print("Master飞升读档，玩家名：", player_name)
+            fly_count = FlowerSaver.get_data("fly_count")
+            unlocked_skills = []
+            current_level = 0
+            coins = 0
+            moneys = {"white": 0, "blue": 0, "purple": 0, "yellow": 0,}
+            next_reward_player_level = 1
+            player_healing_items = {"hp_potion": 0, "mp_potion": 0, }
+            
+            player_data = null
+            player_output_data = null
+            
+            player_inventory = null
+            
+            in_dungeon = false
+            
+            #EventBus.rework_level_enemy_count.emit()
+            EventBus.completed_level.emit()
+            return
+        
+        print("Master常规读档")
+        
+        fly_count = FlowerSaver.get_data("fly_count")
+        unlocked_skills = FlowerSaver.get_data("unlocked_skills")
+        current_level = FlowerSaver.get_data("current_level")
+        player_name = FlowerSaver.get_data("player_name")
+        coins = FlowerSaver.get_data("coins")
+        moneys = FlowerSaver.get_data("moneys")
+        next_reward_player_level = FlowerSaver.get_data("next_reward_player_level")
+        last_checkin_time = FlowerSaver.get_data("last_checkin_time")
+        last_leave_time = FlowerSaver.get_data("last_leave_time")
         
         if FlowerSaver.has_key("player_healing_items"):
             player_healing_items = FlowerSaver.get_data("player_healing_items")
         
+        EventBus.rework_level_enemy_count.emit()
         )
     
     EventBus.get_money.connect(func(_key:String, _value:int):

@@ -15,7 +15,6 @@ var world := preload("res://Scene/World.tscn")
 @onready var save_title_bar:MarginContainer = %SaveTitleBar
 @onready var save_panels:VBoxContainer = %SavePanels
 
-
 var hide_save_panel:Callable = func():
     save_panel.hide()
 

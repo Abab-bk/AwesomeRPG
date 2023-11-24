@@ -78,8 +78,6 @@ func _ready() -> void:
         )
     
     flower_buff_manager.compute_ok.connect(func():
-        Master.player_output_data = flower_buff_manager.output_data
-        
         compute_data = flower_buff_manager.compute_data as CharacterData
         output_data = flower_buff_manager.output_data as CharacterData
         
@@ -91,9 +89,6 @@ func _ready() -> void:
         atk_cd_timer.wait_time = output_data.atk_speed
         
         EventBus.player_data_change.emit()
-
-        print("计算完成")
-        
         EventBus.update_ui.emit()
         
         if not output_data.is_connected("hp_is_zero", die):
@@ -110,6 +105,21 @@ func _ready() -> void:
         )
     
     EventBus.load_save.connect(func():
+        if FlowerSaver.has_key("flyed_just_now"):
+            if FlowerSaver.get_data("flyed_just_now") == true:
+                print("玩家飞升读档")
+                flower_buff_manager.compute_data = get_origin_player_data().duplicate(true)
+                flower_buff_manager.output_data = get_origin_player_data().duplicate(true)
+                compute_data = flower_buff_manager.compute_data as CharacterData
+                output_data = flower_buff_manager.output_data as CharacterData
+                # print("玩家等级：", output_data.level) # 读出来就是玩家等级2
+                Master.player_data = compute_data
+                Master.player_output_data = output_data
+                compute()
+                return
+        
+        print("玩家常规读档")
+        
         compute_data = FlowerSaver.get_data("player_compute_data", Master.current_save_slot)
         output_data = FlowerSaver.get_data("player_output_data", Master.current_save_slot)
         flower_buff_manager.compute_data = compute_data
@@ -185,6 +195,10 @@ func _ready() -> void:
     output_data.hp = output_data.max_hp
     output_data.magic = output_data.max_magic
     compute()
+
+
+func get_origin_player_data() -> CharacterData:
+    return load("res://Assets/Resources/Datas/Characters/Player.tres")
 
 
 func euipment_up(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
@@ -447,6 +461,7 @@ func find_closest_enemy(_temp = 0) -> void:
         closest_enemy = ray_cast.get_collider().owner
         attack()
         turn_to_closest_enemy()
+        current_state = STATE.IDLE
         return
     
     all_enemy = get_tree().get_nodes_in_group("Enemy")
@@ -462,9 +477,12 @@ func find_closest_enemy(_temp = 0) -> void:
             closest_distance = enemy_distance
             closest_enemy = enemy
     
-    ranged_weapon.target_position = closest_enemy.global_position
+    if closest_enemy:
+        ranged_weapon.target_position = closest_enemy.global_position
+    else:
+        ranged_weapon.target_position = global_position + Vector2(200, 200)
     
     atk_range.target = closest_enemy
     vision.target = closest_enemy
-
+    
     current_state = STATE.IDLE

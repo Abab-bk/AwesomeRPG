@@ -25,11 +25,20 @@ enum QUEST_TYPE {
 func connect_signals() -> void:
     match type:
         QUEST_TYPE.KILL_ENEMY:
+            if EventBus.is_connected("enemy_die", get_progres):
+                return
             EventBus.enemy_die.connect(get_progres)
+            
         QUEST_TYPE.LEVEL_UP:
+            if EventBus.is_connected("player_level_up", get_progres):
+                return
             EventBus.player_level_up.connect(get_progres)
+            
         QUEST_TYPE.ENHANCE_QUIPMENT:
+            if EventBus.is_connected("enhance_a_equipment", get_progres):
+                return
             EventBus.enhance_a_equipment.connect(get_progres)
+            
     value_changed.emit()
 
 func get_progres(_temp = null) -> void:

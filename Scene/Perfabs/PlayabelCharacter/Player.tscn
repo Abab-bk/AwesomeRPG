@@ -1750,7 +1750,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hl0t"]
 size = Vector2(37.6475, 270.625)
 
-[sub_resource type="Resource" id="Resource_7bp3r"]
+[sub_resource type="Resource" id="Resource_4fgox"]
 script = ExtResource("7_6v44f")
 level = 1
 now_xp = 0.0
@@ -1789,7 +1789,7 @@ atk_cd = 0.5
 atk_range = 125.0
 quipments = {}
 
-[sub_resource type="Resource" id="Resource_q3lmc"]
+[sub_resource type="Resource" id="Resource_pn35p"]
 script = ExtResource("7_6v44f")
 level = 1
 now_xp = 0.0
@@ -2066,5 +2066,5 @@ collision_mask = 8
 [node name="FlowerBuffManager" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("3_nckal")
 target = NodePath("..")
-compute_data = SubResource("Resource_7bp3r")
-output_data = SubResource("Resource_q3lmc")
+compute_data = SubResource("Resource_4fgox")
+output_data = SubResource("Resource_pn35p")
