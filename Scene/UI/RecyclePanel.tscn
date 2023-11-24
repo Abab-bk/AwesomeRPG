@@ -63,22 +63,22 @@ text = "普通品质"
 [node name="BLUE" type="CheckBox" parent="RecyclePanel/MarginContainer/VBoxContainer/Filter"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-text = "魔法品质"
+text = "稀有品质"
 
 [node name="YELLOW" type="CheckBox" parent="RecyclePanel/MarginContainer/VBoxContainer/Filter"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-text = "稀有品质"
+text = "魔法品质"
 
 [node name="DEEP_YELLOW" type="CheckBox" parent="RecyclePanel/MarginContainer/VBoxContainer/Filter"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-text = "传奇品质"
+text = "史诗品质"
 
 [node name="GOLD" type="CheckBox" parent="RecyclePanel/MarginContainer/VBoxContainer/Filter"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-text = "暗金品质"
+text = "传奇品质"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="RecyclePanel/MarginContainer/VBoxContainer"]
 layout_mode = 2

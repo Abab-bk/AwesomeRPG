@@ -98,7 +98,7 @@
   {
     "id": 7007,
     "name": "骷髅弓箭手1",
-    "skin_name": "SkeletonArcher",
+    "skin_name": "Skeleton2",
     "hp": 200,
     "base_damage": 100,
     "fire_damage": 0.1,
@@ -114,7 +114,7 @@
   {
     "id": 7008,
     "name": "骷髅弓箭手2",
-    "skin_name": "SkeletonArcher2",
+    "skin_name": "Mummy2",
     "hp": 200,
     "base_damage": 100,
     "fire_damage": 0.1,
@@ -130,7 +130,7 @@
   {
     "id": 7009,
     "name": "骷髅弓箭手3",
-    "skin_name": "SkeletonArcher3",
+    "skin_name": "Mummy1",
     "hp": 200,
     "base_damage": 100,
     "fire_damage": 0.1,
@@ -194,7 +194,7 @@
   {
     "id": 7013,
     "name": "骷髅弓箭手4",
-    "skin_name": "SkeletonArcher2",
+    "skin_name": "GitanSkeleton3",
     "hp": 1000,
     "base_damage": 400,
     "fire_damage": 10,

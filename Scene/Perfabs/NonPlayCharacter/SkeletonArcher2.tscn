@@ -1,5 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://kkh4wfb8vs4c"]
+[gd_scene load_steps=5 format=3 uid="uid://kkh4wfb8vs4c"]
 
 [ext_resource type="PackedScene" uid="uid://fmqqa1kgly8h" path="res://Assets/Characters/SkeletonArcher2/Animations.scml" id="1_xfqdv"]
+[ext_resource type="Script" path="res://Script/Perfabs/NonPlayableCharacter/OtherEnemys.gd" id="2_83eef"]
+[ext_resource type="Script" path="res://Script/Component/HitBoxComponent.gd" id="3_68vtx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q2p0j"]
+size = Vector2(64, 20)
 
 [node name="03" instance=ExtResource("1_xfqdv")]
+script = ExtResource("2_83eef")
+
+[node name="HitBoxComponent" type="Area2D" parent="." index="1"]
+script = ExtResource("3_68vtx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" index="0"]
+position = Vector2(22, 0)
+shape = SubResource("RectangleShape2D_q2p0j")

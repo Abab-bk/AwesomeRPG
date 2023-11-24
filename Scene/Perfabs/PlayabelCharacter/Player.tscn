@@ -2009,7 +2009,6 @@ flip_v = true
 [node name="bone_006" type="Bone2D" parent="Warrior - 01/Skeleton"]
 position = Vector2(-19.3814, 34.7927)
 rotation = -1.5808
-scale = Vector2(1, 1)
 rest = Transform2D(-0.00999957, -0.99995, 0.99995, -0.00999957, -19.3814, 34.7927)
 
 [node name="Right Leg" type="Sprite2D" parent="Warrior - 01/Skeleton/bone_006"]

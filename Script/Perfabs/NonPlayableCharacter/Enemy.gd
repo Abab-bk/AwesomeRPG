@@ -27,6 +27,19 @@ enum STATE {
     SLEEP
 }
 
+#var skin_nodes:Dictionary = {
+    #"left_leg": $"Display/Skeleton/bone_004/Left Leg",
+    #"right_leg": $"Display/Skeleton/bone_005/Right Leg",
+    #"head": $Display/Skeleton/bone_006/bone_007/Head,
+    #"face": $"Display/Skeleton/bone_006/bone_007/Face 01",
+    #"right_hand": $"Display/Skeleton/bone_006/bone_002/bone_003/Right Hand",
+    #"right_arm": $"Display/Skeleton/bone_006/bone_002/Right Arm",
+    #"weapon": $Display/Skeleton/bone_006/bone_000/bone_001/Weapon,
+    #"left_hand": $"Display/Skeleton/bone_006/bone_000/bone_001/Left Hand",
+    #"left_arm": $"Display/Skeleton/bone_006/bone_000/Left Arm",
+    #"body": $Display/Skeleton/bone_006/Body
+#}
+
 var current_state:STATE = STATE.PATROL
 
 func show_damage_label(value:int, crit:bool) -> void:
@@ -110,13 +123,17 @@ func set_data(_data:CharacterData) -> void:
 
 func set_skin() -> void:
     # 设置皮肤
-    if skin_name == "" or "默认":
+    if skin_name == "" or skin_name == "默认":
+        print("皮肤名称：", skin_name)
         return
     print("设置皮肤")
+    
     $Display.get_node("Skeleton").queue_free()
-    var new_node = load("res://Scene/Perfabs/NonPlayCharacter/%s.tscn" % skin_name).instantiate()
+    var new_node = load("res://Scene/Perfabs/NonPlayCharacter/%s.tscn" % skin_name).instantiate() as OtherEnemy
     $Display.add_child(new_node)
-    character_animation = new_node.get_node("Skeleton").get_node("AnimationPlayer")
+    character_animation = new_node.animation_player
+    
+    new_node.hitbox_component.buff_manager = buff_manager
     
 
 func turn_to_player() -> void:

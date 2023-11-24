@@ -84,17 +84,18 @@ func gen_a_item() -> InventoryItem:
     # 根据随机的品质修改词缀数量：
     var quality:Const.EQUIPMENT_QUALITY # = Const.EQUIPMENT_QUALITY.values()[randi()%Const.EQUIPMENT_QUALITY.size()]
     
+    randomize()
     var _rng:float = randf_range(0, 100.0)
-    if _rng <= 50.0:
-        quality = Const.EQUIPMENT_QUALITY.BLUE
-    elif _rng <= 40.0:
-        quality = Const.EQUIPMENT_QUALITY.YELLOW
-    elif _rng <= 30.0:
-        quality = Const.EQUIPMENT_QUALITY.DEEP_YELLOW
-    elif _rng <= 10.0:
-        quality = Const.EQUIPMENT_QUALITY.GOLD
-    else:
+    if _rng >= 50.0:
         quality = Const.EQUIPMENT_QUALITY.NORMAL
+    elif _rng >= 40.0:
+        quality = Const.EQUIPMENT_QUALITY.BLUE
+    elif _rng >= 30.0:
+        quality = Const.EQUIPMENT_QUALITY.YELLOW
+    elif _rng >= 10.0:
+        quality = Const.EQUIPMENT_QUALITY.DEEP_YELLOW
+    else:
+        quality = Const.EQUIPMENT_QUALITY.GOLD
     
     _new_item.quality = quality
     

@@ -51,6 +51,12 @@ static func get_damage(who:CharacterData) -> float:
     return real_damage
 
 static func get_damage_dic(who:CharacterData) -> Dictionary:
+    if not who:
+        return {
+            "damage": 0,
+            "crit": false
+        }
+    
     var root_stats:float = max(1.0, (who.wisdom + who.agility + who.strength) * 0.5)
     var base_damage:float = who.damage
     var critical_damage:float = 1.0
