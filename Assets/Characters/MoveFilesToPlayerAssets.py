@@ -1,10 +1,10 @@
 import os
 import shutil
 
-_temp_path = "D:\Dev\Godot\AwesomeRPG\Assets\Characters\PlayerAssets"
-_icon_path = "D:\Dev\Godot\AwesomeRPG\Assets\Texture\Icons"
+_temp_path = "E:\Dev\Godot\AwesomeRPG\Assets\Texture\Icons"
+_icon_path = "E:\Dev\Godot\AwesomeRPG\Assets\Texture\Icons"
 
-input_folder = r"D:\Dev\Godot\AwesomeRPG\Assets\Characters\TempAssets"
+input_folder = r"E:\Other\素材\Temp\Temp"
 
 def classify_files():
     for root, dirs, files in os.walk(input_folder):
@@ -12,29 +12,38 @@ def classify_files():
             file_name, file_extension = os.path.splitext(file)
             
             if 'Body' in file_name:
-                destination_folder = os.path.join(_temp_path, 'Bodys')
-            elif 'Face' in file_name:
-                destination_folder = os.path.join(_temp_path, 'Faces')
+                destination_folder = os.path.join(_temp_path, '胸甲')
             elif 'Head' in file_name:
-                destination_folder = os.path.join(_temp_path, 'Heads')
-            elif 'Left Arm' in file_name:
-                destination_folder = os.path.join(_temp_path, 'LeftArms')
-            elif 'Left Hand' in file_name.strip():
-                destination_folder = os.path.join(_temp_path, 'LeftHands')
-            elif 'Left Leg' in file_name:
-                destination_folder = os.path.join(_temp_path, 'LeftLegs')
-            elif 'Right Arm' in file_name:
-                destination_folder = os.path.join(_temp_path, 'RightArms')
-            elif 'Right Hand' in file_name:
-                destination_folder = os.path.join(_temp_path, 'RightHands')
-            elif 'Right Leg' in file_name:
-                destination_folder = os.path.join(_temp_path, 'RightLegs')
-            elif 'Weapon' in file_name:
-                destination_folder = os.path.join(_temp_path, 'Weapons')
+                destination_folder = os.path.join(_temp_path, '头盔')
             else:
                 continue
+
+
+            #if 'Body' in file_name:
+            #    destination_folder = os.path.join(_temp_path, '胸甲')
+            # elif 'Face' in file_name:
+            #    destination_folder = os.path.join(_temp_path, 'Faces')
+            #elif 'Head' in file_name:
+            #    destination_folder = os.path.join(_temp_path, '头盔')
+            #elif 'Left Arm' in file_name:
+            #    destination_folder = os.path.join(_temp_path, 'LeftArms')
+            #elif 'Left Hand' in file_name.strip():
+            #    destination_folder = os.path.join(_temp_path, 'LeftHands')
+            #elif 'Left Leg' in file_name:
+            #    destination_folder = os.path.join(_temp_path, 'LeftLegs')
+            #elif 'Right Arm' in file_name:
+            #    destination_folder = os.path.join(_temp_path, 'RightArms')
+            #elif 'Right Hand' in file_name:
+            #    destination_folder = os.path.join(_temp_path, 'RightHands')
+            #elif 'Right Leg' in file_name:
+            #    destination_folder = os.path.join(_temp_path, 'RightLegs')
+            #elif 'Weapon' in file_name:
+            #    destination_folder = os.path.join(_temp_path, 'Weapons')
+            #else:
+            #    continue
             
             source_file_path = os.path.join(root, file)
+            print(source_file_path)
             destination_file_path = os.path.join(destination_folder, file_name + file_extension)
 
             counter = 1
