@@ -27,23 +27,19 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"SharpPanel"
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
-layout_mode = 2
-
-[node name="TitleBar" parent="Panel/MarginContainer/VBoxContainer" instance=ExtResource("3_j28y6")]
+[node name="TitleBar" parent="Panel/VBoxContainer" instance=ExtResource("3_j28y6")]
 layout_mode = 2
 title_text = "人物信息"
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 30
@@ -51,14 +47,14 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel/VBoxContainer/MarginContainer"]
 layout_mode = 2
 patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,7 +62,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 patch_margin_left = 10
@@ -74,7 +70,7 @@ patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/NinePatchRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/NinePatchRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,12 +78,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/NinePatchRect/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("8_unxuv")
 stretch_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/NinePatchRect/VBoxContainer/TextureRect"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/NinePatchRect/VBoxContainer/TextureRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,36 +92,36 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_top = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/NinePatchRect/VBoxContainer/TextureRect/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/NinePatchRect/VBoxContainer/TextureRect/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = -20
 
-[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/NinePatchRect/VBoxContainer/TextureRect/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/NinePatchRect/VBoxContainer/TextureRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Level"
 label_settings = ExtResource("9_i3c5s")
 horizontal_alignment = 1
 
-[node name="LevelLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/NinePatchRect/VBoxContainer/TextureRect/MarginContainer/VBoxContainer"]
+[node name="LevelLabel" type="Label" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/NinePatchRect/VBoxContainer/TextureRect/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "21"
 label_settings = ExtResource("10_abgka")
 horizontal_alignment = 1
 
-[node name="PlayerNameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/NinePatchRect/VBoxContainer"]
+[node name="PlayerNameLabel" type="Label" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/NinePatchRect/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "花神"
 label_settings = ExtResource("9_i3c5s")
 horizontal_alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 10
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 50
@@ -133,133 +129,133 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Propertys" type="GridContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer"]
+[node name="Propertys" type="GridContainer" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/h_separation = 100
 columns = 2
 
-[node name="力量" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="力量" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "strength"
 
-[node name="智慧" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="智慧" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "wisdom"
 
-[node name="敏捷" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="敏捷" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "agility"
 
-[node name="魔力" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="魔力" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "magic"
 
-[node name="血量" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="血量" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "hp"
 
-[node name="防御" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="防御" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "defense"
 
-[node name="暴击率" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="暴击率" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "critical_rate"
 
-[node name="易伤几率" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="易伤几率" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "vulnerability_rate"
 
-[node name="闪避" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="闪避" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "evasion"
 
-[node name="幸运" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="幸运" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "luck"
 
-[node name="速度" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="速度" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "speed"
 
-[node name="生命回复" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="生命回复" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "health_regeneration"
 
-[node name="治疗效率" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="治疗效率" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "healing_effciency"
 
-[node name="物理伤害" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="物理伤害" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "damage"
 
-[node name="暴击伤害" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="暴击伤害" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "critical_damage"
 
-[node name="易伤伤害" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="易伤伤害" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "vulnerability_damage"
 
-[node name="火焰伤害" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="火焰伤害" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "fire_damage"
 
-[node name="闪电伤害" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="闪电伤害" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "light_damage"
 
-[node name="冰霜伤害" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="冰霜伤害" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "frost_damage"
 
-[node name="物理抗性" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="物理抗性" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "physical_resistance"
 
-[node name="冰霜抗性" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="冰霜抗性" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "frost_resistance"
 
-[node name="闪电抗性" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="闪电抗性" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "light_resistance"
 
-[node name="火焰抗性" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="火焰抗性" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "fire_resistance"
 
-[node name="毒素抗性" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
+[node name="毒素抗性" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
 value_index = "toxic_resistance"

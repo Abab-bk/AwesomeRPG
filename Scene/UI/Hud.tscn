@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=53 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -42,6 +42,8 @@
 [ext_resource type="Texture2D" uid="uid://d2u888scrwjac" path="res://Assets/UI/Texture/Button/DaysCheckinPre.png" id="32_dgm5u"]
 [ext_resource type="Texture2D" uid="uid://dp156caw8k8f7" path="res://Assets/UI/Texture/Button/FlyBtn.png" id="32_f0iak"]
 [ext_resource type="Texture2D" uid="uid://g0ge1pomi354" path="res://Assets/UI/Texture/Button/FlyBtnPre.png" id="33_r5k0t"]
+[ext_resource type="Texture2D" uid="uid://dcvvtbkl67xlk" path="res://Assets/UI/Texture/Button/TowerBtn.png" id="34_ehu7i"]
+[ext_resource type="Texture2D" uid="uid://q64pqmnvvetw" path="res://Assets/UI/Texture/Button/TowerBtnPre.png" id="35_8rwpc"]
 [ext_resource type="PackedScene" uid="uid://dklre5rf5vnqa" path="res://Scene/UI/Repository.tscn" id="36_x4b5l"]
 [ext_resource type="PackedScene" uid="uid://c760kqfsi2h5u" path="res://Scene/UI/DaysCheckIn.tscn" id="37_7ckrf"]
 [ext_resource type="PackedScene" uid="uid://bbp1iqow5k0b3" path="res://Scene/UI/ItemToolTip.tscn" id="37_hqe6n"]
@@ -442,10 +444,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -206.0
+offset_left = -188.0
 offset_top = -880.0
-offset_right = -56.0
-offset_bottom = -90.0
+offset_right = -38.0
+offset_bottom = -88.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -497,6 +499,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("32_f0iak")
 texture_pressed = ExtResource("33_r5k0t")
+stretch_mode = 5
+
+[node name="TowerBtn" type="TextureButton" parent="Control/SubFunction/VBoxContainer2"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("34_ehu7i")
+texture_pressed = ExtResource("35_8rwpc")
 stretch_mode = 5
 
 [node name="Pages" type="MarginContainer" parent="."]
