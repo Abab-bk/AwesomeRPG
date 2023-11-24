@@ -44,6 +44,8 @@ var closest_distance:float = 1000000
 var closest_enemy:Enemy
 var all_enemy:Array
 
+var tracer_subscribe:TraceSubscriber = TraceSubscriber.new().with_nicer_colors(false)
+
 func _ready() -> void:
     Master.player = self
     #EventBus.player_dead.connect(relife)
@@ -195,6 +197,8 @@ func _ready() -> void:
     output_data.hp = output_data.max_hp
     output_data.magic = output_data.max_magic
     compute()
+    
+    tracer_subscribe.init()
 
 
 func get_origin_player_data() -> CharacterData:
@@ -240,7 +244,7 @@ func equipment_down(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem) -> void:
         EventBus.new_tips.emit("背包已满")
         return
     
-    compute_data.quipments[_type] = null            
+    compute_data.quipments[_type] = null
     
     var _temp:Array[FlowerBaseBuff] = []
     
@@ -289,8 +293,14 @@ func update_equipment_textures() -> void:
     
     # FIXME: compute_data.quipments[equipment_index]里面是null，应该是飞升后导致的
     
+    #Tracer.info("compute_data.quipments: %s" % str(compute_data.quipments))
+    
     for equipment_index in compute_data.quipments.keys():
         var _item = compute_data.quipments[equipment_index]
+        
+        if not _item:
+            continue
+        
         match _item.type:
             Const.EQUIPMENT_TYPE.头盔:
                 change_head_sprite(load(_item.texture_path))

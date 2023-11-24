@@ -129,6 +129,12 @@ func update_ui() -> void:
     rate_label.text = Master.get_rate_text_from_item(current_item)
 
 func forge() -> void:
+    if not current_item:
+        return
+    
+    if not ture_item:
+        return
+    
     if Master.moneys.white < cost.white:
         return
     if Master.moneys.blue < cost.blue:
