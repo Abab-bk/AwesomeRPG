@@ -2,7 +2,7 @@ class_name SuperComputer extends Node
 
 static func handle_damage_dic(actor:CharacterData, target:CharacterData) -> Dictionary:
     var _damage_dic:Dictionary = get_damage_dic(actor, target)
-    var _damage:float = _damage_dic.damage - get_defens(actor)
+    var _damage:float = _damage_dic.damage - get_defens_in_2_actor(actor, target)
     target.hp -= _damage
     
     return {
@@ -12,7 +12,7 @@ static func handle_damage_dic(actor:CharacterData, target:CharacterData) -> Dict
 
 
 static func handle_damage(actor:CharacterData, target:CharacterData) -> float:
-    var _damage:float = get_damage(actor) - get_defens(actor)
+    var _damage:float = get_damage(actor) - get_defens_in_2_actor(actor, target)
     target.hp -= _damage
     
     return _damage
@@ -24,10 +24,6 @@ static func handle_fire_damage(actor:CharacterData, target:CharacterData) -> voi
 
 static func handle_frost_damage(actor:CharacterData, target:CharacterData) -> void:
     target.hp -= actor.frost_damage - target.frost_resistance
-
-
-static func get_defens(_who:CharacterData) -> float:
-    return 0.0
 
 
 static func get_damage(who:CharacterData) -> float:
@@ -90,6 +86,16 @@ static func get_damage_dic(who:CharacterData, target:CharacterData) -> Dictionar
         "damage": real_damage,
         "crit": is_critical
     }
+
+
+static func get_defens_in_2_actor(who:CharacterData, target:CharacterData) -> float:
+    if not who:
+        return 0.0
+    
+    if not target:
+        return 0.0
+    
+    return min(1.0, floor(who.defense / (5 * target.level + who.defense)))
 
 
 static func get_fire_resistance_in_2_actor(who:CharacterData, target:CharacterData) -> float:
