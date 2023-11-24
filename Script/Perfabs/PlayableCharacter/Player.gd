@@ -287,6 +287,8 @@ func compute_all_euipment() -> void:
 func update_equipment_textures() -> void:
     var _data:Dictionary = {}
     
+    # FIXME: compute_data.quipments[equipment_index]里面是null，应该是飞升后导致的
+    
     for equipment_index in compute_data.quipments.keys():
         var _item = compute_data.quipments[equipment_index]
         match _item.type:

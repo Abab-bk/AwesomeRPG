@@ -14,6 +14,8 @@ class_name EnemyHome extends Node2D
 var killed_enemys:int = 0
 var need_killed_enemys:int = 50
 
+var enemys_list:Array = []
+
 func _ready() -> void:
     EventBus.enemy_die.connect(gen_a_enemy)
     EventBus.player_level_up.connect(func():
@@ -31,10 +33,14 @@ func _ready() -> void:
             EventBus.completed_level.emit()
         )
     EventBus.flyed.connect(kill_all_enemy)
+    
+    enemys_list = Master.enemys.keys().slice(0, 12)
+
 
 func kill_all_enemy() -> void:
     for i in get_children():
         i.queue_free()
+
 
 func gen_a_enemy(_temp = 0) -> void:
     var _current_enemy_count:int = get_tree().get_nodes_in_group("Enemy").size()
@@ -44,11 +50,11 @@ func gen_a_enemy(_temp = 0) -> void:
     
     if _current_enemy_count < min_enemy_count:
         for i in min_enemy_count - _current_enemy_count:
-            spawn_a_enemy_by_id(Master.enemys.keys().pick_random())
+            spawn_a_enemy_by_id(enemys_list.pick_random())
             #spawn_a_enemy()
         return
     
-    spawn_a_enemy_by_id(Master.enemys.keys().pick_random())
+    spawn_a_enemy_by_id(enemys_list.pick_random())
     #spawn_a_enemy()
 
 func spawn_a_special_enemy(_reward:Callable, _id:int) -> void:

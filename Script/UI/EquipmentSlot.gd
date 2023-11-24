@@ -105,7 +105,7 @@ func update_color() -> void:
         Const.EQUIPMENT_QUALITY.DEEP_YELLOW:
             background.texture = load("res://Assets/UI/Texture/ItemBgPurple.png")
         Const.EQUIPMENT_QUALITY.GOLD:
-            background.texture = load("res://Assets/UI/Texture/ItemBgGod.png")
+            background.texture = load("res://Assets/UI/Texture/ItemBgGold.png")
 
 
 func set_img(_path:String) -> void:

@@ -9,10 +9,10 @@
     "frost_damage": 0.1,
     "toxic_damage": 0.1,
     "light_damage": 0.1,
-    "fire_resistance": 0.1,
-    "frost_resistance": 0.1,
-    "toxic_resistance": 0.1,
-    "light_resistance": 0.1,
+    "fire_resistance": 0,
+    "frost_resistance": 0,
+    "toxic_resistance": 0,
+    "light_resistance": 0,
     "speed": 400
   },
   {
@@ -25,10 +25,10 @@
     "frost_damage": 0.1,
     "toxic_damage": 0.1,
     "light_damage": 0.1,
-    "fire_resistance": 0.1,
-    "frost_resistance": 0.1,
-    "toxic_resistance": 0.1,
-    "light_resistance": 0.1,
+    "fire_resistance": 0,
+    "frost_resistance": 0,
+    "toxic_resistance": 0,
+    "light_resistance": 0,
     "speed": 400
   },
   {
@@ -41,10 +41,10 @@
     "frost_damage": 0.1,
     "toxic_damage": 0.1,
     "light_damage": 0.1,
-    "fire_resistance": 0.1,
-    "frost_resistance": 0.1,
-    "toxic_resistance": 0.1,
-    "light_resistance": 0.1,
+    "fire_resistance": 0,
+    "frost_resistance": 0,
+    "toxic_resistance": 0,
+    "light_resistance": 0,
     "speed": 400
   },
   {
@@ -57,10 +57,10 @@
     "frost_damage": 0.1,
     "toxic_damage": 0.1,
     "light_damage": 0.1,
-    "fire_resistance": 0.1,
-    "frost_resistance": 0.1,
-    "toxic_resistance": 0.1,
-    "light_resistance": 0.1,
+    "fire_resistance": 0,
+    "frost_resistance": 0,
+    "toxic_resistance": 0,
+    "light_resistance": 0,
     "speed": 400
   },
   {
@@ -73,10 +73,10 @@
     "frost_damage": 0.1,
     "toxic_damage": 0.1,
     "light_damage": 0.1,
-    "fire_resistance": 0.1,
-    "frost_resistance": 0.1,
-    "toxic_resistance": 0.1,
-    "light_resistance": 0.1,
+    "fire_resistance": 0,
+    "frost_resistance": 0,
+    "toxic_resistance": 0,
+    "light_resistance": 0,
     "speed": 400
   },
   {
@@ -89,10 +89,10 @@
     "frost_damage": 0.1,
     "toxic_damage": 0.1,
     "light_damage": 0.1,
-    "fire_resistance": 0.1,
-    "frost_resistance": 0.1,
-    "toxic_resistance": 0.1,
-    "light_resistance": 0.1,
+    "fire_resistance": 0,
+    "frost_resistance": 0,
+    "toxic_resistance": 0,
+    "light_resistance": 0,
     "speed": 400
   },
   {
@@ -105,10 +105,10 @@
     "frost_damage": 0.1,
     "toxic_damage": 0.1,
     "light_damage": 0.1,
-    "fire_resistance": 0.1,
-    "frost_resistance": 0.1,
-    "toxic_resistance": 0.1,
-    "light_resistance": 0.1,
+    "fire_resistance": 0,
+    "frost_resistance": 0,
+    "toxic_resistance": 0,
+    "light_resistance": 0,
     "speed": 400
   },
   {
@@ -121,10 +121,10 @@
     "frost_damage": 0.1,
     "toxic_damage": 0.1,
     "light_damage": 0.1,
-    "fire_resistance": 0.1,
-    "frost_resistance": 0.1,
-    "toxic_resistance": 0.1,
-    "light_resistance": 0.1,
+    "fire_resistance": 0,
+    "frost_resistance": 0,
+    "toxic_resistance": 0,
+    "light_resistance": 0,
     "speed": 400
   },
   {
@@ -137,10 +137,10 @@
     "frost_damage": 0.1,
     "toxic_damage": 0.1,
     "light_damage": 0.1,
-    "fire_resistance": 0.1,
-    "frost_resistance": 0.1,
-    "toxic_resistance": 0.1,
-    "light_resistance": 0.1,
+    "fire_resistance": 0,
+    "frost_resistance": 0,
+    "toxic_resistance": 0,
+    "light_resistance": 0,
     "speed": 400
   },
   {
@@ -153,10 +153,10 @@
     "frost_damage": 0.1,
     "toxic_damage": 0.1,
     "light_damage": 0.1,
-    "fire_resistance": 0.1,
-    "frost_resistance": 0.1,
-    "toxic_resistance": 0.1,
-    "light_resistance": 0.1,
+    "fire_resistance": 0,
+    "frost_resistance": 0,
+    "toxic_resistance": 0,
+    "light_resistance": 0,
     "speed": 400
   },
   {
@@ -169,10 +169,10 @@
     "frost_damage": 0.1,
     "toxic_damage": 0.1,
     "light_damage": 0.1,
-    "fire_resistance": 0.1,
-    "frost_resistance": 0.1,
-    "toxic_resistance": 0.1,
-    "light_resistance": 0.1,
+    "fire_resistance": 0,
+    "frost_resistance": 0,
+    "toxic_resistance": 0,
+    "light_resistance": 0,
     "speed": 400
   },
   {
@@ -185,10 +185,10 @@
     "frost_damage": 0.1,
     "toxic_damage": 0.1,
     "light_damage": 0.1,
-    "fire_resistance": 0.1,
-    "frost_resistance": 0.1,
-    "toxic_resistance": 0.1,
-    "light_resistance": 0.1,
+    "fire_resistance": 0,
+    "frost_resistance": 0,
+    "toxic_resistance": 0,
+    "light_resistance": 0,
     "speed": 400
   },
   {

@@ -1750,7 +1750,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hl0t"]
 size = Vector2(37.6475, 270.625)
 
-[sub_resource type="Resource" id="Resource_4fgox"]
+[sub_resource type="Resource" id="Resource_cfqil"]
 script = ExtResource("7_6v44f")
 level = 1
 now_xp = 0.0
@@ -1770,11 +1770,11 @@ fire_damage = 0.1
 frost_damage = 0.1
 light_damage = 0.1
 toxic_damage = 0.1
-fire_resistance = 0.1
-frost_resistance = 0.1
-light_resistance = 0.1
-toxic_resistance = 0.1
-physical_resistance = 0.1
+fire_resistance = 0.5
+frost_resistance = 0.5
+light_resistance = 0.5
+toxic_resistance = 0.5
+physical_resistance = 0.5
 critical_rate = 0.1
 critical_damage = 0.1
 vulnerability_rate = 0.1
@@ -1789,7 +1789,7 @@ atk_cd = 0.5
 atk_range = 125.0
 quipments = {}
 
-[sub_resource type="Resource" id="Resource_pn35p"]
+[sub_resource type="Resource" id="Resource_484su"]
 script = ExtResource("7_6v44f")
 level = 1
 now_xp = 0.0
@@ -1809,11 +1809,11 @@ fire_damage = 0.1
 frost_damage = 0.1
 light_damage = 0.1
 toxic_damage = 0.1
-fire_resistance = 0.1
-frost_resistance = 0.1
-light_resistance = 0.1
-toxic_resistance = 0.1
-physical_resistance = 0.1
+fire_resistance = 0.5
+frost_resistance = 0.5
+light_resistance = 0.5
+toxic_resistance = 0.5
+physical_resistance = 0.5
 critical_rate = 0.1
 critical_damage = 0.1
 vulnerability_rate = 0.1
@@ -2066,5 +2066,5 @@ collision_mask = 8
 [node name="FlowerBuffManager" type="Node" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("3_nckal")
 target = NodePath("..")
-compute_data = SubResource("Resource_4fgox")
-output_data = SubResource("Resource_pn35p")
+compute_data = SubResource("Resource_cfqil")
+output_data = SubResource("Resource_484su")
