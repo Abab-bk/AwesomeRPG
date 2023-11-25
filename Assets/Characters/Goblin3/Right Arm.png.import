@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cju2b1ia31gsn"
+path="res://.godot/imported/Right Arm.png-49043f71db8d42dc15cb2adfb4e7a1a1.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Assets/Characters/Goblin3/Right Arm.png"
+dest_files=["res://.godot/imported/Right Arm.png-49043f71db8d42dc15cb2adfb4e7a1a1.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

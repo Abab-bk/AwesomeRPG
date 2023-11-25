@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjjwuxcdb323h"]
+[gd_scene load_steps=6 format=3 uid="uid://cjjwuxcdb323h"]
 
 [ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="1_2g5e5"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_j1awk"]
 [ext_resource type="Script" path="res://Script/UI/Fly.gd" id="2_0jq83"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="2_nwanj"]
+[ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="5_ro0ce"]
 
 [node name="Fly" type="Control"]
 layout_mode = 3
@@ -36,11 +37,11 @@ unique_name_in_owner = true
 layout_mode = 2
 title_text = "七天签到"
 
-[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer"]
+[node name="Content" type="TextureRect" parent="Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/TextureRect"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/Content"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -53,25 +54,25 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/TextureRect/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/Content/MarginContainer"]
 layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="Panel/VBoxContainer/TextureRect/MarginContainer/VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="Panel/VBoxContainer/Content/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "飞升"
 label_settings = ExtResource("2_nwanj")
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="Panel/VBoxContainer/TextureRect/MarginContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="Panel/VBoxContainer/Content/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/TextureRect/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/Content/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 600)
 layout_mode = 2
 
-[node name="ContentLabel" type="RichTextLabel" parent="Panel/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="ContentLabel" type="RichTextLabel" parent="Panel/VBoxContainer/Content/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -84,13 +85,22 @@ text = "[center]你已经洞察了世间的无常。
 你会获得：
 击败怪物获得经验 +0.1 倍。[/center]"
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/TextureRect/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/Content/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_right = 50
 
-[node name="FlyBtn" type="Button" parent="Panel/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="FlyBtn" type="Button" parent="Panel/VBoxContainer/Content/MarginContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 text = "飞升"
+
+[node name="LockLabel" type="Label" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+text = "击败浩劫洪流后解锁"
+label_settings = ExtResource("5_ro0ce")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -6,6 +6,7 @@ extends Node
 # TODO: BOSS副本（解锁新功能）
 # TODO: 每日转盘（转的越多奖励越好）
 # TODO: 世界树（花园）
+# TODO: 伙伴系统
 # HACK: 升级音效短一点
 # FIXME: 任务做到一定程度，就完不成咯
 # FIXME: 读档，伤害（玩家属性）会改变，但是更换装备是正常的
@@ -91,11 +92,18 @@ var quests:Dictionary
 var ability_buffs:Dictionary
 var dungeons:Dictionary
 var enemys:Dictionary
+var dungeon_enemys:Dictionary
 var goods:Dictionary
 var main_buffs:Array
 var gold_affixs:Array
 var gold_buffs:Dictionary
 var gold_names:Array
+
+
+var unlocked_functions:Dictionary = {
+    "fly": false
+}
+
 
 var json_path:String = "res://DataBase/output/"
 
@@ -388,8 +396,15 @@ func _ready():
     gold_buffs = config.TbGoldBuffs.get_data_map()
     gold_names = config.TbGoldNames.get_data_list()
     gold_affixs = config.TbGoldAffixs.get_data_list()
+    dungeon_enemys = config.TbDungeonEnemy.get_data_map()
     #ability_trees = config.TbSkills.get_data_map()
     #goods = config.TbGoods.get_data_map()
+
+    EventBus.unlock_new_function.connect(func(_key:String):
+        match _key:
+            "fly":
+                unlocked_functions.fly = true
+        )
 
     EventBus.unlocked_ability.connect(func(_id:int):
         if _id in unlocked_skills:
@@ -422,6 +437,7 @@ func _ready():
         FlowerSaver.set_data("last_leave_time", last_leave_time)
         FlowerSaver.set_data("player_healing_items", player_healing_items)
         FlowerSaver.set_data("flyed_just_now", flyed_just_now)
+        FlowerSaver.set_data("unlocked_functions", unlocked_functions)
         )
 
     EventBus.load_save.connect(func():
@@ -463,6 +479,9 @@ func _ready():
         
         if FlowerSaver.has_key("player_healing_items"):
             player_healing_items = FlowerSaver.get_data("player_healing_items")
+        
+        if FlowerSaver.has_key("unlocked_functions"):
+            unlocked_functions = FlowerSaver.get_data("unlocked_functions")
         
         EventBus.rework_level_enemy_count.emit()
         )

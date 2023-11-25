@@ -12,10 +12,10 @@ func _ready() -> void:
     
     title_bar.cancel_callable = close_event
     
-    for i in Master.dungeons.keys().size():
+    for key in Master.dungeons.keys():
         var _node = load("res://Scene/UI/DungeonItemUi.tscn").instantiate()
         
-        _node.data = Master.get_dungeon_by_id(Master.dungeons[Master.dungeons.keys()[i - 1]].id)
+        _node.data = Master.get_dungeon_by_id(Master.dungeons[key].id)
         _node.show_info_panel = %DungeonInfoPanel
         
         itmes.add_child(_node)

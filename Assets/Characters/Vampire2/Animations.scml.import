@@ -1,0 +1,21 @@
+[remap]
+
+importer="importer.scml"
+type="PackedScene"
+uid="uid://bxrjvum0btamj"
+path="res://.godot/imported/Animations.scml-fb76a2c5b43ac806f67c6ce86a407411.scn"
+
+[deps]
+
+source_file="res://Assets/Characters/Vampire2/Animations.scml"
+dest_files=["res://.godot/imported/Animations.scml-fb76a2c5b43ac806f67c6ce86a407411.scn"]
+
+[params]
+
+playback_speed=5
+z_as_relative=true
+loop_animations=1
+loop_wrap_interpolation=true
+optimize_for_blends=true
+rest_pose_animation="Idle"
+reparenting_solution="instance per parent"

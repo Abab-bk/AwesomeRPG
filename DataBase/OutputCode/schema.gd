@@ -386,6 +386,39 @@ class GoldAffixs:
         for _ele in _json_["offset"]: var _e: float; _e = _ele; self.offset.append(_e)
 
 
+class DungeonEnemy:
+    var id: int
+    var name: String
+    var skin_name: String
+    var hp: float
+    var base_damage: float
+    var fire_damage: float
+    var frost_damage: float
+    var toxic_damage: float
+    var light_damage: float
+    var fire_resistance: float
+    var frost_resistance: float
+    var toxic_resistance: float
+    var light_resistance: float
+    var speed: float
+
+    func _init(_json_) -> void:
+        self.id = _json_["id"]
+        self.name = _json_["name"]
+        self.skin_name = _json_["skin_name"]
+        self.hp = _json_["hp"]
+        self.base_damage = _json_["base_damage"]
+        self.fire_damage = _json_["fire_damage"]
+        self.frost_damage = _json_["frost_damage"]
+        self.toxic_damage = _json_["toxic_damage"]
+        self.light_damage = _json_["light_damage"]
+        self.fire_resistance = _json_["fire_resistance"]
+        self.frost_resistance = _json_["frost_resistance"]
+        self.toxic_resistance = _json_["toxic_resistance"]
+        self.light_resistance = _json_["light_resistance"]
+        self.speed = _json_["speed"]
+
+
 class BuffsTbBuffs:
     var _data_list: Array[Buffs]
     var _data_map: Dictionary
@@ -680,6 +713,27 @@ class GoldAffixsTbGoldAffixs:
         return self._data_map.get(key)
 
 
+class DungeonEnemyTbDungeonEnemy:
+    var _data_list: Array[DungeonEnemy]
+    var _data_map: Dictionary
+    
+    func _init(_json_) -> void:
+        for _json2_ in _json_:
+            var _v: DungeonEnemy
+            _v = DungeonEnemy.new(_json2_)
+            self._data_list.append(_v)
+            self._data_map[_v.id] = _v
+
+    func get_data_list() -> Array[DungeonEnemy]:
+        return self._data_list
+
+    func get_data_map() -> Dictionary:
+        return self._data_map
+
+    func get_item(key) -> DungeonEnemy:
+        return self._data_map.get(key)
+
+
 class CfgTables:
     var TbBuffs: BuffsTbBuffs
     var TbAffix: AffixsTbAffix
@@ -695,6 +749,7 @@ class CfgTables:
     var TbGoldNames: GoldNamesTbGoldNames
     var TbGoldBuffs: GoldBuffsTbGoldBuffs
     var TbGoldAffixs: GoldAffixsTbGoldAffixs
+    var TbDungeonEnemy: DungeonEnemyTbDungeonEnemy
     
     func _init(loader: Callable) -> void:
         self.TbBuffs = BuffsTbBuffs.new(loader.call('buffs_tbbuffs'))
@@ -711,4 +766,5 @@ class CfgTables:
         self.TbGoldNames = GoldNamesTbGoldNames.new(loader.call('goldnames_tbgoldnames'))
         self.TbGoldBuffs = GoldBuffsTbGoldBuffs.new(loader.call('goldbuffs_tbgoldbuffs'))
         self.TbGoldAffixs = GoldAffixsTbGoldAffixs.new(loader.call('goldaffixs_tbgoldaffixs'))
+        self.TbDungeonEnemy = DungeonEnemyTbDungeonEnemy.new(loader.call('dungeonenemy_tbdungeonenemy'))
 

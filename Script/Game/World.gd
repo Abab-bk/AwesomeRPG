@@ -62,3 +62,9 @@ func get_data_reward(_data:DungeonData) -> void:
         "MoneyYellow":
             Master.moneys.yellow += _data.reward_value
             EventBus.show_popup.emit("挑战成功！", "获得奖励：%s %s" % [str(_data.reward_value), Const.MONEYS_NAME.yellow])
+        "Function":
+            match _data.reward_value:
+                1:
+                    # 解锁飞升
+                    EventBus.unlock_new_function.emit("fly")
+                    EventBus.show_popup.emit("挑战成功！", "解锁飞升！")

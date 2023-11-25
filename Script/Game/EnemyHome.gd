@@ -14,8 +14,6 @@ class_name EnemyHome extends Node2D
 var killed_enemys:int = 0
 var need_killed_enemys:int = 50
 
-var enemys_list:Array = []
-
 func _ready() -> void:
     EventBus.enemy_die.connect(gen_a_enemy)
     EventBus.player_level_up.connect(func():
@@ -33,8 +31,6 @@ func _ready() -> void:
             EventBus.completed_level.emit()
         )
     EventBus.flyed.connect(kill_all_enemy)
-    
-    enemys_list = Master.enemys.keys().slice(0, 12)
 
 
 func kill_all_enemy() -> void:
@@ -50,15 +46,15 @@ func gen_a_enemy(_temp = 0) -> void:
     
     if _current_enemy_count < min_enemy_count:
         for i in min_enemy_count - _current_enemy_count:
-            spawn_a_enemy_by_id(enemys_list.pick_random())
+            spawn_a_enemy_by_id(Master.enemys.keys().pick_random())
             #spawn_a_enemy()
         return
     
-    spawn_a_enemy_by_id(enemys_list.pick_random())
+    spawn_a_enemy_by_id(Master.enemys.keys().pick_random())
     #spawn_a_enemy()
 
 func spawn_a_special_enemy(_reward:Callable, _id:int) -> void:
-    var _enemy_data = Master.enemys[_id]
+    var _enemy_data = Master.dungeon_enemys[_id]
     
     var new_enemy:Enemy = Builder.build_a_enemy()
     
@@ -85,12 +81,14 @@ func spawn_a_special_enemy(_reward:Callable, _id:int) -> void:
     Master.player.find_closest_enemy()
     new_enemy.dead.connect(_reward)
 
+
 func spawn_a_enemy() -> void:
     var new_enemy:Enemy = Builder.build_a_enemy()
     call_deferred("add_child", new_enemy)
     # 在 Enemy 脚本中设置等级及其他属性，因为 data 需要时间读取并赋值
     new_enemy.global_position = Vector2(randi_range(-347, 2935), randi_range(-117, 2751))
     Master.player.find_closest_enemy()
+
 
 func spawn_a_enemy_by_id(_id:int) -> void:
     var _enemy_data = Master.enemys[_id]

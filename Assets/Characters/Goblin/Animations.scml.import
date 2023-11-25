@@ -1,0 +1,21 @@
+[remap]
+
+importer="importer.scml"
+type="PackedScene"
+uid="uid://dswd8of8dgq5y"
+path="res://.godot/imported/Animations.scml-f4b33a44e2c29b84ac5725e828907378.scn"
+
+[deps]
+
+source_file="res://Assets/Characters/Goblin/Animations.scml"
+dest_files=["res://.godot/imported/Animations.scml-f4b33a44e2c29b84ac5725e828907378.scn"]
+
+[params]
+
+playback_speed=5
+z_as_relative=true
+loop_animations=1
+loop_wrap_interpolation=true
+optimize_for_blends=true
+rest_pose_animation="Idle"
+reparenting_solution="instance per parent"

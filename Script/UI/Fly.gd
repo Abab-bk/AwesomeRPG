@@ -3,6 +3,8 @@ extends Control
 @onready var title_label:Label = %TitleLabel
 @onready var content_label:RichTextLabel = %ContentLabel
 @onready var fly_btn:Button = %FlyBtn
+@onready var lock_label:Label = $Panel/VBoxContainer/LockLabel
+@onready var content:TextureRect = $Panel/VBoxContainer/Content
 
 var need_coins:int
 
@@ -34,6 +36,12 @@ func _ready() -> void:
             )
         )
     
+    EventBus.unlock_new_function.connect(func(_key:String):
+        if _key == "fly":
+            lock_label.hide()
+            content.show()
+        )
+    
     visibility_changed.connect(func():
         if not visible:
             return
@@ -56,11 +64,12 @@ func _ready() -> void:
         """ % [str(Master.fly_count), "70", str(need_coins)]
         )
     
-    fly_btn.hide()
-    
-    await get_tree().create_timer(3.0).timeout
-    
-    fly_btn.show()
+    if Master.unlocked_functions["fly"]:
+        lock_label.hide()
+        content.show()
+    else:
+        lock_label.show()
+        content.hide()
     
     if FlowerSaver.has_key("flyed_just_now"):
         if FlowerSaver.get_data("flyed_just_now") == true:
