@@ -111,7 +111,7 @@ func gen_a_item() -> InventoryItem:
         Const.EQUIPMENT_QUALITY.DEEP_YELLOW:
             count = 5
         Const.EQUIPMENT_QUALITY.GOLD:
-            count = 5
+            count = 4
     
     _new_item.main_buffs = Master.get_random_main_affix()
     
@@ -122,6 +122,14 @@ func gen_a_item() -> InventoryItem:
                 _new_item.pre_affixs.append(Master.get_random_affix())
             1:
                 _new_item.buf_affix.append(Master.get_random_affix())
+    
+    if _new_item.quality == Const.EQUIPMENT_QUALITY.GOLD:
+        # 添加特殊词缀
+        if _new_item.pre_affixs.size() < 3:
+            _new_item.pre_affixs.append(Master.get_random_gold_affix())
+        else:
+            if _new_item.buf_affix.size() < 3:
+                _new_item.buf_affix.append(Master.get_random_gold_affix())
     
     _new_item.name += "{buf}"
     
@@ -137,6 +145,9 @@ func gen_a_item() -> InventoryItem:
     
     # 物品价格公式
     _new_item.price = (int(quality) + 1) * 10 * count
+    
+    if _new_item.quality == Const.EQUIPMENT_QUALITY.GOLD:
+        _new_item.name = Master.get_random_gold_name()
     
     return _new_item
 

@@ -334,6 +334,58 @@ class GoldNames:
         self.type = _json_["type"]
 
 
+class GoldBuffs:
+    ## 这是id
+    var id: int
+    ## 名称
+    var name: String
+    ## 描述
+    var desc: String
+    ## 是否重复
+    var repeat: bool
+    ## 是否无限时间
+    var infinite: bool
+    ## 重复次数
+    var repeat_count: int
+    ## 准备时间
+    var prepare_time: int
+    ## 生效时间
+    var active_time: int
+    ## 冷却时间
+    var cooldown_time: int
+    ## 计算数据
+    var compute_values: Array[BuffsComputeData]
+
+    func _init(_json_) -> void:
+        self.id = _json_["id"]
+        self.name = _json_["name"]
+        self.desc = _json_["desc"]
+        self.repeat = _json_["repeat"]
+        self.infinite = _json_["infinite"]
+        self.repeat_count = _json_["repeat_count"]
+        self.prepare_time = _json_["prepare_time"]
+        self.active_time = _json_["active_time"]
+        self.cooldown_time = _json_["cooldown_time"]
+        self.compute_values = []
+        for _ele in _json_["compute_values"]: var _e: BuffsComputeData; _e = BuffsComputeData.new(_ele); self.compute_values.append(_e)
+
+
+class GoldAffixs:
+    var id: int
+    var name: String
+    var desc: String
+    var target_buff_id: int
+    var offset: Array[float]
+
+    func _init(_json_) -> void:
+        self.id = _json_["id"]
+        self.name = _json_["name"]
+        self.desc = _json_["desc"]
+        self.target_buff_id = _json_["target_buff_id"]
+        self.offset = []
+        for _ele in _json_["offset"]: var _e: float; _e = _ele; self.offset.append(_e)
+
+
 class BuffsTbBuffs:
     var _data_list: Array[Buffs]
     var _data_map: Dictionary
@@ -586,6 +638,48 @@ class GoldNamesTbGoldNames:
         return self._data_map.get(key)
 
 
+class GoldBuffsTbGoldBuffs:
+    var _data_list: Array[GoldBuffs]
+    var _data_map: Dictionary
+    
+    func _init(_json_) -> void:
+        for _json2_ in _json_:
+            var _v: GoldBuffs
+            _v = GoldBuffs.new(_json2_)
+            self._data_list.append(_v)
+            self._data_map[_v.id] = _v
+
+    func get_data_list() -> Array[GoldBuffs]:
+        return self._data_list
+
+    func get_data_map() -> Dictionary:
+        return self._data_map
+
+    func get_item(key) -> GoldBuffs:
+        return self._data_map.get(key)
+
+
+class GoldAffixsTbGoldAffixs:
+    var _data_list: Array[GoldAffixs]
+    var _data_map: Dictionary
+    
+    func _init(_json_) -> void:
+        for _json2_ in _json_:
+            var _v: GoldAffixs
+            _v = GoldAffixs.new(_json2_)
+            self._data_list.append(_v)
+            self._data_map[_v.id] = _v
+
+    func get_data_list() -> Array[GoldAffixs]:
+        return self._data_list
+
+    func get_data_map() -> Dictionary:
+        return self._data_map
+
+    func get_item(key) -> GoldAffixs:
+        return self._data_map.get(key)
+
+
 class CfgTables:
     var TbBuffs: BuffsTbBuffs
     var TbAffix: AffixsTbAffix
@@ -599,6 +693,8 @@ class CfgTables:
     var TbMainBuffs: MainBuffsTbMainBuffs
     var TbTalentBuffs: TalentBuffsTbTalentBuffs
     var TbGoldNames: GoldNamesTbGoldNames
+    var TbGoldBuffs: GoldBuffsTbGoldBuffs
+    var TbGoldAffixs: GoldAffixsTbGoldAffixs
     
     func _init(loader: Callable) -> void:
         self.TbBuffs = BuffsTbBuffs.new(loader.call('buffs_tbbuffs'))
@@ -613,4 +709,6 @@ class CfgTables:
         self.TbMainBuffs = MainBuffsTbMainBuffs.new(loader.call('mainbuffs_tbmainbuffs'))
         self.TbTalentBuffs = TalentBuffsTbTalentBuffs.new(loader.call('talentbuffs_tbtalentbuffs'))
         self.TbGoldNames = GoldNamesTbGoldNames.new(loader.call('goldnames_tbgoldnames'))
+        self.TbGoldBuffs = GoldBuffsTbGoldBuffs.new(loader.call('goldbuffs_tbgoldbuffs'))
+        self.TbGoldAffixs = GoldAffixsTbGoldAffixs.new(loader.call('goldaffixs_tbgoldaffixs'))
 

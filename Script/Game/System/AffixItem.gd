@@ -19,6 +19,22 @@ func update(_data) -> void:
     buff.name = name
     buff.desc = desc
     
+    if target_buff_id >= 10000:
+        var _gold_buff = Master.gold_buffs[target_buff_id]
+        
+        buff.repeat = _gold_buff["repeat"]
+        buff.infinite = _gold_buff["infinite"]
+        buff.repeat_count = _gold_buff["repeat_count"]
+        buff.prepare_time = _gold_buff["prepare_time"]
+        buff.active_time = _gold_buff["active_time"]
+        buff.cooldown_time = _gold_buff["cooldown_time"]
+        
+        buff.compute_values = _get_compute_datas(_gold_buff["compute_values"])
+        
+        update_desc(_data)
+        
+        return
+    
     var _buff = Master.buffs[target_buff_id]
     
     buff.repeat = _buff["repeat"]

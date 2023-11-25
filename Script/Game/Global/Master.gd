@@ -93,6 +93,9 @@ var dungeons:Dictionary
 var enemys:Dictionary
 var goods:Dictionary
 var main_buffs:Array
+var gold_affixs:Array
+var gold_buffs:Dictionary
+var gold_names:Array
 
 var json_path:String = "res://DataBase/output/"
 
@@ -201,6 +204,12 @@ func get_buff_by_id(_target_buff_id:int) -> FlowerBaseBuff:
     
     return buff
 
+
+func get_random_gold_name() -> String:
+    return gold_names.pick_random().name
+
+
+
 func _get_compute_datas(_value) -> Array[FlowerComputeData]:
     var _result:Array[FlowerComputeData] = []
     
@@ -280,6 +289,43 @@ func get_random_affix() -> AffixItem:
     return _affix
 
 
+func get_random_gold_affix() -> AffixItem:
+    var _affix:AffixItem = AffixItem.new()
+    randomize()
+    var _data = gold_affixs.pick_random()
+    
+    _affix.name = _data.name
+    _affix.target_buff_id = _data.target_buff_id
+    
+    var _offset:float = randf_range(_data.offset[0], _data.offset[1])
+    # 决定词缀描述
+    # HACK: 临时修复？ - 词缀如果是 INC 类型也会 * 10，导致显示错误
+    
+    _affix.offset = _offset
+    
+    _affix.update(_data)
+    
+    return _affix
+
+
+#func get_random_gold_buff() -> FlowerBaseBuff:
+    #var buff:FlowerBaseBuff = FlowerBaseBuff.new()
+    #var _buff = gold_buffs.pick_random()
+    #
+    #buff.name = _buff.name
+    #buff.desc = _buff.desc
+    #buff.repeat = _buff["repeat"]
+    #buff.infinite = _buff["infinite"]
+    #buff.repeat_count = _buff["repeat_count"]
+    #buff.prepare_time = _buff["prepare_time"]
+    #buff.active_time = _buff["active_time"]
+    #buff.cooldown_time = _buff["cooldown_time"]
+    #
+    #buff.compute_values = _get_compute_datas(_buff["compute_values"])
+    #
+    #return buff
+
+
 func get_rate_text_from_item(_item:InventoryItem) -> String:
         if not _item:
             return ""
@@ -339,6 +385,9 @@ func _ready():
     dungeons = config.TbDungeons.get_data_map()
     main_buffs = config.TbMainBuffs.get_data_list()
     talent_buffs = config.TbTalentBuffs.get_data_map()
+    gold_buffs = config.TbGoldBuffs.get_data_map()
+    gold_names = config.TbGoldNames.get_data_list()
+    gold_affixs = config.TbGoldAffixs.get_data_list()
     #ability_trees = config.TbSkills.get_data_map()
     #goods = config.TbGoods.get_data_map()
 
