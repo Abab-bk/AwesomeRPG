@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_m8ind"]
 [ext_resource type="Script" path="res://Script/UI/DungeonPanel.gd" id="2_yqkn2"]
 [ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="4_a0e4k"]
-[ext_resource type="Texture2D" uid="uid://dp0iy2awe2e3l" path="res://Icon.png" id="6_e8yfv"]
+[ext_resource type="Texture2D" uid="uid://doddkonrn6vab" path="res://Assets/Texture/Images/Flood.png" id="5_6gldd"]
 [ext_resource type="Script" path="res://Script/UI/DungeonInfoPanel.gd" id="6_pebq8"]
 [ext_resource type="Texture2D" uid="uid://c4h84bsb46845" path="res://Assets/UI/Texture/Button/PreBtn.png" id="7_f1kvr"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="7_hjtc4"]
@@ -64,6 +64,20 @@ layout_mode = 2
 theme_type_variation = &"SubPanel"
 script = ExtResource("6_pebq8")
 
+[node name="Icon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = ExtResource("5_6gldd")
+expand_mode = 1
+stretch_mode = 6
+
 [node name="Content" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel"]
 layout_mode = 1
 anchors_preset = 15
@@ -72,52 +86,44 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2"]
 layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = -50
-alignment = 2
 
-[node name="Icon" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/VBoxContainer2"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-size_flags_vertical = 3
-texture = ExtResource("6_e8yfv")
-expand_mode = 2
-stretch_mode = 6
-
-[node name="NameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/VBoxContainer2"]
+[node name="NameLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "金币城"
 label_settings = ExtResource("7_hjtc4")
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_right = 40
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/MarginContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/VBoxContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="UnNextLevelBtn" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/MarginContainer/HBoxContainer2"]
+[node name="UnNextLevelBtn" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/VBoxContainer/MarginContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("7_f1kvr")
 texture_pressed = ExtResource("8_gct7u")
 
-[node name="Panel" type="Panel" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/MarginContainer/HBoxContainer2"]
+[node name="Panel" type="Panel" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/VBoxContainer/MarginContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CurrentLevelLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/MarginContainer/HBoxContainer2/Panel"]
+[node name="CurrentLevelLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/VBoxContainer/MarginContainer/HBoxContainer2/Panel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -131,7 +137,7 @@ label_settings = ExtResource("7_hjtc4")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NextLevelBtn" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/MarginContainer/HBoxContainer2"]
+[node name="NextLevelBtn" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2/VBoxContainer/MarginContainer/HBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("9_3il5w")
@@ -139,7 +145,6 @@ texture_pressed = ExtResource("10_iaewg")
 
 [node name="Desc" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/DungeonInfoPanel/Content/VBoxContainer2"]
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_constants/separation = 100
 alignment = 1
 

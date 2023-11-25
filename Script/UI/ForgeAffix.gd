@@ -1,7 +1,7 @@
 extends HBoxContainer
 
 @onready var lock_btn:Button = %LockBtn
-@onready var desc_label:Label = %DescLabel
+@onready var desc_label:RichTextLabel = %DescLabel
 
 @onready var icon:TextureRect = $Panel/LockBtn/MarginContainer/Icon
 

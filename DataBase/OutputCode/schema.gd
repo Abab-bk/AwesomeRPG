@@ -242,6 +242,7 @@ class Dungeons:
     var id: int
     var name: String
     var enemy_id: int
+    var icon_path: String
     var reward_type: String
     var need_cost: int
     var reward_value: int
@@ -251,6 +252,7 @@ class Dungeons:
         self.id = _json_["id"]
         self.name = _json_["name"]
         self.enemy_id = _json_["enemy_id"]
+        self.icon_path = _json_["icon_path"]
         self.reward_type = _json_["reward_type"]
         self.need_cost = _json_["need_cost"]
         self.reward_value = _json_["reward_value"]

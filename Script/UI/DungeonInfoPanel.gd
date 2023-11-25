@@ -43,6 +43,7 @@ func update_ui() -> void:
     name_label.text = current_dungeon.name
     cost_label.text = "门票钱：%s" % str(current_dungeon.need_cost)
     reward_label.text = "奖励： %s %s" % [str(current_dungeon.reward_value), get_reward_text(current_dungeon.reward_type)]
+    icon.texture = load(current_dungeon.icon_path)
     
     current_level_label.text = "Lv. %s" % str(current_dungeon.current_level)
 

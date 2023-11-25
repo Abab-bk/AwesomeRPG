@@ -140,6 +140,7 @@ func get_dungeon_by_id(_id:int) -> DungeonData:
     _dungeon.base_cost = dungeons[_id]["need_cost"]
     _dungeon.base_reward = dungeons[_id]["reward_value"]
     _dungeon.max_level = dungeons[_id]["max_level"]
+    _dungeon.icon_path = "res://Assets/Texture/Images/%s" % dungeons[_id]["icon_path"]
     
     _dungeon.set_level(1)
     

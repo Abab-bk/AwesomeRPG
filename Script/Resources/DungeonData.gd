@@ -8,6 +8,7 @@ class_name DungeonData extends Resource
 @export var reward_value:int
 @export var max_level:int = 1
 @export var current_level:int = 1
+@export var icon_path:String
 
 var base_cost:int
 var base_reward:int
