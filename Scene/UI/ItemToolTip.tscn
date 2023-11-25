@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbp1iqow5k0b3"]
+[gd_scene load_steps=8 format=3 uid="uid://bbp1iqow5k0b3"]
 
 [ext_resource type="Script" path="res://Script/UI/ItemToolTip.gd" id="1_ohqf3"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_x37k0"]
 [ext_resource type="LabelSettings" uid="uid://drx7d3iagcvhu" path="res://Assets/LabelSetting/ItemTitle.tres" id="5_63f3j"]
 [ext_resource type="LabelSettings" uid="uid://b3iaonf7dvcft" path="res://Assets/LabelSetting/ItemSubTitle.tres" id="6_puf0u"]
-[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="7_jb6d8"]
 [ext_resource type="LabelSettings" uid="uid://mgahdqv1o26h" path="res://Assets/LabelSetting/BigGray.tres" id="8_d5gr0"]
 [ext_resource type="Texture2D" uid="uid://cq2kbhi5w81jf" path="res://Assets/Characters/PlayerAssets/Heads/Head1.png" id="9_ikghb"]
 
@@ -97,11 +96,14 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MainBuffLabel" type="Label" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="MainBuffLabel" type="RichTextLabel" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
+theme_override_colors/default_color = Color(0.986517, 0.906897, 0.707823, 1)
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
 text = "+ 88 伤害"
-label_settings = ExtResource("7_jb6d8")
 
 [node name="AffixeLabels" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2

@@ -1,18 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://twlqvo6sld7s"]
+[gd_scene load_steps=4 format=3 uid="uid://twlqvo6sld7s"]
 
 [ext_resource type="Script" path="res://Script/UI/AffixLabel.gd" id="1_5e7vu"]
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_6bm1l"]
 [ext_resource type="Texture2D" uid="uid://2cc57rame2k7" path="res://Assets/UI/Texture/SmallClub.png" id="1_hawx8"]
-[ext_resource type="FontFile" uid="uid://c7bfs6orcmgh2" path="res://Assets/Font/SourceHanSansCN-Medium.otf" id="3_b76il"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_1eqbc"]
-font = ExtResource("3_b76il")
-font_size = 30
-font_color = Color(0.85098, 0.85098, 0.85098, 1)
-outline_size = 1
-outline_color = Color(0, 0, 0, 1)
 
 [node name="AffixLabel" type="HBoxContainer"]
-size_flags_vertical = 0
+custom_minimum_size = Vector2(0, 50)
+offset_right = 700.0
+offset_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_6bm1l")
 theme_override_constants/separation = 10
 script = ExtResource("1_5e7vu")
 
@@ -22,7 +20,8 @@ layout_mode = 2
 texture = ExtResource("1_hawx8")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="RichTextLabel" parent="."]
 layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
 text = "雷电抗性 +34.0%"
-label_settings = SubResource("LabelSettings_1eqbc")

@@ -11,7 +11,7 @@ extends Panel
 @onready var title_label:Label = %TitleLabel
 @onready var rate_label:Label = %RateLabel
 @onready var icon:TextureRect = %Icon
-@onready var main_buff_label:Label = %MainBuffLabel
+@onready var main_buff_label:RichTextLabel = %MainBuffLabel
 
 @onready var use_btn:Button = %UseBtn
 

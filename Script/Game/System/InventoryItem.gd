@@ -12,7 +12,3 @@ class_name InventoryItem extends Resource
 @export var ranged_weapon_type:Const.RANGED_WEAPONS_TYPE = Const.RANGED_WEAPONS_TYPE.Bow
 @export var quality:Const.EQUIPMENT_QUALITY
 @export var price:int = 0
-
-@warning_ignore("native_method_override")
-func get_class() -> String:
-    return "res://Script/Game/System/InventoryItem.gd"
