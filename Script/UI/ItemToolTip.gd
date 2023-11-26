@@ -51,6 +51,7 @@ func _ready() -> void:
             current_state = STATE.MOVE
         
         rate_label.text = Master.get_rate_text_from_item(_item)
+        #rate_label.set("font_color", Master.get_rate_text_color_from_item(_item))
         
         price_label.text = "%s $" % str(_item.price)
         main_buff_label.text = _item.main_buffs.desc

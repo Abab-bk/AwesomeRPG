@@ -1,11 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbp1iqow5k0b3"]
+[gd_scene load_steps=9 format=3 uid="uid://bbp1iqow5k0b3"]
 
 [ext_resource type="Script" path="res://Script/UI/ItemToolTip.gd" id="1_ohqf3"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_x37k0"]
+[ext_resource type="FontFile" uid="uid://ri6183bsibm8" path="res://Assets/Font/SourceHanSansCN-Bold.otf" id="4_kgtkb"]
 [ext_resource type="LabelSettings" uid="uid://drx7d3iagcvhu" path="res://Assets/LabelSetting/ItemTitle.tres" id="5_63f3j"]
-[ext_resource type="LabelSettings" uid="uid://b3iaonf7dvcft" path="res://Assets/LabelSetting/ItemSubTitle.tres" id="6_puf0u"]
 [ext_resource type="LabelSettings" uid="uid://mgahdqv1o26h" path="res://Assets/LabelSetting/BigGray.tres" id="8_d5gr0"]
 [ext_resource type="Texture2D" uid="uid://cq2kbhi5w81jf" path="res://Assets/Characters/PlayerAssets/Heads/Head1.png" id="9_ikghb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_w6jt5"]
+font = ExtResource("4_kgtkb")
+font_size = 35
+font_color = Color(0.423529, 0.717647, 0.643137, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2mds4"]
 draw_center = false
@@ -72,7 +79,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 2
 text = "远古传奇铁盒"
-label_settings = ExtResource("6_puf0u")
+label_settings = SubResource("LabelSettings_w6jt5")
 
 [node name="Icon" type="TextureRect" parent="VBoxContainer/ItemColor/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true

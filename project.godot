@@ -28,10 +28,16 @@ TimeManager="*res://addons/TimeManager/TimeManager.gd"
 FlowerSaver="*res://addons/FlowerSaver/FlowerSaver.gd"
 Tracer="*res://addons/tracer/./tracer.gd"
 StringFactory="*res://addons/StringFactory/StringFactory.gd"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [debug]
 
 gdscript/warnings/native_method_override=1
+
+[dialogue_manager]
+
+general/states=["Master"]
+general/balloon_path="res://Scene/UI/Dialogue/balloon.tscn"
 
 [display]
 
@@ -50,7 +56,7 @@ naming/scene_name_casing=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/FlowerAbility/plugin.cfg", "res://addons/FlowerBuff/plugin.cfg", "res://addons/FlowerSaver/plugin.cfg", "res://addons/StringFactory/plugin.cfg", "res://addons/TimeManager/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/import_scml/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/tracer/plugin.cfg", "res://addons/worldmap_builder/plugin.cfg")
+enabled=PackedStringArray("res://addons/FlowerAbility/plugin.cfg", "res://addons/FlowerBuff/plugin.cfg", "res://addons/FlowerSaver/plugin.cfg", "res://addons/StringFactory/plugin.cfg", "res://addons/TimeManager/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/import_scml/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/tracer/plugin.cfg", "res://addons/worldmap_builder/plugin.cfg")
 
 [file_customization]
 
@@ -86,6 +92,10 @@ Click={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://Assets/Dialogues/Start.dialogue")
 
 [layer_names]
 

@@ -59,6 +59,7 @@ var fly_count:int = 0
 var flyed_just_now:bool = false
 var player_name:String = "花神"
 
+
 var coins:int = 1000:
     set(v):
         coins = max(v, 0)
@@ -333,6 +334,25 @@ func get_random_gold_affix() -> AffixItem:
     #
     #return buff
 
+func get_rate_text_color_from_item(_item:InventoryItem) -> Color:
+        if not _item:
+            return Color(0, 0, 0)
+        
+        var _result:Color
+        
+        match _item.quality:
+            Const.EQUIPMENT_QUALITY.NORMAL:
+                _result = Color("D9DBD8")
+            Const.EQUIPMENT_QUALITY.BLUE:
+                _result = Color("D9DBD8")
+            Const.EQUIPMENT_QUALITY.YELLOW:
+                _result = Color("D9DBD8")
+            Const.EQUIPMENT_QUALITY.DEEP_YELLOW:
+                _result = Color("D9DBD8")
+            Const.EQUIPMENT_QUALITY.GOLD:
+                _result = Color("D9DBD8")
+        
+        return _result
 
 func get_rate_text_from_item(_item:InventoryItem) -> String:
         if not _item:

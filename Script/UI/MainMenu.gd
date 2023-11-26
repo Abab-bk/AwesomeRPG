@@ -25,7 +25,7 @@ func _ready() -> void:
     creat_character.hide()
     
     creat_character.creat_ok.connect(func():
-        get_tree().change_scene_to_packed(world)
+        get_tree().change_scene_to_packed(load("res://Scene/UI/StartCut.tscn"))
         )
     start_btn.pressed.connect(func():
         save_panel.show()

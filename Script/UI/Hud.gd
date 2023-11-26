@@ -27,6 +27,7 @@ signal backed_to_home
 @onready var days_checkin_btn:TextureButton = %"7DaysCheckinBtn"
 @onready var fly_btn:TextureButton = %FlyBtn
 @onready var friends_btn:TextureButton = %FriendsBtn
+@onready var tower_btn:TextureButton = %TowerBtn
 
 @onready var get_skill_btn:Button = %GetSkillBtn
 
@@ -57,6 +58,7 @@ enum PAGE {
     DAYS_CHICKIN,
     FLY,
     FRIENDS,
+    TOWER,
     DUNGEON,
 }
 
@@ -105,6 +107,7 @@ func _ready() -> void:
     days_checkin_btn.pressed.connect(change_page.bind(PAGE.DAYS_CHICKIN))
     fly_btn.pressed.connect(change_page.bind(PAGE.FLY))
     friends_btn.pressed.connect(change_page.bind(PAGE.FRIENDS))
+    tower_btn.pressed.connect(change_page.bind(PAGE.TOWER))
     # 添加技能
     get_skill_btn.pressed.connect(func():
         var _ability:FlowerAbility = Master.get_random_ability()

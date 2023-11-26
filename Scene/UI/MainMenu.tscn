@@ -221,6 +221,23 @@ K.M 天
 label_settings = ExtResource("9_6aiv1")
 horizontal_alignment = 1
 
+[node name="Sub3" type="VBoxContainer" parent="Credits/MarginContainer/VBoxContainer2/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Credits/MarginContainer/VBoxContainer2/VBoxContainer/VBoxContainer/Sub3"]
+layout_mode = 2
+text = "许可"
+label_settings = ExtResource("8_rit84")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Credits/MarginContainer/VBoxContainer2/VBoxContainer/VBoxContainer/Sub3"]
+layout_mode = 2
+text = "Craftpix.net
+Dialogue System by Nathan Hoad"
+label_settings = ExtResource("9_6aiv1")
+horizontal_alignment = 1
+
 [node name="CreditsCancelBtn" type="Button" parent="Credits/MarginContainer/VBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)

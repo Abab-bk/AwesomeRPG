@@ -63,3 +63,5 @@ signal move_item(item:InventoryItem)
 signal new_drop_item(item:InventoryItem, pos:Vector2)
 
 signal unlock_new_function(key:String)
+
+signal dialogue_ok(key:String)

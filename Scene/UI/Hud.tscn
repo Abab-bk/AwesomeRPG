@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=57 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -51,6 +51,7 @@
 [ext_resource type="PackedScene" uid="uid://bbp1iqow5k0b3" path="res://Scene/UI/ItemToolTip.tscn" id="37_hqe6n"]
 [ext_resource type="PackedScene" uid="uid://cjjwuxcdb323h" path="res://Scene/UI/Fly.tscn" id="38_kc5l2"]
 [ext_resource type="PackedScene" uid="uid://cehpj6ivkyk7" path="res://Scene/UI/Friends.tscn" id="50_dncem"]
+[ext_resource type="PackedScene" uid="uid://b05k7iocrua2g" path="res://Scene/UI/Tower.tscn" id="51_icvei"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4vukb"]
 font = ExtResource("13_xqeye")
@@ -450,7 +451,7 @@ anchor_bottom = 0.5
 offset_left = -188.0
 offset_top = -880.0
 offset_right = -38.0
-offset_bottom = -93.0
+offset_bottom = 54.0
 grow_horizontal = 0
 grow_vertical = 2
 
@@ -504,6 +505,14 @@ texture_normal = ExtResource("32_f0iak")
 texture_pressed = ExtResource("33_r5k0t")
 stretch_mode = 5
 
+[node name="TowerBtn" type="TextureButton" parent="Control/SubFunction/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("34_ehu7i")
+texture_pressed = ExtResource("35_8rwpc")
+stretch_mode = 5
+
 [node name="FriendsBtn" type="TextureButton" parent="Control/SubFunction/VBoxContainer2"]
 unique_name_in_owner = true
 visible = false
@@ -511,15 +520,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("34_qeepe")
 texture_pressed = ExtResource("35_636ij")
-stretch_mode = 5
-
-[node name="TowerBtn" type="TextureButton" parent="Control/SubFunction/VBoxContainer2"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-texture_normal = ExtResource("34_ehu7i")
-texture_pressed = ExtResource("35_8rwpc")
 stretch_mode = 5
 
 [node name="Pages" type="MarginContainer" parent="."]
@@ -593,6 +593,10 @@ visible = false
 layout_mode = 2
 
 [node name="Friends" parent="Pages/Pages" instance=ExtResource("50_dncem")]
+visible = false
+layout_mode = 2
+
+[node name="Tower" parent="Pages/Pages" instance=ExtResource("51_icvei")]
 visible = false
 layout_mode = 2
 
