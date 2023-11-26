@@ -13,7 +13,5 @@ func show_animation(_data:Dictionary) -> void:
     for i in _data.keys():
         var _item:HBoxContainer = load("res://Scene/UI/PropertyUpArrow.tscn").instantiate()
         
-        _item.data = _data[i]
-        _item.title = i
-        
         items.add_child(_item)
+        _item.update_ui(i, _data[i])

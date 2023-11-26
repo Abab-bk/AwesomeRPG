@@ -4,10 +4,12 @@ extends HBoxContainer
 @onready var origin_label:Label = $HBoxContainer/OriginLabel
 @onready var new_label:Label = $HBoxContainer/NewLabel
 
-var title:String
-var data:Array
 
-func _ready() -> void:
-    title_label.text = title
-    origin_label.text = str(data[0])
-    new_label.text = str(data[1])
+func update_ui(_title:String, _data) -> void:
+    if Const.PROPERTY_INFO.has(_title):
+        title_label.text = Const.PROPERTY_INFO[_title]
+    else:
+        title_label.text = _title
+    
+    origin_label.text = str(_data[0]).pad_decimals(2)
+    new_label.text = str(_data[1]).pad_decimals(2)

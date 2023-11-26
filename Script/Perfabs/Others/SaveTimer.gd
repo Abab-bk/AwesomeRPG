@@ -1,6 +1,8 @@
 extends Timer
 
 func _ready() -> void:
+    one_shot = true
+    
     timeout.connect(func():
         EventBus.save.emit()
         
@@ -8,5 +10,6 @@ func _ready() -> void:
             return
         
         FlowerSaver.save(Master.current_save_slot)
-        #print("存档完成")
+        await FlowerSaver.save_ok
+        start()
         )
