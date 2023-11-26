@@ -1,6 +1,6 @@
 class_name IceBall extends CharacterBody2D
 
-@onready var hit_box:SimpleHitBoxComponent = $SimpleHitBoxComponent
+@export var hit_box:SimpleHitBoxComponent
 
 var hited_function:Callable = func():pass
 
@@ -15,9 +15,6 @@ func get_enemys() -> Array:
 
 func set_damage_data(data:CharacterData) -> void:
     hit_box.damage_data = data
-
-func set_damage(value:float) -> void:
-    hit_box.damage = value
 
 func _physics_process(_delta: float) -> void:
     move_and_slide()

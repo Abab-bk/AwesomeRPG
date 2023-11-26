@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqpfi65aywix3"]
+
+[ext_resource type="Script" path="res://Script/Perfabs/Abilitys/HealthPotion.gd" id="1_g54u3"]
+[ext_resource type="Texture2D" uid="uid://cwj2nqjf1yqtj" path="res://Assets/Texture/Vfx/Plus.png" id="2_c6581"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_75d7v"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(10, 0, 1)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 202.79
+initial_velocity_max = 286.71
+radial_velocity_min = -286.71
+radial_velocity_max = -153.85
+gravity = Vector3(0, -300, 0)
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+color = Color(0.94902, 0.568627, 0.643137, 1)
+
+[node name="HealthPotion" type="Node2D"]
+script = ExtResource("1_g54u3")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+process_material = SubResource("ParticleProcessMaterial_75d7v")
+texture = ExtResource("2_c6581")

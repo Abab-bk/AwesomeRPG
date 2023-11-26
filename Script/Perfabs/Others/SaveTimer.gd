@@ -10,6 +10,5 @@ func _ready() -> void:
             return
         
         FlowerSaver.save(Master.current_save_slot)
-        await FlowerSaver.save_ok
         start()
         )

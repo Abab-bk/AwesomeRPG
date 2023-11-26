@@ -1,20 +1,5 @@
 [
   {
-    "id": 4001,
-    "name": "暴风雪",
-    "desc": "释放暴风雪，在范围内造成 10% 冰霜伤害。",
-    "icon_path": "Blizzard.png",
-    "cost": 200,
-    "global": true,
-    "cost_type": 1,
-    "cost_value": 20,
-    "cooldown": 1,
-    "casting_time": 0,
-    "running_time": 5,
-    "long": false,
-    "scene_name": "SnowStorms"
-  },
-  {
     "id": 4002,
     "name": "火球术",
     "desc": "释放该技能向前发射 1 个火球，击中时造成 240% 武器攻击伤害。",
@@ -76,6 +61,21 @@
   },
   {
     "id": 4006,
+    "name": "生命药剂",
+    "desc": "立即恢复 300 生命。",
+    "icon_path": "HealthPotion.png",
+    "cost": 300,
+    "global": false,
+    "cost_type": 1,
+    "cost_value": 20,
+    "cooldown": 1,
+    "casting_time": 0,
+    "running_time": 0,
+    "long": false,
+    "scene_name": "HealthPtionn"
+  },
+  {
+    "id": 4007,
     "name": "闪电猛冲",
     "desc": "速度 +200，持续 5 秒，并对路径上的敌人造成 50% 闪电伤害。一路火花带闪电~",
     "icon_path": "LightRush.png",
@@ -90,7 +90,7 @@
     "scene_name": "LightRush"
   },
   {
-    "id": 4007,
+    "id": 4008,
     "name": "火焰流星",
     "desc": "召唤一群火焰流星。每颗流星造成 10% 的火焰伤害。",
     "icon_path": "FlamingMeteor.png",
@@ -105,7 +105,7 @@
     "scene_name": "FlamingMeteor"
   },
   {
-    "id": 4008,
+    "id": 4009,
     "name": "鲜血舞蹈",
     "desc": "每损失 100 点生命，获得 10% 的攻速、速度、伤害加成。持续 3 秒。",
     "icon_path": "BloodDance.png",
@@ -120,7 +120,7 @@
     "scene_name": "BloodDance"
   },
   {
-    "id": 4009,
+    "id": 4010,
     "name": "冰锥",
     "desc": "释放该技能向前发射 1 个冰锥，击中时造成 240% 武器攻击伤害。\n冰锥击中敌人后产生爆炸，击中时造成 120% 武器攻击伤害。\n该技能 20% 物理伤害转化为冰冷伤害。",
     "icon_path": "FlamingMeteor.png",
