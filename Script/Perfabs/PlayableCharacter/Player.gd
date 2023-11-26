@@ -461,6 +461,9 @@ func die() -> void:
 
     EventBus.player_dead.emit()
     
+    if Master.current_location == Const.LOCATIONS.TOWER:
+        EventBus.exit_tower.emit()
+        
     current_state = STATE.DEAD
     #hurt_box_collision.call_deferred("set_disabled", true)
     character_animation_player.play("scml/Dying")
@@ -489,7 +492,7 @@ func find_closest_enemy(_temp = 0) -> void:
             closest_distance = enemy_distance
             closest_enemy = enemy
     
-    if closest_enemy:
+    if closest_enemy != null:
         ranged_weapon.target_position = closest_enemy.global_position
     else:
         ranged_weapon.target_position = global_position + Vector2(200, 200)

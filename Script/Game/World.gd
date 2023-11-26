@@ -24,6 +24,8 @@ func _ready() -> void:
             get_data_reward(_data)
             Master.in_dungeon = false, _data.enemy_id))
     
+    #EventBus.start_climb_tower.connect(func():)
+    
     if Master.current_level == 0:
         EventBus.completed_level.emit()
     EventBus.update_ui.emit()

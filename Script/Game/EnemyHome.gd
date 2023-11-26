@@ -14,6 +14,9 @@ class_name EnemyHome extends Node2D
 var killed_enemys:int = 0
 var need_killed_enemys:int = 50
 
+var current_tower_all_enemy_count:int = 0
+var current_tower_killed_enemy_count:int = 0
+
 func _ready() -> void:
     EventBus.enemy_die.connect(gen_a_enemy)
     EventBus.player_level_up.connect(func():
@@ -25,20 +28,57 @@ func _ready() -> void:
         Master.next_level_need_kill_count = need_killed_enemys - killed_enemys
         )
     EventBus.enemy_die.connect(func(_temp):
+        if Master.current_location == Const.LOCATIONS.TOWER:
+            current_tower_killed_enemy_count += 1
+            
+            Master.need_kill_enemys_to_next_tower = current_tower_all_enemy_count - current_tower_killed_enemy_count
+            
+            if current_tower_killed_enemy_count >= current_tower_all_enemy_count:
+                EventBus.go_to_next_tower_level.emit()
+                update_tower_enemys()
+            
+            return
+        
         killed_enemys += 1
         Master.next_level_need_kill_count = need_killed_enemys - killed_enemys
         if killed_enemys >= need_killed_enemys:
             EventBus.completed_level.emit()
         )
     EventBus.flyed.connect(kill_all_enemy)
-
+    EventBus.kill_alll_enenmy.connect(kill_all_enemy)
+    EventBus.start_climb_tower.connect(func():
+        kill_all_enemy()
+        update_tower_enemys()
+        gen_a_enemy()
+        )
+    EventBus.exit_tower.connect(func():
+        current_tower_all_enemy_count = 0
+        current_tower_killed_enemy_count = 0
+        kill_all_enemy()
+        gen_a_enemy()
+        )
 
 func kill_all_enemy() -> void:
     for i in get_children():
         i.queue_free()
 
+func update_tower_enemys() -> void:
+    if Master.current_tower_level >= 50:
+        current_tower_all_enemy_count = Master.current_tower_level * 20
+    else:
+        current_tower_all_enemy_count = Master.current_tower_level * 10
 
 func gen_a_enemy(_temp = 0) -> void:
+    if Master.current_location == Const.LOCATIONS.TOWER:        
+        var _current_level_enemy_count:int = get_tree().get_nodes_in_group("Enemy").size()
+        
+        if _current_level_enemy_count >= max_enemy_count:
+            return
+        
+        spawn_a_enemy_by_id(Master.enemys.keys().pick_random())
+        
+        return
+    
     var _current_enemy_count:int = get_tree().get_nodes_in_group("Enemy").size()
     
     if _current_enemy_count >= max_enemy_count:

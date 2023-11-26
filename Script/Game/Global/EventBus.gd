@@ -23,6 +23,10 @@ signal completed_level
 
 signal coins_changed
 
+signal go_to_next_tower_level
+signal start_climb_tower
+signal exit_tower
+
 signal player_criticaled
 signal player_hited(damage:float)
 signal player_dead
@@ -65,3 +69,5 @@ signal new_drop_item(item:InventoryItem, pos:Vector2)
 signal unlock_new_function(key:String)
 
 signal dialogue_ok(key:String)
+
+signal kill_alll_enenmy

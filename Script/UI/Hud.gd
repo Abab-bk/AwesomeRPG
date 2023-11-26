@@ -166,11 +166,17 @@ func update_ui() -> void:
         return
     
     level_label.text = "Lv.%s" % str(Master.player_output_data.level)
-    level_level_label.text = "第 %s 关" % str(Master.current_level)
+    
+    if Master.current_location == Const.LOCATIONS.WORLD:
+        level_level_label.text = "第 %s 关" % str(Master.current_level)
+        next_lvel_tip_label.text = "余剩：%s 只怪物" % str(Master.next_level_need_kill_count)
+    else:
+        level_level_label.text = "第 %s 层" % str(Master.current_tower_level)
+        next_lvel_tip_label.text = "余剩：%s 只怪物" % str(Master.need_kill_enemys_to_next_tower)
+    
     mp_bar.value = (float(Master.player_output_data.magic) / float(Master.player_output_data.max_magic)) * 100.0
     hp_bar.value = (float(Master.player_output_data.hp) / float(Master.player_output_data.max_hp)) * 100.0
     xp_bar.value = (float(Master.player_output_data.now_xp) / float(Master.player_output_data.next_level_xp)) * 100.0
-    next_lvel_tip_label.text = "余剩：%s 只怪物" % str(Master.next_level_need_kill_count)
     player_name_label.text = Master.player_name
 
 func new_drop_item(_item:InventoryItem, _pos:Vector2) -> void:

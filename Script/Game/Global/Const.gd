@@ -66,6 +66,11 @@ enum EQUIPMENT_TYPE {
     远程武器
 }
 
+enum LOCATIONS {
+    WORLD,
+    TOWER
+}
+
 enum RANGED_WEAPONS_TYPE {
     Spear,
     Staff,

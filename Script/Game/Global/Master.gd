@@ -51,7 +51,7 @@ var should_load:bool = false
 var in_dungeon:bool = false
 
 # 关卡等级：
-var current_level:int = 0
+var current_level:int = 1
 # 进入下一关需要击杀的怪物数量
 var next_level_need_kill_count:int = 0
 # 转生次数
@@ -59,6 +59,11 @@ var fly_count:int = 0
 var flyed_just_now:bool = false
 var player_name:String = "花神"
 
+var current_location:Const.LOCATIONS = Const.LOCATIONS.WORLD
+
+var current_tower_level:int = 0
+var last_tallest_tower_level:int = 0
+var need_kill_enemys_to_next_tower:int = 10
 
 var coins:int = 1000:
     set(v):
@@ -521,6 +526,83 @@ func _ready():
             player_healing_items.mp_potion += num
             return
         )
+    EventBus.start_climb_tower.connect(func():
+        current_location = Const.LOCATIONS.TOWER
+        EventBus.update_ui.emit()
+        )
+    EventBus.go_to_next_tower_level.connect(func():
+        current_tower_level += 1
+        EventBus.update_ui.emit()
+        )
+    EventBus.exit_tower.connect(func():
+        last_tallest_tower_level = current_tower_level
+        current_location = Const.LOCATIONS.WORLD
+        get_tower_reward()
+        current_tower_level = 1
+        need_kill_enemys_to_next_tower = 10
+        )
+
+
+func get_tower_reward() -> void:
+    var _rewards:Dictionary = {}
+    
+    if Master.current_tower_level <= 10:
+        _rewards["金币"] = current_tower_level * 5
+    if Master.current_tower_level >= 20:
+        _rewards["金币"] = current_tower_level * 10
+        _rewards["奉献之灰"] = current_level * 1
+    if Master.current_tower_level >= 30:
+        _rewards["金币"] = current_tower_level * 15
+        _rewards["奉献之灰"] = current_level * 1
+        _rewards["天堂之灰"] = current_level * 1
+    if Master.current_tower_level >= 40:
+        _rewards["金币"] = current_tower_level * 20
+        _rewards["奉献之灰"] = current_level * 1
+        _rewards["天堂之灰"] = current_level * 1
+        _rewards["赦罪之血"] = current_level * 1
+    if Master.current_tower_level >= 50:
+        _rewards["金币"] = current_tower_level * 25
+        _rewards["奉献之灰"] = current_level * 1
+        _rewards["天堂之灰"] = current_level * 1
+        _rewards["赦罪之血"] = current_level * 1
+        _rewards["天使之泪"] = current_level * 1        
+    if Master.current_tower_level >= 60:
+        _rewards["金币"] = current_tower_level * 30
+        _rewards["奉献之灰"] = (current_level - 40) * current_level
+        _rewards["天堂之灰"] = (current_level - 40) * current_level
+        _rewards["赦罪之血"] = (current_level - 40) * current_level
+        _rewards["天使之泪"] = (current_level - 40) * current_level
+    
+    for i in _rewards.keys():
+        get_reward(i, _rewards[i])
+    
+    EventBus.show_popup.emit("获得奖励", "爬到了 %s 层，获得奖励：
+    %s
+    " % [str(current_tower_level), get_reward_label_from_dic(_rewards)])
+
+
+func get_reward(_key:String, _value:int) -> void:
+    match _key:
+        "金币":
+            coins += _value
+        "奉献之灰":
+            moneys.white += _value
+        "天堂之灰":
+            moneys.blue += _value
+        "赦罪之血":
+            moneys.purple += _value
+        "天使之泪":
+            moneys.yellow += _value
+
+
+func get_reward_label_from_dic(_data:Dictionary) -> String:
+    var _result:String =  ""
+    
+    for key in _data.keys():
+        _result += "%s：%s" % [key, _data[key]]
+    
+    return _result
+
 
 func get_offline_reward() -> void:
     var _distance:int = last_leave_time.get_distance_to_a(TimeManager.get_current_time_resource())
