@@ -3,7 +3,6 @@ extends Node
 # TODO: 每日任务、爬塔模式、换装备对比Tooltip
 # TODO: 飞升技能树
 # TODO: 钱坑（抽卡）
-# TODO: BOSS副本（解锁新功能）
 # TODO: 每日转盘（转的越多奖励越好）
 # TODO: 世界树（花园）
 # TODO: 伙伴系统

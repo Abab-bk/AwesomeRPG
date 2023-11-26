@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ck3r30dw3dngl"]
+[gd_scene load_steps=9 format=3 uid="uid://ck3r30dw3dngl"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_0b1yo"]
 [ext_resource type="Script" path="res://Script/UI/Inventory.gd" id="1_bvtty"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://c3ts6cj14tj0l" path="res://Scene/UI/EquipmentSlot.tscn" id="3_83k28"]
 [ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="4_u54ep"]
 [ext_resource type="PackedScene" uid="uid://bevrj7m7l7mx8" path="res://Scene/Perfabs/Others/PlayerDisplay.tscn" id="6_tn3rh"]
+[ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="7_bphso"]
+[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="8_b1tdy"]
 
 [node name="Inventory" type="Control"]
 layout_mode = 3
@@ -164,3 +166,110 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "一键回收"
+
+[node name="Control" type="Control" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AutoRecycleBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "自动回收"
+
+[node name="AutoRecyclePanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -462.0
+offset_top = -783.0
+offset_right = 462.0
+offset_bottom = 783.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="AutoRecyclePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AutoRecyclePanel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="AutoRecyclePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "自动回收"
+label_settings = ExtResource("7_bphso")
+horizontal_alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="AutoRecyclePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+
+[node name="ActiveCheckBox" type="CheckBox" parent="AutoRecyclePanel/MarginContainer/VBoxContainer/VBoxContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "激活自动回收"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="AutoRecyclePanel/MarginContainer/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="AutoRecyclePanel/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+text = "背包快满时回收以下品质"
+label_settings = ExtResource("8_b1tdy")
+
+[node name="Filter" type="VBoxContainer" parent="AutoRecyclePanel/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="NORMAL" type="CheckBox" parent="AutoRecyclePanel/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer2/Filter"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "普通品质"
+
+[node name="BLUE" type="CheckBox" parent="AutoRecyclePanel/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer2/Filter"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "稀有品质"
+
+[node name="YELLOW" type="CheckBox" parent="AutoRecyclePanel/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer2/Filter"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "魔法品质"
+
+[node name="DEEP_YELLOW" type="CheckBox" parent="AutoRecyclePanel/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer2/Filter"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "史诗品质"
+
+[node name="GOLD" type="CheckBox" parent="AutoRecyclePanel/MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer2/Filter"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "传奇品质"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AutoRecyclePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="CancelBtn" type="Button" parent="AutoRecyclePanel/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "返回"

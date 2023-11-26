@@ -7,6 +7,13 @@ extends Control
 @onready var title_bar:MarginContainer = $Panel/MarginContainer/VBoxContainer/TitleBar
 
 @onready var recycle_btn:Button = %RecycleBtn
+@onready var auto_recycle_btn:Button = %AutoRecycleBtn
+
+@onready var active_check_box:CheckBox = %ActiveCheckBox
+
+@onready var auto_recycle_panel:Panel = $AutoRecyclePanel
+
+@onready var filter:VBoxContainer = %Filter
 
 @export var inventory:Inventory:
     set(v):
@@ -18,6 +25,9 @@ var slots:Array[Panel]
 var cancel_event:Callable = func():
     SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
     owner.change_page(owner.PAGE.HOME)
+
+var auto_recycle_is_active:bool = false
+var auto_recycle_targets:Array[Const.EQUIPMENT_QUALITY] = []
 
 func _ready() -> void:
     for i in slots_ui_1.get_children():
@@ -57,15 +67,35 @@ func _ready() -> void:
             )
     EventBus.save.connect(func():
         FlowerSaver.set_data("inventory", inventory)
+        FlowerSaver.set_data("inventory_auto_recycle_setting", {
+            "active": auto_recycle_is_active,
+            "targets": auto_recycle_targets
+        })
         )
     EventBus.load_save.connect(func():
         if FlowerSaver.has_key("flyed_just_now"):
             if FlowerSaver.get_data("flyed_just_now") == true:
                 return
-                
+        
         inventory = FlowerSaver.get_data("inventory", Master.current_save_slot)
         Master.player_inventory = inventory
+        
+        if FlowerSaver.has_key("inventory_auto_recycle_setting"):
+            auto_recycle_is_active = FlowerSaver.get_data("inventory_auto_recycle_setting")["active"]
+            auto_recycle_targets = FlowerSaver.get_data("inventory_auto_recycle_setting")["targets"]        
         update_ui()
+        )
+    
+    for i in filter.get_children():
+        i.toggled.connect(func(_pressed:bool):
+            if _pressed:
+                auto_recycle_targets.append(Const.EQUIPMENT_QUALITY[i.name])
+                return
+            auto_recycle_targets.erase(Const.EQUIPMENT_QUALITY[i.name])
+            )
+    
+    active_check_box.toggled.connect(func(_pressed:bool):
+        auto_recycle_is_active = _pressed
         )
     
     title_bar.cancel_callable = cancel_event
@@ -79,6 +109,16 @@ func _ready() -> void:
         var _panel:ColorRect = Builder.build_a_recycle_panel()
         add_child(_panel)
         )
+    
+    auto_recycle_btn.pressed.connect(func():
+        auto_recycle_panel.show()
+        )
+    
+    %CancelBtn.pressed.connect(func():
+        auto_recycle_panel.hide()
+        )
+    
+    auto_recycle_panel.hide()
     
     Master.player_inventory = inventory
     
@@ -104,3 +144,28 @@ func update_ui() -> void:
         
         _node.item = inventory.items[item_index]
         _node.update_ui()
+
+    if inventory.items.size() >= inventory.size - 10 and auto_recycle_is_active:
+        var wait_to_remove_items:Array[InventoryItem]
+        
+        for _type in auto_recycle_targets:
+            for _item in Master.player_inventory.items:
+                if not _item:
+                    #print("装备无效")
+                    continue
+                
+                if not _item.quality == _type:
+                    #print("稀有度不对")
+                    continue
+                
+                Master.coins += _item.price
+                wait_to_remove_items.append(_item)
+        
+        var _count:int = 0
+        for i in wait_to_remove_items:
+            _count += 1
+            Master.player_inventory.remove_item(i)
+        
+        wait_to_remove_items = []
+        
+        EventBus.update_inventory.emit()
