@@ -107,7 +107,7 @@ func _ready() -> void:
     
     buff_manager.compute()
     
-    atk_cd_timer.wait_time = data.atk_speed
+    atk_cd_timer.wait_time = output_data.atk_speed
     
     if Master.player.get_level() >= 8:
         _level = Master.player.get_level() - 7
@@ -226,7 +226,7 @@ func _physics_process(_delta:float) -> void:
         move_to_player(_delta)
     
     if current_state == STATE.SLEEP:
-        velocity = Vector2(0, 0)
+        velocity = Vector2(1, 1)
     
     move_and_slide()
     hp_bar.value = (float(data.hp) / float(data.max_hp)) * 100.0

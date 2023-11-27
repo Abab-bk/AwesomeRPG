@@ -37,6 +37,16 @@ enum BuffsECostType
 }
 
 
+enum FriendQualityEquality
+{
+    N = 0,
+    R = 1,
+    SR = 2,
+    SSR = 3,
+    UR = 4,
+}
+
+
 class Buffs:
     ## 这是id
     var id: int
@@ -421,6 +431,43 @@ class DungeonEnemy:
         self.speed = _json_["speed"]
 
 
+class Friends:
+    var id: int
+    var name: String
+    var icon_path: String
+    var quality: int
+    var skin_name: String
+    var hp: float
+    var base_damage: float
+    var fire_damage: float
+    var frost_damage: float
+    var toxic_damage: float
+    var light_damage: float
+    var fire_resistance: float
+    var frost_resistance: float
+    var toxic_resistance: float
+    var light_resistance: float
+    var speed: float
+
+    func _init(_json_) -> void:
+        self.id = _json_["id"]
+        self.name = _json_["name"]
+        self.icon_path = _json_["icon_path"]
+        self.quality = _json_["quality"]
+        self.skin_name = _json_["skin_name"]
+        self.hp = _json_["hp"]
+        self.base_damage = _json_["base_damage"]
+        self.fire_damage = _json_["fire_damage"]
+        self.frost_damage = _json_["frost_damage"]
+        self.toxic_damage = _json_["toxic_damage"]
+        self.light_damage = _json_["light_damage"]
+        self.fire_resistance = _json_["fire_resistance"]
+        self.frost_resistance = _json_["frost_resistance"]
+        self.toxic_resistance = _json_["toxic_resistance"]
+        self.light_resistance = _json_["light_resistance"]
+        self.speed = _json_["speed"]
+
+
 class BuffsTbBuffs:
     var _data_list: Array[Buffs]
     var _data_map: Dictionary
@@ -736,6 +783,27 @@ class DungeonEnemyTbDungeonEnemy:
         return self._data_map.get(key)
 
 
+class FriendsTbFriends:
+    var _data_list: Array[Friends]
+    var _data_map: Dictionary
+    
+    func _init(_json_) -> void:
+        for _json2_ in _json_:
+            var _v: Friends
+            _v = Friends.new(_json2_)
+            self._data_list.append(_v)
+            self._data_map[_v.id] = _v
+
+    func get_data_list() -> Array[Friends]:
+        return self._data_list
+
+    func get_data_map() -> Dictionary:
+        return self._data_map
+
+    func get_item(key) -> Friends:
+        return self._data_map.get(key)
+
+
 class CfgTables:
     var TbBuffs: BuffsTbBuffs
     var TbAffix: AffixsTbAffix
@@ -752,6 +820,7 @@ class CfgTables:
     var TbGoldBuffs: GoldBuffsTbGoldBuffs
     var TbGoldAffixs: GoldAffixsTbGoldAffixs
     var TbDungeonEnemy: DungeonEnemyTbDungeonEnemy
+    var TbFriends: FriendsTbFriends
     
     func _init(loader: Callable) -> void:
         self.TbBuffs = BuffsTbBuffs.new(loader.call('buffs_tbbuffs'))
@@ -769,4 +838,5 @@ class CfgTables:
         self.TbGoldBuffs = GoldBuffsTbGoldBuffs.new(loader.call('goldbuffs_tbgoldbuffs'))
         self.TbGoldAffixs = GoldAffixsTbGoldAffixs.new(loader.call('goldaffixs_tbgoldaffixs'))
         self.TbDungeonEnemy = DungeonEnemyTbDungeonEnemy.new(loader.call('dungeonenemy_tbdungeonenemy'))
+        self.TbFriends = FriendsTbFriends.new(loader.call('friends_tbfriends'))
 

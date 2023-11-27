@@ -1,11 +1,10 @@
 extends Node
 
-# TODO: 每日任务、爬塔模式、换装备对比Tooltip
+# TODO: 每日任务、换装备对比Tooltip
 # TODO: 飞升技能树
 # TODO: 钱坑（抽卡）
 # TODO: 每日转盘（转的越多奖励越好）
 # TODO: 世界树（花园）
-# TODO: 伙伴系统
 # HACK: 升级音效短一点
 # FIXME: 任务做到一定程度，就完不成咯
 # FIXME: 读档，伤害（玩家属性）会改变，但是更换装备是正常的
@@ -103,6 +102,7 @@ var main_buffs:Array
 var gold_affixs:Array
 var gold_buffs:Dictionary
 var gold_names:Array
+var friends:Dictionary
 
 
 var unlocked_functions:Dictionary = {
@@ -112,7 +112,7 @@ var unlocked_functions:Dictionary = {
 
 var json_path:String = "res://DataBase/output/"
 
-const abilitys_start:int = 4001
+const abilitys_start:int = 4002
 const abilitys_end:int = 4009
 
 func yes_fly() -> void:
@@ -134,6 +134,20 @@ func get_player_level_up_info() -> Dictionary:
     _result = _form_data.level_up()
     
     return _result
+
+
+func get_friend_data_by_id(_id:int) -> FriendData:
+    var _friend:FriendData = FriendData.new()
+    
+    var _data = friends[_id]
+    
+    _friend.id = _id
+    _friend.icon_path = _data["icon_path"]
+    _friend.name = _data["name"]
+    _friend.quality = _data["quality"]
+    _friend.skin_name = _data["skin_name"]
+    
+    return _friend
 
 func get_dungeon_by_id(_id:int) -> DungeonData:
     var _dungeon:DungeonData = DungeonData.new()
@@ -422,6 +436,7 @@ func _ready():
     gold_names = config.TbGoldNames.get_data_list()
     gold_affixs = config.TbGoldAffixs.get_data_list()
     dungeon_enemys = config.TbDungeonEnemy.get_data_map()
+    friends = config.TbFriends.get_data_map()
     #ability_trees = config.TbSkills.get_data_map()
     #goods = config.TbGoods.get_data_map()
 

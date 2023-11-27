@@ -1,0 +1,21 @@
+[remap]
+
+importer="importer.scml"
+type="PackedScene"
+uid="uid://nqv3nd2xhdda"
+path="res://.godot/imported/Animations.scml-6b2c32196dba65c0154eb6acc3d0d198.scn"
+
+[deps]
+
+source_file="res://Assets/Characters/Friends/GoldMiner/Animations.scml"
+dest_files=["res://.godot/imported/Animations.scml-6b2c32196dba65c0154eb6acc3d0d198.scn"]
+
+[params]
+
+playback_speed=5
+z_as_relative=true
+loop_animations=1
+loop_wrap_interpolation=true
+optimize_for_blends=true
+rest_pose_animation="Idle"
+reparenting_solution="instance per parent"

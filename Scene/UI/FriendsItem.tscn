@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://to5bisc21l3e"]
+[gd_scene load_steps=7 format=3 uid="uid://to5bisc21l3e"]
 
 [ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="1_eo5yi"]
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_ocwqk"]
+[ext_resource type="Script" path="res://Script/UI/FriendsItem.gd" id="1_v2ol7"]
 [ext_resource type="FontFile" uid="uid://ri6183bsibm8" path="res://Assets/Font/SourceHanSansCN-Bold.otf" id="2_m504w"]
 [ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="3_m5fpr"]
 
@@ -13,7 +15,12 @@ shadow_offset = Vector2(0, 2)
 
 [node name="FriendsItem" type="Panel"]
 custom_minimum_size = Vector2(0, 400)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme = ExtResource("1_ocwqk")
 theme_type_variation = &"SubPanel"
+script = ExtResource("1_v2ol7")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -23,12 +30,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 50
 
 [node name="Icon" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 texture = ExtResource("1_eo5yi")
@@ -39,11 +48,28 @@ layout_mode = 2
 alignment = 1
 
 [node name="NameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "信哥"
 label_settings = SubResource("LabelSettings_a765k")
 
 [node name="RateLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "史诗"
 label_settings = ExtResource("3_m5fpr")
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_bottom = 150
+
+[node name="ChangeBtn" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "更换"

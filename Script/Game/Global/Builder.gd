@@ -58,6 +58,10 @@ func build_a_skill_btn() -> Panel:
     var _n = load(skill_btn).instantiate()
     return _n
 
+func build_a_friend() -> Friend:
+    var _n = load("res://Scene/Perfabs/PlayabelCharacter/BaseFriend.tscn").instantiate()
+    return _n
+
 func build_a_enemy() -> Enemy:
     var _n = enemy.instantiate()
     return _n

@@ -1716,15 +1716,15 @@ scale = Vector2(3.415, 3.415)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 63.0
-offset_top = -22.0
+offset_top = -140.0
 offset_right = 63.0
-offset_bottom = -22.0
+offset_bottom = -140.0
 theme = ExtResource("2_6wwaj")
 metadata/_edit_use_anchors_ = true
 
 [node name="HpBar" type="ProgressBar" parent="Control"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(200, 30)
 layout_mode = 1
 anchors_preset = -1
 offset_top = -44.0

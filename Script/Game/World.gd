@@ -5,6 +5,7 @@ extends Node2D
 
 @onready var enemy_home:EnemyHome = %EnemyHome
 
+
 func _ready() -> void:
     Master.world = self
     
@@ -24,13 +25,24 @@ func _ready() -> void:
             get_data_reward(_data)
             Master.in_dungeon = false, _data.enemy_id))
     
+    # data {ui_id: id}
+    EventBus.changed_friends.connect(func(_data:Dictionary):
+        EventBus.kill_all_friend.emit()
+        print("应该杀死伙伴")
+        for i in _data.keys():
+            if _data[i] == -1:
+                continue
+            
+            spawn_a_friend_by_id(_data[i])
+        )
+    
     #EventBus.start_climb_tower.connect(func():)
     
     if Master.current_level == 0:
         EventBus.completed_level.emit()
     EventBus.update_ui.emit()
     #EventBus.load_save.connect(completed_level)
-
+    
     SoundManager.play_music(load(Master.BGM), 0, "Music")
     
     if Master.should_load:
@@ -38,6 +50,32 @@ func _ready() -> void:
         print("加载存档 - 世界")
         EventBus.load_save.emit()
         Master.should_load = false
+
+func spawn_a_friend_by_id(_id:int) -> void:
+    var _friend_data = Master.friends[_id]
+    
+    var new_friend:Friend = Builder.build_a_friend()
+    
+    new_friend.skin_name = _friend_data["skin_name"]
+    
+    var _data:CharacterData = CharacterData.new()
+    _data.damage = _friend_data["base_damage"]
+    _data.frost_damage = _friend_data["frost_damage"]
+    _data.fire_damage = _friend_data["fire_damage"]
+    _data.light_damage = _friend_data["light_damage"]
+    _data.toxic_damage = _friend_data["toxic_damage"]
+    _data.frost_resistance = _friend_data["frost_resistance"]
+    _data.fire_resistance = _friend_data["fire_resistance"]
+    _data.light_resistance = _friend_data["light_resistance"]
+    _data.toxic_resistance = _friend_data["toxic_resistance"]
+    _data.max_hp = _friend_data["hp"]
+    _data.hp = _friend_data["hp"]
+    _data.speed = _friend_data["speed"]
+    
+    new_friend.set_data(_data)
+    call_deferred("add_child", new_friend)
+    new_friend.global_position = Master.player.global_position + Vector2(200, 200)
+
 
 func rework_level_enemy_count() -> void:
     completed_level()

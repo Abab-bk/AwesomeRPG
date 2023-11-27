@@ -66,6 +66,14 @@ enum EQUIPMENT_TYPE {
     远程武器
 }
 
+enum FRIEND_QUALITY {
+    N,
+    R,
+    SR,
+    SSR,
+    UR
+}
+
 enum LOCATIONS {
     WORLD,
     TOWER

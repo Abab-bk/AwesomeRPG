@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1001,
+    "name": "黄金矿工",
+    "icon_path": "res://icon.svg",
+    "quality": 1,
+    "skin_name": "GoldMiner1",
+    "hp": 1000,
+    "base_damage": 80,
+    "fire_damage": 0.1,
+    "frost_damage": 0.1,
+    "toxic_damage": 0.1,
+    "light_damage": 0.1,
+    "fire_resistance": 0.1,
+    "frost_resistance": 0.1,
+    "toxic_resistance": 0.1,
+    "light_resistance": 0.1,
+    "speed": 800
+  },
+  {
+    "id": 1002,
+    "name": "DarkElf",
+    "icon_path": "res://icon.svg",
+    "quality": 2,
+    "skin_name": "DarkElf",
+    "hp": 600,
+    "base_damage": 400,
+    "fire_damage": 1,
+    "frost_damage": 1,
+    "toxic_damage": 1,
+    "light_damage": 1,
+    "fire_resistance": 1,
+    "frost_resistance": 1,
+    "toxic_resistance": 1,
+    "light_resistance": 1,
+    "speed": 1000
+  }
+]
