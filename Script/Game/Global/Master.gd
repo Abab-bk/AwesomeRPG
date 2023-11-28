@@ -43,7 +43,7 @@ var player:Player
 var player_data:CharacterData
 var player_output_data:CharacterData
 var relife_point:Marker2D
-var unlocked_skills:Array[int] = []
+var unlocked_skills:Array = []
 
 var should_load:bool = false
 
@@ -252,6 +252,7 @@ func _get_compute_datas(_value) -> Array[FlowerComputeData]:
         _result.append(_new_data)
         
     return _result
+
 
 func get_random_ability_id() -> int:
 #    var _rng:FairNG = FairNG.new(abilitys_end)

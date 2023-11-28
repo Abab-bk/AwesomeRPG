@@ -11,6 +11,8 @@ extends Control
 @onready var talent_title:Label = %TalentTitle
 @onready var talent_desc:RichTextLabel = %TalentDesc
 
+@onready var talent_tree:Control = %TalentTree
+
 @onready var title_bar:MarginContainer = $Panel/MarginContainer/VBoxContainer/TitleBar
 
 var node_pos:Vector2 = Vector2(509, 953)
@@ -24,8 +26,13 @@ var cancel_event:Callable = func():
     owner.change_page(owner.PAGE.HOME)
 
 var current_item:WorldmapNodeData
-var closest_path
-var closest_node_in_path
+var closest_path:NodePath
+var closest_node_in_path:int
+
+
+var saved_datas:Dictionary
+var loaded:bool = false
+
 
 func update_ui(_data:WorldmapNodeData = null) -> void:
     talent_point_label.text = "天赋点：%s" % str(skills_ui.max_unlock_cost)
@@ -52,7 +59,18 @@ func get_skill_node_data(_id:int) -> WorldmapNodeData:
 
 
 func add_a_skill_node(_parent_id:int, _id:int) -> void:
-    root_item.add_node(node_pos, _parent_id, get_skill_node_data(_id))
+    var _data = get_skill_node_data(_id)
+    root_item.add_node(node_pos, _parent_id, _data)
+    #saved_datas[_parent_id]["data"] = _data
+    skills_ui.recalculate_map()
+
+
+func add_a_skill_node_and_pos_data(_parent_id:int, _id:int, _pos:Vector2, _data, _state:int = -100) -> void:
+    root_item.add_node(_pos, _parent_id, _data)
+    
+    if _state != -100:
+        skills_ui.set_node_state(closest_path, closest_node_in_path, 1)
+    
     skills_ui.recalculate_map()
 
 
@@ -66,8 +84,10 @@ func _ready() -> void:
         if skills_ui.can_activate(closest_path, closest_node_in_path):
             unlock_btn.disabled = false
             skills_ui.max_unlock_cost -= skills_ui.set_node_state(closest_path, closest_node_in_path, 1)
+            #saved_datas[]["state"] = [closest_path, closest_node_in_path, skills_ui.get_node_state(closest_path, closest_node_in_path)]
             Master.player.flower_buff_manager.add_buff(current_item.data[0])
             update_ui(current_item)
+            save()
         )
     
     title_bar.cancel_callable = cancel_event
@@ -81,12 +101,52 @@ func _ready() -> void:
     
     added_node_pos.append(node_pos)
     
+    #EventBus.load_save.connect(func():
+        ##if FlowerSaver.has_key("skill_tree_data"):
+            ##saved_datas = FlowerSaver.get_data("skill_tree_data")
+            ##loaded = true
+        #if FlowerSaver.has_key("skill_tree_scene"):
+            #loaded = true
+            #talent_tree.queue_free()
+            #load_save()
+        #)
+    
     update_ui()
 
     await get_tree().create_timer(1.0).timeout
     gen_trees_by_walker()
 
+
+func save() -> void:
+    #FlowerSaver.set_data("skill_tree_data", saved_datas)
+    print("保存技能树")
+    var _packer:PackedScene = PackedScene.new()
+    _packer.pack(talent_tree)
+    FlowerSaver.set_data("skill_tree_scene", _packer)
+
+func load_save() -> void:
+    await get_tree().create_timer(2.0).timeout
+    var _new_node = FlowerSaver.get_data("skill_tree_scene").instantiate()
+    %SubViewport.add_child(_new_node)
+    _new_node.set_owner(self)
+    skills_ui = _new_node.worldmap_view
+    root_item = _new_node.root_item
+    skills_ui.recalculate_map()
+    
+
 func gen_trees_by_walker() -> void:
+    #if loaded:
+        #for _key in saved_datas.keys():
+            #var _data = saved_datas[_key]
+            #if "state" in _data:
+                #add_a_skill_node_and_pos_data(_data["node_pos"], _data["last_parent_id"], _data["id"], _data["data"], _data["state"])
+            #else:
+                #add_a_skill_node_and_pos_data(_data["node_pos"], _data["last_parent_id"], _data["id"], _data["data"])                
+        #return
+    
+    if loaded:
+        return
+    
     var _step_size:Vector2 = Vector2(300, 0)
     
     for i in step_count:
@@ -112,8 +172,16 @@ func gen_trees_by_walker() -> void:
         # 添加节点
         var _id:int = last_parent_id + 1
         add_a_skill_node(last_parent_id, _id)
+        
+        saved_datas[last_parent_id] = {
+            "last_parent_id": last_parent_id,
+            "id": _id,
+            "node_pos": node_pos,
+        }
+        
         added_node_pos.append(node_pos)
         last_parent_id = _id
+    #save()
 
 
 func _on_node_gui_input(_event:InputEvent, _path:NodePath, _node_in_path:int, _resource:WorldmapNodeData) -> void:

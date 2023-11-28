@@ -5,7 +5,7 @@ class_name AffixItem extends Resource
 @export var target_buff_id:int
 @export var offset:float
 
-var buff:FlowerBaseBuff = FlowerBaseBuff.new()
+@export var buff:FlowerBaseBuff = FlowerBaseBuff.new()
 
 func update_desc(_data) -> void:
     if offset <= 1.0 and buff.compute_values[0].type == FlowerConst.COMPUTE_TYPE.MORE or buff.compute_values[0].type == FlowerConst.COMPUTE_TYPE.COMPLEX_MORE:
@@ -64,5 +64,5 @@ func _get_compute_datas(_value) -> Array[FlowerComputeData]:
         _new_data.target_property = i["target_property"]
         
         _result.append(_new_data)
-        
+    
     return _result

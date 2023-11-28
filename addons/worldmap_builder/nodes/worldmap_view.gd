@@ -381,6 +381,9 @@ func view_item_node_removed(node : WorldmapViewItem, index : int):
 
 
 func _update_activatable():
+    if get_tree() == null:
+        return
+    
     if _updating_activatable: return
     _updating_activatable = true
     await get_tree().process_frame

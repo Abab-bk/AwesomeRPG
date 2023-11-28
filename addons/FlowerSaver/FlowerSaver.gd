@@ -16,6 +16,7 @@ func _ready() -> void:
     var res:Resource = Resource.new()
     for property in res.get_property_list():
         base_resource_property_names.append(property.name)
+    save_ok.connect(func():print("保存完成"))
 
 
 func del_save(path:String) -> void:
@@ -27,7 +28,10 @@ func del_save(path:String) -> void:
 
 func save(path:String) -> void:
     if ResourceSaver.save(save_data, path) == OK:
+        #if loaded_data.data.has("skill_tree_scene"):
+            #save_data.data["skill_tree_scene"] = loaded_data.data["skill_tree_scene"]
         save_ok.emit()
+
 
 
 func set_data(key:String, value) -> void:
@@ -74,7 +78,7 @@ func get_data_but_load(key:String, path:String) -> Variant:
     var _result = _data[key]
     
     return _result
-    
+
 
 func get_data(key:String, path:String = "") -> Variant:
     if not loaded_data.data.has(key):

@@ -209,6 +209,8 @@ func euipment_up(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
     # 装备装备
     compute_data.quipments[_type] = _item
     
+    print("装备前", output_data.defense)
+    
     var _temp:Array[FlowerBaseBuff] = []
     # 装备装备时，应用装备 Buff
     var _main_buff:FlowerBaseBuff = _item.main_buffs.buff
@@ -216,9 +218,11 @@ func euipment_up(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
     
     for i in _item.pre_affixs:
         _temp.append(i.buff)
+        #print(i.buff.get_origin_compute_datas())
     
     for i in _item.buf_affix:
         _temp.append(i.buff)
+        #print(i.buff.get_origin_compute_datas())
     
     match _item.type:
         Const.EQUIPMENT_TYPE.头盔:
@@ -229,6 +233,7 @@ func euipment_up(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
             change_body_sprite(load(_item.texture_path))
     
     var _info = flower_buff_manager.add_buff_list(_temp)
+    
     EventBus.show_animation.emit("PropertyContrast", _info)
     
     # 移出背包
@@ -236,6 +241,7 @@ func euipment_up(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
     
     # 更新 UI
     EventBus.equipment_up_ok.emit(_type, _item)
+    print("装备后", output_data.defense)
 
 
 func equipment_down(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem) -> void:

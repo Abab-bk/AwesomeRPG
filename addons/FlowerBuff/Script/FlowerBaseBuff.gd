@@ -124,7 +124,7 @@ func get_origin_compute_datas() -> Array:
 
 func get_computed_compute_datas() -> Array:
     var _result:Array
-   
+
     for i in compute_values:
         _result.append(i.target_property)
         _result.append(output_data[i.target_property])

@@ -11,7 +11,7 @@
     "cooldown_time": 0,
     "compute_values": [
       {
-        "id": "1001",
+        "id": "4001",
         "type": 0,
         "value": 2,
         "formual": "",
@@ -31,7 +31,7 @@
     "cooldown_time": 0,
     "compute_values": [
       {
-        "id": "1002",
+        "id": "4002",
         "type": 0,
         "value": 2,
         "formual": "",
@@ -51,7 +51,7 @@
     "cooldown_time": 0,
     "compute_values": [
       {
-        "id": "1003",
+        "id": "4003",
         "type": 0,
         "value": 2,
         "formual": "",

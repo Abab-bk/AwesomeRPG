@@ -11,21 +11,21 @@
     "cooldown_time": 0,
     "compute_values": [
       {
-        "id": "1001",
+        "id": "2001",
         "type": 2,
         "value": 0,
         "formual": "([max_hp] - [hp])/100",
         "target_property": "speed"
       },
       {
-        "id": "1002",
+        "id": "2002",
         "type": 2,
         "value": 0,
         "formual": "([max_hp] - [hp])/100",
         "target_property": "damage"
       },
       {
-        "id": "1003",
+        "id": "2003",
         "type": 2,
         "value": 0,
         "formual": "([max_hp] - [hp])/100",

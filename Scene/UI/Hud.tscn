@@ -429,7 +429,6 @@ text = "卡死点我"
 
 [node name="GetEquipmentBtn" type="Button" parent="Control"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 0
 offset_left = 43.0
 offset_top = 509.0
