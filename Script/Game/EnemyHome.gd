@@ -10,6 +10,13 @@ class_name EnemyHome extends Node2D
 
 @export var min_enemy_count:int = 5
 
+@onready var point_1:Marker2D = $"../RelifePoint/SpawnPoint/Point1"
+@onready var point_2:Marker2D = $"../RelifePoint/SpawnPoint/Point2"
+@onready var point_3:Marker2D = $"../RelifePoint/SpawnPoint/Point3"
+@onready var point_4:Marker2D = $"../RelifePoint/SpawnPoint/Point4"
+
+
+
 # TODO: 待完善 关卡系统
 var killed_enemys:int = 0
 var need_killed_enemys:int = 50
@@ -117,7 +124,7 @@ func spawn_a_special_enemy(_reward:Callable, _id:int) -> void:
     new_enemy.set_data(_data)
     call_deferred("add_child", new_enemy)
     # 在 Enemy 脚本中设置等级及其他属性，因为 data 需要时间读取并赋值
-    new_enemy.global_position = Vector2(randi_range(-347, 2935), randi_range(-117, 2751))
+    new_enemy.global_position = get_random_pos()
     Master.player.find_closest_enemy()
     new_enemy.dead.connect(_reward)
 
@@ -126,7 +133,7 @@ func spawn_a_enemy() -> void:
     var new_enemy:Enemy = Builder.build_a_enemy()
     call_deferred("add_child", new_enemy)
     # 在 Enemy 脚本中设置等级及其他属性，因为 data 需要时间读取并赋值
-    new_enemy.global_position = Vector2(randi_range(-347, 2935), randi_range(-117, 2751))
+    new_enemy.global_position = get_random_pos()
     Master.player.find_closest_enemy()
 
 
@@ -153,5 +160,9 @@ func spawn_a_enemy_by_id(_id:int) -> void:
     
     new_enemy.set_data(_data)
     call_deferred("add_child", new_enemy)    
-    new_enemy.global_position = Vector2(randi_range(-347, 2935), randi_range(-117, 2751))
+    new_enemy.global_position = get_random_pos()
     Master.player.find_closest_enemy()
+
+
+func get_random_pos() -> Vector2:
+    return Vector2(randf_range(point_1.global_position.x, point_4.global_position.x), randf_range(point_1.global_position.y, point_4.global_position.y))

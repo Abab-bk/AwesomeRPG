@@ -1807,6 +1807,7 @@ script = ExtResource("3_kq5qc")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 rotation = -3.10321
 target_position = Vector2(-233.789, 9.97911)
+collision_mask = 8
 
 [node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("buff_manager", "target")]
 script = ExtResource("4_re7ev")
@@ -1875,7 +1876,6 @@ flip_v = true
 [node name="bone_005" type="Bone2D" parent="Display/Skeleton"]
 position = Vector2(-17.9341, 37.6374)
 rotation = -1.01531
-scale = Vector2(1, 1)
 rest = Transform2D(-0.146232, -0.98925, 0.98925, -0.146232, -17.9341, 37.6374)
 
 [node name="Right Leg" type="Sprite2D" parent="Display/Skeleton/bone_005"]

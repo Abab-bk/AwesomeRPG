@@ -5,6 +5,7 @@ extends VBoxContainer
 @onready var icon:TextureRect = %Icon
 @onready var name_label:Label = %NameLabel
 @onready var cost_label:Label = %CostLabel
+@onready var desc_label:Label = %DescLabel
 
 @onready var buy_btn:Button = %BuyBtn
 
@@ -50,6 +51,7 @@ func build_store() -> void:
 func change_info(_ability:FlowerAbility) -> void:
     icon.texture = load(_ability.icon_path)
     name_label.text = _ability.name
+    desc_label.text = _ability.desc
     match _ability.cost_type:
         0:
             cost_label.text = "消耗 %s 生命" % str(_ability.cost_value)

@@ -178,13 +178,16 @@ func relife() -> void:
     compute_data.hp = compute_data.max_hp
     output_data.hp = output_data.max_hp
     buff_manager.compute()
-    hurt_box_shape.disabled = false
+    # FIXME: 需要使用call_defereed，寻找变通方法
+    #hurt_box_shape.disabled = false
+    hurt_box_shape.call_deferred("set_disabled", false)
     current_state = STATE.IDLE
 
 
 func die() -> void:
     current_state = STATE.DEAD
-    hurt_box_shape.disabled = true
+    hurt_box_shape.call_deferred("set_disabled", true)
+    #hurt_box_shape.disabled = true
     character_animation.play("scml/Dying")
     await character_animation.animation_finished
     relife()
