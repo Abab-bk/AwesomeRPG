@@ -43,8 +43,28 @@ enum STATE {
     COOLDOWN,
 }
 
-# FIXME: 重复的buff不激活后不会减去数值
-# FIXME: 由于会自动激活，导致每个 buff 的每个计算值都会重复计算
+func update_output_data(_data:FlowerData) -> void:
+    output_data = _data
+
+
+func get_origin_compute_datas() -> Array:
+    var _result:Array
+   
+    for i in compute_values:
+        _result.append(i.target_property)
+        _result.append(origin_data[i.target_property])
+    
+    return _result
+
+func get_computed_compute_datas() -> Array:
+    var _result:Array
+   
+    for i in compute_values:
+        _result.append(i.target_property)
+        _result.append(output_data[i.target_property])
+    
+    return _result
+
 
 func start() -> void:
     current_state = STATE.PREPARE

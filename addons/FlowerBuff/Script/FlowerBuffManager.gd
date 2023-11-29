@@ -67,14 +67,35 @@ func update_buff_tree() -> void:
 
 func add_buff(_buff:FlowerBaseBuff) -> void:
     buff_list.append(_buff)
+    
+    compute_ok.connect(_buff.update_output_data.bind(output_data))
+    
     compute()
 
 func add_buff_list(_buff_list:Array[FlowerBaseBuff]) -> void:
+    for _buff in _buff_list:
+        _buff.origin_data = compute_data
+        _buff.output_data = output_data
+        compute_ok.connect(_buff.update_output_data.bind(output_data))
+    
     buff_list.append_array(_buff_list)
     compute()
 
 func add_buff_list_info(_buff_list:Array[FlowerBaseBuff]) -> Dictionary:
-    return {}
+    add_buff_list(_buff_list)
+    
+    var _result:Dictionary
+    
+    for i in buff_list:
+        var _origin_datas:Array = i.get_origin_compute_datas()
+        var _computed_datas:Array = i.get_computed_compute_datas()
+        # 拿到key
+        if _origin_datas.size() >= 2 and _computed_datas.size() >= 2:
+            _result[_origin_datas[0]] = [_origin_datas[1], _computed_datas[1]]
+    
+    compute()
+    
+    return _result
 
 func remove_buff_list(_buff_list:Array[FlowerBaseBuff]) -> void:
     for _buff in _buff_list:
@@ -112,9 +133,6 @@ func computed_values() -> void:
     
     for _buff in buff_list:
         for _value in _buff.compute_values:
-#            if computer.all_data.has(_value.id):
-#                continue
-#            computer.all_data[_value.id] = _value
             computer.all_data.append(_value)
     
     # 然后加入进去origin_data

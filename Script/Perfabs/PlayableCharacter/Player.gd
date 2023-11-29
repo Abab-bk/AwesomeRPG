@@ -90,8 +90,6 @@ func _ready() -> void:
         
         atk_cd_timer.wait_time = output_data.atk_speed
         
-        Tracer.info("玩家计算完成")
-        
         EventBus.player_data_change.emit()
         EventBus.update_ui.emit()
         
@@ -211,8 +209,6 @@ func euipment_up(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
     # 装备装备
     compute_data.quipments[_type] = _item
     
-    Tracer.info("装备前防御：%s" % output_data.defense)
-    
     var _temp:Array[FlowerBaseBuff] = []
     # 装备装备时，应用装备 Buff
     var _main_buff:FlowerBaseBuff = _item.main_buffs.buff
@@ -234,17 +230,54 @@ func euipment_up(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
         Const.EQUIPMENT_TYPE.胸甲:
             change_body_sprite(load(_item.texture_path))
     
-    flower_buff_manager.add_buff_list(_temp)
-    var _info = flower_buff_manager.add_buff_list_info(_temp)
+    var _info_1 = get_buffs_info(_temp)    
     
-    EventBus.show_animation.emit("PropertyContrast", _info)
+    flower_buff_manager.add_buff_list(_temp)
+
+    var _info_2 = get_buffs_info(_temp)    
+    
+    var _final_info = merge_two_dic(_info_1, _info_2)
+    
+    EventBus.show_animation.emit("PropertyContrast", _final_info)
     
     # 移出背包
     EventBus.remove_item.emit(_item)
     
     # 更新 UI
     EventBus.equipment_up_ok.emit(_type, _item)
-    Tracer.info("装备后防御：%s" % output_data.defense)
+
+
+func merge_two_dic(_dic_1:Dictionary, _dic_2:Dictionary) -> Dictionary:
+    var _result:Dictionary = {}
+    
+    #Tracer.info("合并字典：%s, %s" % [_dic_1, _dic_2])
+    
+    # 获取所有键的集合
+    var _keys = _dic_1.keys() + _dic_2.keys()
+
+    for key in _keys:
+        # 获取字典中的值，如果键不存在则返回一个默认值（这里是空数组 []）
+        var values_1 = _dic_1.get(key, [])
+        var values_2 = _dic_2.get(key, [])
+        
+        # 合并两个数组
+        var merged_values = values_1 + values_2
+    
+        # 将合并后的值添加到新的字典中
+        _result[key] = merged_values
+    
+    return _result
+
+
+func get_buffs_info(_buff_list:Array[FlowerBaseBuff]) -> Dictionary:
+    var _result:Dictionary = {}
+    
+    for i in _buff_list:
+        # 拿到key
+        for j in i.compute_values:
+            _result[j.target_property] = [output_data[j.target_property]]
+    
+    return _result
 
 
 func equipment_down(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem) -> void:
@@ -290,14 +323,14 @@ func compute_all_euipment() -> void:
         var _temp:Array[FlowerBaseBuff] = []
         # 装备装备时，应用装备 Buff
         _temp.append(_item.main_buffs.buff)
-    
+        
         for i in _item.pre_affixs:
             _temp.append(i.buff)
     
         for i in _item.buf_affix:
             _temp.append(i.buff)
-    
-        var _info = flower_buff_manager.add_buff_list_info(_temp)
+        
+        flower_buff_manager.add_buff_list(_temp)
         # 更新 UI
         #EventBus.equipment_up_ok.emit(_item.type, _item)
 
