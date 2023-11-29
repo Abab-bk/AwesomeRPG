@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b21tuweuiy1cr" path="res://Assets/Characters/GiantSkeleton1/Face 02.png" id="3_ay02b"]
 [ext_resource type="Texture2D" uid="uid://deafji1142hkn" path="res://Assets/Characters/GiantSkeleton1/Face 03.png" id="4_837pu"]
 
-[sub_resource type="Animation" id="Animation_h0auv"]
+[sub_resource type="Animation" id="Animation_ljfmt"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -31,7 +31,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(204, -130)]
+"values": [Vector2(212.322, -136.437)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -43,15 +43,15 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-0.499999]
+"values": [-0.472011]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pxqwg"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gwgs1"]
 _data = {
-"RESET": SubResource("Animation_h0auv")
+"RESET": SubResource("Animation_ljfmt")
 }
 
-[sub_resource type="Animation" id="Animation_t2y6u"]
+[sub_resource type="Animation" id="Animation_n1b4y"]
 length = 4.0
 loop_mode = 1
 step = 0.01
@@ -224,7 +224,7 @@ tracks/13/keys = {
 "values": [ExtResource("2_cjwmn")]
 }
 
-[sub_resource type="Animation" id="Animation_i3hyo"]
+[sub_resource type="Animation" id="Animation_p2esd"]
 length = 4.0
 loop_mode = 1
 step = 0.01
@@ -397,7 +397,7 @@ tracks/13/keys = {
 "values": [ExtResource("2_cjwmn"), ExtResource("3_ay02b")]
 }
 
-[sub_resource type="Animation" id="Animation_75qur"]
+[sub_resource type="Animation" id="Animation_xkfkj"]
 length = 6.0
 loop_mode = 1
 step = 0.01
@@ -570,7 +570,7 @@ tracks/13/keys = {
 "values": [ExtResource("2_cjwmn")]
 }
 
-[sub_resource type="Animation" id="Animation_1nhlp"]
+[sub_resource type="Animation" id="Animation_0llvj"]
 length = 6.0
 loop_mode = 1
 step = 0.01
@@ -743,7 +743,7 @@ tracks/13/keys = {
 "values": [ExtResource("2_cjwmn")]
 }
 
-[sub_resource type="Animation" id="Animation_7rjak"]
+[sub_resource type="Animation" id="Animation_lki1q"]
 length = 4.0
 loop_mode = 1
 step = 0.01
@@ -922,7 +922,7 @@ tracks/14/path = NodePath("../HitBoxComponent/CollisionShape2D:disabled")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0, 2.13),
+"times": PackedFloat32Array(0, 2.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -934,10 +934,10 @@ tracks/15/path = NodePath("../HitBoxComponent/CollisionShape2D:position")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0, 1.02, 2.11, 2.12, 2.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2.1, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(204, -130), Vector2(143, -288), Vector2(50, -360), Vector2(60, -359), Vector2(251, -62)]
+"values": [Vector2(212.322, -136.437), Vector2(35, -368), Vector2(258, -68)]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
@@ -946,13 +946,13 @@ tracks/16/path = NodePath("../HitBoxComponent/CollisionShape2D:rotation")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(0, 2.12, 2.8),
+"times": PackedFloat32Array(0, 2.1, 2.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [-0.499999, 0.828393, -0.0993834]
+"values": [-0.472011, -2.38075, -0.0609515]
 }
 
-[sub_resource type="Animation" id="Animation_pi34x"]
+[sub_resource type="Animation" id="Animation_bh1xa"]
 length = 2.0
 loop_mode = 1
 step = 0.01
@@ -1125,7 +1125,7 @@ tracks/13/keys = {
 "values": [ExtResource("2_cjwmn")]
 }
 
-[sub_resource type="Animation" id="Animation_f6smr"]
+[sub_resource type="Animation" id="Animation_es2j2"]
 length = 2.0
 loop_mode = 1
 step = 0.01
@@ -1298,7 +1298,7 @@ tracks/13/keys = {
 "values": [ExtResource("2_cjwmn")]
 }
 
-[sub_resource type="Animation" id="Animation_anvqh"]
+[sub_resource type="Animation" id="Animation_decc5"]
 length = 4.0
 loop_mode = 1
 step = 0.01
@@ -1471,7 +1471,7 @@ tracks/13/keys = {
 "values": [ExtResource("4_837pu")]
 }
 
-[sub_resource type="Animation" id="Animation_mn7po"]
+[sub_resource type="Animation" id="Animation_rbk46"]
 length = 5.0
 loop_mode = 1
 step = 0.01
@@ -1644,48 +1644,45 @@ tracks/13/keys = {
 "values": [ExtResource("4_837pu")]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wws5d"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cvvwv"]
 _data = {
-"Attacking": SubResource("Animation_7rjak"),
-"Dying": SubResource("Animation_mn7po"),
-"Hurt": SubResource("Animation_anvqh"),
-"Idle": SubResource("Animation_t2y6u"),
-"Idle Blinking": SubResource("Animation_i3hyo"),
-"Jump Loop": SubResource("Animation_f6smr"),
-"Jump Start": SubResource("Animation_pi34x"),
-"Taunt": SubResource("Animation_75qur"),
-"Walking": SubResource("Animation_1nhlp")
+"Attacking": SubResource("Animation_lki1q"),
+"Dying": SubResource("Animation_rbk46"),
+"Hurt": SubResource("Animation_decc5"),
+"Idle": SubResource("Animation_n1b4y"),
+"Idle Blinking": SubResource("Animation_p2esd"),
+"Jump Loop": SubResource("Animation_es2j2"),
+"Jump Start": SubResource("Animation_bh1xa"),
+"Taunt": SubResource("Animation_xkfkj"),
+"Walking": SubResource("Animation_0llvj")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ioib"]
-size = Vector2(157.543, 31)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0gm64"]
+size = Vector2(136.576, 41.793)
 
-[node name="03" node_paths=PackedStringArray("hitbox_component", "animation_player") instance=ExtResource("1_b1uq4")]
+[node name="01" node_paths=PackedStringArray("hitbox_component", "animation_player") instance=ExtResource("1_b1uq4")]
 script = ExtResource("2_dthi2")
 hitbox_component = NodePath("HitBoxComponent")
 animation_player = NodePath("Skeleton/AnimationPlayer")
 
 [node name="AnimationPlayer" parent="Skeleton" index="0"]
 libraries = {
-"": SubResource("AnimationLibrary_pxqwg"),
-"scml": SubResource("AnimationLibrary_wws5d")
+"": SubResource("AnimationLibrary_gwgs1"),
+"scml": SubResource("AnimationLibrary_cvvwv")
 }
 
 [node name="bone_006" parent="Skeleton" index="3"]
-scale = Vector2(0.999999, 0.999999)
-
-[node name="bone_002" parent="Skeleton/bone_006" index="1"]
 scale = Vector2(1, 1)
 
-[node name="bone_000" parent="Skeleton/bone_006" index="2"]
+[node name="bone_002" parent="Skeleton/bone_006" index="1"]
 scale = Vector2(1, 1)
 
 [node name="HitBoxComponent" type="Area2D" parent="." index="1"]
 script = ExtResource("2_hqau0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent" index="0"]
-position = Vector2(204, -130)
-rotation = -0.499999
+position = Vector2(212.322, -136.437)
+rotation = -0.472011
 scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_7ioib")
+shape = SubResource("RectangleShape2D_0gm64")
 disabled = true

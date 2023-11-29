@@ -26,16 +26,16 @@ signal computed_values
         cooldown_time = v
         cooldown_time_temp = cooldown_time
 
-@export var prepare_time_temp:int = 0
-@export var active_time_temp:int = 0
-@export var cooldown_time_temp:int = 0
-@export var repeated_count:int = 0
+var prepare_time_temp:int = 0
+var active_time_temp:int = 0
+var cooldown_time_temp:int = 0
+var repeated_count:int = 0
 
 var actor:Node
-@export var origin_data:FlowerData
-@export var output_data:FlowerData
+var origin_data:FlowerData
+var output_data:FlowerData
 
-@export var current_state:STATE = STATE.PREPARE
+var current_state:STATE = STATE.PREPARE
 
 enum STATE {
     RUNNING,
@@ -43,6 +43,7 @@ enum STATE {
     COOLDOWN,
 }
 
+# FIXME: 重复的buff不激活后不会减去数值
 # FIXME: 由于会自动激活，导致每个 buff 的每个计算值都会重复计算
 
 func start() -> void:
@@ -113,24 +114,6 @@ func minus_prepare_time() -> void:
     
     prepare_time_temp -= 1
 
-func get_origin_compute_datas() -> Array:
-    var _result:Array
-   
-    for i in compute_values:
-        _result.append(i.target_property)
-        _result.append(origin_data[i.target_property])
-    
-    return _result
-
-func get_computed_compute_datas() -> Array:
-    var _result:Array
-
-    for i in compute_values:
-        _result.append(i.target_property)
-        _result.append(output_data[i.target_property])
-    
-    return _result
-
 func get_data_from_values(_id:String) -> FlowerComputeData:
     for i in compute_values:
         if compute_values[i].id == _id:
@@ -145,6 +128,7 @@ func activate(_actor:Node, _compute_data:FlowerData, _output_data:FlowerData) ->
     activated.emit()
 
 func take_effect() -> void:
+    print("buff开始计算：", Time.get_ticks_msec())
 #    print("buff生效，名称：", name)
     # 拿一个属性：
 #    var xxx = get_data_from_values("血量")

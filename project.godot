@@ -62,6 +62,7 @@ enabled=PackedStringArray("res://addons/FlowerAbility/plugin.cfg", "res://addons
 
 folder_colors={
 "res://Assets/": "green",
+"res://Assets/Characters/": "yellow",
 "res://Assets/Characters/PlayerAssets/": "red",
 "res://Scene/": "orange",
 "res://Scene/Perfabs/Abilitys/": "purple",
@@ -77,7 +78,7 @@ importer.scml={
 "optimize_for_blends": true,
 "playback_speed": 5,
 "reparenting_solution": "instance per parent",
-"rest_pose_animation": "Idle",
+"rest_pose_animation": "scml/Attacking",
 "z_as_relative": true
 }
 

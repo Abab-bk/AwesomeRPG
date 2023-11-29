@@ -16,7 +16,6 @@ func _ready() -> void:
     var res:Resource = Resource.new()
     for property in res.get_property_list():
         base_resource_property_names.append(property.name)
-    save_ok.connect(func():print("保存完成"))
 
 
 func del_save(path:String) -> void:

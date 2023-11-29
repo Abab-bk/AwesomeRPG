@@ -90,6 +90,8 @@ func _ready() -> void:
         
         atk_cd_timer.wait_time = output_data.atk_speed
         
+        Tracer.info("玩家计算完成")
+        
         EventBus.player_data_change.emit()
         EventBus.update_ui.emit()
         
@@ -109,7 +111,7 @@ func _ready() -> void:
     EventBus.load_save.connect(func():
         if FlowerSaver.has_key("flyed_just_now"):
             if FlowerSaver.get_data("flyed_just_now") == true:
-                print("玩家飞升读档")
+                Tracer.info("玩家飞升读档")
                 flower_buff_manager.compute_data = get_origin_player_data().duplicate(true)
                 flower_buff_manager.output_data = get_origin_player_data().duplicate(true)
                 compute_data = flower_buff_manager.compute_data as CharacterData
@@ -120,7 +122,7 @@ func _ready() -> void:
                 compute()
                 return
         
-        print("玩家常规读档")
+        Tracer.info("玩家常规读档")
         
         compute_data = FlowerSaver.get_data("player_compute_data", Master.current_save_slot)
         output_data = FlowerSaver.get_data("player_output_data", Master.current_save_slot)
@@ -209,7 +211,7 @@ func euipment_up(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
     # 装备装备
     compute_data.quipments[_type] = _item
     
-    print("装备前", output_data.defense)
+    Tracer.info("装备前防御：%s" % output_data.defense)
     
     var _temp:Array[FlowerBaseBuff] = []
     # 装备装备时，应用装备 Buff
@@ -232,7 +234,8 @@ func euipment_up(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
         Const.EQUIPMENT_TYPE.胸甲:
             change_body_sprite(load(_item.texture_path))
     
-    var _info = flower_buff_manager.add_buff_list(_temp)
+    flower_buff_manager.add_buff_list(_temp)
+    var _info = flower_buff_manager.add_buff_list_info(_temp)
     
     EventBus.show_animation.emit("PropertyContrast", _info)
     
@@ -241,7 +244,7 @@ func euipment_up(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
     
     # 更新 UI
     EventBus.equipment_up_ok.emit(_type, _item)
-    print("装备后", output_data.defense)
+    Tracer.info("装备后防御：%s" % output_data.defense)
 
 
 func equipment_down(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem) -> void:
@@ -253,6 +256,10 @@ func equipment_down(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem) -> void:
     compute_data.quipments[_type] = null
     
     var _temp:Array[FlowerBaseBuff] = []
+    
+    var _main_buff:FlowerBaseBuff = _item.main_buffs.buff
+    
+    _temp.append(_main_buff)
     
     for i in _item.pre_affixs:
         _temp.append(i.buff)
@@ -290,7 +297,7 @@ func compute_all_euipment() -> void:
         for i in _item.buf_affix:
             _temp.append(i.buff)
     
-        var _info = flower_buff_manager.add_buff_list(_temp)
+        var _info = flower_buff_manager.add_buff_list_info(_temp)
         # 更新 UI
         #EventBus.equipment_up_ok.emit(_item.type, _item)
 

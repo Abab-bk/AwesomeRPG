@@ -8,6 +8,7 @@ extends Panel
 
 func _ready() -> void:
     EventBus.player_data_change.connect(update_value)
+    
     title = self.name
     
     title_label.text = title
