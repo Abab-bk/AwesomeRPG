@@ -15,6 +15,8 @@ signal backed_to_home
 
 @onready var pages:TabContainer = %Pages
 
+@onready var item_tool_tip:Panel = $ItemToolTip
+
 @onready var inventory_btn:TextureButton = %InventoryBtn
 @onready var character_btn:Button = %CharacterBtn
 @onready var skill_tree_btn:TextureButton = %SkillTreeBtn
@@ -91,6 +93,12 @@ func _ready() -> void:
         if _key == "talent_tree":
             skill_tree_ui.gen_trees_by_walker()
         )
+    
+    EventBus.change_differ_item_tooltip_state.connect(
+        func(_item:InventoryItem, _item2:InventoryItem, _down:bool = false, _move:bool = false, _display:bool = false, _differ:bool = false):
+            item_tool_tip.item = _item
+            item_tool_tip.update_ui(true, _item2)
+            )
     
     backed_to_home.connect(func():quest_panel.show())
     changed_to_other.connect(func():quest_panel.hide())
@@ -212,6 +220,7 @@ func new_tip(_text:String) -> void:
     var _n = load("res://Scene/UI/Tips.tscn").instantiate()
     _n.text = _text
     add_child(_n)
+
 
 func show_popup(_title:String, _desc:String, _show_cancel_btn:bool = false, _yes_event:Callable = func():,
  _cancel_event:Callable = func():) -> void:

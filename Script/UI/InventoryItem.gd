@@ -21,6 +21,14 @@ func _ready() -> void:
         
         if press_mode == "display":
             EventBus.change_item_tooltip_state.emit(item, false, false, false)
+            return
+        
+        if item:
+            if Master.player.compute_data.quipments.has(item.type):
+                if Master.player.compute_data.quipments[item.type] != null:
+                    var _differ_item:InventoryItem = Master.player.compute_data.quipments[item.type] as InventoryItem
+                    EventBus.change_differ_item_tooltip_state.emit(item, _differ_item)
+                    return
         
         EventBus.change_item_tooltip_state.emit(item)
         pressed.emit(item)

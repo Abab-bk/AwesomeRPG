@@ -123,6 +123,10 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="DifferLabel" type="VBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer/VBoxContainer/AffixeLabels"]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 

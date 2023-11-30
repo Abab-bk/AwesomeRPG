@@ -116,3 +116,15 @@ static func get_light_resistance_in_2_actor(who:CharacterData, target:CharacterD
 
 static func get_physical_resistance_in_2_actor(who:CharacterData, target:CharacterData) -> float:
     return min(1.0, floor(who.physical_resistance / (5 * target.level + who.physical_resistance)))
+
+
+static func get_differ_in_2_affixs_string(_new_affix:AffixItem, _old_affix:AffixItem) -> String:
+    var _result:float = get_differ_in_2_values(_new_affix.buff.compute_values[0].value, _old_affix.buff.compute_values[0].value)
+    
+    if _result >= 0:
+        return "+ %s%" % str(_result)
+    return "%s%" + str(_result)
+
+
+static func get_differ_in_2_values(_new_value:float, _old_value:float) -> float:
+    return ((_new_value - _old_value) / _old_value) * 100.0

@@ -178,6 +178,7 @@ layout_mode = 2
 text = "自动回收"
 
 [node name="AutoRecyclePanel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

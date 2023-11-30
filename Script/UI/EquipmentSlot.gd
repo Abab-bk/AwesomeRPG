@@ -38,14 +38,19 @@ func _ready() -> void:
             EventBus.update_inventory.emit()
             )
     
-    EventBus.save.connect(func():
-        FlowerSaver.set_data("epuipment_slot_%s" % id, item)
-        )
+    #EventBus.save.connect(func():
+        #FlowerSaver.set_data("epuipment_slot_%s" % id, item)
+        #)
     EventBus.load_save.connect(func():
         if FlowerSaver.has_key("flyed_just_now"):
             if FlowerSaver.get_data("flyed_just_now") == true:
                 return
-        item = FlowerSaver.get_data("epuipment_slot_%s" % id)
+        
+        if Master.player.compute_data.quipments.has(current_equipment_type):
+            if Master.player.compute_data.quipments[current_equipment_type] != null:
+                item = Master.player.compute_data.quipments[current_equipment_type]
+        
+        #item = FlowerSaver.get_data("epuipment_slot_%s" % id)
         update_color()
         )
     

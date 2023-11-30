@@ -122,8 +122,8 @@ func _ready() -> void:
         
         Tracer.info("玩家常规读档")
         
-        compute_data = FlowerSaver.get_data("player_compute_data", Master.current_save_slot)
-        output_data = FlowerSaver.get_data("player_output_data", Master.current_save_slot)
+        compute_data = FlowerSaver.get_data("player_compute_data")
+        output_data = FlowerSaver.get_data("player_output_data")
         flower_buff_manager.compute_data = compute_data
         flower_buff_manager.output_data = output_data
         #flower_buff_manager.add_buff_list(FlowerSaver.get_data("player_buff_list"))
@@ -131,7 +131,7 @@ func _ready() -> void:
         
         Master.player_output_data = flower_buff_manager.output_data
         
-        config_skills = FlowerSaver.get_data("config_skills", Master.current_save_slot)
+        config_skills = FlowerSaver.get_data("config_skills")
         Master.get_offline_reward()
         
         compute_data.hp = compute_data.max_hp
