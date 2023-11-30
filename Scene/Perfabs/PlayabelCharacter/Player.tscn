@@ -79,7 +79,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../HitBoxComponent/CollisionShape2D:disabled")
+tracks/0/path = NodePath("%HitBoxComponent/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -91,19 +91,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../HitBoxComponent/CollisionShape2D:position")
+tracks/1/path = NodePath("%HitBoxComponent/CollisionShape2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(98, -136)]
+"values": [Vector2(108, -136)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../HitBoxComponent/CollisionShape2D:rotation")
+tracks/2/path = NodePath("%HitBoxComponent/CollisionShape2D:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -111,18 +111,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.609923]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("%HitBoxComponent/CollisionShape2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u12cb"]
@@ -305,38 +293,38 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("../HitBoxComponent/CollisionShape2D:disabled")
+tracks/14/path = NodePath("%HitBoxComponent/CollisionShape2D:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0, 2.47),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"times": PackedFloat32Array(0, 2.41, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(108, -136), Vector2(87, -191), Vector2(158, -45)]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("../HitBoxComponent/CollisionShape2D:position")
+tracks/15/path = NodePath("%HitBoxComponent/CollisionShape2D:rotation")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0, 2.48, 2.89),
+"times": PackedFloat32Array(0, 2.41, 2.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(83, -107), Vector2(98, -136), Vector2(115, -38)]
+"values": [0.609923, 0.152541, 1.4731]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("../HitBoxComponent/CollisionShape2D:rotation")
+tracks/16/path = NodePath("%HitBoxComponent/CollisionShape2D:disabled")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(0, 2.89),
+"times": PackedFloat32Array(0, 2.41),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.609923, 1.49969]
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_p4j8o"]
@@ -1748,13 +1736,13 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hl0t"]
-size = Vector2(37.6475, 270.625)
+size = Vector2(37.6475, 151.474)
 
 [sub_resource type="Resource" id="Resource_cfqil"]
 script = ExtResource("7_6v44f")
 level = 1
 now_xp = 0.0
-next_level_xp = 0.0
+next_level_xp = 20.0
 hp = 800.0
 max_hp = 800.0
 magic = 100.0
@@ -1793,7 +1781,7 @@ quipments = {}
 script = ExtResource("7_6v44f")
 level = 1
 now_xp = 0.0
-next_level_xp = 0.0
+next_level_xp = 20.0
 hp = 800.0
 max_hp = 800.0
 magic = 100.0
@@ -2043,7 +2031,7 @@ buff_manager = NodePath("../../FlowerBuffManager")
 is_player_hitbox = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Warrior - 01/HitBoxComponent"]
-position = Vector2(98, -136)
+position = Vector2(108, -136)
 rotation = 0.609923
 shape = SubResource("RectangleShape2D_5hl0t")
 disabled = true

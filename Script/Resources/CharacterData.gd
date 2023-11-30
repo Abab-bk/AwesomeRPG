@@ -5,7 +5,7 @@ signal hp_is_zero
 
 @export var level:int = 1
 @export var now_xp:float = 0
-@export var next_level_xp:float = 0
+@export var next_level_xp:float = 20
 # ======= 战斗属性
 @export var hp:float:
     set(v):

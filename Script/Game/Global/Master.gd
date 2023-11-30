@@ -42,6 +42,7 @@ var player_inventory:Inventory
 var player:Player
 var player_data:CharacterData
 var player_output_data:CharacterData
+var player_camera:Camera2D
 var relife_point:Marker2D
 var unlocked_skills:Array = []
 

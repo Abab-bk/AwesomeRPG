@@ -167,6 +167,8 @@ func _ready() -> void:
         )
     
     hurt_box_component.hited.connect(func(_v, _v1):
+        if current_state == STATE.DEAD:
+            return
         $AnimationPlayer.play("oh_hit")
         EventBus.update_ui.emit()
         )
@@ -187,6 +189,7 @@ func _ready() -> void:
     
     Master.player_output_data = flower_buff_manager.output_data
     Master.player_data = flower_buff_manager.compute_data
+    Master.player_camera = $Camera2D
     
     find_closest_enemy()
     
@@ -379,6 +382,9 @@ func compute() -> void:
     flower_buff_manager.compute()
 
 func move_to_enemy() -> void:
+    if current_state == STATE.DEAD:
+        return
+    
     if not closest_enemy:
         find_closest_enemy()
         return
@@ -400,6 +406,9 @@ func ranged_attack() -> void:
     ranged_weapon.attack()
 
 func attack() -> void:
+    if current_state == STATE.DEAD:
+        return
+    
     velocity = Vector2.ZERO
     
     # 攻击代码
@@ -487,6 +496,8 @@ func relife() -> void:
     character_animation_player.play_backwards("scml/Dying")
     await character_animation_player.animation_finished
     
+    compute_data.hp = compute_data.max_hp
+    compute_data.magic = compute_data.max_magic
     output_data.hp = output_data.max_hp
     output_data.magic = output_data.max_magic
     
@@ -497,26 +508,29 @@ func relife() -> void:
     current_state = STATE.IDLE
     
     #get_tree().paused = false
-    #hurt_box_collision.call_deferred("set_disabled", false)
+    hurt_box_collision.call_deferred("set_disabled", false)
     find_closest_enemy()
     EventBus.player_relife.emit()
 
 func die() -> void:
-    if current_state == STATE.DEAD:
-        return
-
+    current_state = STATE.DEAD
+    Tracer.info("玩家死亡")
+    
+    hurt_box_collision.call_deferred("set_disabled", true)
+    
     EventBus.player_dead.emit()
     
     if Master.current_location == Const.LOCATIONS.TOWER:
         EventBus.exit_tower.emit()
         
-    current_state = STATE.DEAD
-    #hurt_box_collision.call_deferred("set_disabled", true)
     character_animation_player.play("scml/Dying")
     await character_animation_player.animation_finished
     relife()
 
 func find_closest_enemy(_temp = 0) -> void:
+    if current_state == STATE.DEAD:
+        return
+    
     if ray_cast.is_colliding():
         print("ok")
         closest_enemy = ray_cast.get_collider().owner

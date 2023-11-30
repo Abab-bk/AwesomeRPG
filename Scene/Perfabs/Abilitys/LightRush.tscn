@@ -1,16 +1,40 @@
 [gd_scene load_steps=4 format=3 uid="uid://c03lve54cex5f"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/Abilitys/LightRush.gd" id="1_3rd2y"]
-[ext_resource type="Material" uid="uid://fyi5pksr4mv0" path="res://Assets/Particles/FireBall.tres" id="2_ud6ca"]
-[ext_resource type="Texture2D" uid="uid://8qlbug3umth" path="res://Assets/Texture/Vfx/spotlight_8.png" id="3_vp1t4"]
+[ext_resource type="Shader" path="res://Assets/Shaders/EnergyBeams.gdshader" id="2_whv7b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vd1ln"]
+shader = ExtResource("2_whv7b")
+shader_parameter/beams = 2
+shader_parameter/energy = 3.0
+shader_parameter/roughness = 3
+shader_parameter/frequency = 10
+shader_parameter/speed = 1.0
+shader_parameter/thickness = 0.1
+shader_parameter/outline_thickness = 0.026
+shader_parameter/beam_difference = 0.311
+shader_parameter/glow = 0.0
+shader_parameter/outline_glow = 0.0
+shader_parameter/color = Color(0.717647, 0.694118, 0.478431, 1)
+shader_parameter/outline_color = Color(0.854902, 0.929412, 0.815686, 1)
+shader_parameter/progress = 1.0
+shader_parameter/y_offset = 0.0
+shader_parameter/fixed_edge_size = 0.05
+shader_parameter/noise_scale = Vector2(1, 1)
 
 [node name="LightRush" type="Node2D"]
 script = ExtResource("1_3rd2y")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-modulate = Color(1, 1, 0.568627, 1)
-position = Vector2(-13, 0)
-amount = 10
-process_material = ExtResource("2_ud6ca")
-texture = ExtResource("3_vp1t4")
-trail_enabled = true
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_vd1ln")
+offset_left = -592.0
+offset_top = -130.0
+offset_right = -4.0
+offset_bottom = 85.0
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_vd1ln")
+offset_left = -515.0
+offset_top = -71.0
+offset_right = -4.0
+offset_bottom = 111.0

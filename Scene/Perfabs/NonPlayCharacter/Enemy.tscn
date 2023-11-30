@@ -1711,6 +1711,7 @@ position = Vector2(166, 0)
 scale = Vector2(3.415, 3.415)
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+scale = Vector2(73.6, 57.3)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

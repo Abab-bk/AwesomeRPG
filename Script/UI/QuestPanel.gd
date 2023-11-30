@@ -52,5 +52,3 @@ func get_new_quest() -> void:
     
     if Master.quests.has(current_quest.id + 1):
         current_quest = Master.get_quest_by_id(current_quest.id + 1)
-    else:
-        pass
