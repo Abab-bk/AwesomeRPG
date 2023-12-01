@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://d2egj8vrhok6e"]
+
+[ext_resource type="Script" path="res://Script/Perfabs/Abilitys/FireRing.gd" id="1_o5el2"]
+[ext_resource type="Shader" path="res://Assets/Shaders/FireRing.gdshader" id="2_ldulx"]
+[ext_resource type="Script" path="res://Script/Component/HitBoxComponent.gd" id="3_hrbg3"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e7poa"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3bbl6"]
+width = 800
+height = 800
+seamless = true
+noise = SubResource("FastNoiseLite_e7poa")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eov7i"]
+shader = ExtResource("2_ldulx")
+shader_parameter/radius = 0.78
+shader_parameter/thickness = 0.26
+shader_parameter/color = Color(0.517647, 0.164706, 0.0862745, 1)
+shader_parameter/brightness = 2.56
+shader_parameter/angular_speed = 2.5
+shader_parameter/radial_speed = 0.96
+shader_parameter/alpha = 0.5
+shader_parameter/noise = SubResource("NoiseTexture2D_3bbl6")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bcwhf"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_co08g"]
+width = 800
+height = 800
+seamless = true
+noise = SubResource("FastNoiseLite_bcwhf")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2d1gx"]
+radius = 361.554
+
+[node name="FireRing" type="Node2D"]
+script = ExtResource("1_o5el2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_eov7i")
+texture = SubResource("NoiseTexture2D_co08g")
+
+[node name="HitBoxComponent" type="Area2D" parent="."]
+script = ExtResource("3_hrbg3")
+is_player_hitbox = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+shape = SubResource("CircleShape2D_2d1gx")

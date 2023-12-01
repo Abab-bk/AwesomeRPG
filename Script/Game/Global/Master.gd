@@ -416,6 +416,7 @@ func get_rate_text_from_item(_item:InventoryItem) -> String:
         
         return _result
 
+
 func loader(file_name:String):
     var json_file = FileAccess.open(self.json_path + file_name + ".json", FileAccess.READ)
     var json_text = json_file.get_as_text()

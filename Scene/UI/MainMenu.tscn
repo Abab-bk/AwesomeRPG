@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwnb2gkequqts"]
+[gd_scene load_steps=11 format=3 uid="uid://cwnb2gkequqts"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_d1eks"]
 [ext_resource type="Script" path="res://Script/UI/MainMenu.gd" id="2_ahtec"]
 [ext_resource type="Texture2D" uid="uid://cgpftqksgjq5v" path="res://Assets/UI/Logo.png" id="2_c6yka"]
 [ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="4_1vhqh"]
+[ext_resource type="Texture2D" uid="uid://co5qvnn8f1ygc" path="res://Assets/UI/Knight.png" id="4_c1lay"]
 [ext_resource type="Script" path="res://Script/UI/SavePanel.gd" id="4_cjs57"]
 [ext_resource type="PackedScene" uid="uid://cwfkgj3v17v05" path="res://Scene/UI/SavePanelItem.tscn" id="5_02p3b"]
 [ext_resource type="PackedScene" uid="uid://dhyobuuga8504" path="res://Scene/UI/CreatCharacter.tscn" id="7_56mi5"]
@@ -39,36 +40,47 @@ theme_override_constants/margin_top = 300
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 100
 
 [node name="Logo" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_c6yka")
 stretch_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = -535
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("4_c1lay")
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 300
 theme_override_constants/margin_right = 300
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="StartBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="StartBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "开始游戏"
 
-[node name="CreditsBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="CreditsBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "关于"
 
-[node name="ExitBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="ExitBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2

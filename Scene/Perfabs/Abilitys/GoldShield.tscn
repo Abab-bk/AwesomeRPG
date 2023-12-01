@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://crugh2g04bdfv"]
+
+[ext_resource type="Script" path="res://Script/Perfabs/Abilitys/GoldShield.gd" id="1_fwmsh"]
+[ext_resource type="Shader" path="res://Assets/Shaders/GoldShield.gdshader" id="2_ustfx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_67eho"]
+shader = ExtResource("2_ustfx")
+shader_parameter/ring_radius = 0.44
+shader_parameter/thickness_scalar = 0.35
+shader_parameter/oscillation_scalar = 0.01
+shader_parameter/speed = 1.0
+shader_parameter/main_color = Color(1, 1, 0.219608, 1)
+shader_parameter/lerp_color = Color(1, 0.701961, 0.211765, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h60b1"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kdqev"]
+noise = SubResource("FastNoiseLite_h60b1")
+
+[node name="GoldShield" type="Node2D"]
+script = ExtResource("1_fwmsh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_67eho")
+scale = Vector2(1.8, 1.8)
+texture = SubResource("NoiseTexture2D_kdqev")

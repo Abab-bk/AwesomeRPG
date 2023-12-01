@@ -73,3 +73,23 @@ func build_a_inventory_item() -> Panel:
 func build_a_skill_tree_item() -> NinePatchRect:
     var _n = load(skill_tree_btn).instantiate()
     return _n
+
+
+func get_a_simple_buff(_target_property:String, _value:float, _type:FlowerConst.COMPUTE_TYPE) -> FlowerBaseBuff:
+    var _buff:FlowerBaseBuff = FlowerBaseBuff.new()
+    _buff.name = ""
+    _buff.repeat = false
+    _buff.infinite = true
+    _buff.prepare_time = 0
+    _buff.active_time = 0
+    _buff.cooldown_time = 0
+    
+    var _compute_data:FlowerComputeData = FlowerComputeData.new()
+    _compute_data.id = "temp"
+    _compute_data.type = _type
+    _compute_data.value = _value
+    _compute_data.target_property = _target_property    
+    
+    _buff.compute_values.append(_compute_data)
+    
+    return _buff
