@@ -25,17 +25,21 @@ signal criticaled
     "body": $"Warrior - 01/Skeleton/bone_004/Body"
 }
 
-enum STATE {
-    IDLE,
-    RUNNING,
-    ATTACKING,
-    DEAD,
+@onready var friends_pos:Array[Marker2D] = [$FriendsPos/Pos1, $FriendsPos/Pos2, $FriendsPos/Pos3]
+
+enum STATE { # IDLE -> FINDING -> MOVE_TO_ENEMYING -> ATTACKING -> FINDING
+    IDLE, # 初始状态
+    ATTACKING, # 攻击中
+    FINDING, # 寻找敌人中
+    MOVE_TO_ENEMYING, # 向敌人中状态
+    DEAD, # 死亡
 }
 
 var current_state:STATE = STATE.IDLE
 
 @export var compute_data:CharacterData
 @export var output_data:CharacterData
+
 var target:Vector2 = global_position
 
 var config_skills:Dictionary = {}
@@ -44,7 +48,6 @@ var closest_distance:float = 1000000
 var closest_enemy:Enemy
 var all_enemy:Array
 
-var tracer_subscribe:TraceSubscriber = TraceSubscriber.new().with_nicer_colors(false)
 
 func _ready() -> void:
     Master.player = self
@@ -162,8 +165,9 @@ func _ready() -> void:
         if current_state == STATE.DEAD:        
             return
         
+        current_state = STATE.MOVE_TO_ENEMYING        
         turn_to_closest_enemy()
-        move_to_enemy()
+        #move_to_enemy()
         )
     
     hurt_box_component.hited.connect(func(_v, _v1):
@@ -191,17 +195,26 @@ func _ready() -> void:
     Master.player_data = flower_buff_manager.compute_data
     Master.player_camera = $Camera2D
     
-    find_closest_enemy()
+    #find_closest_enemy()
     
     atk_cd_timer.start()
     
-    compute_data.hp = compute_data.max_hp
-    compute_data.magic = compute_data.max_magic
-    output_data.hp = output_data.max_hp
-    output_data.magic = output_data.max_magic
+    reset_player_hp_and_magic()
+    
+    EventBus.update_ui.emit()
+    
     compute()
     
-    tracer_subscribe.init()
+    current_state = STATE.IDLE
+
+
+func reset_player_hp_and_magic() -> void:
+    compute_data.hp = compute_data.max_hp
+    compute_data.magic = compute_data.max_magic
+    Tracer.info("玩家计算血量：%s 最大血量：%s" % [str(compute_data.hp), str(compute_data.max_hp)])
+    output_data.hp = output_data.max_hp
+    output_data.magic = output_data.max_magic
+    Tracer.info("玩家输出血量：%s 最大血量：%s" % [str(output_data.hp), str(output_data.max_hp)])
 
 
 func get_origin_player_data() -> CharacterData:
@@ -437,14 +450,20 @@ func turn_to_closest_enemy() -> void:
     elif  _dir.x < 0:
         self.scale.x = -1
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(_delta:float) -> void:
     if current_state == STATE.IDLE:
-        move_to_enemy()
+        #move_to_enemy(_delta)
+        find_closest_enemy()
+    
     if current_state == STATE.ATTACKING:
         if not closest_enemy:
             find_closest_enemy()
         if global_position.distance_to(closest_enemy.global_position) >= 1000.0:
             find_closest_enemy()
+    
+    if current_state == STATE.MOVE_TO_ENEMYING:
+        move_to_enemy()
+    
     move_and_slide()
 
 func get_ability_list() -> Array:
@@ -531,26 +550,39 @@ func find_closest_enemy(_temp = 0) -> void:
     if current_state == STATE.DEAD:
         return
     
-    if ray_cast.is_colliding():
-        print("ok")
-        closest_enemy = ray_cast.get_collider().owner
-        attack()
-        turn_to_closest_enemy()
-        current_state = STATE.IDLE
-        return
+    #if ray_cast.is_colliding():
+        #print("ok")
+        #closest_enemy = ray_cast.get_collider().owner
+        #attack()
+        #turn_to_closest_enemy()
+        #current_state = STATE.IDLE
+        #return
+    
+    current_state = STATE.FINDING
     
     all_enemy = get_tree().get_nodes_in_group("Enemy")
     closest_distance = 1000000
     
+    var _enemys_distance:Array = []
+    
     for enemy in all_enemy:
-        if not closest_enemy:
-            closest_enemy = enemy
-        
-        var enemy_distance = global_position.distance_to(enemy.global_position)
-        
-        if enemy_distance < closest_distance:
-            closest_distance = enemy_distance
-            closest_enemy = enemy
+        _enemys_distance.append([global_position.distance_to(enemy.global_position), enemy])
+    
+    _enemys_distance.sort_custom(func(_a, _b):
+        if _a[0] < _b[0]:
+            return true
+        return false
+        )
+    closest_enemy = _enemys_distance[0][1]
+    closest_distance = _enemys_distance[0][0]
+        #if not closest_enemy:
+            #closest_enemy = enemy
+        #
+        #var enemy_distance = global_position.distance_to(enemy.global_position)
+        #
+        #if enemy_distance < closest_distance:
+            #closest_distance = enemy_distance
+            #closest_enemy = enemy
     
     if closest_enemy != null:
         ranged_weapon.target_position = closest_enemy.global_position
@@ -560,4 +592,4 @@ func find_closest_enemy(_temp = 0) -> void:
     atk_range.target = closest_enemy
     vision.target = closest_enemy
     
-    current_state = STATE.IDLE
+    current_state = STATE.MOVE_TO_ENEMYING

@@ -113,6 +113,11 @@ var unlocked_functions:Dictionary = {
 
 var json_path:String = "res://DataBase/output/"
 
+var subscriber:TraceSubscriber = (
+    TraceSubscriber
+    .new()
+    .with_nicer_colors(false))
+
 const abilitys_start:int = 4002
 const abilitys_end:int = 4009
 
@@ -488,7 +493,7 @@ func _ready():
             flyed_just_now = FlowerSaver.get_data("flyed_just_now")
         
         if flyed_just_now:
-            print("Master飞升读档，玩家名：", player_name)
+            Tracer.info("Master飞升读档，玩家名：%s" % player_name)
             fly_count = FlowerSaver.get_data("fly_count")
             unlocked_skills = []
             current_level = 0
@@ -508,7 +513,7 @@ func _ready():
             EventBus.completed_level.emit()
             return
         
-        print("Master常规读档")
+        Tracer.info("Master常规读档")
         
         fly_count = FlowerSaver.get_data("fly_count")
         unlocked_skills = FlowerSaver.get_data("unlocked_skills")
@@ -559,6 +564,8 @@ func _ready():
         current_tower_level = 1
         need_kill_enemys_to_next_tower = 10
         )
+        
+    subscriber.init()
 
 
 func get_tower_reward() -> void:

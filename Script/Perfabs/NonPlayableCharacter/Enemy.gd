@@ -143,16 +143,14 @@ func turn_to_player() -> void:
     elif  _dir.x < 0:
         self.scale.x = -1
 
-func move_to_player(_delta:float) -> void:
+func move_to_player() -> void:
     turn_to_player()
     
-    var dir:Vector2 = global_position.\
-    direction_to(Master.player.global_position)
-    var desired_velocity:Vector2 = dir * output_data.speed
+    velocity = global_position.\
+    direction_to(Master.player.global_position) * output_data.speed
     
     #var steering:Vector2 = (desired_velocity - velocity) * _delta * 2.5
     #velocity += steering
-    velocity = desired_velocity
     
     if character_animation:    
         character_animation.play("scml/Walking")
@@ -223,7 +221,7 @@ func set_level(_value:int) -> void:
 
 func _physics_process(_delta:float) -> void:
     if current_state == STATE.PATROL:
-        move_to_player(_delta)
+        move_to_player()
     
     if current_state == STATE.SLEEP:
         velocity = Vector2(1, 1)

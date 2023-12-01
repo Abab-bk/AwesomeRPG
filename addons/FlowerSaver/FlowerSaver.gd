@@ -16,6 +16,9 @@ func _ready() -> void:
     var res:Resource = Resource.new()
     for property in res.get_property_list():
         base_resource_property_names.append(property.name)
+    #save_ok.connect(func():
+        #Tracer.info("存档成功")
+        #)
 
 
 func del_save(path:String) -> void:
@@ -61,17 +64,14 @@ func get_data_but_load(key:String, path:String) -> Variant:
     if ResourceLoader.exists(path):
         _file = ResourceLoader.load(path)
     else:
-        print("文件不存在")
         return false
     
     if _file == null:
-        print("文件为null")
         return false
     
     var _data:Dictionary = _file.data as Dictionary
     
-    if not _data.has(key):
-        print("文件没有key")        
+    if not _data.has(key):     
         return false
     
     var _result = _data[key]
@@ -88,6 +88,7 @@ func get_data(key:String, path:String = "") -> Variant:
 
 func load_save(path:String) -> void:
     loaded_data = ResourceLoader.load(path)
+    save_data = loaded_data
 
 
 func get_all_data() -> SaveResource:

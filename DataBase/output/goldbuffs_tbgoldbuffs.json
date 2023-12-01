@@ -2,7 +2,7 @@
   {
     "id": 10001,
     "name": "愤怒",
-    "desc": "基础伤害变为 2 倍",
+    "desc": "基础伤害 +0.1 倍",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -12,9 +12,9 @@
     "compute_values": [
       {
         "id": "4001",
-        "type": 0,
-        "value": 2,
-        "formual": "",
+        "type": 2,
+        "value": 0,
+        "formual": "[damage] * 0.1",
         "target_property": "damage"
       }
     ]
@@ -22,7 +22,7 @@
   {
     "id": 10002,
     "name": "幸运",
-    "desc": "幸运变为 2 倍",
+    "desc": "幸运 +0.1 倍",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -32,30 +32,10 @@
     "compute_values": [
       {
         "id": "4002",
-        "type": 0,
-        "value": 2,
-        "formual": "",
+        "type": 3,
+        "value": 0,
+        "formual": "[luck] * 0.1",
         "target_property": "luck"
-      }
-    ]
-  },
-  {
-    "id": 10003,
-    "name": "急速",
-    "desc": "速度变为 2 倍",
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 1,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "4003",
-        "type": 0,
-        "value": 2,
-        "formual": "",
-        "target_property": "speed"
       }
     ]
   }

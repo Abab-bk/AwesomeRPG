@@ -1822,6 +1822,17 @@ collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_8yy7w")
 
+[node name="FriendsPos" type="Marker2D" parent="."]
+
+[node name="Pos1" type="Marker2D" parent="FriendsPos"]
+position = Vector2(-444, -1)
+
+[node name="Pos2" type="Marker2D" parent="FriendsPos"]
+position = Vector2(134, -424)
+
+[node name="Pos3" type="Marker2D" parent="FriendsPos"]
+position = Vector2(287, 340)
+
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(185, 0)
 

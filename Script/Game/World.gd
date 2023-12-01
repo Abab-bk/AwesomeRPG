@@ -28,12 +28,17 @@ func _ready() -> void:
     # data {ui_id: id}
     EventBus.changed_friends.connect(func(_data:Dictionary):
         EventBus.kill_all_friend.emit()
-        print("应该杀死伙伴")
+        
+        Tracer.info("玩家随从改变，应该杀死所有玩家")
+        
+        var _count:int = -1
         for i in _data.keys():
             if _data[i] == -1:
                 continue
             
-            spawn_a_friend_by_id(_data[i])
+            _count += 1
+            
+            spawn_a_friend_by_id(_data[i], Master.player.friends_pos[_count])
         )
     
     #EventBus.start_climb_tower.connect(func():)
@@ -51,12 +56,13 @@ func _ready() -> void:
         EventBus.load_save.emit()
         Master.should_load = false
 
-func spawn_a_friend_by_id(_id:int) -> void:
+func spawn_a_friend_by_id(_id:int, _point:Marker2D) -> void:
     var _friend_data = Master.friends[_id]
     
-    var new_friend:Friend = Builder.build_a_friend()
+    var new_friend:Friend = Builder.build_a_friend() as Friend
     
     new_friend.skin_name = _friend_data["skin_name"]
+    new_friend.target_player_point = _point
     
     var _data:CharacterData = CharacterData.new()
     _data.damage = _friend_data["base_damage"]

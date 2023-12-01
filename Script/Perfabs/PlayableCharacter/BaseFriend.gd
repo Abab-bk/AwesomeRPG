@@ -1,5 +1,8 @@
 class_name Friend extends CharacterBody2D
 
+const MAX_DISTANCE_FROM_PLAYER:float = 600.0
+const MIN_DISTANCE_FROM_PLAUER:float = 200.0
+
 @export var buff_manager:FlowerBuffManager
 
 @onready var health_component:HealthComponent = $HealthComponent
@@ -26,6 +29,8 @@ enum STATE {
 }
 
 var current_state:STATE = STATE.IDLE
+
+var target_player_point:Marker2D
 
 var compute_data:CharacterData
 var output_data:CharacterData
@@ -92,21 +97,25 @@ func _physics_process(_delta:float) -> void:
     if current_state == STATE.ATTACKING:
         if not closest_enemy:
             find_closest_enemy()
-        if global_position.distance_to(closest_enemy.global_position) >= 1000.0:
-            find_closest_enemy()
     
     if current_state == STATE.MOVE_TO_PLAYERING:
-        var direction = (Master.player.global_position - global_position).normalized()
-        velocity = direction * output_data.speed * _delta
-        
-        if global_position.distance_to(Master.player.global_position) <= 200:
-            current_state = STATE.IDLE
+        move_to_player()
     
-    if global_position.distance_to(Master.player.global_position) >= 400:
+    if global_position.distance_to(target_player_point.global_position) >= MAX_DISTANCE_FROM_PLAYER:
         # 跟随玩家
         current_state = STATE.MOVE_TO_PLAYERING
     
     move_and_slide()
+
+
+func move_to_player() -> void:
+    var direction = (target_player_point.global_position - global_position).normalized()
+    velocity = direction * output_data.speed
+    
+    turn_to_player()
+    
+    if global_position.distance_to(target_player_point.global_position) <= MIN_DISTANCE_FROM_PLAUER:
+        current_state = STATE.IDLE
 
 
 func set_data(_data:CharacterData) -> void:
@@ -158,15 +167,28 @@ func find_closest_enemy() -> void:
     all_enemy = get_tree().get_nodes_in_group("Enemy")
     closest_distance = 1000000
     
+    var _enemys_distance:Array = []
+    
     for enemy in all_enemy:
-        if not closest_enemy:
-            closest_enemy = enemy
-        
-        var enemy_distance = global_position.distance_to(enemy.global_position)
-        
-        if enemy_distance < closest_distance:
-            closest_distance = enemy_distance
-            closest_enemy = enemy
+        _enemys_distance.append([global_position.distance_to(enemy.global_position), enemy])
+    
+    _enemys_distance.sort_custom(func(_a, _b):
+        if _a[0] < _b[0]:
+            return true
+        return false
+        )
+    closest_enemy = _enemys_distance[0][1]
+    closest_distance = _enemys_distance[0][0]
+    
+    #for enemy in all_enemy:
+        #if not closest_enemy:
+            #closest_enemy = enemy
+        #
+        #var enemy_distance = global_position.distance_to(enemy.global_position)
+        #
+        #if enemy_distance < closest_distance:
+            #closest_distance = enemy_distance
+            #closest_enemy = enemy
     
     atk_range.target = closest_enemy
     vision_component.target = closest_enemy
@@ -191,6 +213,16 @@ func die() -> void:
     character_animation.play("scml/Dying")
     await character_animation.animation_finished
     relife()
+
+
+func turn_to_player() -> void:
+    var _dir:Vector2 = to_local(Master.player.global_position).normalized()
+        
+    if _dir.x > 0:
+        # Right
+        self.scale.x = 1
+    elif  _dir.x < 0:
+        self.scale.x = -1
 
 
 func turn_to_enemy() -> void:
