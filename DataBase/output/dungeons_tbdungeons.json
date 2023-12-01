@@ -58,5 +58,15 @@
     "need_cost": 10000,
     "reward_value": 1,
     "max_level": 1
+  },
+  {
+    "id": 6007,
+    "name": "传奇宝库",
+    "enemy_id": 1007,
+    "icon_path": "GoldEquipment.png",
+    "reward_type": "GoldEquipment",
+    "need_cost": 1000,
+    "reward_value": 1,
+    "max_level": 20
   }
 ]

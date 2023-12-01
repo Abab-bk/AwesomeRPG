@@ -12,9 +12,9 @@
     "compute_values": [
       {
         "id": "4001",
-        "type": 2,
-        "value": 0,
-        "formual": "[damage] * 0.1",
+        "type": 0,
+        "value": 0.01,
+        "formual": "",
         "target_property": "damage"
       }
     ]
@@ -32,10 +32,190 @@
     "compute_values": [
       {
         "id": "4002",
-        "type": 3,
-        "value": 0,
-        "formual": "[luck] * 0.1",
+        "type": 0,
+        "value": 0.01,
+        "formual": "",
         "target_property": "luck"
+      }
+    ]
+  },
+  {
+    "id": 10003,
+    "name": "雷电",
+    "desc": "获得额外闪电伤害，值为物理伤害的 3%。",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4003",
+        "type": 3,
+        "value": 0.01,
+        "formual": "[damage] * 0.03",
+        "target_property": "light_damage"
+      }
+    ]
+  },
+  {
+    "id": 10004,
+    "name": "毒素",
+    "desc": "获得额外毒素伤害，值为物理伤害的 3%。",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4004",
+        "type": 3,
+        "value": 0.01,
+        "formual": "[damage] * 0.03",
+        "target_property": "toxic_damage"
+      }
+    ]
+  },
+  {
+    "id": 10005,
+    "name": "火焰",
+    "desc": "获得额外火焰伤害，值为物理伤害的 3%。",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4005",
+        "type": 3,
+        "value": 0.01,
+        "formual": "[damage] * 0.03",
+        "target_property": "fire_damage"
+      }
+    ]
+  },
+  {
+    "id": 10006,
+    "name": "冰霜",
+    "desc": "获得额外冰霜伤害，值为物理伤害的 3%。",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4006",
+        "type": 3,
+        "value": 0.01,
+        "formual": "[damage] * 0.03",
+        "target_property": "frost_damage"
+      }
+    ]
+  },
+  {
+    "id": 10007,
+    "name": "冰霜",
+    "desc": "获得额外冰霜抗性，值为物理抗性的 3%。",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4007",
+        "type": 3,
+        "value": 0.01,
+        "formual": "[physical_resistance] * 0.03",
+        "target_property": "frost_resistance"
+      }
+    ]
+  },
+  {
+    "id": 10008,
+    "name": "冰霜",
+    "desc": "获得额外火焰抗性，值为物理抗性的 3%。",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4008",
+        "type": 3,
+        "value": 0.01,
+        "formual": "[physical_resistance] * 0.03",
+        "target_property": "fire_resistance"
+      }
+    ]
+  },
+  {
+    "id": 10009,
+    "name": "冰霜",
+    "desc": "获得额外雷电抗性，值为物理抗性的 3%。",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4009",
+        "type": 3,
+        "value": 0.01,
+        "formual": "[physical_resistance] * 0.03",
+        "target_property": "light_resistance"
+      }
+    ]
+  },
+  {
+    "id": 10010,
+    "name": "冰霜",
+    "desc": "获得额外毒素抗性，值为物理抗性的 3%。",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4010",
+        "type": 3,
+        "value": 0.01,
+        "formual": "[physical_resistance] * 0.03",
+        "target_property": "toxic_resistance"
+      }
+    ]
+  },
+  {
+    "id": 10011,
+    "name": "物理",
+    "desc": "物理伤害 +15%",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4011",
+        "type": 0,
+        "value": 0.15,
+        "formual": "",
+        "target_property": "damage"
       }
     ]
   }

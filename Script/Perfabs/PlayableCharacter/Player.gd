@@ -129,8 +129,8 @@ func _ready() -> void:
         output_data = FlowerSaver.get_data("player_output_data")
         flower_buff_manager.compute_data = compute_data
         flower_buff_manager.output_data = output_data
-        #flower_buff_manager.add_buff_list(FlowerSaver.get_data("player_buff_list"))
-        flower_buff_manager.buff_list = FlowerSaver.get_data("player_buff_list")
+        flower_buff_manager.add_buff_list(FlowerSaver.get_data("player_buff_list"))
+        #flower_buff_manager.buff_list = FlowerSaver.get_data("player_buff_list")
         
         Master.player_output_data = flower_buff_manager.output_data
         

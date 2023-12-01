@@ -5,7 +5,9 @@ extends Node
 # TODO: 钱坑（抽卡）
 # TODO: 每日转盘（转的越多奖励越好）
 # TODO: 世界树（花园）
+# TODO: 传奇装备副本
 # HACK: 升级音效短一点
+# FIXME: 读档玩家可能空血空蓝，也许是因为装备原因
 # FIXME: 任务做到一定程度，就完不成咯
 # FIXME: 读档，伤害（玩家属性）会改变，但是更换装备是正常的
 
@@ -252,7 +254,7 @@ func _get_compute_datas(_value) -> Array[FlowerComputeData]:
         _new_data.id = i["id"]
         _new_data.type = i["type"]
         _new_data.value = i["value"]
-        _new_data.formual = i.formual
+        _new_data.formual = i["formual"]
         _new_data.target_property = i["target_property"]
         
         _result.append(_new_data)
@@ -264,6 +266,7 @@ func get_random_ability_id() -> int:
 #    var _rng:FairNG = FairNG.new(abilitys_end)
 #    return abilitys[_rng.randi()]["id"]
     return abilitys[randi_range(abilitys_start, abilitys_end)]["id"]
+
 
 func get_random_ability() -> FlowerAbility:
     var _data = abilitys[randi_range(abilitys_start, abilitys_end)]
@@ -284,6 +287,7 @@ func get_random_ability() -> FlowerAbility:
     _ability.cost_value = _data.cost_value
     
     return _ability
+
 
 func get_random_main_affix() -> AffixItem:
     var _affix:AffixItem = AffixItem.new()

@@ -127,7 +127,7 @@ func _ready() -> void:
         Master.player.global_position = Vector2(0, 0)
         )
     %GetEquipmentBtn.pressed.connect(func():
-        var _drop_item:InventoryItem = $Control/GetEquipmentBtn/ItemGenerator.gen_a_item()
+        var _drop_item:InventoryItem = $Control/GetEquipmentBtn/ItemGenerator.gen_a_item(true)
         EventBus.new_drop_item.emit(_drop_item, Vector2(0, 0))
         )
     

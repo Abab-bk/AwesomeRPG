@@ -28,8 +28,9 @@ func _ready() -> void:
     $Button.pressed.connect(get_item)
     Master.occupied_positions.append(global_position)
     
-    $Sprite2D.scale.x = icon_max_size.x / $Sprite2D.texture.get_width()
-    $Sprite2D.scale.y = icon_max_size.y / $Sprite2D.texture.get_height()
+    if $Sprite2D.get("texture"):
+        $Sprite2D.scale.x = icon_max_size.x / $Sprite2D.texture.get_width()
+        $Sprite2D.scale.y = icon_max_size.y / $Sprite2D.texture.get_height()
     
     var tween:Tween = get_tree().create_tween()
     tween.tween_property(self, "global_position", global_position + Vector2(188, -94), 0.2)

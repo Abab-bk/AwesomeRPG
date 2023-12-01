@@ -62,6 +62,8 @@ func get_reward_text(_type:String) -> String:
             return Const.MONEYS_NAME.yellow
         "Function":
             return "新功能"
+        "GoldEquipment":
+            return "传奇装备"
     return ""
 
 

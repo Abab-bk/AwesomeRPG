@@ -27,19 +27,6 @@ enum STATE {
     SLEEP
 }
 
-#var skin_nodes:Dictionary = {
-    #"left_leg": $"Display/Skeleton/bone_004/Left Leg",
-    #"right_leg": $"Display/Skeleton/bone_005/Right Leg",
-    #"head": $Display/Skeleton/bone_006/bone_007/Head,
-    #"face": $"Display/Skeleton/bone_006/bone_007/Face 01",
-    #"right_hand": $"Display/Skeleton/bone_006/bone_002/bone_003/Right Hand",
-    #"right_arm": $"Display/Skeleton/bone_006/bone_002/Right Arm",
-    #"weapon": $Display/Skeleton/bone_006/bone_000/bone_001/Weapon,
-    #"left_hand": $"Display/Skeleton/bone_006/bone_000/bone_001/Left Hand",
-    #"left_arm": $"Display/Skeleton/bone_006/bone_000/Left Arm",
-    #"body": $Display/Skeleton/bone_006/Body
-#}
-
 var current_state:STATE = STATE.PATROL
 
 func show_damage_label(value:int, crit:bool) -> void:

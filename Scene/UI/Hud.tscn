@@ -613,6 +613,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ItemToolTip" parent="." instance=ExtResource("37_hqe6n")]
+visible = false
 offset_left = 24.0
 offset_top = 72.0
 offset_right = 595.0

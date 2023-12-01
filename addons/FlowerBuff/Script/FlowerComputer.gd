@@ -45,11 +45,10 @@ func compute_all() -> void:
             FlowerConst.COMPUTE_TYPE.COMPLEX_INCREASE:
                 
                 var _origin_index:String = __modifier.target_property
-
+                
                 # 首先拿到公式
 #                var formual:String = __modifier.formual
                 var formual:String = analyse_formula(__modifier.formual)
-                
                 var exp:Expression = Expression.new()
                 exp.parse(formual)
                 var result = exp.execute()

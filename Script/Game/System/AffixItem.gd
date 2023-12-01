@@ -61,6 +61,7 @@ func _get_compute_datas(_value) -> Array[FlowerComputeData]:
         _new_data.id = i["id"]
         _new_data.type = i["type"]
         _new_data.value = offset
+        _new_data.formual = i["formual"]
         _new_data.target_property = i["target_property"]
         
         _result.append(_new_data)
