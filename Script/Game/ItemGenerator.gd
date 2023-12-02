@@ -18,7 +18,7 @@ const 裤子:String = "res://Assets/Texture/Icons/裤子/"
 const 护身符:String = "res://Assets/Texture/Icons/护身符/"
 const 戒指:String = "res://Assets/Texture/Icons/戒指/"
 
-func gen_a_item(_allow_gold:bool = false) -> InventoryItem:
+func gen_a_item(_allow_gold:bool = false, _must_gold:bool = false) -> InventoryItem:
     randomize()
     # 掉落装备
     var _new_item:InventoryItem = InventoryItem.new()
@@ -99,6 +99,9 @@ func gen_a_item(_allow_gold:bool = false) -> InventoryItem:
             quality = Const.EQUIPMENT_QUALITY.GOLD
         else:
             quality = Const.EQUIPMENT_QUALITY.NORMAL
+    
+    if _must_gold:
+        quality = Const.EQUIPMENT_QUALITY.GOLD
     
     _new_item.quality = quality
     

@@ -119,6 +119,6 @@ func get_data_reward(_data:DungeonData) -> void:
             add_child(_generator)
             
             for i in _data.reward_value:
-                _generator.gen_a_item(true)
+                _generator.gen_a_item(true, true)
             EventBus.show_popup.emit("挑战成功！", "获得传奇装备！")
             _generator.queue_free()
