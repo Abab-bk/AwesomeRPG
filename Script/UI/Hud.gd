@@ -44,6 +44,8 @@ signal backed_to_home
 @onready var forge_room:Control = $Pages/Pages/ForgeRoom
 @onready var repository:Control = $Pages/Pages/Repository
 
+@onready var property_arrow:Control = $PropertyArrow
+
 @onready var skill_bar:HBoxContainer = %SkillBar
 @onready var color_rect:ColorRect = $ColorRect
 
@@ -210,10 +212,10 @@ func show_animation(_key:String, _info:Dictionary = {}) -> void:
     if _key == "LevelUp":
         SoundManager.play_sound(load(Master.HAPPY_SOUNDS),  "GameBus")
         var _img:Control = load("res://Scene/UI/LevelUpAnimation.tscn").instantiate()
-        add_child(_img)
+        property_arrow.add_child(_img)
     if _key == "PropertyContrast":
         var _img:Control = load("res://Scene/UI/PropertyContrast.tscn").instantiate()
-        add_child(_img)
+        property_arrow.add_child(_img)
         _img.show_animation(_info)
 
 func new_tip(_text:String) -> void:

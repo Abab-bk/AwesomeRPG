@@ -520,6 +520,14 @@ texture_normal = ExtResource("34_qeepe")
 texture_pressed = ExtResource("35_636ij")
 stretch_mode = 5
 
+[node name="PropertyArrow" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Pages" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0

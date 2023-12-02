@@ -218,5 +218,165 @@
         "target_property": "damage"
       }
     ]
+  },
+  {
+    "id": 10012,
+    "name": "物理",
+    "desc": "获得额外闪电伤害，值为血量的 1%。",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4012",
+        "type": 3,
+        "value": 0.01,
+        "formual": "[max_hp] * 0.03",
+        "target_property": "light_damage"
+      }
+    ]
+  },
+  {
+    "id": 10013,
+    "name": "物理",
+    "desc": "获得额外毒素伤害，值为血量的 1%。",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4013",
+        "type": 3,
+        "value": 0.01,
+        "formual": "[max_hp] * 0.03",
+        "target_property": "toxic_damage"
+      }
+    ]
+  },
+  {
+    "id": 10014,
+    "name": "物理",
+    "desc": "获得额外火焰伤害，值为血量的 1%。",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4014",
+        "type": 3,
+        "value": 0.01,
+        "formual": "[max_hp] * 0.03",
+        "target_property": "fire_damage"
+      }
+    ]
+  },
+  {
+    "id": 10015,
+    "name": "物理",
+    "desc": "获得额外冰霜伤害，值为血量的 1%。",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4015",
+        "type": 3,
+        "value": 0.01,
+        "formual": "[max_hp] * 0.03",
+        "target_property": "frost_damage"
+      }
+    ]
+  },
+  {
+    "id": 10016,
+    "name": "物理",
+    "desc": "获得额外冰霜抗性，值为血量的 1%。",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4016",
+        "type": 3,
+        "value": 0.01,
+        "formual": "[max_hp] * 0.03",
+        "target_property": "frost_resistance"
+      }
+    ]
+  },
+  {
+    "id": 10017,
+    "name": "物理",
+    "desc": "获得额外火焰抗性，值为血量的 1%。",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4017",
+        "type": 3,
+        "value": 0.01,
+        "formual": "[max_hp] * 0.03",
+        "target_property": "fire_resistance"
+      }
+    ]
+  },
+  {
+    "id": 10018,
+    "name": "物理",
+    "desc": "获得额外雷电抗性，值为血量的 1%。",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4018",
+        "type": 3,
+        "value": 0.01,
+        "formual": "[max_hp] * 0.03",
+        "target_property": "light_resistance"
+      }
+    ]
+  },
+  {
+    "id": 10019,
+    "name": "物理",
+    "desc": "获得额外毒素抗性，值为血量的 1%。",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4019",
+        "type": 3,
+        "value": 0.01,
+        "formual": "[max_hp] * 0.03",
+        "target_property": "toxic_resistance"
+      }
+    ]
   }
 ]
