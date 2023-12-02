@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://br6k60nl3syc"]
+[gd_scene load_steps=11 format=3 uid="uid://br6k60nl3syc"]
 
 [ext_resource type="Script" path="res://Script/UI/BootSplash.gd" id="1_bu3ff"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_j0dui"]
 [ext_resource type="Texture2D" uid="uid://u5edw5f50jvc" path="res://Assets/UI/AcidWallLogo.png" id="2_pexge"]
 [ext_resource type="Texture2D" uid="uid://dgforyovbwm7w" path="res://Assets/UI/GodotLogo.png" id="3_0nxdf"]
+[ext_resource type="Texture2D" uid="uid://cgpftqksgjq5v" path="res://Assets/UI/Logo.png" id="5_08w0b"]
+[ext_resource type="Texture2D" uid="uid://co5qvnn8f1ygc" path="res://Assets/UI/Knight.png" id="6_q0a6f"]
+[ext_resource type="Texture2D" uid="uid://bu7ffdwhtyjx8" path="res://Assets/UI/Tap_button_50.png" id="7_xlk41"]
 
 [sub_resource type="Animation" id="Animation_nq8h6"]
 length = 0.001
@@ -103,6 +106,47 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_0nxdf")
+stretch_mode = 3
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 300
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 540
+
+[node name="Logo" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_08w0b")
+stretch_mode = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("6_q0a6f")
+stretch_mode = 5
+
+[node name="LoginBtn" type="TextureButton" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("7_xlk41")
 stretch_mode = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

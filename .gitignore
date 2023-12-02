@@ -1,8 +1,9 @@
 # Godot 4+ specific ignores
 .godot/
-.DataBase/Datas
-.DataBase/Defines
-.DataBase/Tools
-.DataBase/gen.bat
-.DataBase/gen.sh
-.DataBase/luban.conf
+DataBase/Datas
+DataBase/Defines
+DataBase/Tools
+DataBase/gen.bat
+DataBase/gen.sh
+DataBase/luban.conf
+android/

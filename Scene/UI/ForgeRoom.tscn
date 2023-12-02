@@ -196,17 +196,16 @@ layout_mode = 2
 text = "打造"
 
 [node name="SelectItem" type="MarginContainer" parent="." node_paths=PackedStringArray("forge_room")]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 100
-theme_override_constants/margin_top = 500
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 500
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 100
 script = ExtResource("9_stcic")
 forge_room = NodePath("..")
 

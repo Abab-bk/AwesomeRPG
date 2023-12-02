@@ -1,0 +1,21 @@
+[remap]
+
+importer="importer.scml"
+type="PackedScene"
+uid="uid://csof1osk1tiew"
+path="res://.godot/imported/Animations.scml-fa2150f6be7a91ab73aa14baeb30558b.scn"
+
+[deps]
+
+source_file="res://Assets/Characters/Friends/Ninja/Animations.scml"
+dest_files=["res://.godot/imported/Animations.scml-fa2150f6be7a91ab73aa14baeb30558b.scn"]
+
+[params]
+
+playback_speed=5
+z_as_relative=true
+loop_animations=1
+loop_wrap_interpolation=true
+optimize_for_blends=true
+rest_pose_animation="scml/Attacking"
+reparenting_solution="instance per parent"

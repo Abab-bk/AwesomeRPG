@@ -32,6 +32,9 @@ func _ready() -> void:
         output_data = computer.output_data
 #        print("更新 output_data 完毕")
         )
+    computer.computer_ok.connect(func():
+        compute_ok.emit()
+        )
     
     timer = Timer.new()
     add_child(timer)
@@ -143,7 +146,7 @@ func computed_values() -> void:
 func compute() -> void:
     # 防止清空buff后不计算
     output_data = compute_data
-
+    
     for _buff in buff_list:
         if not _buff:
             continue
@@ -153,4 +156,10 @@ func compute() -> void:
         a_buff_activated.emit(_buff)
     
     computed_values()
-    compute_ok.emit()
+
+func compute_only_values() -> void:
+    # 防止清空buff后不计算
+    output_data = compute_data
+    
+    computed_values()
+

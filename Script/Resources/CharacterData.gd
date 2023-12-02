@@ -9,35 +9,31 @@ signal hp_is_zero
 # ======= 战斗属性
 @export var hp:float:
     set(v):
+        if v <= 0.0:
+            hp = 0.0
+            hp_is_zero.emit()
+            return
+        
         if v > max_hp:
             hp = max_hp
-        else:
-            hp = v
+            return
         
-        if hp <= 0:
-            hp = 0
-            hp_is_zero.emit()
+        hp = v
 
 @export var max_hp:float
 @export var magic:float:
     set(v):
+        if v <= 0.0:
+            magic = 0.0
         if v > max_magic:
             magic = max_magic
             return
         magic = v
+
 @export var max_magic:float
-@export var strength:int:
-    set(v):
-        defense += v - strength
-        strength = v
-@export var wisdom:int:
-    set(v):
-        max_magic += v - wisdom
-        wisdom = v
-@export var agility:int:
-    set(v):
-        evasion += ((v - agility) * 0.025)
-        agility = v
+@export var strength:int
+@export var wisdom:int
+@export var agility:int
 @export var luck:float
 @export var speed:float
 @export var damage:float
@@ -89,6 +85,11 @@ func set_property_from_level() -> void:
     strength += floor(float(level) / 2.0)
     wisdom += floor(float(level) / 2.0)
     agility += floor(float(level) / 2.0)
+    
+    max_magic += wisdom
+    defense += strength
+    evasion += agility * 0.025
+
 
 func level_up() -> Dictionary:
     level += 1
@@ -100,6 +101,10 @@ func level_up() -> Dictionary:
     strength += 1
     wisdom += 1
     agility += 1
+
+    max_magic += wisdom
+    defense += strength
+    evasion += agility * 0.025
 
     return {
         "等级": [level - 1, level],

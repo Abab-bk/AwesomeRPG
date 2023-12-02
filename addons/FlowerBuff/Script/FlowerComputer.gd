@@ -2,7 +2,7 @@ class_name FlowerComputer
 extends Node
 
 signal output_data_change
-#signal computer_ok
+signal computer_ok
 
 var origin_data:FlowerData
 var output_data:FlowerData
@@ -72,7 +72,8 @@ func compute_all() -> void:
                 output_data[_origin_index] += output_data[_origin_index] * computed_data[_origin_index]
                 
                 output_data_change.emit()
-    buff_manager.compute_ok.emit()
+    #buff_manager.compute_ok.emit()
+    computer_ok.emit()
 
 func analyse_formula(_formula:String) -> String:
     # 首先通过正则解析方括号内内容：

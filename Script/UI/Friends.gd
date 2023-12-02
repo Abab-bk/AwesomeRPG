@@ -5,7 +5,7 @@ extends Control
 @onready var friends_inventory_ui:Control = %FriendsInventory
 
 var current_friends:Dictionary = {}
-var friends_inventory:Array[int] = [1001, 1002]
+var friends_inventory:Array[int] = [1001, 1002, 1003, 1004]
 
 func _ready() -> void:
     friends_inventory_ui.closed.connect(func():color_rect.hide())

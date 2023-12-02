@@ -15,8 +15,6 @@ class_name EnemyHome extends Node2D
 @onready var point_3:Marker2D = $"../RelifePoint/SpawnPoint/Point3"
 @onready var point_4:Marker2D = $"../RelifePoint/SpawnPoint/Point4"
 
-
-
 # TODO: 待完善 关卡系统
 var killed_enemys:int = 0
 var need_killed_enemys:int = 50
@@ -165,4 +163,4 @@ func spawn_a_enemy_by_id(_id:int) -> void:
 
 
 func get_random_pos() -> Vector2:
-    return Vector2(randf_range(point_1.global_position.x, point_4.global_position.x), randf_range(point_1.global_position.y, point_4.global_position.y))
+    return Vector2(randf_range(point_1.global_position.x, point_4.global_position.x), randf_range(point_1.global_position.y, point_2.global_position.y))

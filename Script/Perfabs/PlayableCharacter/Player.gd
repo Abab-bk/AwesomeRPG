@@ -83,11 +83,11 @@ func _ready() -> void:
         )
     
     flower_buff_manager.compute_ok.connect(func():
-        compute_data = flower_buff_manager.compute_data as CharacterData
-        output_data = flower_buff_manager.output_data as CharacterData
-        
         Master.player_data = flower_buff_manager.compute_data
         Master.player_output_data = flower_buff_manager.output_data
+        
+        compute_data = flower_buff_manager.compute_data as CharacterData
+        output_data = flower_buff_manager.output_data as CharacterData
         
         ray_cast.target_position.x = output_data.atk_range
         
@@ -121,33 +121,33 @@ func _ready() -> void:
                 Master.player_data = compute_data
                 Master.player_output_data = output_data
                 compute()
+                
+                reset_player_hp_and_magic()
+                
                 return
         
         Tracer.info("玩家常规读档")
         
         compute_data = FlowerSaver.get_data("player_compute_data")
         output_data = FlowerSaver.get_data("player_output_data")
+        
         flower_buff_manager.compute_data = compute_data
         flower_buff_manager.output_data = output_data
         flower_buff_manager.add_buff_list(FlowerSaver.get_data("player_buff_list"))
-        #flower_buff_manager.buff_list = FlowerSaver.get_data("player_buff_list")
         
         Master.player_output_data = flower_buff_manager.output_data
         
         config_skills = FlowerSaver.get_data("config_skills")
         Master.get_offline_reward()
         
-        compute_data.hp = compute_data.max_hp
-        compute_data.magic = compute_data.max_magic
-        output_data.hp = output_data.max_hp
-        output_data.magic = output_data.max_magic        
-        compute()
+        #compute()
         
         update_equipment_textures()
         
         # 更新 UI 信号
         EventBus.player_data_change.emit()
         rebuild_skills()
+        reset_player_hp_and_magic()
         #compute_all_euipment()
         )
     
@@ -209,12 +209,11 @@ func _ready() -> void:
 
 
 func reset_player_hp_and_magic() -> void:
-    compute_data.hp = compute_data.max_hp
-    compute_data.magic = compute_data.max_magic
-    Tracer.info("玩家计算血量：%s 最大血量：%s" % [str(compute_data.hp), str(compute_data.max_hp)])
-    output_data.hp = output_data.max_hp
-    output_data.magic = output_data.max_magic
-    Tracer.info("玩家输出血量：%s 最大血量：%s" % [str(output_data.hp), str(output_data.max_hp)])
+    flower_buff_manager.compute_data.hp += flower_buff_manager.compute_data.max_hp
+    flower_buff_manager.compute_data.magic += flower_buff_manager.compute_data.max_magic
+    flower_buff_manager.output_data.hp += flower_buff_manager.output_data.max_hp
+    flower_buff_manager.output_data.magic += flower_buff_manager.output_data.max_magic
+    EventBus.update_ui.emit()
 
 
 func get_origin_player_data() -> CharacterData:
@@ -392,7 +391,8 @@ func rebuild_skills() -> void:
     EventBus.player_ability_change.emit()
 
 func compute() -> void:
-    flower_buff_manager.compute()
+    #flower_buff_manager.compute()
+    flower_buff_manager.compute_only_values()
 
 func move_to_enemy() -> void:
     if current_state == STATE.DEAD:
@@ -515,10 +515,7 @@ func relife() -> void:
     character_animation_player.play_backwards("scml/Dying")
     await character_animation_player.animation_finished
     
-    compute_data.hp = compute_data.max_hp
-    compute_data.magic = compute_data.max_magic
-    output_data.hp = output_data.max_hp
-    output_data.magic = output_data.max_magic
+    reset_player_hp_and_magic()
     
     compute()
     

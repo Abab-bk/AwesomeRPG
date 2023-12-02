@@ -29,6 +29,7 @@ FlowerSaver="*res://addons/FlowerSaver/FlowerSaver.gd"
 Tracer="*res://addons/tracer/./tracer.gd"
 StringFactory="*res://addons/StringFactory/StringFactory.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+Tap="*res://Script/Game/Global/Tap.gd"
 
 [debug]
 
