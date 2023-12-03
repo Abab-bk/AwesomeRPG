@@ -1,4 +1,84 @@
-[gd_scene format=3 uid="uid://car5dwl4qr8w"]
+[gd_scene load_steps=19 format=3 uid="uid://car5dwl4qr8w"]
+
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_ncvqo"]
+[ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="2_e0w02"]
+[ext_resource type="Script" path="res://Script/UI/Gacha.gd" id="2_wktcx"]
+[ext_resource type="Script" path="res://Script/Resources/Reward.gd" id="3_qjrdm"]
+[ext_resource type="Texture2D" uid="uid://b2leble1qth1l" path="res://Assets/Texture/Images/GachaCover/RaperManGachaCover.png" id="3_u6ivm"]
+[ext_resource type="Script" path="res://Script/Resources/GachaPool.gd" id="4_s41l1"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Gacha.gdshader" id="5_6dmos"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Blur.gdshader" id="6_cmsf5"]
+
+[sub_resource type="Resource" id="Resource_maku2"]
+script = ExtResource("3_qjrdm")
+type = 1
+reward_value = 50
+
+[sub_resource type="Resource" id="Resource_tsyrc"]
+script = ExtResource("3_qjrdm")
+type = 3
+reward_value = 10
+
+[sub_resource type="Resource" id="Resource_ho858"]
+script = ExtResource("4_s41l1")
+name = "aa"
+reward_list = Array[ExtResource("3_qjrdm")]([SubResource("Resource_maku2"), SubResource("Resource_tsyrc")])
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72fni"]
+bg_color = Color(0.133333, 0.129412, 0.121569, 1)
+border_width_top = 1
+border_color = Color(0.992157, 0.945098, 0.827451, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0d58o"]
+shader = ExtResource("5_6dmos")
+shader_parameter/chaos = 32.0
+shader_parameter/radius = 1.0
+shader_parameter/attenuation = 2.03
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s3veb"]
+shader = ExtResource("6_cmsf5")
+shader_parameter/lod = 0.0
+
+[sub_resource type="Animation" id="Animation_ek36b"]
+resource_name = "appear"
+
+[sub_resource type="Animation" id="Animation_bceu7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Blur:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_o6km8"]
+resource_name = "show_blur"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Blur:material:shader_parameter/lod")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 4.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w5j56"]
+_data = {
+"RESET": SubResource("Animation_bceu7"),
+"appear": SubResource("Animation_ek36b"),
+"show_blur": SubResource("Animation_o6km8")
+}
 
 [node name="Gacha" type="Control"]
 layout_mode = 3
@@ -7,3 +87,147 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ncvqo")
+script = ExtResource("2_wktcx")
+gacha_pool = SubResource("Resource_ho858")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"SharpPanel"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleBar" parent="Panel/VBoxContainer" instance=ExtResource("2_e0w02")]
+layout_mode = 2
+title_text = "抽卡"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Cover" type="TextureRect" parent="Panel/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("3_u6ivm")
+stretch_mode = 5
+
+[node name="Panel" type="Panel" parent="Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_72fni")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 92
+theme_override_constants/margin_top = 38
+theme_override_constants/margin_right = 92
+theme_override_constants/margin_bottom = 84
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 80
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 130)
+layout_mode = 2
+
+[node name="Pull1Btn" type="Button" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(388, 0)
+layout_mode = 2
+text = "召唤一次"
+
+[node name="Control" type="Control" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Pull10Btn" type="Button" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(388, 0)
+layout_mode = 2
+text = "召唤十次"
+
+[node name="Animation" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_0d58o")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Blur" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_s3veb")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="RewardResult" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="RewardResult"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="Rewards" type="VBoxContainer" parent="RewardResult/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RewardResult"]
+libraries = {
+"": SubResource("AnimationLibrary_w5j56")
+}
+
+[node name="ContinueBtn" type="Button" parent="RewardResult"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"EmptyBtn"
+
+[node name="ShowResultTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true

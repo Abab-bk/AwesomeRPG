@@ -15,7 +15,6 @@ class_name EnemyHome extends Node2D
 @onready var point_3:Marker2D = $"../RelifePoint/SpawnPoint/Point3"
 @onready var point_4:Marker2D = $"../RelifePoint/SpawnPoint/Point4"
 
-# TODO: 待完善 关卡系统
 var killed_enemys:int = 0
 var need_killed_enemys:int = 50
 

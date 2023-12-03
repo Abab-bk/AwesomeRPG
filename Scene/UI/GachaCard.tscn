@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://x1fxghpmlk4a"]
+
+[ext_resource type="Texture2D" uid="uid://ckk3sbximhjg8" path="res://Assets/Texture/Images/GoldEquipment.png" id="1_1sjpw"]
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_afxfe"]
+[ext_resource type="Script" path="res://Script/UI/GachaCard.gd" id="1_dn1rw"]
+[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="2_ehph4"]
+
+[node name="GachaCard" type="Control"]
+custom_minimum_size = Vector2(346, 200)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+size_flags_vertical = 4
+theme = ExtResource("1_afxfe")
+script = ExtResource("1_dn1rw")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Panel/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+use_parent_material = true
+layout_mode = 2
+texture = ExtResource("1_1sjpw")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="TitleLabel" type="Label" parent="Panel/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+use_parent_material = true
+layout_mode = 2
+text = "死神"
+label_settings = ExtResource("2_ehph4")
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true

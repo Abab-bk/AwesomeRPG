@@ -16,7 +16,7 @@ enum REWARD_TYPE {
 @export var type:REWARD_TYPE = REWARD_TYPE.NONE
 @export var reward_value:int = 0
 
-func get_reward() -> void:
+func get_reward(_show_popup:bool = true) -> String:
     match type:
         REWARD_TYPE.COINS:
             Master.coins += reward_value
@@ -39,8 +39,13 @@ func get_reward() -> void:
             for i in reward_value:
                 _generator.gen_a_item(true, true)
             _generator.queue_free()
-
-    EventBus.show_popup.emit("获得奖励！", "获得奖励：%s %s" % [str(reward_value), Reward.get_string(type)])
+    
+    var _return_text:String = "%s %s" % [str(reward_value), Reward.get_string(type)]
+    
+    if _show_popup:
+        EventBus.show_popup.emit("获得奖励！", "获得奖励：%s" % _return_text)
+    
+    return _return_text
 
 
 static func get_string(_type) -> String:

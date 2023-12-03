@@ -4575,8 +4575,8 @@ offset = Vector2(0, -128)
 flip_v = true
 
 [node name="bone_006" type="Bone2D" parent="Skeleton"]
-position = Vector2(1.78373, 75.8205)
-rotation = 1.66447
+position = Vector2(0.840336, 66.3866)
+rotation = 1.57765
 
 [node name="bone_007" type="Bone2D" parent="Skeleton/bone_006"]
 position = Vector2(122.692, 0)
@@ -4628,13 +4628,15 @@ flip_v = true
 
 [node name="bone_002" type="Bone2D" parent="Skeleton/bone_006"]
 position = Vector2(91.1033, -57.7095)
-rotation = -1.17356
+rotation = -2.98365
+scale = Vector2(1, 1)
 
 [node name="bone_003" type="Bone2D" parent="Skeleton/bone_006/bone_002"]
 position = Vector2(57.4062, 0)
 rotation = -0.00343641
 
 [node name="Sword" type="Sprite2D" parent="Skeleton/bone_006/bone_002/bone_003"]
+modulate = Color(1, 1, 1, 0)
 z_index = 1
 position = Vector2(-43.0975, -67.8168)
 rotation = 1.52907
@@ -4672,9 +4674,7 @@ flip_v = true
 
 [node name="SlashFX" type="Sprite2D" parent="Skeleton"]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(-62.1148, 496.939)
-rotation = 0.0512719
-scale = Vector2(1, 0.897273)
+position = Vector2(-69.5222, 596.939)
 texture = ExtResource("14_auaaw")
 centered = false
 offset = Vector2(0, -496)
