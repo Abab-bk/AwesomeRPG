@@ -9,7 +9,9 @@ enum REWARD_TYPE {
     MONEY_PURPLE,
     MONEY_YELLOW,
     GOLD_EQUIPMENT,
-    FLY # 飞升
+    FLY, # 飞升,
+    BLUE_EQUIPMENT,
+    FRIEND
 }
 
 
@@ -34,13 +36,27 @@ func get_reward(_show_popup:bool = true) -> String:
             Master.moneys.yellow += reward_value
         REWARD_TYPE.GOLD_EQUIPMENT:
             var _generator:ItemGenerator = ItemGenerator.new()
-            Master.world.dd_child(_generator)
+            Master.world.add_child(_generator)
             
             for i in reward_value:
                 _generator.gen_a_item(true, true)
             _generator.queue_free()
+        REWARD_TYPE.BLUE_EQUIPMENT:
+            var _generator:ItemGenerator = ItemGenerator.new()
+            Master.world.add_child(_generator)
+            
+            for i in reward_value:
+                _generator.gen_a_item(false, false)
+            _generator.queue_free()
+        REWARD_TYPE.FRIEND:
+            EventBus.get_friend.emit(reward_value)
     
-    var _return_text:String = "%s %s" % [str(reward_value), Reward.get_string(type)]
+    var _return_text:String = ""
+    
+    if type == REWARD_TYPE.FRIEND:
+        _return_text = Reward.get_string(type, reward_value)
+    else:
+        _return_text = "%s %s" % [str(reward_value), Reward.get_string(type)]        
     
     if _show_popup:
         EventBus.show_popup.emit("获得奖励！", "获得奖励：%s" % _return_text)
@@ -48,7 +64,7 @@ func get_reward(_show_popup:bool = true) -> String:
     return _return_text
 
 
-static func get_string(_type) -> String:
+static func get_string(_type, _reward_value = 1) -> String:
     var _result:String = ""
     
     match _type:
@@ -68,5 +84,9 @@ static func get_string(_type) -> String:
             _result = "天使之泪" 
         REWARD_TYPE.GOLD_EQUIPMENT:
             _result = "传奇装备"
-    
+        REWARD_TYPE.BLUE_EQUIPMENT:
+            _result = "稀有装备"
+        REWARD_TYPE.FRIEND:
+            _result = Master.friends[_reward_value]["name"]
+        
     return _result

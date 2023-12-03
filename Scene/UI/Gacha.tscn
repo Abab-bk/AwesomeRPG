@@ -1,28 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://car5dwl4qr8w"]
+[gd_scene load_steps=14 format=3 uid="uid://car5dwl4qr8w"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_ncvqo"]
 [ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="2_e0w02"]
 [ext_resource type="Script" path="res://Script/UI/Gacha.gd" id="2_wktcx"]
-[ext_resource type="Script" path="res://Script/Resources/Reward.gd" id="3_qjrdm"]
 [ext_resource type="Texture2D" uid="uid://b2leble1qth1l" path="res://Assets/Texture/Images/GachaCover/RaperManGachaCover.png" id="3_u6ivm"]
-[ext_resource type="Script" path="res://Script/Resources/GachaPool.gd" id="4_s41l1"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Gacha.gdshader" id="5_6dmos"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Blur.gdshader" id="6_cmsf5"]
-
-[sub_resource type="Resource" id="Resource_maku2"]
-script = ExtResource("3_qjrdm")
-type = 1
-reward_value = 50
-
-[sub_resource type="Resource" id="Resource_tsyrc"]
-script = ExtResource("3_qjrdm")
-type = 3
-reward_value = 10
-
-[sub_resource type="Resource" id="Resource_ho858"]
-script = ExtResource("4_s41l1")
-name = "aa"
-reward_list = Array[ExtResource("3_qjrdm")]([SubResource("Resource_maku2"), SubResource("Resource_tsyrc")])
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72fni"]
 bg_color = Color(0.133333, 0.129412, 0.121569, 1)
@@ -89,7 +72,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ncvqo")
 script = ExtResource("2_wktcx")
-gacha_pool = SubResource("Resource_ho858")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1

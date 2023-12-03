@@ -66,6 +66,10 @@ enum RewardTypeReward
     GOLD_EQUIPMENT = 7,
     ## 飞升
     FLY = 8,
+    ## 蓝色装备
+    BLUE_EQUIPMENT = 9,
+    ## 伙伴
+    FRIEND = 10,
 }
 
 
@@ -496,6 +500,31 @@ class Friends:
         self.speed = _json_["speed"]
 
 
+class Gachas:
+    ## 这是id
+    var id: int
+    ## 名称
+    var name: String
+    ## 奖励列表
+    var reward_list: Array[RewardReward]
+
+    func _init(_json_) -> void:
+        self.id = _json_["id"]
+        self.name = _json_["name"]
+        self.reward_list = []
+        for _ele in _json_["reward_list"]: var _e: RewardReward; _e = RewardReward.new(_ele); self.reward_list.append(_e)
+
+
+class RewardReward:
+    var type: int
+    ## 对于随从，value为id
+    var reward_value: int
+
+    func _init(_json_) -> void:
+        self.type = _json_["type"]
+        self.reward_value = _json_["reward_value"]
+
+
 class BuffsTbBuffs:
     var _data_list: Array[Buffs]
     var _data_map: Dictionary
@@ -832,6 +861,27 @@ class FriendsTbFriends:
         return self._data_map.get(key)
 
 
+class GachasTbGachas:
+    var _data_list: Array[Gachas]
+    var _data_map: Dictionary
+    
+    func _init(_json_) -> void:
+        for _json2_ in _json_:
+            var _v: Gachas
+            _v = Gachas.new(_json2_)
+            self._data_list.append(_v)
+            self._data_map[_v.id] = _v
+
+    func get_data_list() -> Array[Gachas]:
+        return self._data_list
+
+    func get_data_map() -> Dictionary:
+        return self._data_map
+
+    func get_item(key) -> Gachas:
+        return self._data_map.get(key)
+
+
 class CfgTables:
     var TbBuffs: BuffsTbBuffs
     var TbAffix: AffixsTbAffix
@@ -849,6 +899,7 @@ class CfgTables:
     var TbGoldAffixs: GoldAffixsTbGoldAffixs
     var TbDungeonEnemy: DungeonEnemyTbDungeonEnemy
     var TbFriends: FriendsTbFriends
+    var TbGachas: GachasTbGachas
     
     func _init(loader: Callable) -> void:
         self.TbBuffs = BuffsTbBuffs.new(loader.call('buffs_tbbuffs'))
@@ -867,4 +918,5 @@ class CfgTables:
         self.TbGoldAffixs = GoldAffixsTbGoldAffixs.new(loader.call('goldaffixs_tbgoldaffixs'))
         self.TbDungeonEnemy = DungeonEnemyTbDungeonEnemy.new(loader.call('dungeonenemy_tbdungeonenemy'))
         self.TbFriends = FriendsTbFriends.new(loader.call('friends_tbfriends'))
+        self.TbGachas = GachasTbGachas.new(loader.call('gachas_tbgachas'))
 

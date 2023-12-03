@@ -173,6 +173,8 @@ func forge() -> void:
     
     tooltips.show()
     
+    SoundManager.play_ui_sound(load(Master.SOUNDS.Forge))
+    
     EventBus.enhance_a_equipment.emit()
     
     # update_ui()

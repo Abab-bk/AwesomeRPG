@@ -15,6 +15,11 @@ const POPUP_SOUNDS:String = "res://Assets/Sounds/PopUp.mp3"
 const HURT_SOUNDS:String = "res://Assets/Sounds/Sfx/Hurt.wav"
 const HIT_SOUNDS:String = "res://Assets/Sounds/Sfx/Hit.mp3"
 const HAPPY_SOUNDS:String = "res://Assets/Sounds/Sfx/Happy.ogg"
+const SOUNDS = {
+    "Myster": "res://Assets/Sounds/Sfx/Mystery.wav",
+    "GachaItemShow": "res://Assets/Sounds/Sfx/GachaItemShow.wav",
+    "Forge": "res://Assets/Sounds/Sfx/Forge.wav"
+}
 
 const SPECIAL_ABILITYS_ID:Array[int] = [4005]
 const ENEMYS_SKINS:Array[String] = [
@@ -98,12 +103,12 @@ var ability_buffs:Dictionary
 var dungeons:Dictionary
 var enemys:Dictionary
 var dungeon_enemys:Dictionary
-var goods:Dictionary
 var main_buffs:Array
 var gold_affixs:Array
 var gold_buffs:Dictionary
 var gold_names:Array
 var friends:Dictionary
+var gachas:Dictionary
 
 
 var unlocked_functions:Dictionary = {
@@ -140,6 +145,36 @@ func get_player_level_up_info() -> Dictionary:
     _result = _form_data.level_up()
     
     return _result
+
+
+func get_base_gacha_pool() -> GachaPool:
+    var _gacha_pool:GachaPool = GachaPool.new()
+    var _data = gachas[1001]
+    
+    _gacha_pool.name = _data["name"]
+    
+    for i in _data["reward_list"]:
+        var _reward:Reward = Reward.new()
+        _reward.type = i["type"]
+        _reward.reward_value = i["reward_value"]
+        _gacha_pool.reward_list.append(_reward)
+    
+    return _gacha_pool
+
+
+func get_gacha_pool_by_id(_id:int) -> GachaPool:
+    var _gacha_pool:GachaPool = GachaPool.new()
+    var _data = gachas[_id]
+    
+    _gacha_pool.name = _data["name"]
+    
+    for i in _data["reward_list"]:
+        var _reward:Reward = Reward.new()
+        _reward.type = i["type"]
+        _reward.reward_value = i["reward_value"]
+        _gacha_pool.reward_list.append(_reward)
+    
+    return _gacha_pool
 
 
 func get_friend_data_by_id(_id:int) -> FriendData:
@@ -447,6 +482,7 @@ func _ready():
     gold_affixs = config.TbGoldAffixs.get_data_list()
     dungeon_enemys = config.TbDungeonEnemy.get_data_map()
     friends = config.TbFriends.get_data_map()
+    gachas = config.TbGachas.get_data_map()
     #ability_trees = config.TbSkills.get_data_map()
     #goods = config.TbGoods.get_data_map()
 

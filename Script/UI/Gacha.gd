@@ -18,7 +18,12 @@ extends Control
 
 @export var gacha_pool:GachaPool
 
+@export var gacha_pool_id:int = 1002
+
 func _ready() -> void:
+    gacha_pool = Master.get_gacha_pool_by_id(1002) as GachaPool
+    gacha_pool.reward_list.append_array(Master.get_base_gacha_pool().reward_list)
+    
     pull_1_btn.pressed.connect(start_gacha.bind(1))
     pull_10_btn.pressed.connect(start_gacha.bind(10))
     
@@ -45,6 +50,8 @@ func start_gacha(_count:int) -> void:
     
     pull_gacha(_count)
     
+    SoundManager.play_ui_sound(load(Master.SOUNDS.Myster))
+    
     await show_result_timer.timeout
     reward_result.show()
     blur.show()
@@ -57,7 +64,7 @@ func pull_gacha(_count:int) -> void:
     for i in _count:
         animation.show()
         var _get_reward:Reward = gacha_pool.reward_list.pick_random() as Reward
-        var _desc:String = _get_reward.get_reward()
+        var _desc:String = _get_reward.get_reward(false)
         
         var _new_reward_card = load("res://Scene/UI/GachaCard.tscn").instantiate()
         _new_reward_card.title = _desc
