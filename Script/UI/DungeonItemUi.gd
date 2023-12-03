@@ -16,19 +16,8 @@ func _ready() -> void:
     name_label.text = data.name
     cost_label.text = "门票钱：%s" % str(data.need_cost)
     # TODO: 增加 reward 文本
-    match data.reward_type:
-        "Coins":
-            reward_label.text = "奖励：%s 金币" % str(data.reward_value)
-        "MoneyWhite":
-            reward_label.text = "奖励：%s 奉献之灰" % str(data.reward_value)            
-        "MoneyBlue":
-            reward_label.text = "奖励：%s 天堂之灰" % str(data.reward_value)
-        "MoneyPurple":
-            reward_label.text = "奖励：%s 赦罪之血" % str(data.reward_value)
-        "MoneyYellow":
-            reward_label.text = "奖励：%s 天使之泪" % str(data.reward_value)
-        "Function":
-            reward_label.text = "奖励：%s 新功能" % str(data.reward_value)            
+    reward_label.text = "奖励：%s" % Reward.get_string(data.reward_type)
+    
     icon.texture = load(data.icon_path)
     
     enter_btn.pressed.connect(func():

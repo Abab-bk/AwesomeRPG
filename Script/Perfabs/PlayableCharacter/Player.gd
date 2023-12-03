@@ -2,7 +2,6 @@ class_name Player extends CharacterBody2D
 
 signal criticaled
 
-# TODO: 优化玩家寻找敌人逻辑
 
 @onready var ability_container:FlowerAbilityContainer = $FlowerAbilityContainer
 @onready var flower_buff_manager:FlowerBuffManager = $FlowerBuffManager as FlowerBuffManager
@@ -100,7 +99,6 @@ func _ready() -> void:
             output_data.hp_is_zero.connect(die)
         )
     
-    # TODO: 完善存档
     EventBus.save.connect(func():
         FlowerSaver.set_data("player_compute_data", flower_buff_manager.compute_data)
         FlowerSaver.set_data("player_output_data", flower_buff_manager.output_data)

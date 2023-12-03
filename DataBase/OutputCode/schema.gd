@@ -47,6 +47,28 @@ enum FriendQualityEquality
 }
 
 
+enum RewardTypeReward
+{
+    NONE = 0,
+    ## 金币
+    COINS = 1,
+    ## 经验
+    XP = 2,
+    ## 白钱
+    MONEY_WHITE = 3,
+    ## 蓝钱
+    MONEY_BLUE = 4,
+    ## 紫钱
+    MONEY_PURPLE = 5,
+    ## 黄钱
+    MONEY_YELLOW = 6,
+    ## 传奇装备
+    GOLD_EQUIPMENT = 7,
+    ## 飞升
+    FLY = 8,
+}
+
+
 class Buffs:
     ## 这是id
     var id: int
@@ -253,7 +275,7 @@ class Dungeons:
     var name: String
     var enemy_id: int
     var icon_path: String
-    var reward_type: String
+    var reward_type: int
     var need_cost: int
     var reward_value: int
     var max_level: int

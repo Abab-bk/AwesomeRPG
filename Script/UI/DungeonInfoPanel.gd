@@ -42,29 +42,10 @@ func _ready() -> void:
 func update_ui() -> void:
     name_label.text = current_dungeon.name
     cost_label.text = "门票钱：%s" % str(current_dungeon.need_cost)
-    reward_label.text = "奖励： %s %s" % [str(current_dungeon.reward_value), get_reward_text(current_dungeon.reward_type)]
+    reward_label.text = "奖励： %s %s" % [str(current_dungeon.reward_value), Reward.get_string(current_dungeon.reward_type)]
     icon.texture = load(current_dungeon.icon_path)
     
     current_level_label.text = "Lv. %s" % str(current_dungeon.current_level)
-
-
-func get_reward_text(_type:String) -> String:
-    match _type:
-        "Coins":
-            return "金币"
-        "MoneyWhite":
-            return Const.MONEYS_NAME.white
-        "MoneyBlue":
-            return Const.MONEYS_NAME.blue
-        "MoneyPurple":
-            return Const.MONEYS_NAME.purple
-        "MoneyYellow":
-            return Const.MONEYS_NAME.yellow
-        "Function":
-            return "新功能"
-        "GoldEquipment":
-            return "传奇装备"
-    return ""
 
 
 func show_dungeon(_data:DungeonData) -> void:

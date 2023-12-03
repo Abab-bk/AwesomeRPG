@@ -4,7 +4,7 @@
     "name": "黄金宝库",
     "enemy_id": 1001,
     "icon_path": "GoldTreasury.png",
-    "reward_type": "Coins",
+    "reward_type": 1,
     "need_cost": 100,
     "reward_value": 200,
     "max_level": 20
@@ -14,7 +14,7 @@
     "name": "奉献之城",
     "enemy_id": 1002,
     "icon_path": "City.png",
-    "reward_type": "MoneyWhite",
+    "reward_type": 3,
     "need_cost": 1000,
     "reward_value": 10,
     "max_level": 20
@@ -24,7 +24,7 @@
     "name": "天堂阶梯",
     "enemy_id": 1003,
     "icon_path": "HeavenStairs.png",
-    "reward_type": "MoneyBlue",
+    "reward_type": 4,
     "need_cost": 2000,
     "reward_value": 10,
     "max_level": 20
@@ -34,7 +34,7 @@
     "name": "赦罪教堂",
     "enemy_id": 1004,
     "icon_path": "Church.png",
-    "reward_type": "MoneyPurple",
+    "reward_type": 5,
     "need_cost": 3000,
     "reward_value": 10,
     "max_level": 20
@@ -44,7 +44,7 @@
     "name": "天使之家",
     "enemy_id": 1005,
     "icon_path": "Angel.png",
-    "reward_type": "MoneyYellow",
+    "reward_type": 6,
     "need_cost": 5000,
     "reward_value": 10,
     "max_level": 20
@@ -54,7 +54,7 @@
     "name": "浩劫洪流",
     "enemy_id": 1006,
     "icon_path": "Flood.png",
-    "reward_type": "Function",
+    "reward_type": 8,
     "need_cost": 10000,
     "reward_value": 1,
     "max_level": 1
@@ -64,7 +64,7 @@
     "name": "传奇宝库",
     "enemy_id": 1007,
     "icon_path": "GoldEquipment.png",
-    "reward_type": "GoldEquipment",
+    "reward_type": 7,
     "need_cost": 1000,
     "reward_value": 1,
     "max_level": 20

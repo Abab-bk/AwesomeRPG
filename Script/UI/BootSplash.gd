@@ -17,8 +17,8 @@ func _ready() -> void:
     await $AnimationPlayer.animation_finished
     $Panel.show()
     
-    Tap.is_login()
-    #go_to_world()
+    #Tap.is_login()
+    go_to_world()
 
 
 func go_to_world() -> void:

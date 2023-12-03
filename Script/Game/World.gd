@@ -22,7 +22,7 @@ func _ready() -> void:
         enemy_home.kill_all_enemy()
         enemy_home.spawn_a_special_enemy(func():
             # 地牢奖励
-            get_data_reward(_data)
+            _data.get_reward()
             Master.in_dungeon = false, _data.enemy_id))
     
     # data {ui_id: id}
@@ -90,35 +90,3 @@ func completed_level() -> void:
     enemy_home.min_enemy_count = Master.current_level * 1
     enemy_home.max_enemy_count = Master.current_level * 5
 
-
-func get_data_reward(_data:DungeonData) -> void:
-    match _data.reward_type:
-        "Coins":
-            Master.coins += _data.reward_value
-            EventBus.show_popup.emit("挑战成功！", "获得奖励：%s 金币" % str(_data.reward_value))
-        "MoneyWhite":
-            Master.moneys.white += _data.reward_value
-            EventBus.show_popup.emit("挑战成功！", "获得奖励：%s %s" % [str(_data.reward_value), Const.MONEYS_NAME.white])
-        "MoneyBlue":
-            Master.moneys.blue += _data.reward_value
-            EventBus.show_popup.emit("挑战成功！", "获得奖励：%s %s" % [str(_data.reward_value), Const.MONEYS_NAME.blue])
-        "MoneyPurple":
-            Master.moneys.purple += _data.reward_value
-            EventBus.show_popup.emit("挑战成功！", "获得奖励：%s %s" % [str(_data.reward_value), Const.MONEYS_NAME.purple])
-        "MoneyYellow":
-            Master.moneys.yellow += _data.reward_value
-            EventBus.show_popup.emit("挑战成功！", "获得奖励：%s %s" % [str(_data.reward_value), Const.MONEYS_NAME.yellow])
-        "Function":
-            match _data.reward_value:
-                1:
-                    # 解锁飞升
-                    EventBus.unlock_new_function.emit("fly")
-                    EventBus.show_popup.emit("挑战成功！", "解锁飞升！")
-        "GoldEquipment":
-            var _generator:ItemGenerator = ItemGenerator.new()
-            add_child(_generator)
-            
-            for i in _data.reward_value:
-                _generator.gen_a_item(true, true)
-            EventBus.show_popup.emit("挑战成功！", "获得传奇装备！")
-            _generator.queue_free()
