@@ -5,7 +5,6 @@ extends Node
 # TODO: 钱坑（抽卡）
 # TODO: 每日转盘（转的越多奖励越好）
 # TODO: 世界树（花园）
-# TODO: 增加Reward类，所有奖励都改成Reward
 # HACK: 升级音效短一点
 # FIXME: 任务做到一定程度，就完不成咯
 

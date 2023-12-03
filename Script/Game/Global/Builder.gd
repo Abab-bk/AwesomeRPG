@@ -14,13 +14,25 @@ const info_skill_btn:String = "res://Scene/UI/SkillBtn.tscn"
 const trail:String = "res://Scene/Perfabs/Others/Trail.tscn"
 const animation_vfx:String = "res://Scene/Perfabs/Vfx/AnimationVFX.tscn"
 
+
+func build_a_base_bullet(_damage_data:CharacterData, _is_player_hitbox:bool) -> BaseBullet:
+    var _n:BaseBullet = load("res://Scene/Perfabs/Bullets/BaseBullet.tscn").instantiate()
+    
+    _n.damage_data = _damage_data
+    _n.is_player_bullet = _is_player_hitbox
+    
+    return _n
+
+
 func build_a_sprite_vfx() -> AnimatedSprite2D:
     var _n:AnimatedSprite2D = load(animation_vfx).instantiate()
     return _n
 
+
 func build_a_recycle_panel() -> ColorRect:
     var _n:ColorRect = load("res://Scene/UI/RecyclePanel.tscn").instantiate()
     return _n
+
 
 func build_a_trail() -> Sprite2D:
     var _n:Sprite2D = load(trail).instantiate()

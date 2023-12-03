@@ -14,6 +14,10 @@ signal dead
 @onready var character_animation:AnimationPlayer = $Display/Skeleton/CharacterAnimation
 @onready var marker:Marker2D = $Marker2D
 
+@export var range_attack:bool = false
+
+var range_bullet_spwan_point:Marker2D
+
 var seted_data:CharacterData
 var skin_name:String = ""
 var data:CharacterData
@@ -23,11 +27,13 @@ enum STATE {
     PATROL,
     MOVE_TO_PLAYERING,
     ATTACKING,
+    ATK_COOLDOWN,
     DEAD,
     SLEEP
 }
 
 var current_state:STATE = STATE.PATROL
+
 
 func show_damage_label(value:int, crit:bool) -> void:
     EventBus.show_damage_number.emit(get_global_transform_with_canvas().get_origin(), str(value), crit)
@@ -41,26 +47,12 @@ func _ready() -> void:
         show_damage_label(value, crit)
         )
     
-    atk_range.target_enter_range.connect(func():
-        velocity = Vector2.ZERO
-        
-        if current_state == STATE.DEAD:
-            return
-        
-        turn_to_player()
-            
-        # 攻击代码
-        if character_animation.has_animation("scml/Attacking"):
-            character_animation.play("scml/Attacking")
-        current_state = STATE.ATTACKING
-        
-        #if global_position != Master.player.marker.global_position:
-            #global_position = Master.player.marker.global_position
-        
-        )
+    atk_range.target_enter_range.connect(func():current_state = STATE.ATTACKING)
+    atk_range.target_exited_range.connect(func():current_state = STATE.PATROL)
     
-    atk_range.target_exited_range.connect(func():
-        current_state = STATE.PATROL
+    atk_cd_timer.timeout.connect(func():
+        if current_state == STATE.ATK_COOLDOWN:
+            current_state = STATE.ATTACKING
         )
     
     vision_component.target_enter_range.connect(func():
@@ -95,6 +87,8 @@ func _ready() -> void:
     buff_manager.compute()
     
     atk_cd_timer.wait_time = output_data.atk_speed
+    set_vision_range(output_data.vision)
+    set_atk_range_range(output_data.atk_range)
     
     if Master.player.get_level() >= 8:
         _level = Master.player.get_level() - 7
@@ -102,11 +96,51 @@ func _ready() -> void:
     # 设置属性 （每个敌人 ready 都是生成时）
     set_level(_level)
 
+
+func set_vision_range(_range:float) -> void:
+    $VisionComponent/CollisionShape2D.shape.radius = _range
+
+
+func set_atk_range_range(_range:float) -> void:
+    $AtkRange/CollisionShape2D.shape.radius = _range    
+
+
 func accept_damage(_value:float) -> void:
     output_data.hp -= _value
 
+
 func set_data(_data:CharacterData) -> void:
     seted_data = _data
+
+
+func attack() -> void:
+    atk_cd_timer.start()
+    velocity = Vector2.ZERO
+    
+    if current_state == STATE.DEAD:
+        return
+    
+    turn_to_player()
+        
+    # 攻击代码
+    if not range_attack:
+        if character_animation.has_animation("scml/Attacking"):
+            character_animation.play("scml/Attacking")
+    else:
+        if character_animation.has_animation("scml/Shooting"):
+            character_animation.play("scml/Shooting")
+            spawn_a_bullet()         
+    
+    current_state = STATE.ATK_COOLDOWN
+
+
+func spawn_a_bullet() -> void:
+    var _data:CharacterData = output_data.duplicate(true)
+    _data.speed = 1000
+    var _bullet:BaseBullet = Builder.build_a_base_bullet(_data, false) as BaseBullet
+    range_bullet_spwan_point.add_child(_bullet)
+    _bullet.global_position = range_bullet_spwan_point.global_position
+    _bullet.update_velocity()
 
 func set_skin() -> void:
     # 设置皮肤
@@ -117,9 +151,13 @@ func set_skin() -> void:
     var new_node = load("res://Scene/Perfabs/NonPlayCharacter/%s.tscn" % skin_name).instantiate() as OtherEnemy
     $Display.add_child(new_node)
     character_animation = new_node.animation_player
+    range_attack = new_node.range_attack
     
-    new_node.hitbox_component.buff_manager = buff_manager
-    
+    if not new_node.range_attack:
+        new_node.hitbox_component.buff_manager = buff_manager
+    else:
+        range_bullet_spwan_point = new_node.bullet_spawn_point
+
 
 func turn_to_player() -> void:
     var _dir:Vector2 = to_local(Master.player.global_position).normalized()
@@ -129,6 +167,7 @@ func turn_to_player() -> void:
         self.scale.x = 1
     elif  _dir.x < 0:
         self.scale.x = -1
+
 
 func move_to_player() -> void:
     turn_to_player()
@@ -179,6 +218,7 @@ func die() -> void:
     
     queue_free()
 
+
 func get_drop_item_position() -> Vector2:
     var _result:Vector2 = get_global_transform_with_canvas().get_origin()
     
@@ -189,10 +229,9 @@ func get_drop_item_position() -> Vector2:
         if _result.x > 500 || _result.y > 500:
             _result = _result
             break
-    # 如果已经存在，那个尝试在该坐标的上下左右再次判断，循环往复，如果坐标超过最大限制，就改变坐标为原点
-    # 最后把新坐标赋值给 _result
     
     return _result
+
 
 func is_position_occupied(_position: Vector2) -> bool:
     for occupied in Master.occupied_positions:
@@ -201,17 +240,22 @@ func is_position_occupied(_position: Vector2) -> bool:
     
     return false
 
+
 func set_level(_value:int) -> void:
     data.level = _value
     data.set_property_from_level()
     buff_manager.compute()
+
 
 func _physics_process(_delta:float) -> void:
     if current_state == STATE.PATROL:
         move_to_player()
     
     if current_state == STATE.SLEEP:
-        velocity = Vector2(1, 1)
+        velocity = Vector2.ZERO
+    
+    if current_state == STATE.ATTACKING:
+        attack()
     
     move_and_slide()
     hp_bar.value = (float(data.hp) / float(data.max_hp)) * 100.0

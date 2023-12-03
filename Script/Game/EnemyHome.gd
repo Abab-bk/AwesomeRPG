@@ -91,12 +91,13 @@ func gen_a_enemy(_temp = 0) -> void:
     
     if _current_enemy_count < min_enemy_count:
         for i in min_enemy_count - _current_enemy_count:
-            spawn_a_enemy_by_id(Master.enemys.keys().pick_random())
-            #spawn_a_enemy()
+            spawn_a_enemy_by_id(7007)
+            #spawn_a_enemy_by_id(Master.enemys.keys().pick_random())
         return
     
-    spawn_a_enemy_by_id(Master.enemys.keys().pick_random())
-    #spawn_a_enemy()
+    #spawn_a_enemy_by_id(Master.enemys.keys().pick_random())
+    spawn_a_enemy_by_id(7007)
+
 
 func spawn_a_special_enemy(_reward:Callable, _id:int) -> void:
     var _enemy_data = Master.dungeon_enemys[_id]
@@ -138,11 +139,14 @@ func spawn_a_enemy() -> void:
 func spawn_a_enemy_by_id(_id:int) -> void:
     var _enemy_data = Master.enemys[_id]
     
-    var new_enemy:Enemy = Builder.build_a_enemy()
+    var new_enemy:Enemy = Builder.build_a_enemy() as Enemy
     
     new_enemy.skin_name = _enemy_data["skin_name"]
     
     var _data:CharacterData = CharacterData.new()
+    _data.atk_cd = _enemy_data["base_atk_cd"]
+    _data.vision = _enemy_data["base_vision"]
+    _data.atk_range = _enemy_data["base_atk_range"]
     _data.damage = _enemy_data["base_damage"]
     _data.frost_damage = _enemy_data["frost_damage"]
     _data.fire_damage = _enemy_data["fire_damage"]

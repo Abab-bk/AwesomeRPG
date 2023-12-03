@@ -19,4 +19,5 @@ func _ready() -> void:
 
 func _physics_process(_delta:float) -> void:
     velocity = global_position.direction_to(target_pos) * speed
+    look_at(target_pos)
     move_and_slide()

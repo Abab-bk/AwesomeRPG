@@ -15,7 +15,6 @@ func _ready() -> void:
         return
     name_label.text = data.name
     cost_label.text = "门票钱：%s" % str(data.need_cost)
-    # TODO: 增加 reward 文本
     reward_label.text = "奖励：%s" % Reward.get_string(data.reward_type)
     
     icon.texture = load(data.icon_path)

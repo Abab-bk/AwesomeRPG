@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx25tod3kk4rk"]
+[gd_scene load_steps=6 format=3 uid="uid://dx25tod3kk4rk"]
 
 [ext_resource type="Script" path="res://Script/Component/BulletComponent.gd" id="1_lo6st"]
 [ext_resource type="Script" path="res://Script/Component/SimpleHitBoxComponent.gd" id="2_1ynof"]
+[ext_resource type="Texture2D" uid="uid://dnxnw4s1jnegg" path="res://Assets/Characters/SkeletonArcher1/Arrow.png" id="2_sxkpx"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_y0v2e"]
-radius = 48.0937
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dqxeb"]
+size = Vector2(132, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xscup"]
 size = Vector2(102, 62)
@@ -12,13 +13,11 @@ size = Vector2(102, 62)
 [node name="BulletComponent" type="CharacterBody2D"]
 script = ExtResource("1_lo6st")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(-4, -3)
-color = Color(0.843137, 0.443137, 0.443137, 1)
-polygon = PackedVector2Array(3, -36, 60, 4, 5, 43, -40, 22)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_sxkpx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_y0v2e")
+shape = SubResource("RectangleShape2D_dqxeb")
 
 [node name="SimpleHitBoxComponent" type="Area2D" parent="."]
 script = ExtResource("2_1ynof")

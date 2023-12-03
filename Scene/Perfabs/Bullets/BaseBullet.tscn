@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dh7kufchybk3"]
+
+[ext_resource type="Script" path="res://Script/Perfabs/Bullets/BaseBullet.gd" id="1_gdyl0"]
+[ext_resource type="Script" path="res://Script/Component/HitBoxComponent.gd" id="2_3as56"]
+[ext_resource type="Texture2D" uid="uid://dnxnw4s1jnegg" path="res://Assets/Characters/SkeletonArcher1/Arrow.png" id="2_4ktcl"]
+[ext_resource type="Script" path="res://Script/Component/VisiableQueueFreeComponent.gd" id="4_rv6rc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gf8bl"]
+size = Vector2(126, 20)
+
+[node name="BaseBullet" type="CharacterBody2D"]
+script = ExtResource("1_gdyl0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4ktcl")
+
+[node name="HitBoxComponent" type="Area2D" parent="."]
+script = ExtResource("2_3as56")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+shape = SubResource("RectangleShape2D_gf8bl")
+
+[node name="VisiableQueueFreeComponent" type="VisibleOnScreenNotifier2D" parent="." node_paths=PackedStringArray("actor")]
+scale = Vector2(32, 5.07936)
+script = ExtResource("4_rv6rc")
+actor = NodePath("..")

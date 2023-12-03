@@ -242,6 +242,9 @@ class Enemys:
     var name: String
     var skin_name: String
     var hp: float
+    var base_vision: float
+    var base_atk_range: float
+    var base_atk_cd: float
     var base_damage: float
     var fire_damage: float
     var frost_damage: float
@@ -258,6 +261,9 @@ class Enemys:
         self.name = _json_["name"]
         self.skin_name = _json_["skin_name"]
         self.hp = _json_["hp"]
+        self.base_vision = _json_["base_vision"]
+        self.base_atk_range = _json_["base_atk_range"]
+        self.base_atk_cd = _json_["base_atk_cd"]
         self.base_damage = _json_["base_damage"]
         self.fire_damage = _json_["fire_damage"]
         self.frost_damage = _json_["frost_damage"]
