@@ -90,12 +90,12 @@ func gen_a_enemy(_temp = 0) -> void:
     
     if _current_enemy_count < min_enemy_count:
         for i in min_enemy_count - _current_enemy_count:
-            spawn_a_enemy_by_id(7007)
-            #spawn_a_enemy_by_id(Master.enemys.keys().pick_random())
+            #spawn_a_enemy_by_id(7007)
+            spawn_a_enemy_by_id(Master.enemys.keys().pick_random())
         return
     
-    #spawn_a_enemy_by_id(Master.enemys.keys().pick_random())
-    spawn_a_enemy_by_id(7007)
+    spawn_a_enemy_by_id(Master.enemys.keys().pick_random())
+    #spawn_a_enemy_by_id(7007)
 
 
 func spawn_a_special_enemy(_reward:Callable, _id:int) -> void:

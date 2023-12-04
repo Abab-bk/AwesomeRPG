@@ -209,7 +209,6 @@ func die() -> void:
         # 爆金币了
         var _new_money_key = Master.moneys.keys().pick_random()
         var _random_value:int = randi_range(1, 10)
-        # TODO: get_money
         EventBus.get_money.emit(_new_money_key, _random_value)
     
     var _drop_potion:bool = [true, false].pick_random()

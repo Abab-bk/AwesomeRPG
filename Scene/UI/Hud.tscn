@@ -531,7 +531,7 @@ texture_normal = ExtResource("38_y4k8f")
 texture_pressed = ExtResource("38_44uhx")
 stretch_mode = 5
 
-[node name="PropertyArrow" type="Control" parent="."]
+[node name="LevelUpArrow" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -642,3 +642,12 @@ offset_left = 24.0
 offset_top = 72.0
 offset_right = 595.0
 offset_bottom = 760.0
+
+[node name="PropertyChangeArrow" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

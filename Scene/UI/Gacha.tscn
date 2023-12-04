@@ -22,9 +22,6 @@ shader_parameter/attenuation = 2.03
 shader = ExtResource("6_cmsf5")
 shader_parameter/lod = 0.0
 
-[sub_resource type="Animation" id="Animation_ek36b"]
-resource_name = "appear"
-
 [sub_resource type="Animation" id="Animation_bceu7"]
 length = 0.001
 tracks/0/type = "value"
@@ -39,6 +36,9 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+
+[sub_resource type="Animation" id="Animation_ek36b"]
+resource_name = "appear"
 
 [sub_resource type="Animation" id="Animation_o6km8"]
 resource_name = "show_blur"
@@ -99,15 +99,24 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="Cover" type="TextureRect" parent="Panel/VBoxContainer/VBoxContainer"]
+[node name="ColorRect" type="ColorRect" parent="Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.12549, 0.113725, 0.141176, 1)
+
+[node name="Cover" type="TextureRect" parent="Panel/VBoxContainer/VBoxContainer/ColorRect"]
 unique_name_in_owner = true
 layout_mode = 2
+offset_right = 1080.0
+offset_bottom = 1736.0
+size_flags_vertical = 3
 texture = ExtResource("3_u6ivm")
+expand_mode = 1
 stretch_mode = 5
 
 [node name="Panel" type="Panel" parent="Panel/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_72fni")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/VBoxContainer/Panel"]
@@ -213,3 +222,13 @@ theme_type_variation = &"EmptyBtn"
 [node name="ShowResultTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="Outline" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_type_variation = &"Outline"

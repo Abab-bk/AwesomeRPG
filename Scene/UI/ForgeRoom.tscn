@@ -196,6 +196,7 @@ layout_mode = 2
 text = "打造"
 
 [node name="SelectItem" type="MarginContainer" parent="." node_paths=PackedStringArray("forge_room")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
