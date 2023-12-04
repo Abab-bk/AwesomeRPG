@@ -11,7 +11,9 @@ enum REWARD_TYPE {
     GOLD_EQUIPMENT,
     FLY, # 飞升,
     BLUE_EQUIPMENT,
-    FRIEND
+    FRIEND,
+    GACHA_MONEY,
+    GACHA_MONEY_PART,
 }
 
 
@@ -50,6 +52,10 @@ func get_reward(_show_popup:bool = true) -> String:
             _generator.queue_free()
         REWARD_TYPE.FRIEND:
             EventBus.get_friend.emit(reward_value)
+        REWARD_TYPE.GACHA_MONEY:
+            Master.gacha_money += reward_value
+        REWARD_TYPE.GACHA_MONEY_PART:
+            Master.gacha_money_part += reward_value
     
     var _return_text:String = ""
     
@@ -62,6 +68,36 @@ func get_reward(_show_popup:bool = true) -> String:
         EventBus.show_popup.emit("获得奖励！", "获得奖励：%s" % _return_text)
     
     return _return_text
+
+
+static func get_reward_icon_path(_type:REWARD_TYPE) -> String:
+    match _type:
+        REWARD_TYPE.COINS:
+            return "res://Assets/UI/Icons/Coins.svg"
+        REWARD_TYPE.XP:
+            return "res://Assets/UI/Icons/Coins.svg"
+        REWARD_TYPE.FLY:
+            return "res://Assets/UI/Icons/Coins.svg"
+        REWARD_TYPE.MONEY_BLUE:
+            return "res://Assets/UI/Icons/MoneyRed.png"
+        REWARD_TYPE.MONEY_WHITE:
+            return "res://Assets/UI/Icons/MoneyWhite.png"
+        REWARD_TYPE.MONEY_PURPLE:
+            return "res://Assets/UI/Icons/MoneyPurple.png"
+        REWARD_TYPE.MONEY_YELLOW:
+            return "res://Assets/UI/Icons/MoneyYellow.png"
+        REWARD_TYPE.GOLD_EQUIPMENT:
+            return "res://Assets/Texture/Icons/Sword/Sword1.png"
+        REWARD_TYPE.BLUE_EQUIPMENT:
+            return "res://Assets/Texture/Icons/Sword/Sword1.png"
+        REWARD_TYPE.FRIEND:
+            return "res://Assets/Characters/Friends/DarkElf2/Head.png"
+        REWARD_TYPE.GACHA_MONEY:
+            return "res://Assets/UI/Icons/GachaMoney.png"
+        REWARD_TYPE.GACHA_MONEY_PART:
+            return "res://Assets/UI/Icons/GachaMoneyPart.png"
+    
+    return "res://icon.svg"
 
 
 static func get_string(_type, _reward_value = 1) -> String:
@@ -88,5 +124,9 @@ static func get_string(_type, _reward_value = 1) -> String:
             _result = "稀有装备"
         REWARD_TYPE.FRIEND:
             _result = Master.friends[_reward_value]["name"]
+        REWARD_TYPE.GACHA_MONEY:
+            _result = "神恩石"
+        REWARD_TYPE.GACHA_MONEY_PART:
+            _result = "神恩石碎片"
         
     return _result

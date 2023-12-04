@@ -4,6 +4,8 @@ extends Control
 @onready var color_rect:ColorRect = $SelectFriend
 @onready var friends_inventory_ui:Control = %FriendsInventory
 
+#@onready var all_friends:GridContainer = %AllFriends
+
 var current_friends:Dictionary = {}:
     set(v):
         current_friends = v
@@ -60,6 +62,7 @@ func save() -> void:
 func update_ui() -> void:
     for i in items.get_children():
         i.update_ui()
+
 
 func show_select_friends_panel(_target_item_ui:Panel) -> void:
     friends_inventory_ui.target_item_ui = _target_item_ui

@@ -20,7 +20,8 @@ theme = ExtResource("1_a1mb7")
 theme_override_constants/separation = -20
 script = ExtResource("1_50dhi")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Icon" type="TextureRect" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 texture = ExtResource("1_718o2")

@@ -1,18 +1,12 @@
 extends Panel
 
-enum REWARD_TYPE {
-    COINS,
-}
-
 @export var current_day:int
-@export var reward_type:REWARD_TYPE
-@export var reward_value:int
+@export var reward_list:Array[Reward] = []
+
+@onready var rewards:HBoxContainer = %Rewards
 
 @onready var title_label:Label = %TitleLabel
-@onready var reward_label:Label = %RewardLabel
 @onready var check_btn:Button = %CheckBtn
-
-@onready var icon:TextureRect = %Icon
 
 @export var checked:bool = false
 
@@ -47,11 +41,6 @@ func _ready() -> void:
     
     title_label.text = "第 %s 天" % str(current_day + 1)
     target_time = TimeManager.get_current_time_resource() as TimeResource
-    reward_label.text = "x%s" % str(reward_value)
-    
-    match reward_type:
-        REWARD_TYPE.COINS:
-            icon.texture = load("res://Assets/UI/Icons/Coins.svg")
     
     for i in current_day:
         target_time = target_time.get_next_day_time()
@@ -59,9 +48,17 @@ func _ready() -> void:
     if checked:
         check_btn.hide()
 
+func update_ui() -> void:
+    for i in rewards.get_children():
+        i.queue_free()
+    
+    for i in reward_list:
+        var _n = Builder.build_a_reward_item_ui(i)
+        rewards.add_child(_n)
+        _n.update_ui(i)
+
 
 func get_reward() -> void:
-    match reward_type:
-        REWARD_TYPE.COINS:
-            Master.coins += reward_value
-            EventBus.show_popup.emit("签到成功", "获得奖励：%s 金币" % str(reward_value))
+    for i in reward_list:
+        i.get_reward(true)
+    #EventBus.show_popup.emit("签到成功", "获得奖励：%s %s" % str(reward.reward_value, Reward.get_string(reward.type)))

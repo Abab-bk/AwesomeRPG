@@ -79,6 +79,8 @@ var moneys:Dictionary = {
     "purple": 0,
     "yellow": 0,
 }
+var gacha_money:int = 0
+var gacha_money_part:int = 0
 
 var last_checkin_time:TimeResource = TimeResource.new(0, 0, 0)
 var last_leave_time:TimeResource = TimeResource.new(0, 0, 0)
@@ -108,6 +110,8 @@ var gold_buffs:Dictionary
 var gold_names:Array
 var friends:Dictionary
 var gachas:Dictionary
+var days_checkin:Dictionary
+var online_rewards:Dictionary
 
 
 var unlocked_functions:Dictionary = {
@@ -144,6 +148,32 @@ func get_player_level_up_info() -> Dictionary:
     _result = _form_data.level_up()
     
     return _result
+
+
+func get_days_reward_list_by_id(_id:int) -> Array[Reward]:
+    var _list:Array[Reward] = []
+    var _data = days_checkin[_id]
+    
+    for i in _data["reward_list"]:
+        var _reward:Reward = Reward.new()
+        _reward.type = i["type"]
+        _reward.reward_value = i["reward_value"]
+        _list.append(_reward)
+    
+    return _list
+
+
+func get_online_reward_list_by_id(_id:int) -> Array[Reward]:
+    var _list:Array[Reward] = []
+    var _data = online_rewards[_id]
+    
+    for i in _data["reward_list"]:
+        var _reward:Reward = Reward.new()
+        _reward.type = i["type"]
+        _reward.reward_value = i["reward_value"]
+        _list.append(_reward)
+    
+    return _list
 
 
 func get_base_gacha_pool() -> GachaPool:
@@ -482,6 +512,8 @@ func _ready():
     dungeon_enemys = config.TbDungeonEnemy.get_data_map()
     friends = config.TbFriends.get_data_map()
     gachas = config.TbGachas.get_data_map()
+    days_checkin = config.TbDaysReward.get_data_map()
+    online_rewards = config.TbOnlineReward.get_data_map()
     #ability_trees = config.TbSkills.get_data_map()
     #goods = config.TbGoods.get_data_map()
 

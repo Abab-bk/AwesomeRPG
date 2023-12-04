@@ -1,17 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq05nbfsn08h2"]
+[gd_scene load_steps=4 format=3 uid="uid://dnwohols2iimp"]
 
-[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="1_k8v5u"]
-[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_y0ssf"]
-[ext_resource type="Script" path="res://Script/UI/CheckInItem.gd" id="2_qyhie"]
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_p18m2"]
+[ext_resource type="Script" path="res://Script/UI/OnlineRewardItem.gd" id="2_82417"]
+[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="2_wnv5p"]
 
-[node name="CheckInItem" type="Panel"]
+[node name="OnlineRewardItem" type="Panel"]
 custom_minimum_size = Vector2(0, 400)
 anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
-theme = ExtResource("1_y0ssf")
+theme = ExtResource("1_p18m2")
 theme_type_variation = &"SubPanel"
-script = ExtResource("2_qyhie")
+script = ExtResource("2_82417")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -36,7 +36,7 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 text = "第一天"
-label_settings = ExtResource("1_k8v5u")
+label_settings = ExtResource("2_wnv5p")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2

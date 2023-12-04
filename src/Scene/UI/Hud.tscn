@@ -312,6 +312,14 @@ size_flags_horizontal = 3
 layout_mode = 2
 target = "coins"
 
+[node name="CoinsPanel2" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("18_y3jei")]
+layout_mode = 2
+target = "gacha_money"
+
+[node name="CoinsPanel3" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("18_y3jei")]
+layout_mode = 2
+target = "gacha_money_part"
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/TopBar/TopBar/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/HBoxContainer3/MarginContainer/VBoxContainer"]
 layout_mode = 2
 

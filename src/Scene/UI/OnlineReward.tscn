@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://divybbcmap6ys"]
+
+[ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="1_rovgb"]
+[ext_resource type="Script" path="res://Script/UI/OnlineReward.gd" id="1_tqwku"]
+[ext_resource type="PackedScene" uid="uid://dnwohols2iimp" path="res://Scene/UI/OnlineRewardItem.tscn" id="2_k85c2"]
+
+[node name="OnlineReward" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tqwku")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"SharpPanel"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleBar" parent="Panel/VBoxContainer" instance=ExtResource("1_rovgb")]
+layout_mode = 2
+title_text = "奖励"
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Items" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="OnlineRewardItem" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/Items" instance=ExtResource("2_k85c2")]
+unique_name_in_owner = true
+layout_mode = 2

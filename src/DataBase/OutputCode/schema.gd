@@ -70,6 +70,10 @@ enum RewardTypeReward
     BLUE_EQUIPMENT = 9,
     ## 伙伴
     FRIEND = 10,
+    ## 神恩石
+    GACHA_MONEY = 11,
+    ## 神恩石碎片
+    GACHA_MONEY_PART = 12,
 }
 
 
@@ -529,6 +533,33 @@ class RewardReward:
         self.reward_value = _json_["reward_value"]
 
 
+class DayReward:
+    ## 这是id
+    var id: int
+    ## 奖励列表
+    var reward_list: Array[RewardReward]
+
+    func _init(_json_) -> void:
+        self.id = _json_["id"]
+        self.reward_list = []
+        for _ele in _json_["reward_list"]: var _e: RewardReward; _e = RewardReward.new(_ele); self.reward_list.append(_e)
+
+
+class OnlineReward:
+    ## 这是id
+    var id: int
+    ## 需要时间（秒）
+    var need_time: int
+    ## 奖励列表
+    var reward_list: Array[RewardReward]
+
+    func _init(_json_) -> void:
+        self.id = _json_["id"]
+        self.need_time = _json_["need_time"]
+        self.reward_list = []
+        for _ele in _json_["reward_list"]: var _e: RewardReward; _e = RewardReward.new(_ele); self.reward_list.append(_e)
+
+
 class BuffsTbBuffs:
     var _data_list: Array[Buffs]
     var _data_map: Dictionary
@@ -886,6 +917,48 @@ class GachasTbGachas:
         return self._data_map.get(key)
 
 
+class DaysRewardTbDaysReward:
+    var _data_list: Array[DayReward]
+    var _data_map: Dictionary
+    
+    func _init(_json_) -> void:
+        for _json2_ in _json_:
+            var _v: DayReward
+            _v = DayReward.new(_json2_)
+            self._data_list.append(_v)
+            self._data_map[_v.id] = _v
+
+    func get_data_list() -> Array[DayReward]:
+        return self._data_list
+
+    func get_data_map() -> Dictionary:
+        return self._data_map
+
+    func get_item(key) -> DayReward:
+        return self._data_map.get(key)
+
+
+class OnlineRewardTbOnlineReward:
+    var _data_list: Array[OnlineReward]
+    var _data_map: Dictionary
+    
+    func _init(_json_) -> void:
+        for _json2_ in _json_:
+            var _v: OnlineReward
+            _v = OnlineReward.new(_json2_)
+            self._data_list.append(_v)
+            self._data_map[_v.id] = _v
+
+    func get_data_list() -> Array[OnlineReward]:
+        return self._data_list
+
+    func get_data_map() -> Dictionary:
+        return self._data_map
+
+    func get_item(key) -> OnlineReward:
+        return self._data_map.get(key)
+
+
 class CfgTables:
     var TbBuffs: BuffsTbBuffs
     var TbAffix: AffixsTbAffix
@@ -904,6 +977,8 @@ class CfgTables:
     var TbDungeonEnemy: DungeonEnemyTbDungeonEnemy
     var TbFriends: FriendsTbFriends
     var TbGachas: GachasTbGachas
+    var TbDaysReward: DaysRewardTbDaysReward
+    var TbOnlineReward: OnlineRewardTbOnlineReward
     
     func _init(loader: Callable) -> void:
         self.TbBuffs = BuffsTbBuffs.new(loader.call('buffs_tbbuffs'))
@@ -923,4 +998,6 @@ class CfgTables:
         self.TbDungeonEnemy = DungeonEnemyTbDungeonEnemy.new(loader.call('dungeonenemy_tbdungeonenemy'))
         self.TbFriends = FriendsTbFriends.new(loader.call('friends_tbfriends'))
         self.TbGachas = GachasTbGachas.new(loader.call('gachas_tbgachas'))
+        self.TbDaysReward = DaysRewardTbDaysReward.new(loader.call('daysreward_tbdaysreward'))
+        self.TbOnlineReward = OnlineRewardTbOnlineReward.new(loader.call('onlinereward_tbonlinereward'))
 

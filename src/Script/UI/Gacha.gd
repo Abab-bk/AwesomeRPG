@@ -44,6 +44,10 @@ func _ready() -> void:
 
 
 func start_gacha(_count:int) -> void:
+    if Master.gacha_money < _count:
+        EventBus.new_tips.emit("神恩石不足")
+        return
+    
     animation.show()
     blur.hide()
     show_result_timer.start()
@@ -62,6 +66,7 @@ func start_gacha(_count:int) -> void:
 
 func pull_gacha(_count:int) -> void:
     for i in _count:
+        Master.gacha_money -= 1
         animation.show()
         var _get_reward:Reward = gacha_pool.reward_list.pick_random() as Reward
         var _desc:String = _get_reward.get_reward(false)

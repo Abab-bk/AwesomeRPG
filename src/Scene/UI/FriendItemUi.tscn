@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://3x5uy24h2ns4"]
+
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_0ocko"]
+[ext_resource type="Script" path="res://Script/UI/FriendItemUi.gd" id="1_3udbd"]
+[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="2_5vl1q"]
+[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="2_uqelw"]
+
+[sub_resource type="Theme" id="Theme_wwbin"]
+
+[node name="FriendItemUI" type="Panel"]
+custom_minimum_size = Vector2(300, 600)
+theme = ExtResource("1_0ocko")
+theme_type_variation = &"SubPanel"
+script = ExtResource("1_3udbd")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("2_uqelw")
+stretch_mode = 5
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "死神"
+label_settings = ExtResource("2_5vl1q")
+horizontal_alignment = 1
+
+[node name="RareLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "SSR"
+label_settings = ExtResource("2_5vl1q")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_wwbin")
+theme_type_variation = &"EmptyBtn"

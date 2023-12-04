@@ -56,34 +56,27 @@ theme_override_constants/separation = 30
 
 [node name="CheckInItem" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/Items" instance=ExtResource("3_qp3ae")]
 layout_mode = 2
-reward_value = 100
 
 [node name="CheckInItem2" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/Items" instance=ExtResource("3_qp3ae")]
 layout_mode = 2
 current_day = 1
-reward_value = 100
 
 [node name="CheckInItem3" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/Items" instance=ExtResource("3_qp3ae")]
 layout_mode = 2
 current_day = 2
-reward_value = 100
 
 [node name="CheckInItem4" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/Items" instance=ExtResource("3_qp3ae")]
 layout_mode = 2
 current_day = 3
-reward_value = 100
 
 [node name="CheckInItem5" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/Items" instance=ExtResource("3_qp3ae")]
 layout_mode = 2
 current_day = 4
-reward_value = 100
 
 [node name="CheckInItem6" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/Items" instance=ExtResource("3_qp3ae")]
 layout_mode = 2
 current_day = 5
-reward_value = 100
 
 [node name="CheckInItem7" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/Items" instance=ExtResource("3_qp3ae")]
 layout_mode = 2
 current_day = 6
-reward_value = 100

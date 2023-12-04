@@ -48,20 +48,24 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="Items" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="TabContainer" type="TabContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+tabs_visible = false
+
+[node name="Items" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/TabContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="FriendsItem" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/Items" instance=ExtResource("3_u7c6c")]
+[node name="FriendsItem" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Items" instance=ExtResource("3_u7c6c")]
 layout_mode = 2
 id = 1
 
-[node name="FriendsItem2" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/Items" instance=ExtResource("3_u7c6c")]
+[node name="FriendsItem2" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Items" instance=ExtResource("3_u7c6c")]
 layout_mode = 2
 id = 2
 
-[node name="FriendsItem3" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/Items" instance=ExtResource("3_u7c6c")]
+[node name="FriendsItem3" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Items" instance=ExtResource("3_u7c6c")]
 layout_mode = 2
 id = 3
 

@@ -15,6 +15,11 @@ const trail:String = "res://Scene/Perfabs/Others/Trail.tscn"
 const animation_vfx:String = "res://Scene/Perfabs/Vfx/AnimationVFX.tscn"
 
 
+func build_a_reward_item_ui(_reward:Reward) -> Panel:
+    var _n:Panel = load("res://Scene/UI/RewardItemUi.tscn").instantiate()
+    return _n
+
+
 func build_a_base_bullet(_damage_data:CharacterData, _is_player_hitbox:bool) -> BaseBullet:
     var _n:BaseBullet = load("res://Scene/Perfabs/Bullets/BaseBullet.tscn").instantiate()
     

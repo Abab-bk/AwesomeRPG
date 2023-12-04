@@ -1,11 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://car5dwl4qr8w"]
+[gd_scene load_steps=17 format=3 uid="uid://car5dwl4qr8w"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_ncvqo"]
 [ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="2_e0w02"]
 [ext_resource type="Script" path="res://Script/UI/Gacha.gd" id="2_wktcx"]
 [ext_resource type="Texture2D" uid="uid://b2leble1qth1l" path="res://Assets/Texture/Images/GachaCover/RaperManGachaCover.png" id="3_u6ivm"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Gacha.gdshader" id="5_6dmos"]
+[ext_resource type="Texture2D" uid="uid://bmv7cbcuykdsc" path="res://Assets/UI/Icons/GachaMoney.png" id="5_svgb7"]
+[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="5_tphlq"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Blur.gdshader" id="6_cmsf5"]
+[ext_resource type="LabelSettings" uid="uid://bhyi4hqpwnqxh" path="res://Assets/LabelSetting/UITitleGold.tres" id="6_d2yum"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72fni"]
 bg_color = Color(0.133333, 0.129412, 0.121569, 1)
@@ -156,7 +159,38 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(388, 0)
 layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Pull1Btn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Pull1Btn/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+texture = ExtResource("5_svgb7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Pull1Btn/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "X1 "
+label_settings = ExtResource("6_d2yum")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Pull1Btn/HBoxContainer"]
+layout_mode = 2
 text = "召唤一次"
+label_settings = ExtResource("5_tphlq")
 
 [node name="Control" type="Control" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
@@ -166,7 +200,38 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 custom_minimum_size = Vector2(388, 0)
 layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Pull10Btn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Pull10Btn/HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+texture = ExtResource("5_svgb7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Pull10Btn/HBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "X10 "
+label_settings = ExtResource("6_d2yum")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/Pull10Btn/HBoxContainer"]
+layout_mode = 2
 text = "召唤十次"
+label_settings = ExtResource("5_tphlq")
 
 [node name="Animation" type="ColorRect" parent="."]
 visible = false
