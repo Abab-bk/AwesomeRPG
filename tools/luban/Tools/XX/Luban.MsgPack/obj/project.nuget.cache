@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "CoQhe2CouUhFtI1q2n/gz7FJnjxJSdtW/tI1ZzfhLb4D7AnibiEp/HKfQNMWUIPjr7FmdKSALqPwRN4ihGDXPg==",
+  "success": true,
+  "projectFilePath": "D:\\Dev\\Godot\\AwesomeRPG\\DataBase\\Tools\\XX\\Luban.MsgPack\\Luban.MsgPack.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\BTOTHER\\.nuget\\packages\\messagepack\\2.6.100-alpha\\messagepack.2.6.100-alpha.nupkg.sha512",
+    "C:\\Users\\BTOTHER\\.nuget\\packages\\messagepack.annotations\\2.6.100-alpha\\messagepack.annotations.2.6.100-alpha.nupkg.sha512",
+    "C:\\Users\\BTOTHER\\.nuget\\packages\\microsoft.net.stringtools\\17.4.0\\microsoft.net.stringtools.17.4.0.nupkg.sha512",
+    "C:\\Users\\BTOTHER\\.nuget\\packages\\nlog\\5.2.2\\nlog.5.2.2.nupkg.sha512",
+    "C:\\Users\\BTOTHER\\.nuget\\packages\\scriban\\5.7.0\\scriban.5.7.0.nupkg.sha512",
+    "C:\\Users\\BTOTHER\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\BTOTHER\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

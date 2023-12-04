@@ -1,0 +1,21 @@
+[remap]
+
+importer="importer.scml"
+type="PackedScene"
+uid="uid://dxpvdoclvlhva"
+path="res://.godot/imported/Animations.scml-030d79a69ab65d7cf4bcba23064c41ef.scn"
+
+[deps]
+
+source_file="res://Assets/Characters/Friends/DarkElf3/Animations.scml"
+dest_files=["res://.godot/imported/Animations.scml-030d79a69ab65d7cf4bcba23064c41ef.scn"]
+
+[params]
+
+playback_speed=5
+z_as_relative=true
+loop_animations=1
+loop_wrap_interpolation=true
+optimize_for_blends=true
+rest_pose_animation="scml/Attacking"
+reparenting_solution="instance per parent"

@@ -1,0 +1,15 @@
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\Luban\Templates\lua-bin\schema.sbn
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\Luban\Templates\lua-lua\schema.sbn
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\Luban\Luban.Lua.deps.json
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\Luban\Luban.Lua.dll
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\Luban\Luban.Lua.pdb
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.Lua\obj\Release\net7.0\Luban.Lua.csproj.AssemblyReference.cache
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.Lua\obj\Release\net7.0\Luban.Lua.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.Lua\obj\Release\net7.0\Luban.Lua.AssemblyInfoInputs.cache
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.Lua\obj\Release\net7.0\Luban.Lua.AssemblyInfo.cs
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.Lua\obj\Release\net7.0\Luban.Lua.csproj.CoreCompileInputs.cache
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.Lua\obj\Release\net7.0\Luban.Lua.csproj.CopyComplete
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.Lua\obj\Release\net7.0\Luban.Lua.dll
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.Lua\obj\Release\net7.0\refint\Luban.Lua.dll
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.Lua\obj\Release\net7.0\Luban.Lua.pdb
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.Lua\obj\Release\net7.0\ref\Luban.Lua.dll

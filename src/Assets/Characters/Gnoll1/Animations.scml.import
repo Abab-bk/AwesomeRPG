@@ -1,0 +1,21 @@
+[remap]
+
+importer="importer.scml"
+type="PackedScene"
+uid="uid://cpnawsgqw7h1g"
+path="res://.godot/imported/Animations.scml-800e5268c3941c94fa4e9112a4b9e352.scn"
+
+[deps]
+
+source_file="res://Assets/Characters/Gnoll1/Animations.scml"
+dest_files=["res://.godot/imported/Animations.scml-800e5268c3941c94fa4e9112a4b9e352.scn"]
+
+[params]
+
+playback_speed=5
+z_as_relative=true
+loop_animations=1
+loop_wrap_interpolation=true
+optimize_for_blends=true
+rest_pose_animation="scml/Attacking"
+reparenting_solution="instance per parent"

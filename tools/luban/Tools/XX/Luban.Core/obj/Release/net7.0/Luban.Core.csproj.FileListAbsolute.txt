@@ -1,0 +1,12 @@
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\Luban\Luban.Core.deps.json
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\Luban\Luban.Core.dll
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\Luban\Luban.Core.pdb
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.Core\obj\Release\net7.0\Luban.Core.csproj.AssemblyReference.cache
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.Core\obj\Release\net7.0\Luban.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.Core\obj\Release\net7.0\Luban.Core.AssemblyInfoInputs.cache
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.Core\obj\Release\net7.0\Luban.Core.AssemblyInfo.cs
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.Core\obj\Release\net7.0\Luban.Core.csproj.CoreCompileInputs.cache
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.Core\obj\Release\net7.0\Luban.Core.dll
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.Core\obj\Release\net7.0\refint\Luban.Core.dll
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.Core\obj\Release\net7.0\Luban.Core.pdb
+D:\Dev\Godot\AwesomeRPG\DataBase\Tools\XX\Luban.Core\obj\Release\net7.0\ref\Luban.Core.dll

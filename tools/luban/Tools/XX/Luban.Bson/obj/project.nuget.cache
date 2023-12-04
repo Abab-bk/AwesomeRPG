@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "v5B7LuIdSXz7GhRsMEEwFxigBcn9iOcRd2xbcNCfZcPE5EW9dCeGrq13gBPH4ry1FeueBzSiZYI128S+NdTkRQ==",
+  "success": true,
+  "projectFilePath": "D:\\Dev\\Godot\\AwesomeRPG\\DataBase\\Tools\\XX\\Luban.Bson\\Luban.Bson.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\BTOTHER\\.nuget\\packages\\newtonsoft.json\\12.0.1\\newtonsoft.json.12.0.1.nupkg.sha512",
+    "C:\\Users\\BTOTHER\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
+    "C:\\Users\\BTOTHER\\.nuget\\packages\\nlog\\5.2.2\\nlog.5.2.2.nupkg.sha512",
+    "C:\\Users\\BTOTHER\\.nuget\\packages\\scriban\\5.7.0\\scriban.5.7.0.nupkg.sha512"
+  ],
+  "logs": []
+}
