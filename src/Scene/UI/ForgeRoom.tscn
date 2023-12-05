@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://702o3tls624e"]
+[gd_scene load_steps=14 format=3 uid="uid://702o3tls624e"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_jgehe"]
 [ext_resource type="Texture2D" uid="uid://pd45atcqjjfu" path="res://Assets/UI/Texture/TitleBar.png" id="1_q044c"]
@@ -8,6 +8,7 @@
 [ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="3_spcq0"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="5_b0m8w"]
 [ext_resource type="PackedScene" uid="uid://by1vhdyin8n8" path="res://Scene/UI/ForgeAffix.tscn" id="7_j3gyy"]
+[ext_resource type="PackedScene" uid="uid://to6wvbxby0e3" path="res://Scene/UI/CoinsPanel.tscn" id="8_t1ta8"]
 [ext_resource type="Script" path="res://Script/UI/SelectItem.gd" id="9_stcic"]
 [ext_resource type="PackedScene" uid="uid://bbs8ucocbh5vk" path="res://Scene/UI/CostItem.tscn" id="9_x86y3"]
 [ext_resource type="PackedScene" uid="uid://bbp1iqow5k0b3" path="res://Scene/UI/ItemToolTip.tscn" id="10_jdoih"]
@@ -30,10 +31,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 200
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 200
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_bottom = 150
 
 [node name="Panel" type="Panel" parent="Content"]
 layout_mode = 2
@@ -57,7 +56,7 @@ size_flags_vertical = 3
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 30
+theme_override_constants/margin_bottom = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2"]
 layout_mode = 2
@@ -71,6 +70,7 @@ tabs_visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 40
+alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer"]
 layout_mode = 2
@@ -124,12 +124,11 @@ label_settings = ExtResource("3_spcq0")
 [node name="VBoxContainer2" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/Affixs"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+theme_override_constants/separation = 50
 
 [node name="PreAffixs" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/Affixs/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_constants/separation = 10
 
 [node name="ForgeAffix" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/Affixs/VBoxContainer2/PreAffixs" instance=ExtResource("7_j3gyy")]
@@ -144,7 +143,6 @@ layout_mode = 2
 [node name="BufAffixs" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/Affixs/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
 theme_override_constants/separation = 10
 
 [node name="ForgeAffix" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/Affixs/VBoxContainer2/BufAffixs" instance=ExtResource("7_j3gyy")]
@@ -159,32 +157,56 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "消耗"
 label_settings = ExtResource("3_spcq0")
 
-[node name="MarginContainer" type="MarginContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_bottom = 80
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 20
 
-[node name="Cost1" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("9_x86y3")]
+[node name="Cost1" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("9_x86y3")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Cost2" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("9_x86y3")]
+[node name="Cost2" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("9_x86y3")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Cost3" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("9_x86y3")]
+[node name="Cost3" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer" instance=ExtResource("9_x86y3")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="CoinsPanel" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("8_t1ta8")]
+layout_mode = 2
+target = "moneys[white]"
+
+[node name="CoinsPanel2" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("8_t1ta8")]
+layout_mode = 2
+target = "moneys[blue]"
+
+[node name="CoinsPanel3" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("8_t1ta8")]
+layout_mode = 2
+target = "moneys[purple]"
+
+[node name="CoinsPanel4" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer/HBoxContainer" instance=ExtResource("8_t1ta8")]
+layout_mode = 2
+target = "moneys[yellow]"
 
 [node name="MarginContainer" type="MarginContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer"]
 layout_mode = 2

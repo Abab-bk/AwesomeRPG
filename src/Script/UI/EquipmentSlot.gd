@@ -32,6 +32,8 @@ func _ready() -> void:
             if item != null:
                 # 加入背包原来的装备
                 EventBus.add_item.emit(item)
+                # 卸下原来的装备：
+                EventBus.equipment_down.emit(current_equipment_type, item)
             
             set_item(_item)
             EventBus.change_item_tooltip_state.emit(null)

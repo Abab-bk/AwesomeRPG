@@ -17,38 +17,40 @@ custom_minimum_size = Vector2(200, 0)
 offset_right = 222.0
 offset_bottom = 58.0
 theme = ExtResource("1_a1mb7")
-theme_override_constants/separation = -20
 script = ExtResource("1_50dhi")
 
-[node name="Icon" type="TextureRect" parent="."]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-texture = ExtResource("1_718o2")
-expand_mode = 1
-stretch_mode = 6
-
-[node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Panel" type="Panel" parent="MarginContainer"]
+[node name="Panel" type="Panel" parent="."]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"BlackPanel"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="Panel/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+texture = ExtResource("1_718o2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/HBoxContainer/MarginContainer"]
+layout_mode = 2
 theme_override_constants/margin_right = 10
 
-[node name="CoinsLabel" type="Label" parent="MarginContainer/Panel/MarginContainer"]
+[node name="CoinsLabel" type="Label" parent="Panel/HBoxContainer/MarginContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

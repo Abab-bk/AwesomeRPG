@@ -79,7 +79,8 @@ func add_buff_list(_buff_list:Array[FlowerBaseBuff]) -> void:
     for _buff in _buff_list:
         _buff.origin_data = compute_data
         _buff.output_data = output_data
-        compute_ok.connect(_buff.update_output_data.bind(output_data))
+        if not is_connected("compute_ok", _buff.update_output_data.bind(output_data)):
+            compute_ok.connect(_buff.update_output_data.bind(output_data))
     
     buff_list.append_array(_buff_list)
     compute()
