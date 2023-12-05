@@ -17,7 +17,7 @@ func _ready() -> void:
                 change_body_sprite(load(_item.texture_path))
         )
     
-    EventBus.equipment_down_ok.connect(func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
+    EventBus.equipment_down_ok.connect(func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem, _add_item:bool):
         match _item.type:
             Const.EQUIPMENT_TYPE.头盔:
                 change_head_sprite(load("res://Assets/Characters/Warrior/Head.png"))

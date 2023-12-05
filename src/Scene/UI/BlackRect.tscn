@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://csd413be3hgxg"]
+
+[node name="BlackRect" type="ColorRect"]
+process_mode = 3
+visible = false
+modulate = Color(0.0431373, 0.0431373, 0.0431373, 0.607843)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

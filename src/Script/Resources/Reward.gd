@@ -65,6 +65,7 @@ func get_reward(_show_popup:bool = true) -> String:
         _return_text = "%s %s" % [str(reward_value), Reward.get_string(type)]        
     
     if _show_popup:
+        EventBus.show_color.emit()
         EventBus.show_popup.emit("获得奖励！", "获得奖励：%s" % _return_text)
     
     return _return_text

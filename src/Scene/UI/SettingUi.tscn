@@ -172,7 +172,8 @@ layout_mode = 2
 theme_override_constants/margin_left = 250
 theme_override_constants/margin_right = 250
 
-[node name="Button" type="Button" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer2/CdKey"]
+[node name="CdKeyBtn" type="Button" parent="Panel/VBoxContainer/MarginContainer/VBoxContainer2/CdKey"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "兑换码"

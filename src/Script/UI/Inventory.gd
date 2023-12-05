@@ -60,8 +60,10 @@ func _ready() -> void:
                 #update_ui()
             #)
     EventBus.equipment_down_ok.connect(
-        func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
-            inventory.add_item(_item)
+        func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem, _add_item:bool = true):
+            if _add_item:
+                inventory.add_item(_item)
+            
             EventBus.change_item_tooltip_state.emit(null)
             update_ui()
             )

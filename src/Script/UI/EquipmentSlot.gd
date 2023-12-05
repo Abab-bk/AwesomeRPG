@@ -20,7 +20,7 @@ signal work_ok
 @export var id:String = ""
 
 func _ready() -> void:
-    EventBus.equipment_down_ok.connect(func(_type, _item):
+    EventBus.equipment_down_ok.connect(func(_type, _item, _add_item):
         if current_equipment_type == _type:
             item = null
         )
@@ -33,7 +33,7 @@ func _ready() -> void:
                 # 加入背包原来的装备
                 EventBus.add_item.emit(item)
                 # 卸下原来的装备：
-                EventBus.equipment_down.emit(current_equipment_type, item)
+                EventBus.equipment_down.emit(current_equipment_type, item, false)
             
             set_item(_item)
             EventBus.change_item_tooltip_state.emit(null)

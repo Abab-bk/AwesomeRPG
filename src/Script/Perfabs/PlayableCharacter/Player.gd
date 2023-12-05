@@ -260,6 +260,40 @@ func euipment_up(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
     EventBus.equipment_up_ok.emit(_type, _item)
 
 
+func equipment_down(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem, _add_item:bool) -> void:
+    var _inentorry = Master.player_inventory as Inventory
+    if _inentorry.items.size() >= _inentorry.size:
+        EventBus.new_tips.emit("背包已满")
+        return
+    
+    compute_data.quipments[_type] = null
+    
+    var _temp:Array[FlowerBaseBuff] = []
+    
+    var _main_buff:FlowerBaseBuff = _item.main_buffs.buff
+    
+    _temp.append(_main_buff)
+    
+    for i in _item.pre_affixs:
+        _temp.append(i.buff)
+    for i in _item.buf_affix:
+        _temp.append(i.buff)
+    
+    flower_buff_manager.remove_buff_list(_temp)
+    
+    print("移除装备")
+    
+    match _item.type:
+        Const.EQUIPMENT_TYPE.头盔:
+            change_head_sprite(load("res://Assets/Characters/Warrior/Head.png"))
+        Const.EQUIPMENT_TYPE.武器:
+            change_weapons_sprite(load("res://Assets/Characters/Warrior/Weapon.png"))
+        Const.EQUIPMENT_TYPE.胸甲:
+            change_body_sprite(load("res://Assets/Characters/Warrior/Body.png"))
+    
+    EventBus.equipment_down_ok.emit(_type, _item, _add_item)
+
+
 func merge_two_dic(_dic_1:Dictionary, _dic_2:Dictionary) -> Dictionary:
     var _result:Dictionary = {}
     
@@ -291,40 +325,6 @@ func get_buffs_info(_buff_list:Array[FlowerBaseBuff]) -> Dictionary:
             _result[j.target_property] = [output_data[j.target_property]]
     
     return _result
-
-
-func equipment_down(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem) -> void:
-    var _inentorry = Master.player_inventory as Inventory
-    if _inentorry.items.size() >= _inentorry.size:
-        EventBus.new_tips.emit("背包已满")
-        return
-    
-    compute_data.quipments[_type] = null
-    
-    var _temp:Array[FlowerBaseBuff] = []
-    
-    var _main_buff:FlowerBaseBuff = _item.main_buffs.buff
-    
-    _temp.append(_main_buff)
-    
-    for i in _item.pre_affixs:
-        _temp.append(i.buff)
-    for i in _item.buf_affix:
-        _temp.append(i.buff)
-    
-    flower_buff_manager.remove_buff_list(_temp)
-    
-    print("移除装备")
-    
-    match _item.type:
-        Const.EQUIPMENT_TYPE.头盔:
-            change_head_sprite(load("res://Assets/Characters/Warrior/Head.png"))
-        Const.EQUIPMENT_TYPE.武器:
-            change_weapons_sprite(load("res://Assets/Characters/Warrior/Weapon.png"))
-        Const.EQUIPMENT_TYPE.胸甲:
-            change_body_sprite(load("res://Assets/Characters/Warrior/Body.png"))
-    
-    EventBus.equipment_down_ok.emit(_type, _item)
 
 
 func compute_all_euipment() -> void:

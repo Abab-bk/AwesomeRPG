@@ -50,8 +50,8 @@ signal flyed
 signal get_friend(id:int)
 
 signal equipment_up(type:Const.EQUIPMENT_TYPE, item:InventoryItem)
-signal equipment_down(type:Const.EQUIPMENT_TYPE, item:InventoryItem)
-signal equipment_down_ok(type:Const.EQUIPMENT_TYPE, item:InventoryItem)
+signal equipment_down(type:Const.EQUIPMENT_TYPE, item:InventoryItem, add_item:bool)
+signal equipment_down_ok(type:Const.EQUIPMENT_TYPE, item:InventoryItem, add_item:bool)
 signal equipment_up_ok(type:Const.EQUIPMENT_TYPE, item:InventoryItem)
 
 signal changed_friends(data:Dictionary)

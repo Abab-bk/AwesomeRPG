@@ -50,7 +50,7 @@ signal backed_to_home
 
 
 @onready var skill_bar:HBoxContainer = %SkillBar
-@onready var color_rect:ColorRect = $ColorRect
+@onready var color_rect:ColorRect = $BlackRect
 
 enum PAGE {
     HOME,

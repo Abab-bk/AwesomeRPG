@@ -24,6 +24,7 @@ func _ready() -> void:
         )
     cancel_btn.pressed.connect(func():
         closed.emit()
+        EventBus.hide_color.emit()
         cancel_event.call()
         queue_free()
         )
