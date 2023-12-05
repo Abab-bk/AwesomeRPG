@@ -31,6 +31,7 @@ var closest_node_in_path:int
 
 
 var saved_datas:Dictionary
+var saved_inner_data
 var loaded:bool = false
 
 
@@ -61,16 +62,17 @@ func get_skill_node_data(_id:int) -> WorldmapNodeData:
 func add_a_skill_node(_parent_id:int, _id:int) -> void:
     var _data = get_skill_node_data(_id)
     root_item.add_node(node_pos, _parent_id, _data)
-    #saved_datas[_parent_id]["data"] = _data
+    
+    if not saved_datas.has(_parent_id):
+        saved_datas[_parent_id] = {}
+    
+    saved_datas[_parent_id]["data"] = _data
+    
     skills_ui.recalculate_map()
 
 
-func add_a_skill_node_and_pos_data(_parent_id:int, _id:int, _pos:Vector2, _data, _state:int = -100) -> void:
+func add_a_skill_node_and_pos_data(_parent_id:int, _id:int, _pos:Vector2, _data) -> void:
     root_item.add_node(_pos, _parent_id, _data)
-    
-    if _state != -100:
-        skills_ui.set_node_state(closest_path, closest_node_in_path, 1)
-    
     skills_ui.recalculate_map()
 
 
@@ -101,15 +103,11 @@ func _ready() -> void:
     
     added_node_pos.append(node_pos)
     
-    #EventBus.load_save.connect(func():
-        ##if FlowerSaver.has_key("skill_tree_data"):
-            ##saved_datas = FlowerSaver.get_data("skill_tree_data")
-            ##loaded = true
-        #if FlowerSaver.has_key("skill_tree_scene"):
-            #loaded = true
-            #talent_tree.queue_free()
-            #load_save()
-        #)
+    EventBus.load_save.connect(func():
+        if FlowerSaver.has_key("skill_tree_data"):
+            saved_datas = FlowerSaver.get_data("skill_tree_data")
+            loaded = true
+        )
     
     update_ui()
 
@@ -118,33 +116,32 @@ func _ready() -> void:
 
 
 func save() -> void:
-    #FlowerSaver.set_data("skill_tree_data", saved_datas)
-    print("保存技能树")
-    var _packer:PackedScene = PackedScene.new()
-    _packer.pack(talent_tree)
-    FlowerSaver.set_data("skill_tree_scene", _packer)
+    Tracer.info("保存技能树")
+    saved_inner_data = {
+        "state": skills_ui.get_state(),
+        "cost": skills_ui.max_unlock_cost
+    }
+    FlowerSaver.set_data("skill_tree_data", saved_datas)
+    FlowerSaver.set_data("saved_inner_data", saved_inner_data)
 
 func load_save() -> void:
     await get_tree().create_timer(2.0).timeout
-    var _new_node = FlowerSaver.get_data("skill_tree_scene").instantiate()
-    %SubViewport.add_child(_new_node)
-    _new_node.set_owner(self)
-    skills_ui = _new_node.worldmap_view
-    root_item = _new_node.root_item
     skills_ui.recalculate_map()
+    saved_datas = FlowerSaver.get_data("skill_tree_data")
+    saved_inner_data = FlowerSaver.get_data("saved_inner_data")
+    skills_ui.load_state(saved_inner_data["state"])
+    skills_ui.max_unlock_cost = saved_inner_data["cost"]
+    skills_ui.recalculate_map()
+    update_ui()
     
 
 func gen_trees_by_walker() -> void:
-    #if loaded:
-        #for _key in saved_datas.keys():
-            #var _data = saved_datas[_key]
-            #if "state" in _data:
-                #add_a_skill_node_and_pos_data(_data["node_pos"], _data["last_parent_id"], _data["id"], _data["data"], _data["state"])
-            #else:
-                #add_a_skill_node_and_pos_data(_data["node_pos"], _data["last_parent_id"], _data["id"], _data["data"])                
-        #return
-    
     if loaded:
+        for _key in saved_datas.keys():
+            var _data = saved_datas[_key]
+            add_a_skill_node_and_pos_data(_data["last_parent_id"], _data["id"], _data["node_pos"], _data["data"])
+        
+        load_save()
         return
     
     var _step_size:Vector2 = Vector2(300, 0)
@@ -171,17 +168,17 @@ func gen_trees_by_walker() -> void:
         
         # 添加节点
         var _id:int = last_parent_id + 1
-        add_a_skill_node(last_parent_id, _id)
         
         saved_datas[last_parent_id] = {
             "last_parent_id": last_parent_id,
             "id": _id,
             "node_pos": node_pos,
         }
-        
+        add_a_skill_node(last_parent_id, _id)
+                
         added_node_pos.append(node_pos)
         last_parent_id = _id
-    #save()
+    save()
 
 
 func _on_node_gui_input(_event:InputEvent, _path:NodePath, _node_in_path:int, _resource:WorldmapNodeData) -> void:
