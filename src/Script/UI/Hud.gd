@@ -106,6 +106,10 @@ func _ready() -> void:
             item_tool_tip.update_ui(true, _item2)
             )
     
+    EventBus.get_talent_point.connect(func(_count:int):
+        new_tip("获得 %s 技能点" % str(_count))
+        )
+    
     backed_to_home.connect(func():quest_panel.show())
     changed_to_other.connect(func():quest_panel.hide())
     

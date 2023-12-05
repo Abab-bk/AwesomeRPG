@@ -492,6 +492,7 @@ func up_level() -> void:
     EventBus.player_level_up.emit()
     EventBus.player_data_change.emit()
     EventBus.update_ui.emit()
+    EventBus.get_talent_point.emit(1)
 
 func get_xp(_value:float) -> void:
     output_data.now_xp += _value

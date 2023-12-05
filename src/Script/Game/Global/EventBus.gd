@@ -29,6 +29,8 @@ signal go_to_next_tower_level
 signal start_climb_tower
 signal exit_tower
 
+signal get_talent_point(count:int)
+
 signal player_criticaled
 signal player_hited(damage:float)
 signal player_dead

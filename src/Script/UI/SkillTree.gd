@@ -47,7 +47,7 @@ func get_skill_node_data(_id:int) -> WorldmapNodeData:
     var _data_id:int = Master.talent_buffs.keys().pick_random()
     var _ability_data = Master.talent_buffs[_data_id]
     
-    var _offset:float = randf_range(0.1, 1.0)
+    var _offset:float = randf_range(0.1, 0.2)
     
     _data.id = str(_id)
     _data.texture = load(_ability_data["icon_path"])
@@ -98,7 +98,7 @@ func _ready() -> void:
     root_item = %TalentTree.root_item
     
     skills_ui.node_gui_input.connect(_on_node_gui_input)
-    skills_ui.max_unlock_cost = 100
+    skills_ui.max_unlock_cost = 0
     skills_ui.recalculate_map()
     
     added_node_pos.append(node_pos)
@@ -107,6 +107,9 @@ func _ready() -> void:
         if FlowerSaver.has_key("skill_tree_data"):
             saved_datas = FlowerSaver.get_data("skill_tree_data")
             loaded = true
+        )
+    EventBus.get_talent_point.connect(func(_count:int):
+        skills_ui.max_unlock_cost += _count
         )
     
     update_ui()
