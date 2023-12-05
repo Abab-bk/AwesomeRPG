@@ -28,33 +28,33 @@ class AndroidExportPlugin extends EditorExportPlugin:
     func _get_android_libraries(platform, debug):
         if debug:
             return PackedStringArray([
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/debug/RealTapSDK-debug.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/AntiAddiction_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/AntiAddictionUI_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/lib-rtc-1.1.0-release.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/TapAchievement_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/TapBillboard_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/TapBootstrap_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/TapCommon_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/TapLicense_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/TapLogin_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/TapMoment_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/THEMIS-release3.0.7.aar"
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/debug/RealTapSDK-debug.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/AntiAddiction_3.24.0.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/AntiAddictionUI_3.24.0.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/lib-rtc-1.1.0-release.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapAchievement_3.24.0.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapBillboard_3.24.0.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapBootstrap_3.24.0.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapCommon_3.24.0.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapLicense_3.24.0.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapLogin_3.24.0.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapMoment_3.24.0.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/THEMIS-release3.0.7.aar"
             ])
         else:
             return PackedStringArray([
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/release/RealTapSDK-release.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/AntiAddiction_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/AntiAddictionUI_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/lib-rtc-1.1.0-release.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/TapAchievement_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/TapBillboard_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/TapBootstrap_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/TapCommon_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/TapLicense_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/TapLogin_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/TapMoment_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/addons/FlowerTapTapSDK/bin/libs/THEMIS-release3.0.7.aar"
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/release/RealTapSDK-release.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/AntiAddiction_3.24.0.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/AntiAddictionUI_3.24.0.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/lib-rtc-1.1.0-release.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapAchievement_3.24.0.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapBillboard_3.24.0.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapBootstrap_3.24.0.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapCommon_3.24.0.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapLicense_3.24.0.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapLogin_3.24.0.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapMoment_3.24.0.aar",
+            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/THEMIS-release3.0.7.aar"
             ])
 
 

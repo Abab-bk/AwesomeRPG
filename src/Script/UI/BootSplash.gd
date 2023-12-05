@@ -21,15 +21,7 @@ func _ready() -> void:
     await $AnimationPlayer.animation_finished
     $Panel.show()
     
-    #if OS.is_debug_build():
-        ##if Tap.inited:
-            ##Tap.is_login()
-        #Tap.is_login()
-    #else:
-        #go_to_world()
-
-    go_to_world()
-
+    Tap.is_login()
 
 func go_to_world() -> void:
     get_tree().change_scene_to_packed(load("res://Scene/UI/MainMenu.tscn"))
