@@ -41,15 +41,17 @@ func get_reward(_show_popup:bool = true) -> String:
             Master.world.add_child(_generator)
             
             for i in reward_value:
-                _generator.gen_a_item(true, true)
+                Master.player_inventory.add_item(_generator.gen_a_item(true, true))
             _generator.queue_free()
+            
         REWARD_TYPE.BLUE_EQUIPMENT:
             var _generator:ItemGenerator = ItemGenerator.new()
             Master.world.add_child(_generator)
             
             for i in reward_value:
-                _generator.gen_a_item(false, false)
+                Master.player_inventory.add_item(_generator.gen_a_item(false, false))
             _generator.queue_free()
+            
         REWARD_TYPE.FRIEND:
             EventBus.get_friend.emit(reward_value)
         REWARD_TYPE.GACHA_MONEY:

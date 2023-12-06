@@ -18,6 +18,7 @@ const 裤子:String = "res://Assets/Texture/Icons/裤子/"
 const 护身符:String = "res://Assets/Texture/Icons/护身符/"
 const 戒指:String = "res://Assets/Texture/Icons/戒指/"
 
+
 func gen_a_item(_allow_gold:bool = false, _must_gold:bool = false) -> InventoryItem:
     randomize()
     # 掉落装备
@@ -156,6 +157,7 @@ func gen_a_item(_allow_gold:bool = false, _must_gold:bool = false) -> InventoryI
         _new_item.name = Master.get_random_gold_name()
     
     return _new_item
+
 
 func get_random_icon_path(_dir_path:String) -> String:
     var dir = DirAccess.open(_dir_path)

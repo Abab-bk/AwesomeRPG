@@ -4,6 +4,8 @@ extends Control
 @onready var line_edit:LineEdit = %LineEdit
 @onready var yes_btn:Button = %YesBtn
 
+# FIXME: 兑换码兑换装备不会立即出现在背包
+
 var cancel_event:Callable = func():
     SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
     queue_free()
