@@ -63,6 +63,7 @@ signal hp_is_zero
 @export var atk_range:float = 125
 @export var quipments:Dictionary = {}
 
+@export var name:String = ""
 
 func load_save(_save:Dictionary) -> void:
     for i in _save:

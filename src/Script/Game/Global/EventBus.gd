@@ -21,7 +21,10 @@ signal unlocked_ability(id:int)
 signal sub_ability_changed(_ability_id:int, _sub_ability:Array)
 # Player 的 ComputeData 改变
 signal player_data_change
+
 signal completed_level
+signal boss_appear(boss_data:CharacterData)
+signal boss_dead
 
 signal coins_changed
 

@@ -45,9 +45,14 @@ func _ready() -> void:
             return
         
         killed_enemys += 1
+        
         Master.next_level_need_kill_count = need_killed_enemys - killed_enemys
+        
         if killed_enemys >= need_killed_enemys:
             EventBus.completed_level.emit()
+        
+        if killed_enemys - need_killed_enemys == 1:
+            spawn_a_boss_enemy(Master.enemys.keys().pick_random())
         )
     
     EventBus.flyed.connect(kill_all_enemy)
@@ -64,9 +69,11 @@ func _ready() -> void:
         gen_a_enemy()
         )
 
+
 func kill_all_enemy() -> void:
     for i in get_children():
         i.queue_free()
+
 
 func update_tower_enemys() -> void:
     if Master.current_tower_level >= 50:
@@ -74,8 +81,10 @@ func update_tower_enemys() -> void:
     else:
         current_tower_all_enemy_count = Master.current_tower_level * 10
 
+
 func gen_a_enemy(_temp = 0) -> void:
-    if Master.current_location == Const.LOCATIONS.TOWER:        
+    # 如果是在爬塔
+    if Master.current_location == Const.LOCATIONS.TOWER:
         var _current_level_enemy_count:int = get_tree().get_nodes_in_group("Enemy").size()
         
         if _current_level_enemy_count >= max_enemy_count:
@@ -85,6 +94,7 @@ func gen_a_enemy(_temp = 0) -> void:
         
         return
     
+    # 普通生成
     var _current_enemy_count:int = get_tree().get_nodes_in_group("Enemy").size()
     
     if _current_enemy_count >= max_enemy_count:
@@ -98,6 +108,40 @@ func gen_a_enemy(_temp = 0) -> void:
     
     spawn_a_enemy_by_id(Master.enemys.keys().pick_random())
     #spawn_a_enemy_by_id(7007)
+
+
+func spawn_a_boss_enemy(_id:int) -> void:
+    var _enemy_data = Master.dungeon_enemys[_id]
+    
+    var new_enemy:Enemy = Builder.build_a_enemy() as Enemy
+    
+    new_enemy.skin_name = _enemy_data["skin_name"]
+    
+    var _data:CharacterData = CharacterData.new()
+    _data.damage = _enemy_data["base_damage"]
+    _data.frost_damage = _enemy_data["frost_damage"]
+    _data.fire_damage = _enemy_data["fire_damage"]
+    _data.light_damage = _enemy_data["light_damage"]
+    _data.toxic_damage = _enemy_data["toxic_damage"]
+    _data.frost_resistance = _enemy_data["frost_resistance"]
+    _data.fire_resistance = _enemy_data["fire_resistance"]
+    _data.light_resistance = _enemy_data["light_resistance"]
+    _data.toxic_resistance = _enemy_data["toxic_resistance"]
+    _data.max_hp = _enemy_data["hp"]
+    _data.hp = _enemy_data["hp"]
+    _data.speed = _enemy_data["speed"]
+    
+    new_enemy.set_data(_data, true)
+    call_deferred("add_child", new_enemy)
+    # 在 Enemy 脚本中设置等级及其他属性，因为 data 需要时间读取并赋值
+    new_enemy.global_position = get_random_pos()
+    Master.player.find_closest_enemy()
+    new_enemy.dead.connect(func():
+        EventBus.boss_dead.emit()
+        )
+    
+    EventBus.boss_appear.emit(_data)
+
 
 
 func spawn_a_special_enemy(_reward:Callable, _id:int) -> void:

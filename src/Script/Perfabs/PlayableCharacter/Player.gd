@@ -347,6 +347,7 @@ func compute_all_euipment() -> void:
         # 更新 UI
         #EventBus.equipment_up_ok.emit(_item.type, _item)
 
+
 func update_equipment_textures() -> void:
     var _data:Dictionary = {}
     
@@ -388,9 +389,13 @@ func rebuild_skills() -> void:
     
     EventBus.player_ability_change.emit()
 
+
 func compute() -> void:
-    #flower_buff_manager.compute()
     flower_buff_manager.compute_only_values()
+
+func compute_all() -> void:
+    flower_buff_manager.compute()
+
 
 func move_to_enemy() -> void:
     if current_state == STATE.DEAD:
@@ -450,7 +455,6 @@ func turn_to_closest_enemy() -> void:
 
 func _physics_process(_delta:float) -> void:
     if current_state == STATE.IDLE:
-        #move_to_enemy(_delta)
         find_closest_enemy()
     
     if current_state == STATE.ATTACKING:
@@ -462,15 +466,21 @@ func _physics_process(_delta:float) -> void:
     if current_state == STATE.MOVE_TO_ENEMYING:
         move_to_enemy()
     
+    if current_state == STATE.DEAD:
+        return
+    
     move_and_slide()
+
 
 func get_ability_list() -> Array:
     var _list:Array = []
     _list = ability_container.ability_list
     return _list
 
+
 func get_level() -> int:
     return output_data.level
+
 
 func change_weapons_sprite(_sprite:Texture2D) -> void:
     sprites["weapon"].texture = _sprite
@@ -494,6 +504,7 @@ func up_level() -> void:
     EventBus.update_ui.emit()
     EventBus.get_talent_point.emit(1)
 
+
 func get_xp(_value:float) -> void:
     output_data.now_xp += _value
     EventBus.update_ui.emit()
@@ -509,27 +520,33 @@ func get_xp(_value:float) -> void:
 
 # ======= 战斗 ========
 func relife() -> void:
-    # FIXME: data是资源，不会唯一化    
+    Tracer.info("玩家复活")
     global_position = Master.relife_point.global_position
     character_animation_player.play_backwards("scml/Dying")
     await character_animation_player.animation_finished
     
     reset_player_hp_and_magic()
     
-    compute()
+    #compute()
+    compute_all()
+    
+    Tracer.info("玩家血量：" % str(output_data.hp))
+    Tracer.info("玩家最大血量：" % str(output_data.max_hp))
     
     EventBus.update_ui.emit()
     
+    hurt_box_collision.call_deferred("set_disabled", false)    
+    
     current_state = STATE.IDLE
     
-    #get_tree().paused = false
-    hurt_box_collision.call_deferred("set_disabled", false)
-    find_closest_enemy()
     EventBus.player_relife.emit()
+
 
 func die() -> void:
     current_state = STATE.DEAD
     Tracer.info("玩家死亡")
+    
+    velocity = Vector2.ZERO
     
     hurt_box_collision.call_deferred("set_disabled", true)
     
@@ -542,17 +559,11 @@ func die() -> void:
     await character_animation_player.animation_finished
     relife()
 
+
 func find_closest_enemy(_temp = 0) -> void:
     if current_state == STATE.DEAD:
+        #Tracer.debug("玩家寻找最近敌人，但是死亡，所以return")
         return
-    
-    #if ray_cast.is_colliding():
-        #print("ok")
-        #closest_enemy = ray_cast.get_collider().owner
-        #attack()
-        #turn_to_closest_enemy()
-        #current_state = STATE.IDLE
-        #return
     
     current_state = STATE.FINDING
     
@@ -571,14 +582,6 @@ func find_closest_enemy(_temp = 0) -> void:
         )
     closest_enemy = _enemys_distance[0][1]
     closest_distance = _enemys_distance[0][0]
-        #if not closest_enemy:
-            #closest_enemy = enemy
-        #
-        #var enemy_distance = global_position.distance_to(enemy.global_position)
-        #
-        #if enemy_distance < closest_distance:
-            #closest_distance = enemy_distance
-            #closest_enemy = enemy
     
     if closest_enemy != null:
         ranged_weapon.target_position = closest_enemy.global_position

@@ -1776,6 +1776,7 @@ atk_speed = 0.5
 atk_cd = 0.5
 atk_range = 125.0
 quipments = {}
+name = ""
 
 [sub_resource type="Resource" id="Resource_484su"]
 script = ExtResource("7_6v44f")
@@ -1815,6 +1816,7 @@ atk_speed = 0.5
 atk_cd = 0.5
 atk_range = 125.0
 quipments = {}
+name = ""
 
 [node name="Player" type="CharacterBody2D"]
 process_mode = 3

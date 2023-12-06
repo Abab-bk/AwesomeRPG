@@ -1,8 +1,9 @@
-[gd_scene load_steps=61 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=62 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
 [ext_resource type="PackedScene" uid="uid://ck3r30dw3dngl" path="res://Scene/UI/Inventory.tscn" id="2_cil1e"]
+[ext_resource type="PackedScene" uid="uid://bxsac6p142pcl" path="res://Scene/UI/BossHpBar.tscn" id="3_0kaem"]
 [ext_resource type="Texture2D" uid="uid://dy1r4oa118a6o" path="res://Assets/UI/Bars/HPBarBg.png" id="3_0kf2m"]
 [ext_resource type="PackedScene" uid="uid://b33g1ypyny6i5" path="res://Scene/UI/CharacterPanel.tscn" id="3_aoxj4"]
 [ext_resource type="PackedScene" uid="uid://bu8mx5plub8xv" path="res://Scene/UI/HealingItemsBar.tscn" id="4_aqrcm"]
@@ -102,15 +103,23 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="FunctionBar" type="VBoxContainer" parent="Control/BottomBar"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/BottomBar"]
 layout_mode = 2
-mouse_filter = 2
+theme_override_constants/separation = 40
 
-[node name="HealingItemsBar" parent="Control/BottomBar/FunctionBar" instance=ExtResource("4_aqrcm")]
+[node name="BossHpBar" parent="Control/BottomBar/VBoxContainer" instance=ExtResource("3_0kaem")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="SkillBar" type="HBoxContainer" parent="Control/BottomBar/FunctionBar"]
+[node name="FunctionBar" type="VBoxContainer" parent="Control/BottomBar/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HealingItemsBar" parent="Control/BottomBar/VBoxContainer/FunctionBar" instance=ExtResource("4_aqrcm")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SkillBar" type="HBoxContainer" parent="Control/BottomBar/VBoxContainer/FunctionBar"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2

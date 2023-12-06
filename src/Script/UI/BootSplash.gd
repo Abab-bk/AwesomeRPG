@@ -5,9 +5,6 @@ extends Control
 func _ready() -> void:
     $Panel.hide()
     
-    Tap.init_ok.connect(func():
-        Tap.is_login()
-        )
     Tap.login_ok.connect(go_to_world)
     Tap.login_not.connect(func():
         $Panel.show()
@@ -20,6 +17,10 @@ func _ready() -> void:
     $AnimationPlayer.play("run")
     await $AnimationPlayer.animation_finished
     $Panel.show()
+    
+    if OS.is_debug_build():
+        go_to_world()
+        return
     
     Tap.is_login()
 

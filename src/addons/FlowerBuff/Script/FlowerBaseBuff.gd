@@ -17,6 +17,10 @@ signal computed_values
     set(v):
         prepare_time = v
         prepare_time_temp = prepare_time
+        if prepare_time <= 0:
+            current_state = STATE.RUNNING
+            take_effect()
+
 @export var active_time:int = 0:
     set(v):
         active_time = v
@@ -56,6 +60,7 @@ func get_origin_compute_datas() -> Array:
     
     return _result
 
+
 func get_computed_compute_datas() -> Array:
     var _result:Array
    
@@ -69,10 +74,12 @@ func get_computed_compute_datas() -> Array:
 func start() -> void:
     current_state = STATE.PREPARE
 
+
 func minus_all_time() -> void:
     minus_prepare_time()
     minus_active_time()
     minus_cooldown_time()
+
 
 func minus_active_time() -> void:
     if not current_state == STATE.RUNNING:
@@ -148,7 +155,6 @@ func activate(_actor:Node, _compute_data:FlowerData, _output_data:FlowerData) ->
     activated.emit()
 
 func take_effect() -> void:
-    print("buff开始计算：", Time.get_ticks_msec())
 #    print("buff生效，名称：", name)
     # 拿一个属性：
 #    var xxx = get_data_from_values("血量")

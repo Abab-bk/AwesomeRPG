@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxsac6p142pcl"]
+
+[ext_resource type="Script" path="res://Script/UI/BossHpBar.gd" id="1_3uimd"]
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_cenc0"]
+[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="2_lxjjh"]
+
+[node name="BossHpBar" type="MarginContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 107.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+script = ExtResource("1_3uimd")
+
+[node name="BossHpBar" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme = ExtResource("1_cenc0")
+
+[node name="TitleLabel" type="Label" parent="BossHpBar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "BOSS"
+label_settings = ExtResource("2_lxjjh")
+horizontal_alignment = 1
+
+[node name="BossHpBar" type="ProgressBar" parent="BossHpBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_type_variation = &"HpBar"
+show_percentage = false

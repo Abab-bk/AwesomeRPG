@@ -23,6 +23,8 @@ var skin_name:String = ""
 var data:CharacterData
 var output_data:CharacterData
 
+var is_boss:bool = false
+
 enum STATE {
     PATROL,
     MOVE_TO_PLAYERING,
@@ -92,6 +94,8 @@ func _ready() -> void:
     
     if Master.player.get_level() >= 8:
         _level = Master.player.get_level() - 7
+    if is_boss:
+        _level += 2
     
     # 设置属性 （每个敌人 ready 都是生成时）
     set_level(_level)
@@ -109,7 +113,8 @@ func accept_damage(_value:float) -> void:
     output_data.hp -= _value
 
 
-func set_data(_data:CharacterData) -> void:
+func set_data(_data:CharacterData, _is_boss:bool = false) -> void:
+    is_boss = _is_boss
     seted_data = _data
 
 
@@ -187,7 +192,7 @@ func die() -> void:
     
     current_state = STATE.DEAD
     
-    Master.player.current_state = Master.player.STATE.IDLE
+    # Master.player.current_state = Master.player.STATE.IDLE
     # 获得经验
     #EventBus.enemy_die.emit(data.level * data.level * data.level * 3 * (1 + Master.fly_count * 0.1))
     #EventBus.enemy_die.emit(((Master.player_data.level * 3) + 15) * (1 + Master.fly_count * 0.1))
