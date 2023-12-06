@@ -723,8 +723,8 @@ func get_offline_reward() -> void:
     
     var _level:int = Master.player.get_level() - 1
     
-    var _get_xp:float = ((3 * _level * 1.5) * (1 + Master.fly_count * 0.1)) * 0.8
-    var _get_coins:int = floor((_level * randi_range(0, 5)) * 0.8)
+    var _get_xp:float = (((3 * _level * 1.5) * (1 + Master.fly_count * 0.1)) * 0.8) * float(_distance)
+    var _get_coins:int = floor((_level * randi_range(0, 5)) * 0.8) * _distance
     
     Master.coins += _get_coins
     Master.player.get_xp(_get_xp)
