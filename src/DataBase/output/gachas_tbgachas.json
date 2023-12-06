@@ -64,6 +64,14 @@
       {
         "type": 10,
         "reward_value": 1003
+      },
+      {
+        "type": 10,
+        "reward_value": 1005
+      },
+      {
+        "type": 10,
+        "reward_value": 1006
       }
     ]
   }

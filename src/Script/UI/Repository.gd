@@ -32,7 +32,8 @@ func _ready() -> void:
             if FlowerSaver.get_data("flyed_just_now") == true:
                 return
         
-        repo = FlowerSaver.get_data("repo", Master.current_save_slot)
+        if FlowerSaver.has_key("repo"):
+            repo = FlowerSaver.get_data("repo", Master.current_save_slot)
         )
     
     visibility_changed.connect(update_ui)

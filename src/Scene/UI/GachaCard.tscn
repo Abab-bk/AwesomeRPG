@@ -43,7 +43,7 @@ use_parent_material = true
 layout_mode = 2
 texture = ExtResource("1_1sjpw")
 expand_mode = 2
-stretch_mode = 6
+stretch_mode = 5
 
 [node name="TitleLabel" type="Label" parent="Panel/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true

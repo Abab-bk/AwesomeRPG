@@ -73,6 +73,7 @@ func pull_gacha(_count:int) -> void:
         
         var _new_reward_card = load("res://Scene/UI/GachaCard.tscn").instantiate()
         _new_reward_card.title = _desc
+        _new_reward_card.type = _get_reward.type
         rewards_ui.add_child(_new_reward_card)
     
     # animation.hide()

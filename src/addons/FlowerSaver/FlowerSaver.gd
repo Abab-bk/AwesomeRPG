@@ -9,17 +9,12 @@ const save_path3:String = "user://awesomerpg3.tres"
 var save_data:SaveResource = SaveResource.new()
 var loaded_data:SaveResource = SaveResource.new()
 
-var base_resource_property_names:Array = []
 
-
-func _ready() -> void:
-    var res:Resource = Resource.new()
-    for property in res.get_property_list():
-        base_resource_property_names.append(property.name)
+func _ready() -> void:    
     #save_ok.connect(func():
         #Tracer.info("存档成功")
         #)
-
+    pass
 
 func del_save(path:String) -> void:
     var dir = DirAccess.open("user://")
@@ -30,26 +25,11 @@ func del_save(path:String) -> void:
 
 func save(path:String) -> void:
     if ResourceSaver.save(save_data, path) == OK:
-        #if loaded_data.data.has("skill_tree_scene"):
-            #save_data.data["skill_tree_scene"] = loaded_data.data["skill_tree_scene"]
         save_ok.emit()
-
 
 
 func set_data(key:String, value) -> void:
     save_data.data[key] = value
-
-
-func _resource_to_dict(resource:Resource) -> Dictionary:
-    var dict:Dictionary = {}
-    dict["class_name"] = resource.get_class()
-    
-    for property in resource.get_property_list():
-        if base_resource_property_names.has(property.name) || property.name.ends_with(".gd"): 
-            continue
-        dict[property.name] = resource.get(property.name)
-    
-    return dict
 
 
 func has_key(key:String) -> bool:
@@ -88,12 +68,8 @@ func get_data(key:String, path:String = "") -> Variant:
 
 func load_save(path:String) -> void:
     loaded_data = ResourceLoader.load(path)
-    save_data = loaded_data
+    save_data = loaded_data.duplicate(true)
 
 
 func get_all_data() -> SaveResource:
     return save_data
-
-
-func get_class_name_by_dic(_data:Dictionary) -> String:
-    return _data["class_name"]

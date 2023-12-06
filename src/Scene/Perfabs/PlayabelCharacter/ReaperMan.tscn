@@ -4682,6 +4682,7 @@ flip_v = true
 
 [node name="HitBoxComponent" type="Area2D" parent="."]
 script = ExtResource("3_o0yvl")
+is_player_hitbox = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
 position = Vector2(67, -357)

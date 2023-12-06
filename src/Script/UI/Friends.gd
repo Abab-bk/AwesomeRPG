@@ -12,6 +12,7 @@ var current_friends:Dictionary = {}:
         save()
 var friends_inventory:Array[int] = []:
     set(v):
+        Tracer.info("friends_inventory改变")
         friends_inventory = v
         save()
 
@@ -45,6 +46,7 @@ func _ready() -> void:
     EventBus.get_friend.connect(func(_id):
         if not _id in friends_inventory:
             friends_inventory.append(_id)
+        save()
         )
     
     color_rect.hide()
@@ -55,6 +57,7 @@ func _ready() -> void:
 
 
 func save() -> void:
+    Tracer.info("玩家随从背包保存")
     FlowerSaver.set_data("friends_current_friends", current_friends)
     FlowerSaver.set_data("friends_inventory_inventory", friends_inventory)
 

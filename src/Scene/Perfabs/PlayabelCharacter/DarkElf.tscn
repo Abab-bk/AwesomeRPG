@@ -1687,6 +1687,7 @@ speed_scale = 5.0
 [node name="bone_004" type="Bone2D" parent="Skeleton"]
 position = Vector2(19.3516, 36.2371)
 rotation = -1.48028
+scale = Vector2(1, 1)
 rest = Transform2D(0.0903888, -0.995907, 0.995907, 0.0903888, 19.3516, 36.2371)
 
 [node name="Left Leg" type="Sprite2D" parent="Skeleton/bone_004"]
@@ -1701,6 +1702,7 @@ flip_v = true
 [node name="bone_005" type="Bone2D" parent="Skeleton"]
 position = Vector2(-17.9341, 37.6374)
 rotation = -1.71755
+scale = Vector2(1, 1)
 rest = Transform2D(-0.146232, -0.98925, 0.98925, -0.146232, -17.9341, 37.6374)
 
 [node name="Right Leg" type="Sprite2D" parent="Skeleton/bone_005"]
@@ -1771,6 +1773,7 @@ flip_v = true
 [node name="bone_000" type="Bone2D" parent="Skeleton/bone_006"]
 position = Vector2(43.9277, -17.7982)
 rotation = -1.75145
+scale = Vector2(1, 1)
 rest = Transform2D(-0.121003, -0.992652, 0.992652, -0.121003, 43.9277, -17.7982)
 
 [node name="bone_001" type="Bone2D" parent="Skeleton/bone_006/bone_000"]
@@ -1816,6 +1819,7 @@ flip_v = true
 
 [node name="HitBoxComponent" type="Area2D" parent="."]
 script = ExtResource("3_pp85y")
+is_player_hitbox = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
 position = Vector2(98.1948, -138.323)

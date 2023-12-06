@@ -100,8 +100,14 @@ var moneys:Dictionary = {
     set(v):
         moneys = v
         FlowerSaver.set_data("moneys", moneys)
-var gacha_money:int = 0
-var gacha_money_part:int = 0
+var gacha_money:int = 0:
+    set(v):
+        gacha_money = v
+        FlowerSaver.set_data("gacha_money", gacha_money)
+var gacha_money_part:int = 0:
+    set(v):
+        gacha_money_part = v
+        FlowerSaver.set_data("gacha_money_part", gacha_money_part)
 
 var last_checkin_time:TimeResource = TimeResource.new(0, 0, 0):
     set(v):
@@ -211,6 +217,14 @@ func _ready():
             next_reward_player_level += 5
         )
     
+    EventBus.save.connect(func():
+        FlowerSaver.set_data("unlocked_functions", unlocked_functions)
+        FlowerSaver.set_data("next_reward_player_level", next_reward_player_level)
+        FlowerSaver.set_data("last_leave_time", last_leave_time)
+        FlowerSaver.set_data("last_checkin_time", last_checkin_time)
+        FlowerSaver.set_data("moneys", moneys)
+        )
+    
     EventBus.load_save.connect(func():
         if FlowerSaver.has_key("flyed_just_now"):
             flyed_just_now = FlowerSaver.get_data("flyed_just_now")
@@ -238,21 +252,45 @@ func _ready():
         
         Tracer.info("Master常规读档")
         
-        fly_count = FlowerSaver.get_data("fly_count")
-        unlocked_skills = FlowerSaver.get_data("unlocked_skills")
-        current_level = FlowerSaver.get_data("current_level")
-        player_name = FlowerSaver.get_data("player_name")
-        coins = FlowerSaver.get_data("coins")
-        moneys = FlowerSaver.get_data("moneys")
-        next_reward_player_level = FlowerSaver.get_data("next_reward_player_level")
-        last_checkin_time = FlowerSaver.get_data("last_checkin_time")
-        last_leave_time = FlowerSaver.get_data("last_leave_time")
+        if FlowerSaver.has_key("fly_count"):
+            fly_count = FlowerSaver.get_data("fly_count")
+        
+        if FlowerSaver.has_key("unlocked_skills"):
+            unlocked_skills = FlowerSaver.get_data("unlocked_skills")
+        
+        if FlowerSaver.has_key("current_level"):
+            current_level = FlowerSaver.get_data("current_level")
+        
+        if FlowerSaver.has_key("player_name"):
+            player_name = FlowerSaver.get_data("player_name")
+        
+        if FlowerSaver.has_key("coins"):
+            coins = FlowerSaver.get_data("coins")
+        
+        if FlowerSaver.has_key("moneys"):
+            moneys = FlowerSaver.get_data("moneys")
+        
+        if FlowerSaver.has_key("next_reward_player_level"):
+            next_reward_player_level = FlowerSaver.get_data("next_reward_player_level")
+        
+        if FlowerSaver.has_key("last_checkin_time"):
+            last_checkin_time = FlowerSaver.get_data("last_checkin_time")
+        
+        if FlowerSaver.has_key("last_leave_time"):
+            last_leave_time = FlowerSaver.get_data("last_leave_time")
         
         if FlowerSaver.has_key("player_healing_items"):
             player_healing_items = FlowerSaver.get_data("player_healing_items")
         
         if FlowerSaver.has_key("unlocked_functions"):
             unlocked_functions = FlowerSaver.get_data("unlocked_functions")
+
+        if FlowerSaver.has_key("gacha_money"):
+            gacha_money = FlowerSaver.get_data("gacha_money")
+            
+        if FlowerSaver.has_key("gacha_money_part"):
+            gacha_money_part = FlowerSaver.get_data("gacha_money_part")
+
         
         EventBus.rework_level_enemy_count.emit()
         )
@@ -719,7 +757,7 @@ func get_reward_label_from_dic(_data:Dictionary) -> String:
 
 
 func get_offline_reward() -> void:
-    var _distance:int = last_leave_time.get_distance_to_a(TimeManager.get_current_time_resource())
+    var _distance:int = TimeManager.get_current_time_resource().get_distance_to_a(last_leave_time)
     
     var _level:int = Master.player.get_level() - 1
     

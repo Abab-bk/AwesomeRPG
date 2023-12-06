@@ -105,6 +105,7 @@ func _ready() -> void:
         FlowerSaver.set_data("player_compute_data", flower_buff_manager.compute_data)
         FlowerSaver.set_data("player_output_data", flower_buff_manager.output_data)
         FlowerSaver.set_data("player_buff_list", flower_buff_manager.buff_list)
+        FlowerSaver.set_data("config_skills", config_skills)
         #print("玩家存档：", flower_buff_manager.output_data.level)
         )
     
@@ -136,7 +137,8 @@ func _ready() -> void:
         
         Master.player_output_data = flower_buff_manager.output_data
         
-        config_skills = FlowerSaver.get_data("config_skills")
+        if FlowerSaver.has_key("config_skills"):
+            config_skills = FlowerSaver.get_data("config_skills")
         Master.get_offline_reward()
         
         #compute()

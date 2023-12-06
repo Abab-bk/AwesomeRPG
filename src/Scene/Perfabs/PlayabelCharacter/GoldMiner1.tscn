@@ -1809,7 +1809,6 @@ flip_v = true
 [node name="bone_005" type="Bone2D" parent="Skeleton"]
 position = Vector2(-19.8316, 40.6189)
 rotation = -1.65394
-scale = Vector2(1, 1)
 rest = Transform2D(-0.0830456, -0.996546, 0.996546, -0.0830456, -19.8316, 40.6189)
 
 [node name="Right Leg" type="Sprite2D" parent="Skeleton/bone_005"]
@@ -1924,6 +1923,7 @@ flip_v = true
 
 [node name="HitBoxComponent" type="Area2D" parent="."]
 script = ExtResource("3_jer2n")
+is_player_hitbox = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
 position = Vector2(83.3462, -131.843)
