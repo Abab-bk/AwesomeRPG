@@ -19,6 +19,16 @@ var data:CharacterData
 var damage_data:CharacterData
 var damage:float
 
+
+func reset_collision() -> void:
+    if is_player_hitbox:
+        set_collision_layer_value(7, true)
+        set_collision_mask_value(4, true)
+    else:
+        set_collision_layer_value(5, true)
+        set_collision_mask_value(6, true)
+
+
 func _ready() -> void:
     if buff_manager:
         buff_manager.compute_ok.connect(func():

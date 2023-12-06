@@ -8,9 +8,15 @@ extends Panel
 @onready var title_label:Label = %TitleLabel
 @onready var check_btn:Button = %CheckBtn
 
-@export var checked:bool = false
+@export var checked:bool = false:
+    set(v):
+        checked = v
+        FlowerSaver.set_data("days_check_%s_checked" % str(current_day), checked)
 
-var target_time:TimeResource = TimeResource.new(0, 0, 0)
+var target_time:TimeResource = TimeResource.new(0, 0, 0):
+    set(v):
+        target_time = v
+        FlowerSaver.set_data("days_check_%s_time" % str(current_day), target_time)
 
 func _ready() -> void:
     check_btn.pressed.connect(func():
@@ -25,10 +31,6 @@ func _ready() -> void:
         print("时间不到，无法签到")
         )
     
-    EventBus.save.connect(func():
-        FlowerSaver.set_data("days_check_%s_time" % str(current_day), target_time)
-        FlowerSaver.set_data("days_check_%s_checked" % str(current_day), checked)        
-        )
     EventBus.load_save.connect(func():
         if FlowerSaver.has_key("flyed_just_now"):
             if FlowerSaver.get_data("flyed_just_now") == true:

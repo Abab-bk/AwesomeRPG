@@ -65,6 +65,8 @@ func spawn_a_friend_by_id(_id:int, _point:Marker2D) -> void:
     new_friend.target_player_point = _point
     
     var _data:CharacterData = CharacterData.new()
+    _data.vision = _friend_data["base_vision"]
+    _data.atk_range = _friend_data["base_atk_range"]
     _data.damage = _friend_data["base_damage"]
     _data.frost_damage = _friend_data["frost_damage"]
     _data.fire_damage = _friend_data["fire_damage"]

@@ -8,6 +8,7 @@ extends Control
 @export var current_quest:QuestResource = null:
     set(v):
         current_quest = v
+        FlowerSaver.set_data("quest_current_quest", current_quest)
         if not current_quest:
             return
         if current_quest.is_connected("value_changed", update_ui):
@@ -31,9 +32,6 @@ func _ready() -> void:
             get_new_quest()
             )
     
-    EventBus.save.connect(func():
-        FlowerSaver.set_data("quest_current_quest", current_quest)
-        )
     EventBus.load_save.connect(func():
         if FlowerSaver.has_key("flyed_just_now"):
             if FlowerSaver.get_data("flyed_just_now") == true:

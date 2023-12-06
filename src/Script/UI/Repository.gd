@@ -24,7 +24,8 @@ func _ready() -> void:
         )
     
     EventBus.save.connect(func():
-        FlowerSaver.set_data("repo", repo)
+        if visible:
+            FlowerSaver.set_data("repo", repo)
         )
     EventBus.load_save.connect(func():
         if FlowerSaver.has_key("flyed_just_now"):

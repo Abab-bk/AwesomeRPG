@@ -126,7 +126,7 @@ func attack() -> void:
         return
     
     turn_to_player()
-        
+    
     # 攻击代码
     if not range_attack:
         if character_animation.has_animation("scml/Attacking"):
@@ -134,7 +134,7 @@ func attack() -> void:
     else:
         if character_animation.has_animation("scml/Shooting"):
             character_animation.play("scml/Shooting")
-            spawn_a_bullet()         
+            spawn_a_bullet()
     
     current_state = STATE.ATK_COOLDOWN
 
@@ -146,6 +146,7 @@ func spawn_a_bullet() -> void:
     range_bullet_spwan_point.add_child(_bullet)
     _bullet.global_position = range_bullet_spwan_point.global_position
     _bullet.update_velocity()
+
 
 func set_skin() -> void:
     # 设置皮肤
@@ -179,9 +180,6 @@ func move_to_player() -> void:
     
     velocity = global_position.\
     direction_to(Master.player.global_position) * output_data.speed
-    
-    #var steering:Vector2 = (desired_velocity - velocity) * _delta * 2.5
-    #velocity += steering
     
     if character_animation:    
         character_animation.play("scml/Walking")

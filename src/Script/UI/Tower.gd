@@ -4,7 +4,10 @@ extends Control
 @onready var content_label:RichTextLabel = %ContentLabel
 @onready var level_label:Label = %LevelLabel
 
-var current_best_level:int = 0
+var current_best_level:int = 0:
+    set(v):
+        current_best_level = v
+        FlowerSaver.set_data("tower_current_best_level", current_best_level)
 
 
 func _ready() -> void:
@@ -16,9 +19,6 @@ func _ready() -> void:
         if Master.last_tallest_tower_level > current_best_level:
             current_best_level = Master.last_tallest_tower_level
         update_ui()
-        )
-    EventBus.save.connect(func():
-        FlowerSaver.set_data("tower_current_best_level", current_best_level)
         )
     EventBus.load_save.connect(func():
         current_best_level = FlowerSaver.get_data("tower_current_best_level")

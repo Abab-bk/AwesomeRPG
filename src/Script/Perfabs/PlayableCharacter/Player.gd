@@ -41,7 +41,10 @@ var current_state:STATE = STATE.IDLE
 
 var target:Vector2 = global_position
 
-var config_skills:Dictionary = {}
+var config_skills:Dictionary = {}:
+    set(v):
+        config_skills = v
+        FlowerSaver.set_data("config_skills", config_skills)
 
 var closest_distance:float = 1000000
 var closest_enemy:Enemy
@@ -102,7 +105,6 @@ func _ready() -> void:
     EventBus.save.connect(func():
         FlowerSaver.set_data("player_compute_data", flower_buff_manager.compute_data)
         FlowerSaver.set_data("player_output_data", flower_buff_manager.output_data)
-        FlowerSaver.set_data("config_skills", config_skills)
         FlowerSaver.set_data("player_buff_list", flower_buff_manager.buff_list)
         #print("玩家存档：", flower_buff_manager.output_data.level)
         )
@@ -529,9 +531,6 @@ func relife() -> void:
     
     #compute()
     compute_all()
-    
-    Tracer.info("玩家血量：" % str(output_data.hp))
-    Tracer.info("玩家最大血量：" % str(output_data.max_hp))
     
     EventBus.update_ui.emit()
     

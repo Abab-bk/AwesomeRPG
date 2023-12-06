@@ -26,8 +26,21 @@ var cancel_event:Callable = func():
     SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
     owner.change_page(owner.PAGE.HOME)
 
-var auto_recycle_is_active:bool = false
-var auto_recycle_targets:Array[Const.EQUIPMENT_QUALITY] = []
+var auto_recycle_is_active:bool = false:
+    set(v):
+        auto_recycle_is_active = v
+        FlowerSaver.set_data("inventory_auto_recycle_setting", {
+            "active": auto_recycle_is_active,
+            "targets": auto_recycle_targets
+            })
+        
+var auto_recycle_targets:Array[Const.EQUIPMENT_QUALITY] = []:
+    set(v):
+        auto_recycle_targets = v
+        FlowerSaver.set_data("inventory_auto_recycle_setting", {
+            "active": auto_recycle_is_active,
+            "targets": auto_recycle_targets
+            })
 
 func _ready() -> void:
     for i in slots_ui_1.get_children():
@@ -69,10 +82,6 @@ func _ready() -> void:
             )
     EventBus.save.connect(func():
         FlowerSaver.set_data("inventory", inventory)
-        FlowerSaver.set_data("inventory_auto_recycle_setting", {
-            "active": auto_recycle_is_active,
-            "targets": auto_recycle_targets
-        })
         )
     EventBus.load_save.connect(func():
         if FlowerSaver.has_key("flyed_just_now"):

@@ -40,7 +40,10 @@ var world:Node2D
 var player_healing_items:Dictionary = {
     "hp_potion": 0,
     "mp_potion": 0,
-}
+}:
+    set(v):
+        player_healing_items = v
+        FlowerSaver.set_data("player_healing_items", player_healing_items)
 
 var player_inventory:Inventory
 var player:Player
@@ -48,20 +51,34 @@ var player_data:CharacterData
 var player_output_data:CharacterData
 var player_camera:Camera2D
 var relife_point:Marker2D
-var unlocked_skills:Array = []
+var unlocked_skills:Array = []:
+    set(v):
+        unlocked_skills = v
+        FlowerSaver.set_data("unlocked_skills", unlocked_skills)
 
 var should_load:bool = false
 
 var in_dungeon:bool = false
 
 # 关卡等级：
-var current_level:int = 1
+var current_level:int = 1:
+    set(v):
+        current_level = v
+        FlowerSaver.set_data("current_level", current_level)
 # 进入下一关需要击杀的怪物数量
 var next_level_need_kill_count:int = 0
 # 转生次数
-var fly_count:int = 0
-var flyed_just_now:bool = false
-var player_name:String = "花神"
+var fly_count:int = 0:
+    set(v):
+        fly_count = v
+        FlowerSaver.set_data("fly_count", fly_count)
+var flyed_just_now:bool = false:
+    set(v):
+        flyed_just_now = v
+        FlowerSaver.set_data("flyed_just_now", flyed_just_now)
+var player_name:String = "花神":
+    set(v):
+        FlowerSaver.set_data("player_name", player_name)
 
 var current_location:Const.LOCATIONS = Const.LOCATIONS.WORLD
 
@@ -72,20 +89,33 @@ var need_kill_enemys_to_next_tower:int = 10
 var coins:int = 1000:
     set(v):
         coins = max(v, 0)
+        FlowerSaver.set_data("coins", coins)
         EventBus.coins_changed.emit()
 var moneys:Dictionary = {
     "white": 0,
     "blue": 0,
     "purple": 0,
     "yellow": 0,
-}
+}:
+    set(v):
+        moneys = v
+        FlowerSaver.set_data("moneys", moneys)
 var gacha_money:int = 0
 var gacha_money_part:int = 0
 
-var last_checkin_time:TimeResource = TimeResource.new(0, 0, 0)
-var last_leave_time:TimeResource = TimeResource.new(0, 0, 0)
+var last_checkin_time:TimeResource = TimeResource.new(0, 0, 0):
+    set(v):
+        last_checkin_time = v
+        FlowerSaver.set_data("last_checkin_time", last_checkin_time)
+var last_leave_time:TimeResource = TimeResource.new(0, 0, 0):
+    set(v):
+        last_leave_time = v
+        FlowerSaver.set_data("last_leave_time", last_leave_time)
 
-var next_reward_player_level:int = 1
+var next_reward_player_level:int = 1:
+    set(v):
+        next_reward_player_level = v
+        FlowerSaver.set_data("next_reward_player_level", next_reward_player_level)
 
 # 用来存储drop_item位置的数组
 var occupied_positions:Array
@@ -116,7 +146,10 @@ var online_rewards:Dictionary
 
 var unlocked_functions:Dictionary = {
     "fly": false
-}
+}:
+    set(v):
+        unlocked_functions = v
+        FlowerSaver.set_data("unlocked_functions", unlocked_functions)
 
 
 var json_path:String = "res://DataBase/output/"
@@ -128,6 +161,135 @@ var subscriber:TraceSubscriber = (
 
 const abilitys_start:int = 4002
 const abilitys_end:int = 4009
+
+
+func _ready():
+    config = Schema.CfgTables.new(loader)
+    
+    affixs = config.TbAffix.get_data_list()
+    buffs = config.TbBuffs.get_data_map()
+    abilitys = config.TbAbilitys.get_data_map()
+    quests = config.TbQuests.get_data_map()
+    ability_buffs = config.TbAbilityBuffs.get_data_map()
+    enemys = config.TbEnemys.get_data_map()
+    dungeons = config.TbDungeons.get_data_map()
+    main_buffs = config.TbMainBuffs.get_data_list()
+    talent_buffs = config.TbTalentBuffs.get_data_map()
+    gold_buffs = config.TbGoldBuffs.get_data_map()
+    gold_names = config.TbGoldNames.get_data_list()
+    gold_affixs = config.TbGoldAffixs.get_data_list()
+    dungeon_enemys = config.TbDungeonEnemy.get_data_map()
+    friends = config.TbFriends.get_data_map()
+    gachas = config.TbGachas.get_data_map()
+    days_checkin = config.TbDaysReward.get_data_map()
+    online_rewards = config.TbOnlineReward.get_data_map()
+    #ability_trees = config.TbSkills.get_data_map()
+    #goods = config.TbGoods.get_data_map()
+
+    EventBus.unlock_new_function.connect(func(_key:String):
+        match _key:
+            "fly":
+                unlocked_functions.fly = true
+        )
+
+    EventBus.unlocked_ability.connect(func(_id:int):
+        if _id in unlocked_skills:
+            return
+        unlocked_skills.append(_id)
+        )
+    
+    EventBus.completed_level.connect(func():
+        current_level += 1
+        EventBus.update_ui.emit()
+        )
+    
+    EventBus.player_level_up.connect(func():
+        if player.compute_data.level >= next_reward_player_level:
+            var _ability:FlowerAbility = Master.get_random_ability()
+            EventBus.unlocked_ability.emit(_ability.id)
+            EventBus.show_popup.emit("升级！获得奖励", "解锁技能：%s" % _ability.name)
+            next_reward_player_level += 5
+        )
+    
+    EventBus.load_save.connect(func():
+        if FlowerSaver.has_key("flyed_just_now"):
+            flyed_just_now = FlowerSaver.get_data("flyed_just_now")
+        
+        if flyed_just_now:
+            Tracer.info("Master飞升读档，玩家名：%s" % player_name)
+            fly_count = FlowerSaver.get_data("fly_count")
+            unlocked_skills = []
+            current_level = 0
+            coins = 0
+            moneys = {"white": 0, "blue": 0, "purple": 0, "yellow": 0,}
+            next_reward_player_level = 1
+            player_healing_items = {"hp_potion": 0, "mp_potion": 0, }
+            
+            player_data = null
+            player_output_data = null
+            
+            player_inventory = null
+            
+            in_dungeon = false
+            
+            #EventBus.rework_level_enemy_count.emit()
+            EventBus.completed_level.emit()
+            return
+        
+        Tracer.info("Master常规读档")
+        
+        fly_count = FlowerSaver.get_data("fly_count")
+        unlocked_skills = FlowerSaver.get_data("unlocked_skills")
+        current_level = FlowerSaver.get_data("current_level")
+        player_name = FlowerSaver.get_data("player_name")
+        coins = FlowerSaver.get_data("coins")
+        moneys = FlowerSaver.get_data("moneys")
+        next_reward_player_level = FlowerSaver.get_data("next_reward_player_level")
+        last_checkin_time = FlowerSaver.get_data("last_checkin_time")
+        last_leave_time = FlowerSaver.get_data("last_leave_time")
+        
+        if FlowerSaver.has_key("player_healing_items"):
+            player_healing_items = FlowerSaver.get_data("player_healing_items")
+        
+        if FlowerSaver.has_key("unlocked_functions"):
+            unlocked_functions = FlowerSaver.get_data("unlocked_functions")
+        
+        EventBus.rework_level_enemy_count.emit()
+        )
+    
+    EventBus.get_money.connect(func(_key:String, _value:int):
+        moneys[_key] += _value
+        )
+    EventBus.player_get_healing_potion.connect(func(_key:String, num:int):
+        if _key == "hp":
+            if player_healing_items.hp_potion >= 10:
+                return
+            player_healing_items.hp_potion += num
+            return
+        if _key == "mp":
+            if player_healing_items.mp_potion >= 10:
+                return
+            player_healing_items.mp_potion += num
+            return
+        )
+    EventBus.start_climb_tower.connect(func():
+        current_location = Const.LOCATIONS.TOWER
+        EventBus.update_ui.emit()
+        )
+    EventBus.go_to_next_tower_level.connect(func():
+        current_tower_level += 1
+        EventBus.update_ui.emit()
+        )
+    EventBus.exit_tower.connect(func():
+        last_tallest_tower_level = current_tower_level
+        current_location = Const.LOCATIONS.WORLD
+        get_tower_reward()
+        current_tower_level = 1
+        need_kill_enemys_to_next_tower = 10
+        )
+        
+    subscriber.init()
+
 
 func yes_fly() -> void:
     coins = 0
@@ -493,148 +655,6 @@ func loader(file_name:String):
     var json_text = json_file.get_as_text()
     json_file.close()
     return JSON.parse_string(json_text)
-
-func _ready():
-    config = Schema.CfgTables.new(loader)
-    
-    affixs = config.TbAffix.get_data_list()
-    buffs = config.TbBuffs.get_data_map()
-    abilitys = config.TbAbilitys.get_data_map()
-    quests = config.TbQuests.get_data_map()
-    ability_buffs = config.TbAbilityBuffs.get_data_map()
-    enemys = config.TbEnemys.get_data_map()
-    dungeons = config.TbDungeons.get_data_map()
-    main_buffs = config.TbMainBuffs.get_data_list()
-    talent_buffs = config.TbTalentBuffs.get_data_map()
-    gold_buffs = config.TbGoldBuffs.get_data_map()
-    gold_names = config.TbGoldNames.get_data_list()
-    gold_affixs = config.TbGoldAffixs.get_data_list()
-    dungeon_enemys = config.TbDungeonEnemy.get_data_map()
-    friends = config.TbFriends.get_data_map()
-    gachas = config.TbGachas.get_data_map()
-    days_checkin = config.TbDaysReward.get_data_map()
-    online_rewards = config.TbOnlineReward.get_data_map()
-    #ability_trees = config.TbSkills.get_data_map()
-    #goods = config.TbGoods.get_data_map()
-
-    EventBus.unlock_new_function.connect(func(_key:String):
-        match _key:
-            "fly":
-                unlocked_functions.fly = true
-        )
-
-    EventBus.unlocked_ability.connect(func(_id:int):
-        if _id in unlocked_skills:
-            return
-        unlocked_skills.append(_id)
-        )
-    
-    EventBus.completed_level.connect(func():
-        current_level += 1
-        EventBus.update_ui.emit()
-        )
-    
-    EventBus.player_level_up.connect(func():
-        if player.compute_data.level >= next_reward_player_level:
-            var _ability:FlowerAbility = Master.get_random_ability()
-            EventBus.unlocked_ability.emit(_ability.id)
-            EventBus.show_popup.emit("升级！获得奖励", "解锁技能：%s" % _ability.name)
-            next_reward_player_level += 5
-        )
-
-    EventBus.save.connect(func():
-        FlowerSaver.set_data("fly_count", fly_count)
-        FlowerSaver.set_data("unlocked_skills", unlocked_skills)
-        FlowerSaver.set_data("current_level", current_level)
-        FlowerSaver.set_data("player_name", player_name)
-        FlowerSaver.set_data("coins", coins)
-        FlowerSaver.set_data("moneys", moneys)
-        FlowerSaver.set_data("next_reward_player_level", next_reward_player_level)
-        FlowerSaver.set_data("last_checkin_time", last_checkin_time)
-        FlowerSaver.set_data("last_leave_time", last_leave_time)
-        FlowerSaver.set_data("player_healing_items", player_healing_items)
-        FlowerSaver.set_data("flyed_just_now", flyed_just_now)
-        FlowerSaver.set_data("unlocked_functions", unlocked_functions)
-        )
-
-    EventBus.load_save.connect(func():
-        if FlowerSaver.has_key("flyed_just_now"):
-            flyed_just_now = FlowerSaver.get_data("flyed_just_now")
-        
-        if flyed_just_now:
-            Tracer.info("Master飞升读档，玩家名：%s" % player_name)
-            fly_count = FlowerSaver.get_data("fly_count")
-            unlocked_skills = []
-            current_level = 0
-            coins = 0
-            moneys = {"white": 0, "blue": 0, "purple": 0, "yellow": 0,}
-            next_reward_player_level = 1
-            player_healing_items = {"hp_potion": 0, "mp_potion": 0, }
-            
-            player_data = null
-            player_output_data = null
-            
-            player_inventory = null
-            
-            in_dungeon = false
-            
-            #EventBus.rework_level_enemy_count.emit()
-            EventBus.completed_level.emit()
-            return
-        
-        Tracer.info("Master常规读档")
-        
-        fly_count = FlowerSaver.get_data("fly_count")
-        unlocked_skills = FlowerSaver.get_data("unlocked_skills")
-        current_level = FlowerSaver.get_data("current_level")
-        player_name = FlowerSaver.get_data("player_name")
-        coins = FlowerSaver.get_data("coins")
-        moneys = FlowerSaver.get_data("moneys")
-        next_reward_player_level = FlowerSaver.get_data("next_reward_player_level")
-        last_checkin_time = FlowerSaver.get_data("last_checkin_time")
-        last_leave_time = FlowerSaver.get_data("last_leave_time")
-        
-        if FlowerSaver.has_key("player_healing_items"):
-            player_healing_items = FlowerSaver.get_data("player_healing_items")
-        
-        if FlowerSaver.has_key("unlocked_functions"):
-            unlocked_functions = FlowerSaver.get_data("unlocked_functions")
-        
-        EventBus.rework_level_enemy_count.emit()
-        )
-    
-    EventBus.get_money.connect(func(_key:String, _value:int):
-        moneys[_key] += _value
-        )
-    EventBus.player_get_healing_potion.connect(func(_key:String, num:int):
-        if _key == "hp":
-            if player_healing_items.hp_potion >= 10:
-                return
-            player_healing_items.hp_potion += num
-            return
-        if _key == "mp":
-            if player_healing_items.mp_potion >= 10:
-                return
-            player_healing_items.mp_potion += num
-            return
-        )
-    EventBus.start_climb_tower.connect(func():
-        current_location = Const.LOCATIONS.TOWER
-        EventBus.update_ui.emit()
-        )
-    EventBus.go_to_next_tower_level.connect(func():
-        current_tower_level += 1
-        EventBus.update_ui.emit()
-        )
-    EventBus.exit_tower.connect(func():
-        last_tallest_tower_level = current_tower_level
-        current_location = Const.LOCATIONS.WORLD
-        get_tower_reward()
-        current_tower_level = 1
-        need_kill_enemys_to_next_tower = 10
-        )
-        
-    subscriber.init()
 
 
 func get_tower_reward() -> void:

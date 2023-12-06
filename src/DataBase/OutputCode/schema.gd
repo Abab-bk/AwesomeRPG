@@ -471,6 +471,8 @@ class Friends:
     var id: int
     var name: String
     var icon_path: String
+    var base_vision: float
+    var base_atk_range: float
     var state_count: String
     var next_state_skin_name: String
     var quality: int
@@ -491,6 +493,8 @@ class Friends:
         self.id = _json_["id"]
         self.name = _json_["name"]
         self.icon_path = _json_["icon_path"]
+        self.base_vision = _json_["base_vision"]
+        self.base_atk_range = _json_["base_atk_range"]
         self.state_count = _json_["state_count"]
         self.next_state_skin_name = _json_["next_state_skin_name"]
         self.quality = _json_["quality"]

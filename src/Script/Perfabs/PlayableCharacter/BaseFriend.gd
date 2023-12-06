@@ -3,6 +3,15 @@ class_name Friend extends CharacterBody2D
 const MAX_DISTANCE_FROM_PLAYER:float = 600.0
 const MIN_DISTANCE_FROM_PLAUER:float = 200.0
 
+enum STATE {
+    PATROL,
+    MOVE_TO_PLAYERING,
+    MOVE_TO_ENEMYING,
+    ATTACKING,
+    ATK_COOLDOWN,
+    DEAD,
+}
+
 @export var buff_manager:FlowerBuffManager
 
 @onready var health_component:HealthComponent = $HealthComponent
@@ -19,16 +28,11 @@ const MIN_DISTANCE_FROM_PLAUER:float = 200.0
 
 @export var info_data:FriendData
 @export var skin_name:String = ""
+@export var range_attack:bool = false
 
-enum STATE {
-    MOVE_TO_PLAYERING,
-    MOVE_TO_ENEMYING,
-    ATTACKING,
-    DEAD,
-    IDLE
-}
+var range_bullet_spwan_point:Marker2D
 
-var current_state:STATE = STATE.IDLE
+var current_state:STATE = STATE.PATROL
 
 var target_player_point:Marker2D
 
@@ -46,22 +50,10 @@ var seted_data:CharacterData
 func _ready() -> void:
     set_skin()
 
-    atk_range.target_enter_range.connect(func():
-        velocity = Vector2.ZERO
-        
-        if current_state == STATE.DEAD:
-            return
-        
-        turn_to_enemy()
-        
-        # 攻击代码
-        if character_animation.has_animation("scml/Attacking"):
-            character_animation.play("scml/Attacking")
-        current_state = STATE.ATTACKING
-        )
+    atk_range.target_enter_range.connect(func(): current_state = STATE.ATTACKING)
 
     atk_range.target_exited_range.connect(func():
-        current_state = STATE.IDLE
+        current_state = STATE.PATROL
         )
     
     vision_component.target_enter_range.connect(func():
@@ -78,6 +70,11 @@ func _ready() -> void:
         output_data.hp_is_zero.connect(die)
         )
     
+    atk_cd_timer.timeout.connect(func():
+        if current_state == STATE.ATK_COOLDOWN:
+            current_state = STATE.ATTACKING
+        )
+    
     EventBus.kill_all_friend.connect(func():
         queue_free()
         )
@@ -88,15 +85,25 @@ func _ready() -> void:
     buff_manager.compute()
     
     atk_cd_timer.wait_time = output_data.atk_speed
+    set_vision_range(output_data.vision)
+    set_atk_range_range(output_data.atk_range)
+
+
+
+func set_vision_range(_range:float) -> void:
+    $VisionComponent/CollisionShape2D.shape.radius = _range
+
+
+func set_atk_range_range(_range:float) -> void:
+    $AtkRange/CollisionShape2D.shape.radius = _range
 
 
 func _physics_process(_delta:float) -> void:
-    if current_state == STATE.IDLE:
+    if current_state == STATE.PATROL:
         move_to_enemy()
     
     if current_state == STATE.ATTACKING:
-        if not closest_enemy:
-            find_closest_enemy()
+        attack()
     
     if current_state == STATE.MOVE_TO_PLAYERING:
         move_to_player()
@@ -115,7 +122,7 @@ func move_to_player() -> void:
     turn_to_player()
     
     if global_position.distance_to(target_player_point.global_position) <= MIN_DISTANCE_FROM_PLAUER:
-        current_state = STATE.IDLE
+        current_state = STATE.PATROL
 
 
 func set_data(_data:CharacterData) -> void:
@@ -123,19 +130,40 @@ func set_data(_data:CharacterData) -> void:
 
 
 func attack() -> void:
+    atk_cd_timer.start()
     velocity = Vector2.ZERO
     
     # 攻击代码
     if current_state == STATE.DEAD:
         return
-    
-    if global_position != closest_enemy.marker.global_position:
-        global_position = closest_enemy.marker.global_position
-    
+        
     turn_to_enemy()
     
-    character_animation.play("scml/Attacking")
-    current_state = STATE.ATTACKING
+    # 攻击代码
+    if not range_attack:
+        if character_animation.has_animation("scml/Attacking"):
+            if global_position != closest_enemy.marker.global_position:
+                global_position = closest_enemy.marker.global_position 
+            character_animation.play("scml/Attacking")
+            
+    else:
+        if character_animation.has_animation("scml/Shooting"):
+            character_animation.play("scml/Shooting")
+            spawn_a_bullet()
+    
+    current_state = STATE.ATK_COOLDOWN
+
+
+func spawn_a_bullet() -> void:
+    var _data:CharacterData = output_data.duplicate(true)
+    _data.speed = 1000
+    var _bullet:BaseBullet = Builder.build_a_base_bullet(_data, false) as BaseBullet
+    _bullet.is_player_bullet = true
+    
+    range_bullet_spwan_point.add_child(_bullet)
+    
+    _bullet.global_position = range_bullet_spwan_point.global_position
+    _bullet.update_velocity()
 
 
 func move_to_enemy() -> void:
@@ -161,7 +189,7 @@ func find_closest_enemy() -> void:
         closest_enemy = ray_cast.get_collider().owner
         attack()
         turn_to_enemy()
-        current_state = STATE.IDLE
+        current_state = STATE.PATROL
         return
     
     all_enemy = get_tree().get_nodes_in_group("Enemy")
@@ -180,20 +208,10 @@ func find_closest_enemy() -> void:
     closest_enemy = _enemys_distance[0][1]
     closest_distance = _enemys_distance[0][0]
     
-    #for enemy in all_enemy:
-        #if not closest_enemy:
-            #closest_enemy = enemy
-        #
-        #var enemy_distance = global_position.distance_to(enemy.global_position)
-        #
-        #if enemy_distance < closest_distance:
-            #closest_distance = enemy_distance
-            #closest_enemy = enemy
-    
     atk_range.target = closest_enemy
     vision_component.target = closest_enemy
     
-    current_state = STATE.IDLE
+    current_state = STATE.PATROL
 
 
 func relife() -> void:
@@ -203,7 +221,7 @@ func relife() -> void:
     # FIXME: 需要使用call_defereed，寻找变通方法
     #hurt_box_shape.disabled = false
     hurt_box_shape.call_deferred("set_disabled", false)
-    current_state = STATE.IDLE
+    current_state = STATE.PATROL
 
 
 func die() -> void:
@@ -245,7 +263,10 @@ func set_skin() -> void:
     $Display.add_child(new_node)
     
     character_animation = new_node.animation_player
+    range_attack = new_node.range_attack
     
-    current_state = STATE.IDLE
+    if not new_node.range_attack:
+        new_node.hitbox_component.buff_manager = buff_manager
+    else:
+        range_bullet_spwan_point = new_node.bullet_spawn_point
     
-    new_node.hitbox_component.buff_manager = buff_manager

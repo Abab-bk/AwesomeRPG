@@ -1801,8 +1801,11 @@ _data = {
 "Walking": SubResource("Animation_pejx3")
 }
 
-[node name="01" type="Node2D"]
+[node name="01" type="Node2D" node_paths=PackedStringArray("animation_player", "bullet_spawn_point")]
 script = ExtResource("1_67v3m")
+animation_player = NodePath("Skeleton/AnimationPlayer")
+range_attack = true
+bullet_spawn_point = NodePath("Marker2D")
 
 [node name="Skeleton" type="Skeleton2D" parent="."]
 rotation = -3.14159
@@ -1869,6 +1872,7 @@ flip_v = true
 [node name="bone_002" type="Bone2D" parent="Skeleton/bone_006"]
 position = Vector2(40.3455, 24.5365)
 rotation = 0.579185
+scale = Vector2(1, 1)
 
 [node name="bone_003" type="Bone2D" parent="Skeleton/bone_006/bone_002"]
 position = Vector2(30.7183, 0)
@@ -1904,6 +1908,7 @@ flip_v = true
 [node name="bone_000" type="Bone2D" parent="Skeleton/bone_006"]
 position = Vector2(39.7138, -22.3493)
 rotation = -2.95388
+scale = Vector2(1, 1)
 
 [node name="bone_001" type="Bone2D" parent="Skeleton/bone_006/bone_000"]
 position = Vector2(29.8543, -0.258744)
@@ -1943,3 +1948,6 @@ texture = ExtResource("13_onmfx")
 centered = false
 offset = Vector2(0, -128)
 flip_v = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(101, -104)
