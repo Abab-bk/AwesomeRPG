@@ -2,7 +2,6 @@ class_name Player extends CharacterBody2D
 
 signal criticaled
 
-
 @onready var ability_container:FlowerAbilityContainer = $FlowerAbilityContainer
 @onready var flower_buff_manager:FlowerBuffManager = $FlowerBuffManager as FlowerBuffManager
 #@onready var animation_player:AnimationPlayer = $AnimationPlayer
@@ -13,7 +12,7 @@ signal criticaled
 @onready var character_animation_player:AnimationPlayer = %CharacterAnimationPlayer
 @onready var hit_box_component:HitBoxComponent = %HitBoxComponent
 @onready var atk_range:AtkRangeComponent = $AtkRangeComponent
-@onready var vision:VisionComponent = $VisionComponent
+@onready var vision:VisionComponent = $VisionComponent as VisionComponent
 @onready var ray_cast:RayCast2D = $RayCast2D
 @onready var marker:Marker2D = $Marker2D
 @onready var ranged_weapon:RangedWeaponComponent = $RangedWeaponComponent
@@ -161,9 +160,15 @@ func _ready() -> void:
         attack()
         )
     
+    vision.target_exited_range.connect(func():
+        ranged_weapon.should_atk = false
+        )
+    
     vision.target_enter_range.connect(func():
         if current_state == STATE.DEAD:        
             return
+        
+        ranged_weapon.should_atk = true
         
         current_state = STATE.MOVE_TO_ENEMYING        
         turn_to_closest_enemy()

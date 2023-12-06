@@ -1871,14 +1871,14 @@ flip_v = true
 
 [node name="bone_002" type="Bone2D" parent="Skeleton/bone_006"]
 position = Vector2(40.3455, 24.5365)
-rotation = 0.579185
-scale = Vector2(1, 1)
+rotation = 2.87419
 
 [node name="bone_003" type="Bone2D" parent="Skeleton/bone_006/bone_002"]
 position = Vector2(30.7183, 0)
 rotation = 0.245998
 
 [node name="Arrow" type="Sprite2D" parent="Skeleton/bone_006/bone_002/bone_003"]
+modulate = Color(1, 1, 1, 0)
 z_index = 8
 position = Vector2(-24.8637, 31.1506)
 rotation = 0.0860333
@@ -1908,7 +1908,6 @@ flip_v = true
 [node name="bone_000" type="Bone2D" parent="Skeleton/bone_006"]
 position = Vector2(39.7138, -22.3493)
 rotation = -2.95388
-scale = Vector2(1, 1)
 
 [node name="bone_001" type="Bone2D" parent="Skeleton/bone_006/bone_000"]
 position = Vector2(29.8543, -0.258744)
