@@ -197,7 +197,7 @@ class Quests:
     var name: String
     var type: int
     var value: int
-    var reward_type: String
+    var reward_type: int
     var reward: int
 
     func _init(_json_) -> void:

@@ -1,5 +1,7 @@
 extends Panel
 
+@export var id:String = ""
+
 @onready var title_label:Label = %TitleLabel
 @onready var progress_bar_label:Label = %ProgressBarLabel
 
@@ -15,7 +17,7 @@ extends Panel
         current_quest.value_changed.connect(update_ui)
         current_quest.connect_signals()
         update_ui()
-        update_reward_ui()
+        FlowerSaver.set_data("every_day_quest_%s" % id, current_quest)
 
 @onready var content:HBoxContainer = %Content
 @onready var complete_label:Label = %CompleteLabel
@@ -32,6 +34,10 @@ func _ready() -> void:
         if current_quest.can_complete():
             current_quest.complete()
             update_ui()
+        )
+    
+    EventBus.load_save.connect(func():
+        current_quest = FlowerSaver.get_data("every_day_quest_%s" % id)
         )
     
     update_ui()
@@ -59,3 +65,4 @@ func update_reward_ui() -> void:
 
 func update_quest() -> void:
     current_quest = Master.get_quest_by_id(Master.quests.keys().pick_random())
+    update_reward_ui()
