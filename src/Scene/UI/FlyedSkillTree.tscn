@@ -49,7 +49,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="Panel/MarginContainer/VBoxContainer/SubViewportContainer"]
 unique_name_in_owner = true
 handle_input_locally = false
-size = Vector2i(1020, 1572)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="Panel" type="Panel" parent="Panel/MarginContainer/VBoxContainer"]

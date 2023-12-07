@@ -21,8 +21,10 @@ extends Control
 
 func update_ui() -> void:
     title_label.text = current_quest.name
-    reward_label.text = "%s %s" % [str(current_quest.reward.reward_value), str(Reward.get_string(current_quest.reward.type))]
-    progress_label.text = "%s / %s" % [str(current_quest.current_value), str(current_quest.need_value)]
+    
+    if current_quest.reward:
+        reward_label.text = "%s %s" % [str(current_quest.reward.reward_value), str(Reward.get_string(current_quest.reward.type))]
+        progress_label.text = "%s / %s" % [str(current_quest.current_value), str(current_quest.need_value)]
 
 
 func _ready() -> void:
