@@ -13,8 +13,7 @@ enum QUEST_TYPE {
 @export var name:String = ""
 @export var desc:String = ""
 @export var type:QUEST_TYPE = QUEST_TYPE.NONE
-@export var reward_value:int = 0
-@export var reward_type:String = ""
+@export var reward:Reward
 @export var need_value:int = 0
 @export var current_value:int = 0:
     set(v):
@@ -44,16 +43,14 @@ func connect_signals() -> void:
 func get_progres(_temp = null) -> void:
     current_value += 1
 
+
 func can_complete() -> bool:
     if current_value >= need_value:
         return true
     return false
 
+
 func complete() -> void:
     SoundManager.play_ui_sound(load(Master.POPUP_SOUNDS))
     done = true
-    match reward_type:
-        "Coins":
-            Master.coins += reward_value
-        "Xp":
-            Master.player.get_xp(reward_value)
+    reward.get_reward()

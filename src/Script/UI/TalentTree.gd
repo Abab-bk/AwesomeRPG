@@ -1,4 +1,4 @@
-extends Control
+extends Node
 
 @onready var camera:Camera2D = $Camera2D
 @onready var worldmap_view:WorldmapView = %WorldmapView

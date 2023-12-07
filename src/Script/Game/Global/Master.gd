@@ -78,6 +78,8 @@ var flyed_just_now:bool = false:
         FlowerSaver.set_data("flyed_just_now", flyed_just_now)
 var player_name:String = "花神":
     set(v):
+        player_name = v
+        Tracer.info("玩家名称改变")
         FlowerSaver.set_data("player_name", player_name)
 
 var current_location:Const.LOCATIONS = Const.LOCATIONS.WORLD
@@ -439,12 +441,16 @@ func get_quest_by_id(_id:int) -> QuestResource:
     var _quest:QuestResource = QuestResource.new()
     
     var _data = quests[_id]
+    
+    var _reward:Reward = Reward.new()
+    _reward.type = _data["reward_type"]
+    _reward.reward_value = _data["reward"]
+    
+    _quest.reward = _reward
     _quest.id = _data["id"]
     _quest.name = _data["name"]
     _quest.type = _data["type"]
     _quest.need_value = _data["value"]
-    _quest.reward_value = _data["reward"]
-    _quest.reward_type = _data["reward_type"]
     
     return _quest
 
@@ -761,8 +767,8 @@ func get_offline_reward() -> void:
     
     var _level:int = Master.player.get_level() - 1
     
-    var _get_xp:float = (((3 * _level * 1.5) * (1 + Master.fly_count * 0.1)) * 0.8) * float(_distance)
-    var _get_coins:int = floor((_level * randi_range(0, 5)) * 0.8) * _distance
+    var _get_xp:float = (((3 * _level * 1.5) * (1 + Master.fly_count * 0.1)) * 0.1) * float(_distance)
+    var _get_coins:int = floor((_level * randi_range(0, 5)) * 0.1) * _distance
     
     Master.coins += _get_coins
     Master.player.get_xp(_get_xp)

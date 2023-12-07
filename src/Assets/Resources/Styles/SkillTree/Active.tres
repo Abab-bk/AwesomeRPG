@@ -1,23 +1,17 @@
-[gd_resource type="Resource" script_class="WorldmapStyle" load_steps=5 format=3 uid="uid://bcrbi1uvmegoo"]
+[gd_resource type="Resource" script_class="WorldmapStyle" load_steps=4 format=3 uid="uid://bcrbi1uvmegoo"]
 
-[ext_resource type="Texture2D" uid="uid://dfwrk73ka6j8x" path="res://example/skilltree_borders.png" id="1_xa70l"]
+[ext_resource type="Texture2D" uid="uid://dsuxopxj5ikvs" path="res://Assets/UI/Icons/TalentIconBordersActive.png" id="1_ksb75"]
 [ext_resource type="Script" path="res://addons/worldmap_builder/resource_types/wordmap_style.gd" id="2_1877u"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vql2y"]
-atlas = ExtResource("1_xa70l")
-region = Rect2(32, 16, 32, 32)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w5rdv"]
-load_path = "res://.godot/imported/skilltree_borders.png-b022ab63f57155a8a0a421454feb26f1.ctex"
+[ext_resource type="Texture2D" uid="uid://dn4dsngnkuhb7" path="res://Assets/UI/Icons/TalentTreeActiveLine.png" id="3_rmllf"]
 
 [resource]
 resource_name = "Active"
 script = ExtResource("2_1877u")
-icon_modulate = Color(1, 0.227451, 1, 1)
+icon_modulate = Color(1, 1, 1, 1)
 icon_border_modulate = Color(1, 1, 1, 1)
-connection_modulate = Color(1, 0.137255, 1, 1)
-icon_borders = Array[Texture2D]([SubResource("AtlasTexture_vql2y")])
-straight_tex = SubResource("CompressedTexture2D_w5rdv")
+connection_modulate = Color(1, 1, 1, 1)
+icon_borders = Array[Texture2D]([ExtResource("1_ksb75")])
+straight_tex = ExtResource("3_rmllf")
 straight_tex_region = Rect2(0, 8, 128, 8)
-straight_tex_repeat = false
+straight_tex_repeat = true
 priority = -5

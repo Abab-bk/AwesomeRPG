@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=65 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -53,10 +53,13 @@
 [ext_resource type="Texture2D" uid="uid://cwyqj882hfdtg" path="res://Assets/UI/Texture/Button/GachaBtnPre.png" id="38_44uhx"]
 [ext_resource type="PackedScene" uid="uid://cjjwuxcdb323h" path="res://Scene/UI/Fly.tscn" id="38_kc5l2"]
 [ext_resource type="Texture2D" uid="uid://pynss6v6gp0j" path="res://Assets/UI/Texture/Button/GachaBtn.png" id="38_y4k8f"]
+[ext_resource type="Texture2D" uid="uid://c5j8hsgbywbwk" path="res://Assets/UI/Texture/Button/EveryDayQuestBtn.png" id="41_r6tpb"]
+[ext_resource type="Texture2D" uid="uid://bfe0vvglvoee4" path="res://Assets/UI/Texture/Button/EveryDayQuestBtnPre.png" id="42_e1xnd"]
 [ext_resource type="PackedScene" uid="uid://cehpj6ivkyk7" path="res://Scene/UI/Friends.tscn" id="50_dncem"]
 [ext_resource type="PackedScene" uid="uid://b05k7iocrua2g" path="res://Scene/UI/Tower.tscn" id="51_icvei"]
 [ext_resource type="PackedScene" uid="uid://car5dwl4qr8w" path="res://Scene/UI/Gacha.tscn" id="52_l1u2u"]
 [ext_resource type="PackedScene" uid="uid://csd413be3hgxg" path="res://Scene/UI/BlackRect.tscn" id="55_wus0m"]
+[ext_resource type="PackedScene" uid="uid://dc812tpv18cnn" path="res://Scene/UI/EveryDayQuest.tscn" id="56_oex1f"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4vukb"]
 font = ExtResource("13_xqeye")
@@ -450,6 +453,7 @@ text = "卡死点我"
 
 [node name="GetEquipmentBtn" type="Button" parent="Control"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 43.0
 offset_top = 509.0
@@ -461,14 +465,14 @@ text = "得到装备"
 script = ExtResource("24_w5dur")
 
 [node name="SubFunction" type="Panel" parent="Control"]
-custom_minimum_size = Vector2(150, 0)
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -188.0
+offset_left = -158.0
 offset_top = -880.0
 offset_right = -38.0
 offset_bottom = 403.0
@@ -548,6 +552,32 @@ size_flags_horizontal = 3
 texture_normal = ExtResource("38_y4k8f")
 texture_pressed = ExtResource("38_44uhx")
 stretch_mode = 5
+
+[node name="SubFuntion2" type="Panel" parent="Control"]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 38.0
+offset_top = -694.0
+offset_right = 166.0
+offset_bottom = -566.0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/SubFuntion2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EveryDayQuestBtn" type="TextureButton" parent="Control/SubFuntion2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("41_r6tpb")
+texture_pressed = ExtResource("42_e1xnd")
 
 [node name="LevelUpArrow" type="Control" parent="."]
 layout_mode = 3
@@ -641,6 +671,10 @@ visible = false
 layout_mode = 2
 
 [node name="Gacha" parent="Pages/Pages" instance=ExtResource("52_l1u2u")]
+visible = false
+layout_mode = 2
+
+[node name="EveryDayQuest" parent="Pages/Pages" instance=ExtResource("56_oex1f")]
 visible = false
 layout_mode = 2
 

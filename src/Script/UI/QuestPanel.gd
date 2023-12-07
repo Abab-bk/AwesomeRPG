@@ -9,21 +9,21 @@ extends Control
     set(v):
         current_quest = v
         FlowerSaver.set_data("quest_current_quest", current_quest)
+        
         if not current_quest:
             return
         if current_quest.is_connected("value_changed", update_ui):
             return
+        
         current_quest.value_changed.connect(update_ui)
         current_quest.connect_signals()
 
+
 func update_ui() -> void:
     title_label.text = current_quest.name
-    match current_quest.reward_type:
-        "Coins":
-            reward_label.text = "%s 金币" % current_quest.reward_value
-        "Xp":
-            reward_label.text = "%s 经验" % current_quest.reward_value
+    reward_label.text = "%s %s" % [str(current_quest.reward.reward_value), str(Reward.get_string(current_quest.reward.type))]
     progress_label.text = "%s / %s" % [str(current_quest.current_value), str(current_quest.need_value)]
+
 
 func _ready() -> void:
     button.pressed.connect(func():
@@ -42,6 +42,7 @@ func _ready() -> void:
         )
     
     get_new_quest()
+
 
 func get_new_quest() -> void:
     if not current_quest or current_quest.id == 0:

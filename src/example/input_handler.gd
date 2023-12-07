@@ -18,12 +18,20 @@ extends Node
 @export var add_target : WorldmapGraph
 @export var add_node_index := 3
 
+@onready var camera:Camera2D = $"../Camera2D"
 
 func _ready():
     skilltree.max_unlock_cost = starting_skillpoints
     _skillpoints_changed()
     tooltip_root.hide()
 
+
+func _input(event:InputEvent) -> void:
+    if event is InputEventMouseMotion:
+        if event.button_mask == MOUSE_BUTTON_MASK_LEFT:
+            camera.position -= event.relative * camera.zoom
+        
+            
 
 func _skillpoints_changed():
     skillpoint_label.text = skillpoint_label_format.format([skilltree.max_unlock_cost])

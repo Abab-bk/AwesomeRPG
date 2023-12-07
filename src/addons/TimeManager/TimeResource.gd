@@ -4,10 +4,6 @@ class_name TimeResource extends Resource
 @export var minutes:int = 0
 @export var seconds:int = 0
 
-@warning_ignore("native_method_override")
-func get_class() -> String:
-    return "res://addons/TimeManager/TimeResource.gd"
-
 
 func _init(_hours:int = 0, _minutes:int = 0, _seconds:int = 0):
     hours = _hours
@@ -20,6 +16,19 @@ func get_distance_to_a(_a:TimeResource) -> int:
     var _a_total_sec:int = (_a.hours * 3600) + (_a.minutes * 60) + _a.seconds
     
     return _total_sec - _a_total_sec
+
+
+func is_next_day(_time:TimeResource) -> bool:
+    if hours < _time.hours:
+        return true
+    elif hours == _time.hours and minutes < _time.minutes:
+        return true
+    elif hours == _time.hours and minutes == _time.minutes and seconds < _time.seconds:
+        return true
+    elif hours == _time.hours and minutes == _time.minutes and seconds == _time.seconds:
+        return false
+    else:
+        return false
 
 
 func get_time_string() -> String:

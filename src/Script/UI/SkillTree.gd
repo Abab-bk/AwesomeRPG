@@ -1,5 +1,7 @@
 extends Control
 
+const DISTANCE:int = 300
+
 @export var step_count:int = 100
 
 @onready var skills_ui:WorldmapView
@@ -11,7 +13,7 @@ extends Control
 @onready var talent_title:Label = %TalentTitle
 @onready var talent_desc:RichTextLabel = %TalentDesc
 
-@onready var talent_tree:Control = %TalentTree
+@onready var talent_tree:Node = %TalentTree
 
 @onready var title_bar:MarginContainer = $Panel/MarginContainer/VBoxContainer/TitleBar
 
@@ -42,6 +44,7 @@ func update_ui(_data:WorldmapNodeData = null) -> void:
 消耗：%s 天赋点
 [/center]" % [_data.name, str(_data.cost)]
 
+
 func get_skill_node_data(_id:int) -> WorldmapNodeData:
     var _data:WorldmapNodeData = WorldmapNodeData.new()
     var _data_id:int = Master.talent_buffs.keys().pick_random()
@@ -50,7 +53,7 @@ func get_skill_node_data(_id:int) -> WorldmapNodeData:
     var _offset:float = randf_range(0.1, 0.2)
     
     _data.id = str(_id)
-    _data.texture = load(_ability_data["icon_path"])
+    _data.texture = load("res://Assets/UI/Icons/TalentIcons/" + _ability_data["icon_path"])
     _data.name = _ability_data["name"].format({"s": str(_offset * 10).pad_decimals(1)})
     _data.cost = _ability_data["cost"]
     
@@ -127,6 +130,7 @@ func save() -> void:
     FlowerSaver.set_data("skill_tree_data", saved_datas)
     FlowerSaver.set_data("saved_inner_data", saved_inner_data)
 
+
 func load_save() -> void:
     await get_tree().create_timer(2.0).timeout
     skills_ui.recalculate_map()
@@ -147,7 +151,7 @@ func gen_trees_by_walker() -> void:
         load_save()
         return
     
-    var _step_size:Vector2 = Vector2(300, 0)
+    var _step_size:Vector2 = Vector2(DISTANCE, 0)
     
     for i in step_count:
         # 判断是否要转向
@@ -155,16 +159,16 @@ func gen_trees_by_walker() -> void:
         match _dir:
             # 向左转
             0:
-                _step_size = Vector2(300, 0)
+                _step_size = Vector2(DISTANCE, 0)
             # 向右转
             1:
-                _step_size = Vector2(-300, 0)
+                _step_size = Vector2(-DISTANCE, 0)
             # 向上转
             2:
-                _step_size = Vector2(0, 300)
+                _step_size = Vector2(0, DISTANCE)
             # 向下转
             3:
-                _step_size = Vector2(0, -300)
+                _step_size = Vector2(0, -DISTANCE)
         
         while node_pos in added_node_pos:
             node_pos += _step_size

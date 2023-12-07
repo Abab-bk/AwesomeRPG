@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkuoi10p4tmgr"]
+
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_op2ev"]
+[ext_resource type="Script" path="res://Script/UI/EveryDayQuestItem.gd" id="2_8fkjq"]
+[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="2_lnuld"]
+[ext_resource type="LabelSettings" uid="uid://mgahdqv1o26h" path="res://Assets/LabelSetting/BigGray.tres" id="3_jqlh3"]
+
+[node name="EveryDayQuestItem" type="Panel"]
+custom_minimum_size = Vector2(0, 400)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme = ExtResource("1_op2ev")
+theme_type_variation = &"SubPanel"
+script = ExtResource("2_8fkjq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Content" type="HBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Info" type="MarginContainer" parent="MarginContainer/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_right = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Content/Info"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="QuestInfo" type="VBoxContainer" parent="MarginContainer/Content/Info/VBoxContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/Content/Info/VBoxContainer/QuestInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "击杀 30 个敌人。"
+label_settings = ExtResource("2_lnuld")
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/Content/Info/VBoxContainer/QuestInfo"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+show_percentage = false
+
+[node name="ProgressBarLabel" type="Label" parent="MarginContainer/Content/Info/VBoxContainer/QuestInfo/ProgressBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "10 / 30"
+label_settings = ExtResource("3_jqlh3")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Content/Info/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Rewards" type="HBoxContainer" parent="MarginContainer/Content/Info/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Content"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="CheckBtn" type="Button" parent="MarginContainer/Content/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "完成"
+
+[node name="CompleteLabel" type="Label" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "已完成"
+label_settings = ExtResource("2_lnuld")
+horizontal_alignment = 1

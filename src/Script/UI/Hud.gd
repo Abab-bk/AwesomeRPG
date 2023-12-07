@@ -31,6 +31,7 @@ signal backed_to_home
 @onready var friends_btn:TextureButton = %FriendsBtn
 @onready var tower_btn:TextureButton = %TowerBtn
 @onready var gacha_btn:TextureButton = %GachaBtn
+@onready var every_day_quest_btn:TextureButton = %EveryDayQuestBtn
 
 @onready var get_skill_btn:Button = %GetSkillBtn
 
@@ -68,6 +69,7 @@ enum PAGE {
     TOWER,
     DUNGEON,
     GACHA,
+    EVERY_DAY_QUEST,
 }
 
 func _ready() -> void:
@@ -127,6 +129,7 @@ func _ready() -> void:
     friends_btn.pressed.connect(change_page.bind(PAGE.FRIENDS))
     tower_btn.pressed.connect(change_page.bind(PAGE.TOWER))
     gacha_btn.pressed.connect(change_page.bind(PAGE.GACHA))
+    every_day_quest_btn.pressed.connect(change_page.bind(PAGE.EVERY_DAY_QUEST))
     # 添加技能
     get_skill_btn.pressed.connect(func():
         var _ability:FlowerAbility = Master.get_random_ability()
