@@ -22,41 +22,6 @@
   },
   {
     "id": 1,
-    "name": "力量、智慧、敏捷 + 5",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5002",
-        "type": 1,
-        "value": 5,
-        "formual": "",
-        "target_property": "strength"
-      },
-      {
-        "id": "5003",
-        "type": 1,
-        "value": 5,
-        "formual": "",
-        "target_property": "wisdom"
-      },
-      {
-        "id": "5004",
-        "type": 1,
-        "value": 5,
-        "formual": "",
-        "target_property": "agility"
-      }
-    ]
-  },
-  {
-    "id": 2,
     "name": "伤害 + {s}",
     "icon_path": "sword.png",
     "cost": 1,
@@ -77,7 +42,7 @@
     ]
   },
   {
-    "id": 3,
+    "id": 2,
     "name": "所有元素伤害 + 10",
     "icon_path": "sword.png",
     "cost": 1,
@@ -94,53 +59,11 @@
         "value": 10,
         "formual": "",
         "target_property": "frost_damage"
-      },
-      {
-        "id": "5007",
-        "type": 1,
-        "value": 10,
-        "formual": "",
-        "target_property": "fire_damage"
-      },
-      {
-        "id": "5008",
-        "type": 1,
-        "value": 10,
-        "formual": "",
-        "target_property": "toxic_damage"
-      },
-      {
-        "id": "5009",
-        "type": 1,
-        "value": 10,
-        "formual": "",
-        "target_property": "light_damage"
       }
     ]
   },
   {
-    "id": 4,
-    "name": "闪避率 + 10%",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5010",
-        "type": 0,
-        "value": 0.1,
-        "formual": "",
-        "target_property": "evasion"
-      }
-    ]
-  },
-  {
-    "id": 5,
+    "id": 3,
     "name": "火焰伤害 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -161,7 +84,7 @@
     ]
   },
   {
-    "id": 6,
+    "id": 4,
     "name": "冰霜伤害 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -182,7 +105,7 @@
     ]
   },
   {
-    "id": 7,
+    "id": 5,
     "name": "闪电伤害 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -203,7 +126,7 @@
     ]
   },
   {
-    "id": 8,
+    "id": 6,
     "name": "毒素伤害 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -224,7 +147,7 @@
     ]
   },
   {
-    "id": 9,
+    "id": 7,
     "name": "物理伤害 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -245,7 +168,7 @@
     ]
   },
   {
-    "id": 10,
+    "id": 8,
     "name": "火焰抗性 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -266,7 +189,7 @@
     ]
   },
   {
-    "id": 11,
+    "id": 9,
     "name": "冰霜抗性 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -287,7 +210,7 @@
     ]
   },
   {
-    "id": 12,
+    "id": 10,
     "name": "闪电抗性 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -308,7 +231,7 @@
     ]
   },
   {
-    "id": 13,
+    "id": 11,
     "name": "毒素抗性 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -329,7 +252,7 @@
     ]
   },
   {
-    "id": 14,
+    "id": 12,
     "name": "物理抗性 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -350,238 +273,7 @@
     ]
   },
   {
-    "id": 15,
-    "name": "火焰 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5021",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "fire_damage"
-      }
-    ]
-  },
-  {
-    "id": 16,
-    "name": "冰霜 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5022",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "frost_damage"
-      }
-    ]
-  },
-  {
-    "id": 17,
-    "name": "闪电 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5023",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "light_damage"
-      }
-    ]
-  },
-  {
-    "id": 18,
-    "name": "毒素 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5024",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "toxic_damage"
-      }
-    ]
-  },
-  {
-    "id": 19,
-    "name": "物理 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5025",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "damage"
-      }
-    ]
-  },
-  {
-    "id": 20,
-    "name": "火焰抗性 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5026",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "fire_resistance"
-      }
-    ]
-  },
-  {
-    "id": 21,
-    "name": "冰霜抗性 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5027",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "frost_resistance"
-      }
-    ]
-  },
-  {
-    "id": 22,
-    "name": "闪电抗性 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5028",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "light_resistance"
-      }
-    ]
-  },
-  {
-    "id": 23,
-    "name": "毒素抗性 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5029",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "toxic_resistance"
-      }
-    ]
-  },
-  {
-    "id": 24,
-    "name": "物理抗性 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5030",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "physical_resistance"
-      }
-    ]
-  },
-  {
-    "id": 25,
-    "name": "最大生命值 + {s}。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5031",
-        "type": 1,
-        "value": 0,
-        "formual": "",
-        "target_property": "max_hp"
-      }
-    ]
-  },
-  {
-    "id": 26,
+    "id": 13,
     "name": "生命回复 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -602,7 +294,7 @@
     ]
   },
   {
-    "id": 27,
+    "id": 14,
     "name": "防御 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -623,7 +315,7 @@
     ]
   },
   {
-    "id": 28,
+    "id": 15,
     "name": "闪避 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -644,7 +336,7 @@
     ]
   },
   {
-    "id": 29,
+    "id": 16,
     "name": "幸运 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -665,7 +357,7 @@
     ]
   },
   {
-    "id": 30,
+    "id": 17,
     "name": "速度 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -686,7 +378,7 @@
     ]
   },
   {
-    "id": 31,
+    "id": 18,
     "name": "治疗效率 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -707,7 +399,7 @@
     ]
   },
   {
-    "id": 32,
+    "id": 19,
     "name": "暴击率 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -728,7 +420,7 @@
     ]
   },
   {
-    "id": 33,
+    "id": 20,
     "name": "暴击伤害 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -749,7 +441,7 @@
     ]
   },
   {
-    "id": 34,
+    "id": 21,
     "name": "易伤伤害 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -770,7 +462,7 @@
     ]
   },
   {
-    "id": 35,
+    "id": 22,
     "name": "易伤率 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -791,7 +483,7 @@
     ]
   },
   {
-    "id": 36,
+    "id": 23,
     "name": "魔力 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -812,7 +504,7 @@
     ]
   },
   {
-    "id": 37,
+    "id": 24,
     "name": "攻击速度 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -833,7 +525,7 @@
     ]
   },
   {
-    "id": 38,
+    "id": 25,
     "name": "力量 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -854,7 +546,7 @@
     ]
   },
   {
-    "id": 39,
+    "id": 26,
     "name": "智慧 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -875,7 +567,7 @@
     ]
   },
   {
-    "id": 40,
+    "id": 27,
     "name": "敏捷 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -896,7 +588,7 @@
     ]
   },
   {
-    "id": 41,
+    "id": 28,
     "name": "攻击范围 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -917,7 +609,7 @@
     ]
   },
   {
-    "id": 42,
+    "id": 29,
     "name": "视野 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,
@@ -938,385 +630,7 @@
     ]
   },
   {
-    "id": 43,
-    "name": "攻击范围 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5049",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "max_hp"
-      }
-    ]
-  },
-  {
-    "id": 44,
-    "name": "视野 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5050",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "health_regeneration"
-      }
-    ]
-  },
-  {
-    "id": 45,
-    "name": "最大生命值 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5051",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "defense"
-      }
-    ]
-  },
-  {
-    "id": 46,
-    "name": "生命回复 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5052",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "evasion"
-      }
-    ]
-  },
-  {
-    "id": 47,
-    "name": "防御 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5053",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "luck"
-      }
-    ]
-  },
-  {
-    "id": 48,
-    "name": "闪避 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5054",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "speed"
-      }
-    ]
-  },
-  {
-    "id": 49,
-    "name": "幸运 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5055",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "healing_effciency"
-      }
-    ]
-  },
-  {
-    "id": 50,
-    "name": "速度 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5056",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "critical_rate"
-      }
-    ]
-  },
-  {
-    "id": 51,
-    "name": "治疗效率 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5057",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "critical_damage"
-      }
-    ]
-  },
-  {
-    "id": 52,
-    "name": "暴击率 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5058",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "vulnerability_damage"
-      }
-    ]
-  },
-  {
-    "id": 53,
-    "name": "暴击伤害 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5059",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "vulnerability_rate"
-      }
-    ]
-  },
-  {
-    "id": 54,
-    "name": "易伤伤害 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5060",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "magic"
-      }
-    ]
-  },
-  {
-    "id": 55,
-    "name": "易伤率 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5061",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "atk_speed"
-      }
-    ]
-  },
-  {
-    "id": 56,
-    "name": "魔力 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5062",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "strength"
-      }
-    ]
-  },
-  {
-    "id": 57,
-    "name": "攻击速度 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5063",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "wisdom"
-      }
-    ]
-  },
-  {
-    "id": 58,
-    "name": "力量 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5064",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "agility"
-      }
-    ]
-  },
-  {
-    "id": 59,
-    "name": "智慧 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5065",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "atk_range"
-      }
-    ]
-  },
-  {
-    "id": 60,
-    "name": "敏捷 + {s}%。",
-    "icon_path": "sword.png",
-    "cost": 1,
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "5066",
-        "type": 0,
-        "value": 0,
-        "formual": "",
-        "target_property": "vision"
-      }
-    ]
-  },
-  {
-    "id": 61,
+    "id": 30,
     "name": "防御 + {s}。",
     "icon_path": "sword.png",
     "cost": 1,

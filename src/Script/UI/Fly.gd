@@ -30,9 +30,8 @@ func _ready() -> void:
             EventBus.save.emit()
             await FlowerSaver.save_ok
             #EventBus.load_save.emit()
-            #FlowerLoader.change_scene(Master.world, "res://Scene/Game/FlyAnimation.tscn")
-            get_tree().change_scene_to_packed(load("res://Scene/Game/FlyAnimation.tscn"))
-            #EventBus.change_scene.emit(Master.world, "res://Scene/Game/FlyAnimation.tscn")
+            #get_tree().change_scene_to_packed(load("res://Scene/Game/FlyAnimation.tscn"))
+            get_tree().change_scene_to_packed(load("res://Scene/UI/FlyedSkillTree.tscn"))
             )
         )
     

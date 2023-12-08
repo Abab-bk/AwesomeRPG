@@ -118,6 +118,10 @@ func _ready() -> void:
                 compute_data = flower_buff_manager.compute_data as CharacterData
                 output_data = flower_buff_manager.output_data as CharacterData
                 # print("玩家等级：", output_data.level) # 读出来就是玩家等级2
+                
+                for i in Master.flyed_obtain_buffs:
+                    compute_data[i[0]] += i[1]
+                
                 Master.player_data = compute_data
                 Master.player_output_data = output_data
                 compute()

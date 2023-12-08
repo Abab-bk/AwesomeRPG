@@ -56,6 +56,7 @@ func _ready() -> void:
         EventBus.load_save.emit()
         Master.should_load = false
 
+
 func spawn_a_friend_by_id(_id:int, _point:Marker2D) -> void:
     var _friend_data = Master.friends[_id]
     
@@ -87,6 +88,7 @@ func spawn_a_friend_by_id(_id:int, _point:Marker2D) -> void:
 
 func rework_level_enemy_count() -> void:
     completed_level()
+
 
 func completed_level() -> void:
     enemy_home.min_enemy_count = Master.current_level * 1

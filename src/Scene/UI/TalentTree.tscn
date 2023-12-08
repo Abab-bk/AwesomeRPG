@@ -48,8 +48,11 @@ style_inactive = ExtResource("4_fk7qa")
 
 [node name="RootItem" type="Node2D" parent="WorldmapView"]
 unique_name_in_owner = true
+scale = Vector2(1.01728, 1.00677)
 script = ExtResource("5_q0t1h")
 node_count = 1
 node_0/data = SubResource("Resource_qeqt6")
-node_0/position = Vector2(87.9318, 85.4154)
-connection_count = 0
+node_0/position = Vector2(83.5847, 82.5392)
+connection_count = 2
+connection_0/nodes = Vector2i(1, 2)
+connection_1/nodes = Vector2i(2, 0)

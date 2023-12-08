@@ -1,7 +1,6 @@
 extends Node
 
 # TODO: 换装备对比Tooltip
-# TODO: 飞升技能树
 # TODO: 每日转盘（转的越多奖励越好）
 # TODO: 世界树（花园）
 # TODO: 程序化生成世界地图
@@ -124,6 +123,10 @@ var next_reward_player_level:int = 1:
     set(v):
         next_reward_player_level = v
         FlowerSaver.set_data("next_reward_player_level", next_reward_player_level)
+
+# [["property", value], ["property", value]]
+var flyed_obtain_buffs:Array = []
+
 
 # 用来存储drop_item位置的数组
 var occupied_positions:Array

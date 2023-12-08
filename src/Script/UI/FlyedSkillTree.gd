@@ -17,15 +17,15 @@ const DISTANCE:int = 300
 
 @onready var title_bar:MarginContainer = $Panel/MarginContainer/VBoxContainer/TitleBar
 
+@onready var yes_btn:Button = %YesBtn
+@onready var cancel_btn:Button = %CancelBtn
+@onready var popup:Panel = $Popup
+
 var node_pos:Vector2 = Vector2(509, 953)
 var last_parent_id:int = 0
 
 var added_sub_nodes:Array[int] = []
 var added_node_pos:Array[Vector2] = []
-
-var cancel_event:Callable = func():
-    SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
-    owner.change_page(owner.PAGE.HOME)
 
 var current_item:WorldmapNodeData
 var closest_path:NodePath
@@ -36,6 +36,10 @@ var saved_datas:Dictionary
 var saved_inner_data
 var loaded:bool = false
 
+
+var cancel_event:Callable = func():
+    SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
+    popup.show()
 
 func update_ui(_data:WorldmapNodeData = null) -> void:
     talent_point_label.text = "天赋点：%s" % str(skills_ui.max_unlock_cost)
@@ -91,13 +95,22 @@ func _ready() -> void:
             skills_ui.max_unlock_cost -= skills_ui.set_node_state(closest_path, closest_node_in_path, 1)
             
             var _buff:FlowerBaseBuff = current_item.data[0]
-            Master.player_data[_buff.compute_values[0]["target_property"]] += _buff.compute_values[0]["value"]
+            
+            Master.flyed_obtain_buffs.append([_buff.compute_values[0]["target_property"], _buff.compute_values[0]["value"]])
             
             update_ui(current_item)
             save()
         )
     
-    title_bar.cancel_callable = cancel_event
+    yes_btn.pressed.connect(func():
+        EventBus.flyed.emit()
+        Master.should_load = true
+        get_tree().change_scene_to_packed(load("res://Scene/World.tscn"))
+        )
+    
+    cancel_btn.pressed.connect(func():
+        popup.hide()
+        )
     
     skills_ui = %TalentTree.worldmap_view
     root_item = %TalentTree.root_item
@@ -108,41 +121,40 @@ func _ready() -> void:
     
     added_node_pos.append(node_pos)
     
-    EventBus.load_save.connect(func():
-        if FlowerSaver.has_key("skill_tree_data"):
-            saved_datas = FlowerSaver.get_data("skill_tree_data")
-            loaded = true
-        )
+    if FlowerSaver.has_key("flyed_tree_skill_tree_data"):
+        saved_datas = FlowerSaver.get_data("flyed_tree_skill_tree_data")
+        loaded = true
+    
     EventBus.get_talent_point.connect(func(_count:int):
         skills_ui.max_unlock_cost += _count
         )
     
+    popup.hide()
+    
     update_ui()
-
-    await get_tree().create_timer(1.0).timeout
+    
     gen_trees_by_walker()
 
 
 func save() -> void:
-    Tracer.info("保存技能树")
+    Tracer.info("保存飞升技能树")
     saved_inner_data = {
         "state": skills_ui.get_state(),
         "cost": skills_ui.max_unlock_cost
     }
-    FlowerSaver.set_data("skill_tree_data", saved_datas)
-    FlowerSaver.set_data("saved_inner_data", saved_inner_data)
+    FlowerSaver.set_data("flyed_tree_skill_tree_data", saved_datas)
+    FlowerSaver.set_data("flyed_tree_saved_inner_data", saved_inner_data)
 
 
 func load_save() -> void:
-    await get_tree().create_timer(2.0).timeout
     skills_ui.recalculate_map()
-    saved_datas = FlowerSaver.get_data("skill_tree_data")
-    saved_inner_data = FlowerSaver.get_data("saved_inner_data")
+    saved_datas = FlowerSaver.get_data("flyed_tree_skill_tree_data")
+    saved_inner_data = FlowerSaver.get_data("flyed_tree_saved_inner_data")
     skills_ui.load_state(saved_inner_data["state"])
     skills_ui.max_unlock_cost = saved_inner_data["cost"]
     skills_ui.recalculate_map()
     update_ui()
-    
+
 
 func gen_trees_by_walker() -> void:
     if loaded:

@@ -1,20 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://tr8re5wckcsv"]
+[gd_scene load_steps=10 format=3 uid="uid://tr8re5wckcsv"]
 
 [ext_resource type="Script" path="res://addons/worldmap_builder/nodes/worldmap_view.gd" id="1_d2xbw"]
+[ext_resource type="Script" path="res://Script/UI/FlyedSkillTreeMap.gd" id="1_h3rd2"]
 [ext_resource type="Resource" uid="uid://bcrbi1uvmegoo" path="res://Assets/Resources/Styles/SkillTree/Active.tres" id="2_88axb"]
 [ext_resource type="Resource" uid="uid://dniiltq2u7uo7" path="res://Assets/Resources/Styles/SkillTree/CanActive.tres" id="3_iugw8"]
 [ext_resource type="Resource" uid="uid://cpgs2kbj8rqgg" path="res://Assets/Resources/Styles/SkillTree/InActive.tres" id="4_li3x0"]
 [ext_resource type="Script" path="res://addons/worldmap_builder/nodes/worldmap_graph.gd" id="5_v0ufa"]
 [ext_resource type="Script" path="res://addons/worldmap_builder/resource_types/worldmap_node_data.gd" id="6_cf14m"]
-[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="7_s0ppq"]
+[ext_resource type="Texture2D" uid="uid://cfj7cxkopcj3e" path="res://Assets/UI/Icons/TalentIcon.png" id="7_i6xek"]
 
-[sub_resource type="Resource" id="Resource_i8gu7"]
+[sub_resource type="Resource" id="Resource_thr0w"]
 script = ExtResource("6_cf14m")
 id = &"0"
-texture = ExtResource("7_s0ppq")
+texture = ExtResource("7_i6xek")
 color = Color(1, 1, 1, 1)
-name = "aa"
-desc = "aa"
+name = "开始"
+desc = "AwesomeRPG 是一款，后面忘了"
 size_tier = 0
 cost = 1
 tags = Array[StringName]([])
@@ -27,6 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_h3rd2")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -39,9 +41,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_d2xbw")
-initial_item = NodePath("RootItem")
+initial_item = NodePath("")
 initial_node = 0
 auto_minsize = false
 style_active = ExtResource("2_88axb")
@@ -50,8 +53,11 @@ style_inactive = ExtResource("4_li3x0")
 
 [node name="RootItem" type="Node2D" parent="WorldmapView"]
 unique_name_in_owner = true
+scale = Vector2(1.01728, 1.00677)
 script = ExtResource("5_v0ufa")
 node_count = 1
-node_0/data = SubResource("Resource_i8gu7")
-node_0/position = Vector2(538.505, 254.761)
-connection_count = 0
+node_0/data = SubResource("Resource_thr0w")
+node_0/position = Vector2(83.5847, 82.5392)
+connection_count = 2
+connection_0/nodes = Vector2i(0, 0)
+connection_1/nodes = Vector2i(0, 0)
