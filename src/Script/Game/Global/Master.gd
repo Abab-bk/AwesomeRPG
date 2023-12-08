@@ -453,11 +453,13 @@ func get_random_quest() -> QuestResource:
     _reward.type = _reward_data["type"]
     _reward.reward_value = _reward_data["type"]
     
+    var _need_value:int = randi_range(_data["quest_value_range"][0], _data["quest_value_range"][1])
+    
     _quest.reward = _reward
     _quest.id = _data["id"]
-    _quest.name = _data["name"]
+    _quest.name = _data["desc"].format({"s": str(_need_value)})
     _quest.type = _data["type"]
-    _quest.need_value = randi_range(_data["quest_value_range"][0], _data["quest_value_range"][1])
+    _quest.need_value = _need_value
     
     return _quest
 

@@ -52,18 +52,24 @@ theme_override_constants/separation = 40
 
 [node name="EveryDayQuestItem" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_2v3nj")]
 layout_mode = 2
+id = "1"
 
 [node name="EveryDayQuestItem2" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_2v3nj")]
 layout_mode = 2
+id = "2"
 
 [node name="EveryDayQuestItem3" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_2v3nj")]
 layout_mode = 2
+id = "3"
 
 [node name="EveryDayQuestItem4" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_2v3nj")]
 layout_mode = 2
+id = "4"
 
 [node name="EveryDayQuestItem5" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_2v3nj")]
 layout_mode = 2
+id = "5"
 
 [node name="EveryDayQuestItem6" parent="Panel/VBoxContainer/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_2v3nj")]
 layout_mode = 2
+id = "6"

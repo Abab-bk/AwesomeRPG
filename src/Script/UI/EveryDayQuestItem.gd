@@ -18,6 +18,7 @@ extends Panel
         current_quest.connect_signals()
         update_ui()
         FlowerSaver.set_data("every_day_quest_%s" % id, current_quest)
+        #Tracer.info("每日任务存档成功，key：%s" % "every_day_quest_%s" % id)
 
 @onready var content:HBoxContainer = %Content
 @onready var complete_label:Label = %CompleteLabel
@@ -39,6 +40,7 @@ func _ready() -> void:
     EventBus.load_save.connect(func():
         if FlowerSaver.has_key("every_day_quest_%s" % id):
             current_quest = FlowerSaver.get_data("every_day_quest_%s" % id)
+            #Tracer.info("每日任务读档成功，key：%s" % "every_day_quest_%s" % id)
         )
     
     update_ui()
