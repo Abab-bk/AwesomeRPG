@@ -68,7 +68,9 @@ class AndroidExportPlugin extends EditorExportPlugin:
         ])
 
     func _get_android_manifest_element_contents(platform: EditorExportPlatform, debug: bool) -> String:
-        return """<uses-permission android:name="android.permission.INTERNET"></uses-permission>"""
+        return """
+        <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+        """
 
     func _get_android_manifest_application_element_contents(platform: EditorExportPlatform, debug: bool) -> String:
         return """

@@ -45,6 +45,13 @@ signal player_level_up
 signal player_get_healing_potion(key:String, num:int)
 signal player_changed_display
 
+signal player_getd_gold_equipment
+
+signal use_hp_potion
+signal use_mp_potion
+
+signal recycle_equipment
+
 signal rework_level_enemy_count
 
 # 这里是爆出打造装备需要的金币
@@ -70,6 +77,9 @@ signal show_animation(key:String, data:Dictionary)
 signal show_damage_number(pos:Vector2, text:String, crit:bool)
 
 signal enter_dungeon(dungeon:DungeonData)
+signal enter_dungeon_and_success
+
+signal gacha_pull_1
 
 signal add_item(item:InventoryItem)
 signal remove_item(item:InventoryItem)

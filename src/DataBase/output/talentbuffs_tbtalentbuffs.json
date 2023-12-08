@@ -2,7 +2,7 @@
   {
     "id": 0,
     "name": "开始！+1 物理伤害。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -23,7 +23,7 @@
   {
     "id": 1,
     "name": "伤害 + {s}",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -44,7 +44,7 @@
   {
     "id": 2,
     "name": "所有元素伤害 + 10",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -65,7 +65,7 @@
   {
     "id": 3,
     "name": "火焰伤害 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -86,7 +86,7 @@
   {
     "id": 4,
     "name": "冰霜伤害 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -107,7 +107,7 @@
   {
     "id": 5,
     "name": "闪电伤害 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -128,7 +128,7 @@
   {
     "id": 6,
     "name": "毒素伤害 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -149,7 +149,7 @@
   {
     "id": 7,
     "name": "物理伤害 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -170,7 +170,7 @@
   {
     "id": 8,
     "name": "火焰抗性 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -191,7 +191,7 @@
   {
     "id": 9,
     "name": "冰霜抗性 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -212,7 +212,7 @@
   {
     "id": 10,
     "name": "闪电抗性 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -233,7 +233,7 @@
   {
     "id": 11,
     "name": "毒素抗性 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -254,7 +254,7 @@
   {
     "id": 12,
     "name": "物理抗性 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -275,7 +275,7 @@
   {
     "id": 13,
     "name": "生命回复 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -296,7 +296,7 @@
   {
     "id": 14,
     "name": "防御 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -317,7 +317,7 @@
   {
     "id": 15,
     "name": "闪避 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -338,7 +338,7 @@
   {
     "id": 16,
     "name": "幸运 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -359,7 +359,7 @@
   {
     "id": 17,
     "name": "速度 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -380,7 +380,7 @@
   {
     "id": 18,
     "name": "治疗效率 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -401,7 +401,7 @@
   {
     "id": 19,
     "name": "暴击率 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -422,7 +422,7 @@
   {
     "id": 20,
     "name": "暴击伤害 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -443,7 +443,7 @@
   {
     "id": 21,
     "name": "易伤伤害 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -464,7 +464,7 @@
   {
     "id": 22,
     "name": "易伤率 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -485,7 +485,7 @@
   {
     "id": 23,
     "name": "魔力 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -506,7 +506,7 @@
   {
     "id": 24,
     "name": "攻击速度 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -527,7 +527,7 @@
   {
     "id": 25,
     "name": "力量 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -548,7 +548,7 @@
   {
     "id": 26,
     "name": "智慧 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -569,7 +569,7 @@
   {
     "id": 27,
     "name": "敏捷 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -590,7 +590,7 @@
   {
     "id": 28,
     "name": "攻击范围 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -611,7 +611,7 @@
   {
     "id": 29,
     "name": "视野 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,
@@ -632,7 +632,7 @@
   {
     "id": 30,
     "name": "防御 + {s}。",
-    "icon_path": "sword.png",
+    "icon_path": "Sword.png",
     "cost": 1,
     "repeat": false,
     "infinite": true,

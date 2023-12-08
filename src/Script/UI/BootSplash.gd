@@ -22,6 +22,9 @@ func _ready() -> void:
         go_to_world()
         return
     
+    if OS.get_name() == "Windows":
+        go_to_world()
+    
     Tap.is_login()
 
 func go_to_world() -> void:
