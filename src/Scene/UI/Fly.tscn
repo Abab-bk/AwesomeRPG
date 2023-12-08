@@ -35,7 +35,7 @@ grow_vertical = 2
 [node name="TitleBar" parent="Panel/VBoxContainer" instance=ExtResource("1_2g5e5")]
 unique_name_in_owner = true
 layout_mode = 2
-title_text = "七天签到"
+title_text = "飞升"
 
 [node name="Content" type="TextureRect" parent="Panel/VBoxContainer"]
 layout_mode = 2

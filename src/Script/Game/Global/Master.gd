@@ -1,6 +1,6 @@
 extends Node
 
-# TODO: 每日任务、换装备对比Tooltip
+# TODO: 换装备对比Tooltip
 # TODO: 飞升技能树
 # TODO: 每日转盘（转的越多奖励越好）
 # TODO: 世界树（花园）
@@ -150,6 +150,7 @@ var friends:Dictionary
 var gachas:Dictionary
 var days_checkin:Dictionary
 var online_rewards:Dictionary
+var all_quests:Array
 
 
 var unlocked_functions:Dictionary = {
@@ -191,6 +192,7 @@ func _ready():
     gachas = config.TbGachas.get_data_map()
     days_checkin = config.TbDaysReward.get_data_map()
     online_rewards = config.TbOnlineReward.get_data_map()
+    all_quests = config.TbAllQuests.get_data_list()
     #ability_trees = config.TbSkills.get_data_map()
     #goods = config.TbGoods.get_data_map()
 
@@ -436,6 +438,26 @@ func get_dungeon_by_id(_id:int) -> DungeonData:
     _dungeon.set_level(1)
     
     return _dungeon
+
+
+func get_random_quest() -> QuestResource:
+    var _quest:QuestResource = QuestResource.new()
+    
+    var _data = all_quests.pick_random()
+    
+    var _reward:Reward = Reward.new()
+    var _reward_data = _data["reward_list"].pick_random()
+    _reward.type = _reward_data["type"]
+    _reward.reward_value = _reward_data["type"]
+    
+    _quest.reward = _reward
+    _quest.id = _data["id"]
+    _quest.name = _data["name"]
+    _quest.type = _data["type"]
+    _quest.need_value = randi_range(_data["quest_value_range"][0], _data["quest_value_range"][1])
+    
+    return _quest
+
 
 func get_quest_by_id(_id:int) -> QuestResource:
     var _quest:QuestResource = QuestResource.new()

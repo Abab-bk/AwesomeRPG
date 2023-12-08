@@ -37,7 +37,8 @@ func _ready() -> void:
         )
     
     EventBus.load_save.connect(func():
-        current_quest = FlowerSaver.get_data("every_day_quest_%s" % id)
+        if FlowerSaver.has_key("every_day_quest_%s" % id):
+            current_quest = FlowerSaver.get_data("every_day_quest_%s" % id)
         )
     
     update_ui()
@@ -64,5 +65,5 @@ func update_reward_ui() -> void:
 
 
 func update_quest() -> void:
-    current_quest = Master.get_quest_by_id(Master.quests.keys().pick_random())
+    current_quest = Master.get_random_quest()
     update_reward_ui()

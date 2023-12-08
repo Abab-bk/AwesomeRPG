@@ -27,6 +27,22 @@ enum QuestsEQuestType
     ENHANCE_QUIPMENT = 1,
     ## 升级
     LEVEL_UP = 2,
+    ## 挑战地牢
+    BATTLE_DUNGEON = 3,
+    ## 挑战地牢并成功
+    BATTLE_DUNGEON_AND_SUCCESS = 4,
+    ## 抽卡
+    GACHA = 5,
+    ## 爬塔
+    CLIMB_TOWER = 6,
+    ## 回收装备
+    RECYCLE_EQUIPMENT = 7,
+    ## 获得传奇装备
+    GET_GOLD_EQUIPMENT = 8,
+    ## 使用血瓶
+    USE_HP_POTION = 9,
+    ## 使用蓝瓶
+    USE_MP_POTION = 10,
 }
 
 
@@ -564,6 +580,39 @@ class OnlineReward:
         for _ele in _json_["reward_list"]: var _e: RewardReward; _e = RewardReward.new(_ele); self.reward_list.append(_e)
 
 
+class AllQuests:
+    ## 这是id
+    var id: int
+    ## 描述
+    var desc: String
+    ## 任务类型
+    var type: int
+    ## 任务值范围
+    var quest_value_range: Array[int]
+    ## 奖励列表（随机挑一个）
+    var reward_list: Array[RewardRangeReward]
+
+    func _init(_json_) -> void:
+        self.id = _json_["id"]
+        self.desc = _json_["desc"]
+        self.type = _json_["type"]
+        self.quest_value_range = []
+        for _ele in _json_["quest_value_range"]: var _e: int; _e = _ele; self.quest_value_range.append(_e)
+        self.reward_list = []
+        for _ele in _json_["reward_list"]: var _e: RewardRangeReward; _e = RewardRangeReward.new(_ele); self.reward_list.append(_e)
+
+
+class RewardRangeReward:
+    var type: int
+    ## 对于随从，value为id
+    var reward_value: Array[int]
+
+    func _init(_json_) -> void:
+        self.type = _json_["type"]
+        self.reward_value = []
+        for _ele in _json_["reward_value"]: var _e: int; _e = _ele; self.reward_value.append(_e)
+
+
 class BuffsTbBuffs:
     var _data_list: Array[Buffs]
     var _data_map: Dictionary
@@ -963,6 +1012,27 @@ class OnlineRewardTbOnlineReward:
         return self._data_map.get(key)
 
 
+class AllQuestsTbAllQuests:
+    var _data_list: Array[AllQuests]
+    var _data_map: Dictionary
+    
+    func _init(_json_) -> void:
+        for _json2_ in _json_:
+            var _v: AllQuests
+            _v = AllQuests.new(_json2_)
+            self._data_list.append(_v)
+            self._data_map[_v.id] = _v
+
+    func get_data_list() -> Array[AllQuests]:
+        return self._data_list
+
+    func get_data_map() -> Dictionary:
+        return self._data_map
+
+    func get_item(key) -> AllQuests:
+        return self._data_map.get(key)
+
+
 class CfgTables:
     var TbBuffs: BuffsTbBuffs
     var TbAffix: AffixsTbAffix
@@ -983,6 +1053,7 @@ class CfgTables:
     var TbGachas: GachasTbGachas
     var TbDaysReward: DaysRewardTbDaysReward
     var TbOnlineReward: OnlineRewardTbOnlineReward
+    var TbAllQuests: AllQuestsTbAllQuests
     
     func _init(loader: Callable) -> void:
         self.TbBuffs = BuffsTbBuffs.new(loader.call('buffs_tbbuffs'))
@@ -1004,4 +1075,5 @@ class CfgTables:
         self.TbGachas = GachasTbGachas.new(loader.call('gachas_tbgachas'))
         self.TbDaysReward = DaysRewardTbDaysReward.new(loader.call('daysreward_tbdaysreward'))
         self.TbOnlineReward = OnlineRewardTbOnlineReward.new(loader.call('onlinereward_tbonlinereward'))
+        self.TbAllQuests = AllQuestsTbAllQuests.new(loader.call('allquests_tballquests'))
 
