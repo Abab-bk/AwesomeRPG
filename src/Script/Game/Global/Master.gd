@@ -154,6 +154,7 @@ var gachas:Dictionary
 var days_checkin:Dictionary
 var online_rewards:Dictionary
 var all_quests:Array
+var shops:Array
 
 
 var unlocked_functions:Dictionary = {
@@ -196,6 +197,7 @@ func _ready():
     days_checkin = config.TbDaysReward.get_data_map()
     online_rewards = config.TbOnlineReward.get_data_map()
     all_quests = config.TbAllQuests.get_data_list()
+    shops = config.TbShops.get_data_list()
     #ability_trees = config.TbSkills.get_data_map()
     #goods = config.TbGoods.get_data_map()
 
@@ -346,6 +348,23 @@ func yes_fly() -> void:
     moneys.yellow = 0
     in_dungeon = false    
 
+
+func get_goods_by_info(_info) -> Goods:
+    var _goods:Goods = Goods.new()
+    
+    _goods.name = _info["name"]
+    _goods.cost_type = _info["cost_type"]
+    _goods.cost = _info["cost"]
+    
+    var _reward:Reward = Reward.new()
+    _reward.type = _info["reward_type"]
+    _reward.reward_value = _info["reward_value"]
+    
+    _goods.reward = _reward
+    
+    return _goods
+
+
 func get_player_level_up_info() -> Dictionary:
     var _result:Dictionary
     
@@ -425,6 +444,7 @@ func get_friend_data_by_id(_id:int) -> FriendData:
     _friend.skin_name = _data["skin_name"]
     
     return _friend
+
 
 func get_dungeon_by_id(_id:int) -> DungeonData:
     var _dungeon:DungeonData = DungeonData.new()
@@ -796,8 +816,8 @@ func get_offline_reward() -> void:
     
     var _level:int = Master.player.get_level() - 1
     
-    var _get_xp:float = (((3 * _level * 1.5) * (1 + Master.fly_count * 0.1)) * 0.1) * float(_distance)
-    var _get_coins:int = floor((_level * randi_range(0, 5)) * 0.1) * _distance
+    var _get_xp:float = min((((3 * _level * 1.5) * (1 + Master.fly_count * 0.1)) * 0.1) * float(_distance), 1000)
+    var _get_coins:int = min(floor((_level * randi_range(0, 5)) * 0.1) * _distance, 3000)
     
     Master.coins += _get_coins
     Master.player.get_xp(_get_xp)

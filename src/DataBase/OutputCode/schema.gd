@@ -93,6 +93,15 @@ enum RewardTypeReward
 }
 
 
+enum MoneyTypeEMoneys
+{
+    ## 金币
+    COIN = 0,
+    ## 神恩石碎片
+    GACHA_MONEY_PART = 1,
+}
+
+
 class Buffs:
     ## 这是id
     var id: int
@@ -319,17 +328,6 @@ class Dungeons:
         self.need_cost = _json_["need_cost"]
         self.reward_value = _json_["reward_value"]
         self.max_level = _json_["max_level"]
-
-
-class Goods:
-    var id: int
-    var name: String
-    var desc: String
-
-    func _init(_json_) -> void:
-        self.id = _json_["id"]
-        self.name = _json_["name"]
-        self.desc = _json_["desc"]
 
 
 class MainBuffs:
@@ -613,6 +611,23 @@ class RewardRangeReward:
         for _ele in _json_["reward_value"]: var _e: int; _e = _ele; self.reward_value.append(_e)
 
 
+class Shops:
+    var id: int
+    var name: String
+    var cost_type: int
+    var cost: int
+    var reward_type: int
+    var reward_value: int
+
+    func _init(_json_) -> void:
+        self.id = _json_["id"]
+        self.name = _json_["name"]
+        self.cost_type = _json_["cost_type"]
+        self.cost = _json_["cost"]
+        self.reward_type = _json_["reward_type"]
+        self.reward_value = _json_["reward_value"]
+
+
 class BuffsTbBuffs:
     var _data_list: Array[Buffs]
     var _data_map: Dictionary
@@ -778,27 +793,6 @@ class DungeonsTbDungeons:
         return self._data_map
 
     func get_item(key) -> Dungeons:
-        return self._data_map.get(key)
-
-
-class GoodsTbGoods:
-    var _data_list: Array[Goods]
-    var _data_map: Dictionary
-    
-    func _init(_json_) -> void:
-        for _json2_ in _json_:
-            var _v: Goods
-            _v = Goods.new(_json2_)
-            self._data_list.append(_v)
-            self._data_map[_v.id] = _v
-
-    func get_data_list() -> Array[Goods]:
-        return self._data_list
-
-    func get_data_map() -> Dictionary:
-        return self._data_map
-
-    func get_item(key) -> Goods:
         return self._data_map.get(key)
 
 
@@ -1033,6 +1027,27 @@ class AllQuestsTbAllQuests:
         return self._data_map.get(key)
 
 
+class ShopsTbShops:
+    var _data_list: Array[Shops]
+    var _data_map: Dictionary
+    
+    func _init(_json_) -> void:
+        for _json2_ in _json_:
+            var _v: Shops
+            _v = Shops.new(_json2_)
+            self._data_list.append(_v)
+            self._data_map[_v.id] = _v
+
+    func get_data_list() -> Array[Shops]:
+        return self._data_list
+
+    func get_data_map() -> Dictionary:
+        return self._data_map
+
+    func get_item(key) -> Shops:
+        return self._data_map.get(key)
+
+
 class CfgTables:
     var TbBuffs: BuffsTbBuffs
     var TbAffix: AffixsTbAffix
@@ -1042,7 +1057,6 @@ class CfgTables:
     var TbAbilityBuffs: AbilityBuffsTbAbilityBuffs
     var TbEnemys: EnemysTbEnemys
     var TbDungeons: DungeonsTbDungeons
-    var TbGoods: GoodsTbGoods
     var TbMainBuffs: MainBuffsTbMainBuffs
     var TbTalentBuffs: TalentBuffsTbTalentBuffs
     var TbGoldNames: GoldNamesTbGoldNames
@@ -1054,6 +1068,7 @@ class CfgTables:
     var TbDaysReward: DaysRewardTbDaysReward
     var TbOnlineReward: OnlineRewardTbOnlineReward
     var TbAllQuests: AllQuestsTbAllQuests
+    var TbShops: ShopsTbShops
     
     func _init(loader: Callable) -> void:
         self.TbBuffs = BuffsTbBuffs.new(loader.call('buffs_tbbuffs'))
@@ -1064,7 +1079,6 @@ class CfgTables:
         self.TbAbilityBuffs = AbilityBuffsTbAbilityBuffs.new(loader.call('abilitybuffs_tbabilitybuffs'))
         self.TbEnemys = EnemysTbEnemys.new(loader.call('enemys_tbenemys'))
         self.TbDungeons = DungeonsTbDungeons.new(loader.call('dungeons_tbdungeons'))
-        self.TbGoods = GoodsTbGoods.new(loader.call('goods_tbgoods'))
         self.TbMainBuffs = MainBuffsTbMainBuffs.new(loader.call('mainbuffs_tbmainbuffs'))
         self.TbTalentBuffs = TalentBuffsTbTalentBuffs.new(loader.call('talentbuffs_tbtalentbuffs'))
         self.TbGoldNames = GoldNamesTbGoldNames.new(loader.call('goldnames_tbgoldnames'))
@@ -1076,4 +1090,5 @@ class CfgTables:
         self.TbDaysReward = DaysRewardTbDaysReward.new(loader.call('daysreward_tbdaysreward'))
         self.TbOnlineReward = OnlineRewardTbOnlineReward.new(loader.call('onlinereward_tbonlinereward'))
         self.TbAllQuests = AllQuestsTbAllQuests.new(loader.call('allquests_tballquests'))
+        self.TbShops = ShopsTbShops.new(loader.call('shops_tbshops'))
 

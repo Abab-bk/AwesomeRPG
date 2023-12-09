@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvraoppgiqxqe"]
+
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_3il4n"]
+[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="1_bujhl"]
+[ext_resource type="Script" path="res://Script/UI/ShopItem.gd" id="2_1fcpg"]
+[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="2_oqthe"]
+[ext_resource type="LabelSettings" uid="uid://mgahdqv1o26h" path="res://Assets/LabelSetting/BigGray.tres" id="4_grami"]
+
+[node name="ShopItem" type="Panel"]
+custom_minimum_size = Vector2(300, 300)
+theme = ExtResource("1_3il4n")
+theme_type_variation = &"SubPanel"
+script = ExtResource("2_1fcpg")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_bujhl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CostLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "88 神恩石碎片"
+label_settings = ExtResource("4_grami")
+horizontal_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "商品名称"
+label_settings = ExtResource("2_oqthe")
+horizontal_alignment = 1
+
+[node name="BuyBtn" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"EmptyBtn"

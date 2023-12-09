@@ -1,5 +1,10 @@
 class_name Const extends Node
 
+enum MONEY_TYPE {
+    COIN,
+    GACHA_MONEY_PART,
+}
+
 const MONEYS_NAME:Dictionary = {
     "white": "奉献之灰",
     "blue": "天堂之尘",

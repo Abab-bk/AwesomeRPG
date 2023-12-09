@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3eudud6jrt0r"]
+[gd_scene load_steps=7 format=3 uid="uid://d3eudud6jrt0r"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_mfmcj"]
 [ext_resource type="Script" path="res://Script/UI/StoreUi.gd" id="2_h1r5g"]
 [ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="3_khohi"]
 [ext_resource type="PackedScene" uid="uid://to6wvbxby0e3" path="res://Scene/UI/CoinsPanel.tscn" id="4_fmgqi"]
 [ext_resource type="PackedScene" uid="uid://dxc7hc1jk1l0j" path="res://Scene/UI/SkillStore.tscn" id="6_iffuo"]
+[ext_resource type="PackedScene" uid="uid://dbox6fk83mnlr" path="res://Scene/UI/ShardShop.tscn" id="6_ralro"]
 
 [node name="StoreUI" type="Control"]
 layout_mode = 3
@@ -74,10 +75,42 @@ layout_mode = 2
 layout_mode = 2
 target = "coins"
 
-[node name="Stores" type="Control" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="CoinsPanel2" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer" instance=ExtResource("4_fmgqi")]
+layout_mode = 2
+target = "gacha_money_part"
+
+[node name="Stores" type="TabContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+tabs_visible = false
 
 [node name="SkillStore" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Stores" instance=ExtResource("6_iffuo")]
-layout_mode = 1
+layout_mode = 2
+
+[node name="ShardShop" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Stores" instance=ExtResource("6_ralro")]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="SkillShopBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "技能商店"
+
+[node name="MoneyShopBtn" type="Button" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "货币商店"

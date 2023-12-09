@@ -129,6 +129,7 @@ func _ready() -> void:
     every_day_quest_btn.pressed.connect(change_page.bind(PAGE.EVERY_DAY_QUEST))
     
     show_more_btn.pressed.connect(func():
+        SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
         if show_more_btn.button_pressed:
             animation_player.play("show_sub_function")
         else:
