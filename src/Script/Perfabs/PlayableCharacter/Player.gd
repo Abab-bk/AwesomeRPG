@@ -220,10 +220,12 @@ func _ready() -> void:
 
 
 func reset_player_hp_and_magic() -> void:
-    flower_buff_manager.compute_data.hp += flower_buff_manager.compute_data.max_hp
-    flower_buff_manager.compute_data.magic += flower_buff_manager.compute_data.max_magic
-    flower_buff_manager.output_data.hp += flower_buff_manager.output_data.max_hp
-    flower_buff_manager.output_data.magic += flower_buff_manager.output_data.max_magic
+    flower_buff_manager.compute_data.reset_hp_and_magic()
+    flower_buff_manager.output_data.reset_hp_and_magic()
+    
+    compute_data.reset_hp_and_magic()
+    output_data.reset_hp_and_magic()
+    
     EventBus.update_ui.emit()
 
 
@@ -406,6 +408,7 @@ func rebuild_skills() -> void:
 func compute() -> void:
     flower_buff_manager.compute_only_values()
 
+
 func compute_all() -> void:
     flower_buff_manager.compute()
 
@@ -431,8 +434,10 @@ func move_to_enemy() -> void:
     
     character_animation_player.play("scml/Walking")
 
+
 func ranged_attack() -> void:
     ranged_weapon.attack()
+
 
 func attack() -> void:
     if current_state == STATE.DEAD:
@@ -457,6 +462,7 @@ func attack() -> void:
     character_animation_player.play("scml/Attacking")
     current_state = STATE.ATTACKING
 
+
 func turn_to_closest_enemy() -> void:
     var _dir:Vector2 = to_local(closest_enemy.global_position).normalized()
     
@@ -465,6 +471,7 @@ func turn_to_closest_enemy() -> void:
         self.scale.x = 1
     elif  _dir.x < 0:
         self.scale.x = -1
+
 
 func _physics_process(_delta:float) -> void:
     if current_state == STATE.IDLE:
@@ -499,13 +506,16 @@ func change_weapons_sprite(_sprite:Texture2D) -> void:
     sprites["weapon"].texture = _sprite
     sprites["weapon"].centered = false
 
+
 func change_head_sprite(_sprite:Texture2D) -> void:
     sprites["head"].texture = _sprite
     sprites["head"].centered = false
 
+
 func change_body_sprite(_sprite:Texture2D) -> void:
     sprites["body"].texture = _sprite
     sprites["body"].centered = false
+
 
 # ======= 属性 ========
 func up_level() -> void:
@@ -538,11 +548,10 @@ func relife() -> void:
     character_animation_player.play_backwards("scml/Dying")
     await character_animation_player.animation_finished
     
-    reset_player_hp_and_magic()
-    
-    #compute()
     compute_all()
     
+    reset_player_hp_and_magic()
+        
     EventBus.update_ui.emit()
     
     hurt_box_collision.call_deferred("set_disabled", false)    

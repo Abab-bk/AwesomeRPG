@@ -33,6 +33,7 @@ func _ready() -> void:
         var _count:int = 0
         for i in wait_to_remove_items:
             _count += 1
+            EventBus.recycle_equipment.emit()
             Master.player_inventory.remove_item(i)
         
         wait_to_remove_items = []

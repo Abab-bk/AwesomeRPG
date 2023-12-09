@@ -792,6 +792,8 @@ func get_reward_label_from_dic(_data:Dictionary) -> String:
 func get_offline_reward() -> void:
     var _distance:int = TimeManager.get_current_time_resource().get_distance_to_a(last_leave_time)
     
+    Tracer.info("获得离线收益，离线时间：%s" % str(_distance))
+    
     var _level:int = Master.player.get_level() - 1
     
     var _get_xp:float = (((3 * _level * 1.5) * (1 + Master.fly_count * 0.1)) * 0.1) * float(_distance)

@@ -23,6 +23,7 @@ func _ready() -> void:
         enemy_home.spawn_a_special_enemy(func():
             # 地牢奖励
             _data.get_reward()
+            EventBus.enter_dungeon_and_success.emit()
             Master.in_dungeon = false, _data.enemy_id))
     
     # data {ui_id: id}

@@ -17,5 +17,5 @@ z_as_relative=true
 loop_animations=1
 loop_wrap_interpolation=true
 optimize_for_blends=true
-rest_pose_animation="scml/Attacking"
+rest_pose_animation=""
 reparenting_solution="instance per parent"

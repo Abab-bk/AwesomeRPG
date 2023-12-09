@@ -3,17 +3,17 @@ class_name QuestResource extends Resource
 signal value_changed
 
 enum QUEST_TYPE {
-    KILL_ENEMY,
-    ENHANCE_QUIPMENT,
-    LEVEL_UP,
-    BATTLE_DUNGEON,
-    BATTLE_DUNGEON_AND_SUCCESS,
-    GACHA,
-    CLIMB_TOWER,
-    RECYCLE_EQUIPMENT,
-    GET_GOLD_EQUIPMENT,
-    USE_HP_POTION,
-    USE_MP_POTION,
+    KILL_ENEMY, # ok
+    ENHANCE_QUIPMENT, # ok
+    LEVEL_UP, # ok
+    BATTLE_DUNGEON, # ok
+    BATTLE_DUNGEON_AND_SUCCESS, # ok
+    GACHA, # ok
+    CLIMB_TOWER, # ok
+    RECYCLE_EQUIPMENT, # ok
+    GET_GOLD_EQUIPMENT, # ok
+    USE_HP_POTION, # ok
+    USE_MP_POTION, # ok
 }
 
 @export var id:int = 0

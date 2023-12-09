@@ -16,7 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://b1neen2tr4onj" path="res://Assets/Characters/Gnoll1/Body.png" id="13_xjvd6"]
 [ext_resource type="Script" path="res://Script/Component/HitBoxComponent.gd" id="15_avcxd"]
 
-[sub_resource type="Animation" id="Animation_nnjoe"]
+[sub_resource type="Animation" id="Animation_4c8pw"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -33,34 +33,34 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../HitBoxComponent/CollisionShape2D:rotation")
+tracks/1/path = NodePath("../HitBoxComponent/CollisionShape2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-0.950945]
+"values": [Vector2(98.209, -129.03)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../HitBoxComponent/CollisionShape2D:position")
+tracks/2/path = NodePath("../HitBoxComponent/CollisionShape2D:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(89.449, -117.517)]
+"values": [-0.986469]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qpvsr"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0aerq"]
 _data = {
-"RESET": SubResource("Animation_nnjoe")
+"RESET": SubResource("Animation_4c8pw")
 }
 
-[sub_resource type="Animation" id="Animation_kb418"]
+[sub_resource type="Animation" id="Animation_jpiy5"]
 length = 4.0
 loop_mode = 1
 step = 0.01
@@ -245,7 +245,7 @@ tracks/14/keys = {
 "values": [ExtResource("2_7tyw5")]
 }
 
-[sub_resource type="Animation" id="Animation_n10g7"]
+[sub_resource type="Animation" id="Animation_f1hhb"]
 length = 4.0
 loop_mode = 1
 step = 0.01
@@ -430,7 +430,7 @@ tracks/14/keys = {
 "values": [ExtResource("2_7tyw5"), ExtResource("2_5md8c")]
 }
 
-[sub_resource type="Animation" id="Animation_hd6i8"]
+[sub_resource type="Animation" id="Animation_415n2"]
 length = 6.0
 loop_mode = 1
 step = 0.01
@@ -615,7 +615,7 @@ tracks/14/keys = {
 "values": [ExtResource("2_7tyw5")]
 }
 
-[sub_resource type="Animation" id="Animation_k828l"]
+[sub_resource type="Animation" id="Animation_mxh2d"]
 length = 6.0
 loop_mode = 1
 step = 0.01
@@ -800,7 +800,7 @@ tracks/14/keys = {
 "values": [ExtResource("2_7tyw5")]
 }
 
-[sub_resource type="Animation" id="Animation_vfums"]
+[sub_resource type="Animation" id="Animation_4lddm"]
 length = 4.0
 loop_mode = 1
 step = 0.01
@@ -991,7 +991,7 @@ tracks/15/path = NodePath("../HitBoxComponent/CollisionShape2D:disabled")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0, 2.43),
+"times": PackedFloat32Array(0, 2.41),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -999,29 +999,29 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("../HitBoxComponent/CollisionShape2D:rotation")
+tracks/16/path = NodePath("../HitBoxComponent/CollisionShape2D:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(0, 2.43, 2.8),
+"times": PackedFloat32Array(0, 2.41, 2.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [-0.950945, -1.31912, -0.0265181]
+"values": [Vector2(98.209, -129.03), Vector2(74, -136), Vector2(131, -34)]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("../HitBoxComponent/CollisionShape2D:position")
+tracks/17/path = NodePath("../HitBoxComponent/CollisionShape2D:rotation")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(0, 2.43, 2.8),
+"times": PackedFloat32Array(0, 2.41, 2.8),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(89.449, -117.517), Vector2(80, -147), Vector2(123, -35)]
+"values": [-0.986469, -1.42916, 0.00584555]
 }
 
-[sub_resource type="Animation" id="Animation_ehnvb"]
+[sub_resource type="Animation" id="Animation_1wtaq"]
 length = 2.0
 loop_mode = 1
 step = 0.01
@@ -1206,7 +1206,7 @@ tracks/14/keys = {
 "values": [ExtResource("2_7tyw5")]
 }
 
-[sub_resource type="Animation" id="Animation_p30ff"]
+[sub_resource type="Animation" id="Animation_x2b37"]
 length = 2.0
 loop_mode = 1
 step = 0.01
@@ -1391,7 +1391,7 @@ tracks/14/keys = {
 "values": [ExtResource("2_7tyw5")]
 }
 
-[sub_resource type="Animation" id="Animation_7gpof"]
+[sub_resource type="Animation" id="Animation_m2ui5"]
 length = 4.0
 loop_mode = 1
 step = 0.01
@@ -1576,7 +1576,7 @@ tracks/14/keys = {
 "values": [ExtResource("3_2davy")]
 }
 
-[sub_resource type="Animation" id="Animation_4s65o"]
+[sub_resource type="Animation" id="Animation_ou0t6"]
 length = 5.0
 loop_mode = 1
 step = 0.01
@@ -1761,21 +1761,21 @@ tracks/14/keys = {
 "values": [ExtResource("3_2davy")]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_a4mly"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vmhjt"]
 _data = {
-"Attacking": SubResource("Animation_vfums"),
-"Dying": SubResource("Animation_4s65o"),
-"Hurt": SubResource("Animation_7gpof"),
-"Idle": SubResource("Animation_kb418"),
-"Idle Blinking": SubResource("Animation_n10g7"),
-"Jump Loop": SubResource("Animation_p30ff"),
-"Jump Start": SubResource("Animation_ehnvb"),
-"Taunt": SubResource("Animation_hd6i8"),
-"Walking": SubResource("Animation_k828l")
+"Attacking": SubResource("Animation_4lddm"),
+"Dying": SubResource("Animation_ou0t6"),
+"Hurt": SubResource("Animation_m2ui5"),
+"Idle": SubResource("Animation_jpiy5"),
+"Idle Blinking": SubResource("Animation_f1hhb"),
+"Jump Loop": SubResource("Animation_x2b37"),
+"Jump Start": SubResource("Animation_1wtaq"),
+"Taunt": SubResource("Animation_415n2"),
+"Walking": SubResource("Animation_mxh2d")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5714y"]
-size = Vector2(129.685, 38.7756)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfj32"]
+size = Vector2(111.244, 39.7178)
 
 [node name="01" type="Node2D" node_paths=PackedStringArray("hitbox_component", "animation_player")]
 script = ExtResource("1_qnmg3")
@@ -1788,14 +1788,15 @@ scale = Vector2(-1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skeleton"]
 libraries = {
-"": SubResource("AnimationLibrary_qpvsr"),
-"scml": SubResource("AnimationLibrary_a4mly")
+"": SubResource("AnimationLibrary_0aerq"),
+"scml": SubResource("AnimationLibrary_vmhjt")
 }
 speed_scale = 5.0
 
 [node name="bone_004" type="Bone2D" parent="Skeleton"]
 position = Vector2(20.5882, 34.7594)
 rotation = -1.4813
+rest = Transform2D(0.0893815, -0.995997, 0.995997, 0.0893815, 20.5882, 34.7594)
 
 [node name="Left Leg" type="Sprite2D" parent="Skeleton/bone_004"]
 z_index = 3
@@ -1810,6 +1811,7 @@ flip_v = true
 position = Vector2(-17.6471, 33.6898)
 rotation = -1.64411
 scale = Vector2(1, 1)
+rest = Transform2D(-0.0732471, -0.997314, 0.997314, -0.0732471, -17.6471, 33.6898)
 
 [node name="Right Leg" type="Sprite2D" parent="Skeleton/bone_005"]
 z_index = 4
@@ -1823,10 +1825,12 @@ flip_v = true
 [node name="bone_006" type="Bone2D" parent="Skeleton"]
 position = Vector2(-0.107143, 33.5913)
 rotation = 1.58898
+rest = Transform2D(-0.0630289, 0.998012, -0.998012, -0.0630289, -0.876373, 34.6682)
 
 [node name="bone_007" type="Bone2D" parent="Skeleton/bone_006"]
 position = Vector2(47.2268, -0.121035)
 rotation = -0.0282129
+rest = Transform2D(0.999905, 0.0137942, -0.0137942, 0.999905, 48.3027, 0.421843)
 
 [node name="Head" type="Sprite2D" parent="Skeleton/bone_006/bone_007"]
 z_index = 6
@@ -1849,16 +1853,19 @@ flip_v = true
 [node name="bone_002" type="Bone2D" parent="Skeleton/bone_006"]
 position = Vector2(42.9123, 29.1678)
 rotation = 2.81416
+rest = Transform2D(-0.911395, 0.411533, -0.411533, -0.911395, 43.9926, 29.4536)
 
 [node name="bone_003" type="Bone2D" parent="Skeleton/bone_006/bone_002"]
 position = Vector2(30.3735, 0)
 rotation = 0.163882
 scale = Vector2(1, 1)
+rest = Transform2D(0.986601, 0.16315, -0.16315, 0.986601, 30.3735, 0)
 
 [node name="bone_008" type="Bone2D" parent="Skeleton/bone_006/bone_002/bone_003"]
 position = Vector2(1.53575, -6.49384)
 rotation = -2.99622
 scale = Vector2(1, 1)
+rest = Transform2D(-0.980622, -0.195908, 0.195908, -0.980622, 1.53575, -6.49384)
 
 [node name="Shield" type="Sprite2D" parent="Skeleton/bone_006/bone_002/bone_003/bone_008"]
 z_index = 10
@@ -1890,10 +1897,12 @@ flip_v = true
 [node name="bone_000" type="Bone2D" parent="Skeleton/bone_006"]
 position = Vector2(43.0905, -22.0556)
 rotation = -2.59379
+rest = Transform2D(-0.814232, -0.580539, 0.580539, -0.814232, 43.0905, -22.0556)
 
 [node name="bone_001" type="Bone2D" parent="Skeleton/bone_006/bone_000"]
 position = Vector2(30.6393, 0)
 rotation = 0.436394
+rest = Transform2D(0.906282, 0.422674, -0.422674, 0.906282, 30.6393, 0)
 
 [node name="Weapon" type="Sprite2D" parent="Skeleton/bone_006/bone_000/bone_001"]
 z_index = 1
@@ -1934,8 +1943,7 @@ flip_v = true
 script = ExtResource("15_avcxd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
-position = Vector2(89.449, -117.517)
-rotation = -0.950945
-scale = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_5714y")
+position = Vector2(98.209, -129.03)
+rotation = -0.986469
+shape = SubResource("RectangleShape2D_kfj32")
 disabled = true

@@ -66,6 +66,7 @@ func start_gacha(_count:int) -> void:
 
 func pull_gacha(_count:int) -> void:
     for i in _count:
+        EventBus.gacha_pull_1.emit()
         Master.gacha_money -= 1
         animation.show()
         var _get_reward:Reward = gacha_pool.reward_list.pick_random() as Reward

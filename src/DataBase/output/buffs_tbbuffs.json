@@ -2,7 +2,7 @@
   {
     "id": 1001,
     "name": "火焰",
-    "desc": "火焰伤害 + 3",
+    "desc": "火焰伤害 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -22,7 +22,7 @@
   {
     "id": 1002,
     "name": "冰霜",
-    "desc": "冰霜伤害 + 3",
+    "desc": "冰霜伤害 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -42,7 +42,7 @@
   {
     "id": 1003,
     "name": "闪电",
-    "desc": "闪电伤害 + 3",
+    "desc": "闪电伤害 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -62,7 +62,7 @@
   {
     "id": 1004,
     "name": "毒素",
-    "desc": "毒素伤害 + 3",
+    "desc": "毒素伤害 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -82,7 +82,7 @@
   {
     "id": 1005,
     "name": "物理",
-    "desc": "物理伤害 + 3",
+    "desc": "物理伤害 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -102,7 +102,7 @@
   {
     "id": 1006,
     "name": "燃烧",
-    "desc": "火焰抗性 + 3",
+    "desc": "火焰抗性 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -122,7 +122,7 @@
   {
     "id": 1007,
     "name": "冰霜",
-    "desc": "冰霜伤害 + 3",
+    "desc": "冰霜抗性 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -142,7 +142,7 @@
   {
     "id": 1008,
     "name": "雷电",
-    "desc": "闪电抗性 + 3",
+    "desc": "闪电抗性 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -162,7 +162,7 @@
   {
     "id": 1009,
     "name": "剧毒",
-    "desc": "毒素抗性 + 3",
+    "desc": "毒素抗性 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -182,7 +182,7 @@
   {
     "id": 1010,
     "name": "坚固",
-    "desc": "物理抗性 + 3",
+    "desc": "物理抗性 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -202,7 +202,7 @@
   {
     "id": 1011,
     "name": "烈焰",
-    "desc": "火焰伤害 + 3%",
+    "desc": "火焰 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -222,7 +222,7 @@
   {
     "id": 1012,
     "name": "寒霜",
-    "desc": "冰霜伤害 + 3%",
+    "desc": "冰霜 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -242,7 +242,7 @@
   {
     "id": 1013,
     "name": "惊雷",
-    "desc": "闪电伤害 + 3%",
+    "desc": "闪电 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -262,7 +262,7 @@
   {
     "id": 1014,
     "name": "毒药",
-    "desc": "毒素伤害 + 3%",
+    "desc": "毒素 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -282,7 +282,7 @@
   {
     "id": 1015,
     "name": "顽石",
-    "desc": "物理伤害 + 3%",
+    "desc": "物理 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -302,7 +302,7 @@
   {
     "id": 1016,
     "name": "火苗",
-    "desc": "火焰抗性 + 3%",
+    "desc": "火焰抗性 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -322,7 +322,7 @@
   {
     "id": 1017,
     "name": "冰锥",
-    "desc": "冰霜伤害 + 3%",
+    "desc": "冰霜抗性 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -342,7 +342,7 @@
   {
     "id": 1018,
     "name": "绝缘",
-    "desc": "闪电抗性 + 3%",
+    "desc": "闪电抗性 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -362,7 +362,7 @@
   {
     "id": 1019,
     "name": "体质",
-    "desc": "毒素抗性 + 3%",
+    "desc": "毒素抗性 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -382,7 +382,7 @@
   {
     "id": 1020,
     "name": "体质",
-    "desc": "物理抗性百分比",
+    "desc": "物理抗性 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -402,7 +402,7 @@
   {
     "id": 1021,
     "name": "顽强",
-    "desc": "最大生命值",
+    "desc": "最大生命值 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -422,7 +422,7 @@
   {
     "id": 1022,
     "name": "回复",
-    "desc": "生命回复",
+    "desc": "生命回复 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -442,7 +442,7 @@
   {
     "id": 1023,
     "name": "防御",
-    "desc": "防御",
+    "desc": "防御 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -462,7 +462,7 @@
   {
     "id": 1024,
     "name": "闪避",
-    "desc": "闪避",
+    "desc": "闪避 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -482,7 +482,7 @@
   {
     "id": 1025,
     "name": "幸运",
-    "desc": "幸运",
+    "desc": "幸运 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -502,7 +502,7 @@
   {
     "id": 1026,
     "name": "速度",
-    "desc": "速度",
+    "desc": "速度 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -522,7 +522,7 @@
   {
     "id": 1027,
     "name": "复活",
-    "desc": "治疗效率",
+    "desc": "治疗效率 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -542,7 +542,7 @@
   {
     "id": 1028,
     "name": "打击",
-    "desc": "暴击率",
+    "desc": "暴击率 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -562,7 +562,7 @@
   {
     "id": 1029,
     "name": "猛击",
-    "desc": "暴击伤害",
+    "desc": "暴击伤害 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -582,7 +582,7 @@
   {
     "id": 1030,
     "name": "弱点",
-    "desc": "易伤伤害",
+    "desc": "易伤伤害 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -602,7 +602,7 @@
   {
     "id": 1031,
     "name": "易伤",
-    "desc": "易伤率",
+    "desc": "易伤率 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -622,7 +622,7 @@
   {
     "id": 1032,
     "name": "魔力",
-    "desc": "魔力",
+    "desc": "魔力 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -642,7 +642,7 @@
   {
     "id": 1033,
     "name": "攻速",
-    "desc": "攻击速度",
+    "desc": "攻击速度 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -655,14 +655,14 @@
         "type": 1,
         "value": 0,
         "formual": "",
-        "target_property": "atk_speed"
+        "target_property": "atk_cd"
       }
     ]
   },
   {
     "id": 1034,
     "name": "力量",
-    "desc": "力量",
+    "desc": "力量 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -682,7 +682,7 @@
   {
     "id": 1035,
     "name": "智慧",
-    "desc": "智慧",
+    "desc": "智慧 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -702,7 +702,7 @@
   {
     "id": 1036,
     "name": "敏捷",
-    "desc": "敏捷",
+    "desc": "敏捷 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -722,7 +722,7 @@
   {
     "id": 1037,
     "name": "视野",
-    "desc": "攻击范围",
+    "desc": "攻击范围 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -742,7 +742,7 @@
   {
     "id": 1038,
     "name": "视野",
-    "desc": "视野",
+    "desc": "视野 + {s}。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -762,7 +762,7 @@
   {
     "id": 1039,
     "name": "远见",
-    "desc": "攻击范围百分比",
+    "desc": "攻击范围 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -775,14 +775,14 @@
         "type": 0,
         "value": 0,
         "formual": "",
-        "target_property": "max_hp"
+        "target_property": "atk_range"
       }
     ]
   },
   {
     "id": 1040,
     "name": "开阔",
-    "desc": "视野百分比",
+    "desc": "视野 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -795,14 +795,14 @@
         "type": 0,
         "value": 0,
         "formual": "",
-        "target_property": "health_regeneration"
+        "target_property": "vision"
       }
     ]
   },
   {
     "id": 1041,
     "name": "嗯哼",
-    "desc": "最大生命值百分比",
+    "desc": "最大生命值 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -815,14 +815,14 @@
         "type": 0,
         "value": 0,
         "formual": "",
-        "target_property": "defense"
+        "target_property": "max_hp"
       }
     ]
   },
   {
     "id": 1042,
     "name": "重生",
-    "desc": "生命回复百分比",
+    "desc": "生命回复 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -835,14 +835,14 @@
         "type": 0,
         "value": 0,
         "formual": "",
-        "target_property": "evasion"
+        "target_property": "health_regeneration"
       }
     ]
   },
   {
     "id": 1043,
     "name": "护盾",
-    "desc": "防御百分比",
+    "desc": "防御 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -855,14 +855,14 @@
         "type": 0,
         "value": 0,
         "formual": "",
-        "target_property": "luck"
+        "target_property": "defense"
       }
     ]
   },
   {
     "id": 1044,
     "name": "逃避",
-    "desc": "闪避百分比",
+    "desc": "闪避 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -875,14 +875,14 @@
         "type": 0,
         "value": 0,
         "formual": "",
-        "target_property": "speed"
+        "target_property": "evasion"
       }
     ]
   },
   {
     "id": 1045,
     "name": "狗",
-    "desc": "幸运百分比",
+    "desc": "幸运 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -895,14 +895,14 @@
         "type": 0,
         "value": 0,
         "formual": "",
-        "target_property": "healing_effciency"
+        "target_property": "luck"
       }
     ]
   },
   {
     "id": 1046,
     "name": "猫",
-    "desc": "速度百分比",
+    "desc": "速度 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -915,14 +915,14 @@
         "type": 0,
         "value": 0,
         "formual": "",
-        "target_property": "critical_rate"
+        "target_property": "speed"
       }
     ]
   },
   {
     "id": 1047,
     "name": "鼠",
-    "desc": "治疗效率百分比",
+    "desc": "治疗效率 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -935,14 +935,14 @@
         "type": 0,
         "value": 0,
         "formual": "",
-        "target_property": "critical_damage"
+        "target_property": "healing_effciency"
       }
     ]
   },
   {
     "id": 1048,
     "name": "酱",
-    "desc": "暴击率百分比",
+    "desc": "暴击率 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -955,14 +955,14 @@
         "type": 0,
         "value": 0,
         "formual": "",
-        "target_property": "vulnerability_damage"
+        "target_property": "critical_rate"
       }
     ]
   },
   {
     "id": 1049,
     "name": "可恶",
-    "desc": "暴击伤害百分比",
+    "desc": "暴击伤害 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -975,14 +975,14 @@
         "type": 0,
         "value": 0,
         "formual": "",
-        "target_property": "vulnerability_rate"
+        "target_property": "critical_damage"
       }
     ]
   },
   {
     "id": 1050,
     "name": "厉害",
-    "desc": "易伤伤害百分比",
+    "desc": "易伤伤害 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -995,14 +995,14 @@
         "type": 0,
         "value": 0,
         "formual": "",
-        "target_property": "magic"
+        "target_property": "vulnerability_damage"
       }
     ]
   },
   {
     "id": 1051,
     "name": "不错",
-    "desc": "易伤率百分比",
+    "desc": "易伤率 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -1015,14 +1015,14 @@
         "type": 0,
         "value": 0,
         "formual": "",
-        "target_property": "atk_speed"
+        "target_property": "vulnerability_rate"
       }
     ]
   },
   {
     "id": 1052,
     "name": "好",
-    "desc": "魔力百分比",
+    "desc": "魔力 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -1035,14 +1035,14 @@
         "type": 0,
         "value": 0,
         "formual": "",
-        "target_property": "strength"
+        "target_property": "magic"
       }
     ]
   },
   {
     "id": 1053,
     "name": "激素",
-    "desc": "攻击速度百分比",
+    "desc": "攻击速度 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -1055,14 +1055,14 @@
         "type": 0,
         "value": 0,
         "formual": "",
-        "target_property": "wisdom"
+        "target_property": "atk_cd"
       }
     ]
   },
   {
     "id": 1054,
     "name": "力量",
-    "desc": "力量百分比",
+    "desc": "力量 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -1075,14 +1075,14 @@
         "type": 0,
         "value": 0,
         "formual": "",
-        "target_property": "agility"
+        "target_property": "strength"
       }
     ]
   },
   {
     "id": 1055,
     "name": "智慧",
-    "desc": "智慧百分比",
+    "desc": "智慧 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,
@@ -1102,7 +1102,7 @@
   {
     "id": 1056,
     "name": "敏捷",
-    "desc": "敏捷百分比",
+    "desc": "敏捷 + {s}%。",
     "repeat": false,
     "infinite": true,
     "repeat_count": 0,

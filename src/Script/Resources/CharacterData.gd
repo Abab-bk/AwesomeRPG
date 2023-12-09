@@ -59,7 +59,13 @@ signal hp_is_zero
 
 @export var vision:int = 360
 @export var atk_speed:float = 0.5
-@export var atk_cd:float = 0.5
+@export var atk_cd:float = 0.5:
+    set(v):
+        if v <= 0.2:
+            atk_cd = 0.2
+            return
+        atk_cd = v
+
 @export var atk_range:float = 125
 @export var quipments:Dictionary = {}
 
@@ -94,7 +100,9 @@ func set_property_from_level() -> void:
 
 
 func level_up() -> Dictionary:
+    Tracer.info("玩家升级：当前等级：%s" % str(level))
     level += 1
+    Tracer.info("玩家升级：升级后等级：%s" % str(level))
     
     max_hp += 6
     max_magic += 3
@@ -117,6 +125,11 @@ func level_up() -> Dictionary:
         "智慧": [wisdom - 1, wisdom],
         "敏捷": [agility - 1, agility],
     }
+
+
+func reset_hp_and_magic() -> void:
+    hp = max_hp
+    magic = max_magic
 
 
 func update_next_xp() -> void:

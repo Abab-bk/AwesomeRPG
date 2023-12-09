@@ -51,6 +51,9 @@ func _ready() -> void:
     EventBus.update_inventory.connect(update_ui)
     
     EventBus.add_item.connect(func(_item:InventoryItem):
+        if _item.quality == Const.EQUIPMENT_QUALITY.GOLD:
+            EventBus.player_getd_gold_equipment.emit()
+        
         inventory.add_item(_item)
         update_ui()
         )
