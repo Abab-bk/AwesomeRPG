@@ -1,19 +1,19 @@
 class_name Reward extends Resource
 
 enum REWARD_TYPE {
-    NONE,
-    COINS,
-    XP,
-    MONEY_WHITE,
-    MONEY_BLUE,
-    MONEY_PURPLE,
-    MONEY_YELLOW,
-    GOLD_EQUIPMENT,
-    FLY, # 飞升,
-    BLUE_EQUIPMENT,
-    FRIEND,
-    GACHA_MONEY,
-    GACHA_MONEY_PART,
+    NONE, # 0
+    COINS, # 1
+    XP, # 2
+    MONEY_WHITE, # 3
+    MONEY_BLUE, # 4
+    MONEY_PURPLE, # 5
+    MONEY_YELLOW, # 6
+    GOLD_EQUIPMENT, # 7
+    FLY, # 飞升, # 8
+    BLUE_EQUIPMENT, # 9
+    FRIEND, # 10
+    GACHA_MONEY, # 11
+    GACHA_MONEY_PART, # 12
 }
 
 

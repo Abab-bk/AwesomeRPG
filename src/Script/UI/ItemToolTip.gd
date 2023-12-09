@@ -1,6 +1,8 @@
 extends Panel
 
 @export var hide_yes_btn:bool = false
+@export var target_differ_item:Panel
+@export var differed_item:bool = false
 
 @onready var pre_affixe_labels:VBoxContainer = %PreAffixeLabels
 @onready var buf_affixe_labels:VBoxContainer = %BufAffixeLabels
@@ -27,7 +29,13 @@ var temp_item:InventoryItem = InventoryItem.new()
 var current_state:STATE = STATE.UP
 
 func _ready() -> void:
+    if differed_item:
+        use_btn.hide()
+        hide()
+        return
+    
     EventBus.change_item_tooltip_state.connect(change_state)
+    
     EventBus.change_tooltip_display_state.connect(func():
         visible = !visible
         )
@@ -40,13 +48,19 @@ func _ready() -> void:
     hide()
 
 
-func change_state(_item:InventoryItem, _down:bool = false, _move:bool = false, _display = false) -> void:
+func change_state(_item:InventoryItem, _down:bool = false, _move:bool = false, _display = false, _differ:bool = false, _differ_item:InventoryItem = null) -> void:
     if _item == null:
         hide()
+        if target_differ_item:
+            target_differ_item.hide()
+        #Tracer.info("Tooltip 的 Item 为 null：%s" % name)
         return
     
     if _item == item:
         hide()
+        if target_differ_item:
+            target_differ_item.hide()
+        #Tracer.info("Tooltip 的 Item 相等：%s" % name)
         item = temp_item
         return
     
@@ -63,14 +77,7 @@ func change_state(_item:InventoryItem, _down:bool = false, _move:bool = false, _
     if _move:
         use_btn.text = "移动"
         current_state = STATE.MOVE
-    
-    rate_label.text = Master.get_rate_text_from_item(_item)
-    
-    price_label.text = "%s $" % str(_item.price)
-    main_buff_label.text = _item.main_buffs.desc
-    
-    icon.texture = load(_item.texture_path)
-    
+        
     global_position = get_global_mouse_position() + Vector2(50, 50)
     
     if Vector2i((global_position + size)).x > get_viewport_rect().size.x:
@@ -81,13 +88,19 @@ func change_state(_item:InventoryItem, _down:bool = false, _move:bool = false, _
     
     item = _item
     show()
-    update_ui()
-
+    
+    if _differ and target_differ_item:
+        target_differ_item.show()
+        target_differ_item.item = _differ_item
+        target_differ_item.update_ui()
+        update_ui(_differ)
+    else:
+        update_ui()        
 
 func use() -> void:
     match current_state:
         STATE.DOWN:
-            EventBus.equipment_down.emit(item.type, item)
+            EventBus.equipment_down.emit(item.type, item, true)
         STATE.MOVE:
             EventBus.move_item.emit(item)
         STATE.UP:
@@ -95,8 +108,13 @@ func use() -> void:
     hide()
 
 # TODO: 装备对比
-func update_ui(_differ:bool = false, _differ_item:InventoryItem = null) -> void:
+func update_ui(_differ:bool = false) -> void:
     title_label.text = item.name
+    rate_label.text = Master.get_rate_text_from_item(item)    
+    
+    price_label.text = "%s $" % str(item.price)
+    main_buff_label.text = item.main_buffs.desc
+    icon.texture = load(item.texture_path)
     
     for _affix in pre_affixe_labels.get_children():
         _affix.queue_free()
@@ -132,80 +150,13 @@ func update_ui(_differ:bool = false, _differ_item:InventoryItem = null) -> void:
     else:
         item_color.color = Const.COLORS.Normal
     
-    if not _differ:
-        return
-
-    # 比较物品
-    var _item_more:Dictionary = {} #存放 more 计算值，格式：{"hp", 0.14} -> 代表hp + (hp * 0.14%)
-    var _item_increase:Dictionary = {} #存放 increasee 计算值，格式：{"hp", 14} -> 代表hp + 14
-    var _differ_more:Dictionary = {}
-    var _differ_increase:Dictionary = {}
-    
-    var _final_data:Dictionary = {}
-    
-    var _item_affixs:Array = item.pre_affixs + item.buf_affix
-    var _differ_affixs:Array = _differ_item.pre_affixs + _differ_item.buf_affix
-    
-    for _item_affix in _item_affixs:
-        var _item_compute_data:FlowerComputeData = _item_affix.buff.compute_values[0]
-        
-        if _item_compute_data.type == FlowerConst.COMPUTE_TYPE.MORE:
-            _item_more[_item_compute_data.target_property] = _item_compute_data.value
-        elif _item_compute_data.type == FlowerConst.COMPUTE_TYPE.INCREASE:
-            _item_increase[_item_compute_data.target_property] = _item_compute_data.value
-    
-    for _differ_affix in _differ_affixs:
-        var _differ_compute_data:FlowerComputeData = _differ_affix.buff.compute_values[0]
-            
-        if _differ_compute_data.type == FlowerConst.COMPUTE_TYPE.MORE:
-            _differ_more[_differ_compute_data.target_property] = _differ_compute_data.value
-        elif _differ_compute_data.type == FlowerConst.COMPUTE_TYPE.INCREASE:
-            _differ_increase[_differ_compute_data.target_property] = _differ_compute_data.value
-    
-    # 接下来把_item_more、_item_incrase、_differ_more、_differ_incrase逐一比较处理，然后最终结果赋值给_final_data（_final_data格式：{"对比的属性名称"： 对比结果（以百分数表示）}）
-    # 逐一比较处理，计算最终结果
-    for _property_name in _item_increase:
-        # 拿到了原来的属性
-        var _added_value:float = ((_item_increase[_property_name]) / Master.player_output_data[_property_name]) * 100.0
-        if _item_more.has(_property_name):
-            _item_more[_property_name] = _item_more[_property_name] + _added_value
-        else:
-            _item_more[_property_name] = _added_value
-
-    for _property_name in _differ_increase:
-        # 拿到了原来的属性
-        var _added_value:float = ((_differ_increase[_property_name]) / Master.player_output_data[_property_name]) * 100.0
-        if _differ_more.has(_property_name):
-            _differ_more[_property_name] = _differ_more[_property_name] + _added_value
-        else:
-            _differ_more[_property_name] = _added_value
-    
-    for _property_name in _differ_more:
-        if _property_name in _item_more:
-            if _property_name in _final_data:
-                _final_data[_property_name] = _final_data[_property_name] + _differ_more[_property_name] - _item_more[_property_name]
-            else:
-                _final_data[_property_name] = _differ_more[_property_name] - _item_more[_property_name]
-        else:
-            if _property_name in _final_data:
-                _final_data[_property_name] = _final_data[_property_name] + _differ_more[_property_name]
-            else:
-                _final_data[_property_name] = _differ_more[_property_name]
-    
-    # 打印最终结果
-    
-    #print(_item_more)
-    #print(_item_increase)
-    #print(_differ_more)
-    #print(_differ_increase)
-    #print("最终结果", _final_data)
-    
-    for i in _final_data:
-        differ_label.add_child(get_differ_label("%s %s" % [get_chinese_property_text(str(i)), str(_final_data[i])]))
-    
     show()
     
-    global_position = get_global_mouse_position() + Vector2(50, 50)
+    if _differ:
+        global_position = get_global_mouse_position() + Vector2(50, 50)
+        global_position.y += size.y
+    else:
+        global_position = get_global_mouse_position() + Vector2(50, 50)        
     
     if Vector2i((global_position + size)).x > get_viewport_rect().size.x:
         global_position.x = global_position.x - size.x

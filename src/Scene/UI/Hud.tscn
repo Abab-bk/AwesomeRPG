@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=70 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -54,7 +54,9 @@
 [ext_resource type="PackedScene" uid="uid://cjjwuxcdb323h" path="res://Scene/UI/Fly.tscn" id="38_kc5l2"]
 [ext_resource type="Texture2D" uid="uid://pynss6v6gp0j" path="res://Assets/UI/Texture/Button/GachaBtn.png" id="38_y4k8f"]
 [ext_resource type="Texture2D" uid="uid://c5j8hsgbywbwk" path="res://Assets/UI/Texture/Button/EveryDayQuestBtn.png" id="41_r6tpb"]
+[ext_resource type="Texture2D" uid="uid://dpyn8h3hc0rdt" path="res://Assets/UI/Texture/Button/ShowMoreBtn.png" id="41_sitmb"]
 [ext_resource type="Texture2D" uid="uid://bfe0vvglvoee4" path="res://Assets/UI/Texture/Button/EveryDayQuestBtnPre.png" id="42_e1xnd"]
+[ext_resource type="Texture2D" uid="uid://cg4bccguh05kn" path="res://Assets/UI/Texture/Button/HideMoreBtn.png" id="42_msk8h"]
 [ext_resource type="PackedScene" uid="uid://cehpj6ivkyk7" path="res://Scene/UI/Friends.tscn" id="50_dncem"]
 [ext_resource type="PackedScene" uid="uid://b05k7iocrua2g" path="res://Scene/UI/Tower.tscn" id="51_icvei"]
 [ext_resource type="PackedScene" uid="uid://car5dwl4qr8w" path="res://Scene/UI/Gacha.tscn" id="52_l1u2u"]
@@ -79,6 +81,140 @@ size = 50
 script = ExtResource("30_a74rk")
 items = Array[Resource("res://Script/Game/System/InventoryItem.gd")]([])
 size = 50
+
+[sub_resource type="Animation" id="Animation_h6rx1"]
+resource_name = "show_sub_function"
+length = 0.2
+step = 0.02
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/SubFunction/SubFunction:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(128, 630), Vector2(128, 1300)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/SubFunction/SubFunction/VBoxContainer2/GachaBtn:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/SubFunction/SubFunction/VBoxContainer2/FriendsBtn:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.14),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/SubFunction/SubFunction/VBoxContainer2/TowerBtn:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.18),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/SubFunction/SubFunction/VBoxContainer2/FlyBtn:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_r5p04"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/SubFunction/SubFunction:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(128, 1300)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/SubFunction/SubFunction/VBoxContainer2/GachaBtn:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/SubFunction/SubFunction/VBoxContainer2/FriendsBtn:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/SubFunction/SubFunction/VBoxContainer2/TowerBtn:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/SubFunction/SubFunction/VBoxContainer2/FlyBtn:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jx3ls"]
+_data = {
+"RESET": SubResource("Animation_r5p04"),
+"show_sub_function": SubResource("Animation_h6rx1")
+}
 
 [node name="Hud" type="CanvasLayer"]
 process_mode = 3
@@ -464,22 +600,26 @@ text = "得到装备"
 [node name="ItemGenerator" type="Node" parent="Control/GetEquipmentBtn"]
 script = ExtResource("24_w5dur")
 
-[node name="SubFunction" type="Panel" parent="Control"]
-custom_minimum_size = Vector2(128, 0)
+[node name="SubFunction" type="VBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -158.0
-offset_top = -880.0
-offset_right = -38.0
-offset_bottom = 403.0
+offset_left = -150.0
+offset_top = -936.0
+offset_right = -22.0
+offset_bottom = 484.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_constants/separation = 20
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/SubFunction"]
+[node name="SubFunction" type="Panel" parent="Control/SubFunction"]
+custom_minimum_size = Vector2(128, 1300)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/SubFunction/SubFunction"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -488,7 +628,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="SkillTreeBtn" type="TextureButton" parent="Control/SubFunction/VBoxContainer2"]
+[node name="SkillTreeBtn" type="TextureButton" parent="Control/SubFunction/SubFunction/VBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -497,7 +637,7 @@ texture_normal = ExtResource("26_e01sv")
 texture_pressed = ExtResource("27_jvatt")
 stretch_mode = 5
 
-[node name="ForgeBtn" type="TextureButton" parent="Control/SubFunction/VBoxContainer2"]
+[node name="ForgeBtn" type="TextureButton" parent="Control/SubFunction/SubFunction/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -505,7 +645,7 @@ texture_normal = ExtResource("28_iq72c")
 texture_pressed = ExtResource("29_4kesd")
 stretch_mode = 5
 
-[node name="RepoBtn" type="TextureButton" parent="Control/SubFunction/VBoxContainer2"]
+[node name="RepoBtn" type="TextureButton" parent="Control/SubFunction/SubFunction/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -513,7 +653,7 @@ texture_normal = ExtResource("29_2sfva")
 texture_pressed = ExtResource("30_di66f")
 stretch_mode = 5
 
-[node name="7DaysCheckinBtn" type="TextureButton" parent="Control/SubFunction/VBoxContainer2"]
+[node name="7DaysCheckinBtn" type="TextureButton" parent="Control/SubFunction/SubFunction/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -521,39 +661,52 @@ texture_normal = ExtResource("31_r2t82")
 texture_pressed = ExtResource("32_dgm5u")
 stretch_mode = 5
 
-[node name="FlyBtn" type="TextureButton" parent="Control/SubFunction/VBoxContainer2"]
+[node name="FlyBtn" type="TextureButton" parent="Control/SubFunction/SubFunction/VBoxContainer2"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("32_f0iak")
 texture_pressed = ExtResource("33_r5k0t")
 stretch_mode = 5
 
-[node name="TowerBtn" type="TextureButton" parent="Control/SubFunction/VBoxContainer2"]
+[node name="TowerBtn" type="TextureButton" parent="Control/SubFunction/SubFunction/VBoxContainer2"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("34_ehu7i")
 texture_pressed = ExtResource("35_8rwpc")
 stretch_mode = 5
 
-[node name="FriendsBtn" type="TextureButton" parent="Control/SubFunction/VBoxContainer2"]
+[node name="FriendsBtn" type="TextureButton" parent="Control/SubFunction/SubFunction/VBoxContainer2"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("34_qeepe")
 texture_pressed = ExtResource("35_636ij")
 stretch_mode = 5
 
-[node name="GachaBtn" type="TextureButton" parent="Control/SubFunction/VBoxContainer2"]
+[node name="GachaBtn" type="TextureButton" parent="Control/SubFunction/SubFunction/VBoxContainer2"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("38_y4k8f")
 texture_pressed = ExtResource("38_44uhx")
 stretch_mode = 5
 
-[node name="SubFuntion2" type="Panel" parent="Control"]
+[node name="ShowMoreBtn" type="TextureButton" parent="Control/SubFunction"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+texture_normal = ExtResource("41_sitmb")
+texture_pressed = ExtResource("42_msk8h")
+stretch_mode = 5
+
+[node name="SubFunction2" type="Panel" parent="Control"]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 1
 anchors_preset = 4
@@ -565,7 +718,7 @@ offset_right = 166.0
 offset_bottom = -566.0
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/SubFuntion2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/SubFunction2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -573,7 +726,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="EveryDayQuestBtn" type="TextureButton" parent="Control/SubFuntion2/VBoxContainer"]
+[node name="EveryDayQuestBtn" type="TextureButton" parent="Control/SubFunction2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("41_r6tpb")
@@ -683,9 +836,9 @@ layout_mode = 2
 [node name="ItemToolTip" parent="." instance=ExtResource("37_hqe6n")]
 visible = false
 offset_left = 24.0
-offset_top = 72.0
+offset_top = 751.0
 offset_right = 595.0
-offset_bottom = 760.0
+offset_bottom = 1439.0
 
 [node name="PropertyChangeArrow" type="Control" parent="."]
 layout_mode = 3
@@ -695,3 +848,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jx3ls")
+}

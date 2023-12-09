@@ -16,6 +16,7 @@ signal backed_to_home
 @onready var pages:TabContainer = %Pages
 
 @onready var item_tool_tip:Panel = $ItemToolTip
+@onready var item_tool_tip_2:Panel = $ItemToolTip2
 
 @onready var inventory_btn:TextureButton = %InventoryBtn
 @onready var character_btn:Button = %CharacterBtn
@@ -32,6 +33,7 @@ signal backed_to_home
 @onready var tower_btn:TextureButton = %TowerBtn
 @onready var gacha_btn:TextureButton = %GachaBtn
 @onready var every_day_quest_btn:TextureButton = %EveryDayQuestBtn
+@onready var show_more_btn:TextureButton = %ShowMoreBtn
 
 @onready var get_skill_btn:Button = %GetSkillBtn
 
@@ -49,6 +51,7 @@ signal backed_to_home
 @onready var level_up_arrow:Control = $LevelUpArrow
 @onready var property_change_arrow:Control = $PropertyChangeArrow
 
+@onready var animation_player = $AnimationPlayer
 
 @onready var skill_bar:HBoxContainer = %SkillBar
 @onready var color_rect:ColorRect = $BlackRect
@@ -102,12 +105,6 @@ func _ready() -> void:
             skill_tree_ui.gen_trees_by_walker()
         )
     
-    EventBus.change_differ_item_tooltip_state.connect(
-        func(_item:InventoryItem, _item2:InventoryItem, _down:bool = false, _move:bool = false, _display:bool = false, _differ:bool = false):
-            item_tool_tip.item = _item
-            item_tool_tip.update_ui(true, _item2)
-            )
-    
     EventBus.get_talent_point.connect(func(_count:int):
         new_tip("获得 %s 技能点" % str(_count))
         )
@@ -130,6 +127,14 @@ func _ready() -> void:
     tower_btn.pressed.connect(change_page.bind(PAGE.TOWER))
     gacha_btn.pressed.connect(change_page.bind(PAGE.GACHA))
     every_day_quest_btn.pressed.connect(change_page.bind(PAGE.EVERY_DAY_QUEST))
+    
+    show_more_btn.pressed.connect(func():
+        if show_more_btn.button_pressed:
+            animation_player.play("show_sub_function")
+        else:
+            animation_player.play_backwards("show_sub_function")
+        )
+    
     # 添加技能
     get_skill_btn.pressed.connect(func():
         var _ability:FlowerAbility = Master.get_random_ability()
