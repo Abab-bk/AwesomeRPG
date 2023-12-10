@@ -16,7 +16,7 @@ signal backed_to_home
 @onready var pages:TabContainer = %Pages
 
 @onready var item_tool_tip:Panel = $ItemToolTip
-@onready var item_tool_tip_2:Panel = $ItemToolTip2
+#@onready var item_tool_tip_2:Panel = $ItemToolTip2
 
 @onready var inventory_btn:TextureButton = %InventoryBtn
 @onready var character_btn:Button = %CharacterBtn

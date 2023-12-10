@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhyobuuga8504"]
+[gd_scene load_steps=8 format=3 uid="uid://dhyobuuga8504"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_c71we"]
 [ext_resource type="Script" path="res://Script/UI/CreatCharacter.gd" id="2_grkrj"]
 [ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="2_sw5s3"]
+[ext_resource type="PackedScene" uid="uid://csd413be3hgxg" path="res://Scene/UI/BlackRect.tscn" id="4_qc1qi"]
+[ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="5_odxp4"]
+[ext_resource type="Script" path="res://addons/Dfa/Dfa.gd" id="6_bqxyb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xapm"]
+bg_color = Color(0.145098, 0.141176, 0.168627, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.823529, 0.737255, 0.607843, 1)
 
 [node name="CreatCharacter" type="Control"]
 layout_mode = 3
@@ -73,3 +82,76 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 text = "确认"
+
+[node name="BlackRect" parent="." instance=ExtResource("4_qc1qi")]
+visible = true
+layout_mode = 0
+anchors_preset = 0
+
+[node name="Popup" type="Panel" parent="."]
+custom_minimum_size = Vector2(834, 418)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -209.0
+offset_bottom = 209.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8xapm")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Popup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Body" type="VBoxContainer" parent="Popup/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TitleLabel" type="Label" parent="Popup/MarginContainer2/Body"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "标题"
+label_settings = ExtResource("5_odxp4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescLabel" type="RichTextLabel" parent="Popup/MarginContainer2/Body"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.992157, 0.945098, 0.827451, 1)
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]你的账号已经被封禁，请不要尝试解封。[/center]"
+scroll_active = false
+
+[node name="MarginContainer" type="MarginContainer" parent="Popup/MarginContainer2/Body"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Popup/MarginContainer2/Body/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="YesPopupBtn" type="Button" parent="Popup/MarginContainer2/Body/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+text = "确认"
+
+[node name="DFA" type="Node" parent="."]
+script = ExtResource("6_bqxyb")
