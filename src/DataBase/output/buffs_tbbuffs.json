@@ -1095,7 +1095,7 @@
         "type": 0,
         "value": 0,
         "formual": "",
-        "target_property": "atk_range"
+        "target_property": "wisdom"
       }
     ]
   },
@@ -1115,47 +1115,7 @@
         "type": 0,
         "value": 0,
         "formual": "",
-        "target_property": "vision"
-      }
-    ]
-  },
-  {
-    "id": 1057,
-    "name": "伤害 + %s",
-    "desc": "伤害",
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "1056",
-        "type": 1,
-        "value": 0,
-        "formual": "",
-        "target_property": "damage"
-      }
-    ]
-  },
-  {
-    "id": 1058,
-    "name": "防御 + %s",
-    "desc": "防御",
-    "repeat": false,
-    "infinite": true,
-    "repeat_count": 0,
-    "prepare_time": 0,
-    "active_time": 0,
-    "cooldown_time": 0,
-    "compute_values": [
-      {
-        "id": "1057",
-        "type": 1,
-        "value": 0,
-        "formual": "",
-        "target_property": "defense"
+        "target_property": "agility"
       }
     ]
   }

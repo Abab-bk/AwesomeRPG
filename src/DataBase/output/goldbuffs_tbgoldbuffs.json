@@ -378,5 +378,449 @@
         "target_property": "toxic_resistance"
       }
     ]
+  },
+  {
+    "id": 10020,
+    "name": "全元素",
+    "desc": "所有元素抗性 +{}%",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4020",
+        "type": 0,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "frost_resistance"
+      },
+      {
+        "id": "4021",
+        "type": 0,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "fire_resistance"
+      },
+      {
+        "id": "4022",
+        "type": 0,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "light_resistance"
+      },
+      {
+        "id": "4023",
+        "type": 0,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "toxic_resistance"
+      }
+    ]
+  },
+  {
+    "id": 10021,
+    "name": "全元素",
+    "desc": "所有元素抗性 +{}",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4024",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "frost_resistance"
+      },
+      {
+        "id": "4025",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "fire_resistance"
+      },
+      {
+        "id": "4026",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "light_resistance"
+      },
+      {
+        "id": "4027",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "toxic_resistance"
+      }
+    ]
+  },
+  {
+    "id": 10022,
+    "name": "全元素",
+    "desc": "所有元素伤害 +{}%",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4028",
+        "type": 0,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "light_damage"
+      },
+      {
+        "id": "4029",
+        "type": 0,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "toxic_damage"
+      },
+      {
+        "id": "4030",
+        "type": 0,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "fire_damage"
+      },
+      {
+        "id": "4031",
+        "type": 0,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "frost_damage"
+      }
+    ]
+  },
+  {
+    "id": 10023,
+    "name": "全元素",
+    "desc": "所有元素伤害 +{}",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4032",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "light_damage"
+      },
+      {
+        "id": "4033",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "toxic_damage"
+      },
+      {
+        "id": "4034",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "fire_damage"
+      },
+      {
+        "id": "4035",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "frost_damage"
+      }
+    ]
+  },
+  {
+    "id": 10024,
+    "name": "防御",
+    "desc": "+(100 - 480)防御",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4036",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "defense"
+      }
+    ]
+  },
+  {
+    "id": 10025,
+    "name": "防御",
+    "desc": "+(1 - 100)防御",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4037",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "defense"
+      }
+    ]
+  },
+  {
+    "id": 10026,
+    "name": "防御",
+    "desc": "+(800 - 1000)防御",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4038",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "defense"
+      }
+    ]
+  },
+  {
+    "id": 10027,
+    "name": "最大生命",
+    "desc": "+(100 - 150)最大生命",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4039",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "max_hp"
+      }
+    ]
+  },
+  {
+    "id": 10028,
+    "name": "最大生命",
+    "desc": "+(200 - 300)最大生命",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4040",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "max_hp"
+      }
+    ]
+  },
+  {
+    "id": 10029,
+    "name": "最大生命",
+    "desc": "+(80 - 100)最大生命",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4041",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "max_hp"
+      }
+    ]
+  },
+  {
+    "id": 10030,
+    "name": "抗性",
+    "desc": "+(10% - 35%)火焰抗性",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4042",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "fire_resistance"
+      }
+    ]
+  },
+  {
+    "id": 10031,
+    "name": "抗性",
+    "desc": "+(10% - 35%)闪电抗性",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4043",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "light_resistance"
+      }
+    ]
+  },
+  {
+    "id": 10032,
+    "name": "抗性",
+    "desc": "+(10% - 35%)毒素抗性",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4044",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "toxic_resistance"
+      }
+    ]
+  },
+  {
+    "id": 10033,
+    "name": "抗性",
+    "desc": "+(10% - 35%)冰霜抗性",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4045",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "frost_resistance"
+      }
+    ]
+  },
+  {
+    "id": 10034,
+    "name": "伤害",
+    "desc": "+(10% - 35%)火焰伤害",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4046",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "fire_damage"
+      }
+    ]
+  },
+  {
+    "id": 10035,
+    "name": "伤害",
+    "desc": "+(10% - 35%)闪电伤害",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4047",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "light_damage"
+      }
+    ]
+  },
+  {
+    "id": 10036,
+    "name": "伤害",
+    "desc": "+(10% - 35%)毒素伤害",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4048",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "toxic_damage"
+      }
+    ]
+  },
+  {
+    "id": 10037,
+    "name": "伤害",
+    "desc": "+(10% - 35%)冰霜伤害",
+    "repeat": false,
+    "infinite": true,
+    "repeat_count": 0,
+    "prepare_time": 0,
+    "active_time": 1,
+    "cooldown_time": 0,
+    "compute_values": [
+      {
+        "id": "4049",
+        "type": 1,
+        "value": 0.01,
+        "formual": "",
+        "target_property": "frost_damage"
+      }
+    ]
   }
 ]
