@@ -5,7 +5,10 @@ extends Control
 func _ready() -> void:
     $Panel.hide()
     
-    Tap.login_ok.connect(go_to_world)
+    Tap.logined.connect(func():
+        Tap.quick_anti()
+        )
+    Tap.anti_pass.connect(go_to_world)
     Tap.login_not.connect(func():
         $Panel.show()
         )
@@ -26,6 +29,8 @@ func _ready() -> void:
         go_to_world()
     
     Tap.is_login()
+    Tap.init_tap_anti()
+
 
 func go_to_world() -> void:
     get_tree().change_scene_to_packed(load("res://Scene/UI/MainMenu.tscn"))

@@ -1,23 +1,21 @@
 @tool
 extends EditorPlugin
 
-# A class member to hold the editor export plugin during its lifecycle.
 var export_plugin : AndroidExportPlugin
 
 func _enter_tree():
-    # Initialization of the plugin goes here.
     export_plugin = AndroidExportPlugin.new()
     add_export_plugin(export_plugin)
+    add_autoload_singleton("Tap", "Tap.gd")
 
 
 func _exit_tree():
-    # Clean-up of the plugin goes here.
     remove_export_plugin(export_plugin)
     export_plugin = null
+    remove_autoload_singleton("Tap")
 
 
 class AndroidExportPlugin extends EditorExportPlugin:
-    # TODO: Update to your plugin's name.
     var _plugin_name = "FlowerTapSDK"
 
     func _supports_platform(platform):
@@ -28,33 +26,33 @@ class AndroidExportPlugin extends EditorExportPlugin:
     func _get_android_libraries(platform, debug):
         if debug:
             return PackedStringArray([
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/debug/RealTapSDK-debug.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/AntiAddiction_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/AntiAddictionUI_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/lib-rtc-1.1.0-release.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapAchievement_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapBillboard_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapBootstrap_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapCommon_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapLicense_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapLogin_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapMoment_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/THEMIS-release3.0.7.aar"
+            "FlowerTapTapSDK/bin/debug/RealTapSDK-debug.aar",
+            "FlowerTapTapSDK/bin/libs/AntiAddiction_3.24.0.aar",
+            "FlowerTapTapSDK/bin/libs/AntiAddictionUI_3.24.0.aar",
+            "FlowerTapTapSDK/bin/libs/lib-rtc-1.1.0-release.aar",
+            "FlowerTapTapSDK/bin/libs/TapAchievement_3.24.0.aar",
+            "FlowerTapTapSDK/bin/libs/TapBillboard_3.24.0.aar",
+            "FlowerTapTapSDK/bin/libs/TapBootstrap_3.24.0.aar",
+            "FlowerTapTapSDK/bin/libs/TapCommon_3.24.0.aar",
+            "FlowerTapTapSDK/bin/libs/TapLicense_3.24.0.aar",
+            "FlowerTapTapSDK/bin/libs/TapLogin_3.24.0.aar",
+            "FlowerTapTapSDK/bin/libs/TapMoment_3.24.0.aar",
+            "FlowerTapTapSDK/bin/libs/THEMIS-release3.0.7.aar"
             ])
         else:
             return PackedStringArray([
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/release/RealTapSDK-release.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/AntiAddiction_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/AntiAddictionUI_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/lib-rtc-1.1.0-release.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapAchievement_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapBillboard_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapBootstrap_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapCommon_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapLicense_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapLogin_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/TapMoment_3.24.0.aar",
-            "E:/Dev/Godot/AwesomeRPG/src/addons/FlowerTapTapSDK/bin/libs/THEMIS-release3.0.7.aar"
+            "FlowerTapTapSDK/bin/release/RealTapSDK-release.aar",
+            "FlowerTapTapSDK/bin/libs/AntiAddiction_3.24.0.aar",
+            "FlowerTapTapSDK/bin/libs/AntiAddictionUI_3.24.0.aar",
+            "FlowerTapTapSDK/bin/libs/lib-rtc-1.1.0-release.aar",
+            "FlowerTapTapSDK/bin/libs/TapAchievement_3.24.0.aar",
+            "FlowerTapTapSDK/bin/libs/TapBillboard_3.24.0.aar",
+            "FlowerTapTapSDK/bin/libs/TapBootstrap_3.24.0.aar",
+            "FlowerTapTapSDK/bin/libs/TapCommon_3.24.0.aar",
+            "FlowerTapTapSDK/bin/libs/TapLicense_3.24.0.aar",
+            "FlowerTapTapSDK/bin/libs/TapLogin_3.24.0.aar",
+            "FlowerTapTapSDK/bin/libs/TapMoment_3.24.0.aar",
+            "FlowerTapTapSDK/bin/libs/THEMIS-release3.0.7.aar"
             ])
 
 
