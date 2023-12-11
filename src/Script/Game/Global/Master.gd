@@ -124,9 +124,18 @@ var next_reward_player_level:int = 1:
         next_reward_player_level = v
         FlowerSaver.set_data("next_reward_player_level", next_reward_player_level)
 
+var today_watch_ad_count:int = 0:
+    set(v):
+        today_watch_ad_count = v
+        FlowerSaver.set_data("today_watch_ad_count", today_watch_ad_count)
+
 # [["property", value], ["property", value]]
 var flyed_obtain_buffs:Array = []
 
+var buyed_prime_access_today:bool = false:
+    set(v):
+        buyed_prime_access_today = v
+        FlowerSaver.set_data("buyed_prime_access_today", buyed_prime_access_today)
 
 # 用来存储drop_item位置的数组
 var occupied_positions:Array
@@ -300,8 +309,18 @@ func _ready():
         if FlowerSaver.has_key("gacha_money_part"):
             gacha_money_part = FlowerSaver.get_data("gacha_money_part")
 
+        if FlowerSaver.has_key("buyed_prime_access_today"):
+            buyed_prime_access_today = FlowerSaver.get_data("buyed_prime_access_today")
+        
+        if FlowerSaver.has_key("today_watch_ad_count"):
+            today_watch_ad_count = FlowerSaver.get_data("today_watch_ad_count")
         
         EventBus.rework_level_enemy_count.emit()
+        
+        var _current_time:TimeResource = TimeManager.get_current_time_resource() as TimeResource
+        if _current_time.is_next_day(last_leave_time):
+            buyed_prime_access_today = false
+        
         )
     
     EventBus.get_money.connect(func(_key:String, _value:int):

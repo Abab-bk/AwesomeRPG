@@ -99,6 +99,8 @@ enum MoneyTypeEMoneys
     COIN = 0,
     ## 神恩石碎片
     GACHA_MONEY_PART = 1,
+    ## 广告
+    AD = 2,
 }
 
 

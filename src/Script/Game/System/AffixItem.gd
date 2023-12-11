@@ -40,7 +40,12 @@ func update(_data) -> void:
         
         return
     
-    var _buff = Master.buffs[target_buff_id]
+    var _buff
+    
+    if Master.buffs.has(target_buff_id):
+        _buff = Master.buffs[target_buff_id]
+    else:
+        _buff = Master.buffs[Master.buffs.keys().pick_random()]
     
     buff.repeat = _buff["repeat"]
     buff.infinite = _buff["infinite"]

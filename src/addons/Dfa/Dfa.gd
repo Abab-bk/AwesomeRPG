@@ -2,7 +2,6 @@ class_name DFA extends Node
 
 const DEFAULT_BLOCK_WORDS_PATH: String = "res://addons/Dfa/DefaultBlockWords.txt"
 
-
 class DFAState:
     var is_final: bool = false
     var transitions: Dictionary = {}
@@ -10,15 +9,16 @@ class DFAState:
 
 class WordFilterDFA:
     var root: DFAState
-
+    var temp_strings: PackedStringArray = []
+    
 
     func _init(blocked_words: Array = []):
         root = DFAState.new()
 
         for word in blocked_words:
             add_word(word)
-
-
+    
+    
     func add_word(word: String):
         var current_state = root
 
@@ -33,12 +33,15 @@ class WordFilterDFA:
     func load_blocked_words_from_file(filePath: String):
         var _file = FileAccess.open(filePath, FileAccess.READ)
         if _file.file_exists(filePath):
+            if not temp_strings.is_empty():
+                return
+            
             var file = FileAccess.open(filePath, FileAccess.READ)
             var fileContent: String = file.get_as_text()
             file.close()
             
-            var blockedWords: PackedStringArray = fileContent.replace("\r", "").split("\n")
-            _init(blockedWords)
+            temp_strings = fileContent.replace("\r", "").split("\n")
+            _init(temp_strings)
         else:
             print("File not found:", filePath)
 

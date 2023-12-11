@@ -1,8 +1,11 @@
 class_name Const extends Node
 
+const MAX_AD_COUNT:int = 10
+
 enum MONEY_TYPE {
     COIN,
     GACHA_MONEY_PART,
+    AD,
 }
 
 const MONEYS_NAME:Dictionary = {

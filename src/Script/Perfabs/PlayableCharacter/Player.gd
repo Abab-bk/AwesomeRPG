@@ -519,9 +519,10 @@ func change_body_sprite(_sprite:Texture2D) -> void:
 
 # ======= 属性 ========
 func up_level() -> void:
-    output_data.level_up()
-    output_data.now_xp = 0
-    output_data.update_next_xp()
+    compute_data.level_up()
+    compute_data.now_xp = 0
+    compute_data.update_next_xp()
+    compute_all()
     EventBus.player_level_up.emit()
     EventBus.player_data_change.emit()
     EventBus.update_ui.emit()
@@ -529,13 +530,13 @@ func up_level() -> void:
 
 
 func get_xp(_value:float) -> void:
-    output_data.now_xp += _value
+    compute_data.now_xp += _value
     EventBus.update_ui.emit()
     
-    if not output_data.now_xp >= output_data.next_level_xp:
+    if compute_data.now_xp <= compute_data.next_level_xp:
         return
     
-    if output_data.level >= 100 + (Master.fly_count * 10):
+    if compute_data.level >= 100 + (Master.fly_count * 10):
         EventBus.new_tips.emit("达到等级上限！请转生以提升等级上限！")
         return
     

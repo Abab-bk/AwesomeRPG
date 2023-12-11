@@ -11,6 +11,7 @@ extends VBoxContainer
 
 var ability:FlowerAbility
 
+
 func _ready() -> void:
     build_store()
     
@@ -23,6 +24,8 @@ func _ready() -> void:
             return
         
         Master.unlocked_skills.append(ability.id)
+        FlowerSaver.set_data("unlocked_skills", Master.unlocked_skills)
+        
         Master.coins -= ability.cost
         EventBus.show_popup.emit("购买成功", "购买成功，消耗：%s 金币" % str(ability.cost))
         
@@ -33,10 +36,12 @@ func _ready() -> void:
         update_ui()        
         )
 
+
 func update_ui() -> void:
     for i in items.get_children():
         i.queue_free()
     build_store()
+
 
 func build_store() -> void:
     for i in Master.abilitys:
@@ -47,6 +52,7 @@ func build_store() -> void:
         _btn.data = Master.get_ability_by_id(i)
         _btn.selected.connect(change_info)
         items.add_child(_btn)
+
 
 func change_info(_ability:FlowerAbility) -> void:
     icon.texture = load(_ability.icon_path)

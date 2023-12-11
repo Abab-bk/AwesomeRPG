@@ -87,6 +87,10 @@ text = "确认"
 visible = true
 layout_mode = 0
 anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="Popup" type="Panel" parent="."]
 custom_minimum_size = Vector2(834, 418)
@@ -155,3 +159,5 @@ text = "确认"
 
 [node name="DFA" type="Node" parent="."]
 script = ExtResource("6_bqxyb")
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
