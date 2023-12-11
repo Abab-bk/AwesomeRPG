@@ -90,17 +90,80 @@ enum RewardTypeReward
     GACHA_MONEY = 11,
     ## 神恩石碎片
     GACHA_MONEY_PART = 12,
+    ## 记忆
+    MEMORY = 13,
+    ## 剑书
+    BOOK_SWORD = 14,
+    ## 斧头书
+    BOOK_AXE = 15,
+    ## 长枪书
+    BOOK_SPEAR = 16,
+    ## 匕首书
+    BOOK_DAGGER = 17,
+    ## 弓书
+    BOOK_BOW = 18,
+    ## 经验书1
+    XP_BOOK_1 = 19,
+    ## 经验书2
+    XP_BOOK_2 = 20,
+    ## 经验书3
+    XP_BOOK_3 = 21,
+    ## 经验书4
+    XP_BOOK_4 = 22,
+    ## 广告
+    AD = 23,
 }
 
 
 enum MoneyTypeEMoneys
 {
+    NONE = 0,
     ## 金币
-    COIN = 0,
+    COINS = 1,
+    ## 经验
+    XP = 2,
+    ## 白钱
+    MONEY_WHITE = 3,
+    ## 蓝钱
+    MONEY_BLUE = 4,
+    ## 紫钱
+    MONEY_PURPLE = 5,
+    ## 黄钱
+    MONEY_YELLOW = 6,
+    ## 传奇装备
+    GOLD_EQUIPMENT = 7,
+    ## 飞升
+    FLY = 8,
+    ## 蓝色装备
+    BLUE_EQUIPMENT = 9,
+    ## 伙伴
+    FRIEND = 10,
+    ## 神恩石
+    GACHA_MONEY = 11,
     ## 神恩石碎片
-    GACHA_MONEY_PART = 1,
+    GACHA_MONEY_PART = 12,
+    ## 记忆
+    MEMORY = 13,
+    ## 剑书
+    BOOK_SWORD = 14,
+    ## 斧头书
+    BOOK_AXE = 15,
+    ## 长枪书
+    BOOK_SPEAR = 16,
+    ## 匕首书
+    BOOK_DAGGER = 17,
+    ## 弓书
+    BOOK_BOW = 18,
+    ## 经验书1
+    XP_BOOK_1 = 19,
+    ## 经验书2
+    XP_BOOK_2 = 20,
+    ## 经验书3
+    XP_BOOK_3 = 21,
+    ## 经验书4
+    XP_BOOK_4 = 22,
     ## 广告
-    AD = 2,
+    AD = 23,
 }
 
 
@@ -489,8 +552,7 @@ class Friends:
     var icon_path: String
     var base_vision: float
     var base_atk_range: float
-    var state_count: String
-    var next_state_skin_name: String
+    var need_pole: int
     var quality: int
     var skin_name: String
     var hp: float
@@ -511,8 +573,7 @@ class Friends:
         self.icon_path = _json_["icon_path"]
         self.base_vision = _json_["base_vision"]
         self.base_atk_range = _json_["base_atk_range"]
-        self.state_count = _json_["state_count"]
-        self.next_state_skin_name = _json_["next_state_skin_name"]
+        self.need_pole = _json_["need_pole"]
         self.quality = _json_["quality"]
         self.skin_name = _json_["skin_name"]
         self.hp = _json_["hp"]

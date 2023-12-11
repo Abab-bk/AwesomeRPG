@@ -1,8 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://dx2o5dlyrmgfy"]
+[gd_scene load_steps=18 format=3 uid="uid://dx2o5dlyrmgfy"]
 
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_kp55j"]
 [ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="1_wglmh"]
 [ext_resource type="Script" path="res://Script/UI/FriendPanel.gd" id="1_ynsbe"]
-[ext_resource type="LabelSettings" uid="uid://sosklb2t4w3c" path="res://Assets/LabelSetting/UITitleBigerGold.tres" id="3_ayf2h"]
+[ext_resource type="Texture2D" uid="uid://dqwimqh5tq64r" path="res://Assets/Texture/Images/FriendPanel.png" id="3_spwuw"]
+[ext_resource type="FontFile" uid="uid://c7bfs6orcmgh2" path="res://Assets/Font/SourceHanSansCN-Medium.otf" id="5_knue8"]
+[ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="6_e56l3"]
+[ext_resource type="LabelSettings" uid="uid://x6o5xdvhhstu" path="res://Assets/LabelSetting/VeryBigGold.tres" id="6_p3msh"]
+[ext_resource type="LabelSettings" uid="uid://btvc76qjm0w47" path="res://Assets/LabelSetting/SmallWhite.tres" id="7_1f6wn"]
+[ext_resource type="Texture2D" uid="uid://bvripgnbflxtf" path="res://Assets/UI/Texture/Button/PlusBtn.png" id="8_mt2dy"]
+[ext_resource type="Texture2D" uid="uid://brq68mng86m2v" path="res://Assets/UI/Texture/Container/6-1.png" id="10_isq46"]
+[ext_resource type="Texture2D" uid="uid://c8n8wo3k78at2" path="res://Assets/UI/Texture/Container/3-1.png" id="11_5riv5"]
+[ext_resource type="PackedScene" uid="uid://b13y6wkodkbq1" path="res://Scene/UI/PropertyInfoItem.tscn" id="12_dc55x"]
+[ext_resource type="PackedScene" uid="uid://benbocmfyyk1s" path="res://Scene/UI/LevelUpPanel.tscn" id="13_4rmbj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_32bi0"]
+font = ExtResource("5_knue8")
+font_size = 80
+font_color = Color(0.917647, 0.768627, 0.545098, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5dycu"]
+font = ExtResource("5_knue8")
+font_size = 150
+font_color = Color(0.964706, 0.913725, 0.764706, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1gkyk"]
+font = ExtResource("5_knue8")
+font_size = 100
+font_color = Color(0.992157, 0.945098, 0.827451, 1)
+shadow_color = Color(0, 0, 0, 0.25098)
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xapm"]
+bg_color = Color(0.145098, 0.141176, 0.168627, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.823529, 0.737255, 0.607843, 1)
 
 [node name="FriendPanel" type="Panel"]
 anchors_preset = 15
@@ -10,6 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_kp55j")
 script = ExtResource("1_ynsbe")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -28,34 +66,542 @@ unique_name_in_owner = true
 layout_mode = 2
 title_text = "伙伴详情"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+self_modulate = Color(0.709804, 0.709804, 0.709804, 1)
 layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("3_spwuw")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 1000)
+[node name="Names" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = -35
+
+[node name="RareLabel" type="Label" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Names"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "SSR"
+label_settings = SubResource("LabelSettings_32bi0")
+horizontal_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Names"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "死神"
+label_settings = SubResource("LabelSettings_5dycu")
+horizontal_alignment = 1
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1020, 934)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="FriendPoint" type="Marker2D" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+position = Vector2(500, 600)
+gizmo_extents = 116.0
+
+[node name="Info" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="XpPanel" type="Panel" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+theme_type_variation = &"ClubPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/XpPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/XpPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="Info" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/XpPanel/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+
+[node name="LvLabel" type="Label" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/XpPanel/MarginContainer/HBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lv. 20"
+label_settings = ExtResource("6_p3msh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/XpPanel/MarginContainer/HBoxContainer2/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = -14
+alignment = 2
+
+[node name="LvLabel" type="Label" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/XpPanel/MarginContainer/HBoxContainer2/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "EXP"
+label_settings = ExtResource("7_1f6wn")
+
+[node name="XpLevel" type="Label" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/XpPanel/MarginContainer/HBoxContainer2/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "20/40"
+label_settings = ExtResource("7_1f6wn")
+
+[node name="UpLevelBtn" type="TextureButton" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/XpPanel/MarginContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("8_mt2dy")
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info"]
+custom_minimum_size = Vector2(0, 260)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Panel" type="Panel" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ClubPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MemoryNumLabel" type="Label" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel/MarginContainer/HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+text = "6"
+label_settings = SubResource("LabelSettings_1gkyk")
+vertical_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel/MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "前世记忆"
+label_settings = ExtResource("6_e56l3")
+vertical_alignment = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 50
+
+[node name="MemorySignalImg" type="TextureRect" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel/MarginContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("10_isq46")
+stretch_mode = 5
+
+[node name="MemoryBtn" type="Button" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"EmptyBtn"
+
+[node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"ClubPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel2/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ProNumLabel" type="Label" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel2/MarginContainer/HBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+text = "3"
+label_settings = SubResource("LabelSettings_1gkyk")
+vertical_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel2/MarginContainer/HBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 20
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel2/MarginContainer/HBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+text = "专精"
+label_settings = ExtResource("6_e56l3")
+vertical_alignment = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel2/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 50
+
+[node name="ProSignalImg" type="TextureRect" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel2/MarginContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("11_5riv5")
+stretch_mode = 5
+
+[node name="ProBtn" type="Button" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/HBoxContainer/Panel2"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"EmptyBtn"
+
+[node name="Panel2" type="Panel" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info"]
+custom_minimum_size = Vector2(0, 140)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_type_variation = &"ClubPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 150
+
+[node name="PropertyUI1" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="力量" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI1" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "strength"
+watch_player = false
+
+[node name="智慧" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI1" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "wisdom"
+watch_player = false
+
+[node name="敏捷" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI1" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "agility"
+watch_player = false
+
+[node name="魔力" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI1" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "magic"
+watch_player = false
+
+[node name="血量" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI1" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "hp"
+watch_player = false
+
+[node name="防御" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI1" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "defense"
+watch_player = false
+
+[node name="暴击率" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI1" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "critical_rate"
+watch_player = false
+
+[node name="易伤几率" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI1" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "vulnerability_rate"
+watch_player = false
+
+[node name="闪避" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI1" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "evasion"
+watch_player = false
+
+[node name="幸运" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI1" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "luck"
+watch_player = false
+
+[node name="速度" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI1" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "speed"
+watch_player = false
+
+[node name="生命回复" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI1" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "health_regeneration"
+watch_player = false
+
+[node name="PropertyUI2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="治疗效率" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI2" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "healing_effciency"
+watch_player = false
+
+[node name="物理伤害" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI2" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "damage"
+watch_player = false
+
+[node name="暴击伤害" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI2" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "critical_damage"
+watch_player = false
+
+[node name="易伤伤害" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI2" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "vulnerability_damage"
+watch_player = false
+
+[node name="火焰伤害" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI2" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "fire_damage"
+watch_player = false
+
+[node name="闪电伤害" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI2" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "light_damage"
+watch_player = false
+
+[node name="冰霜伤害" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI2" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "frost_damage"
+watch_player = false
+
+[node name="物理抗性" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI2" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "physical_resistance"
+watch_player = false
+
+[node name="冰霜抗性" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI2" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "frost_resistance"
+watch_player = false
+
+[node name="闪电抗性" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI2" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "light_resistance"
+watch_player = false
+
+[node name="火焰抗性" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI2" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "fire_resistance"
+watch_player = false
+
+[node name="毒素抗性" parent="MarginContainer/VBoxContainer/TextureRect/MarginContainer/VBoxContainer/Info/Panel2/MarginContainer/ScrollContainer/VBoxContainer/HBoxContainer/PropertyUI2" instance=ExtResource("12_dc55x")]
+layout_mode = 2
+title = "物理伤害"
+value_index = "toxic_resistance"
+watch_player = false
+
+[node name="Popup" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(834, 418)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -299.0
+offset_bottom = 299.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_kp55j")
+theme_override_styles/panel = SubResource("StyleBoxFlat_8xapm")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Popup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Body" type="VBoxContainer" parent="Popup/MarginContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Names" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Info"]
+[node name="PopupTitleLabel" type="Label" parent="Popup/MarginContainer2/Body"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "回复记忆"
+label_settings = ExtResource("6_e56l3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PopupDescLabel" type="RichTextLabel" parent="Popup/MarginContainer2/Body"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/default_color = Color(0.992157, 0.945098, 0.827451, 1)
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]学习能力 +0.1 倍。[/center]"
+scroll_active = false
+
+[node name="MarginContainer2" type="MarginContainer" parent="Popup/MarginContainer2/Body"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_bottom = 40
+
+[node name="NeedGoodsUI" type="HBoxContainer" parent="Popup/MarginContainer2/Body/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Popup/MarginContainer2/Body"]
 layout_mode = 2
 
-[node name="RareLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Info/Names"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Popup/MarginContainer2/Body/MarginContainer"]
 layout_mode = 2
-text = "SSR"
-label_settings = ExtResource("3_ayf2h")
+theme_override_constants/separation = 20
+alignment = 1
 
-[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Info/Names"]
+[node name="PopupYesBtn" type="Button" parent="Popup/MarginContainer2/Body/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-text = "死神"
-label_settings = ExtResource("3_ayf2h")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+text = "确认"
+
+[node name="PopupCancelBtn" type="Button" parent="Popup/MarginContainer2/Body/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+text = "取消"
+
+[node name="LevelUpPanel" parent="." instance=ExtResource("13_4rmbj")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+friend_data = null

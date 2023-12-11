@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=45 format=3 uid="uid://dw7ft4xik3rji"]
+[gd_resource type="Theme" load_steps=46 format=3 uid="uid://dw7ft4xik3rji"]
 
 [ext_resource type="FontFile" uid="uid://cpqr3r4f0yisb" path="res://Assets/Font/SourceHanSansCN-Normal.otf" id="1_0mun2"]
 [ext_resource type="Texture2D" uid="uid://cxa6xde2sdlug" path="res://Assets/UI/Texture/Button/NormalButton.png" id="2_i82n3"]
@@ -48,6 +48,14 @@ shadow_offset = Vector2(0, 1)
 bg_color = Color(0.25098, 0.254902, 0.262745, 1)
 shadow_size = 1
 shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hilvm"]
+bg_color = Color(0.231373, 0.211765, 0.282353, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.964706, 0.913725, 0.764706, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r3f4v"]
 
@@ -192,6 +200,8 @@ CancelBtn/base_type = &"Button"
 CancelBtn/styles/hover = SubResource("StyleBoxFlat_phtce")
 CancelBtn/styles/normal = SubResource("StyleBoxFlat_phtce")
 CancelBtn/styles/pressed = SubResource("StyleBoxFlat_ljghu")
+ClubPanel/base_type = &"Panel"
+ClubPanel/styles/panel = SubResource("StyleBoxFlat_hilvm")
 EmptyBtn/base_type = &"Button"
 EmptyBtn/styles/disabled = SubResource("StyleBoxEmpty_r3f4v")
 EmptyBtn/styles/focus = SubResource("StyleBoxEmpty_r3f4v")

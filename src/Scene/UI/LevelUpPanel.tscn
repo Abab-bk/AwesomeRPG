@@ -1,0 +1,205 @@
+[gd_scene load_steps=9 format=3 uid="uid://benbocmfyyk1s"]
+
+[ext_resource type="Script" path="res://Script/UI/LevelUpPanel.gd" id="1_12ac4"]
+[ext_resource type="PackedScene" uid="uid://csd413be3hgxg" path="res://Scene/UI/BlackRect.tscn" id="1_sb1vx"]
+[ext_resource type="Script" path="res://Script/Resources/CharacterData.gd" id="2_ituhx"]
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_raab8"]
+[ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="3_5gujr"]
+[ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="5_oe0w1"]
+
+[sub_resource type="Resource" id="Resource_qnti2"]
+script = ExtResource("2_ituhx")
+level = 1
+now_xp = 0.0
+next_level_xp = 100.0
+hp = 0.0
+max_hp = 0.0
+magic = 0.0
+max_magic = 0.0
+strength = 0
+wisdom = 0
+agility = 0
+luck = 0.0
+speed = 0.0
+damage = 0.0
+defense = 0.0
+fire_damage = 0.0
+frost_damage = 0.0
+light_damage = 0.0
+toxic_damage = 0.0
+fire_resistance = 0.0
+frost_resistance = 0.0
+light_resistance = 0.0
+toxic_resistance = 0.0
+physical_resistance = 0.0
+critical_rate = 0.0
+critical_damage = 0.0
+vulnerability_rate = 0.0
+vulnerability_damage = 0.0
+evasion = 0.0
+health_regeneration = 0.0
+healing_effciency = 0.0
+weapon_damage = 0.0
+vision = 360
+atk_speed = 0.5
+atk_cd = 0.5
+atk_range = 125.0
+quipments = {}
+name = ""
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xapm"]
+bg_color = Color(0.145098, 0.141176, 0.168627, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.823529, 0.737255, 0.607843, 1)
+
+[node name="LevelUpPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_12ac4")
+friend_data = SubResource("Resource_qnti2")
+
+[node name="BlackRect" parent="." instance=ExtResource("1_sb1vx")]
+visible = true
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="LevelUpPanel" type="Panel" parent="."]
+custom_minimum_size = Vector2(834, 800)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_raab8")
+theme_override_styles/panel = SubResource("StyleBoxFlat_8xapm")
+
+[node name="MarginContainer2" type="MarginContainer" parent="LevelUpPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Body" type="VBoxContainer" parent="LevelUpPanel/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PopupTitleLabel" type="Label" parent="LevelUpPanel/MarginContainer2/Body"]
+layout_mode = 2
+text = "升级"
+label_settings = ExtResource("3_5gujr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelUpPanel/MarginContainer2/Body"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="Info" type="MarginContainer" parent="LevelUpPanel/MarginContainer2/Body/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_right = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelUpPanel/MarginContainer2/Body/VBoxContainer/Info"]
+layout_mode = 2
+
+[node name="LevelLabel" type="Label" parent="LevelUpPanel/MarginContainer2/Body/VBoxContainer/Info/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lv. 23"
+label_settings = ExtResource("3_5gujr")
+
+[node name="ProgressBar" type="ProgressBar" parent="LevelUpPanel/MarginContainer2/Body/VBoxContainer/Info/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+show_percentage = false
+
+[node name="MarginContainer2" type="MarginContainer" parent="LevelUpPanel/MarginContainer2/Body/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelUpPanel/MarginContainer2/Body/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="NeedGoodsUI" type="HBoxContainer" parent="LevelUpPanel/MarginContainer2/Body/VBoxContainer/MarginContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="SliderContent" type="MarginContainer" parent="LevelUpPanel/MarginContainer2/Body/VBoxContainer/MarginContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_right = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelUpPanel/MarginContainer2/Body/VBoxContainer/MarginContainer2/VBoxContainer/SliderContent"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MinLabel" type="Label" parent="LevelUpPanel/MarginContainer2/Body/VBoxContainer/MarginContainer2/VBoxContainer/SliderContent/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1"
+label_settings = ExtResource("5_oe0w1")
+
+[node name="HSlider" type="HSlider" parent="LevelUpPanel/MarginContainer2/Body/VBoxContainer/MarginContainer2/VBoxContainer/SliderContent/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="MaxLabel" type="Label" parent="LevelUpPanel/MarginContainer2/Body/VBoxContainer/MarginContainer2/VBoxContainer/SliderContent/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "10"
+label_settings = ExtResource("5_oe0w1")
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelUpPanel/MarginContainer2/Body"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelUpPanel/MarginContainer2/Body/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="YesBtn" type="Button" parent="LevelUpPanel/MarginContainer2/Body/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+text = "确认"
+
+[node name="CancelBtn" type="Button" parent="LevelUpPanel/MarginContainer2/Body/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+text = "取消"

@@ -2,7 +2,7 @@
   {
     "id": 1001,
     "name": "神恩石",
-    "cost_type": 1,
+    "cost_type": 12,
     "cost": 10,
     "reward_type": 11,
     "reward_value": 1
@@ -10,7 +10,7 @@
   {
     "id": 1002,
     "name": "日卡",
-    "cost_type": 2,
+    "cost_type": 23,
     "cost": 1,
     "reward_type": 11,
     "reward_value": 5

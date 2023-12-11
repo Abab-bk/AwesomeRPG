@@ -101,6 +101,9 @@ var moneys:Dictionary = {
     set(v):
         moneys = v
         FlowerSaver.set_data("moneys", moneys)
+var memorys:Dictionary = {} # {id: memory_resource}
+
+
 var gacha_money:int = 0:
     set(v):
         gacha_money = v
@@ -136,6 +139,22 @@ var buyed_prime_access_today:bool = false:
     set(v):
         buyed_prime_access_today = v
         FlowerSaver.set_data("buyed_prime_access_today", buyed_prime_access_today)
+
+# id: data
+var friends_inventory:Dictionary = {}
+var xp_book_inventory:Dictionary = {
+    19: 0,
+    20: 0,
+    21: 0,
+    22: 0,
+}
+var pole_inventory:Dictionary = { # 为什么key这么奇怪？因为要对应枚举（Const.MONEY_TYPE）
+    14: 0,
+    15: 0,
+    16: 0,
+    17: 0,
+    18: 0
+}
 
 # 用来存储drop_item位置的数组
 var occupied_positions:Array
@@ -238,7 +257,8 @@ func _ready():
     EventBus.save.connect(func():
         FlowerSaver.set_data("unlocked_functions", unlocked_functions)
         FlowerSaver.set_data("next_reward_player_level", next_reward_player_level)
-        FlowerSaver.set_data("last_leave_time", last_leave_time)
+        last_leave_time = TimeManager.get_current_time_resource()
+        #FlowerSaver.set_data("last_leave_time", last_leave_time)
         FlowerSaver.set_data("last_checkin_time", last_checkin_time)
         FlowerSaver.set_data("moneys", moneys)
         )
@@ -315,6 +335,12 @@ func _ready():
         if FlowerSaver.has_key("today_watch_ad_count"):
             today_watch_ad_count = FlowerSaver.get_data("today_watch_ad_count")
         
+        if FlowerSaver.has_key("master_xp_book_inventory"):
+            xp_book_inventory = FlowerSaver.get_data("master_xp_book_inventory")
+        
+        if FlowerSaver.has_key("master_pole_inventory"):
+            pole_inventory = FlowerSaver.get_data("master_pole_inventory")
+        
         EventBus.rework_level_enemy_count.emit()
         
         var _current_time:TimeResource = TimeManager.get_current_time_resource() as TimeResource
@@ -355,6 +381,11 @@ func _ready():
         )
         
     subscriber.init()
+
+
+func save_all_invenrory() -> void:
+    FlowerSaver.set_data("master_xp_book_inventory", Master.xp_book_inventory)
+    FlowerSaver.set_data("master_pole_inventory", Master.pole_inventory)
 
 
 func yes_fly() -> void:
@@ -454,13 +485,31 @@ func get_gacha_pool_by_id(_id:int) -> GachaPool:
 func get_friend_data_by_id(_id:int) -> FriendData:
     var _friend:FriendData = FriendData.new()
     
-    var _data = friends[_id]
+    var _friend_data = friends[_id]
     
     _friend.id = _id
-    _friend.icon_path = _data["icon_path"]
-    _friend.name = _data["name"]
-    _friend.quality = _data["quality"]
-    _friend.skin_name = _data["skin_name"]
+    _friend.icon_path = _friend_data["icon_path"]
+    _friend.name = _friend_data["name"]
+    _friend.quality = _friend_data["quality"]
+    _friend.skin_name = _friend_data["skin_name"]
+    
+    var _data:CharacterData = CharacterData.new()
+    _data.vision = _friend_data["base_vision"]
+    _data.atk_range = _friend_data["base_atk_range"]
+    _data.damage = _friend_data["base_damage"]
+    _data.frost_damage = _friend_data["frost_damage"]
+    _data.fire_damage = _friend_data["fire_damage"]
+    _data.light_damage = _friend_data["light_damage"]
+    _data.toxic_damage = _friend_data["toxic_damage"]
+    _data.frost_resistance = _friend_data["frost_resistance"]
+    _data.fire_resistance = _friend_data["fire_resistance"]
+    _data.light_resistance = _friend_data["light_resistance"]
+    _data.toxic_resistance = _friend_data["toxic_resistance"]
+    _data.max_hp = _friend_data["hp"]
+    _data.hp = _friend_data["hp"]
+    _data.speed = _friend_data["speed"]
+    
+    _friend.character_data = _data
     
     return _friend
 
@@ -835,8 +884,8 @@ func get_offline_reward() -> void:
     
     var _level:int = Master.player.get_level() - 1
     
-    var _get_xp:float = min((((3 * _level * 1.5) * (1 + Master.fly_count * 0.1)) * 0.1) * float(_distance), 1000)
-    var _get_coins:int = min(floor((_level * randi_range(0, 5)) * 0.1) * _distance, 3000)
+    var _get_xp:float = max((((2 * max(_level, 1) * 1.5) * (1 + Master.fly_count * 0.1)) * 0.1) * float(_distance), 100)
+    var _get_coins:int = max(floor((_level * randi_range(0, 5)) * 0.1) * _distance, 100)
     
     Master.coins += _get_coins
     Master.player.get_xp(_get_xp)

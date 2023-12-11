@@ -31,15 +31,14 @@ func _ready() -> void:
         EventBus.kill_all_friend.emit()
         
         Tracer.info("玩家随从改变，应该杀死所有玩家")
-        
         var _count:int = -1
         for i in _data.keys():
-            if _data[i] == -1:
+            if _data[i] == null:
                 continue
             
             _count += 1
             
-            spawn_a_friend_by_id(_data[i], Master.player.friends_pos[_count])
+            spawn_a_friend_by_data(Master.friends_inventory[_data[i]], Master.player.friends_pos[_count])
         )
     
     #EventBus.start_climb_tower.connect(func():)
@@ -58,31 +57,13 @@ func _ready() -> void:
         Master.should_load = false
 
 
-func spawn_a_friend_by_id(_id:int, _point:Marker2D) -> void:
-    var _friend_data = Master.friends[_id]
-    
+func spawn_a_friend_by_data(_data:FriendData, _point:Marker2D) -> void:
     var new_friend:Friend = Builder.build_a_friend() as Friend
     
-    new_friend.skin_name = _friend_data["skin_name"]
+    new_friend.skin_name = _data["skin_name"]
     new_friend.target_player_point = _point
     
-    var _data:CharacterData = CharacterData.new()
-    _data.vision = _friend_data["base_vision"]
-    _data.atk_range = _friend_data["base_atk_range"]
-    _data.damage = _friend_data["base_damage"]
-    _data.frost_damage = _friend_data["frost_damage"]
-    _data.fire_damage = _friend_data["fire_damage"]
-    _data.light_damage = _friend_data["light_damage"]
-    _data.toxic_damage = _friend_data["toxic_damage"]
-    _data.frost_resistance = _friend_data["frost_resistance"]
-    _data.fire_resistance = _friend_data["fire_resistance"]
-    _data.light_resistance = _friend_data["light_resistance"]
-    _data.toxic_resistance = _friend_data["toxic_resistance"]
-    _data.max_hp = _friend_data["hp"]
-    _data.hp = _friend_data["hp"]
-    _data.speed = _friend_data["speed"]
-    
-    new_friend.set_data(_data)
+    new_friend.set_data(_data.character_data)
     call_deferred("add_child", new_friend)
     new_friend.global_position = Master.player.global_position + Vector2(200, 200)
 

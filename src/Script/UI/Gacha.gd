@@ -70,6 +70,11 @@ func pull_gacha(_count:int) -> void:
         Master.gacha_money -= 1
         animation.show()
         var _get_reward:Reward = gacha_pool.reward_list.pick_random() as Reward
+        
+        if _get_reward.type == Reward.REWARD_TYPE.FRIEND:
+            if _get_reward.reward_value in Master.friends_inventory.keys():
+                _get_reward = get_memory_reward_by_friend_id(_get_reward.reward_value)
+        
         var _desc:String = _get_reward.get_reward(false)
         
         var _new_reward_card = load("res://Scene/UI/GachaCard.tscn").instantiate()
@@ -77,4 +82,11 @@ func pull_gacha(_count:int) -> void:
         _new_reward_card.type = _get_reward.type
         rewards_ui.add_child(_new_reward_card)
     
-    # animation.hide()
+    Master.save_all_invenrory()
+
+
+func get_memory_reward_by_friend_id(_id:int) -> Reward:
+    var _result:Reward = Reward.new()
+    _result.type = Reward.REWARD_TYPE.MEMORY
+    _result.reward_value = _id
+    return _result

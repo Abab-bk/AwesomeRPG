@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://x6o5xdvhhstu"]
+
+[ext_resource type="FontFile" uid="uid://c7bfs6orcmgh2" path="res://Assets/Font/SourceHanSansCN-Medium.otf" id="1_1x2kx"]
+
+[resource]
+font = ExtResource("1_1x2kx")
+font_size = 50
+font_color = Color(0.992157, 0.945098, 0.827451, 1)
+shadow_color = Color(0, 0, 0, 0.25098)
+shadow_offset = Vector2(0, 2)

@@ -14,6 +14,17 @@ enum REWARD_TYPE {
     FRIEND, # 10
     GACHA_MONEY, # 11
     GACHA_MONEY_PART, # 12
+    MEMORY, # 13
+    BOOK_SWORD,# 14
+    BOOK_AXE,# 15
+    BOOK_SPEAR,# 16
+    BOOK_DAGGER,# 17
+    BOOK_BOW,# 18
+    XP_BOOK_1,# 19
+    XP_BOOK_2,# 20
+    XP_BOOK_3,# 21
+    XP_BOOK_4,# 22
+    AD, # 23
 }
 
 
@@ -58,7 +69,32 @@ func get_reward(_show_popup:bool = true) -> String:
             Master.gacha_money += reward_value
         REWARD_TYPE.GACHA_MONEY_PART:
             Master.gacha_money_part += reward_value
-    
+        REWARD_TYPE.MEMORY:
+            if reward_value in Master.memorys[reward_value]:
+                Master.memorys[reward_value] = Master.memorys[reward_value] + 1
+            else:
+                Master.memorys[reward_value] = 1
+                
+        REWARD_TYPE.XP_BOOK_1:
+            Master.xp_book_inventory[19] += reward_value
+        REWARD_TYPE.XP_BOOK_2:
+            Master.xp_book_inventory[20] += reward_value
+        REWARD_TYPE.XP_BOOK_3:
+            Master.xp_book_inventory[21] += reward_value
+        REWARD_TYPE.XP_BOOK_4:
+            Master.xp_book_inventory[22] += reward_value
+            
+        REWARD_TYPE.BOOK_SWORD:
+            Master.pole_inventory[14] += reward_value
+        REWARD_TYPE.BOOK_AXE:
+            Master.pole_inventory[15] += reward_value
+        REWARD_TYPE.BOOK_BOW:
+            Master.pole_inventory[16] += reward_value
+        REWARD_TYPE.BOOK_SPEAR:
+            Master.pole_inventory[17] += reward_value
+        REWARD_TYPE.BOOK_DAGGER:
+            Master.pole_inventory[18] += reward_value
+     
     var _return_text:String = ""
     
     if type == REWARD_TYPE.FRIEND:
@@ -99,6 +135,28 @@ static func get_reward_icon_path(_type:REWARD_TYPE) -> String:
             return "res://Assets/UI/Icons/GachaMoney.png"
         REWARD_TYPE.GACHA_MONEY_PART:
             return "res://Assets/UI/Icons/GachaMoneyPart.png"
+        REWARD_TYPE.MEMORY:
+            return "res://Assets/UI/Icons/Memory.png"
+            
+        REWARD_TYPE.XP_BOOK_1:
+            return "res://Assets/UI/Icons/XpBook1.png"
+        REWARD_TYPE.XP_BOOK_2:
+            return "res://Assets/UI/Icons/XpBook2.png"
+        REWARD_TYPE.XP_BOOK_3:
+            return "res://Assets/UI/Icons/XpBook3.png"
+        REWARD_TYPE.XP_BOOK_4:
+            return "res://Assets/UI/Icons/XpBook4.png"
+            
+        REWARD_TYPE.BOOK_SWORD:
+            return "res://Assets/UI/Icons/BookSword.png"
+        REWARD_TYPE.BOOK_AXE:
+            return "res://Assets/UI/Icons/BookAxe.png"
+        REWARD_TYPE.BOOK_BOW:
+            return "res://Assets/UI/Icons/BookBow.png"
+        REWARD_TYPE.BOOK_DAGGER:
+            return "res://Assets/UI/Icons/BookDagger.png"
+        REWARD_TYPE.BOOK_SPEAR:
+            return "res://Assets/UI/Icons/BookSpear.png"
     
     return "res://icon.svg"
 
@@ -125,11 +183,32 @@ static func get_string(_type, _reward_value = 1) -> String:
             _result = "传奇装备"
         REWARD_TYPE.BLUE_EQUIPMENT:
             _result = "稀有装备"
+            
         REWARD_TYPE.FRIEND:
             _result = Master.friends[_reward_value]["name"]
         REWARD_TYPE.GACHA_MONEY:
             _result = "神恩石"
         REWARD_TYPE.GACHA_MONEY_PART:
             _result = "神恩石碎片"
-        
+            
+        REWARD_TYPE.XP_BOOK_1:
+            _result = "普通经验书"
+        REWARD_TYPE.XP_BOOK_2:
+            _result = "高级经验书"
+        REWARD_TYPE.XP_BOOK_3:
+            _result = "史诗经验书"
+        REWARD_TYPE.XP_BOOK_4:
+            _result = "传奇经验书"
+    
+        REWARD_TYPE.BOOK_SWORD:
+            _result = "剑之诗"            
+        REWARD_TYPE.BOOK_AXE:
+            _result = "斧之诗"
+        REWARD_TYPE.BOOK_BOW:
+            _result = "弓之诗"
+        REWARD_TYPE.BOOK_DAGGER:
+            _result = "匕首之诗"
+        REWARD_TYPE.BOOK_SPEAR:
+            _result = "枪之诗"
+    
     return _result

@@ -6,24 +6,22 @@ extends Control
 
 #@onready var all_friends:GridContainer = %AllFriends
 
+# ui_id: friend_id
 var current_friends:Dictionary = {}:
     set(v):
         current_friends = v
         save()
-var friends_inventory:Array[int] = []:
-    set(v):
-        Tracer.info("friends_inventory改变")
-        friends_inventory = v
-        save()
+
 
 func _ready() -> void:
     friends_inventory_ui.closed.connect(func():color_rect.hide())
     
     for i in items.get_children():
         i.change_btn_click.connect(show_select_friends_panel.bind(i))
-        i.changed.connect(func(_ui_id:int, _id:int):
-            current_friends[_ui_id] = _id
+        i.changed.connect(func(_ui_id:int, _data:FriendData):
+            current_friends[_ui_id] = _data.id
             EventBus.changed_friends.emit(current_friends)
+            save()
             )
     
     EventBus.load_save.connect(func():
@@ -31,27 +29,37 @@ func _ready() -> void:
             return
         
         if FlowerSaver.has_key("friends_inventory_inventory"):
-            friends_inventory = FlowerSaver.get_data("friends_inventory_inventory")        
+            Master.friends_inventory = FlowerSaver.get_data("friends_inventory_inventory")        
         if FlowerSaver.has_key("friends_current_friends"):
             current_friends = FlowerSaver.get_data("friends_current_friends")
         
         for _node in items.get_children():
             if _node.id in current_friends.keys():
-                if current_friends[_node.id] == -1:
+                if current_friends[_node.id] == null:
                     continue
-                _node.data = Master.get_friend_data_by_id(current_friends[_node.id])
+                _node.data = Master.friends_inventory[current_friends[_node.id]]
                 _node.update_ui()
+        
         EventBus.changed_friends.emit(current_friends)
         )
+    
     EventBus.get_friend.connect(func(_id):
-        if not _id in friends_inventory:
-            friends_inventory.append(_id)
+        if not _id in Master.friends_inventory:
+            Master.friends_inventory[_id] = Master.get_friend_data_by_id(_id)
+            save()
+            return
+            
+        if Master.friends_inventory[_id] == null:
+            Master.friends_inventory[_id] = Master.get_friend_data_by_id(_id)
+            save()
+            return
+            
         save()
         )
     
     color_rect.hide()
     
-    friends_inventory_ui.gen_friends(friends_inventory)
+    friends_inventory_ui.gen_friends(Master.friends_inventory)
     
     update_ui()
 
@@ -59,7 +67,7 @@ func _ready() -> void:
 func save() -> void:
     Tracer.info("玩家随从背包保存")
     FlowerSaver.set_data("friends_current_friends", current_friends)
-    FlowerSaver.set_data("friends_inventory_inventory", friends_inventory)
+    FlowerSaver.set_data("friends_inventory_inventory", Master.friends_inventory)
 
 
 func update_ui() -> void:
@@ -69,6 +77,6 @@ func update_ui() -> void:
 
 func show_select_friends_panel(_target_item_ui:Panel) -> void:
     friends_inventory_ui.target_item_ui = _target_item_ui
-    friends_inventory_ui.gen_friends(friends_inventory)
+    friends_inventory_ui.gen_friends(Master.friends_inventory)
     color_rect.show()
     

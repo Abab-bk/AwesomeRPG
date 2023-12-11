@@ -1790,6 +1790,7 @@ libraries = {
 "": SubResource("AnimationLibrary_p0lxl"),
 "scml": SubResource("AnimationLibrary_kfwh3")
 }
+autoplay = "scml/Idle"
 speed_scale = 5.0
 
 [node name="bone_004" type="Bone2D" parent="Skeleton"]
@@ -1821,13 +1822,14 @@ offset = Vector2(0, -64)
 flip_v = true
 
 [node name="bone_006" type="Bone2D" parent="Skeleton"]
-position = Vector2(1.59432, 35.4031)
-rotation = 1.35374
+position = Vector2(-0.46349, 39.5593)
+rotation = 1.55943
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0570763, 0.99837, -0.99837, -0.0570763, -1.08268, 41.7265)
 
 [node name="bone_007" type="Bone2D" parent="Skeleton/bone_006"]
 position = Vector2(56.4139, 0)
-rotation = -0.115425
+rotation = -0.00715325
 rest = Transform2D(0.999457, 0.0329362, -0.0329362, 0.999457, 56.4139, 0)
 
 [node name="Head" type="Sprite2D" parent="Skeleton/bone_006/bone_007"]
@@ -1849,8 +1851,8 @@ offset = Vector2(0, -128)
 flip_v = true
 
 [node name="bone_002" type="Bone2D" parent="Skeleton/bone_006"]
-position = Vector2(41.4354, 36.6848)
-rotation = 2.04644
+position = Vector2(41.8172, 35.0214)
+rotation = 2.83658
 rest = Transform2D(-0.89006, 0.455843, -0.455843, -0.89006, 43.2434, 35.2925)
 
 [node name="bone_003" type="Bone2D" parent="Skeleton/bone_006/bone_002"]
@@ -1878,12 +1880,13 @@ flip_v = true
 
 [node name="bone_000" type="Bone2D" parent="Skeleton/bone_006"]
 position = Vector2(42.588, -17.9811)
-rotation = -2.35223
+rotation = -2.25103
+scale = Vector2(1, 1)
 rest = Transform2D(-0.580143, -0.814514, 0.814514, -0.580143, 44.0142, -17.7099)
 
 [node name="bone_001" type="Bone2D" parent="Skeleton/bone_006/bone_000"]
 position = Vector2(31.8923, 0)
-rotation = -0.301169
+rotation = 0.342837
 rest = Transform2D(0.941805, 0.33616, -0.33616, 0.941805, 31.8923, 0)
 
 [node name="Weapon" type="Sprite2D" parent="Skeleton/bone_006/bone_000/bone_001"]

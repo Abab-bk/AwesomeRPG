@@ -99,10 +99,32 @@ func set_property_from_level() -> void:
     evasion += agility * 0.025
 
 
+func set_property_from_const_level(_level:int) -> void:
+    max_hp += _level * 6
+    max_magic += _level * 3
+    evasion += _level
+    
+    fire_damage += _level * 0.01
+    frost_damage += _level * 0.01
+    toxic_damage += _level * 0.01
+    light_damage += _level * 0.01
+    fire_resistance += _level * 0.01
+    frost_resistance += _level * 0.01
+    toxic_resistance += _level * 0.01
+    speed += _level * (1.0 + randf_range(0.0, 2.0))
+    
+    strength += floor(float(_level) / 2.0)
+    wisdom += floor(float(_level) / 2.0)
+    agility += floor(float(_level) / 2.0)
+    
+    max_magic += wisdom
+    defense += strength
+    evasion += agility * 0.025
+
+
 func level_up() -> Dictionary:
-    Tracer.info("玩家升级：当前等级：%s" % str(level))
+    now_xp = 0
     level += 1
-    Tracer.info("玩家升级：升级后等级：%s" % str(level))
     
     max_hp += 6
     max_magic += 3
@@ -134,7 +156,7 @@ func reset_hp_and_magic() -> void:
 
 func update_next_xp() -> void:
     #next_level_xp = 50 * (pow(level, 3))
-    next_level_xp = (15 + (level ** 3)) * (1.07 ** (level - 1))
+    next_level_xp = (15 + (level ** 3)) * (1.07 ** level)
     #if level % 15 == 0:
         #@warning_ignore("integer_division")
         #next_level_xp = level / 15 * 1000

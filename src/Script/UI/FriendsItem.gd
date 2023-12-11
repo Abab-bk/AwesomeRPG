@@ -2,22 +2,24 @@ extends Panel
 
 signal change_btn_click
 signal data_changed
-signal changed(ui_id:int, id:int)
+signal changed(ui_id:int, data:FriendData)
 
 @export var id:int
 @export var data:FriendData:
     set(v):
         data = v
         if current_state == 0:
-            changed.emit(id, v.id)
+            changed.emit(id, data)
             update_ui()
         else:
-            changed.emit(id, -1)
+            changed.emit(id, null)
 
 @onready var icon:TextureRect = %Icon
 @onready var name_label:Label = %NameLabel
 @onready var rate_label:Label = %RateLabel
+
 @onready var change_btn:Button = %ChangeBtn
+@onready var info_btn:Button = %InfoBtn
 
 var current_state:int = 0
 
@@ -28,6 +30,11 @@ func _ready() -> void:
         else:
             data = null
             update_ui()
+        )
+    info_btn.pressed.connect(func():
+        if not data:
+            return
+        EventBus.build_and_show_friend_info_panel.emit(data)
         )
 
 

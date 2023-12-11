@@ -68,7 +68,17 @@ layout_mode = 2
 theme_override_constants/margin_top = 150
 theme_override_constants/margin_bottom = 150
 
-[node name="ChangeBtn" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="InfoBtn" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "详情"
+
+[node name="ChangeBtn" type="Button" parent="MarginContainer/HBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2

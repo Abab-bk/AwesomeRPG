@@ -1815,11 +1815,13 @@ scale = Vector2(-1, 1)
 libraries = {
 "scml": SubResource("AnimationLibrary_1bbfa")
 }
+autoplay = "scml/Idle"
 speed_scale = 5.0
 
 [node name="bone_004" type="Bone2D" parent="Skeleton"]
 position = Vector2(19.3662, 33.9155)
 rotation = -1.47969
+rest = Transform2D(0.0909804, -0.995853, 0.995853, 0.0909804, 19.3662, 33.9155)
 
 [node name="Left Leg" type="Sprite2D" parent="Skeleton/bone_004"]
 z_index = 3
@@ -1833,6 +1835,7 @@ flip_v = true
 [node name="bone_005" type="Bone2D" parent="Skeleton"]
 position = Vector2(-17.9577, 34.6197)
 rotation = -1.67049
+rest = Transform2D(-0.0995286, -0.995035, 0.995035, -0.0995286, -17.9577, 34.6197)
 
 [node name="Right Leg" type="Sprite2D" parent="Skeleton/bone_005"]
 z_index = 4
@@ -1846,10 +1849,12 @@ flip_v = true
 [node name="bone_006" type="Bone2D" parent="Skeleton"]
 position = Vector2(0.452489, 34.1041)
 rotation = 1.56239
+rest = Transform2D(0.00840626, 0.999965, -0.999965, 0.00840626, 0.452489, 34.1041)
 
 [node name="bone_007" type="Bone2D" parent="Skeleton/bone_006"]
 position = Vector2(53.3119, -0.550508)
 rotation = -0.0154967
+rest = Transform2D(0.99988, -0.0154961, 0.0154961, 0.99988, 53.3119, -0.550508)
 
 [node name="Head" type="Sprite2D" parent="Skeleton/bone_006/bone_007"]
 z_index = 6
@@ -1872,10 +1877,12 @@ flip_v = true
 [node name="bone_002" type="Bone2D" parent="Skeleton/bone_006"]
 position = Vector2(40.3455, 24.5365)
 rotation = 2.87419
+rest = Transform2D(-0.96446, 0.264227, -0.264227, -0.96446, 40.3455, 24.5365)
 
 [node name="bone_003" type="Bone2D" parent="Skeleton/bone_006/bone_002"]
 position = Vector2(30.7183, 0)
 rotation = 0.245998
+rest = Transform2D(0.969895, 0.243524, -0.243524, 0.969895, 30.7183, 0)
 
 [node name="Arrow" type="Sprite2D" parent="Skeleton/bone_006/bone_002/bone_003"]
 modulate = Color(1, 1, 1, 0)
@@ -1908,10 +1915,12 @@ flip_v = true
 [node name="bone_000" type="Bone2D" parent="Skeleton/bone_006"]
 position = Vector2(39.7138, -22.3493)
 rotation = -2.95388
+rest = Transform2D(-0.982434, -0.186612, 0.186612, -0.982434, 39.7138, -22.3493)
 
 [node name="bone_001" type="Bone2D" parent="Skeleton/bone_006/bone_000"]
 position = Vector2(29.8543, -0.258744)
 rotation = 0.27276
+rest = Transform2D(0.963031, 0.26939, -0.26939, 0.963031, 29.8543, -0.258744)
 
 [node name="Bow" type="Sprite2D" parent="Skeleton/bone_006/bone_000/bone_001"]
 z_index = 1

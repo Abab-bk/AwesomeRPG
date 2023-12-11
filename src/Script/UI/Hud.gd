@@ -108,6 +108,12 @@ func _ready() -> void:
     EventBus.get_talent_point.connect(func(_count:int):
         new_tip("获得 %s 技能点" % str(_count))
         )
+    EventBus.build_and_show_friend_info_panel.connect(func(_friend_data:FriendData):
+        var _new_node = load("res://Scene/UI/FriendPanel.tscn").instantiate()
+        add_child(_new_node)
+        _new_node.set_data(_friend_data)
+        )
+    
     
     backed_to_home.connect(func():quest_panel.show())
     changed_to_other.connect(func():quest_panel.hide())
@@ -207,6 +213,7 @@ func update_ui() -> void:
     xp_bar.value = (float(Master.player_output_data.now_xp) / float(Master.player_output_data.next_level_xp)) * 100.0
     player_name_label.text = Master.player_name
 
+
 func new_drop_item(_item:InventoryItem, _pos:Vector2) -> void:
     var _new_sprite:Node2D = Builder.build_a_drop_item()
     _new_sprite.set_item(_item)
@@ -220,11 +227,14 @@ func new_drop_item(_item:InventoryItem, _pos:Vector2) -> void:
     Master.world.add_child(_new_sprite)
     #EventBus.update_inventory.emit()
 
+
 func show_color_rect() -> void:
     color_rect.show()
 
+
 func hide_color_rect() -> void:
     color_rect.hide()
+
 
 func show_animation(_key:String, _info:Dictionary = {}) -> void:
     if _key == "LevelUp":
@@ -242,6 +252,7 @@ func show_animation(_key:String, _info:Dictionary = {}) -> void:
         var _img:Control = load("res://Scene/UI/PropertyContrast.tscn").instantiate()
         property_change_arrow.add_child(_img)
         _img.show_animation(_info)
+
 
 func new_tip(_text:String) -> void:
     var _n = load("res://Scene/UI/Tips.tscn").instantiate()

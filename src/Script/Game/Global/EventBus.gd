@@ -14,6 +14,8 @@ signal show_select_skills_panel(target:Panel)
 signal show_color
 signal hide_color
 signal new_tips(text:String)
+signal build_and_show_friend_info_panel(friend_data:FriendData)
+
 
 signal selected_skills_on_panel
 signal unlocked_ability(id:int)

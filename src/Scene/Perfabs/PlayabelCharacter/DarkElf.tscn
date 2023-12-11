@@ -1682,6 +1682,7 @@ libraries = {
 "": SubResource("AnimationLibrary_5afdd"),
 "scml": SubResource("AnimationLibrary_c7eew")
 }
+autoplay = "scml/Idle"
 speed_scale = 5.0
 
 [node name="bone_004" type="Bone2D" parent="Skeleton"]

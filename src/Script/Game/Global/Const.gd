@@ -3,9 +3,30 @@ class_name Const extends Node
 const MAX_AD_COUNT:int = 10
 
 enum MONEY_TYPE {
-    COIN,
-    GACHA_MONEY_PART,
-    AD,
+    NONE, # 0
+    COIN, # 1
+    XP, # 2
+    MONEY_WHITE, # 3
+    MONEY_BLUE, # 4
+    MONEY_PURPLE, # 5
+    MONEY_YELLOW, # 6
+    GOLD_EQUIPMENT, # 7
+    FLY, # 飞升, # 8
+    BLUE_EQUIPMENT, # 9
+    FRIEND, # 10
+    GACHA_MONEY, # 11
+    GACHA_MONEY_PART, # 12
+    MEMORY, # 13
+    BOOK_SWORD,# 14
+    BOOK_AXE,# 15
+    BOOK_SPEAR,# 16
+    BOOK_DAGGER,# 17
+    BOOK_BOW,# 18
+    XP_BOOK_1,# 19
+    XP_BOOK_2,# 20
+    XP_BOOK_3,# 21
+    XP_BOOK_4,# 22
+    AD, # 23
 }
 
 const MONEYS_NAME:Dictionary = {
@@ -107,3 +128,8 @@ enum EQUIPMENT_QUALITY {
     DEEP_YELLOW,
     GOLD
 }
+
+
+static func get_money_icon_path(_type:MONEY_TYPE) -> String:
+    var _result:String = ""
+    return Reward.get_reward_icon_path(int(_type))
