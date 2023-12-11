@@ -55,7 +55,7 @@
         ]
       },
       {
-        "type": 3,
+        "type": 14,
         "reward_value": [
           1,
           10
@@ -133,7 +133,7 @@
         ]
       },
       {
-        "type": 3,
+        "type": 15,
         "reward_value": [
           1,
           10
@@ -211,7 +211,7 @@
         ]
       },
       {
-        "type": 6,
+        "type": 16,
         "reward_value": [
           1,
           10
@@ -317,6 +317,13 @@
         ]
       },
       {
+        "type": 20,
+        "reward_value": [
+          1,
+          10
+        ]
+      },
+      {
         "type": 12,
         "reward_value": [
           1,
@@ -342,7 +349,7 @@
         ]
       },
       {
-        "type": 3,
+        "type": 17,
         "reward_value": [
           1,
           10
@@ -360,7 +367,14 @@
     ],
     "reward_list": [
       {
-        "type": 3,
+        "type": 19,
+        "reward_value": [
+          1,
+          10
+        ]
+      },
+      {
+        "type": 21,
         "reward_value": [
           1,
           10
@@ -385,7 +399,14 @@
     ],
     "reward_list": [
       {
-        "type": 3,
+        "type": 18,
+        "reward_value": [
+          1,
+          10
+        ]
+      },
+      {
+        "type": 22,
         "reward_value": [
           1,
           10

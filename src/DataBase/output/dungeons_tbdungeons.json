@@ -1,7 +1,7 @@
 [
   {
     "id": 6001,
-    "name": "黄金宝库",
+    "name": "幻境之门",
     "enemy_id": 1001,
     "icon_path": "GoldTreasury.png",
     "reward_type": 1,
@@ -11,7 +11,7 @@
   },
   {
     "id": 6002,
-    "name": "奉献之城",
+    "name": "梦境之巅",
     "enemy_id": 1002,
     "icon_path": "City.png",
     "reward_type": 3,
@@ -21,7 +21,7 @@
   },
   {
     "id": 6003,
-    "name": "天堂阶梯",
+    "name": "时间余晖",
     "enemy_id": 1003,
     "icon_path": "HeavenStairs.png",
     "reward_type": 4,
@@ -31,7 +31,7 @@
   },
   {
     "id": 6004,
-    "name": "赦罪教堂",
+    "name": "空灵之谜",
     "enemy_id": 1004,
     "icon_path": "Church.png",
     "reward_type": 5,
@@ -41,7 +41,7 @@
   },
   {
     "id": 6005,
-    "name": "天使之家",
+    "name": "灵魂迷宫",
     "enemy_id": 1005,
     "icon_path": "Angel.png",
     "reward_type": 6,
@@ -61,10 +61,100 @@
   },
   {
     "id": 6007,
-    "name": "传奇宝库",
+    "name": "玄思之石",
     "enemy_id": 1007,
     "icon_path": "GoldEquipment.png",
     "reward_type": 7,
+    "need_cost": 1000,
+    "reward_value": 1,
+    "max_level": 20
+  },
+  {
+    "id": 6008,
+    "name": "真相幕布",
+    "enemy_id": 1008,
+    "icon_path": "GoldEquipment.png",
+    "reward_type": 14,
+    "need_cost": 1000,
+    "reward_value": 1,
+    "max_level": 20
+  },
+  {
+    "id": 6009,
+    "name": "心灵追求",
+    "enemy_id": 1009,
+    "icon_path": "GoldEquipment.png",
+    "reward_type": 15,
+    "need_cost": 1000,
+    "reward_value": 1,
+    "max_level": 20
+  },
+  {
+    "id": 6010,
+    "name": "生命之树",
+    "enemy_id": 1010,
+    "icon_path": "GoldEquipment.png",
+    "reward_type": 16,
+    "need_cost": 1000,
+    "reward_value": 1,
+    "max_level": 20
+  },
+  {
+    "id": 6011,
+    "name": "震撼虚无",
+    "enemy_id": 1011,
+    "icon_path": "GoldEquipment.png",
+    "reward_type": 17,
+    "need_cost": 1000,
+    "reward_value": 1,
+    "max_level": 20
+  },
+  {
+    "id": 6012,
+    "name": "遗忘神殿",
+    "enemy_id": 1012,
+    "icon_path": "GoldEquipment.png",
+    "reward_type": 18,
+    "need_cost": 1000,
+    "reward_value": 1,
+    "max_level": 20
+  },
+  {
+    "id": 6013,
+    "name": "星辰启示",
+    "enemy_id": 1013,
+    "icon_path": "GoldEquipment.png",
+    "reward_type": 19,
+    "need_cost": 1000,
+    "reward_value": 1,
+    "max_level": 20
+  },
+  {
+    "id": 6014,
+    "name": "微光之路",
+    "enemy_id": 1014,
+    "icon_path": "GoldEquipment.png",
+    "reward_type": 20,
+    "need_cost": 1000,
+    "reward_value": 1,
+    "max_level": 20
+  },
+  {
+    "id": 6015,
+    "name": "唤醒时刻",
+    "enemy_id": 1015,
+    "icon_path": "GoldEquipment.png",
+    "reward_type": 21,
+    "need_cost": 1000,
+    "reward_value": 1,
+    "max_level": 20
+  },
+  {
+    "id": 6016,
+    "name": "意识迷雾",
+    "enemy_id": 1016,
+    "icon_path": "GoldEquipment.png",
+    "reward_type": 22,
     "need_cost": 1000,
     "reward_value": 1,
     "max_level": 20

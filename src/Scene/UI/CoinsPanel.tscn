@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://to6wvbxby0e3"]
 
 [ext_resource type="Script" path="res://Script/UI/CoinsPanel.gd" id="1_50dhi"]
-[ext_resource type="Texture2D" uid="uid://bnkevqnd4alfm" path="res://Assets/UI/Icons/Coins.svg" id="1_718o2"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_a1mb7"]
 [ext_resource type="FontFile" uid="uid://ri6183bsibm8" path="res://Assets/Font/SourceHanSansCN-Bold.otf" id="2_wrhfq"]
+[ext_resource type="Texture2D" uid="uid://qy2aq73h3a5n" path="res://Assets/UI/Icons/Coins.png" id="3_u7nr8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dq58o"]
 font = ExtResource("2_wrhfq")
@@ -36,7 +36,7 @@ grow_vertical = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-texture = ExtResource("1_718o2")
+texture = ExtResource("3_u7nr8")
 expand_mode = 1
 stretch_mode = 5
 

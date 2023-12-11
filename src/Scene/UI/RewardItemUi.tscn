@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dmjm8mmvc1ofc"]
 
 [ext_resource type="Script" path="res://Script/UI/RewardItemUi.gd" id="1_00qky"]
-[ext_resource type="Texture2D" uid="uid://bnkevqnd4alfm" path="res://Assets/UI/Icons/Coins.svg" id="1_qi3le"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="2_42prf"]
+[ext_resource type="Texture2D" uid="uid://qy2aq73h3a5n" path="res://Assets/UI/Icons/Coins.png" id="2_c3j4k"]
 
 [node name="RewardItemUI" type="Panel"]
 custom_minimum_size = Vector2(200, 0)
@@ -20,7 +20,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_qi3le")
+texture = ExtResource("2_c3j4k")
+expand_mode = 1
 stretch_mode = 5
 
 [node name="RewardLabel" type="Label" parent="."]

@@ -112,11 +112,11 @@ func get_reward(_show_popup:bool = true) -> String:
 static func get_reward_icon_path(_type:REWARD_TYPE) -> String:
     match _type:
         REWARD_TYPE.COINS:
-            return "res://Assets/UI/Icons/Coins.svg"
+            return "res://Assets/UI/Icons/Coins.png"
         REWARD_TYPE.XP:
-            return "res://Assets/UI/Icons/Coins.svg"
+            return "res://Assets/UI/Icons/Coins.png"
         REWARD_TYPE.FLY:
-            return "res://Assets/UI/Icons/Coins.svg"
+            return "res://Assets/UI/Icons/Coins.png"
         REWARD_TYPE.MONEY_BLUE:
             return "res://Assets/UI/Icons/MoneyRed.png"
         REWARD_TYPE.MONEY_WHITE:
