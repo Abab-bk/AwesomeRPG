@@ -1787,6 +1787,15 @@ collision_layer = 2
 script = ExtResource("1_7btph")
 buff_manager = NodePath("FlowerBuffManager")
 
+[node name="Nvigation" type="Node2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Nvigation"]
+unique_name_in_owner = true
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0, 1, 1)
+debug_path_custom_point_size = 20.0
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -31)
 shape = SubResource("RectangleShape2D_h1etu")

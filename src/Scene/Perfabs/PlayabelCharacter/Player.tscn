@@ -1824,6 +1824,15 @@ collision_layer = 2
 motion_mode = 1
 script = ExtResource("1_8yy7w")
 
+[node name="Nvigation" type="Node2D" parent="."]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Nvigation"]
+unique_name_in_owner = true
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0, 1, 1)
+debug_path_custom_point_size = 20.0
+
 [node name="FriendsPos" type="Marker2D" parent="."]
 
 [node name="Pos1" type="Marker2D" parent="FriendsPos"]

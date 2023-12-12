@@ -24,6 +24,7 @@ signal criticaled
 }
 
 @onready var friends_pos:Array[Marker2D] = [$FriendsPos/Pos1, $FriendsPos/Pos2, $FriendsPos/Pos3]
+@onready var navigation_agent_2d:NavigationAgent2D = %NavigationAgent2D
 
 enum STATE { # IDLE -> FINDING -> MOVE_TO_ENEMYING -> ATTACKING -> FINDING
     IDLE, # 初始状态
@@ -31,9 +32,10 @@ enum STATE { # IDLE -> FINDING -> MOVE_TO_ENEMYING -> ATTACKING -> FINDING
     FINDING, # 寻找敌人中
     MOVE_TO_ENEMYING, # 向敌人中状态
     DEAD, # 死亡
+    INITING,
 }
 
-var current_state:STATE = STATE.IDLE
+var current_state:STATE = STATE.INITING
 
 @export var compute_data:CharacterData
 @export var output_data:CharacterData
@@ -51,6 +53,7 @@ var all_enemy:Array
 
 
 func _ready() -> void:
+    
     Master.player = self
     #EventBus.player_dead.connect(relife)
     EventBus.enemy_die.connect(find_closest_enemy)
@@ -216,6 +219,7 @@ func _ready() -> void:
     
     compute()
     
+    await get_tree().process_frame
     current_state = STATE.IDLE
 
 
@@ -423,14 +427,20 @@ func move_to_enemy() -> void:
     
     turn_to_closest_enemy()
     
-    if ray_cast.is_colliding():
-        print("ok")
-        attack()
-        closest_enemy = ray_cast.get_collider()
-        return
+    #if ray_cast.is_colliding():
+        #print("ok")
+        #attack()
+        #closest_enemy = ray_cast.get_collider()
+        #return
     
-    velocity = global_position.\
-    direction_to(closest_enemy.marker.global_position) * output_data.speed
+    update_navigation_position()
+    
+    if not navigation_agent_2d.is_navigation_finished():
+        #var _direction:Vector2 = to_local(navigation_agent_2d.get_next_path_position()).normalized()
+        var _direction:Vector2 = global_position.direction_to(navigation_agent_2d.get_next_path_position())
+        velocity = _direction * output_data.speed
+    #velocity = global_position.\
+    #direction_to(closest_enemy.marker.global_position) * output_data.speed
     
     character_animation_player.play("scml/Walking")
 
@@ -449,8 +459,8 @@ func attack() -> void:
     if current_state == STATE.DEAD:
         return
     
-    if global_position != closest_enemy.marker.global_position:
-        global_position = closest_enemy.marker.global_position
+    #if global_position != closest_enemy.marker.global_position:
+        #global_position = closest_enemy.marker.global_position
     
     turn_to_closest_enemy()
     
@@ -480,8 +490,8 @@ func _physics_process(_delta:float) -> void:
     if current_state == STATE.ATTACKING:
         if not closest_enemy:
             find_closest_enemy()
-        if global_position.distance_to(closest_enemy.global_position) >= 1000.0:
-            find_closest_enemy()
+        #if global_position.distance_to(closest_enemy.global_position) >= 1000.0:
+            #find_closest_enemy()
     
     if current_state == STATE.MOVE_TO_ENEMYING:
         move_to_enemy()
@@ -611,4 +621,14 @@ func find_closest_enemy(_temp = 0) -> void:
     atk_range.target = closest_enemy
     vision.target = closest_enemy
     
+    update_navigation_position()
+    
     current_state = STATE.MOVE_TO_ENEMYING
+
+
+func update_navigation_position() -> void:
+    if closest_enemy:
+        #navigation_agent_2d.target_position = closest_enemy.global_position
+        navigation_agent_2d.target_position = closest_enemy.marker.global_position
+    else:
+        navigation_agent_2d.target_position = global_position

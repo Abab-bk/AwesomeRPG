@@ -14,6 +14,9 @@ signal dead
 @onready var character_animation:AnimationPlayer = $Display/Skeleton/CharacterAnimation
 @onready var marker:Marker2D = $Marker2D
 
+@onready var navigation_agent_2d:NavigationAgent2D = %NavigationAgent2D
+@onready var navigation_timer:Timer = %NavigationTimer
+
 @export var range_attack:bool = false
 
 var range_bullet_spwan_point:Marker2D
@@ -55,6 +58,10 @@ func _ready() -> void:
     atk_cd_timer.timeout.connect(func():
         if current_state == STATE.ATK_COOLDOWN:
             current_state = STATE.ATTACKING
+        )
+    
+    navigation_timer.timeout.connect(func():
+        navigation_agent_2d.target_position = Master.player.global_position
         )
     
     vision_component.target_enter_range.connect(func():
@@ -178,11 +185,17 @@ func turn_to_player() -> void:
 func move_to_player() -> void:
     turn_to_player()
     
-    velocity = global_position.\
-    direction_to(Master.player.global_position) * output_data.speed
+    if not navigation_agent_2d.is_navigation_finished():
+        #var _direction:Vector2 = to_local(navigation_agent_2d.get_next_path_position()).normalized()
+        var _direction:Vector2 = global_position.direction_to(navigation_agent_2d.get_next_path_position())
+        velocity = _direction * output_data.speed
+    
+    #velocity = global_position.\
+    #direction_to(Master.player.global_position) * output_data.speed
     
     if character_animation:    
         character_animation.play("scml/Walking")
+
 
 func die() -> void:
     if current_state == STATE.DEAD:

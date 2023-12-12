@@ -30,6 +30,8 @@ enum STATE {
 @export var skin_name:String = ""
 @export var range_attack:bool = false
 
+@onready var navigation_agent_2d: NavigationAgent2D = %NavigationAgent2D
+
 var range_bullet_spwan_point:Marker2D
 
 var current_state:STATE = STATE.PATROL
@@ -142,8 +144,6 @@ func attack() -> void:
     # 攻击代码
     if not range_attack:
         if character_animation.has_animation("scml/Attacking"):
-            if global_position != closest_enemy.marker.global_position:
-                global_position = closest_enemy.marker.global_position 
             character_animation.play("scml/Attacking")
             
     else:
@@ -173,13 +173,11 @@ func move_to_enemy() -> void:
     
     turn_to_enemy()
     
-    if ray_cast.is_colliding():
-        attack()
-        closest_enemy = ray_cast.get_collider()
-        return
-    
-    velocity = global_position.\
-    direction_to(closest_enemy.marker.global_position) * output_data.speed
+    if not navigation_agent_2d.is_navigation_finished():
+        var _direction:Vector2 = global_position.direction_to(navigation_agent_2d.get_next_path_position())
+        velocity = _direction * output_data.speed
+    #velocity = global_position.\
+    #direction_to(closest_enemy.marker.global_position) * output_data.speed
     
     character_animation.play("scml/Walking")
 
@@ -269,4 +267,11 @@ func set_skin() -> void:
         new_node.hitbox_component.buff_manager = buff_manager
     else:
         range_bullet_spwan_point = new_node.bullet_spawn_point
-    
+
+
+func update_navigation_position() -> void:
+    if closest_enemy:
+        #navigation_agent_2d.target_position = closest_enemy.global_position
+        navigation_agent_2d.target_position = closest_enemy.marker.global_position
+    else:
+        navigation_agent_2d.target_position = global_position
