@@ -69,7 +69,13 @@ func pull_gacha(_count:int) -> void:
         EventBus.gacha_pull_1.emit()
         Master.gacha_money -= 1
         animation.show()
-        var _get_reward:Reward = gacha_pool.reward_list.pick_random() as Reward
+        
+        var _rewerd_weight:Array[Array] = []
+        for _reward_item in gacha_pool.reward_list:
+            _rewerd_weight.append([_reward_item, _reward_item.weight])
+        
+        var _chooser:Chooser = Chooser.new(_rewerd_weight)
+        var _get_reward:Reward = _chooser.pick() as Reward
         
         if _get_reward.type == Reward.REWARD_TYPE.FRIEND:
             if _get_reward.reward_value in Master.friends_inventory.keys():

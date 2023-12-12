@@ -5,63 +5,78 @@
     "reward_list": [
       {
         "type": 1,
-        "reward_value": 100
+        "reward_value": 100,
+        "weight": 5
       },
       {
         "type": 4,
-        "reward_value": 10
+        "reward_value": 10,
+        "weight": 5
       },
       {
         "type": 1,
-        "reward_value": 1000
+        "reward_value": 1000,
+        "weight": 2
       },
       {
         "type": 1,
-        "reward_value": 500
+        "reward_value": 500,
+        "weight": 2
       },
       {
         "type": 3,
-        "reward_value": 5
+        "reward_value": 5,
+        "weight": 2
       },
       {
         "type": 4,
-        "reward_value": 5
+        "reward_value": 5,
+        "weight": 2
       },
       {
         "type": 5,
-        "reward_value": 5
+        "reward_value": 5,
+        "weight": 2
       },
       {
         "type": 6,
-        "reward_value": 5
+        "reward_value": 5,
+        "weight": 2
       },
       {
         "type": 7,
-        "reward_value": 1
+        "reward_value": 1,
+        "weight": 5
       },
       {
         "type": 9,
-        "reward_value": 1
+        "reward_value": 1,
+        "weight": 5
       },
       {
         "type": 14,
-        "reward_value": 1
+        "reward_value": 1,
+        "weight": 3
       },
       {
         "type": 15,
-        "reward_value": 1
+        "reward_value": 1,
+        "weight": 3
       },
       {
         "type": 16,
-        "reward_value": 1
+        "reward_value": 1,
+        "weight": 3
       },
       {
         "type": 17,
-        "reward_value": 1
+        "reward_value": 1,
+        "weight": 3
       },
       {
         "type": 18,
-        "reward_value": 1
+        "reward_value": 1,
+        "weight": 3
       }
     ]
   },
@@ -71,87 +86,108 @@
     "reward_list": [
       {
         "type": 10,
-        "reward_value": 1003
+        "reward_value": 1003,
+        "weight": 2
       },
       {
         "type": 10,
-        "reward_value": 1001
+        "reward_value": 1001,
+        "weight": 1
       },
       {
         "type": 10,
-        "reward_value": 1002
+        "reward_value": 1002,
+        "weight": 1
       },
       {
         "type": 10,
-        "reward_value": 1003
+        "reward_value": 1003,
+        "weight": 1
       },
       {
         "type": 10,
-        "reward_value": 1005
+        "reward_value": 1005,
+        "weight": 1
       },
       {
         "type": 10,
-        "reward_value": 1006
+        "reward_value": 1006,
+        "weight": 1
       },
       {
         "type": 1,
-        "reward_value": 100
+        "reward_value": 100,
+        "weight": 2
       },
       {
         "type": 4,
-        "reward_value": 10
+        "reward_value": 10,
+        "weight": 2
       },
       {
         "type": 1,
-        "reward_value": 1000
+        "reward_value": 1000,
+        "weight": 3
       },
       {
         "type": 1,
-        "reward_value": 500
+        "reward_value": 500,
+        "weight": 3
       },
       {
         "type": 3,
-        "reward_value": 5
+        "reward_value": 5,
+        "weight": 3
       },
       {
         "type": 4,
-        "reward_value": 5
+        "reward_value": 5,
+        "weight": 2
       },
       {
         "type": 5,
-        "reward_value": 5
+        "reward_value": 5,
+        "weight": 2
       },
       {
         "type": 6,
-        "reward_value": 5
+        "reward_value": 5,
+        "weight": 2
       },
       {
         "type": 7,
-        "reward_value": 1
+        "reward_value": 1,
+        "weight": 5
       },
       {
         "type": 9,
-        "reward_value": 1
+        "reward_value": 1,
+        "weight": 5
       },
       {
         "type": 14,
-        "reward_value": 1
+        "reward_value": 1,
+        "weight": 3
       },
       {
         "type": 15,
-        "reward_value": 1
+        "reward_value": 1,
+        "weight": 3
       },
       {
         "type": 16,
-        "reward_value": 1
+        "reward_value": 1,
+        "weight": 3
       },
       {
         "type": 17,
-        "reward_value": 1
+        "reward_value": 1,
+        "weight": 3
       },
       {
         "type": 18,
-        "reward_value": 1
+        "reward_value": 1,
+        "weight": 3
       }
     ]
   }

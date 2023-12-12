@@ -29,6 +29,12 @@ enum MONEY_TYPE {
     AD, # 23
 }
 
+
+const RARITY_WEIGHT:Dictionary = {
+    "white": 0.8,
+}
+
+
 const MONEYS_NAME:Dictionary = {
     "white": "奉献之灰",
     "blue": "天堂之尘",

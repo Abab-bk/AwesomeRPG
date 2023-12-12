@@ -595,23 +595,25 @@ class Gachas:
     ## 名称
     var name: String
     ## 奖励列表
-    var reward_list: Array[RewardReward]
+    var reward_list: Array[RewardWeightReward]
 
     func _init(_json_) -> void:
         self.id = _json_["id"]
         self.name = _json_["name"]
         self.reward_list = []
-        for _ele in _json_["reward_list"]: var _e: RewardReward; _e = RewardReward.new(_ele); self.reward_list.append(_e)
+        for _ele in _json_["reward_list"]: var _e: RewardWeightReward; _e = RewardWeightReward.new(_ele); self.reward_list.append(_e)
 
 
-class RewardReward:
+class RewardWeightReward:
     var type: int
     ## 对于随从，value为id
     var reward_value: int
+    var weight: int
 
     func _init(_json_) -> void:
         self.type = _json_["type"]
         self.reward_value = _json_["reward_value"]
+        self.weight = _json_["weight"]
 
 
 class DayReward:
@@ -624,6 +626,16 @@ class DayReward:
         self.id = _json_["id"]
         self.reward_list = []
         for _ele in _json_["reward_list"]: var _e: RewardReward; _e = RewardReward.new(_ele); self.reward_list.append(_e)
+
+
+class RewardReward:
+    var type: int
+    ## 对于随从，value为id
+    var reward_value: int
+
+    func _init(_json_) -> void:
+        self.type = _json_["type"]
+        self.reward_value = _json_["reward_value"]
 
 
 class OnlineReward:

@@ -462,6 +462,7 @@ func get_base_gacha_pool() -> GachaPool:
         var _reward:Reward = Reward.new()
         _reward.type = i["type"]
         _reward.reward_value = i["reward_value"]
+        _reward.weight = i["weight"]        
         _gacha_pool.reward_list.append(_reward)
     
     return _gacha_pool
@@ -477,6 +478,7 @@ func get_gacha_pool_by_id(_id:int) -> GachaPool:
         var _reward:Reward = Reward.new()
         _reward.type = i["type"]
         _reward.reward_value = i["reward_value"]
+        _reward.weight = i["weight"]
         _gacha_pool.reward_list.append(_reward)
     
     return _gacha_pool

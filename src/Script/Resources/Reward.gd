@@ -30,6 +30,7 @@ enum REWARD_TYPE {
 
 @export var type:REWARD_TYPE = REWARD_TYPE.NONE
 @export var reward_value:int = 0
+@export var weight:int = 1
 
 func get_reward(_show_popup:bool = true) -> String:
     match type:
@@ -70,7 +71,7 @@ func get_reward(_show_popup:bool = true) -> String:
         REWARD_TYPE.GACHA_MONEY_PART:
             Master.gacha_money_part += reward_value
         REWARD_TYPE.MEMORY:
-            if reward_value in Master.memorys[reward_value]:
+            if reward_value in Master.memorys:
                 Master.memorys[reward_value] = Master.memorys[reward_value] + 1
             else:
                 Master.memorys[reward_value] = 1
