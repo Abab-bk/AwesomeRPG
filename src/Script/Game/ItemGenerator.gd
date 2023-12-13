@@ -66,7 +66,6 @@ func gen_a_item(_allow_gold:bool = false, _must_gold:bool = false) -> InventoryI
         Const.EQUIPMENT_TYPE.武器:
             _new_item.weapon_type = Const.WEAPONS_TYPE.values()[randi() % Const.WEAPONS_TYPE.size()]
             
-            # TODO: 更改随机值
             match _new_item.weapon_type:
                 Const.WEAPONS_TYPE.Sword:
                     _new_item.name += "剑"            
@@ -84,22 +83,33 @@ func gen_a_item(_allow_gold:bool = false, _must_gold:bool = false) -> InventoryI
     # 随机掉落词缀数量
     # 根据随机的品质修改词缀数量：
     var quality:Const.EQUIPMENT_QUALITY # = Const.EQUIPMENT_QUALITY.values()[randi()%Const.EQUIPMENT_QUALITY.size()]
+    var _chooser:Chooser = Chooser.new([[Const.EQUIPMENT_QUALITY.NORMAL, 0.5],
+    [Const.EQUIPMENT_QUALITY.BLUE, 0.3],
+    [Const.EQUIPMENT_QUALITY.YELLOW, 0.2],
+    [Const.EQUIPMENT_QUALITY.DEEP_YELLOW, 0.1],
+    [Const.EQUIPMENT_QUALITY.GOLD, 0.1],
+    ])
     
-    randomize()
-    var _rng:float = randf_range(0, 100.0)
-    if _rng >= 50.0:
-        quality = Const.EQUIPMENT_QUALITY.NORMAL
-    elif _rng >= 40.0:
-        quality = Const.EQUIPMENT_QUALITY.BLUE
-    elif _rng >= 30.0:
-        quality = Const.EQUIPMENT_QUALITY.YELLOW
-    elif _rng >= 10.0:
+    quality = _chooser.pick()
+    
+    if not _allow_gold and quality == Const.EQUIPMENT_QUALITY.GOLD:
         quality = Const.EQUIPMENT_QUALITY.DEEP_YELLOW
-    else:
-        if _allow_gold:
-            quality = Const.EQUIPMENT_QUALITY.GOLD
-        else:
-            quality = Const.EQUIPMENT_QUALITY.NORMAL
+    
+    #randomize()
+    #var _rng:float = randf_range(0, 100.0)
+    #if _rng >= 50.0:
+        #quality = Const.EQUIPMENT_QUALITY.NORMAL
+    #elif _rng >= 40.0:
+        #quality = Const.EQUIPMENT_QUALITY.BLUE
+    #elif _rng >= 30.0:
+        #quality = Const.EQUIPMENT_QUALITY.YELLOW
+    #elif _rng >= 10.0:
+        #quality = Const.EQUIPMENT_QUALITY.DEEP_YELLOW
+    #else:
+        #if _allow_gold:
+            #quality = Const.EQUIPMENT_QUALITY.GOLD
+        #else:
+            #quality = Const.EQUIPMENT_QUALITY.NORMAL
     
     if _must_gold:
         quality = Const.EQUIPMENT_QUALITY.GOLD

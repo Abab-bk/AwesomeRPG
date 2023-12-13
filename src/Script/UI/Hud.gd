@@ -56,6 +56,27 @@ signal backed_to_home
 @onready var skill_bar:HBoxContainer = %SkillBar
 @onready var color_rect:ColorRect = $BlackRect
 
+@onready var days_checkin_red_point:TextureRect = %DaysCheckinRedPoint
+@onready var every_day_quest_red_point:TextureRect = %EveryDayQuestRedPoint
+
+var show_days_checkin_red_point:bool = true:
+    set(v):
+        show_days_checkin_red_point = v
+        if show_days_checkin_red_point:
+            days_checkin_red_point.show()
+        else:
+            days_checkin_red_point.hide()
+        FlowerSaver.set_data("hud_show_days_checkin_red_point", show_days_checkin_red_point)
+        
+var show_every_day_quest_red_point:bool = true:
+    set(v):
+        show_every_day_quest_red_point = v
+        if show_every_day_quest_red_point:
+            every_day_quest_red_point.show()
+        else:
+            every_day_quest_red_point.hide()            
+        FlowerSaver.set_data("hud_show_every_day_quest_red_point", show_every_day_quest_red_point)
+
 enum PAGE {
     HOME,
     INVENTORY,
@@ -113,6 +134,12 @@ func _ready() -> void:
         add_child(_new_node)
         _new_node.set_data(_friend_data)
         )
+    EventBus.load_save.connect(func():
+        if FlowerSaver.has_key("hud_show_every_day_quest_red_point"):
+            show_every_day_quest_red_point = FlowerSaver.get_data("hud_show_every_day_quest_red_point")
+        if FlowerSaver.has_key("hud_show_days_checkin_red_point"):
+            show_days_checkin_red_point = FlowerSaver.get_data("hud_show_days_checkin_red_point")
+        )
     
     
     backed_to_home.connect(func():quest_panel.show())
@@ -127,12 +154,18 @@ func _ready() -> void:
     dungeon_btn.pressed.connect(change_page.bind(PAGE.DUNGEON))
     forge_btn.pressed.connect(change_page.bind(PAGE.FORGE))
     repo_btn.pressed.connect(change_page.bind(PAGE.REPO))
-    days_checkin_btn.pressed.connect(change_page.bind(PAGE.DAYS_CHICKIN))
+    days_checkin_btn.pressed.connect(func():
+        show_days_checkin_red_point = true
+        change_page(PAGE.DAYS_CHICKIN)
+        )
     fly_btn.pressed.connect(change_page.bind(PAGE.FLY))
     friends_btn.pressed.connect(change_page.bind(PAGE.FRIENDS))
     tower_btn.pressed.connect(change_page.bind(PAGE.TOWER))
     gacha_btn.pressed.connect(change_page.bind(PAGE.GACHA))
-    every_day_quest_btn.pressed.connect(change_page.bind(PAGE.EVERY_DAY_QUEST))
+    every_day_quest_btn.pressed.connect(func():
+        show_every_day_quest_red_point = false
+        change_page(PAGE.EVERY_DAY_QUEST)
+        )
     
     show_more_btn.pressed.connect(func():
         SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
@@ -162,6 +195,10 @@ func _ready() -> void:
     hide_color_rect()
     update_ui()
     change_page(PAGE.HOME)
+    if TimeManager.is_next_day(Master.last_leave_time):
+        show_days_checkin_red_point = true
+        show_every_day_quest_red_point = true
+
 
 func change_page(_page:PAGE) -> void:
     SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
@@ -275,3 +312,4 @@ func show_popup(_title:String, _desc:String, _show_cancel_btn:bool = false, _yes
     _popup.cancel_event = _cancel_event
     
     add_child(_popup)
+
