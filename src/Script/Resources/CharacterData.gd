@@ -35,7 +35,9 @@ signal hp_is_zero
 @export var wisdom:int
 @export var agility:int
 @export var luck:float
-@export var speed:float
+@export var speed:float:
+    set(v):
+        speed = min(v, 3000.0)
 @export var damage:float
 @export var defense:float
 @export var fire_damage:float
