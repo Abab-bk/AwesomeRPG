@@ -87,3 +87,5 @@ shape = SubResource("RectangleShape2D_6qxva")
 position = Vector2(9408, 1495)
 rotation = -1.57175
 shape = SubResource("RectangleShape2D_6qxva")
+
+[node name="Wheathers" type="Node2D" parent="."]

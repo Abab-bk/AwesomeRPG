@@ -378,6 +378,7 @@ class Dungeons:
     var id: int
     var name: String
     var enemy_id: int
+    var wheather_id: int
     var icon_path: String
     var reward_type: int
     var need_cost: int
@@ -388,6 +389,7 @@ class Dungeons:
         self.id = _json_["id"]
         self.name = _json_["name"]
         self.enemy_id = _json_["enemy_id"]
+        self.wheather_id = _json_["wheather_id"]
         self.icon_path = _json_["icon_path"]
         self.reward_type = _json_["reward_type"]
         self.need_cost = _json_["need_cost"]
@@ -701,6 +703,19 @@ class Shops:
         self.cost = _json_["cost"]
         self.reward_type = _json_["reward_type"]
         self.reward_value = _json_["reward_value"]
+
+
+class Wheathers:
+    var id: int
+    var name: String
+    var desc: String
+    var scene_name: String
+
+    func _init(_json_) -> void:
+        self.id = _json_["id"]
+        self.name = _json_["name"]
+        self.desc = _json_["desc"]
+        self.scene_name = _json_["scene_name"]
 
 
 class BuffsTbBuffs:
@@ -1123,6 +1138,27 @@ class ShopsTbShops:
         return self._data_map.get(key)
 
 
+class WheathersTbWeathers:
+    var _data_list: Array[Wheathers]
+    var _data_map: Dictionary
+    
+    func _init(_json_) -> void:
+        for _json2_ in _json_:
+            var _v: Wheathers
+            _v = Wheathers.new(_json2_)
+            self._data_list.append(_v)
+            self._data_map[_v.id] = _v
+
+    func get_data_list() -> Array[Wheathers]:
+        return self._data_list
+
+    func get_data_map() -> Dictionary:
+        return self._data_map
+
+    func get_item(key) -> Wheathers:
+        return self._data_map.get(key)
+
+
 class CfgTables:
     var TbBuffs: BuffsTbBuffs
     var TbAffix: AffixsTbAffix
@@ -1144,6 +1180,7 @@ class CfgTables:
     var TbOnlineReward: OnlineRewardTbOnlineReward
     var TbAllQuests: AllQuestsTbAllQuests
     var TbShops: ShopsTbShops
+    var TbWeathers: WheathersTbWeathers
     
     func _init(loader: Callable) -> void:
         self.TbBuffs = BuffsTbBuffs.new(loader.call('buffs_tbbuffs'))
@@ -1166,4 +1203,5 @@ class CfgTables:
         self.TbOnlineReward = OnlineRewardTbOnlineReward.new(loader.call('onlinereward_tbonlinereward'))
         self.TbAllQuests = AllQuestsTbAllQuests.new(loader.call('allquests_tballquests'))
         self.TbShops = ShopsTbShops.new(loader.call('shops_tbshops'))
+        self.TbWeathers = WheathersTbWeathers.new(loader.call('wheathers_tbweathers'))
 

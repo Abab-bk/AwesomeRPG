@@ -66,6 +66,7 @@ func _ready() -> void:
     popup_yes_btn.pressed.connect(confirm_spend)
     popup_cancel_btn.pressed.connect(hide_popup)
     memory_btn.pressed.connect(func():
+        SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
         show_popup("恢复记忆", "大部分属性大幅提升！", [[Const.MONEY_TYPE.MEMORY, "%s/%s" % [str(current_firend.memory), str(get_memonry_count_by_id(current_firend.id))], 1]])# info [cost_type, cost_desc]
         current_reward = func():
             current_firend_data.set_property_from_const_level(2)
@@ -73,6 +74,7 @@ func _ready() -> void:
         save()
         )
     pro_btn.pressed.connect(func():
+        SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))        
         show_popup("专精", "提升最大血量、魔法量、敏捷、力量、智慧。", get_pro_need_cost())
         current_reward = func():
             current_firend_data.max_hp += (current_firend_data.max_hp * 0.5)
@@ -170,6 +172,8 @@ func confirm_spend() -> void:
 
 
 func show_popup(_title:String, _desc:String, _cost_info:Array[Array]) -> void:
+    SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
+    
     popup_title_label.text = _title
     popup_desc_label.text = "[center]%s[/center]" % _desc
     
@@ -190,6 +194,7 @@ func build_need_goods_ui_item(_info:Array) -> Panel:
 
 
 func hide_popup() -> void:
+    SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
     popup.hide()
     
     for i in need_goods_ui.get_children():
@@ -225,6 +230,7 @@ func save() -> void:
 
 
 func show_level_up_info() -> void:
+    SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
     level_up_panel.show()
     level_up_panel.friend_data = current_firend_data
     level_up_panel.update_ui()

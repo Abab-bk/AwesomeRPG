@@ -111,7 +111,8 @@ enum FRIEND_QUALITY {
 
 enum LOCATIONS {
     WORLD,
-    TOWER
+    TOWER,
+    DUNGEON,
 }
 
 enum RANGED_WEAPONS_TYPE {

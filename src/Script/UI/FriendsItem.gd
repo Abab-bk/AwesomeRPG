@@ -25,6 +25,7 @@ var current_state:int = 0
 
 func _ready() -> void:
     change_btn.pressed.connect(func():
+        SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
         if current_state == 0:
             change_btn_click.emit()
         else:
@@ -32,6 +33,7 @@ func _ready() -> void:
             update_ui()
         )
     info_btn.pressed.connect(func():
+        SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
         if not data:
             return
         EventBus.build_and_show_friend_info_panel.emit(data)

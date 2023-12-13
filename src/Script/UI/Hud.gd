@@ -204,7 +204,7 @@ func update_ui() -> void:
     if Master.current_location == Const.LOCATIONS.WORLD:
         level_level_label.text = "第 %s 关" % str(Master.current_level)
         next_lvel_tip_label.text = "余剩：%s 只怪物" % str(Master.next_level_need_kill_count)
-    else:
+    elif Master.current_location == Const.LOCATIONS.TOWER:
         level_level_label.text = "第 %s 层" % str(Master.current_tower_level)
         next_lvel_tip_label.text = "余剩：%s 只怪物" % str(Master.need_kill_enemys_to_next_tower)
     

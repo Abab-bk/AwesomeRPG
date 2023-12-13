@@ -68,6 +68,10 @@ func _ready() -> void:
         kill_all_enemy()
         gen_a_enemy()
         )
+    EventBus.exit_dungeon.connect(func():
+        kill_all_enemy()
+        gen_a_enemy()
+        )
 
 
 func kill_all_enemy() -> void:

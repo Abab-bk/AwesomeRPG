@@ -4,6 +4,7 @@ extends Node2D
 @export var load_save:bool = false
 
 @onready var enemy_home:EnemyHome = %EnemyHome
+@onready var wheathers:Node2D = $Wheathers
 
 
 func _ready() -> void:
@@ -18,13 +19,19 @@ func _ready() -> void:
         )
     
     EventBus.enter_dungeon.connect(func(_data:DungeonData):
-        Master.in_dungeon = true
         enemy_home.kill_all_enemy()
+        
+        if _data.wheather_id != 0:
+            change_wheather(Master.get_wheather_by_id(_data.wheather_id))
+        
         enemy_home.spawn_a_special_enemy(func():
             # 地牢奖励
             _data.get_reward()
             EventBus.enter_dungeon_and_success.emit()
-            Master.in_dungeon = false, _data.enemy_id))
+            EventBus.exit_dungeon.emit(), _data.enemy_id))
+    
+    EventBus.exit_dungeon.connect(recovery_wheather)
+    EventBus.exit_tower.connect(recovery_wheather)
     
     # data {ui_id: id}
     EventBus.changed_friends.connect(func(_data:Dictionary):
@@ -55,6 +62,19 @@ func _ready() -> void:
         print("加载存档 - 世界")
         EventBus.load_save.emit()
         Master.should_load = false
+
+
+func recovery_wheather() -> void:
+    for _node:WheatherScene in wheathers.get_children():
+        _node.disappear()
+    Tracer.info("天气恢复晴天")
+    
+    Master.player.current_state = Player.STATE.IDLE
+
+
+func change_wheather(_wheather:WheatherData) -> void:
+    Tracer.info("天气改变：%s" % _wheather.name)
+    wheathers.add_child(load(_wheather.scene_path).instantiate())
 
 
 func spawn_a_friend_by_data(_data:FriendData, _point:Marker2D) -> void:

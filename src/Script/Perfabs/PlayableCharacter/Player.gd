@@ -27,15 +27,25 @@ signal criticaled
 @onready var navigation_agent_2d:NavigationAgent2D = %NavigationAgent2D
 
 enum STATE { # IDLE -> FINDING -> MOVE_TO_ENEMYING -> ATTACKING -> FINDING
-    IDLE, # 初始状态
-    ATTACKING, # 攻击中
-    FINDING, # 寻找敌人中
-    MOVE_TO_ENEMYING, # 向敌人中状态
-    DEAD, # 死亡
-    INITING,
+    IDLE, # 1 初始状态
+    ATTACKING, # 2 攻击中
+    FINDING, # 3 寻找敌人中
+    MOVE_TO_ENEMYING, # 4 向敌人中状态
+    DEAD, # 5 死亡
+    INITING, # 6
+    TRY_FREEZE,
+    FREEZEING, # 7 冻结
 }
 
-var current_state:STATE = STATE.INITING
+# 死亡标识
+var die_sign:bool = false
+
+var current_state:STATE = STATE.INITING:
+    set(v):
+        if die_sign:
+            current_state = STATE.DEAD
+            return
+        current_state = v
 
 @export var compute_data:CharacterData
 @export var output_data:CharacterData
@@ -53,7 +63,6 @@ var all_enemy:Array
 
 
 func _ready() -> void:
-    
     Master.player = self
     #EventBus.player_dead.connect(relife)
     EventBus.enemy_die.connect(find_closest_enemy)
@@ -140,6 +149,8 @@ func _ready() -> void:
         
         flower_buff_manager.compute_data = compute_data
         flower_buff_manager.output_data = output_data
+        flower_buff_manager.compute_data.speed = flower_buff_manager.compute_data.speed
+        flower_buff_manager.output_data.speed = flower_buff_manager.output_data.speed
         flower_buff_manager.add_buff_list(FlowerSaver.get_data("player_buff_list"))
         
         Master.player_output_data = flower_buff_manager.output_data
@@ -484,21 +495,20 @@ func turn_to_closest_enemy() -> void:
 
 
 func _physics_process(_delta:float) -> void:
-    if current_state == STATE.IDLE:
-        find_closest_enemy()
-    
-    if current_state == STATE.ATTACKING:
-        if not closest_enemy:
-            find_closest_enemy()
-        #if global_position.distance_to(closest_enemy.global_position) >= 1000.0:
-            #find_closest_enemy()
-    
-    if current_state == STATE.MOVE_TO_ENEMYING:
-        move_to_enemy()
-    
-    if current_state == STATE.DEAD:
-        return
-    
+    match current_state:
+        STATE.IDLE:
+            find_closest_enemy()      
+        STATE.ATTACKING:
+            if not closest_enemy:
+                find_closest_enemy()
+        STATE.MOVE_TO_ENEMYING:
+            move_to_enemy()
+        STATE.DEAD:
+            return
+        STATE.FREEZEING:
+            velocity = Vector2.ZERO
+            character_animation_player.pause()
+            
     move_and_slide()
 
 
@@ -567,14 +577,16 @@ func relife() -> void:
     
     hurt_box_collision.call_deferred("set_disabled", false)    
     
+    die_sign = false
     current_state = STATE.IDLE
     
     EventBus.player_relife.emit()
 
 
 func die() -> void:
+    die_sign = true
     current_state = STATE.DEAD
-    Tracer.info("玩家死亡")
+    Tracer.info("玩家死亡，状态：%s" % str(current_state))
     
     velocity = Vector2.ZERO
     
@@ -582,9 +594,12 @@ func die() -> void:
     
     EventBus.player_dead.emit()
     
-    if Master.current_location == Const.LOCATIONS.TOWER:
-        EventBus.exit_tower.emit()
-        
+    match Master.current_location:
+        Const.LOCATIONS.TOWER:
+            EventBus.exit_tower.emit()
+        Const.LOCATIONS.DUNGEON:
+            EventBus.exit_dungeon.emit()
+    
     character_animation_player.play("scml/Dying")
     await character_animation_player.animation_finished
     relife()

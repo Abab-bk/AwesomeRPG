@@ -57,8 +57,6 @@ var unlocked_skills:Array = []:
 
 var should_load:bool = false
 
-var in_dungeon:bool = false
-
 # 关卡等级：
 var current_level:int = 1:
     set(v):
@@ -183,6 +181,7 @@ var days_checkin:Dictionary
 var online_rewards:Dictionary
 var all_quests:Array
 var shops:Array
+var wheathers:Dictionary
 
 
 var unlocked_functions:Dictionary = {
@@ -226,6 +225,7 @@ func _ready():
     online_rewards = config.TbOnlineReward.get_data_map()
     all_quests = config.TbAllQuests.get_data_list()
     shops = config.TbShops.get_data_list()
+    wheathers = config.TbWeathers.get_data_map()
     #ability_trees = config.TbSkills.get_data_map()
     #goods = config.TbGoods.get_data_map()
 
@@ -281,8 +281,6 @@ func _ready():
             player_output_data = null
             
             player_inventory = null
-            
-            in_dungeon = false
             
             #EventBus.rework_level_enemy_count.emit()
             EventBus.completed_level.emit()
@@ -368,6 +366,9 @@ func _ready():
         current_location = Const.LOCATIONS.TOWER
         EventBus.update_ui.emit()
         )
+    EventBus.enter_dungeon.connect(func(_temp):
+        current_location = Const.LOCATIONS.DUNGEON
+        )
     EventBus.go_to_next_tower_level.connect(func():
         current_tower_level += 1
         EventBus.update_ui.emit()
@@ -379,7 +380,10 @@ func _ready():
         current_tower_level = 1
         need_kill_enemys_to_next_tower = 10
         )
-        
+    EventBus.exit_dungeon.connect(func():
+        current_location = Const.LOCATIONS.WORLD
+        )
+    
     subscriber.init()
 
 
@@ -396,7 +400,18 @@ func yes_fly() -> void:
     moneys.blue = 0
     moneys.purple = 0
     moneys.yellow = 0
-    in_dungeon = false    
+
+
+func get_wheather_by_id(_id:int) -> WheatherData:
+    var _wheather:WheatherData = WheatherData.new()
+    var _data = wheathers[_id]
+    
+    _wheather.id = _id
+    _wheather.name = _data["name"]
+    _wheather.desc = _data["desc"]
+    _wheather.scene_path = "res://Scene/Perfabs/Wheathers/%s.tscn" % _data["scene_name"]
+    
+    return _wheather
 
 
 func get_goods_by_info(_info) -> Goods:
@@ -526,6 +541,7 @@ func get_dungeon_by_id(_id:int) -> DungeonData:
     _dungeon.base_cost = dungeons[_id]["need_cost"]
     _dungeon.base_reward = dungeons[_id]["reward_value"]
     _dungeon.max_level = dungeons[_id]["max_level"]
+    _dungeon.wheather_id = dungeons[_id]["wheather_id"]
     _dungeon.icon_path = "res://Assets/Texture/Images/%s" % dungeons[_id]["icon_path"]
     
     _dungeon.set_level(1)

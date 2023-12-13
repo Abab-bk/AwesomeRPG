@@ -79,6 +79,7 @@ signal show_damage_number(pos:Vector2, text:String, crit:bool)
 
 signal enter_dungeon(dungeon:DungeonData)
 signal enter_dungeon_and_success
+signal exit_dungeon
 
 signal gacha_pull_1
 
