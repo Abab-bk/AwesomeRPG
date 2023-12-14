@@ -17,6 +17,9 @@ signal new_tips(text:String)
 signal build_and_show_friend_info_panel(friend_data:FriendData)
 
 
+signal move_camera_to(target_pos:Vector2)
+
+
 signal selected_skills_on_panel
 signal unlocked_ability(id:int)
 signal sub_ability_changed(_ability_id:int, _sub_ability:Array)

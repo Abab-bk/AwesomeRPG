@@ -1719,7 +1719,7 @@ wait_time = 0.1
 autostart = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(166, 0)
+position = Vector2(149, -16)
 scale = Vector2(3.415, 3.415)
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
@@ -1911,7 +1911,7 @@ rest = Transform2D(-0.121003, -0.992652, 0.992652, -0.121003, 43.9277, -17.7982)
 [node name="bone_001" type="Bone2D" parent="Display/Skeleton/bone_006/bone_000"]
 position = Vector2(29.8373, 0)
 rotation = -0.0347054
-scale = Vector2(0.999964, 0.999964)
+scale = Vector2(0.999965, 0.999965)
 rest = Transform2D(0.997235, 0.0743185, -0.0743185, 0.997235, 29.8373, 0)
 
 [node name="Weapon" type="Sprite2D" parent="Display/Skeleton/bone_006/bone_000/bone_001"]

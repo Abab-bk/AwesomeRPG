@@ -28,7 +28,7 @@ func _ready() -> void:
             # 地牢奖励
             _data.get_reward()
             EventBus.enter_dungeon_and_success.emit()
-            EventBus.exit_dungeon.emit(), _data.enemy_id))
+            EventBus.exit_dungeon.emit(), _data.enemy_id, true, _data.current_level))
     
     EventBus.exit_dungeon.connect(recovery_wheather)
     EventBus.exit_tower.connect(recovery_wheather)

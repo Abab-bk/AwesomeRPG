@@ -139,16 +139,18 @@ func spawn_a_boss_enemy(_id:int) -> void:
     call_deferred("add_child", new_enemy)
     # 在 Enemy 脚本中设置等级及其他属性，因为 data 需要时间读取并赋值
     new_enemy.global_position = get_random_pos()
+    new_enemy.is_boss = true
     Master.player.find_closest_enemy()
+
     new_enemy.dead.connect(func():
         EventBus.boss_dead.emit()
         )
-    
+    EventBus.new_tips.emit("BOSS 来袭！")
     EventBus.boss_appear.emit(_data)
 
 
 
-func spawn_a_special_enemy(_reward:Callable, _id:int, _level = -1) -> void:
+func spawn_a_special_enemy(_reward:Callable, _id:int, _is_boss:bool = false,_level = -1) -> void:
     var _enemy_data = Master.dungeon_enemys[_id]
     
     var new_enemy:Enemy = Builder.build_a_enemy()
@@ -171,8 +173,18 @@ func spawn_a_special_enemy(_reward:Callable, _id:int, _level = -1) -> void:
     if _level != -1:
         _data.level = _level
     
+    if _is_boss:
+        new_enemy.dead.connect(func():
+            EventBus.boss_dead.emit()
+            )
+        EventBus.new_tips.emit("BOSS 来袭！")
+        EventBus.boss_appear.emit(_data)
+
     new_enemy.set_data(_data)
     call_deferred("add_child", new_enemy)
+    
+    new_enemy.is_boss = _is_boss
+    
     # 在 Enemy 脚本中设置等级及其他属性，因为 data 需要时间读取并赋值
     new_enemy.global_position = get_random_pos()
     Master.player.find_closest_enemy()

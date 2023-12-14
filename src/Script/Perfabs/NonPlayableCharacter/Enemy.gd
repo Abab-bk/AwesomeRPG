@@ -34,10 +34,20 @@ enum STATE {
     ATTACKING,
     ATK_COOLDOWN,
     DEAD,
-    SLEEP
+    SLEEP,
+    NOTHING,
 }
 
 var current_state:STATE = STATE.PATROL
+
+
+func move_camera_to_self_position() -> void:
+    current_state = STATE.NOTHING
+    character_animation.play("scml/Idle")
+    velocity = Vector2.ZERO
+    EventBus.move_camera_to.emit(global_position)
+    await get_tree().create_timer(2.0).timeout
+    current_state = STATE.PATROL
 
 
 func show_damage_label(value:int, crit:bool) -> void:
@@ -45,9 +55,10 @@ func show_damage_label(value:int, crit:bool) -> void:
     if $AnimationPlayer:
         $AnimationPlayer.play("Hited")
 
+
 func _ready() -> void:
     set_skin()
-    
+
     hurt_box_component.hited.connect(func(value:int, crit:bool):
         show_damage_label(value, crit)
         )
@@ -104,8 +115,17 @@ func _ready() -> void:
     if is_boss:
         _level += 2
     
+    # 给敌人穿装备
+    var _count:int = min(6, buff_manager.compute_data.level)
+    for _i in _count:
+        buff_manager.add_buff(Master.get_random_affix().buff)
+    
     # 设置属性 （每个敌人 ready 都是生成时）
     set_level(_level)
+    
+    if is_boss:
+        move_camera_to_self_position()
+
 
 
 func set_vision_range(_range:float) -> void:

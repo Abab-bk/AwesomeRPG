@@ -178,6 +178,7 @@ func _ready() -> void:
         )
     %GetFreeBtn.pressed.connect(func():
         Master.player.global_position = Vector2(0, 0)
+        Master.player.current_state = Player.STATE.IDLE
         )
     %GetEquipmentBtn.pressed.connect(func():
         var _drop_item:InventoryItem = $Control/GetEquipmentBtn/ItemGenerator.gen_a_item(true)

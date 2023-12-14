@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://3xynvu782kcm"]
+[gd_scene load_steps=13 format=3 uid="uid://3xynvu782kcm"]
 
 [ext_resource type="Script" path="res://Script/Game/World.gd" id="1_myfhc"]
 [ext_resource type="Script" path="res://Script/Game/Debuger.gd" id="2_84kal"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://dx27klpp0nc4x" path="res://Scene/Perfabs/NonPlayCharacter/Enemy.tscn" id="5_t1ymi"]
 [ext_resource type="Script" path="res://Script/Perfabs/Others/SaveTimer.gd" id="9_v08bh"]
 [ext_resource type="Script" path="res://Script/Perfabs/Maps/MapBoundary.gd" id="10_5aanf"]
-[ext_resource type="PackedScene" uid="uid://degirfp51m33o" path="res://Scene/Perfabs/Wheathers/FogDay.tscn" id="11_lx7r3"]
 
 [sub_resource type="Environment" id="Environment_iavjm"]
 background_mode = 3
@@ -90,5 +89,3 @@ rotation = -1.57175
 shape = SubResource("RectangleShape2D_6qxva")
 
 [node name="Wheathers" type="Node2D" parent="."]
-
-[node name="FogDay" parent="Wheathers" instance=ExtResource("11_lx7r3")]

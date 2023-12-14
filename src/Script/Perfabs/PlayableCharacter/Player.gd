@@ -35,6 +35,7 @@ enum STATE { # IDLE -> FINDING -> MOVE_TO_ENEMYING -> ATTACKING -> FINDING
     INITING, # 6
     TRY_FREEZE,
     FREEZEING, # 7 冻结
+    NOTHING,
 }
 
 # 死亡标识
@@ -95,6 +96,25 @@ func _ready() -> void:
             find_closest_enemy()
         )
     
+    
+    EventBus.move_camera_to.connect(func(_target_pos:Vector2):            
+        #get_tree().paused = true
+        current_state = STATE.NOTHING
+        velocity = Vector2.ZERO
+        character_animation_player.play("scml/Idle")
+
+        var _tw:Tween = create_tween()
+        # _tw.tween_property($Camera2D, "position", to_local(_target_pos), 0.4)
+        _tw.tween_property($Camera2D, "global_position", _target_pos, 0.4)
+        await _tw.finished
+        await get_tree().create_timer(2.0).timeout
+        #get_tree().paused = false
+
+        var _tw2:Tween = create_tween()
+        _tw2.tween_property($Camera2D, "position", Vector2(0, 0), 0.4)
+        )
+
+
     flower_buff_manager.compute_ok.connect(func():
         Master.player_data = flower_buff_manager.compute_data
         Master.player_output_data = flower_buff_manager.output_data
@@ -600,6 +620,7 @@ func die() -> void:
     
     match Master.current_location:
         Const.LOCATIONS.TOWER:
+            EventBus.show_popup.emit("挑战失败", "挑战失败！什么也没得到。")
             EventBus.exit_tower.emit()
         Const.LOCATIONS.DUNGEON:
             EventBus.exit_dungeon.emit()

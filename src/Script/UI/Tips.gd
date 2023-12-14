@@ -5,7 +5,7 @@ extends Control
 var text:String = ""
 
 func _ready() -> void:
+    
     label.text = text
-    $AnimationPlayer.play("run")
-    await $AnimationPlayer.animation_finished
+    await get_tree().create_timer(2.0).timeout
     queue_free()
