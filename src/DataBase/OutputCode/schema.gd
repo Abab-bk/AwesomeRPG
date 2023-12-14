@@ -518,6 +518,8 @@ class GoldAffixs:
 class DungeonEnemy:
     var id: int
     var name: String
+    var base_vision: float
+    var base_atk_range: float
     var skin_name: String
     var hp: float
     var base_damage: float
@@ -534,6 +536,8 @@ class DungeonEnemy:
     func _init(_json_) -> void:
         self.id = _json_["id"]
         self.name = _json_["name"]
+        self.base_vision = _json_["base_vision"]
+        self.base_atk_range = _json_["base_atk_range"]
         self.skin_name = _json_["skin_name"]
         self.hp = _json_["hp"]
         self.base_damage = _json_["base_damage"]

@@ -25,7 +25,7 @@
     "id": 6003,
     "name": "时间余晖",
     "enemy_id": 1003,
-    "wheather_id": 1001,
+    "wheather_id": 1003,
     "icon_path": "HeavenStairs.png",
     "reward_type": 4,
     "need_cost": 2000,

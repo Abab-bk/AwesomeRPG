@@ -19,6 +19,11 @@ func _ready() -> void:
         hide()
         )
     
+    EventBus.exit_dungeon.connect(func():
+        set_physics_process(false)
+        hide()
+        )
+
     hide()
     set_physics_process(false)
 

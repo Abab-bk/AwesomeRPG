@@ -49,6 +49,8 @@ func move_camera_to_self_position() -> void:
     SoundManager.play_sound(load(Const.SOUNDS.MonsterAttack))
     await get_tree().create_timer(2.0).timeout
     current_state = STATE.PATROL
+    Master.player.current_state = Player.STATE.IDLE
+
 
 
 func show_damage_label(value:int, crit:bool) -> void:
@@ -126,6 +128,9 @@ func _ready() -> void:
     
     if is_boss:
         move_camera_to_self_position()
+        EventBus.exit_dungeon.connect(func():
+            queue_free()
+            )
 
 
 

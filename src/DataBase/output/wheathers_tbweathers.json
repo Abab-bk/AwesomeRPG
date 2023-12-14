@@ -2,13 +2,19 @@
   {
     "id": 1001,
     "name": "雪天",
-    "desc": "雪天！有可能会被冻住！",
+    "desc": "玩家有可能会被冻住。",
     "scene_name": "SnowyDay"
   },
   {
     "id": 1002,
     "name": "雨天",
-    "desc": "雨天！小心打滑。速度 -100。",
+    "desc": "速度 -100。",
     "scene_name": "RainyDay"
+  },
+  {
+    "id": 1003,
+    "name": "热天",
+    "desc": "每秒损失 1 生命。",
+    "scene_name": "HotWheather"
   }
 ]

@@ -122,6 +122,8 @@ func spawn_a_boss_enemy(_id:int) -> void:
     new_enemy.skin_name = _enemy_data["skin_name"]
     
     var _data:CharacterData = CharacterData.new()
+    _data.vision = _enemy_data["base_vision"]
+    _data.atk_range = _enemy_data["base_atk_range"]
     _data.damage = _enemy_data["base_damage"]
     _data.frost_damage = _enemy_data["frost_damage"]
     _data.fire_damage = _enemy_data["fire_damage"]
@@ -134,6 +136,7 @@ func spawn_a_boss_enemy(_id:int) -> void:
     _data.max_hp = _enemy_data["hp"]
     _data.hp = _enemy_data["hp"]
     _data.speed = _enemy_data["speed"]
+    _data.name = _enemy_data["name"]
     
     new_enemy.set_data(_data, true)
     call_deferred("add_child", new_enemy)
@@ -158,6 +161,8 @@ func spawn_a_special_enemy(_reward:Callable, _id:int, _is_boss:bool = false,_lev
     new_enemy.skin_name = _enemy_data["skin_name"]
     
     var _data:CharacterData = CharacterData.new()
+    _data.vision = _enemy_data["base_vision"]
+    _data.atk_range = _enemy_data["base_atk_range"]
     _data.damage = _enemy_data["base_damage"]
     _data.frost_damage = _enemy_data["frost_damage"]
     _data.fire_damage = _enemy_data["fire_damage"]
@@ -170,6 +175,7 @@ func spawn_a_special_enemy(_reward:Callable, _id:int, _is_boss:bool = false,_lev
     _data.max_hp = _enemy_data["hp"]
     _data.hp = _enemy_data["hp"]
     _data.speed = _enemy_data["speed"]
+    _data.name = _enemy_data["name"]
     if _level != -1:
         _data.level = _level
     
@@ -222,6 +228,7 @@ func spawn_a_enemy_by_id(_id:int) -> void:
     _data.max_hp = _enemy_data["hp"]
     _data.hp = _enemy_data["hp"]
     _data.speed = _enemy_data["speed"]
+    _data.name = _enemy_data["name"]
     
     new_enemy.set_data(_data)
     call_deferred("add_child", new_enemy)    

@@ -517,7 +517,7 @@ func turn_to_closest_enemy() -> void:
 func _physics_process(_delta:float) -> void:
     match current_state:
         STATE.IDLE:
-            find_closest_enemy()      
+            find_closest_enemy()
         STATE.ATTACKING:
             if not closest_enemy:
                 find_closest_enemy()
@@ -604,6 +604,8 @@ func relife() -> void:
     die_sign = false
     current_state = STATE.IDLE
     
+    modulate = Color.WHITE
+
     EventBus.player_relife.emit()
 
 
@@ -620,9 +622,9 @@ func die() -> void:
     
     match Master.current_location:
         Const.LOCATIONS.TOWER:
-            EventBus.show_popup.emit("挑战失败", "挑战失败！什么也没得到。")
             EventBus.exit_tower.emit()
         Const.LOCATIONS.DUNGEON:
+            EventBus.show_popup.emit("挑战失败", "挑战失败！什么也没得到。")
             EventBus.exit_dungeon.emit()
     
     character_animation_player.play("scml/Dying")
