@@ -62,19 +62,13 @@ signal backed_to_home
 var show_days_checkin_red_point:bool = true:
     set(v):
         show_days_checkin_red_point = v
-        if show_days_checkin_red_point:
-            days_checkin_red_point.show()
-        else:
-            days_checkin_red_point.hide()
+        days_checkin_red_point.visible = show_days_checkin_red_point
         FlowerSaver.set_data("hud_show_days_checkin_red_point", show_days_checkin_red_point)
         
 var show_every_day_quest_red_point:bool = true:
     set(v):
         show_every_day_quest_red_point = v
-        if show_every_day_quest_red_point:
-            every_day_quest_red_point.show()
-        else:
-            every_day_quest_red_point.hide()            
+        every_day_quest_red_point.visible = show_every_day_quest_red_point
         FlowerSaver.set_data("hud_show_every_day_quest_red_point", show_every_day_quest_red_point)
 
 enum PAGE {
@@ -155,7 +149,7 @@ func _ready() -> void:
     forge_btn.pressed.connect(change_page.bind(PAGE.FORGE))
     repo_btn.pressed.connect(change_page.bind(PAGE.REPO))
     days_checkin_btn.pressed.connect(func():
-        show_days_checkin_red_point = true
+        show_days_checkin_red_point = false
         change_page(PAGE.DAYS_CHICKIN)
         )
     fly_btn.pressed.connect(change_page.bind(PAGE.FLY))

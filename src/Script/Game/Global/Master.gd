@@ -4,6 +4,7 @@ extends Node
 # TODO: 每日转盘（转的越多奖励越好）
 # TODO: 世界树（花园）
 # TODO: 程序化生成世界地图
+# TODO: 实装副本不同等级
 # HACK: 升级音效短一点
 # FIXME: 任务做到一定程度，就完不成咯
 
@@ -73,6 +74,8 @@ var flyed_just_now:bool = false:
     set(v):
         flyed_just_now = v
         FlowerSaver.set_data("flyed_just_now", flyed_just_now)
+var flyed_skill_point:int = 0
+
 var player_name:String = "花神":
     set(v):
         player_name = v
@@ -900,14 +903,21 @@ func get_offline_reward() -> void:
     
     Tracer.info("获得离线收益，离线时间：%s" % str(_distance))
     
-    var _level:int = Master.player.get_level() - 1
+    var _level:int = max(Master.player.get_level() - 1, 1)
     
-    var _get_xp:float = max((((2 * max(_level, 1) * 1.5) * (1 + Master.fly_count * 0.1)) * 0.1) * float(_distance), 100)
+    var _get_xp:float = ((3 * _level * 1.5) * (1 + Master.fly_count * 0.1) * float(_distance)) * 0.5
     var _get_coins:int = max(floor((_level * randi_range(0, 5)) * 0.1) * _distance, 100)
     
     Master.coins += _get_coins
-    Master.player.get_xp(_get_xp)
+
+    # 如果玩家经验足以升到下一级别
+    while player.compute_data.next_level_xp < _get_xp:
+        _get_xp -= player.compute_data.next_level_xp
+        player.get_xp(_get_xp)
+        if player.compute_data.now_xp >= player.compute_data.next_level_xp:
+            player.compute_data.level_up()
     
+
     EventBus.show_popup.emit("离线奖励", """
     离线奖励：
     金币 %s

@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://degirfp51m33o"]
+
+[ext_resource type="Shader" path="res://Assets/Shaders/FogDay.gdshader" id="1_txvwi"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_c4s5g"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kn1c0"]
+seamless = true
+noise = SubResource("FastNoiseLite_c4s5g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xs4eu"]
+shader = ExtResource("1_txvwi")
+shader_parameter/octaves = 1
+shader_parameter/starting_amplitude = 0.322
+shader_parameter/starting_frequency = 1.0
+shader_parameter/shift = -0.099
+shader_parameter/velocity = Vector2(0, 0.2)
+shader_parameter/fog_color = Color(0.4, 0.4, 0.4, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_kn1c0")
+
+[node name="FogDay" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+material = SubResource("ShaderMaterial_xs4eu")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)

@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://b2egf7gw24t6d"]
+
+[ext_resource type="Script" path="res://Script/Perfabs/Wheathers/HotWheather.gd" id="1_gpxi7"]
+[ext_resource type="Shader" path="res://Assets/Shaders/HotWheather.gdshader" id="1_llj7h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p5dbd"]
+shader = ExtResource("1_llj7h")
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+shader_parameter/vignette_rgb = Color(0.980392, 0, 0.235294, 1)
+
+[sub_resource type="Animation" id="Animation_p8njq"]
+resource_name = "run"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:material:shader_parameter/vignette_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.303]
+}
+
+[sub_resource type="Animation" id="Animation_doy3s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:material:shader_parameter/vignette_opacity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u3dj6"]
+_data = {
+"RESET": SubResource("Animation_doy3s"),
+"run": SubResource("Animation_p8njq")
+}
+
+[node name="HotWheather" type="Node2D"]
+script = ExtResource("1_gpxi7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+material = SubResource("ShaderMaterial_p5dbd")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u3dj6")
+}
+autoplay = "run"
+
+[node name="Timer" type="Timer" parent="."]

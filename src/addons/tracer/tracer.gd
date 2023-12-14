@@ -22,12 +22,12 @@ class Trace:
     var thread_id := 1
     var _has_mono: bool = Engine.has_singleton("GodotSharp")
 
-    func _init(
-        msg: String, level: Level, new_thread_id := 0
-    ) -> void:
+    func _init(msg: String, level: Level, new_thread_id := 0) -> void:
         self.msg = msg
         self.level = level
+        
         var st = get_stack()
+        
         if st.size() > 2:
             module = st[2].source.trim_prefix("res://")
             function_name = st[2].function
@@ -39,6 +39,7 @@ class Trace:
             function_name = mono_stack_handler.GetFunctionName()
         else:
             function_name = "unknown"
+        
         thread_id = new_thread_id
 
 

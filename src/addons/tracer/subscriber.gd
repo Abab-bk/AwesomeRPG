@@ -11,6 +11,7 @@ var print_thread_id := false
 var writer: Callable = print_stump
 var filter: int = ~0
 
+
 func init() -> void:
 	Tracer.add_child(self)
 	Tracer.entered_span.connect(on_entered_span)

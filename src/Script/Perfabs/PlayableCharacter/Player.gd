@@ -539,6 +539,10 @@ func change_body_sprite(_sprite:Texture2D) -> void:
 
 # ======= 属性 ========
 func up_level() -> void:
+    if compute_data.level >= 70 + (Master.fly_count * 10):
+        EventBus.new_tips.emit("已达最大等级，飞升解锁等级上限")
+        return
+
     compute_data.level_up()
     compute_data.now_xp = 0
     compute_data.update_next_xp()

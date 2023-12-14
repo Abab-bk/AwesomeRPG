@@ -8,6 +8,7 @@ extends Control
 
 var need_coins:int
 
+
 func _ready() -> void:
     fly_btn.pressed.connect(func():
         SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
@@ -20,9 +21,11 @@ func _ready() -> void:
             EventBus.new_tips.emit("等级不足")
             return
         
-        Master.coins -= need_coins
-        
         EventBus.show_popup.emit("飞升", "确认飞升吗？", true, func():
+            # 重生目的：解锁最大等级、点飞升技能树 -> 更快变强
+            # 获得技能点公式：根据玩家当前的所有属性
+            Master.flyed_skill_point += get_flyed_skill_point_count()
+            Master.coins -= need_coins
             Master.fly_count += 1
             Master.flyed_just_now = true
             #EventBus.flyed.emit()
@@ -59,8 +62,11 @@ func _ready() -> void:
 达到 %s 级
 %s 金币
 你会获得：
-击败怪物获得经验 +0.1 倍。[/center]
-        """ % [str(Master.fly_count), "70", str(need_coins)]
+击败怪物获得经验 +0.1 倍。
+玩家最大等级 +10.
+%s 点飞天赋点。
+[/center]
+        """ % [str(Master.fly_count), "70", str(need_coins), str(get_flyed_skill_point_count())]
         )
     
     if Master.unlocked_functions["fly"]:
@@ -73,3 +79,19 @@ func _ready() -> void:
     if FlowerSaver.has_key("flyed_just_now"):
         if FlowerSaver.get_data("flyed_just_now") == true:
             Master.flyed_just_now = false
+
+
+func get_flyed_skill_point_count() -> int:
+    return int(get_player_all_stat() / 100)
+
+
+func get_player_all_stat() -> float:
+    var _result:float = 0.0
+    
+    #_result += Master.player_data.max_hp
+    #_result += Master.player_data.max_magic
+    _result += Master.player_data.strength
+    _result += Master.player_data.agility
+    _result += Master.player_data.wisdom
+    
+    return _result
