@@ -115,6 +115,21 @@
         "weight": 1
       },
       {
+        "type": 10,
+        "reward_value": 1007,
+        "weight": 1
+      },
+      {
+        "type": 10,
+        "reward_value": 1008,
+        "weight": 1
+      },
+      {
+        "type": 10,
+        "reward_value": 1009,
+        "weight": 1
+      },
+      {
         "type": 1,
         "reward_value": 100,
         "weight": 2
