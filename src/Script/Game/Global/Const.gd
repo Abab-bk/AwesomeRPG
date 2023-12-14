@@ -2,6 +2,10 @@ class_name Const extends Node
 
 const MAX_AD_COUNT:int = 10
 
+const SOUNDS:Dictionary = {
+    "MonsterAttack": "res://Assets/Sounds/Sfx/MonsterAttack.wav"
+}
+
 enum MONEY_TYPE {
     NONE, # 0
     COIN, # 1

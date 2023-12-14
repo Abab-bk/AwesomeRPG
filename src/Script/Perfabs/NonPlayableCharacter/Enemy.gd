@@ -46,6 +46,7 @@ func move_camera_to_self_position() -> void:
     character_animation.play("scml/Idle")
     velocity = Vector2.ZERO
     EventBus.move_camera_to.emit(global_position)
+    SoundManager.play_sound(load(Const.SOUNDS.MonsterAttack))
     await get_tree().create_timer(2.0).timeout
     current_state = STATE.PATROL
 

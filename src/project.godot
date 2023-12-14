@@ -79,7 +79,7 @@ importer.scml={
 "optimize_for_blends": true,
 "playback_speed": 5,
 "reparenting_solution": "instance per parent",
-"rest_pose_animation": "scml/Attacking",
+"rest_pose_animation": "",
 "z_as_relative": true
 }
 

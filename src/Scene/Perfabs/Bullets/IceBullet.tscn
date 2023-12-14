@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://csubr3dqta30f"]
+
+[ext_resource type="Script" path="res://Script/Perfabs/Bullets/BaseBullet.gd" id="1_t5ss6"]
+[ext_resource type="Script" path="res://Script/Component/HitBoxComponent.gd" id="2_psvvw"]
+[ext_resource type="Texture2D" uid="uid://cbgegpi7m3ryk" path="res://Assets/Characters/Friends/IceElemental/Spells Effect.png" id="2_x18wo"]
+[ext_resource type="Script" path="res://Script/Component/VisiableQueueFreeComponent.gd" id="3_0qxyk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_227kt"]
+radius = 24.0
+
+[node name="IceBullet" type="CharacterBody2D"]
+script = ExtResource("1_t5ss6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_x18wo")
+
+[node name="HitBoxComponent" type="Area2D" parent="."]
+script = ExtResource("2_psvvw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+shape = SubResource("CircleShape2D_227kt")
+
+[node name="VisiableQueueFreeComponent" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(39.5, 21.8)
+script = ExtResource("3_0qxyk")

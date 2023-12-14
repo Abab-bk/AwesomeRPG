@@ -29,6 +29,15 @@ func build_a_base_bullet(_damage_data:CharacterData, _is_player_hitbox:bool) -> 
     return _n
 
 
+func build_a_custome_bullet(_damage_data:CharacterData, _is_player_hitbox:bool, _name:String) -> BaseBullet:
+    var _n:BaseBullet = load("res://Scene/Perfabs/Bullets/%s.tscn" % _name).instantiate()
+    
+    _n.damage_data = _damage_data
+    _n.is_player_bullet = _is_player_hitbox
+        
+    return _n
+
+
 func build_a_sprite_vfx() -> AnimatedSprite2D:
     var _n:AnimatedSprite2D = load(animation_vfx).instantiate()
     return _n

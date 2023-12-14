@@ -49,6 +49,12 @@ var all_enemy:Array
 
 var seted_data:CharacterData
 
+
+var atk_animation_name:String = "scml/Attacking"
+var move_animation_name:String = "scml/Walking"
+var bullet_scene_name:String = "BaseBullet"
+
+
 func _ready() -> void:
     set_skin()
 
@@ -141,15 +147,11 @@ func attack() -> void:
         
     turn_to_enemy()
     
+    character_animation.play(atk_animation_name)
+    
     # 攻击代码
-    if not range_attack:
-        if character_animation.has_animation("scml/Attacking"):
-            character_animation.play("scml/Attacking")
-            
-    else:
-        if character_animation.has_animation("scml/Shooting"):
-            character_animation.play("scml/Shooting")
-            spawn_a_bullet()
+    if range_attack:
+        spawn_a_bullet()
     
     current_state = STATE.ATK_COOLDOWN
 
@@ -157,7 +159,7 @@ func attack() -> void:
 func spawn_a_bullet() -> void:
     var _data:CharacterData = output_data.duplicate(true)
     _data.speed = 1000
-    var _bullet:BaseBullet = Builder.build_a_base_bullet(_data, false) as BaseBullet
+    var _bullet:BaseBullet = Builder.build_a_custome_bullet(_data, false, bullet_scene_name) as BaseBullet
     _bullet.is_player_bullet = true
     
     range_bullet_spwan_point.add_child(_bullet)
@@ -178,8 +180,8 @@ func move_to_enemy() -> void:
         velocity = _direction * output_data.speed
     #velocity = global_position.\
     #direction_to(closest_enemy.marker.global_position) * output_data.speed
-    
-    character_animation.play("scml/Walking")
+    character_animation.play(move_animation_name)
+    #character_animation.play("scml/Walking")
 
 
 func find_closest_enemy() -> void:
@@ -266,7 +268,15 @@ func set_skin() -> void:
     if not new_node.range_attack:
         new_node.hitbox_component.buff_manager = buff_manager
     else:
+        bullet_scene_name = new_node.bullet_scene_name
+        
         range_bullet_spwan_point = new_node.bullet_spawn_point
+        if new_node.magic_range:
+            atk_animation_name = "scml/Casting Spells"
+        else:
+            atk_animation_name = "scml/Shooting"
+            move_animation_name = "scml/Moving Forward"
+
 
 
 func update_navigation_position() -> void:

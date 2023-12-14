@@ -1,0 +1,21 @@
+[remap]
+
+importer="importer.scml"
+type="PackedScene"
+uid="uid://bus6n1tl7tnn0"
+path="res://.godot/imported/Animations.scml-dc9dfba7f5523ea04c9f113ec25929d2.scn"
+
+[deps]
+
+source_file="res://Assets/Characters/Gnoll2/Animations.scml"
+dest_files=["res://.godot/imported/Animations.scml-dc9dfba7f5523ea04c9f113ec25929d2.scn"]
+
+[params]
+
+playback_speed=5
+z_as_relative=true
+loop_animations=1
+loop_wrap_interpolation=true
+optimize_for_blends=true
+rest_pose_animation=""
+reparenting_solution="instance per parent"

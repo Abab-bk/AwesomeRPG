@@ -1,0 +1,21 @@
+[remap]
+
+importer="importer.scml"
+type="PackedScene"
+uid="uid://dsh4cikoamuc6"
+path="res://.godot/imported/Animations.scml-252d891094e803f5abf7f876c060e063.scn"
+
+[deps]
+
+source_file="res://Assets/Characters/Satry3/Animations.scml"
+dest_files=["res://.godot/imported/Animations.scml-252d891094e803f5abf7f876c060e063.scn"]
+
+[params]
+
+playback_speed=5
+z_as_relative=true
+loop_animations=1
+loop_wrap_interpolation=true
+optimize_for_blends=true
+rest_pose_animation=""
+reparenting_solution="instance per parent"

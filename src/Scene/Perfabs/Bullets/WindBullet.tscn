@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://tuwjrn32k1vr"]
+
+[ext_resource type="Script" path="res://Script/Perfabs/Bullets/BaseBullet.gd" id="1_bvss0"]
+[ext_resource type="Texture2D" uid="uid://2dsowybtkhay" path="res://Assets/Characters/Friends/WindElemental/Spells Effect.png" id="2_7u76m"]
+[ext_resource type="Script" path="res://Script/Component/HitBoxComponent.gd" id="3_s0svm"]
+[ext_resource type="Script" path="res://Script/Component/VisiableQueueFreeComponent.gd" id="4_0a5bd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tviro"]
+radius = 27.0185
+
+[node name="WindBullet" type="CharacterBody2D"]
+script = ExtResource("1_bvss0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7u76m")
+
+[node name="HitBoxComponent" type="Area2D" parent="."]
+script = ExtResource("3_s0svm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+shape = SubResource("CircleShape2D_tviro")
+
+[node name="VisiableQueueFreeComponent" type="VisibleOnScreenNotifier2D" parent="." node_paths=PackedStringArray("actor")]
+scale = Vector2(20.4, 10.5)
+script = ExtResource("4_0a5bd")
+actor = NodePath("..")

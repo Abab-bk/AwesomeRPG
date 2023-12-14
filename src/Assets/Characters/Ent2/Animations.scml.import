@@ -1,0 +1,21 @@
+[remap]
+
+importer="importer.scml"
+type="PackedScene"
+uid="uid://co42owtc0xbdm"
+path="res://.godot/imported/Animations.scml-379ca68de80b0976092986049cab5492.scn"
+
+[deps]
+
+source_file="res://Assets/Characters/Ent2/Animations.scml"
+dest_files=["res://.godot/imported/Animations.scml-379ca68de80b0976092986049cab5492.scn"]
+
+[params]
+
+playback_speed=5
+z_as_relative=true
+loop_animations=1
+loop_wrap_interpolation=true
+optimize_for_blends=true
+rest_pose_animation=""
+reparenting_solution="instance per parent"
