@@ -148,7 +148,7 @@ func spawn_a_boss_enemy(_id:int) -> void:
 
 
 
-func spawn_a_special_enemy(_reward:Callable, _id:int) -> void:
+func spawn_a_special_enemy(_reward:Callable, _id:int, _level = -1) -> void:
     var _enemy_data = Master.dungeon_enemys[_id]
     
     var new_enemy:Enemy = Builder.build_a_enemy()
@@ -168,6 +168,8 @@ func spawn_a_special_enemy(_reward:Callable, _id:int) -> void:
     _data.max_hp = _enemy_data["hp"]
     _data.hp = _enemy_data["hp"]
     _data.speed = _enemy_data["speed"]
+    if _level != -1:
+        _data.level = _level
     
     new_enemy.set_data(_data)
     call_deferred("add_child", new_enemy)

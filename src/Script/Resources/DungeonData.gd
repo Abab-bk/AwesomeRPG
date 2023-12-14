@@ -29,8 +29,8 @@ func set_level(_level:int) -> void:
         return
     
     current_level = _level
-    need_cost = base_cost * current_level
-    reward_value = base_reward * current_level
+    need_cost = base_cost * (current_level * 2)
+    reward_value = base_reward * (current_level * 2)
 
 
 func next_level() -> void:

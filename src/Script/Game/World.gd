@@ -22,7 +22,7 @@ func _ready() -> void:
         enemy_home.kill_all_enemy()
         
         if _data.wheather_id != 0:
-            change_wheather(Master.get_wheather_by_id(_data.wheather_id))
+            change_wheather(Master.get_wheather_by_id(Master.wheathers.keys().pick_random()))
         
         enemy_home.spawn_a_special_enemy(func():
             # 地牢奖励

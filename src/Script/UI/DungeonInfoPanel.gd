@@ -39,6 +39,7 @@ func _ready() -> void:
         )
     hide()
 
+
 func update_ui() -> void:
     name_label.text = current_dungeon.name
     cost_label.text = "门票钱：%s" % str(current_dungeon.need_cost)

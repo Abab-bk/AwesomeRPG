@@ -10,6 +10,7 @@ extends Panel
 @export var show_info_panel:Panel
 @export var data:DungeonData
 
+
 func _ready() -> void:
     if not data:
         return

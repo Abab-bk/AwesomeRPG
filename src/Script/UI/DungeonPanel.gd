@@ -7,6 +7,7 @@ var close_event:Callable = func():
         owner.change_page(0)
         hide()
 
+
 func _ready() -> void:
     hide()
     
@@ -19,6 +20,7 @@ func _ready() -> void:
         _node.show_info_panel = %DungeonInfoPanel
         
         itmes.add_child(_node)
+
 
 func show_popup() -> void:
     if visible:
