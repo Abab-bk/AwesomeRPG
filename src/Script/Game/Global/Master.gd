@@ -626,6 +626,7 @@ func get_talent_buff_by_id(_target_buff_id:int) -> FlowerBaseBuff:
     
     return buff
 
+
 func get_buff_by_id(_target_buff_id:int) -> FlowerBaseBuff:
     var buff:FlowerBaseBuff = FlowerBaseBuff.new()
     var _buff = ability_buffs[_target_buff_id]
