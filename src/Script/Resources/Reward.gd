@@ -71,10 +71,12 @@ func get_reward(_show_popup:bool = true) -> String:
         REWARD_TYPE.GACHA_MONEY_PART:
             Master.gacha_money_part += reward_value
         REWARD_TYPE.MEMORY:
+            var _memory:Memory = Memory.new(reward_value, 1)
+            
             if reward_value in Master.memorys:
-                Master.memorys[reward_value] = Master.memorys[reward_value] + 1
+                Master.memorys[reward_value].num += 1
             else:
-                Master.memorys[reward_value] = 1
+                Master.memorys[reward_value] = _memory
                 
         REWARD_TYPE.XP_BOOK_1:
             Master.xp_book_inventory[19] += reward_value
@@ -107,6 +109,8 @@ func get_reward(_show_popup:bool = true) -> String:
         EventBus.show_color.emit()
         EventBus.show_popup.emit("获得奖励！", "获得奖励：%s" % _return_text)
     
+    FlowerSaver.set_data("master_memorys", Master.memorys)
+
     return _return_text
 
 

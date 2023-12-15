@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bocjgxuxrl2vf"]
+
+[ext_resource type="Script" path="res://Script/Perfabs/Bullets/BaseBullet.gd" id="1_v2d1q"]
+[ext_resource type="Texture2D" uid="uid://b8ul6s30ufjva" path="res://Assets/Characters/Friends/Wraith/Spells Effect.png" id="2_woby3"]
+[ext_resource type="Script" path="res://Script/Component/HitBoxComponent.gd" id="3_y3368"]
+[ext_resource type="Script" path="res://Script/Component/VisiableQueueFreeComponent.gd" id="4_ybfoq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3hop"]
+size = Vector2(602, 364)
+
+[node name="WraithBullet" type="CharacterBody2D"]
+script = ExtResource("1_v2d1q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_woby3")
+
+[node name="HitBoxComponent" type="Area2D" parent="."]
+script = ExtResource("3_y3368")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
+shape = SubResource("RectangleShape2D_l3hop")
+
+[node name="VisiableQueueFreeComponent" type="VisibleOnScreenNotifier2D" parent="."]
+script = ExtResource("4_ybfoq")

@@ -67,10 +67,15 @@ func _ready() -> void:
     popup_cancel_btn.pressed.connect(hide_popup)
     memory_btn.pressed.connect(func():
         SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
-        show_popup("恢复记忆", "大部分属性大幅提升！", [[Const.MONEY_TYPE.MEMORY, "%s/%s" % [str(current_firend.memory), str(get_memonry_count_by_id(current_firend.id))], 1]])# info [cost_type, cost_desc]
+        show_popup("恢复记忆", "大部分属性大幅提升！", [[Const.MONEY_TYPE.MEMORY, "%s/%s" % [str(get_memonry_count_by_id(current_firend.id)), "1"], 1]])# info [cost_type, cost_desc]
+        
+        # [[type, num]]
+        current_spend.append([Const.MONEY_TYPE.MEMORY, 1])
+
         current_reward = func():
             current_firend_data.set_property_from_const_level(2)
             save()
+            EventBus.show_popup.emit("恢复记忆！", "大部分属性大幅提升！")
         save()
         )
     pro_btn.pressed.connect(func():
@@ -82,7 +87,8 @@ func _ready() -> void:
             current_firend_data.agility += (current_firend_data.agility)
             current_firend_data.strength += (current_firend_data.strength)
             current_firend_data.wisdom += (current_firend_data.wisdom)
-            save()    
+            EventBus.show_popup.emit("提升成功！", "提升最大血量、魔法量、敏捷、力量、智慧。")
+            save()
         save()
         )
     
@@ -101,13 +107,24 @@ func get_pro_need_cost() -> Array[Array]:
     var _base_cost_pole:int = 2
     
     # 金币
-    _result.append([Const.MONEY_TYPE.COIN, "%s/%s" % [str(Master.coins), str(_base_cost_coin * current_firend_data.level)], _base_cost_coin * current_firend_data.level])
+    var _need_coin_count:int = _base_cost_coin * current_firend_data.level
+    _result.append([Const.MONEY_TYPE.COIN, "%s/%s" % [str(Master.coins), str(_need_coin_count)], _need_coin_count])
+    current_spend.append([Const.MONEY_TYPE.COIN, _need_coin_count])
+    
     # 诗
-    _result.append([current_firend.need_pole, "%s/%s" % [str(Master.pole_inventory[current_firend.need_pole]), str(_base_cost_pole * min(current_firend_data.level, 8))], _base_cost_pole * min(current_firend_data.level, 8)])
+    var _need_pole_count:int = _base_cost_pole * min(current_firend_data.level, 8)
+    _result.append([current_firend.need_pole, "%s/%s" % [str(Master.pole_inventory[current_firend.need_pole]), str(_need_pole_count)], _need_pole_count])
+    current_spend.append([current_firend.need_pole, _need_coin_count])
+    
     # 蓝钱
-    _result.append([Const.MONEY_TYPE.MONEY_BLUE, "%s/%s" % [str(Master.moneys["blue"]), str(min(current_firend_data.level * 8, 20))], min(current_firend_data.level * 8, 20)])
+    var _need_blue_money_count:int = min(current_firend_data.level * 8, 20)
+    _result.append([Const.MONEY_TYPE.MONEY_BLUE, "%s/%s" % [str(Master.moneys["blue"]), str(_need_blue_money_count)], _need_blue_money_count])
+    current_spend.append([Const.MONEY_TYPE.MONEY_BLUE, _need_coin_count])
+    
     # 白钱
-    _result.append([Const.MONEY_TYPE.MONEY_WHITE, "%s/%s" % [str(Master.moneys["white"]), str(min(current_firend_data.level * 8, 20))], min(current_firend_data.level * 8, 20)])
+    var _need_white_money_count:int = min(current_firend_data.level * 8, 20)
+    _result.append([Const.MONEY_TYPE.MONEY_WHITE, "%s/%s" % [str(Master.moneys["white"]), str(_need_white_money_count)], _need_white_money_count])
+    current_spend.append([Const.MONEY_TYPE.MONEY_WHITE, _need_coin_count])
     
     return _result
 
@@ -120,48 +137,57 @@ func get_memonry_count_by_id(_id:int) -> int:
 
 func get_memonry_by_id(_id:int) -> Memory:
     if Master.memorys.has(_id):
+        Tracer.debug("Memory存在于Master，id: %s" % str(_id))
         return Master.memorys[_id]
+    
+    Tracer.debug("Memory不存在于Master，id: %s" % str(_id))
     return null
 
 
 func confirm_spend() -> void:
     var _spend_count:int = 0
     
+    # Tracer.debug("当前价格：%s" % str(current_spend))
+
     for _spend_token in current_spend:
         match _spend_token[0]: #type
             Const.MONEY_TYPE.MEMORY:
-                if get_memonry_count_by_id(current_firend.id) > 1:
+                # Tracer.debug("记忆数量：%s" % str(get_memonry_count_by_id(current_firend.id)))
+                
+                if get_memonry_count_by_id(current_firend.id) > 1: # 为什么是1？因为一次只能消耗一个记忆
                     var _memory:Memory = get_memonry_by_id(current_firend.id)
                     if not _memory:
                         return
                     
-                    _memory.num -= _spend_token[2]
+                    _memory.num -= _spend_token[1]
+                    current_firend.memory += 1
+                    
                     if _memory.num <= 0:
                         Master.memorys.erase(current_firend.id)
-                        _spend_count += 1
+                    _spend_count += 1
                         
             Const.MONEY_TYPE.XP_BOOK_1:
-                if Master.xp_book_inventory[19] < _spend_token[2]: # cost
+                if Master.xp_book_inventory[19] < _spend_token[1]: # cost
                     return
-                Master.xp_book_inventory[19] -= _spend_token[2]
+                Master.xp_book_inventory[19] -= _spend_token[1]
                 _spend_count += 1
                 
             Const.MONEY_TYPE.XP_BOOK_2:
-                if Master.xp_book_inventory[20] < _spend_token[2]: # cost
+                if Master.xp_book_inventory[20] < _spend_token[1]: # cost
                     return
-                Master.xp_book_inventory[20] -= _spend_token[2]
+                Master.xp_book_inventory[20] -= _spend_token[1]
                 _spend_count += 1
                 
             Const.MONEY_TYPE.XP_BOOK_3:
-                if Master.xp_book_inventory[21] < _spend_token[2]: # cost
+                if Master.xp_book_inventory[21] < _spend_token[1]: # cost
                     return
-                Master.xp_book_inventory[21] -= _spend_token[2]
+                Master.xp_book_inventory[21] -= _spend_token[1]
                 _spend_count += 1
                 
             Const.MONEY_TYPE.XP_BOOK_4:
-                if Master.xp_book_inventory[22] < _spend_token[2]: # cost
+                if Master.xp_book_inventory[22] < _spend_token[1]: # cost
                     return
-                Master.xp_book_inventory[22] -= _spend_token[2]
+                Master.xp_book_inventory[22] -= _spend_token[1]
                 _spend_count += 1
     
         if _spend_count == current_spend.size():
@@ -169,6 +195,8 @@ func confirm_spend() -> void:
             if not current_reward:
                 return
             current_reward.call()
+            update_ui()
+        update_ui()
 
 
 func show_popup(_title:String, _desc:String, _cost_info:Array[Array]) -> void:
@@ -189,7 +217,7 @@ func build_need_goods_ui_item(_info:Array) -> Panel:
     
     _new_node.icon_path = Const.get_money_icon_path(_info[0])
     _new_node.desc = _info[1]
-    
+
     return _new_node
 
 
@@ -221,7 +249,7 @@ func update_ui() -> void:
     pro_num_label.text = str(current_firend.pro)
 
     memory_signal_img.texture = load("res://Assets/UI/Texture/Container/6-%s.png" % str(current_firend.memory))
-    pro_signal_img.texture = load("res://Assets/UI/Texture/Container/3-%s.png" % str(current_firend.memory))
+    pro_signal_img.texture = load("res://Assets/UI/Texture/Container/3-%s.png" % str(current_firend.pro))
 
 
 func save() -> void:

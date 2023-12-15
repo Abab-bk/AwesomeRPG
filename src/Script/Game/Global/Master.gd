@@ -341,6 +341,9 @@ func _ready():
         if FlowerSaver.has_key("master_pole_inventory"):
             pole_inventory = FlowerSaver.get_data("master_pole_inventory")
         
+        if FlowerSaver.has_key("master_memorys"):
+            memorys = FlowerSaver.get_data("master_memorys")
+
         EventBus.rework_level_enemy_count.emit()
         
         var _current_time:TimeResource = TimeManager.get_current_time_resource() as TimeResource
@@ -392,6 +395,7 @@ func _ready():
 func save_all_invenrory() -> void:
     FlowerSaver.set_data("master_xp_book_inventory", Master.xp_book_inventory)
     FlowerSaver.set_data("master_pole_inventory", Master.pole_inventory)
+    FlowerSaver.set_data("master_memorys", Master.memorys)
 
 
 func yes_fly() -> void:
@@ -588,6 +592,7 @@ func get_quest_by_id(_id:int) -> QuestResource:
     _quest.need_value = _data["value"]
     
     return _quest
+
 
 func get_ability_by_id(_id:int) -> FlowerAbility:
     var _data = abilitys[_id]

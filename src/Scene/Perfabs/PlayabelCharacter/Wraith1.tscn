@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bm8lmfrmqohou"]
+[gd_scene load_steps=22 format=3 uid="uid://bm8lmfrmqohou"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/PlayableCharacter/FriendSkin.gd" id="1_xny8o"]
 [ext_resource type="Texture2D" uid="uid://cujdktiqubyhs" path="res://Assets/Characters/Friends/Wraith/Face 01.png" id="2_ku8cl"]
@@ -10,46 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://dobbb82jqimbs" path="res://Assets/Characters/Friends/Wraith/Left Hand.png" id="8_r81yf"]
 [ext_resource type="Texture2D" uid="uid://civ4sptdgwyb2" path="res://Assets/Characters/Friends/Wraith/Left Arm.png" id="9_s4msg"]
 [ext_resource type="Texture2D" uid="uid://dxggx6cgqven1" path="res://Assets/Characters/Friends/Wraith/Body.png" id="10_4oel6"]
-[ext_resource type="Script" path="res://Script/Component/HitBoxComponent.gd" id="11_unmhf"]
 
 [sub_resource type="Animation" id="Animation_vnsl4"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../HitBoxComponent/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../HitBoxComponent/CollisionShape2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(67, -38)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../HitBoxComponent/CollisionShape2D:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.669643]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wjqe4"]
 _data = {
@@ -180,42 +143,6 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [ExtResource("2_ku8cl")]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("../HitBoxComponent/CollisionShape2D:disabled")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0, 1.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("../HitBoxComponent/CollisionShape2D:position")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0, 1.3, 2.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(67, -38), Vector2(33, -125), Vector2(73, -64), Vector2(57, -34)]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("../HitBoxComponent/CollisionShape2D:rotation")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0, 1.3, 2.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [0.669643, -1.0863, 0.434278, 0.920885]
 }
 
 [sub_resource type="Animation" id="Animation_1kgt7"]
@@ -1106,13 +1033,13 @@ _data = {
 "Walking": SubResource("Animation_scvq8")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o4r3f"]
-size = Vector2(60.0457, 34)
-
-[node name="Wraith1" type="Node2D" node_paths=PackedStringArray("animation_player", "hitbox_component")]
+[node name="Wraith1" type="Node2D" node_paths=PackedStringArray("animation_player", "bullet_spawn_point")]
 script = ExtResource("1_xny8o")
 animation_player = NodePath("Skeleton/AnimationPlayer")
-hitbox_component = NodePath("HitBoxComponent")
+range_attack = true
+bullet_spawn_point = NodePath("Marker2D")
+magic_range = true
+bullet_scene_name = "WraithBullet"
 
 [node name="Skeleton" type="Skeleton2D" parent="."]
 rotation = -3.14159
@@ -1218,12 +1145,5 @@ centered = false
 offset = Vector2(0, -128)
 flip_v = true
 
-[node name="HitBoxComponent" type="Area2D" parent="."]
-script = ExtResource("11_unmhf")
-is_player_hitbox = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
-position = Vector2(67, -38)
-rotation = 0.669643
-shape = SubResource("RectangleShape2D_o4r3f")
-disabled = true
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(83, -83)

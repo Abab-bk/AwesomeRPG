@@ -12,9 +12,11 @@ var current_friends:Dictionary = {}:
         current_friends = v
         save()
 
+# TODO: 测试专精和升级
 
 func _ready() -> void:
     friends_inventory_ui.closed.connect(func():color_rect.hide())
+    friends_inventory_ui.target_item_ui = self
     
     for i in items.get_children():
         i.change_btn_click.connect(show_select_friends_panel.bind(i))

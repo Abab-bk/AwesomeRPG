@@ -273,9 +273,9 @@ func set_skin() -> void:
         range_bullet_spwan_point = new_node.bullet_spawn_point
         if new_node.magic_range:
             atk_animation_name = "scml/Casting Spells"
+            move_animation_name = "scml/Moving Forward"
         else:
             atk_animation_name = "scml/Shooting"
-            move_animation_name = "scml/Moving Forward"
 
 
 
