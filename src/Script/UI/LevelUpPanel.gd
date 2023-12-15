@@ -37,6 +37,7 @@ func _ready() -> void:
         )
     
     yes_btn.pressed.connect(func():
+        SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
         Master.xp_book_inventory[current_select] -= h_slider.value
         var _get_all_xp:int = 0
         sim_all_xp = 0
@@ -53,11 +54,13 @@ func _ready() -> void:
             friend_data.level_up()
             
             level_label.text = "Lv. %s" % str(_current_level)
+            SoundManager.play_ui_sound(load(Master.POPUP_SOUNDS))
         
         update_ui()
         )
     
     cancel_btn.pressed.connect(func():
+        SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
         cancel.emit()
         )
     

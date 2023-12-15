@@ -12,7 +12,6 @@ var current_friends:Dictionary = {}:
         current_friends = v
         save()
 
-# TODO: 测试专精和升级
 
 func _ready() -> void:
     friends_inventory_ui.closed.connect(func():color_rect.hide())
