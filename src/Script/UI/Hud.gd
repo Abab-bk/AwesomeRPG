@@ -134,7 +134,9 @@ func _ready() -> void:
         if FlowerSaver.has_key("hud_show_days_checkin_red_point"):
             show_days_checkin_red_point = FlowerSaver.get_data("hud_show_days_checkin_red_point")
         )
-    
+    EventBus.show_every_day_quest_red_point.connect(func():
+        show_every_day_quest_red_point = true
+        )
     
     backed_to_home.connect(func():quest_panel.show())
     changed_to_other.connect(func():quest_panel.hide())

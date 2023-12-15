@@ -18,6 +18,9 @@ extends Panel
         current_quest.connect_signals()
         update_ui()
         FlowerSaver.set_data("every_day_quest_%s" % id, current_quest)
+        current_quest.can_completed.connect(func():
+            EventBus.show_every_day_quest_red_point.emit()
+            )
         #Tracer.info("每日任务存档成功，key：%s" % "every_day_quest_%s" % id)
 
 @onready var content:HBoxContainer = %Content
@@ -57,6 +60,7 @@ func update_ui() -> void:
     title_label.text = current_quest.name
     progress_bar_label.text = "%s / %s" % [str(current_quest.current_value), str(current_quest.need_value)]
     progress_bar.value = (float(current_quest.current_value) / float(current_quest.need_value)) * 100.0
+    
 
 
 func update_reward_ui() -> void:

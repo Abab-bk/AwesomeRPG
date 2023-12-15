@@ -5,6 +5,7 @@ signal load_save
 
 signal change_scene(who:Node, to:String)
 
+signal show_every_day_quest_red_point
 signal update_ui
 signal update_inventory
 signal change_item_tooltip_state(item:InventoryItem, down:bool, move:bool, display:bool, differ:bool, differ_item:InventoryItem)

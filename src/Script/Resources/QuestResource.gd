@@ -1,6 +1,7 @@
 class_name QuestResource extends Resource
 
 signal value_changed
+signal can_completed
 
 enum QUEST_TYPE {
     KILL_ENEMY, # ok
@@ -26,6 +27,9 @@ enum QUEST_TYPE {
     set(v):
         current_value = v
         value_changed.emit()
+        if current_value >= need_value:
+            can_completed.emit()
+        
 @export var done:bool = false
 
 func connect_signals() -> void:
