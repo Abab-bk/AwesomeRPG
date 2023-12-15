@@ -153,6 +153,7 @@ func _ready() -> void:
                 
                 for i in Master.flyed_obtain_buffs:
                     compute_data[i[0]] += i[1]
+                Tracer.info("玩家飞升获得属性：%s" % str(Master.flyed_obtain_buffs))
                 
                 Master.player_data = compute_data
                 Master.player_output_data = output_data

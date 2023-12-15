@@ -17,10 +17,6 @@ func _ready() -> void:
             EventBus.new_tips.emit("金币不足")
             return
         
-        if Master.player_output_data.level < 70:
-            EventBus.new_tips.emit("等级不足")
-            return
-        
         EventBus.show_popup.emit("飞升", "确认飞升吗？", true, func():
             # 重生目的：解锁最大等级、点飞升技能树 -> 更快变强
             # 获得技能点公式：根据玩家当前的所有属性
@@ -48,6 +44,7 @@ func _ready() -> void:
         if not visible:
             return
         
+        update_ui()
         var _level:int = max(1, Master.player.get_level() - 10)
         need_coins = floor((_level * randi_range(0, 5)) * 80)
         
@@ -59,30 +56,35 @@ func _ready() -> void:
 你会失去：
 一切。
 你需要：
-达到 %s 级
 %s 金币
 你会获得：
 击败怪物获得经验 +0.1 倍。
 玩家最大等级 +10.
 %s 点飞天赋点。
 [/center]
-        """ % [str(Master.fly_count), "70", str(need_coins), str(get_flyed_skill_point_count())]
+        """ % [str(Master.fly_count), str(need_coins), str(get_flyed_skill_point_count())]
         )
     
-    if Master.unlocked_functions["fly"]:
-        lock_label.hide()
-        content.show()
-    else:
-        lock_label.show()
-        content.hide()
+    update_ui()
     
     if FlowerSaver.has_key("flyed_just_now"):
         if FlowerSaver.get_data("flyed_just_now") == true:
             Master.flyed_just_now = false
 
 
+func update_ui() -> void:
+    if not Master.unlocked_functions.has("fly"):
+        return
+    if Master.unlocked_functions["fly"]:
+        lock_label.hide()
+        content.show()
+    else:
+        lock_label.show()
+        content.hide()
+
+
 func get_flyed_skill_point_count() -> int:
-    return int(get_player_all_stat() / 100)
+    return int(get_player_all_stat() / 100) + 3
 
 
 func get_player_all_stat() -> float:

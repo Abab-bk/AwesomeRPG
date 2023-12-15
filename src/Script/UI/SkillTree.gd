@@ -50,14 +50,14 @@ func get_skill_node_data(_id:int) -> WorldmapNodeData:
     var _data_id:int = Master.talent_buffs.keys().pick_random()
     var _ability_data = Master.talent_buffs[_data_id]
     
-    var _offset:float = randf_range(0.1, 0.2)
+    var _offset:float = randf_range(1.0, 2.0)
     
     _data.id = str(_id)
     _data.texture = load("res://Assets/UI/Icons/TalentIcons/" + _ability_data["icon_path"])
-    _data.name = _ability_data["name"].format({"s": str(_offset * 10).pad_decimals(1)})
+    _data.name = _ability_data["name"].format({"s": str(_offset).pad_decimals(1)})
     _data.cost = _ability_data["cost"]
     
-    _data.data.append(Master.get_talent_buff_by_id(_data_id))
+    _data.data.append(Master.get_talent_buff_by_id(_data_id, _offset))
     
     return _data
 
@@ -86,6 +86,10 @@ func add_a_sub_skill_node(_parent_id:int, _id:int, _node_pos:Vector2) -> void:
 
 func _ready() -> void:
     unlock_btn.pressed.connect(func():
+        if not closest_node_in_path:
+            return
+        if not closest_path:
+            return
         if skills_ui.can_activate(closest_path, closest_node_in_path):
             unlock_btn.disabled = false
             skills_ui.max_unlock_cost -= skills_ui.set_node_state(closest_path, closest_node_in_path, 1)

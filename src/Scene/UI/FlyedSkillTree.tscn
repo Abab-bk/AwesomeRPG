@@ -59,10 +59,11 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="Panel/MarginContainer/VBoxContainer/SubViewportContainer"]
 unique_name_in_owner = true
 handle_input_locally = false
-size = Vector2i(2, 2)
+size = Vector2i(1020, 1572)
 render_target_update_mode = 4
 
-[node name="FlyedSkillTreeMap" parent="Panel/MarginContainer/VBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("3_rifjv")]
+[node name="TalentTree" parent="Panel/MarginContainer/VBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("3_rifjv")]
+unique_name_in_owner = true
 
 [node name="Panel" type="Panel" parent="Panel/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 600)
@@ -167,7 +168,8 @@ size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.992157, 0.945098, 0.827451, 1)
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "[center]确定退出飞升技能树，回归凡俗吗？[/center]"
+text = "[center]确定退出飞升技能树，回归凡俗吗？
+余剩的天赋点不会保留。[/center]"
 scroll_active = false
 
 [node name="MarginContainer" type="MarginContainer" parent="Popup/MarginContainer2/Body"]

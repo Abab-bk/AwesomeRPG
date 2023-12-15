@@ -8,6 +8,7 @@ class_name BaseBullet extends CharacterBody2D
 
 func _ready() -> void:
     hit_box.is_player_hitbox = is_player_bullet
+    # Tracer.info("基础子弹：%s" % str(is_player_bullet))
     hit_box.damage_data = damage_data
     hit_box.reset_collision()
 

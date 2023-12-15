@@ -59,7 +59,7 @@ func _ready() -> void:
     if Master.should_load:
         FlowerSaver.load_save(Master.current_save_slot)
         print("加载存档 - 世界")
-        EventBus.load_save.emit()
+        EventBus.load_save.emit()   
         Master.should_load = false
 
 

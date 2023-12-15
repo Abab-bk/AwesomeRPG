@@ -235,6 +235,7 @@ func _ready():
         match _key:
             "fly":
                 unlocked_functions.fly = true
+        FlowerSaver.set_data("unlocked_functions", unlocked_functions)
         )
 
     EventBus.unlocked_ability.connect(func(_id:int):
@@ -257,7 +258,6 @@ func _ready():
         )
     
     EventBus.save.connect(func():
-        FlowerSaver.set_data("unlocked_functions", unlocked_functions)
         FlowerSaver.set_data("next_reward_player_level", next_reward_player_level)
         last_leave_time = TimeManager.get_current_time_resource()
         #FlowerSaver.set_data("last_leave_time", last_leave_time)
@@ -278,7 +278,8 @@ func _ready():
             moneys = {"white": 0, "blue": 0, "purple": 0, "yellow": 0,}
             next_reward_player_level = 1
             player_healing_items = {"hp_potion": 0, "mp_potion": 0, }
-            
+            unlocked_functions = {}
+            flyed_skill_point = 0
             player_data = null
             player_output_data = null
             
@@ -614,7 +615,7 @@ func get_ability_by_id(_id:int) -> FlowerAbility:
     
     return _ability
 
-func get_talent_buff_by_id(_target_buff_id:int) -> FlowerBaseBuff:
+func get_talent_buff_by_id(_target_buff_id:int, _offset:float) -> FlowerBaseBuff:
     var buff:FlowerBaseBuff = FlowerBaseBuff.new()
     var _buff = talent_buffs[_target_buff_id]
     
@@ -627,9 +628,25 @@ func get_talent_buff_by_id(_target_buff_id:int) -> FlowerBaseBuff:
     buff.active_time = _buff["active_time"]
     buff.cooldown_time = _buff["cooldown_time"]
     
-    buff.compute_values = _get_compute_datas(_buff["compute_values"])
+    buff.compute_values = _get_talent_compute_datas(_buff["compute_values"], _offset)
     
     return buff
+
+func _get_talent_compute_datas(_value, _offset:float) -> Array[FlowerComputeData]:
+    var _result:Array[FlowerComputeData] = []
+    
+    for i in _value:
+        var _new_data:FlowerComputeData = FlowerComputeData.new()
+        _new_data.id = i["id"]
+        _new_data.type = i["type"]
+        _new_data.value = _offset
+        _new_data.formual = i["formual"]
+        _new_data.target_property = i["target_property"]
+        
+        _result.append(_new_data)
+        
+    return _result
+
 
 
 func get_buff_by_id(_target_buff_id:int) -> FlowerBaseBuff:

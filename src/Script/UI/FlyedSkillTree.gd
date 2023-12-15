@@ -54,14 +54,14 @@ func get_skill_node_data(_id:int) -> WorldmapNodeData:
     var _data_id:int = Master.talent_buffs.keys().pick_random()
     var _ability_data = Master.talent_buffs[_data_id]
     
-    var _offset:float = randf_range(0.1, 0.2)
+    var _offset:float = randf_range(1.0, 2.0)
     
     _data.id = str(_id)
     _data.texture = load("res://Assets/UI/Icons/TalentIcons/" + _ability_data["icon_path"])
-    _data.name = _ability_data["name"].format({"s": str(_offset * 10).pad_decimals(1)})
+    _data.name = _ability_data["name"].format({"s": str(_offset).pad_decimals(1)})
     _data.cost = _ability_data["cost"]
-    
-    _data.data.append(Master.get_talent_buff_by_id(_data_id))
+
+    _data.data.append(Master.get_talent_buff_by_id(_data_id, _offset))
     
     return _data
 
@@ -90,6 +90,11 @@ func add_a_sub_skill_node(_parent_id:int, _id:int, _node_pos:Vector2) -> void:
 
 func _ready() -> void:
     unlock_btn.pressed.connect(func():
+        if not closest_node_in_path:
+            return
+        if not closest_path:
+            return
+        
         if skills_ui.can_activate(closest_path, closest_node_in_path):
             unlock_btn.disabled = false
             skills_ui.max_unlock_cost -= skills_ui.set_node_state(closest_path, closest_node_in_path, 1)
@@ -104,6 +109,7 @@ func _ready() -> void:
     
     yes_btn.pressed.connect(func():
         EventBus.flyed.emit()
+        Master.flyed_just_now = true
         Master.should_load = true
         get_tree().change_scene_to_packed(load("res://Scene/World.tscn"))
         )
@@ -116,7 +122,7 @@ func _ready() -> void:
     root_item = %TalentTree.root_item
     
     skills_ui.node_gui_input.connect(_on_node_gui_input)
-    skills_ui.max_unlock_cost = 0
+    skills_ui.max_unlock_cost = Master.flyed_skill_point
     skills_ui.recalculate_map()
     
     added_node_pos.append(node_pos)
@@ -125,14 +131,13 @@ func _ready() -> void:
         saved_datas = FlowerSaver.get_data("flyed_tree_skill_tree_data")
         loaded = true
     
-    EventBus.get_talent_point.connect(func(_count:int):
-        skills_ui.max_unlock_cost += _count
-        )
-    
     popup.hide()
     
+    title_bar.cancel_callable = cancel_event
+
     update_ui()
     
+    await get_tree().create_timer(1.0).timeout
     gen_trees_by_walker()
 
 
@@ -140,13 +145,14 @@ func save() -> void:
     Tracer.info("保存飞升技能树")
     saved_inner_data = {
         "state": skills_ui.get_state(),
-        "cost": skills_ui.max_unlock_cost
+        "cost": Master.flyed_skill_point
     }
     FlowerSaver.set_data("flyed_tree_skill_tree_data", saved_datas)
     FlowerSaver.set_data("flyed_tree_saved_inner_data", saved_inner_data)
 
 
 func load_save() -> void:
+    await get_tree().create_timer(1.0).timeout
     skills_ui.recalculate_map()
     saved_datas = FlowerSaver.get_data("flyed_tree_skill_tree_data")
     saved_inner_data = FlowerSaver.get_data("flyed_tree_saved_inner_data")
