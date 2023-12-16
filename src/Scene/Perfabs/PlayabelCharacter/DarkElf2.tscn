@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c566wqlko0wb0"]
+[gd_scene load_steps=28 format=3 uid="uid://c566wqlko0wb0"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/PlayableCharacter/FriendSkin.gd" id="1_ox7jm"]
 [ext_resource type="Texture2D" uid="uid://cultyj8mtko4w" path="res://Assets/Characters/Friends/DarkElf2/Face 01.png" id="2_x2djp"]
@@ -14,6 +14,50 @@
 [ext_resource type="Texture2D" uid="uid://buhdn4r40vgcl" path="res://Assets/Characters/Friends/DarkElf2/Left Arm.png" id="12_je6qo"]
 [ext_resource type="Texture2D" uid="uid://l3ad4ne05k74" path="res://Assets/Characters/Friends/DarkElf2/Body.png" id="13_e52yp"]
 [ext_resource type="Script" path="res://Script/Component/HitBoxComponent.gd" id="14_uhtpl"]
+
+[sub_resource type="Animation" id="Animation_a5bfo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../HitBoxComponent/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../HitBoxComponent/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(61, -195)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HitBoxComponent/CollisionShape2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.67946]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rxmvu"]
+_data = {
+"RESET": SubResource("Animation_a5bfo")
+}
 
 [sub_resource type="Animation" id="Animation_u0jfs"]
 length = 4.0
@@ -186,6 +230,42 @@ tracks/13/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [ExtResource("2_x2djp")]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../HitBoxComponent/CollisionShape2D:disabled")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 2.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../HitBoxComponent/CollisionShape2D:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 2.25, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(105, -164), Vector2(61, -195), Vector2(151, -29)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../HitBoxComponent/CollisionShape2D:rotation")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 2.25, 2.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-1.21517, -1.67946, -0.0355825]
 }
 
 [sub_resource type="Animation" id="Animation_hfacx"]
@@ -1588,8 +1668,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ckdsp"]
 size = Vector2(147.878, 27)
 
-[node name="03" type="Node2D"]
+[node name="03" type="Node2D" node_paths=PackedStringArray("animation_player", "hitbox_component")]
 script = ExtResource("1_ox7jm")
+animation_player = NodePath("Skeleton/AnimationPlayer")
+hitbox_component = NodePath("HitBoxComponent")
+range_attack = true
 
 [node name="Skeleton" type="Skeleton2D" parent="."]
 rotation = -3.14159
@@ -1597,6 +1680,7 @@ scale = Vector2(-1, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skeleton"]
 libraries = {
+"": SubResource("AnimationLibrary_rxmvu"),
 "scml": SubResource("AnimationLibrary_oax2w")
 }
 autoplay = "scml/Idle"
@@ -1740,6 +1824,6 @@ script = ExtResource("14_uhtpl")
 is_player_hitbox = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
-position = Vector2(104.702, -167.203)
-rotation = -1.21208
+position = Vector2(61, -195)
+rotation = -1.67946
 shape = SubResource("RectangleShape2D_ckdsp")

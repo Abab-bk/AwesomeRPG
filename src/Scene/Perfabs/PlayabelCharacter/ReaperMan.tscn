@@ -33,26 +33,26 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../HitBoxComponent/CollisionShape2D:rotation")
+tracks/1/path = NodePath("../HitBoxComponent/CollisionShape2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-1.92611]
+"values": [Vector2(24.6763, -185.278)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../HitBoxComponent/CollisionShape2D:position")
+tracks/2/path = NodePath("../HitBoxComponent/CollisionShape2D:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(67, -357)]
+"values": [-1.92611]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hyusg"]
@@ -312,34 +312,34 @@ tracks/20/path = NodePath("../HitBoxComponent/CollisionShape2D:disabled")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
-"times": PackedFloat32Array(0, 1.3),
+"times": PackedFloat32Array(0, 0.65),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [true, false]
 }
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("../HitBoxComponent/CollisionShape2D:rotation")
+tracks/21/path = NodePath("../HitBoxComponent/CollisionShape2D:position")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
-"times": PackedFloat32Array(0, 1.3, 2, 2.0001),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.99, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [-1.92611, -0.0201814, -0.0201814, -0.687256]
+"values": [Vector2(24.6763, -185.278), Vector2(111, -140), Vector2(117.066, -41.5086)]
 }
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("../HitBoxComponent/CollisionShape2D:position")
+tracks/22/path = NodePath("../HitBoxComponent/CollisionShape2D:rotation")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
-"times": PackedFloat32Array(0, 1.3, 2),
+"times": PackedFloat32Array(0, 0.99, 1.25),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(67, -357), Vector2(249.2, -79.5399), Vector2(249.2, -79.5399)]
+"values": [-1.92611, -1.21978, -0.0189805]
 }
 
 [sub_resource type="Animation" id="Animation_hpf3d"]
@@ -4530,7 +4530,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ft2yx"]
-size = Vector2(272.609, 48)
+size = Vector2(153.74, 41.0159)
 
 [node name="Reaper_Man" type="Node2D" node_paths=PackedStringArray("animation_player", "hitbox_component")]
 script = ExtResource("2_xc4fo")
@@ -4539,7 +4539,7 @@ hitbox_component = NodePath("HitBoxComponent")
 
 [node name="Skeleton" type="Skeleton2D" parent="."]
 rotation = -3.14159
-scale = Vector2(-1, 1)
+scale = Vector2(-0.5, 0.5)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Skeleton"]
 libraries = {
@@ -4608,6 +4608,7 @@ flip_v = true
 [node name="bone_000" type="Bone2D" parent="Skeleton/bone_006"]
 position = Vector2(89.9226, 80.6308)
 rotation = 2.96007
+scale = Vector2(1, 1)
 rest = Transform2D(-0.98357, 0.180528, -0.180528, -0.98357, 89.9226, 80.6308)
 
 [node name="bone_001" type="Bone2D" parent="Skeleton/bone_006/bone_000"]
@@ -4694,7 +4695,7 @@ script = ExtResource("3_o0yvl")
 is_player_hitbox = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent"]
-position = Vector2(67, -357)
+position = Vector2(24.6763, -185.278)
 rotation = -1.92611
 shape = SubResource("RectangleShape2D_ft2yx")
 disabled = true

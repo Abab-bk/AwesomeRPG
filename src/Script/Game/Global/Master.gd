@@ -199,7 +199,9 @@ var json_path:String = "res://DataBase/output/"
 var subscriber:TraceSubscriber = (
     TraceSubscriber
     .new()
-    .with_nicer_colors(false))
+    .with_nicer_colors(false)
+    .with_colored_output(false)
+    )
 
 const abilitys_start:int = 4002
 const abilitys_end:int = 4009
@@ -282,11 +284,11 @@ func _ready():
             flyed_skill_point = 0
             player_data = null
             player_output_data = null
-            
             player_inventory = null
             
             #EventBus.rework_level_enemy_count.emit()
             EventBus.completed_level.emit()
+            flyed_just_now = false
             return
         
         Tracer.info("Master常规读档")
@@ -512,7 +514,7 @@ func get_friend_data_by_id(_id:int) -> FriendData:
     var _friend_data = friends[_id]
     
     _friend.id = _id
-    _friend.icon_path = _friend_data["icon_path"]
+    _friend.icon_path = "res://Assets/Texture/Icons/FriendsIcon/%s.png" % _friend_data["icon_path"]
     _friend.name = _friend_data["name"]
     _friend.quality = _friend_data["quality"]
     _friend.skin_name = _friend_data["skin_name"]

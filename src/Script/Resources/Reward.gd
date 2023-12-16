@@ -30,7 +30,7 @@ enum REWARD_TYPE {
 
 @export var type:REWARD_TYPE = REWARD_TYPE.NONE
 @export var reward_value:int = 0
-@export var weight:int = 1
+@export var weight:float = 1.0
 
 func get_reward(_show_popup:bool = true) -> String:
     match type:

@@ -471,6 +471,15 @@ func move_to_enemy() -> void:
         #var _direction:Vector2 = to_local(navigation_agent_2d.get_next_path_position()).normalized()
         var _direction:Vector2 = global_position.direction_to(navigation_agent_2d.get_next_path_position())
         velocity = _direction * output_data.speed
+        
+        if global_position.distance_to(navigation_agent_2d.get_final_position()) <= 20.0:
+            global_position = navigation_agent_2d.get_final_position()
+            attack()
+            return
+    # else:
+    #     global_position = to_global(navigation_agent_2d.get_next_path_position())
+    #     attack()
+    #     return
     #velocity = global_position.\
     #direction_to(closest_enemy.marker.global_position) * output_data.speed
     

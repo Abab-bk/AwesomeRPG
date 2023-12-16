@@ -58,6 +58,13 @@ func start_gacha(_count:int) -> void:
     
     await show_result_timer.timeout
     reward_result.show()
+    for _gacha_item_ui in rewards_ui.get_children():
+        _gacha_item_ui.show()
+        # _gacha_item_ui.try_to_show_animation()
+        # await get_tree().create_timer(0.4).timeout
+        if not _gacha_item_ui:
+            break
+        
     blur.show()
     animation_player.play("show_blur")
     await animation_player.animation_finished
@@ -87,7 +94,10 @@ func pull_gacha(_count:int) -> void:
         _new_reward_card.title = _desc
         _new_reward_card.type = _get_reward.type
         rewards_ui.add_child(_new_reward_card)
-    
+        _new_reward_card.hide()
+        # _new_reward_card.try_to_show_animation()
+        # await get_tree().create_timer(0.5).timeout
+
     Master.save_all_invenrory()
 
 

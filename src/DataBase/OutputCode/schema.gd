@@ -613,13 +613,13 @@ class Gachas:
 class RewardWeightReward:
     var type: int
     ## 对于随从，value为id
+    var weight: float
     var reward_value: int
-    var weight: int
 
     func _init(_json_) -> void:
         self.type = _json_["type"]
-        self.reward_value = _json_["reward_value"]
         self.weight = _json_["weight"]
+        self.reward_value = _json_["reward_value"]
 
 
 class DayReward:

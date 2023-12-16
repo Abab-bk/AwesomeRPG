@@ -1,5 +1,9 @@
 class_name Const extends Node
 
+const IMAGES:Dictionary = {
+    "WhatIcon": "res://Assets/UI/Texture/WhatIcon.png"
+}
+
 const MAX_AD_COUNT:int = 10
 
 const SOUNDS:Dictionary = {

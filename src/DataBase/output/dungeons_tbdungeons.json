@@ -1,7 +1,7 @@
 [
   {
     "id": 6001,
-    "name": "幻境之门",
+    "name": "险峻理想",
     "enemy_id": 1001,
     "wheather_id": 1001,
     "icon_path": "GoldTreasury.png",
@@ -12,7 +12,7 @@
   },
   {
     "id": 6002,
-    "name": "梦境之巅",
+    "name": "远足算子",
     "enemy_id": 1002,
     "wheather_id": 1002,
     "icon_path": "City.png",
@@ -23,7 +23,7 @@
   },
   {
     "id": 6003,
-    "name": "时间余晖",
+    "name": "映射规约",
     "enemy_id": 1003,
     "wheather_id": 1003,
     "icon_path": "HeavenStairs.png",
@@ -34,7 +34,7 @@
   },
   {
     "id": 6004,
-    "name": "空灵之谜",
+    "name": "存储单元",
     "enemy_id": 1004,
     "wheather_id": 1002,
     "icon_path": "Church.png",
@@ -45,7 +45,7 @@
   },
   {
     "id": 6005,
-    "name": "灵魂迷宫",
+    "name": "皇家回廊",
     "enemy_id": 1005,
     "wheather_id": 1001,
     "icon_path": "Angel.png",
@@ -67,7 +67,7 @@
   },
   {
     "id": 6007,
-    "name": "玄思之石",
+    "name": "灵感面纱",
     "enemy_id": 1007,
     "wheather_id": 1001,
     "icon_path": "GoldEquipment.png",
@@ -78,7 +78,7 @@
   },
   {
     "id": 6008,
-    "name": "真相幕布",
+    "name": "直言不讳",
     "enemy_id": 1008,
     "wheather_id": 1002,
     "icon_path": "GoldEquipment.png",
@@ -89,7 +89,7 @@
   },
   {
     "id": 6009,
-    "name": "心灵追求",
+    "name": "廉价影厅",
     "enemy_id": 1009,
     "wheather_id": 1001,
     "icon_path": "GoldEquipment.png",
@@ -100,7 +100,7 @@
   },
   {
     "id": 6010,
-    "name": "生命之树",
+    "name": "百折不挠",
     "enemy_id": 1010,
     "wheather_id": 1002,
     "icon_path": "GoldEquipment.png",
@@ -111,7 +111,7 @@
   },
   {
     "id": 6011,
-    "name": "震撼虚无",
+    "name": "悲欢交融",
     "enemy_id": 1011,
     "wheather_id": 1001,
     "icon_path": "GoldEquipment.png",
@@ -122,7 +122,7 @@
   },
   {
     "id": 6012,
-    "name": "遗忘神殿",
+    "name": "留声回响",
     "enemy_id": 1012,
     "wheather_id": 1002,
     "icon_path": "GoldEquipment.png",
@@ -133,7 +133,7 @@
   },
   {
     "id": 6013,
-    "name": "星辰启示",
+    "name": "美妙天堂",
     "enemy_id": 1013,
     "wheather_id": 1001,
     "icon_path": "GoldEquipment.png",
@@ -144,7 +144,7 @@
   },
   {
     "id": 6014,
-    "name": "微光之路",
+    "name": "熵增变化",
     "enemy_id": 1014,
     "wheather_id": 1002,
     "icon_path": "GoldEquipment.png",
@@ -155,7 +155,7 @@
   },
   {
     "id": 6015,
-    "name": "唤醒时刻",
+    "name": "阈限森林",
     "enemy_id": 1015,
     "wheather_id": 1001,
     "icon_path": "GoldEquipment.png",
@@ -166,7 +166,7 @@
   },
   {
     "id": 6016,
-    "name": "意识迷雾",
+    "name": "危坠楼迭",
     "enemy_id": 1016,
     "wheather_id": 1002,
     "icon_path": "GoldEquipment.png",

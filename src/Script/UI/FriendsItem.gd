@@ -44,7 +44,7 @@ func update_ui() -> void:
     if not data:
         name_label.text = "暂无"
         rate_label.text = ""
-        icon.texture = load("res://icon.svg")
+        icon.texture = load(Const.IMAGES.WhatIcon)
         change_btn.text = "选择"
         current_state = 0
         return

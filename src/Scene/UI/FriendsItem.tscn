@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://to5bisc21l3e"]
 
-[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="1_eo5yi"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_ocwqk"]
 [ext_resource type="Script" path="res://Script/UI/FriendsItem.gd" id="1_v2ol7"]
 [ext_resource type="FontFile" uid="uid://ri6183bsibm8" path="res://Assets/Font/SourceHanSansCN-Bold.otf" id="2_m504w"]
 [ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="3_m5fpr"]
+[ext_resource type="Texture2D" uid="uid://mr01j3ekvyol" path="res://Assets/UI/Texture/WhatIcon.png" id="3_mff0q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_a765k"]
 font = ExtResource("2_m504w")
@@ -40,7 +40,8 @@ theme_override_constants/separation = 50
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
-texture = ExtResource("1_eo5yi")
+texture = ExtResource("3_mff0q")
+expand_mode = 1
 stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]

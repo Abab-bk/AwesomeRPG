@@ -9,7 +9,7 @@ var sub_skill:bool = false
 var ability:FlowerAbility = null:
     set(v):
         if not v:
-            %Icon.texture = load("res://icon.svg")
+            %Icon.texture = load(Const.IMAGES.WhatIcon)
             %NameLabel.text = "未选择技能"
             
             if sub_skill:

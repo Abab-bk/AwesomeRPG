@@ -294,6 +294,7 @@ func _physics_process(_delta:float) -> void:
     
     if current_state == STATE.SLEEP:
         velocity = Vector2.ZERO
+        character_animation.play("scml/Idle")
     
     if current_state == STATE.ATTACKING:
         attack()

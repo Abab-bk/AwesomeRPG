@@ -9,6 +9,9 @@ func _ready() -> void:
         Tap.quick_anti()
         )
     Tap.anti_pass.connect(go_to_world)
+    Tap.anti_age_less.connect(func():
+        
+        )
     Tap.login_not.connect(func():
         $Panel.show()
         )

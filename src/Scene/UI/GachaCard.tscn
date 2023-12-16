@@ -1,9 +1,75 @@
-[gd_scene load_steps=5 format=3 uid="uid://x1fxghpmlk4a"]
+[gd_scene load_steps=10 format=3 uid="uid://x1fxghpmlk4a"]
 
-[ext_resource type="Texture2D" uid="uid://ckk3sbximhjg8" path="res://Assets/Texture/Images/GoldEquipment.png" id="1_1sjpw"]
+[ext_resource type="Shader" path="res://Assets/Shaders/Transition.gdshader" id="1_736y7"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_afxfe"]
 [ext_resource type="Script" path="res://Script/UI/GachaCard.gd" id="1_dn1rw"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="2_ehph4"]
+[ext_resource type="Texture2D" uid="uid://qy2aq73h3a5n" path="res://Assets/UI/Icons/Coins.png" id="4_geibc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4achk"]
+shader = ExtResource("1_736y7")
+shader_parameter/transition_progress = 1.0
+
+[sub_resource type="Animation" id="Animation_331ts"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:material:shader_parameter/transition_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/MarginContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_y0yma"]
+resource_name = "run"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:material:shader_parameter/transition_progress")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Panel/MarginContainer:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fqgam"]
+_data = {
+"RESET": SubResource("Animation_331ts"),
+"run": SubResource("Animation_y0yma")
+}
 
 [node name="GachaCard" type="Control"]
 custom_minimum_size = Vector2(346, 200)
@@ -16,12 +82,14 @@ theme = ExtResource("1_afxfe")
 script = ExtResource("1_dn1rw")
 
 [node name="Panel" type="Panel" parent="."]
+material = SubResource("ShaderMaterial_4achk")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_type_variation = &"ClubPanel"
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -30,8 +98,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 3
-theme_override_constants/margin_right = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
 layout_mode = 2
@@ -41,7 +107,7 @@ alignment = 1
 unique_name_in_owner = true
 use_parent_material = true
 layout_mode = 2
-texture = ExtResource("1_1sjpw")
+texture = ExtResource("4_geibc")
 expand_mode = 2
 stretch_mode = 5
 
@@ -55,3 +121,6 @@ horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_fqgam")
+}
