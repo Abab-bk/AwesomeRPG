@@ -8,14 +8,20 @@ func _init(_chooser_list:Array[Array] = []) -> void:
     chooser_list = _chooser_list
 
 
+func clear() -> void:
+    chooser_list.clear()
+
+
+func add_item(_item:Variant, _weight:float) -> void:
+    chooser_list.append([_item, _weight])
+
+
 func pick() -> Variant:
     var _result:Variant = null
     
-    # 检查是否有可选项
     if chooser_list.is_empty():
         return _result
     
-    # 计算总权重
     var _total_weight:float = 0.0
     for _item in chooser_list:
         _total_weight += abs(_item[1])
@@ -23,11 +29,9 @@ func pick() -> Variant:
     if _total_weight == 0:
         return null
     
-    # 生成随机权重值
     var _random_weight:float = randf() * _total_weight
-
     var _result_list:Array = []
-    # 遍历列表，选择符合权重的元素
+    
     var _current_weight:float = 0.0
     for _item in chooser_list:
         _current_weight += abs(_item[1])

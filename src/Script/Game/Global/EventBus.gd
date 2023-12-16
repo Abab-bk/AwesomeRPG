@@ -16,7 +16,8 @@ signal show_color
 signal hide_color
 signal new_tips(text:String)
 signal build_and_show_friend_info_panel(friend_data:FriendData)
-
+# 设置是否显示每日奖励
+signal set_should_show_reward_day_reward
 
 signal move_camera_to(target_pos:Vector2)
 

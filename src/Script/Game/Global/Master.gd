@@ -1,7 +1,6 @@
 extends Node
 
 # TODO: 换装备对比Tooltip
-# TODO: 每日转盘（转的越多奖励越好）
 # TODO: 世界树（花园）
 # TODO: 程序化生成世界地图
 # HACK: 升级音效短一点

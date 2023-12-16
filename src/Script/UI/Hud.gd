@@ -71,6 +71,12 @@ var show_every_day_quest_red_point:bool = true:
         every_day_quest_red_point.visible = show_every_day_quest_red_point
         FlowerSaver.set_data("hud_show_every_day_quest_red_point", show_every_day_quest_red_point)
 
+var should_show_every_day_reward:bool = true:
+    set(v):
+        should_show_every_day_reward = v
+        FlowerSaver.set_data("hud_should_show_every_day_reward", should_show_every_day_reward)
+
+
 enum PAGE {
     HOME,
     INVENTORY,
@@ -133,11 +139,16 @@ func _ready() -> void:
             show_every_day_quest_red_point = FlowerSaver.get_data("hud_show_every_day_quest_red_point")
         if FlowerSaver.has_key("hud_show_days_checkin_red_point"):
             show_days_checkin_red_point = FlowerSaver.get_data("hud_show_days_checkin_red_point")
+        if FlowerSaver.has_key("hud_should_show_every_day_reward"):
+            should_show_every_day_reward = FlowerSaver.get_data("hud_should_show_every_day_reward")
         )
     EventBus.show_every_day_quest_red_point.connect(func():
         show_every_day_quest_red_point = true
         )
-    
+    EventBus.set_should_show_reward_day_reward.connect(func(_state:bool):
+        should_show_every_day_reward = _state
+        )
+
     backed_to_home.connect(func():quest_panel.show())
     changed_to_other.connect(func():quest_panel.hide())
     
@@ -192,9 +203,15 @@ func _ready() -> void:
     hide_color_rect()
     update_ui()
     change_page(PAGE.HOME)
+    
     if TimeManager.is_next_day(Master.last_leave_time):
         show_days_checkin_red_point = true
         show_every_day_quest_red_point = true
+        should_show_every_day_reward = true
+    
+    if should_show_every_day_reward:
+        var _every_day_reward_panel:Control = load("res://Scene/UI/EveryDayReward.tscn").instantiate()
+        add_child(_every_day_reward_panel)
 
 
 func change_page(_page:PAGE) -> void:

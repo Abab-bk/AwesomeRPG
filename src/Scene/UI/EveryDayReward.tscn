@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=3 uid="uid://bfds618js78v2"]
+
+[ext_resource type="PackedScene" uid="uid://csd413be3hgxg" path="res://Scene/UI/BlackRect.tscn" id="1_a6k2v"]
+[ext_resource type="Script" path="res://Script/UI/EveryDayReward.gd" id="1_c38sa"]
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_sty8u"]
+[ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="2_aj51k"]
+[ext_resource type="PackedScene" uid="uid://dmjm8mmvc1ofc" path="res://Scene/UI/RewardItemUi.tscn" id="3_0kx0r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xapm"]
+bg_color = Color(0.145098, 0.141176, 0.168627, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.823529, 0.737255, 0.607843, 1)
+
+[node name="EveryDayReward" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c38sa")
+
+[node name="BlackRect" parent="." instance=ExtResource("1_a6k2v")]
+visible = true
+layout_mode = 0
+anchors_preset = 0
+
+[node name="Popup" type="Panel" parent="."]
+custom_minimum_size = Vector2(834, 800)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_sty8u")
+theme_override_styles/panel = SubResource("StyleBoxFlat_8xapm")
+
+[node name="MarginContainer2" type="MarginContainer" parent="Popup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Body" type="VBoxContainer" parent="Popup/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TitleLabel" type="Label" parent="Popup/MarginContainer2/Body"]
+layout_mode = 2
+text = "每日奖励"
+label_settings = ExtResource("2_aj51k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Content" type="MarginContainer" parent="Popup/MarginContainer2/Body"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="RewardItemUI" parent="Popup/MarginContainer2/Body/Content" instance=ExtResource("3_0kx0r")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"ClubPanel"
+
+[node name="MarginContainer" type="MarginContainer" parent="Popup/MarginContainer2/Body"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Popup/MarginContainer2/Body/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="YesBtn" type="Button" parent="Popup/MarginContainer2/Body/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+text = "一发入魂！"
