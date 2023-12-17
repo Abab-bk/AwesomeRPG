@@ -6,13 +6,5 @@
     "cost": 10,
     "reward_type": 11,
     "reward_value": 1
-  },
-  {
-    "id": 1002,
-    "name": "日卡",
-    "cost_type": 23,
-    "cost": 1,
-    "reward_type": 11,
-    "reward_value": 5
   }
 ]
