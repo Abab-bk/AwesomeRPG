@@ -2065,8 +2065,6 @@ bullet = ExtResource("24_ycdye")
 buff_manager = NodePath("../FlowerBuffManager")
 
 [node name="Sprite2D" type="Sprite2D" parent="RangedWeaponComponent"]
-rotation = 1.5708
-scale = Vector2(2, 2)
 texture = ExtResource("24_mu2r6")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
