@@ -76,6 +76,7 @@ var should_show_every_day_reward:bool = true:
         should_show_every_day_reward = v
         FlowerSaver.set_data("hud_should_show_every_day_reward", should_show_every_day_reward)
 
+var _offline_level_up_get:bool = false
 
 enum PAGE {
     HOME,
@@ -119,6 +120,7 @@ func _ready() -> void:
     EventBus.new_tips.connect(new_tip)
     
     EventBus.player_level_up.connect(show_animation.bind("LevelUp"))
+    EventBus.player_offline_level_up.connect(show_animation.bind("LevelUp", {}, true))
     EventBus.show_animation.connect(show_animation)
     
     EventBus.unlock_new_function.connect(func(_key:String):
@@ -287,12 +289,18 @@ func hide_color_rect() -> void:
     color_rect.hide()
 
 
-func show_animation(_key:String, _info:Dictionary = {}) -> void:
+func show_animation(_key:String, _info:Dictionary = {}, _offline_sound:bool = false) -> void:
     if _key == "LevelUp":
+        if _offline_sound:
+            if _offline_level_up_get:
+                return
+            _offline_level_up_get = true
+        
         for i in level_up_arrow.get_children():
             i.queue_free()
         
-        SoundManager.play_sound(load(Master.HAPPY_SOUNDS),  "GameBus")
+        SoundManager.play_ui_sound(load(Master.HAPPY_SOUNDS),  "GameBus")
+        
         var _img:Control = load("res://Scene/UI/LevelUpAnimation.tscn").instantiate()
         level_up_arrow.add_child(_img)
     

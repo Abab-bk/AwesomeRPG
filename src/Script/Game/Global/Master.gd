@@ -4,7 +4,7 @@ extends Node
 # TODO: 世界树（花园）
 # TODO: 程序化生成世界地图
 # HACK: 升级音效短一点
-# FIXME: 任务做到一定程度，就完不成咯
+# HACK: 玩家离线升级不会获得天赋点
 
 const BGM:String = "res://Assets/Sounds/Music/KleptoLindaMountainA.wav"
 const CLICK_SOUNDS:String = "res://Assets/Sounds/Click.mp3"
@@ -936,9 +936,9 @@ func get_offline_reward() -> void:
     # 如果玩家经验足以升到下一级别
     while player.compute_data.next_level_xp < _get_xp:
         _get_xp -= player.compute_data.next_level_xp
-        player.get_xp(_get_xp)
-        if player.compute_data.now_xp >= player.compute_data.next_level_xp:
-            player.compute_data.level_up()
+        player.get_xp(_get_xp, true)
+        # if player.compute_data.now_xp >= player.compute_data.next_level_xp:
+        #     player.compute_data.level_up()
     
 
     EventBus.show_popup.emit("离线奖励", """

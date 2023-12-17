@@ -20,7 +20,8 @@ signal criticaled
 @onready var sprites:Dictionary = {
     "weapon": $"Warrior - 01/Skeleton/bone_004/bone_000/bone_001/Weapon",
     "head": $"Warrior - 01/Skeleton/bone_004/bone_005/Head",
-    "body": $"Warrior - 01/Skeleton/bone_004/Body"
+    "body": $"Warrior - 01/Skeleton/bone_004/Body",
+    "bow": $"RangedWeaponComponent/Sprite2D",
 }
 
 @onready var friends_pos:Array[Marker2D] = [$FriendsPos/Pos1, $FriendsPos/Pos2, $FriendsPos/Pos3]
@@ -293,6 +294,8 @@ func euipment_up(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
             change_weapons_sprite(load(_item.texture_path))
         Const.EQUIPMENT_TYPE.胸甲:
             change_body_sprite(load(_item.texture_path))
+        Const.EQUIPMENT_TYPE.远程武器:
+            change_bow_sprite(load(_item.texture_path))
     
     var _info_1 = get_buffs_info(_temp)    
     
@@ -557,6 +560,11 @@ func change_weapons_sprite(_sprite:Texture2D) -> void:
     sprites["weapon"].centered = false
 
 
+func change_bow_sprite(_sprite:Texture2D) -> void:
+    sprites["bow"].texture = _sprite
+    sprites["bow"].centered = false
+
+
 func change_head_sprite(_sprite:Texture2D) -> void:
     sprites["head"].texture = _sprite
     sprites["head"].centered = false
@@ -568,7 +576,7 @@ func change_body_sprite(_sprite:Texture2D) -> void:
 
 
 # ======= 属性 ========
-func up_level() -> void:
+func up_level(_offline_sound:bool = false) -> void:
     if compute_data.level >= 70 + (Master.fly_count * 10):
         EventBus.new_tips.emit("已达最大等级，飞升解锁等级上限")
         return
@@ -577,13 +585,17 @@ func up_level() -> void:
     compute_data.now_xp = 0
     compute_data.update_next_xp()
     compute_all()
-    EventBus.player_level_up.emit()
+
+    if _offline_sound:
+        EventBus.player_offline_level_up.emit()
+    else:        
+        EventBus.player_level_up.emit()
     EventBus.player_data_change.emit()
     EventBus.update_ui.emit()
     EventBus.get_talent_point.emit(1)
 
 
-func get_xp(_value:float) -> void:
+func get_xp(_value:float, _offline_sound:bool = false) -> void:
     compute_data.now_xp += _value
     EventBus.update_ui.emit()
     
@@ -594,7 +606,7 @@ func get_xp(_value:float) -> void:
         EventBus.new_tips.emit("达到等级上限！请转生以提升等级上限！")
         return
     
-    up_level()
+    up_level(_offline_sound)
 
 # ======= 战斗 ========
 func relife() -> void:

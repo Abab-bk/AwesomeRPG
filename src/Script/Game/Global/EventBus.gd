@@ -51,6 +51,8 @@ signal player_level_up
 signal player_get_healing_potion(key:String, num:int)
 signal player_changed_display
 
+signal player_offline_level_up
+
 signal player_getd_gold_equipment
 
 signal use_hp_potion
