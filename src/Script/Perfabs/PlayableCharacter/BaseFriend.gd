@@ -276,6 +276,9 @@ func set_skin() -> void:
             move_animation_name = "scml/Moving Forward"
         else:
             atk_animation_name = "scml/Shooting"
+        
+        if new_node.chibi:
+            atk_animation_name = "scml/Slashing"
 
 
 

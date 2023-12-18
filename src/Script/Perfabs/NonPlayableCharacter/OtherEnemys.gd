@@ -6,6 +6,7 @@ signal range_attacked
 @export var animation_player:AnimationPlayer
 @export var range_attack:bool = false
 @export var bullet_spawn_point:Marker2D = null
+@export var chibi:bool = false
 
 
 func emit_range_attack_signal() -> void:

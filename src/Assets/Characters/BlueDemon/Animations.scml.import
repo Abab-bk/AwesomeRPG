@@ -1,0 +1,21 @@
+[remap]
+
+importer="importer.scml"
+type="PackedScene"
+uid="uid://bahox5ifpol1o"
+path="res://.godot/imported/Animations.scml-83fa9f455e0829b66cadbe5bd5d26a8e.scn"
+
+[deps]
+
+source_file="res://Assets/Characters/BlueDemon/Animations.scml"
+dest_files=["res://.godot/imported/Animations.scml-83fa9f455e0829b66cadbe5bd5d26a8e.scn"]
+
+[params]
+
+playback_speed=5
+z_as_relative=true
+loop_animations=1
+loop_wrap_interpolation=true
+optimize_for_blends=true
+rest_pose_animation=""
+reparenting_solution="instance per parent"

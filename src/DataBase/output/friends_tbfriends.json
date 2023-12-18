@@ -232,7 +232,7 @@
   },
   {
     "id": 1012,
-    "name": "无知之幕",
+    "name": "卷积神经",
     "icon_path": "DarkElf3Avatar",
     "base_vision": 360,
     "base_atk_range": 125,
@@ -250,5 +250,26 @@
     "toxic_resistance": 0,
     "light_resistance": 0,
     "speed": 700
+  },
+  {
+    "id": 1013,
+    "name": "无知幕布",
+    "icon_path": "MagicianAvatar",
+    "base_vision": 360,
+    "base_atk_range": 125,
+    "need_pole": 16,
+    "quality": 4,
+    "skin_name": "Magician",
+    "hp": 300,
+    "base_damage": 50,
+    "fire_damage": 0.1,
+    "frost_damage": 0.1,
+    "toxic_damage": 0,
+    "light_damage": 0,
+    "fire_resistance": 0.1,
+    "frost_resistance": 0.1,
+    "toxic_resistance": 0,
+    "light_resistance": 0,
+    "speed": 1000
   }
 ]

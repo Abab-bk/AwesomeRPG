@@ -40,6 +40,8 @@ enum STATE {
 
 var current_state:STATE = STATE.PATROL
 
+var atk_animation_name:String = "scml/Attacking"
+
 
 func move_camera_to_self_position() -> void:
     current_state = STATE.NOTHING
@@ -162,11 +164,11 @@ func attack() -> void:
     
     # 攻击代码
     if not range_attack:
-        if character_animation.has_animation("scml/Attacking"):
-            character_animation.play("scml/Attacking")
+        if character_animation.has_animation(atk_animation_name):
+            character_animation.play(atk_animation_name)
     else:
-        if character_animation.has_animation("scml/Shooting"):
-            character_animation.play("scml/Shooting")
+        if character_animation.has_animation(atk_animation_name):
+            character_animation.play(atk_animation_name)
             spawn_a_bullet()
     
     current_state = STATE.ATK_COOLDOWN
@@ -196,6 +198,9 @@ func set_skin() -> void:
         new_node.hitbox_component.buff_manager = buff_manager
     else:
         range_bullet_spwan_point = new_node.bullet_spawn_point
+    
+    if new_node.chibi:
+        atk_animation_name = "scml/Slashing"
 
 
 func turn_to_player() -> void:

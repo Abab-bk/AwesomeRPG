@@ -397,5 +397,43 @@
     "toxic_resistance": 0,
     "light_resistance": 0,
     "speed": 400
+  },
+  {
+    "id": 7022,
+    "name": "蓝色恶魔",
+    "skin_name": "BlueDemon",
+    "hp": 350,
+    "base_vision": 360,
+    "base_atk_range": 125,
+    "base_atk_cd": 0.2,
+    "base_damage": 30,
+    "fire_damage": 0.1,
+    "frost_damage": 0.1,
+    "toxic_damage": 0.1,
+    "light_damage": 0,
+    "fire_resistance": 0,
+    "frost_resistance": 0,
+    "toxic_resistance": 0,
+    "light_resistance": 0,
+    "speed": 400
+  },
+  {
+    "id": 7023,
+    "name": "绿色恶魔",
+    "skin_name": "GreenDemon1",
+    "hp": 350,
+    "base_vision": 360,
+    "base_atk_range": 125,
+    "base_atk_cd": 0.2,
+    "base_damage": 30,
+    "fire_damage": 0.1,
+    "frost_damage": 0.1,
+    "toxic_damage": 0.1,
+    "light_damage": 0,
+    "fire_resistance": 0,
+    "frost_resistance": 0,
+    "toxic_resistance": 0,
+    "light_resistance": 0,
+    "speed": 400
   }
 ]

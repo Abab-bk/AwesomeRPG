@@ -1,0 +1,21 @@
+[remap]
+
+importer="importer.scml"
+type="PackedScene"
+uid="uid://cs2mdjfvoxll0"
+path="res://.godot/imported/Animations.scml-89db1db0d599c9f68046f4d5fcdf3031.scn"
+
+[deps]
+
+source_file="res://Assets/Characters/Friends/Magician/Animations.scml"
+dest_files=["res://.godot/imported/Animations.scml-89db1db0d599c9f68046f4d5fcdf3031.scn"]
+
+[params]
+
+playback_speed=5
+z_as_relative=true
+loop_animations=1
+loop_wrap_interpolation=true
+optimize_for_blends=true
+rest_pose_animation=""
+reparenting_solution="instance per parent"
