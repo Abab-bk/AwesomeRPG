@@ -108,6 +108,7 @@ func get_reward(_show_popup:bool = true) -> String:
     if _show_popup:
         EventBus.show_color.emit()
         EventBus.show_popup.emit("获得奖励！", "获得奖励：%s" % _return_text)
+        SoundManager.play_ui_sound(load(Const.SOUNDS.CollectReward))
     
     FlowerSaver.set_data("master_memorys", Master.memorys)
 

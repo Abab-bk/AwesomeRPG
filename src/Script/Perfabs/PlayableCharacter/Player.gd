@@ -585,7 +585,7 @@ func up_level(_offline_sound:bool = false) -> void:
     compute_data.now_xp = 0
     compute_data.update_next_xp()
     compute_all()
-
+    
     if _offline_sound:
         EventBus.player_offline_level_up.emit()
     else:        

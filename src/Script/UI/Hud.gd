@@ -299,7 +299,8 @@ func show_animation(_key:String, _info:Dictionary = {}, _offline_sound:bool = fa
         for i in level_up_arrow.get_children():
             i.queue_free()
         
-        SoundManager.play_ui_sound(load(Master.HAPPY_SOUNDS),  "GameBus")
+        # SoundManager.play_ui_sound(load(Master.HAPPY_SOUNDS),  "GameBus")
+        SoundManager.play_ui_sound(load(Const.SOUNDS.WindUp))
         
         var _img:Control = load("res://Scene/UI/LevelUpAnimation.tscn").instantiate()
         level_up_arrow.add_child(_img)
