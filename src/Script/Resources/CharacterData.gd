@@ -49,7 +49,9 @@ signal hp_is_zero
 @export var light_resistance:float
 @export var toxic_resistance:float
 @export var physical_resistance:float
-@export var critical_rate:float
+@export var critical_rate:float:
+    set(v):
+        critical_rate = min(0.99, v)
 @export var critical_damage:float
 @export var vulnerability_rate:float
 @export var vulnerability_damage:float

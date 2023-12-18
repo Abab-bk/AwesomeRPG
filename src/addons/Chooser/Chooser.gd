@@ -16,7 +16,7 @@ func add_item(_item:Variant, _weight:float) -> void:
     chooser_list.append([_item, _weight])
 
 
-func pick() -> Variant:
+func pick(_weight:float = 0.0) -> Variant:
     var _result:Variant = null
     
     if chooser_list.is_empty():
@@ -33,6 +33,9 @@ func pick() -> Variant:
     var _result_list:Array = []
     
     var _current_weight:float = 0.0
+    if _weight != 0.0:
+        _current_weight = _weight
+    
     for _item in chooser_list:
         _current_weight += abs(_item[1])
         if _random_weight <= _current_weight:

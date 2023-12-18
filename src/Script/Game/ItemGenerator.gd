@@ -90,7 +90,7 @@ func gen_a_item(_allow_gold:bool = false, _must_gold:bool = false) -> InventoryI
     [Const.EQUIPMENT_QUALITY.GOLD, 0.1],
     ])
     
-    quality = _chooser.pick()
+    quality = _chooser.pick(min(0.99, Master.player_output_data.luck))
     
     if not _allow_gold and quality == Const.EQUIPMENT_QUALITY.GOLD:
         quality = Const.EQUIPMENT_QUALITY.DEEP_YELLOW
