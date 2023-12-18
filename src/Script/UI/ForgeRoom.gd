@@ -80,26 +80,26 @@ func update_cost() -> void:
             cost_2.set_content("赦罪之血：10", ICON_PATHS.purple)
             cost_3.set_content("天使之泪：10", ICON_PATHS.yellow)
         Const.EQUIPMENT_QUALITY.YELLOW:
-            cost.blue = 500
-            cost.purple = 50
-            cost.yellow = 50
-            cost_1.set_content("天堂之尘：500", ICON_PATHS.blue)
-            cost_2.set_content("赦罪之血：50", ICON_PATHS.purple)
-            cost_3.set_content("天使之泪：50", ICON_PATHS.yellow)
+            cost.blue = 20
+            cost.purple = 20
+            cost.yellow = 20
+            cost_1.set_content("天堂之尘：20", ICON_PATHS.blue)
+            cost_2.set_content("赦罪之血：20", ICON_PATHS.purple)
+            cost_3.set_content("天使之泪：20", ICON_PATHS.yellow)
         Const.EQUIPMENT_QUALITY.DEEP_YELLOW:
-            cost.blue = 5000
-            cost.purple = 60
-            cost.yellow = 500
-            cost_1.set_content("天堂之尘：5000", ICON_PATHS.blue)
-            cost_2.set_content("赦罪之血：60", ICON_PATHS.purple)
-            cost_3.set_content("天使之泪：500", ICON_PATHS.yellow)
+            cost.blue = 20
+            cost.purple = 20
+            cost.yellow = 20
+            cost_1.set_content("天堂之尘：20", ICON_PATHS.blue)
+            cost_2.set_content("赦罪之血：20", ICON_PATHS.purple)
+            cost_3.set_content("天使之泪：20", ICON_PATHS.yellow)
         Const.EQUIPMENT_QUALITY.GOLD:
-            cost.blue = 50000
-            cost.purple = 1000
-            cost.yellow = 10000
-            cost_1.set_content("天堂之尘：50000", ICON_PATHS.blue)
-            cost_2.set_content("赦罪之血：1000", ICON_PATHS.purple)
-            cost_3.set_content("天使之泪：10000", ICON_PATHS.yellow)
+            cost.blue = 20
+            cost.purple = 20
+            cost.yellow = 20
+            cost_1.set_content("天堂之尘：20", ICON_PATHS.blue)
+            cost_2.set_content("赦罪之血：20", ICON_PATHS.purple)
+            cost_3.set_content("天使之泪：20", ICON_PATHS.yellow)
 
 func update_ui() -> void:    
     for i in pre_affixs.get_children():
