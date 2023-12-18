@@ -151,6 +151,12 @@ func forge() -> void:
         if affix_node.locked:
             _pre_affixs.append(affix_node.current_affix)
             continue
+        
+        var _should_forge:bool = [true, false].pick_random()
+        if not _should_forge:
+            affix_node.set_null_affix()
+            continue
+
         affix_node.random_change_affix()
         _pre_affixs.append(affix_node.forged_affix)
     
@@ -158,6 +164,12 @@ func forge() -> void:
         if affix_node.locked:
             _buf_affixs.append(affix_node.current_affix)
             continue
+
+        var _should_forge:bool = [true, false].pick_random()
+        if not _should_forge:
+            affix_node.set_null_affix()
+            continue
+        
         affix_node.random_change_affix()
         _buf_affixs.append(affix_node.forged_affix)
     

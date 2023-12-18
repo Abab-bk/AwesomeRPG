@@ -36,6 +36,11 @@ func clean() -> void:
     update_ui("current_affix")
 
 
+func set_null_affix() -> void:
+    forged_affix = null
+    update_ui("forged_affix")
+
+
 func update_ui(_key:String) -> void:
     if _key == "current_affix":
         if not current_affix:
@@ -46,6 +51,7 @@ func update_ui(_key:String) -> void:
     
     if _key == "forged_affix":
         if not forged_affix:
+            desc_label.text = "无"
             return
         
         desc_label.text = forged_affix.desc
