@@ -9,6 +9,7 @@ extends Control
 @onready var continue_btn:Button = %ContinueBtn
 
 @onready var rewards_ui:VBoxContainer = %Rewards
+@onready var rewards_scroll:ScrollContainer = %RewardsScroll
 
 @onready var reward_result:MarginContainer = $RewardResult
 
@@ -34,13 +35,20 @@ func _ready() -> void:
         animation.hide()
         blur.show()
         
+        var _count:int = 0
         for i in rewards_ui.get_children():
+            if _count == 0:
+                _count += 1
+                continue
             i.queue_free()
+        rewards_scroll.scroll_vertical = 0
+        continue_btn.hide()
         )
     
     animation.hide()
     reward_result.hide()
     blur.hide()
+    continue_btn.hide()
 
 
 func start_gacha(_count:int) -> void:
@@ -50,25 +58,30 @@ func start_gacha(_count:int) -> void:
     
     animation.show()
     blur.hide()
-    show_result_timer.start()
     
-    pull_gacha(_count)
-    
+    pull_gacha(_count)    
     SoundManager.play_ui_sound(load(Master.SOUNDS.Myster))
-    
+
+    show_result_timer.start()
     await show_result_timer.timeout
-    reward_result.show()
-    for _gacha_item_ui in rewards_ui.get_children():
-        _gacha_item_ui.show()
-        # _gacha_item_ui.try_to_show_animation()
-        # await get_tree().create_timer(0.4).timeout
-        if not _gacha_item_ui:
-            break
         
+    reward_result.show()
+
+    var _node_count:int = 0
+    for _gacha_item_ui in rewards_ui.get_children():
+        if _node_count == 0:
+            _node_count += 1
+            continue
+        await _gacha_item_ui.try_to_show_animation()
+        var _tw:Tween = create_tween()
+        _tw.tween_property(rewards_scroll, "scroll_vertical", rewards_scroll.scroll_vertical + 660, 0.2)
+        await _tw.finished
+    
     blur.show()
     animation_player.play("show_blur")
     await animation_player.animation_finished
     animation_player.play("appear")
+    continue_btn.show()
 
 
 func pull_gacha(_count:int) -> void:
@@ -94,9 +107,7 @@ func pull_gacha(_count:int) -> void:
         _new_reward_card.title = _desc
         _new_reward_card.type = _get_reward.type
         rewards_ui.add_child(_new_reward_card)
-        _new_reward_card.hide()
-        # _new_reward_card.try_to_show_animation()
-        # await get_tree().create_timer(0.5).timeout
+        # _new_reward_card.show()
 
     Master.save_all_invenrory()
 

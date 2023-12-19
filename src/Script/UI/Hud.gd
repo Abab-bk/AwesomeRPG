@@ -74,6 +74,11 @@ var show_every_day_quest_red_point:bool = true:
 var should_show_every_day_reward:bool = true:
     set(v):
         should_show_every_day_reward = v
+
+        if should_show_every_day_reward:
+            var _every_day_reward_panel:Control = load("res://Scene/UI/EveryDayReward.tscn").instantiate()
+            add_child(_every_day_reward_panel)
+        
         FlowerSaver.set_data("hud_should_show_every_day_reward", should_show_every_day_reward)
 
 var _offline_level_up_get:bool = false
@@ -211,9 +216,9 @@ func _ready() -> void:
         show_every_day_quest_red_point = true
         should_show_every_day_reward = true
     
-    if should_show_every_day_reward:
-        var _every_day_reward_panel:Control = load("res://Scene/UI/EveryDayReward.tscn").instantiate()
-        add_child(_every_day_reward_panel)
+    # if should_show_every_day_reward:
+    #     var _every_day_reward_panel:Control = load("res://Scene/UI/EveryDayReward.tscn").instantiate()
+    #     add_child(_every_day_reward_panel)
 
 
 func change_page(_page:PAGE) -> void:

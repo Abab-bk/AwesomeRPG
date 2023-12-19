@@ -3,30 +3,27 @@ extends Control
 @onready var icon:TextureRect = %Icon
 @onready var title_label:Label = %TitleLabel
 @onready var animation_player:AnimationPlayer = %AnimationPlayer
+@onready var card_img:TextureRect = %CardImg
 
 var title:String = ""
-var type:Reward.REWARD_TYPE
+var type:Reward.REWARD_TYPE = Reward.REWARD_TYPE.BOOK_AXE
 
 func _ready() -> void:
-    # visibility_changed.connect(try_to_show_animation)
-
     title_label.text = title
     icon.texture = load(Reward.get_reward_icon_path(type))
+    if type == Reward.REWARD_TYPE.FRIEND:
+        card_img.texture = load("res://Assets/Texture/Images/Cards/RedCard.png")
+
 
 func try_to_show_animation() -> void:
-    var _tw:Tween = create_tween()
-    _tw.tween_method(_change_transition_progress, 0.0, 1.0, 0.4)
-    _tw.tween_property($Panel/MarginContainer, "modulate", Color.WHITE, 0.4)
-    await _tw.finished
-    
+    Tracer.info("尝试显示抽卡动画，node：%s" % name)
+    animation_player.play("turn_card")
+    await animation_player.animation_finished
+
     SoundManager.play_ui_sound(load(Master.SOUNDS.Forge))
-    
-    # if animation_player.is_playing():
-    #     return    
-    # animation_player.play("run")
-    # await animation_player.animation_finished
-    # SoundManager.play_ui_sound(load(Master.SOUNDS.Forge))
+    # Tracer.info("抽卡动画播放完成，node：%s" % name)
 
 
-func _change_transition_progress(_progress:float) -> void:
-    $Panel.material.set_shader_parameter("transition_progress", _progress)
+func turn_over() -> void:
+    Tracer.info("翻面，node：%s" % name)
+    card_img.texture = load("res://Assets/Texture/Images/Cards/CardFront.png")

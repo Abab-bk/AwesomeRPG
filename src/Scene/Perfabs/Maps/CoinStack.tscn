@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://cem7cgql0e7nx"]
+
+[ext_resource type="Texture2D" uid="uid://qy2aq73h3a5n" path="res://Assets/UI/Icons/Coins.png" id="1_0wykb"]
+
+[node name="CoinStack" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_0wykb")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(54, 13)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_0wykb")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-43, 23)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_0wykb")

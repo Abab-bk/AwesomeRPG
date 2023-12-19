@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq2sqb1u1l5ve"]
+[gd_scene load_steps=3 format=3 uid="uid://bq2sqb1u1l5ve"]
+
+[ext_resource type="PackedScene" uid="uid://x1fxghpmlk4a" path="res://Scene/UI/GachaCard.tscn" id="1_w8vc1"]
 
 [sub_resource type="GDScript" id="GDScript_svqv6"]
 script/source = "extends Control
 
+@onready var nodes:Array[Control] = [$GachaCard, $GachaCard2, $GachaCard3]
+
+func _ready() -> void:
+    for i in nodes:
+        await i.try_to_show_animation()
 "
 
 [node name="Test" type="Control"]
@@ -14,28 +21,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_svqv6")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Panel2" type="Panel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 400)
+[node name="GachaCard" parent="." instance=ExtResource("1_w8vc1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+offset_right = 1080.0
+offset_bottom = 660.0
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="VBoxContainer"]
+[node name="GachaCard2" parent="." instance=ExtResource("1_w8vc1")]
 layout_mode = 2
-size_flags_vertical = 3
-stretch = true
+anchors_preset = 0
+anchor_right = 0.0
+offset_top = 664.0
+offset_right = 1080.0
+offset_bottom = 1324.0
 
-[node name="SubViewport" type="SubViewport" parent="VBoxContainer/SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(1080, 1592)
-render_target_update_mode = 4
-
-[node name="Panel" type="Panel" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 400)
+[node name="GachaCard3" parent="." instance=ExtResource("1_w8vc1")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+offset_top = 1328.0
+offset_right = 1080.0
+offset_bottom = 1988.0
