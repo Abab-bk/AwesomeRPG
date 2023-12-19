@@ -1,19 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://cem7cgql0e7nx"]
+[gd_scene load_steps=3 format=3 uid="uid://cem7cgql0e7nx"]
 
+[ext_resource type="Script" path="res://Script/Perfabs/Maps/CoinStack.gd" id="1_0u24i"]
 [ext_resource type="Texture2D" uid="uid://qy2aq73h3a5n" path="res://Assets/UI/Icons/Coins.png" id="1_0wykb"]
 
 [node name="CoinStack" type="Node2D"]
+script = ExtResource("1_0u24i")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Coin1" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -75)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_0wykb")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(54, 13)
+[node name="Coin2" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -75)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_0wykb")
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(-43, 23)
+[node name="Coin3" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -75)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_0wykb")

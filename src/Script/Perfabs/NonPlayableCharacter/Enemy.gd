@@ -241,10 +241,13 @@ func die() -> void:
     #EventBus.enemy_die.emit((data.level * 3) * (1 + Master.fly_count * 0.1))
     var _get_xp:float = (3 * data.level * 1.5) * (1 + Master.fly_count * 0.1)
     EventBus.enemy_die.emit(_get_xp)
-    # TODO: 修改敌人掉落金币
+
     randomize()
     Master.coins += data.level * randi_range(0, 5)
-    
+    var _coin_stack:Node2D = load("res://Scene/Perfabs/Maps/CoinStack.tscn").instantiate()
+    Master.world.add_child(_coin_stack)
+    _coin_stack.global_position = self.global_position
+
     dead.emit()
     
     randomize()
