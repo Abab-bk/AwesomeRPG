@@ -496,6 +496,7 @@ func get_gacha_pool_by_id(_id:int) -> GachaPool:
     var _data = gachas[_id]
     
     _gacha_pool.name = _data["name"]
+    _gacha_pool.cover_path = "res://Assets/Texture/Images/GachaCover/%s.png" % _data["cover_name"]
     
     for i in _data["reward_list"]:
         var _reward:Reward = Reward.new()

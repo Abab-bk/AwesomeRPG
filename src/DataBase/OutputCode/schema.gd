@@ -600,12 +600,15 @@ class Gachas:
     var id: int
     ## 名称
     var name: String
+    ## 图标名称
+    var cover_name: String
     ## 奖励列表
     var reward_list: Array[RewardWeightReward]
 
     func _init(_json_) -> void:
         self.id = _json_["id"]
         self.name = _json_["name"]
+        self.cover_name = _json_["cover_name"]
         self.reward_list = []
         for _ele in _json_["reward_list"]: var _e: RewardWeightReward; _e = RewardWeightReward.new(_ele); self.reward_list.append(_e)
 

@@ -2,6 +2,7 @@
   {
     "id": 1001,
     "name": "基础卡池",
+    "cover_name": "RaperManGachaCover",
     "reward_list": [
       {
         "type": 1,
@@ -83,6 +84,7 @@
   {
     "id": 1002,
     "name": "夺魂之廉",
+    "cover_name": "RaperManGachaCover",
     "reward_list": [
       {
         "type": 10,
@@ -127,6 +129,148 @@
       {
         "type": 10,
         "weight": 1,
+        "reward_value": 1009
+      },
+      {
+        "type": 10,
+        "weight": 0.1,
+        "reward_value": 1010
+      },
+      {
+        "type": 10,
+        "weight": 0.1,
+        "reward_value": 1011
+      },
+      {
+        "type": 10,
+        "weight": 1,
+        "reward_value": 1012
+      },
+      {
+        "type": 1,
+        "weight": 2,
+        "reward_value": 100
+      },
+      {
+        "type": 4,
+        "weight": 2,
+        "reward_value": 10
+      },
+      {
+        "type": 1,
+        "weight": 3,
+        "reward_value": 1000
+      },
+      {
+        "type": 1,
+        "weight": 3,
+        "reward_value": 500
+      },
+      {
+        "type": 3,
+        "weight": 3,
+        "reward_value": 5
+      },
+      {
+        "type": 4,
+        "weight": 2,
+        "reward_value": 5
+      },
+      {
+        "type": 5,
+        "weight": 2,
+        "reward_value": 5
+      },
+      {
+        "type": 6,
+        "weight": 2,
+        "reward_value": 5
+      },
+      {
+        "type": 7,
+        "weight": 5,
+        "reward_value": 1
+      },
+      {
+        "type": 9,
+        "weight": 5,
+        "reward_value": 1
+      },
+      {
+        "type": 14,
+        "weight": 3,
+        "reward_value": 1
+      },
+      {
+        "type": 15,
+        "weight": 3,
+        "reward_value": 1
+      },
+      {
+        "type": 16,
+        "weight": 3,
+        "reward_value": 1
+      },
+      {
+        "type": 17,
+        "weight": 3,
+        "reward_value": 1
+      },
+      {
+        "type": 18,
+        "weight": 3,
+        "reward_value": 1
+      }
+    ]
+  },
+  {
+    "id": 1003,
+    "name": "冰火之心",
+    "cover_name": "IceAndFireHeartGachaCover",
+    "reward_list": [
+      {
+        "type": 10,
+        "weight": 1,
+        "reward_value": 1003
+      },
+      {
+        "type": 10,
+        "weight": 2,
+        "reward_value": 1001
+      },
+      {
+        "type": 10,
+        "weight": 1,
+        "reward_value": 1002
+      },
+      {
+        "type": 10,
+        "weight": 2,
+        "reward_value": 1004
+      },
+      {
+        "type": 10,
+        "weight": 1,
+        "reward_value": 1005
+      },
+      {
+        "type": 10,
+        "weight": 1,
+        "reward_value": 1006
+      },
+      {
+        "type": 10,
+        "weight": 1,
+        "reward_value": 1007
+      },
+      {
+        "type": 10,
+        "weight": 2,
+        "reward_value": 1008
+      },
+      {
+        "type": 10,
+        "weight": 2,
         "reward_value": 1009
       },
       {

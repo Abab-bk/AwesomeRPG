@@ -45,10 +45,20 @@ func _ready() -> void:
         continue_btn.hide()
         )
     
+    for _gacha_btn:Button in %GachaPoolBtns.get_children():
+        _gacha_btn.pressed.connect(func():
+            change_gacha_pool(_gacha_btn.get_meta("pool_id"))
+            )
+
     animation.hide()
     reward_result.hide()
     blur.hide()
     continue_btn.hide()
+
+
+func change_gacha_pool(_id:int) -> void:
+    gacha_pool = Master.get_gacha_pool_by_id(_id)
+    cover.texture = load(gacha_pool.cover_path)
 
 
 func start_gacha(_count:int) -> void:

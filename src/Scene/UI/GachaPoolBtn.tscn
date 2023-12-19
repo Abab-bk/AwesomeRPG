@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgewthpx16ktw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hjmy5"]
+bg_color = Color(0.160784, 0.160784, 0.160784, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.831373, 0.737255, 0.592157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cbhts"]
+bg_color = Color(0.160784, 0.160784, 0.160784, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.831373, 0.737255, 0.592157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s7p0x"]
+bg_color = Color(0.101961, 0.101961, 0.101961, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.831373, 0.737255, 0.592157, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ypbvt"]
+
+[node name="GachaPoolBtn" type="Button"]
+custom_minimum_size = Vector2(300, 0)
+offset_right = 300.0
+offset_bottom = 122.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_hjmy5")
+theme_override_styles/hover = SubResource("StyleBoxFlat_cbhts")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_s7p0x")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ypbvt")
+metadata/pool_id = 0

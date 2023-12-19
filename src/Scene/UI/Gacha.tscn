@@ -1,14 +1,17 @@
-[gd_scene load_steps=17 format=3 uid="uid://car5dwl4qr8w"]
+[gd_scene load_steps=20 format=3 uid="uid://car5dwl4qr8w"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_ncvqo"]
 [ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="2_e0w02"]
 [ext_resource type="Script" path="res://Script/UI/Gacha.gd" id="2_wktcx"]
 [ext_resource type="Texture2D" uid="uid://b2leble1qth1l" path="res://Assets/Texture/Images/GachaCover/RaperManGachaCover.png" id="3_u6ivm"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Gacha.gdshader" id="5_6dmos"]
+[ext_resource type="PackedScene" uid="uid://cgewthpx16ktw" path="res://Scene/UI/GachaPoolBtn.tscn" id="5_ijuma"]
 [ext_resource type="Texture2D" uid="uid://bmv7cbcuykdsc" path="res://Assets/UI/Icons/GachaMoney.png" id="5_svgb7"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="5_tphlq"]
 [ext_resource type="Shader" path="res://Assets/Shaders/Blur.gdshader" id="6_cmsf5"]
 [ext_resource type="LabelSettings" uid="uid://bhyi4hqpwnqxh" path="res://Assets/LabelSetting/UITitleGold.tres" id="6_d2yum"]
+[ext_resource type="Texture2D" uid="uid://bjv18xrysncy7" path="res://Assets/Texture/Icons/FriendsIcon/ReaperManAvatar.png" id="6_faiuf"]
+[ext_resource type="Texture2D" uid="uid://bmo4brr6gpd56" path="res://Assets/Texture/Icons/FriendsIcon/IceElementalAvatar.png" id="7_nj62m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72fni"]
 bg_color = Color(0.133333, 0.129412, 0.121569, 1)
@@ -138,13 +141,43 @@ theme_override_constants/margin_bottom = 84
 layout_mode = 2
 theme_override_constants/separation = 80
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="GachaPoolBtns" type="HBoxContainer" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 20
 
-[node name="Button" type="Button" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(300, 0)
+[node name="GachaPoolBtn" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/GachaPoolBtns" instance=ExtResource("5_ijuma")]
 layout_mode = 2
+size_flags_horizontal = 3
+metadata/pool_id = 1002
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/GachaPoolBtns/GachaPoolBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_faiuf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="GachaPoolBtn2" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/GachaPoolBtns" instance=ExtResource("5_ijuma")]
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/pool_id = 1003
+
+[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer/GachaPoolBtns/GachaPoolBtn2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_nj62m")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/VBoxContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
