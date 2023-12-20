@@ -16,5 +16,11 @@
     "name": "热天",
     "desc": "每秒损失 1 生命。",
     "scene_name": "HotWheather"
+  },
+  {
+    "id": 1004,
+    "name": "海洋",
+    "desc": "火焰伤害 -50%。",
+    "scene_name": "OceanWheather"
   }
 ]

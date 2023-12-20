@@ -21,16 +21,24 @@ func _ready() -> void:
     EventBus.enter_dungeon.connect(func(_data:DungeonData):
         enemy_home.kill_all_enemy()
         
+        SoundManager.play_music(load(Const.SOUNDS.BattleBgm))
         change_wheather(Master.get_wheather_by_id(Master.wheathers.keys().pick_random()))
         
         enemy_home.spawn_a_special_enemy(func():
             # 地牢奖励
             _data.get_reward()
             EventBus.enter_dungeon_and_success.emit()
+            SoundManager.play_sound(load(Const.SOUNDS.Victory))
             EventBus.exit_dungeon.emit(), _data.enemy_id, true, _data.current_level))
     
-    EventBus.exit_dungeon.connect(recovery_wheather)
-    EventBus.exit_tower.connect(recovery_wheather)
+    EventBus.exit_dungeon.connect(func():
+        SoundManager.play_music(load(Const.SOUNDS.BGM))
+        recovery_wheather()
+        )
+    EventBus.exit_tower.connect(func():
+        SoundManager.play_music(load(Const.SOUNDS.BGM))
+        recovery_wheather()
+        )
     
     # data {ui_id: id}
     EventBus.changed_friends.connect(func(_data:Dictionary):
@@ -54,7 +62,7 @@ func _ready() -> void:
     EventBus.update_ui.emit()
     #EventBus.load_save.connect(completed_level)
     
-    SoundManager.play_music(load(Master.BGM), 0, "Music")
+    SoundManager.play_music(load(Const.SOUNDS.BGM))
     
     if Master.should_load:
         FlowerSaver.load_save(Master.current_save_slot)

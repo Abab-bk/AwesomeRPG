@@ -7,10 +7,14 @@ const IMAGES:Dictionary = {
 const MAX_AD_COUNT:int = 10
 
 const SOUNDS:Dictionary = {
-    "MonsterAttack": "res://Assets/Sounds/Sfx/MonsterAttack.wav",
+    "MonsterAttack": "res://Assets/Sounds/Sfx/MonsterAttack.ogg",
     "CollectReward": "res://Assets/Sounds/Sfx/CollectReward.ogg",
-    "WindUp": "res://Assets/Sounds/Sfx/WindUp.wav",
+    "WindUp": "res://Assets/Sounds/Sfx/WindUp.ogg",
     "CollectCoin": "res://Assets/Sounds/Sfx/CollectCoin.ogg",
+    "BGM": "res://Assets/Sounds/Music/SoothingBackyard.ogg",
+    "BattleBgm": "res://Assets/Sounds/Music/Action.ogg",
+    "Victory": "res://Assets/Sounds/Sfx/Victory.ogg",
+    "Death": "res://Assets/Sounds/Sfx/Death.ogg",
 }
 
 enum MONEY_TYPE {

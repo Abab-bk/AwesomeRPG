@@ -636,6 +636,8 @@ func die() -> void:
     current_state = STATE.DEAD
     Tracer.info("玩家死亡，状态：%s" % str(current_state))
     
+    SoundManager.play_music(load(Const.SOUNDS.Death))
+
     velocity = Vector2.ZERO
     
     hurt_box_collision.call_deferred("set_disabled", true)

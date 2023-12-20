@@ -8,12 +8,11 @@ class DFAState:
 
 
 class WordFilterDFA:
-    var root: DFAState
-    var temp_strings: PackedStringArray = []
-    
+    var root: DFAState    
 
     func _init(blocked_words: Array = []):
-        root = DFAState.new()
+        if not root:
+            root = DFAState.new()
 
         for word in blocked_words:
             add_word(word)
@@ -31,7 +30,9 @@ class WordFilterDFA:
 
 
     func load_blocked_words_from_file(filePath: String):
+        var temp_strings: PackedStringArray = []
         var _file = FileAccess.open(filePath, FileAccess.READ)
+
         if _file.file_exists(filePath):
             if not temp_strings.is_empty():
                 return
@@ -41,6 +42,7 @@ class WordFilterDFA:
             file.close()
             
             temp_strings = fileContent.replace("\r", "").split("\n")
+
             _init(temp_strings)
         else:
             print("File not found:", filePath)
@@ -64,5 +66,4 @@ func is_block_word(word: String) -> bool:
     var word_filter_dfa = WordFilterDFA.new()
 
     word_filter_dfa.load_blocked_words_from_file(DEFAULT_BLOCK_WORDS_PATH)
-
     return word_filter_dfa.contains_blocked_word(word)

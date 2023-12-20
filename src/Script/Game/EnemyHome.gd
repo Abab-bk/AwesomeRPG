@@ -58,6 +58,7 @@ func _ready() -> void:
     EventBus.flyed.connect(kill_all_enemy)
     EventBus.kill_alll_enenmy.connect(kill_all_enemy)
     EventBus.start_climb_tower.connect(func():
+        SoundManager.play_music(load(Const.SOUNDS.BattleBgm))
         kill_all_enemy()
         update_tower_enemys()
         gen_a_enemy()

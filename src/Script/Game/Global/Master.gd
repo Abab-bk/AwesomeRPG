@@ -2,11 +2,8 @@ extends Node
 
 # TODO: 换装备对比Tooltip
 # TODO: 世界树（花园）
-# TODO: 程序化生成世界地图
-# HACK: 升级音效短一点
 # HACK: 玩家离线升级不会获得天赋点
 
-const BGM:String = "res://Assets/Sounds/Music/KleptoLindaMountainA.wav"
 const CLICK_SOUNDS:String = "res://Assets/Sounds/Click.mp3"
 const POPUP_SOUNDS:String = "res://Assets/Sounds/PopUp.mp3"
 const HURT_SOUNDS:String = "res://Assets/Sounds/Sfx/Hurt.wav"
@@ -727,7 +724,6 @@ func get_random_main_affix() -> AffixItem:
     
     var _offset:float = randf_range(_data.offset[0], _data.offset[1])
     # 决定词缀描述
-    # HACK: 临时修复？ - 词缀如果是 INC 类型也会 * 10，导致显示错误
     
     _affix.offset = _offset
     
@@ -747,7 +743,6 @@ func get_random_affix() -> AffixItem:
     
     var _offset:float = randf_range(_data.offset[0], _data.offset[1])
     # 决定词缀描述
-    # HACK: 临时修复？ - 词缀如果是 INC 类型也会 * 10，导致显示错误
     
     _affix.offset = _offset
     
@@ -766,7 +761,6 @@ func get_random_gold_affix() -> AffixItem:
     
     var _offset:float = randf_range(_data.offset[0], _data.offset[1])
     # 决定词缀描述
-    # HACK: 临时修复？ - 词缀如果是 INC 类型也会 * 10，导致显示错误
     
     _affix.offset = _offset
     

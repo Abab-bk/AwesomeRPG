@@ -1,0 +1,109 @@
+[gd_scene load_steps=9 format=3 uid="uid://divd1iwc7mxou"]
+
+[ext_resource type="Script" path="res://Script/Perfabs/Wheathers/OceanWheater.gd" id="1_oh47w"]
+[ext_resource type="Shader" path="res://Scene/Perfabs/Wheathers/InOcean.gdshader" id="2_pefmq"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vklup"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2kjin"]
+seamless = true
+noise = SubResource("FastNoiseLite_vklup")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_72ho6"]
+shader = ExtResource("2_pefmq")
+shader_parameter/refraction_stretch = Vector2(0.2, 0.2)
+shader_parameter/refraction_strength = 0.02
+shader_parameter/water_tint = Color(0, 0.478431, 0.866667, 0.313726)
+shader_parameter/speed = 0.1
+shader_parameter/refraction_map = SubResource("NoiseTexture2D_2kjin")
+
+[sub_resource type="Animation" id="Animation_hd2hu"]
+resource_name = "show"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1080, 102), Vector2(1080, 2400)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control/ColorRect:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 2400), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wbx8h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Control/ColorRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1080, 102)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/Control/ColorRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 2400)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dv8m3"]
+_data = {
+"RESET": SubResource("Animation_wbx8h"),
+"show": SubResource("Animation_hd2hu")
+}
+
+[node name="OceanWheater" type="Node2D"]
+script = ExtResource("1_oh47w")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+material = SubResource("ShaderMaterial_72ho6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2400.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dv8m3")
+}
+autoplay = "show"

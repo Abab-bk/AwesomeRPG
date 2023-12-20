@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://4pwrjpseph1c"]
+[gd_scene load_steps=3 format=3 uid="uid://4pwrjpseph1c"]
 
 [ext_resource type="Script" path="res://addons/FlowerLoader/FlowerLoader.gd" id="1_qn8lg"]
-[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_o7gil"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="3_lnnyl"]
 
 [node name="FlowerLoader" type="CanvasLayer"]
@@ -14,7 +13,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_o7gil")
 
 [node name="Panel" type="Panel" parent="Control"]
 layout_mode = 1

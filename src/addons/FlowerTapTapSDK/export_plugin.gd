@@ -54,7 +54,7 @@ class AndroidExportPlugin extends EditorExportPlugin:
             "FlowerTapTapSDK/bin/libs/TapMoment_3.24.0.aar",
             "FlowerTapTapSDK/bin/libs/THEMIS-release3.0.7.aar"
             ])
-
+    
 
     func _get_android_dependencies(platform: EditorExportPlatform, debug: bool) -> PackedStringArray:
         return PackedStringArray([
@@ -69,21 +69,6 @@ class AndroidExportPlugin extends EditorExportPlugin:
         return """
         <uses-permission android:name="android.permission.INTERNET"></uses-permission>
         """
-
-#    func _get_android_manifest_application_element_contents(platform: EditorExportPlatform, debug: bool) -> String:
-#        return """
-#        <activity
-#            android:name=".MainActivity"
-#            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-#            android:exported="true">
-#            <intent-filter>
-#                <action android:name="android.intent.action.MAIN" />
-#    
-#                <category android:name="android.intent.category.DEFAULT" />
-#                <category android:name="android.intent.category.LAUNCHER" />
-#            </intent-filter>
-#        </activity>
-#        """
 
     func _get_name():
         return _plugin_name

@@ -49,4 +49,4 @@ func _ready() -> void:
             creat_character.show()
             )
     
-    SoundManager.play_music(load(Master.BGM), 0, "Music")
+    SoundManager.play_music(load(Const.SOUNDS.BGM))

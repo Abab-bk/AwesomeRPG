@@ -20,4 +20,4 @@ func handle_hit(_crit:bool, _value:float = 0.0) -> void:
     #health_component.damage(_value)
     #EventBus.update_ui.emit()
     hited.emit(round(_value), _crit)
-    SoundManager.play_sound(load(Master.HIT_SOUNDS), "GameBus")
+    SoundManager.play_sound(load(Master.HIT_SOUNDS))
