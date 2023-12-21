@@ -15,7 +15,6 @@ signal dead
 @onready var marker:Marker2D = $Marker2D
 
 @onready var navigation_agent_2d:NavigationAgent2D = %NavigationAgent2D
-@onready var navigation_timer:Timer = %NavigationTimer
 
 @export var range_attack:bool = false
 
@@ -76,10 +75,6 @@ func _ready() -> void:
             current_state = STATE.ATTACKING
         )
     
-    navigation_timer.timeout.connect(func():
-        navigation_agent_2d.target_position = Master.player.global_position
-        )
-    
     vision_component.target_enter_range.connect(func():
         turn_to_player()
         )
@@ -133,6 +128,8 @@ func _ready() -> void:
         EventBus.exit_dungeon.connect(func():
             queue_free()
             )
+    
+    update_navigation_position()
 
 
 
@@ -223,7 +220,8 @@ func move_to_player() -> void:
     
     #velocity = global_position.\
     #direction_to(Master.player.global_position) * output_data.speed
-    
+    update_navigation_position()
+
     if character_animation:    
         character_animation.play("scml/Walking")
 
@@ -309,3 +307,7 @@ func _physics_process(_delta:float) -> void:
     
     move_and_slide()
     hp_bar.value = (float(data.hp) / float(data.max_hp)) * 100.0
+
+
+func update_navigation_position() -> void:
+    navigation_agent_2d.target_position = Master.player.global_position

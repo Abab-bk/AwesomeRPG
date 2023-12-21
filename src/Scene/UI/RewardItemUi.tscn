@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmjm8mmvc1ofc"]
+[gd_scene load_steps=5 format=3 uid="uid://dmjm8mmvc1ofc"]
 
 [ext_resource type="Script" path="res://Script/UI/RewardItemUi.gd" id="1_00qky"]
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_y3lxa"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="2_42prf"]
 [ext_resource type="Texture2D" uid="uid://qy2aq73h3a5n" path="res://Assets/UI/Icons/Coins.png" id="2_c3j4k"]
 
@@ -10,6 +11,8 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 109.0
 grow_horizontal = 2
+theme = ExtResource("1_y3lxa")
+theme_type_variation = &"ClubPanel"
 script = ExtResource("1_00qky")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

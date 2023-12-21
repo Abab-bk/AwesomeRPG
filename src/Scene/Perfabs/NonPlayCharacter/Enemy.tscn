@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://dtu1ibnx1fj51" path="res://Assets/Characters/Skeleton1/Body.png" id="24_1aode"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vn4f4"]
-size = Vector2(120, 216)
+size = Vector2(140, 232)
 
 [sub_resource type="Animation" id="Animation_ob1gx"]
 resource_name = "Hited"
@@ -1703,6 +1703,7 @@ size = Vector2(25, 175.146)
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 4
+collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_jkjmt")
 
@@ -1710,13 +1711,9 @@ script = ExtResource("1_jkjmt")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Nvigation"]
 unique_name_in_owner = true
+target_desired_distance = 100.0
 debug_enabled = true
 debug_path_custom_point_size = 20.0
-
-[node name="NavigationTimer" type="Timer" parent="Nvigation"]
-unique_name_in_owner = true
-wait_time = 0.1
-autostart = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(149, -16)
@@ -1750,7 +1747,7 @@ show_percentage = false
 metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, -31)
+position = Vector2(-5, -39)
 shape = SubResource("RectangleShape2D_vn4f4")
 debug_color = Color(0.976471, 0, 0.415686, 0.419608)
 

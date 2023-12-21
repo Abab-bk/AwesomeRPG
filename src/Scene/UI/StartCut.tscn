@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bphbfp8f1oy6o"]
+[gd_scene load_steps=3 format=3 uid="uid://bphbfp8f1oy6o"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_du6ym"]
 [ext_resource type="Script" path="res://Script/UI/StartCut.gd" id="2_vptcc"]
-[ext_resource type="Texture2D" uid="uid://djh1r6r0cr66t" path="res://Assets/Texture/Weak.png" id="3_uqbwv"]
 
 [node name="StartCut" type="Control"]
 layout_mode = 3
@@ -14,11 +13,11 @@ grow_vertical = 2
 theme = ExtResource("1_du6ym")
 script = ExtResource("2_vptcc")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_uqbwv")
+color = Color(0.0509804, 0.0509804, 0.0509804, 1)

@@ -85,6 +85,11 @@ func add_a_sub_skill_node(_parent_id:int, _id:int, _node_pos:Vector2) -> void:
 
 
 func _ready() -> void:
+    visibility_changed.connect(func():
+        if visible:
+            update_ui()
+        )
+
     unlock_btn.pressed.connect(func():
         if not closest_node_in_path:
             return

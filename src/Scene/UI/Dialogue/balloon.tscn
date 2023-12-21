@@ -26,13 +26,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 1800
+theme_override_constants/margin_top = 1000
 theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 200
+theme_override_constants/margin_bottom = 1000
 
 [node name="Balloon" type="Panel" parent="Control/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"BlackPanel"
 
 [node name="Dialogue" type="MarginContainer" parent="Control/MarginContainer/Balloon"]
 layout_mode = 1
@@ -67,6 +68,7 @@ theme_override_font_sizes/normal_font_size = 50
 text = "Dialogue..."
 
 [node name="Responses" type="MarginContainer" parent="Control/MarginContainer/Balloon"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

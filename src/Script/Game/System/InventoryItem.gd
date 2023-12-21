@@ -12,3 +12,4 @@ class_name InventoryItem extends Resource
 @export var ranged_weapon_type:Const.RANGED_WEAPONS_TYPE = Const.RANGED_WEAPONS_TYPE.Bow
 @export var quality:Const.EQUIPMENT_QUALITY
 @export var price:int = 0
+@export var forge_count:int = 0

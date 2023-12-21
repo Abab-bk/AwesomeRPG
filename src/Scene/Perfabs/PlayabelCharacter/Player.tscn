@@ -1821,6 +1821,7 @@ name = ""
 [node name="Player" type="CharacterBody2D"]
 process_mode = 3
 collision_layer = 2
+collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_8yy7w")
 
@@ -1828,6 +1829,7 @@ script = ExtResource("1_8yy7w")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Nvigation"]
 unique_name_in_owner = true
+target_desired_distance = 100.0
 debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(1, 0, 1, 1)

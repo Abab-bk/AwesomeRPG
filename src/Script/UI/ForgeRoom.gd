@@ -40,6 +40,7 @@ var cost:Dictionary = {
     "purple": 0,
     "yellow": 0
 }
+
 # 这个是真原来的实例
 var ture_item:InventoryItem
 # 现在拿到的并非原来的实例
@@ -66,40 +67,40 @@ func update_cost() -> void:
     
     match current_item.quality:
         Const.EQUIPMENT_QUALITY.NORMAL:
-            cost.white = 10
-            cost.blue = 10
-            cost.purple = 10
-            cost_1.set_content("奉献之灰：10", ICON_PATHS.white)
-            cost_2.set_content("天堂之尘：10", ICON_PATHS.blue)
-            cost_3.set_content("赦罪之血：10", ICON_PATHS.purple)
+            cost.white = 10 + current_item.forge_count
+            cost.blue = 10 + current_item.forge_count
+            cost.purple = 10 + current_item.forge_count
+            cost_1.set_content("奉献之灰：%s" % str(cost.white), ICON_PATHS.white)
+            cost_2.set_content("天堂之尘：%s" % str(cost.blue), ICON_PATHS.blue)
+            cost_3.set_content("赦罪之血：：%s" % str(cost.purple), ICON_PATHS.purple)
         Const.EQUIPMENT_QUALITY.BLUE:
-            cost.blue = 10
-            cost.purple = 10
-            cost.yellow = 10
-            cost_1.set_content("天堂之尘：10", ICON_PATHS.blue)
-            cost_2.set_content("赦罪之血：10", ICON_PATHS.purple)
-            cost_3.set_content("天使之泪：10", ICON_PATHS.yellow)
+            cost.blue = 10 + current_item.forge_count
+            cost.purple = 10 + current_item.forge_count
+            cost.yellow = 10 + current_item.forge_count
+            cost_1.set_content("天堂之尘：%s" % str(cost.blue), ICON_PATHS.blue)
+            cost_2.set_content("赦罪之血：%s" % str(cost.purple), ICON_PATHS.purple)
+            cost_3.set_content("天使之泪：%s" % str(cost.yellow), ICON_PATHS.yellow)
         Const.EQUIPMENT_QUALITY.YELLOW:
-            cost.blue = 20
-            cost.purple = 20
-            cost.yellow = 20
-            cost_1.set_content("天堂之尘：20", ICON_PATHS.blue)
-            cost_2.set_content("赦罪之血：20", ICON_PATHS.purple)
-            cost_3.set_content("天使之泪：20", ICON_PATHS.yellow)
+            cost.blue = 20 + current_item.forge_count
+            cost.purple = 20 + current_item.forge_count
+            cost.yellow = 20 + current_item.forge_count
+            cost_1.set_content("天堂之尘：%s" % str(cost.blue), ICON_PATHS.blue)
+            cost_2.set_content("赦罪之血：%s" % str(cost.purple), ICON_PATHS.purple)
+            cost_3.set_content("天使之泪：%s" % str(cost.yellow), ICON_PATHS.yellow)
         Const.EQUIPMENT_QUALITY.DEEP_YELLOW:
-            cost.blue = 20
-            cost.purple = 20
-            cost.yellow = 20
-            cost_1.set_content("天堂之尘：20", ICON_PATHS.blue)
-            cost_2.set_content("赦罪之血：20", ICON_PATHS.purple)
-            cost_3.set_content("天使之泪：20", ICON_PATHS.yellow)
+            cost.blue = 20 + current_item.forge_count
+            cost.purple = 20 + current_item.forge_count
+            cost.yellow = 20 + current_item.forge_count
+            cost_1.set_content("天堂之尘：%s" % str(cost.blue), ICON_PATHS.blue)
+            cost_2.set_content("赦罪之血：%s" % str(cost.purple), ICON_PATHS.purple)
+            cost_3.set_content("天使之泪：%s" % str(cost.yellow), ICON_PATHS.yellow)
         Const.EQUIPMENT_QUALITY.GOLD:
-            cost.blue = 20
-            cost.purple = 20
-            cost.yellow = 20
-            cost_1.set_content("天堂之尘：20", ICON_PATHS.blue)
-            cost_2.set_content("赦罪之血：20", ICON_PATHS.purple)
-            cost_3.set_content("天使之泪：20", ICON_PATHS.yellow)
+            cost.blue = 20 + current_item.forge_count
+            cost.purple = 20 + current_item.forge_count
+            cost.yellow = 20 + current_item.forge_count
+            cost_1.set_content("天堂之尘：%s" % str(cost.blue), ICON_PATHS.blue)
+            cost_2.set_content("赦罪之血：%s" % str(cost.purple), ICON_PATHS.purple)
+            cost_3.set_content("天使之泪：%s" % str(cost.yellow), ICON_PATHS.yellow)
 
 func update_ui() -> void:    
     for i in pre_affixs.get_children():
@@ -173,6 +174,7 @@ func forge() -> void:
         affix_node.random_change_affix()
         _buf_affixs.append(affix_node.forged_affix)
     
+    current_item.forge_count += 1
     forged_item = current_item.duplicate(true) as InventoryItem
     forged_item.pre_affixs = _pre_affixs
     forged_item.buf_affix = _buf_affixs
