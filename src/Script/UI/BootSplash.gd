@@ -10,7 +10,7 @@ func _ready() -> void:
         )
     Tap.anti_pass.connect(go_to_world)
     Tap.anti_age_less.connect(func():
-        
+        Tap.login_out()
         )
     Tap.login_not.connect(func():
         $Panel.show()

@@ -4,12 +4,21 @@ extends Control
 @onready var line_edit:LineEdit = %LineEdit
 @onready var yes_btn:Button = %YesBtn
 
+var used_keys:Array[String] = []
+
 var cancel_event:Callable = func():
     SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
     queue_free()
 
 func _ready() -> void:
+    if FlowerSaver.has_key("cd_key_used_keys"):
+        used_keys = FlowerSaver.get_data("cd_key_used_keys")
+
     yes_btn.pressed.connect(func():
+        if line_edit.text in used_keys:
+            EventBus.show_popup.emit("兑换失败", "兑换码已使用")
+            return
+        
         if line_edit.text != "":
             apply_reward(decode_str(line_edit.text))
         )
@@ -23,7 +32,7 @@ func apply_reward(_text:String) -> void:
     if _reg.search(_text) == null:
         EventBus.show_popup.emit("兑换失败", "兑换码错误")
         return
-     
+    
     var _result:PackedStringArray = _reg.search(_text).strings
     
     var _reward:Reward = Reward.new()
@@ -31,6 +40,8 @@ func apply_reward(_text:String) -> void:
     _reward.type = int(_result[1])
     _reward.reward_value = int(_result[2])
     _reward.get_reward()
+    used_keys.append(line_edit.text)
+    FlowerSaver.set_data("cd_key_used_keys", used_keys)
 
 
 # 加密字符串

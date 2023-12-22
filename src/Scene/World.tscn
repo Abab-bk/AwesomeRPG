@@ -39,7 +39,7 @@ script = ExtResource("2_84kal")
 position = Vector2(567, 1284)
 
 [node name="Enemy" parent="." instance=ExtResource("5_t1ymi")]
-position = Vector2(135, 3457)
+position = Vector2(732, 3165)
 
 [node name="RelifePoint" parent="." instance=ExtResource("4_f4kq8")]
 
