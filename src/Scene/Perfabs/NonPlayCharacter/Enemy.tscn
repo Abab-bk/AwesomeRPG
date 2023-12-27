@@ -1723,6 +1723,7 @@ scale = Vector2(3.415, 3.415)
 scale = Vector2(156, 121.451)
 
 [node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 63.0
@@ -1743,6 +1744,7 @@ offset_bottom = -44.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"HpBar"
+value = 50.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 

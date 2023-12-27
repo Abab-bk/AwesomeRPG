@@ -1,0 +1,125 @@
+[gd_scene load_steps=19 format=3 uid="uid://b85ydpatpb2sc"]
+
+[ext_resource type="Texture2D" uid="uid://kvba3gedx1ln" path="res://Assets/Texture/Vfx/Ring.png" id="1_4adx5"]
+[ext_resource type="Script" path="res://Script/Perfabs/Vfx/LevelUpAnimation.gd" id="1_qf8nj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00jja"]
+atlas = ExtResource("1_4adx5")
+region = Rect2(0, 0, 480, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlpnc"]
+atlas = ExtResource("1_4adx5")
+region = Rect2(480, 0, 480, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys5v1"]
+atlas = ExtResource("1_4adx5")
+region = Rect2(960, 0, 480, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gqn7"]
+atlas = ExtResource("1_4adx5")
+region = Rect2(1440, 0, 480, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8vn1"]
+atlas = ExtResource("1_4adx5")
+region = Rect2(1920, 0, 480, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7hvb"]
+atlas = ExtResource("1_4adx5")
+region = Rect2(0, 480, 480, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2olhx"]
+atlas = ExtResource("1_4adx5")
+region = Rect2(480, 480, 480, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngxa7"]
+atlas = ExtResource("1_4adx5")
+region = Rect2(960, 480, 480, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqts0"]
+atlas = ExtResource("1_4adx5")
+region = Rect2(1440, 480, 480, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohsfk"]
+atlas = ExtResource("1_4adx5")
+region = Rect2(1920, 480, 480, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntxtg"]
+atlas = ExtResource("1_4adx5")
+region = Rect2(0, 960, 480, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj8wx"]
+atlas = ExtResource("1_4adx5")
+region = Rect2(480, 960, 480, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxtay"]
+atlas = ExtResource("1_4adx5")
+region = Rect2(960, 960, 480, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3y26r"]
+atlas = ExtResource("1_4adx5")
+region = Rect2(1440, 960, 480, 480)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rli2k"]
+atlas = ExtResource("1_4adx5")
+region = Rect2(1920, 960, 480, 480)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ws0n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00jja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlpnc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ys5v1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gqn7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8vn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7hvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2olhx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngxa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqts0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohsfk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntxtg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj8wx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxtay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3y26r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rli2k")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="LevelUpAnimation" type="Node2D"]
+script = ExtResource("1_qf8nj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4ws0n")
+frame = 14
+frame_progress = 1.0

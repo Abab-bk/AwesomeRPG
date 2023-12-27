@@ -1,8 +1,7 @@
-[gd_resource type="Theme" load_steps=46 format=3 uid="uid://dw7ft4xik3rji"]
+[gd_resource type="Theme" load_steps=45 format=3 uid="uid://dw7ft4xik3rji"]
 
 [ext_resource type="FontFile" uid="uid://cpqr3r4f0yisb" path="res://Assets/Font/SourceHanSansCN-Normal.otf" id="1_0mun2"]
 [ext_resource type="Texture2D" uid="uid://cxa6xde2sdlug" path="res://Assets/UI/Texture/Button/NormalButton.png" id="2_i82n3"]
-[ext_resource type="Texture2D" uid="uid://bv7f78tgjbooa" path="res://Assets/UI/Texture/Button/ButtonNormal.png" id="2_vhua5"]
 [ext_resource type="Texture2D" uid="uid://bgymht01i5krg" path="res://Assets/UI/Texture/Button/NormalButtonPre.png" id="3_a8uc6"]
 [ext_resource type="Texture2D" uid="uid://dxny6jldurgsg" path="res://Assets/UI/Texture/DeepRedClub.png" id="4_d64v8"]
 [ext_resource type="Texture2D" uid="uid://bv8271q5m47d6" path="res://Assets/UI/Texture/ItemBgNull.png" id="4_tk6di"]
@@ -82,12 +81,8 @@ texture_margin_top = 10.0
 texture_margin_right = 10.0
 texture_margin_bottom = 10.0
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cwwfk"]
-texture = ExtResource("2_vhua5")
-texture_margin_left = 10.0
-texture_margin_top = 10.0
-texture_margin_right = 10.0
-texture_margin_bottom = 10.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbtou"]
+bg_color = Color(0.611765, 0.184314, 0.172549, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_45xaf"]
 bg_color = Color(0, 0, 0, 0.498039)
@@ -222,7 +217,7 @@ HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_h5y0p")
 HSlider/styles/slider = SubResource("StyleBoxFlat_p3cs1")
 HpBar/base_type = &"ProgressBar"
 HpBar/styles/background = SubResource("StyleBoxTexture_sk2gh")
-HpBar/styles/fill = SubResource("StyleBoxTexture_cwwfk")
+HpBar/styles/fill = SubResource("StyleBoxFlat_dbtou")
 ItemPanel/base_type = &"Panel"
 ItemPanel/styles/panel = SubResource("StyleBoxFlat_45xaf")
 Label/colors/font_color = Color(0.741176, 0.741176, 0.741176, 1)

@@ -562,7 +562,7 @@ func change_weapons_sprite(_sprite:Texture2D) -> void:
 
 func change_bow_sprite(_sprite:Texture2D) -> void:
     sprites["bow"].texture = _sprite
-    sprites["bow"].centered = false
+    sprites["bow"].centered = true
 
 
 func change_head_sprite(_sprite:Texture2D) -> void:
@@ -586,6 +586,8 @@ func up_level(_offline_sound:bool = false) -> void:
     compute_data.update_next_xp()
     compute_all()
     
+    add_child(load("res://Scene/Perfabs/Vfx/LevelUpAnimation.tscn").instantiate())
+
     if _offline_sound:
         EventBus.player_offline_level_up.emit()
     else:        
@@ -629,6 +631,7 @@ func relife() -> void:
     modulate = Color.WHITE
 
     EventBus.player_relife.emit()
+    SoundManager.play_music(load(Const.SOUNDS.BGM))
 
 
 func die() -> void:

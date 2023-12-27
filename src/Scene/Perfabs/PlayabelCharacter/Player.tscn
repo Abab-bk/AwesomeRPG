@@ -71,15 +71,12 @@ radius = 125.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_wcb0n"]
 radius = 360.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wnox7"]
-size = Vector2(140, 262)
-
 [sub_resource type="Animation" id="Animation_h1t8p"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("%HitBoxComponent/CollisionShape2D:disabled")
+tracks/0/path = NodePath("../HitBoxComponent/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -91,7 +88,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("%HitBoxComponent/CollisionShape2D:position")
+tracks/1/path = NodePath("../HitBoxComponent/CollisionShape2D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -103,7 +100,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%HitBoxComponent/CollisionShape2D:rotation")
+tracks/2/path = NodePath("../HitBoxComponent/CollisionShape2D:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -293,7 +290,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("%HitBoxComponent/CollisionShape2D:position")
+tracks/14/path = NodePath("../HitBoxComponent/CollisionShape2D:position")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -305,7 +302,7 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("%HitBoxComponent/CollisionShape2D:rotation")
+tracks/15/path = NodePath("../HitBoxComponent/CollisionShape2D:rotation")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -317,7 +314,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("%HitBoxComponent/CollisionShape2D:disabled")
+tracks/16/path = NodePath("../HitBoxComponent/CollisionShape2D:disabled")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -1712,7 +1709,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("%HitBoxComponent/CollisionShape2D:disabled")
+tracks/14/path = NodePath("../HitBoxComponent/CollisionShape2D:disabled")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -1737,6 +1734,9 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5hl0t"]
 size = Vector2(37.6475, 151.474)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wnox7"]
+size = Vector2(140, 262)
 
 [sub_resource type="Resource" id="Resource_cfqil"]
 script = ExtResource("7_6v44f")
@@ -1881,32 +1881,11 @@ buff_manager = NodePath("../FlowerBuffManager")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VisionComponent"]
 shape = SubResource("CircleShape2D_wcb0n")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
-
-[node name="HurtBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
-collision_layer = 0
-collision_mask = 0
-script = ExtResource("6_mwt7r")
-health_component = NodePath("../HealthComponent")
-is_player_hitbox = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
-position = Vector2(1, -65)
-shape = SubResource("RectangleShape2D_wnox7")
-debug_color = Color(0.760784, 0.45098, 0, 1)
-
-[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("buff_manager", "target")]
-script = ExtResource("7_afrsm")
-buff_manager = NodePath("../FlowerBuffManager")
-target = NodePath("..")
-
 [node name="Warrior - 01" type="Node2D" parent="."]
 position = Vector2(0, 66)
 
 [node name="Skeleton" type="Skeleton2D" parent="Warrior - 01"]
-rotation = -3.14159
-scale = Vector2(-1, 1)
+scale = Vector2(1, -1)
 
 [node name="CharacterAnimationPlayer" type="AnimationPlayer" parent="Warrior - 01/Skeleton"]
 unique_name_in_owner = true
@@ -2059,6 +2038,26 @@ position = Vector2(108, -136)
 rotation = 0.609923
 shape = SubResource("RectangleShape2D_5hl0t")
 disabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="HurtBoxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("6_mwt7r")
+health_component = NodePath("../HealthComponent")
+is_player_hitbox = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent"]
+position = Vector2(1, -65)
+shape = SubResource("RectangleShape2D_wnox7")
+debug_color = Color(0.760784, 0.45098, 0, 1)
+
+[node name="HealthComponent" type="Node" parent="." node_paths=PackedStringArray("buff_manager", "target")]
+script = ExtResource("7_afrsm")
+buff_manager = NodePath("../FlowerBuffManager")
+target = NodePath("..")
 
 [node name="RangedWeaponComponent" type="Node2D" parent="." node_paths=PackedStringArray("buff_manager")]
 position = Vector2(-126, -57)
