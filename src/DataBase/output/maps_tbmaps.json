@@ -18,5 +18,10 @@
     "id": 1004,
     "name": "森林4",
     "scene_name": "Forest4"
+  },
+  {
+    "id": 1005,
+    "name": "天空岛",
+    "scene_name": "Skyland"
   }
 ]

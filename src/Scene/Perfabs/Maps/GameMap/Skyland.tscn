@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://wqlpmqaab7pd"]
+
+[ext_resource type="Texture2D" uid="uid://cdbinbqgbiook" path="res://Assets/Maps/Skyland/land.png" id="1_jimmd"]
+[ext_resource type="Texture2D" uid="uid://bloiou7yxl0wm" path="res://Assets/Maps/Skyland/bg.png" id="1_rog6n"]
+[ext_resource type="Texture2D" uid="uid://b0hd7tr1s2bqy" path="res://Assets/Maps/Skyland/grass.png" id="2_s08hu"]
+[ext_resource type="Texture2D" uid="uid://dbr7ehiuegwuu" path="res://Assets/Maps/Skyland/home.png" id="3_0idpq"]
+
+[node name="Skyland" type="ParallaxBackground"]
+scroll_ignore_camera_zoom = true
+
+[node name="Background" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.4, 0)
+motion_mirroring = Vector2(3840, 2140)
+
+[node name="BackLand" type="Sprite2D" parent="Background"]
+texture = ExtResource("1_rog6n")
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.4, 0)
+motion_mirroring = Vector2(3840, 2160)
+
+[node name="Land" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("1_jimmd")
+centered = false
+
+[node name="Ground" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("2_s08hu")
+centered = false
+
+[node name="GroundDecor" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(483, -114)
+texture = ExtResource("3_0idpq")
+centered = false

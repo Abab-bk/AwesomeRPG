@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bg51mpcf0j6te"]
+
+[ext_resource type="Texture2D" uid="uid://brp4gt1j1og72" path="res://Assets/Maps/TerraceLand/bg.png" id="1_2aw7g"]
+[ext_resource type="Texture2D" uid="uid://6x5hcwbntgrw" path="res://Assets/Maps/TerraceLand/grass.png" id="2_ekhxn"]
+[ext_resource type="Texture2D" uid="uid://dsnsxjqrsa258" path="res://Assets/Maps/TerraceLand/fence.png" id="3_qshiv"]
+[ext_resource type="Texture2D" uid="uid://y2lhbprfcyku" path="res://Assets/Maps/TerraceLand/stoun.png" id="4_i1ho5"]
+[ext_resource type="Texture2D" uid="uid://dbd4iprlc61ii" path="res://Assets/Maps/TerraceLand/stoun 2.png" id="5_cu0lf"]
+
+[node name="Terraceland" type="ParallaxBackground"]
+scroll_ignore_camera_zoom = true
+
+[node name="Background" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.4, 0)
+motion_mirroring = Vector2(3840, 2000)
+
+[node name="BackLand" type="Sprite2D" parent="Background"]
+texture = ExtResource("1_2aw7g")
+centered = false
+
+[node name="Ground" type="Sprite2D" parent="Background"]
+position = Vector2(0, 661)
+texture = ExtResource("2_ekhxn")
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.4, 0)
+motion_mirroring = Vector2(3840, 2160)
+
+[node name="Land" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(0, 251)
+texture = ExtResource("3_qshiv")
+centered = false
+
+[node name="Land2" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(409, 72)
+texture = ExtResource("4_i1ho5")
+centered = false
+
+[node name="GroundDecor" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(0, 1206)
+texture = ExtResource("5_cu0lf")
+centered = false
