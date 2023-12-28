@@ -1910,7 +1910,7 @@ rest = Transform2D(-0.121003, -0.992652, 0.992652, -0.121003, 43.9277, -17.7982)
 [node name="bone_001" type="Bone2D" parent="Display/Skeleton/bone_006/bone_000"]
 position = Vector2(29.8373, 0)
 rotation = -0.0347055
-scale = Vector2(0.99996, 0.99996)
+scale = Vector2(0.999959, 0.999959)
 rest = Transform2D(0.997235, 0.0743185, -0.0743185, 0.997235, 29.8373, 0)
 
 [node name="Weapon" type="Sprite2D" parent="Display/Skeleton/bone_006/bone_000/bone_001"]

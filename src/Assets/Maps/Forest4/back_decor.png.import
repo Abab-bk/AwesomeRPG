@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx48mevh17jd4"
-path="res://.godot/imported/BackLand.png-7d5e4f5196542d9074987b487d771e1c.ctex"
+uid="uid://c2udvat0gxmc7"
+path="res://.godot/imported/back_decor.png-7ba6addd680af2115e3e128b4273d400.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Maps/Frost1/BackLand.png"
-dest_files=["res://.godot/imported/BackLand.png-7d5e4f5196542d9074987b487d771e1c.ctex"]
+source_file="res://Assets/Maps/Frost4/back_decor.png"
+dest_files=["res://.godot/imported/back_decor.png-7ba6addd680af2115e3e128b4273d400.ctex"]
 
 [params]
 

@@ -1,18 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://3xynvu782kcm"]
+[gd_scene load_steps=15 format=3 uid="uid://3xynvu782kcm"]
 
 [ext_resource type="Script" path="res://Script/Game/World.gd" id="1_myfhc"]
 [ext_resource type="Script" path="res://Script/Game/Debuger.gd" id="2_84kal"]
 [ext_resource type="TileSet" uid="uid://dpd3kgnq8k7b6" path="res://Assets/Maps/Tiled/World.tres" id="2_hfpdn"]
-[ext_resource type="Texture2D" uid="uid://cjh55pvcq62f0" path="res://Assets/Maps/Frost1/BattleGround.png" id="2_kpocn"]
 [ext_resource type="PackedScene" uid="uid://v51c0x6v6m7h" path="res://Scene/Perfabs/PlayabelCharacter/Player.tscn" id="2_l5a8p"]
-[ext_resource type="Texture2D" uid="uid://dx48mevh17jd4" path="res://Assets/Maps/Frost1/BackLand.png" id="3_xlwli"]
+[ext_resource type="PackedScene" uid="uid://c4juornnas0vu" path="res://Scene/Perfabs/Maps/GameMap/Forest1.tscn" id="2_w00fx"]
 [ext_resource type="Script" path="res://Script/Game/EnemyHome.gd" id="4_22mer"]
 [ext_resource type="PackedScene" uid="uid://dlpspce2dr6hw" path="res://Scene/Perfabs/Maps/RelifePoint.tscn" id="4_f4kq8"]
-[ext_resource type="Texture2D" uid="uid://5oh35bl2hkkg" path="res://Assets/Maps/Frost1/BackDecor.png" id="4_ulece"]
 [ext_resource type="PackedScene" uid="uid://bjqtnyo6c546w" path="res://Scene/UI/Hud.tscn" id="5_07fkt"]
 [ext_resource type="PackedScene" uid="uid://dx27klpp0nc4x" path="res://Scene/Perfabs/NonPlayCharacter/Enemy.tscn" id="5_t1ymi"]
-[ext_resource type="Texture2D" uid="uid://bi6c6wqhu7whm" path="res://Assets/Maps/Frost1/FrontDecor.png" id="5_t5ow6"]
-[ext_resource type="Texture2D" uid="uid://b6ju2qityl7lr" path="res://Assets/Maps/Frost1/GroundDecor.png" id="6_x4sio"]
 [ext_resource type="Script" path="res://Script/Perfabs/Others/SaveTimer.gd" id="9_v08bh"]
 [ext_resource type="Script" path="res://Script/Perfabs/Maps/MapBoundary.gd" id="10_5aanf"]
 
@@ -24,7 +20,7 @@ glow_enabled = true
 size = Vector2(15220.5, 381)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m7j67"]
-size = Vector2(428, 3443)
+size = Vector2(428, 5206)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_myfhc")
@@ -32,46 +28,9 @@ save = true
 load_save = true
 
 [node name="TheWorld" type="Node2D" parent="."]
+unique_name_in_owner = true
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="TheWorld"]
-scroll_ignore_camera_zoom = true
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="TheWorld/ParallaxBackground"]
-motion_scale = Vector2(0.4, 0)
-motion_mirroring = Vector2(3840, 2160)
-
-[node name="Ground" type="Sprite2D" parent="TheWorld/ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("2_kpocn")
-centered = false
-
-[node name="GrundDecor" type="ParallaxLayer" parent="TheWorld/ParallaxBackground"]
-motion_scale = Vector2(0.4, 0)
-motion_mirroring = Vector2(3840, 2140)
-
-[node name="GroundDecor" type="Sprite2D" parent="TheWorld/ParallaxBackground/GrundDecor"]
-texture = ExtResource("6_x4sio")
-centered = false
-
-[node name="BackDecor" type="ParallaxLayer" parent="TheWorld/ParallaxBackground"]
-motion_scale = Vector2(0.3, 0)
-motion_mirroring = Vector2(3840, 0)
-
-[node name="BackLand" type="Sprite2D" parent="TheWorld/ParallaxBackground/BackDecor"]
-texture = ExtResource("3_xlwli")
-centered = false
-
-[node name="BackDecor" type="Sprite2D" parent="TheWorld/ParallaxBackground/BackDecor"]
-texture = ExtResource("4_ulece")
-centered = false
-
-[node name="FrontDecor" type="ParallaxLayer" parent="TheWorld/ParallaxBackground"]
-motion_scale = Vector2(0.5, 0)
-motion_mirroring = Vector2(3840, 0)
-
-[node name="FrontDecor" type="Sprite2D" parent="TheWorld/ParallaxBackground/FrontDecor"]
-position = Vector2(0, 136)
-texture = ExtResource("5_t5ow6")
-centered = false
+[node name="Forest1" parent="TheWorld" instance=ExtResource("2_w00fx")]
 
 [node name="TileMap" type="TileMap" parent="."]
 visible = false
@@ -87,7 +46,7 @@ layer_1/tile_data = PackedInt32Array()
 script = ExtResource("2_84kal")
 
 [node name="Player" parent="." instance=ExtResource("2_l5a8p")]
-position = Vector2(1103, 1284)
+position = Vector2(469, 1294)
 
 [node name="Enemy" parent="." instance=ExtResource("5_t1ymi")]
 position = Vector2(4468, 1671)
@@ -101,10 +60,10 @@ position = Vector2(589, 1312)
 position = Vector2(-6008, -1092)
 
 [node name="Point2" type="Marker2D" parent="RelifePoint/SpawnPoint"]
-position = Vector2(-6029, 850)
+position = Vector2(-6029, 2461)
 
 [node name="Point3" type="Marker2D" parent="RelifePoint/SpawnPoint"]
-position = Vector2(7880, 936)
+position = Vector2(7880, 2547)
 
 [node name="Point4" type="Marker2D" parent="RelifePoint/SpawnPoint"]
 position = Vector2(7819, -1041)
@@ -130,15 +89,15 @@ position = Vector2(1644.75, -207)
 shape = SubResource("RectangleShape2D_6qxva")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1644.75, 2753)
+position = Vector2(1644.75, 4581)
 shape = SubResource("RectangleShape2D_6qxva")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-6139, 1279.5)
+position = Vector2(-6190, 2202)
 shape = SubResource("RectangleShape2D_m7j67")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(9479, 1279.5)
+position = Vector2(9479, 2161)
 shape = SubResource("RectangleShape2D_m7j67")
 
 [node name="Wheathers" type="Node2D" parent="."]

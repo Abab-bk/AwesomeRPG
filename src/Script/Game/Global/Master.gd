@@ -180,6 +180,7 @@ var online_rewards:Dictionary
 var all_quests:Array
 var shops:Array
 var wheathers:Dictionary
+var maps:Array
 
 
 var unlocked_functions:Dictionary = {
@@ -226,6 +227,7 @@ func _ready():
     all_quests = config.TbAllQuests.get_data_list()
     shops = config.TbShops.get_data_list()
     wheathers = config.TbWeathers.get_data_map()
+    maps = config.TbMaps.get_data_list()
     #ability_trees = config.TbSkills.get_data_map()
     #goods = config.TbGoods.get_data_map()
 

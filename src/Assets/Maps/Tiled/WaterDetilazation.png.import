@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6ju2qityl7lr"
-path="res://.godot/imported/GroundDecor.png-ac76d7d2ab8e13939b39d72c7bfdb083.ctex"
+uid="uid://yp70x5due3b7"
+path="res://.godot/imported/WaterDetilazation.png-10213a44ad0f5135650143ac9b0a586c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Maps/Frost1/GroundDecor.png"
-dest_files=["res://.godot/imported/GroundDecor.png-ac76d7d2ab8e13939b39d72c7bfdb083.ctex"]
+source_file="res://Assets/Maps/Tiled/WaterDetilazation.png"
+dest_files=["res://.godot/imported/WaterDetilazation.png-10213a44ad0f5135650143ac9b0a586c.ctex"]
 
 [params]
 

@@ -21,7 +21,6 @@ signal set_should_show_reward_day_reward
 
 signal move_camera_to(target_pos:Vector2)
 
-
 signal selected_skills_on_panel
 signal unlocked_ability(id:int)
 signal sub_ability_changed(_ability_id:int, _sub_ability:Array)

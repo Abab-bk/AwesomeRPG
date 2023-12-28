@@ -725,6 +725,17 @@ class Wheathers:
         self.scene_name = _json_["scene_name"]
 
 
+class Maps:
+    var id: int
+    var name: String
+    var scene_name: String
+
+    func _init(_json_) -> void:
+        self.id = _json_["id"]
+        self.name = _json_["name"]
+        self.scene_name = _json_["scene_name"]
+
+
 class BuffsTbBuffs:
     var _data_list: Array[Buffs]
     var _data_map: Dictionary
@@ -1166,6 +1177,27 @@ class WheathersTbWeathers:
         return self._data_map.get(key)
 
 
+class MapsTbMaps:
+    var _data_list: Array[Maps]
+    var _data_map: Dictionary
+    
+    func _init(_json_) -> void:
+        for _json2_ in _json_:
+            var _v: Maps
+            _v = Maps.new(_json2_)
+            self._data_list.append(_v)
+            self._data_map[_v.id] = _v
+
+    func get_data_list() -> Array[Maps]:
+        return self._data_list
+
+    func get_data_map() -> Dictionary:
+        return self._data_map
+
+    func get_item(key) -> Maps:
+        return self._data_map.get(key)
+
+
 class CfgTables:
     var TbBuffs: BuffsTbBuffs
     var TbAffix: AffixsTbAffix
@@ -1188,6 +1220,7 @@ class CfgTables:
     var TbAllQuests: AllQuestsTbAllQuests
     var TbShops: ShopsTbShops
     var TbWeathers: WheathersTbWeathers
+    var TbMaps: MapsTbMaps
     
     func _init(loader: Callable) -> void:
         self.TbBuffs = BuffsTbBuffs.new(loader.call('buffs_tbbuffs'))
@@ -1211,4 +1244,5 @@ class CfgTables:
         self.TbAllQuests = AllQuestsTbAllQuests.new(loader.call('allquests_tballquests'))
         self.TbShops = ShopsTbShops.new(loader.call('shops_tbshops'))
         self.TbWeathers = WheathersTbWeathers.new(loader.call('wheathers_tbweathers'))
+        self.TbMaps = MapsTbMaps.new(loader.call('maps_tbmaps'))
 

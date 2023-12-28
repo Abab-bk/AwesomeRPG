@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bi6c6wqhu7whm"
-path="res://.godot/imported/FrontDecor.png-b49e50bfa56c5e5287ef243ffc92ea30.ctex"
+uid="uid://c3dfqqocyb6o0"
+path="res://.godot/imported/ground_decor.png-09bfb4444e2ce17ff521eadd1047db9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Maps/Frost1/FrontDecor.png"
-dest_files=["res://.godot/imported/FrontDecor.png-b49e50bfa56c5e5287ef243ffc92ea30.ctex"]
+source_file="res://Assets/Maps/Frost2/ground_decor.png"
+dest_files=["res://.godot/imported/ground_decor.png-09bfb4444e2ce17ff521eadd1047db9a.ctex"]
 
 [params]
 

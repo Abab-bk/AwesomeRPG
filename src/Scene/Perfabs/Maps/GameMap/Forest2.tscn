@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2owltfm0msg1"]
+
+[ext_resource type="Texture2D" uid="uid://c6o83dg2un6q1" path="res://Assets/Maps/Forest2/BattleGround.png" id="1_jv0tk"]
+[ext_resource type="Texture2D" uid="uid://ddgs85b20vput" path="res://Assets/Maps/Forest2/GroundDecor.png" id="2_5mnis"]
+[ext_resource type="Texture2D" uid="uid://c6pfpylfaltju" path="res://Assets/Maps/Forest2/BackLand.png" id="3_ty8a7"]
+[ext_resource type="Texture2D" uid="uid://c2hq0qktm14ei" path="res://Assets/Maps/Forest2/BackDecor.png" id="4_i2p2m"]
+[ext_resource type="Texture2D" uid="uid://bjekpidfm8vfc" path="res://Assets/Maps/Forest2/FrontDecor.png" id="5_qmghx"]
+
+[node name="Frost2" type="ParallaxBackground"]
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.4, 0)
+motion_mirroring = Vector2(3840, 2160)
+
+[node name="Ground" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("1_jv0tk")
+centered = false
+
+[node name="GrundDecor" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.4, 0)
+motion_mirroring = Vector2(3840, 2140)
+
+[node name="GroundDecor" type="Sprite2D" parent="GrundDecor"]
+texture = ExtResource("2_5mnis")
+centered = false
+
+[node name="BackDecor" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.3, 0)
+motion_mirroring = Vector2(3840, 0)
+
+[node name="BackLand" type="Sprite2D" parent="BackDecor"]
+texture = ExtResource("3_ty8a7")
+centered = false
+
+[node name="BackDecor" type="Sprite2D" parent="BackDecor"]
+texture = ExtResource("4_i2p2m")
+centered = false
+
+[node name="FrontDecor" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0)
+motion_mirroring = Vector2(3840, 0)
+
+[node name="FrontDecor" type="Sprite2D" parent="FrontDecor"]
+position = Vector2(0, 136)
+texture = ExtResource("5_qmghx")
+centered = false

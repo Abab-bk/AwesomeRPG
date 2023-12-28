@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjh55pvcq62f0"
-path="res://.godot/imported/BattleGround.png-eaa7f57f02ac1f5a538df1aaf78eb6e6.ctex"
+uid="uid://bvtxvcibfl5vh"
+path="res://.godot/imported/GroundDecor.png-8c672283c8b86431f0f6a1c62d4dac78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Maps/Frost1/BattleGround.png"
-dest_files=["res://.godot/imported/BattleGround.png-eaa7f57f02ac1f5a538df1aaf78eb6e6.ctex"]
+source_file="res://Assets/Maps/Forest3/GroundDecor.png"
+dest_files=["res://.godot/imported/GroundDecor.png-8c672283c8b86431f0f6a1c62d4dac78.ctex"]
 
 [params]
 

@@ -79,6 +79,12 @@ func recovery_wheather() -> void:
     Master.player.current_state = Player.STATE.IDLE
 
 
+func change_map(_scene_name:String) -> void:
+    for _node:ParallaxBackground in %TheWorld.get_children():
+        _node.queue_free()
+    %TheWorld.add_child(load("res://Scene/Perfabs/Maps/GameMap/%s.tscn" % _scene_name).instantiate())
+
+
 func change_wheather(_wheather:WheatherData) -> void:
     Tracer.info("天气改变：%s" % _wheather.name)
     wheathers.add_child(load(_wheather.scene_path).instantiate())
@@ -102,4 +108,5 @@ func rework_level_enemy_count() -> void:
 func completed_level() -> void:
     enemy_home.min_enemy_count = Master.current_level * 1
     enemy_home.max_enemy_count = Master.current_level * 5
+    change_map(Master.maps.pick_random().scene_name)
 

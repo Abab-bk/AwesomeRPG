@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1001,
+    "name": "森林1",
+    "scene_name": "Forest1"
+  },
+  {
+    "id": 1002,
+    "name": "森林2",
+    "scene_name": "Forest2"
+  },
+  {
+    "id": 1003,
+    "name": "森林3",
+    "scene_name": "Forest3"
+  },
+  {
+    "id": 1004,
+    "name": "森林4",
+    "scene_name": "Forest4"
+  }
+]
