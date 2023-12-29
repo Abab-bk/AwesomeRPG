@@ -1,46 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdlwurb0xh3x2"]
+[gd_scene load_steps=3 format=3 uid="uid://bdlwurb0xh3x2"]
 
 [ext_resource type="Script" path="res://Script/Perfabs/Wheathers/SnowyDay.gd" id="1_omn87"]
-[ext_resource type="Shader" path="res://Assets/Shaders/SnowyDay.gdshader" id="2_bugrx"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dm1rt"]
-shader = ExtResource("2_bugrx")
-shader_parameter/rain_amount = 200.0
-shader_parameter/near_rain_length = 0.01
-shader_parameter/far_rain_length = 0.01
-shader_parameter/near_rain_width = 1.0
-shader_parameter/far_rain_width = 1.0
-shader_parameter/near_rain_transparency = 0.464
-shader_parameter/far_rain_transparency = 1.0
-shader_parameter/rain_color = Color(0.8, 0.8, 0.8, 1)
-shader_parameter/base_rain_speed = 0.323
-shader_parameter/additional_rain_speed = 0.275
-shader_parameter/slant = 0.547
+[ext_resource type="Material" uid="uid://bw3fhi3xgitu6" path="res://Assets/Particles/SnowyDay.tres" id="2_j1j5e"]
 
 [node name="SnowyDay" type="Node2D"]
 script = ExtResource("1_omn87")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
-material = SubResource("ShaderMaterial_dm1rt")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(1, 1, 1, 0)
+[node name="GPUParticles2D" type="GPUParticles2D" parent="CanvasLayer"]
+position = Vector2(495, 0)
+amount = 2000
+process_material = ExtResource("2_j1j5e")
+lifetime = 8.0
 
 [node name="Timer" type="Timer" parent="."]
 
