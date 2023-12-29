@@ -2,7 +2,6 @@ extends Node
 
 # TODO: 换装备对比Tooltip
 # TODO: 世界树（花园）
-# HACK: 玩家离线升级不会获得天赋点
 
 const CLICK_SOUNDS:String = "res://Assets/Sounds/Click.mp3"
 const POPUP_SOUNDS:String = "res://Assets/Sounds/PopUp.mp3"

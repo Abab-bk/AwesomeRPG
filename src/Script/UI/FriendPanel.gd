@@ -50,7 +50,6 @@ var cancel_event:Callable = func():
     save()
     queue_free()
 
-# TODO: 测试专精和升级
 
 func set_data(_data:FriendData) -> void:
     current_firend = _data

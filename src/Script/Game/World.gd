@@ -18,26 +18,30 @@ func _ready() -> void:
         EventBus.update_ui.emit()
         )
     
+    EventBus.start_climb_tower.connect(change_map.bind(Master.maps.pick_random()))
     EventBus.enter_dungeon.connect(func(_data:DungeonData):
         enemy_home.kill_all_enemy()
         
         SoundManager.play_music(load(Const.SOUNDS.BattleBgm))
         change_wheather(Master.get_wheather_by_id(Master.wheathers.keys().pick_random()))
-        
+        change_map(Master.maps.pick_random())
+
         enemy_home.spawn_a_special_enemy(func():
             # 地牢奖励
             _data.get_reward()
             EventBus.enter_dungeon_and_success.emit()
             SoundManager.play_sound(load(Const.SOUNDS.Victory))
             EventBus.exit_dungeon.emit(), _data.enemy_id, true, _data.current_level))
-    
+
     EventBus.exit_dungeon.connect(func():
         SoundManager.play_music(load(Const.SOUNDS.BGM))
         recovery_wheather()
+        change_map(Master.maps.pick_random())
         )
     EventBus.exit_tower.connect(func():
         SoundManager.play_music(load(Const.SOUNDS.BGM))
         recovery_wheather()
+        change_map(Master.maps.pick_random())
         )
     
     # data {ui_id: id}
@@ -55,12 +59,9 @@ func _ready() -> void:
             spawn_a_friend_by_data(Master.friends_inventory[_data[i]], Master.player.friends_pos[_count])
         )
     
-    #EventBus.start_climb_tower.connect(func():)
-    
     if Master.current_level == 0:
         EventBus.completed_level.emit()
     EventBus.update_ui.emit()
-    #EventBus.load_save.connect(completed_level)
     
     SoundManager.play_music(load(Const.SOUNDS.BGM))
     

@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dvd0kobsmtjex" path="res://Assets/Maps/Forest4/FrontDecor.png" id="5_hctmj"]
 
 [node name="Forest4" type="ParallaxBackground"]
+scroll_limit_end = Vector2(3840, 2160)
 scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
@@ -38,7 +39,7 @@ texture = ExtResource("4_j21ec")
 centered = false
 
 [node name="FrontDecor" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0, 0)
+motion_scale = Vector2(0.4, 0)
 motion_mirroring = Vector2(3840, 0)
 
 [node name="FrontDecor" type="Sprite2D" parent="FrontDecor"]

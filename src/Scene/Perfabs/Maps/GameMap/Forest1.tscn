@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bi6c6wqhu7whm" path="res://Assets/Maps/Forest1/FrontDecor.png" id="5_efejp"]
 
 [node name="Forest1" type="ParallaxBackground"]
+scroll_limit_end = Vector2(3840, 2160)
 scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
