@@ -8,7 +8,6 @@
 
 [node name="Forest4" type="ParallaxBackground"]
 scroll_limit_end = Vector2(3840, 2160)
-scroll_ignore_camera_zoom = true
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.4, 0.4)

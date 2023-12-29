@@ -49,7 +49,7 @@ func update_ui(_data:Variant) -> void:
     
     _data = _data as CharacterData
     
-    player_level_label.text = str(_data.level)
+    player_level_label.text = "Lv. %s" % str(_data.level)
     player_name_label.text = str(FlowerSaver.get_data_but_load("player_name", get_slot_path()))
     enter_btn.text = "进入"
     del_btn.show()

@@ -107,12 +107,14 @@ func _ready() -> void:
         var _tw:Tween = create_tween()
         # _tw.tween_property($Camera2D, "position", to_local(_target_pos), 0.4)
         _tw.tween_property($Camera2D, "global_position", _target_pos, 0.4)
+        _tw.tween_property($Camera2D, "zoom", Vector2(0.7, 0.7), 0.2)
         await _tw.finished
         await get_tree().create_timer(2.0).timeout
         #get_tree().paused = false
 
         var _tw2:Tween = create_tween()
         _tw2.tween_property($Camera2D, "position", Vector2(0, 0), 0.4)
+        _tw2.tween_property($Camera2D, "zoom", Vector2(0.5, 0.5), 0.2)
         )
 
 

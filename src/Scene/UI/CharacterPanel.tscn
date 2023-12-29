@@ -159,12 +159,12 @@ value_index = "agility"
 [node name="魔力" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
-value_index = "magic"
+value_index = "max_magic"
 
 [node name="血量" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2
 title = "物理伤害"
-value_index = "hp"
+value_index = "max_hp"
 
 [node name="防御" parent="Panel/VBoxContainer/MarginContainer/NinePatchRect/VBoxContainer/VBoxContainer2/MarginContainer/ScrollContainer/Propertys" instance=ExtResource("1_q04fi")]
 layout_mode = 2

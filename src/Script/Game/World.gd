@@ -18,13 +18,13 @@ func _ready() -> void:
         EventBus.update_ui.emit()
         )
     
-    EventBus.start_climb_tower.connect(change_map.bind(Master.maps.pick_random()))
+    EventBus.start_climb_tower.connect(change_map.bind(Master.maps.pick_random().scene_name))
     EventBus.enter_dungeon.connect(func(_data:DungeonData):
         enemy_home.kill_all_enemy()
         
         SoundManager.play_music(load(Const.SOUNDS.BattleBgm))
         change_wheather(Master.get_wheather_by_id(Master.wheathers.keys().pick_random()))
-        change_map(Master.maps.pick_random())
+        change_map(Master.maps.pick_random().scene_name)
 
         enemy_home.spawn_a_special_enemy(func():
             # 地牢奖励
@@ -36,12 +36,12 @@ func _ready() -> void:
     EventBus.exit_dungeon.connect(func():
         SoundManager.play_music(load(Const.SOUNDS.BGM))
         recovery_wheather()
-        change_map(Master.maps.pick_random())
+        change_map(Master.maps.pick_random().scene_name)
         )
     EventBus.exit_tower.connect(func():
         SoundManager.play_music(load(Const.SOUNDS.BGM))
         recovery_wheather()
-        change_map(Master.maps.pick_random())
+        change_map(Master.maps.pick_random().scene_name)
         )
     
     # data {ui_id: id}

@@ -10,15 +10,15 @@ scroll_ignore_camera_zoom = true
 
 [node name="Background" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.4, 0)
-motion_mirroring = Vector2(3840, 2140)
+motion_mirroring = Vector2(3840, 2030)
 
 [node name="BackLand" type="Sprite2D" parent="Background"]
 texture = ExtResource("1_rog6n")
 centered = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.4, 0)
-motion_mirroring = Vector2(3840, 2160)
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(3840, 2030)
 
 [node name="Land" type="Sprite2D" parent="ParallaxLayer"]
 texture = ExtResource("1_jimmd")
