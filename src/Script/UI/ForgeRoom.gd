@@ -137,12 +137,16 @@ func forge() -> void:
         return
     
     if Master.moneys.white < cost.white:
+        EventBus.new_tips.emit("货币不足")
         return
     if Master.moneys.blue < cost.blue:
+        EventBus.new_tips.emit("货币不足")
         return
     if Master.moneys.purple < cost.purple:
+        EventBus.new_tips.emit("货币不足")
         return
     if Master.moneys.yellow < cost.yellow:
+        EventBus.new_tips.emit("货币不足")
         return
     
     var _pre_affixs:Array[AffixItem] = []
@@ -158,12 +162,12 @@ func forge() -> void:
             affix_node.set_null_affix()
             continue
 
-        affix_node.random_change_affix()
+        affix_node.random_change_affix(current_item.forge_count)
         _pre_affixs.append(affix_node.forged_affix)
     
     for affix_node in buf_affixs.get_children():
         if affix_node.locked:
-            _buf_affixs.append(affix_node.current_affix)
+            _buf_affixs.append(float(current_item.forge_count))
             continue
 
         var _should_forge:bool = [true, false].pick_random()
@@ -171,7 +175,7 @@ func forge() -> void:
             affix_node.set_null_affix()
             continue
         
-        affix_node.random_change_affix()
+        affix_node.random_change_affix(float(current_item.forge_count))
         _buf_affixs.append(affix_node.forged_affix)
     
     current_item.forge_count += 1

@@ -1751,7 +1751,7 @@ metadata/_edit_use_anchors_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5, -39)
 shape = SubResource("RectangleShape2D_vn4f4")
-debug_color = Color(0.976471, 0, 0.415686, 0.419608)
+debug_color = Color(0.905882, 0, 0.278431, 0.419608)
 
 [node name="AtkCDTimer" type="Timer" parent="."]
 one_shot = true

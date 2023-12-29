@@ -1,6 +1,6 @@
 class_name EnemyHome extends Node2D
 
-@export var max_enemy_count:int = 300:
+@export var max_enemy_count:int = 15:
     set(v):
         if v >= 300:
             v = 300
@@ -8,7 +8,10 @@ class_name EnemyHome extends Node2D
             return
         max_enemy_count = v
 
-@export var min_enemy_count:int = 5
+@export var min_enemy_count:int = 1:
+    set(v):
+        min_enemy_count = v
+        FlowerSaver.set_data("enemy_home_min_enemy_count", min_enemy_count)
 
 @onready var point_1:Marker2D = $"../RelifePoint/SpawnPoint/Point1"
 @onready var point_2:Marker2D = $"../RelifePoint/SpawnPoint/Point2"
@@ -24,14 +27,17 @@ var current_tower_killed_enemy_count:int = 0
 func _ready() -> void:
     EventBus.enemy_die.connect(gen_a_enemy)
     EventBus.player_level_up.connect(func():
-        min_enemy_count += 2
+        min_enemy_count += 1
         )
     EventBus.completed_level.connect(func():
         killed_enemys = 0
         need_killed_enemys = min_enemy_count * 50
         Master.next_level_need_kill_count = need_killed_enemys - killed_enemys
         )
-    
+    EventBus.load_save.connect(func():
+        if FlowerSaver.has_key("enemy_home_min_enemy_count"):
+            min_enemy_count = FlowerSaver.get_data("enemy_home_min_enemy_count"))
+
     EventBus.enemy_die.connect(func(_temp):
         if Master.current_location == Const.LOCATIONS.TOWER:
             current_tower_killed_enemy_count += 1

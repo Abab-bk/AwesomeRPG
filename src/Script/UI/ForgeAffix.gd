@@ -25,8 +25,8 @@ func _ready() -> void:
     update_ui("current_affix")
 
 
-func random_change_affix() -> void:
-    forged_affix = Master.get_random_affix()
+func random_change_affix(_offset:float) -> void:
+    forged_affix = Master.get_random_affix(_offset)
     update_ui("forged_affix")
 
 

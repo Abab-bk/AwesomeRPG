@@ -456,6 +456,7 @@ func compute_all() -> void:
 
 func move_to_enemy() -> void:
     if current_state == STATE.DEAD:
+        Tracer.info("玩家死亡，不进行寻找敌人移动")
         return
     
     if not closest_enemy:
@@ -464,12 +465,6 @@ func move_to_enemy() -> void:
     
     turn_to_closest_enemy()
     
-    #if ray_cast.is_colliding():
-        #print("ok")
-        #attack()
-        #closest_enemy = ray_cast.get_collider()
-        #return
-    
     update_navigation_position()
     
     if not navigation_agent_2d.is_navigation_finished():
@@ -477,19 +472,15 @@ func move_to_enemy() -> void:
         var _direction:Vector2 = global_position.direction_to(navigation_agent_2d.get_next_path_position())
         velocity = _direction * output_data.speed
         
-        if global_position.distance_to(navigation_agent_2d.get_final_position()) <= 20.0:
-            global_position = navigation_agent_2d.get_final_position()
-            attack()
-            return
-    # else:
-    #     global_position = to_global(navigation_agent_2d.get_next_path_position())
-    #     attack()
-    #     return
-    #velocity = global_position.\
-    #direction_to(closest_enemy.marker.global_position) * output_data.speed
+        # if global_position.distance_to(navigation_agent_2d.get_final_position()) <= 20.0:
+        #     global_position = navigation_agent_2d.get_final_position()
+        #     attack()
+        #     return
     
-    character_animation_player.play("scml/Walking")
-
+        character_animation_player.play("scml/Walking")
+    else:
+        global_position = navigation_agent_2d.get_final_position()
+        attack()
 
 func ranged_attack() -> void:
     ranged_weapon.attack()

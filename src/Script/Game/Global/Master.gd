@@ -734,7 +734,7 @@ func get_random_main_affix() -> AffixItem:
 
 
 # 生成随机词缀
-func get_random_affix() -> AffixItem:
+func get_random_affix(_offset_value:float = 0.0) -> AffixItem:
     var _affix:AffixItem = AffixItem.new()
     randomize()
     var _data = affixs[randi_range(0, affixs.size() - 1)]
@@ -742,7 +742,7 @@ func get_random_affix() -> AffixItem:
     _affix.name = _data.name
     _affix.target_buff_id = _data.target_buff_id
     
-    var _offset:float = randf_range(_data.offset[0], _data.offset[1])
+    var _offset:float = randf_range(_data.offset[0], _data.offset[1]) + _offset_value
     # 决定词缀描述
     
     _affix.offset = _offset
