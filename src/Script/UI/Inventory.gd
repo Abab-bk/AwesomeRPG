@@ -175,9 +175,7 @@ func update_ui() -> void:
                 Master.coins += _item.price
                 wait_to_remove_items.append(_item)
         
-        var _count:int = 0
         for i in wait_to_remove_items:
-            _count += 1
             Master.player_inventory.remove_item(i)
         
         wait_to_remove_items = []

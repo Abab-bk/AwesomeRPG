@@ -179,8 +179,8 @@ func _ready() -> void:
         
         Master.player_output_data = flower_buff_manager.output_data
         
-        if FlowerSaver.has_key("config_skills"):
-            config_skills = FlowerSaver.get_data("config_skills")
+        # if FlowerSaver.has_key("config_skills"):
+        #     config_skills = FlowerSaver.get_data("config_skills")
         Master.get_offline_reward()
         
         #compute()
@@ -199,7 +199,7 @@ func _ready() -> void:
         flower_buff_manager.compute_data = load("res://Assets/Resources/Datas/Characters/Player.tres")
         flower_buff_manager.output_data = load("res://Assets/Resources/Datas/Characters/Player.tres")
         )
-        
+    
     atk_range.target_enter_range.connect(func():
         attack()
         )
@@ -468,15 +468,9 @@ func move_to_enemy() -> void:
     update_navigation_position()
     
     if not navigation_agent_2d.is_navigation_finished():
-        #var _direction:Vector2 = to_local(navigation_agent_2d.get_next_path_position()).normalized()
         var _direction:Vector2 = global_position.direction_to(navigation_agent_2d.get_next_path_position())
         velocity = _direction * output_data.speed
         
-        # if global_position.distance_to(navigation_agent_2d.get_final_position()) <= 20.0:
-        #     global_position = navigation_agent_2d.get_final_position()
-        #     attack()
-        #     return
-    
         character_animation_player.play("scml/Walking")
     else:
         global_position = navigation_agent_2d.get_final_position()
@@ -534,7 +528,7 @@ func _physics_process(_delta:float) -> void:
         STATE.FREEZEING:
             velocity = Vector2.ZERO
             character_animation_player.pause()
-            
+    
     move_and_slide()
 
 

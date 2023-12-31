@@ -5,13 +5,22 @@ extends Panel
 @onready var button:Button = $Button
 @onready var texture_rect:TextureRect = $TextureRect
 
+var try_to_buy_state:bool = false
 
-func _ready() -> void:
-    goods.buyed.connect(func():
+func _ready() -> void:    
+    PockAd.get_reward.connect(func():
+        if not try_to_buy_state:
+            return
         Master.buyed_prime_access_today = true
-        update_ui()
-        )
-    button.pressed.connect(goods.try_to_buy)
+        goods.reward.get_reward()
+        update_ui())
+
+    button.pressed.connect(func():
+        EventBus.show_popup.emit("购买", "确定购买吗？需要观看一个广告", true, func():
+            try_to_buy_state = true
+            PockAd.show_reward_video_ad()
+        , func():pass))
+        
     update_ui()
 
 

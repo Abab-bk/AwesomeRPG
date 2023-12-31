@@ -1672,7 +1672,6 @@ size = Vector2(147.878, 27)
 script = ExtResource("1_ox7jm")
 animation_player = NodePath("Skeleton/AnimationPlayer")
 hitbox_component = NodePath("HitBoxComponent")
-range_attack = true
 
 [node name="Skeleton" type="Skeleton2D" parent="."]
 rotation = -3.14159

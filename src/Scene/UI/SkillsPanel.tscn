@@ -64,6 +64,30 @@ tabs_visible = false
 [node name="SkillInfo" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillsPage" instance=ExtResource("4_sooas")]
 layout_mode = 2
 
+[node name="SkillInfo2" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillsPage" instance=ExtResource("4_sooas")]
+visible = false
+layout_mode = 2
+
+[node name="SkillInfo3" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillsPage" instance=ExtResource("4_sooas")]
+visible = false
+layout_mode = 2
+
+[node name="SkillInfo4" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillsPage" instance=ExtResource("4_sooas")]
+visible = false
+layout_mode = 2
+
+[node name="SkillInfo5" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillsPage" instance=ExtResource("4_sooas")]
+visible = false
+layout_mode = 2
+
+[node name="SkillInfo6" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillsPage" instance=ExtResource("4_sooas")]
+visible = false
+layout_mode = 2
+
+[node name="SkillInfo7" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SkillsPage" instance=ExtResource("4_sooas")]
+visible = false
+layout_mode = 2
+
 [node name="SkillBtns" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 

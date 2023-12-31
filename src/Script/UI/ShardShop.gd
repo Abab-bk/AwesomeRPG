@@ -12,7 +12,9 @@ func _ready() -> void:
 func update_ui() -> void:
     for i in contents.get_children():
         i.queue_free()
-    
+    for i in special_goods.get_children():
+        i.queue_free()
+
     for i in Master.shops:
         var _goods_info:Goods = Master.get_goods_by_info(i) as Goods
         

@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=75 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -65,6 +65,7 @@
 [ext_resource type="PackedScene" uid="uid://car5dwl4qr8w" path="res://Scene/UI/Gacha.tscn" id="52_l1u2u"]
 [ext_resource type="PackedScene" uid="uid://csd413be3hgxg" path="res://Scene/UI/BlackRect.tscn" id="55_wus0m"]
 [ext_resource type="PackedScene" uid="uid://dc812tpv18cnn" path="res://Scene/UI/EveryDayQuest.tscn" id="56_oex1f"]
+[ext_resource type="PackedScene" uid="uid://bbpe10id5odto" path="res://Scene/UI/AdRewardBtn.tscn" id="66_l7hii"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0sttu"]
 font = ExtResource("13_xqeye")
@@ -888,3 +889,7 @@ mouse_filter = 2
 libraries = {
 "": SubResource("AnimationLibrary_jx3ls")
 }
+
+[node name="AdRewardBtn" parent="." instance=ExtResource("66_l7hii")]
+offset_top = 215.0
+offset_bottom = 365.0

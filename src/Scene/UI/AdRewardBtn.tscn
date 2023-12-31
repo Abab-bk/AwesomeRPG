@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbpe10id5odto"]
+
+[ext_resource type="Texture2D" uid="uid://cvdcxlf4yi0ef" path="res://Assets/UI/Texture/Button/AdRewardBtn.png" id="1_5vi22"]
+[ext_resource type="Script" path="res://Script/UI/AdRewardBtn.gd" id="1_tc0wx"]
+
+[node name="AdRewardBtn" type="TextureButton"]
+offset_right = 150.0
+offset_bottom = 150.0
+texture_normal = ExtResource("1_5vi22")
+script = ExtResource("1_tc0wx")

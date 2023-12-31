@@ -31,9 +31,15 @@ signal hp_is_zero
         magic = v
 
 @export var max_magic:float
-@export var strength:int
-@export var wisdom:int
-@export var agility:int
+@export var strength:int:
+    set(v):
+        strength = min(v, 200)
+@export var wisdom:int:
+    set(v):
+        wisdom = min(v, 200)
+@export var agility:int:
+    set(v):
+        agility = min(v, 200)
 @export var luck:float
 @export var speed:float:
     set(v):

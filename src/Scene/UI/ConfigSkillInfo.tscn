@@ -28,6 +28,7 @@ horizontal_alignment = 1
 [node name="MainSkill" parent="MainSkill" instance=ExtResource("2_f1vkd")]
 unique_name_in_owner = true
 layout_mode = 2
+ui_id = 1
 
 [node name="AllSubSkills" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -45,12 +46,16 @@ theme_override_constants/separation = 20
 
 [node name="MainSkill2" parent="AllSubSkills/SubSkills" instance=ExtResource("2_f1vkd")]
 layout_mode = 2
+ui_id = 2
 
 [node name="MainSkill3" parent="AllSubSkills/SubSkills" instance=ExtResource("2_f1vkd")]
 layout_mode = 2
+ui_id = 3
 
 [node name="MainSkill4" parent="AllSubSkills/SubSkills" instance=ExtResource("2_f1vkd")]
 layout_mode = 2
+ui_id = 4
 
 [node name="MainSkill5" parent="AllSubSkills/SubSkills" instance=ExtResource("2_f1vkd")]
 layout_mode = 2
+ui_id = 5

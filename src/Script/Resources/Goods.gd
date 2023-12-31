@@ -30,6 +30,7 @@ func try_to_buy() -> void:
             if Master.today_watch_ad_count >= Const.MAX_AD_COUNT:
                 EventBus.new_tips.emit("今日观看次数已达上限")
                 return
+                
             show_buy_popup(func():
                 Master.today_watch_ad_count += 1
                 reward.get_reward()

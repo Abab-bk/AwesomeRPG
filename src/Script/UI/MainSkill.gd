@@ -4,6 +4,8 @@ extends Panel
 
 signal changed_ability(ability:FlowerAbility)
 
+@export var ui_id:int = 0
+
 var parent:FlowerAbility
 var sub_skill:bool = false
 var ability:FlowerAbility = null:
@@ -26,7 +28,7 @@ var ability:FlowerAbility = null:
                 ability.del_self()
                 ability = v
                 EventBus.player_ability_change.emit()
-            
+
             %DisBtn.hide()
             %ChangeBtn.show()
             
@@ -53,9 +55,24 @@ var ability:FlowerAbility = null:
             return
         
         # 真正添加技能到容器
-        EventBus.player_set_a_ability.emit(ability, [])        
+        EventBus.player_set_a_ability.emit(ability, [])
+        FlowerSaver.set_data("main_skill_%s" % str(ui_id + owner.ui_id), {
+            "ability": ability,
+            "sub_skill": sub_skill,
+            "parent": parent
+        })
 
 func _ready() -> void:
+    EventBus.load_save.connect(func():
+        if not FlowerSaver.has_key("main_skill_%s" % str(ui_id + owner.ui_id)):
+            return
+        
+        var _data:Dictionary = FlowerSaver.get_data("main_skill_%s" % str(ui_id + owner.ui_id))
+        sub_skill = _data.sub_skill
+        parent = _data.parent
+        ability = _data.ability
+        )
+
     change_btn.pressed.connect(func():
         EventBus.show_select_skills_panel.emit(self)
         )
@@ -65,3 +82,4 @@ func _ready() -> void:
     
     %DisBtn.hide()
     %ChangeBtn.show()
+

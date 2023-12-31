@@ -220,7 +220,7 @@ func move_to_player() -> void:
 	
 	update_navigation_position()
 
-	if character_animation:    
+	if character_animation:
 		character_animation.play("scml/Walking")
 
 
@@ -293,18 +293,17 @@ func set_level(_value:int) -> void:
 
 
 func _physics_process(_delta:float) -> void:
-	if current_state == STATE.PATROL:
-		move_to_player()
-	
-	if current_state == STATE.SLEEP:
-		velocity = Vector2.ZERO
-		character_animation.play("scml/Idle")
-	
-	if current_state == STATE.ATTACKING:
-		attack()
+	match current_state:
+		STATE.PATROL:
+			move_to_player()
+		STATE.SLEEP:
+			velocity = Vector2.ZERO
+			character_animation.play("scml/Idle")
+		STATE.ATTACKING:
+			attack()
 	
 	move_and_slide()
-	hp_bar.value = (float(data.hp) / float(data.max_hp)) * 100.0
+	# hp_bar.value = (float(data.hp) / float(data.max_hp)) * 100.0
 
 
 func update_navigation_position() -> void:

@@ -30,7 +30,10 @@ func build_a_base_bullet(_damage_data:CharacterData, _is_player_hitbox:bool) -> 
 
 
 func build_a_custome_bullet(_damage_data:CharacterData, _is_player_hitbox:bool, _name:String) -> BaseBullet:
-    var _n:BaseBullet = load("res://Scene/Perfabs/Bullets/%s.tscn" % _name).instantiate()
+    var _temp = load("res://Scene/Perfabs/Bullets/%s.tscn" % _name)
+    if _temp == null:
+        return
+    var _n:BaseBullet = _temp.instantiate()
     
     _n.damage_data = _damage_data
     _n.is_player_bullet = _is_player_hitbox

@@ -9,9 +9,9 @@ const HURT_SOUNDS:String = "res://Assets/Sounds/Sfx/Hurt.wav"
 const HIT_SOUNDS:String = "res://Assets/Sounds/Sfx/Hit.mp3"
 const HAPPY_SOUNDS:String = "res://Assets/Sounds/Sfx/Happy.ogg"
 const SOUNDS = {
-    "Myster": "res://Assets/Sounds/Sfx/Mystery.wav",
-    "GachaItemShow": "res://Assets/Sounds/Sfx/GachaItemShow.wav",
-    "Forge": "res://Assets/Sounds/Sfx/Forge.wav"
+    "Myster": "res://Assets/Sounds/Sfx/Mystery.ogg",
+    "GachaItemShow": "res://Assets/Sounds/Sfx/GachaItemShow.ogg",
+    "Forge": "res://Assets/Sounds/Sfx/Forge.ogg"
 }
 
 const SPECIAL_ABILITYS_ID:Array[int] = [4005]
@@ -205,7 +205,7 @@ const abilitys_end:int = 4009
 
 func _ready():
     config = Schema.CfgTables.new(loader)
-    
+
     affixs = config.TbAffix.get_data_list()
     buffs = config.TbBuffs.get_data_map()
     abilitys = config.TbAbilitys.get_data_map()
@@ -242,12 +242,12 @@ func _ready():
             return
         unlocked_skills.append(_id)
         )
-    
+
     EventBus.completed_level.connect(func():
         current_level += 1
         EventBus.update_ui.emit()
         )
-    
+
     EventBus.player_level_up.connect(func():
         if player.compute_data.level >= next_reward_player_level:
             var _ability:FlowerAbility = Master.get_random_ability()
@@ -255,7 +255,7 @@ func _ready():
             EventBus.show_popup.emit("升级！获得奖励", "解锁技能：%s" % _ability.name)
             next_reward_player_level += 5
         )
-    
+
     EventBus.save.connect(func():
         FlowerSaver.set_data("next_reward_player_level", next_reward_player_level)
         last_leave_time = TimeManager.get_current_time_resource()
@@ -263,11 +263,11 @@ func _ready():
         FlowerSaver.set_data("last_checkin_time", last_checkin_time)
         FlowerSaver.set_data("moneys", moneys)
         )
-    
+
     EventBus.load_save.connect(func():
         if FlowerSaver.has_key("flyed_just_now"):
             flyed_just_now = FlowerSaver.get_data("flyed_just_now")
-        
+
         if flyed_just_now:
             Tracer.info("Master飞升读档，玩家名：%s" % player_name)
             fly_count = FlowerSaver.get_data("fly_count")
@@ -282,76 +282,76 @@ func _ready():
             player_data = null
             player_output_data = null
             player_inventory = null
-            
+
             #EventBus.rework_level_enemy_count.emit()
             EventBus.completed_level.emit()
             flyed_just_now = false
             return
-        
+
         Tracer.info("Master常规读档")
-        
+
         if FlowerSaver.has_key("fly_count"):
             fly_count = FlowerSaver.get_data("fly_count")
-        
+
         if FlowerSaver.has_key("unlocked_skills"):
             unlocked_skills = FlowerSaver.get_data("unlocked_skills")
-        
+
         if FlowerSaver.has_key("current_level"):
             current_level = FlowerSaver.get_data("current_level")
-        
+
         if FlowerSaver.has_key("player_name"):
             player_name = FlowerSaver.get_data("player_name")
-        
+
         if FlowerSaver.has_key("coins"):
             coins = FlowerSaver.get_data("coins")
-        
+
         if FlowerSaver.has_key("moneys"):
             moneys = FlowerSaver.get_data("moneys")
-        
+
         if FlowerSaver.has_key("next_reward_player_level"):
             next_reward_player_level = FlowerSaver.get_data("next_reward_player_level")
-        
+
         if FlowerSaver.has_key("last_checkin_time"):
             last_checkin_time = FlowerSaver.get_data("last_checkin_time")
-        
+
         if FlowerSaver.has_key("last_leave_time"):
             last_leave_time = FlowerSaver.get_data("last_leave_time")
-        
+
         if FlowerSaver.has_key("player_healing_items"):
             player_healing_items = FlowerSaver.get_data("player_healing_items")
-        
+
         if FlowerSaver.has_key("unlocked_functions"):
             unlocked_functions = FlowerSaver.get_data("unlocked_functions")
 
         if FlowerSaver.has_key("gacha_money"):
             gacha_money = FlowerSaver.get_data("gacha_money")
-            
+
         if FlowerSaver.has_key("gacha_money_part"):
             gacha_money_part = FlowerSaver.get_data("gacha_money_part")
 
         if FlowerSaver.has_key("buyed_prime_access_today"):
             buyed_prime_access_today = FlowerSaver.get_data("buyed_prime_access_today")
-        
+
         if FlowerSaver.has_key("today_watch_ad_count"):
             today_watch_ad_count = FlowerSaver.get_data("today_watch_ad_count")
-        
+
         if FlowerSaver.has_key("master_xp_book_inventory"):
             xp_book_inventory = FlowerSaver.get_data("master_xp_book_inventory")
-        
+
         if FlowerSaver.has_key("master_pole_inventory"):
             pole_inventory = FlowerSaver.get_data("master_pole_inventory")
-        
+
         if FlowerSaver.has_key("master_memorys"):
             memorys = FlowerSaver.get_data("master_memorys")
 
         EventBus.rework_level_enemy_count.emit()
-        
+
         var _current_time:TimeResource = TimeManager.get_current_time_resource() as TimeResource
         if _current_time.is_next_day(last_leave_time):
             buyed_prime_access_today = false
-        
+            today_watch_ad_count = 0
         )
-    
+
     EventBus.get_money.connect(func(_key:String, _value:int):
         moneys[_key] += _value
         )
@@ -388,7 +388,11 @@ func _ready():
     EventBus.exit_dungeon.connect(func():
         current_location = Const.LOCATIONS.WORLD
         )
-    
+
+    PockAd.get_reward.connect(func():
+        today_watch_ad_count += 1
+        )
+
     subscriber.init()
 
 
@@ -411,112 +415,112 @@ func yes_fly() -> void:
 func get_wheather_by_id(_id:int) -> WheatherData:
     var _wheather:WheatherData = WheatherData.new()
     var _data = wheathers[_id]
-    
+
     _wheather.id = _id
     _wheather.name = _data["name"]
     _wheather.desc = _data["desc"]
     _wheather.scene_path = "res://Scene/Perfabs/Wheathers/%s.tscn" % _data["scene_name"]
-    
+
     return _wheather
 
 
 func get_goods_by_info(_info) -> Goods:
     var _goods:Goods = Goods.new()
-    
+
     _goods.name = _info["name"]
     _goods.cost_type = _info["cost_type"]
     _goods.cost = _info["cost"]
-    
+
     var _reward:Reward = Reward.new()
     _reward.type = _info["reward_type"]
     _reward.reward_value = _info["reward_value"]
-    
+
     _goods.reward = _reward
-    
+
     return _goods
 
 
 func get_player_level_up_info() -> Dictionary:
     var _result:Dictionary
-    
+
     var _form_data:CharacterData = player_data.duplicate(true) as CharacterData
-    
+
     _form_data.level -= 1
     _result = _form_data.level_up()
-    
+
     return _result
 
 
 func get_days_reward_list_by_id(_id:int) -> Array[Reward]:
     var _list:Array[Reward] = []
     var _data = days_checkin[_id]
-    
+
     for i in _data["reward_list"]:
         var _reward:Reward = Reward.new()
         _reward.type = i["type"]
         _reward.reward_value = i["reward_value"]
         _list.append(_reward)
-    
+
     return _list
 
 
 func get_online_reward_list_by_id(_id:int) -> Array[Reward]:
     var _list:Array[Reward] = []
     var _data = online_rewards[_id]
-    
+
     for i in _data["reward_list"]:
         var _reward:Reward = Reward.new()
         _reward.type = i["type"]
         _reward.reward_value = i["reward_value"]
         _list.append(_reward)
-    
+
     return _list
 
 
 func get_base_gacha_pool() -> GachaPool:
     var _gacha_pool:GachaPool = GachaPool.new()
     var _data = gachas[1001]
-    
-    _gacha_pool.name = _data["name"]
-    
-    for i in _data["reward_list"]:
-        var _reward:Reward = Reward.new()
-        _reward.type = i["type"]
-        _reward.reward_value = i["reward_value"]
-        _reward.weight = i["weight"]        
-        _gacha_pool.reward_list.append(_reward)
-    
-    return _gacha_pool
 
-
-func get_gacha_pool_by_id(_id:int) -> GachaPool:
-    var _gacha_pool:GachaPool = GachaPool.new()
-    var _data = gachas[_id]
-    
     _gacha_pool.name = _data["name"]
-    _gacha_pool.cover_path = "res://Assets/Texture/Images/GachaCover/%s.png" % _data["cover_name"]
-    
+
     for i in _data["reward_list"]:
         var _reward:Reward = Reward.new()
         _reward.type = i["type"]
         _reward.reward_value = i["reward_value"]
         _reward.weight = i["weight"]
         _gacha_pool.reward_list.append(_reward)
-    
+
+    return _gacha_pool
+
+
+func get_gacha_pool_by_id(_id:int) -> GachaPool:
+    var _gacha_pool:GachaPool = GachaPool.new()
+    var _data = gachas[_id]
+
+    _gacha_pool.name = _data["name"]
+    _gacha_pool.cover_path = "res://Assets/Texture/Images/GachaCover/%s.png" % _data["cover_name"]
+
+    for i in _data["reward_list"]:
+        var _reward:Reward = Reward.new()
+        _reward.type = i["type"]
+        _reward.reward_value = i["reward_value"]
+        _reward.weight = i["weight"]
+        _gacha_pool.reward_list.append(_reward)
+
     return _gacha_pool
 
 
 func get_friend_data_by_id(_id:int) -> FriendData:
     var _friend:FriendData = FriendData.new()
-    
+
     var _friend_data = friends[_id]
-    
+
     _friend.id = _id
     _friend.icon_path = "res://Assets/Texture/Icons/FriendsIcon/%s.png" % _friend_data["icon_path"]
     _friend.name = _friend_data["name"]
     _friend.quality = _friend_data["quality"]
     _friend.skin_name = _friend_data["skin_name"]
-    
+
     var _data:CharacterData = CharacterData.new()
     _data.vision = _friend_data["base_vision"]
     _data.atk_range = _friend_data["base_atk_range"]
@@ -532,15 +536,15 @@ func get_friend_data_by_id(_id:int) -> FriendData:
     _data.max_hp = _friend_data["hp"]
     _data.hp = _friend_data["hp"]
     _data.speed = _friend_data["speed"]
-    
+
     _friend.character_data = _data
-    
+
     return _friend
 
 
 func get_dungeon_by_id(_id:int) -> DungeonData:
     var _dungeon:DungeonData = DungeonData.new()
-    
+
     _dungeon.id = dungeons[_id]["id"]
     _dungeon.name = dungeons[_id]["name"]
     _dungeon.enemy_id = dungeons[_id]["enemy_id"]
@@ -550,48 +554,48 @@ func get_dungeon_by_id(_id:int) -> DungeonData:
     _dungeon.max_level = dungeons[_id]["max_level"]
     _dungeon.wheather_id = dungeons[_id]["wheather_id"]
     _dungeon.icon_path = "res://Assets/Texture/Images/%s" % dungeons[_id]["icon_path"]
-    
+
     _dungeon.set_level(1)
-    
+
     return _dungeon
 
 
 func get_random_quest() -> QuestResource:
     var _quest:QuestResource = QuestResource.new()
-    
+
     var _data = all_quests.pick_random()
-    
+
     var _reward:Reward = Reward.new()
     var _reward_data = _data["reward_list"].pick_random()
     _reward.type = _reward_data["type"]
     _reward.reward_value = _reward_data["type"]
-    
+
     var _need_value:int = randi_range(_data["quest_value_range"][0], _data["quest_value_range"][1])
-    
+
     _quest.reward = _reward
     _quest.id = _data["id"]
     _quest.name = _data["desc"].format({"s": str(_need_value)})
     _quest.type = _data["type"]
     _quest.need_value = _need_value
-    
+
     return _quest
 
 
 func get_quest_by_id(_id:int) -> QuestResource:
     var _quest:QuestResource = QuestResource.new()
-    
+
     var _data = quests[_id]
-    
+
     var _reward:Reward = Reward.new()
     _reward.type = _data["reward_type"]
     _reward.reward_value = _data["reward"]
-    
+
     _quest.reward = _reward
     _quest.id = _data["id"]
     _quest.name = _data["name"]
     _quest.type = _data["type"]
     _quest.need_value = _data["value"]
-    
+
     return _quest
 
 
@@ -599,7 +603,7 @@ func get_ability_by_id(_id:int) -> FlowerAbility:
     var _data = abilitys[_id]
     var _ability:FlowerAbility = FlowerAbility.new()
 #    var _ability:FlowerAbility = load("res://Script/Abilitys/%s.gd" % _data["script_name"]).new()
-    
+
     _ability.id = _data.id
     _ability.name = _data.name
     _ability.desc = _data.desc
@@ -612,13 +616,13 @@ func get_ability_by_id(_id:int) -> FlowerAbility:
     _ability.cost = _data.cost
     _ability.cost_type = _data.cost_type
     _ability.cost_value = _data.cost_value
-    
+
     return _ability
 
 func get_talent_buff_by_id(_target_buff_id:int, _offset:float) -> FlowerBaseBuff:
     var buff:FlowerBaseBuff = FlowerBaseBuff.new()
     var _buff = talent_buffs[_target_buff_id]
-    
+
     buff.name = _buff.name
     buff.desc = ""
     buff.repeat = _buff["repeat"]
@@ -627,14 +631,14 @@ func get_talent_buff_by_id(_target_buff_id:int, _offset:float) -> FlowerBaseBuff
     buff.prepare_time = _buff["prepare_time"]
     buff.active_time = _buff["active_time"]
     buff.cooldown_time = _buff["cooldown_time"]
-    
+
     buff.compute_values = _get_talent_compute_datas(_buff["compute_values"], _offset)
-    
+
     return buff
 
 func _get_talent_compute_datas(_value, _offset:float) -> Array[FlowerComputeData]:
     var _result:Array[FlowerComputeData] = []
-    
+
     for i in _value:
         var _new_data:FlowerComputeData = FlowerComputeData.new()
         _new_data.id = i["id"]
@@ -642,9 +646,9 @@ func _get_talent_compute_datas(_value, _offset:float) -> Array[FlowerComputeData
         _new_data.value = _offset
         _new_data.formual = i["formual"]
         _new_data.target_property = i["target_property"]
-        
+
         _result.append(_new_data)
-        
+
     return _result
 
 
@@ -652,7 +656,7 @@ func _get_talent_compute_datas(_value, _offset:float) -> Array[FlowerComputeData
 func get_buff_by_id(_target_buff_id:int) -> FlowerBaseBuff:
     var buff:FlowerBaseBuff = FlowerBaseBuff.new()
     var _buff = ability_buffs[_target_buff_id]
-    
+
     buff.name = _buff.name
     buff.desc = _buff.desc
     buff.repeat = _buff["repeat"]
@@ -661,9 +665,9 @@ func get_buff_by_id(_target_buff_id:int) -> FlowerBaseBuff:
     buff.prepare_time = _buff["prepare_time"]
     buff.active_time = _buff["active_time"]
     buff.cooldown_time = _buff["cooldown_time"]
-    
+
     buff.compute_values = _get_compute_datas(_buff["compute_values"])
-    
+
     return buff
 
 
@@ -674,7 +678,7 @@ func get_random_gold_name() -> String:
 
 func _get_compute_datas(_value) -> Array[FlowerComputeData]:
     var _result:Array[FlowerComputeData] = []
-    
+
     for i in _value:
         var _new_data:FlowerComputeData = FlowerComputeData.new()
         _new_data.id = i["id"]
@@ -682,9 +686,9 @@ func _get_compute_datas(_value) -> Array[FlowerComputeData]:
         _new_data.value = i["value"]
         _new_data.formual = i["formual"]
         _new_data.target_property = i["target_property"]
-        
+
         _result.append(_new_data)
-        
+
     return _result
 
 
@@ -698,7 +702,7 @@ func get_random_ability() -> FlowerAbility:
     var _data = abilitys[randi_range(abilitys_start, abilitys_end)]
 #    var _ability:FlowerAbility = load("res://Script/Abilitys/%s.gd" % _data["scene_name"]).new()
     var _ability:FlowerAbility = FlowerAbility.new()
-    
+
     _ability.id = _data.id
     _ability.name = _data.name
     _ability.desc = _data.desc
@@ -711,7 +715,7 @@ func get_random_ability() -> FlowerAbility:
     _ability.cost = _data.cost
     _ability.cost_type = _data.cost_type
     _ability.cost_value = _data.cost_value
-    
+
     return _ability
 
 
@@ -719,17 +723,17 @@ func get_random_main_affix() -> AffixItem:
     var _affix:AffixItem = AffixItem.new()
     randomize()
     var _data = main_buffs[randi_range(0, main_buffs.size() - 1)]
-    
+
     _affix.name = _data.name
     _affix.target_buff_id = _data.target_buff_id
-    
+
     var _offset:float = randf_range(_data.offset[0], _data.offset[1])
     # 决定词缀描述
-    
+
     _affix.offset = _offset
-    
+
     _affix.update(_data)
-    
+
     return _affix
 
 
@@ -738,17 +742,17 @@ func get_random_affix(_offset_value:float = 0.0) -> AffixItem:
     var _affix:AffixItem = AffixItem.new()
     randomize()
     var _data = affixs[randi_range(0, affixs.size() - 1)]
-    
+
     _affix.name = _data.name
     _affix.target_buff_id = _data.target_buff_id
-    
+
     var _offset:float = randf_range(_data.offset[0], _data.offset[1]) + _offset_value
     # 决定词缀描述
-    
+
     _affix.offset = _offset
-    
+
     _affix.update(_data)
-    
+
     return _affix
 
 
@@ -756,17 +760,17 @@ func get_random_gold_affix() -> AffixItem:
     var _affix:AffixItem = AffixItem.new()
     randomize()
     var _data = gold_affixs.pick_random()
-    
+
     _affix.name = _data.name
     _affix.target_buff_id = _data.target_buff_id
-    
+
     var _offset:float = randf_range(_data.offset[0], _data.offset[1])
     # 决定词缀描述
-    
+
     _affix.offset = _offset
-    
+
     _affix.update(_data)
-    
+
     return _affix
 
 
@@ -790,9 +794,9 @@ func get_random_gold_affix() -> AffixItem:
 func get_rate_text_color_from_item(_item:InventoryItem) -> Color:
         if not _item:
             return Color(0, 0, 0)
-        
+
         var _result:Color
-        
+
         match _item.quality:
             Const.EQUIPMENT_QUALITY.NORMAL:
                 _result = Color("D9DBD8")
@@ -804,15 +808,15 @@ func get_rate_text_color_from_item(_item:InventoryItem) -> Color:
                 _result = Color("D9DBD8")
             Const.EQUIPMENT_QUALITY.GOLD:
                 _result = Color("D9DBD8")
-        
+
         return _result
 
 func get_rate_text_from_item(_item:InventoryItem) -> String:
         if not _item:
             return ""
-        
+
         var _result = ""
-        
+
         match _item.quality:
             Const.EQUIPMENT_QUALITY.NORMAL:
                 _result += "普通"
@@ -824,7 +828,7 @@ func get_rate_text_from_item(_item:InventoryItem) -> String:
                 _result += "史诗"
             Const.EQUIPMENT_QUALITY.GOLD:
                 _result += "传奇"
-        
+
         if _item.type == Const.EQUIPMENT_TYPE.武器:
             match _item.weapon_type:
                 Const.WEAPONS_TYPE.Sword:
@@ -845,7 +849,7 @@ func get_rate_text_from_item(_item:InventoryItem) -> String:
                     _result += "短杖"
         else:
             _result += str(Const.EQUIPMENT_TYPE.keys()[_item.type])
-        
+
         return _result
 
 
@@ -858,7 +862,7 @@ func loader(file_name:String):
 
 func get_tower_reward() -> void:
     var _rewards:Dictionary = {}
-    
+
     if Master.current_tower_level <= 10:
         _rewards["金币"] = current_tower_level * 5
     if Master.current_tower_level >= 20:
@@ -878,17 +882,17 @@ func get_tower_reward() -> void:
         _rewards["奉献之灰"] = current_level * 1
         _rewards["天堂之灰"] = current_level * 1
         _rewards["赦罪之血"] = current_level * 1
-        _rewards["天使之泪"] = current_level * 1        
+        _rewards["天使之泪"] = current_level * 1
     if Master.current_tower_level >= 60:
         _rewards["金币"] = current_tower_level * 30
         _rewards["奉献之灰"] = (current_level - 40) * current_level
         _rewards["天堂之灰"] = (current_level - 40) * current_level
         _rewards["赦罪之血"] = (current_level - 40) * current_level
         _rewards["天使之泪"] = (current_level - 40) * current_level
-    
+
     for i in _rewards.keys():
         get_reward(i, _rewards[i])
-    
+
     EventBus.show_popup.emit("获得奖励", "爬到了 %s 层，获得奖励：
     %s
     " % [str(current_tower_level), get_reward_label_from_dic(_rewards)])
@@ -910,23 +914,23 @@ func get_reward(_key:String, _value:int) -> void:
 
 func get_reward_label_from_dic(_data:Dictionary) -> String:
     var _result:String =  ""
-    
+
     for key in _data.keys():
         _result += "%s：%s" % [key, _data[key]]
-    
+
     return _result
 
 
 func get_offline_reward() -> void:
     var _distance:int = TimeManager.get_current_time_resource().get_distance_to_a(last_leave_time)
-    
+
     Tracer.info("获得离线收益，离线时间：%s" % str(_distance))
-    
+
     var _level:int = max(Master.player.get_level() - 1, 1)
-    
+
     var _get_xp:float = min(((3 * _level * 1.5) * (1 + Master.fly_count * 0.1) * float(_distance)) * 0.5, 5000)
     var _get_coins:int = min(floor((_level * randi_range(0, 5)) * 0.1) * _distance, 10000)
-    
+
     Master.coins += _get_coins
 
     # 如果玩家经验足以升到下一级别
@@ -935,7 +939,7 @@ func get_offline_reward() -> void:
         player.get_xp(_get_xp, true)
         # if player.compute_data.now_xp >= player.compute_data.next_level_xp:
         #     player.compute_data.level_up()
-    
+
 
     EventBus.show_popup.emit("离线奖励", """
     离线奖励：
