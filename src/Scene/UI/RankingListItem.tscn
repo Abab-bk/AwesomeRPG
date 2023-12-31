@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwi7t8foifefe"]
+
+[ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_hf8b8"]
+[ext_resource type="LabelSettings" uid="uid://drx7d3iagcvhu" path="res://Assets/LabelSetting/ItemTitle.tres" id="2_cr4ia"]
+[ext_resource type="FontFile" uid="uid://ri6183bsibm8" path="res://Assets/Font/SourceHanSansCN-Bold.otf" id="2_cxfdw"]
+[ext_resource type="Script" path="res://Script/UI/RankingListItem.gd" id="2_dmurq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1o3ch"]
+font = ExtResource("2_cxfdw")
+font_size = 120
+font_color = Color(0.827451, 0.827451, 0.776471, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[node name="RankingListItem" type="Panel"]
+custom_minimum_size = Vector2(0, 200)
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+mouse_filter = 1
+theme = ExtResource("1_hf8b8")
+theme_type_variation = &"ClubPanel"
+script = ExtResource("2_dmurq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="RankLabel" type="Label" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "11"
+label_settings = SubResource("LabelSettings_1o3ch")
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlayerNameLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "花神"
+label_settings = ExtResource("2_cr4ia")
+vertical_alignment = 2
+
+[node name="PlayerPowerLabel" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "战力：888888888888"
+label_settings = ExtResource("2_cr4ia")

@@ -24,6 +24,8 @@ signal item_changed
 @onready var cost_2:VBoxContainer = %Cost2
 @onready var cost_3:VBoxContainer = %Cost3
 
+@onready var rename_edit:LineEdit = %RenameEdit
+
 const FORGE_AFFIX_PATH:String = "res://Scene/UI/ForgeAffix.tscn"
 const ICON_PATHS = {
     "white": "res://Assets/UI/Icons/MoneyWhite.png",
@@ -67,9 +69,9 @@ func update_cost() -> void:
     
     match current_item.quality:
         Const.EQUIPMENT_QUALITY.NORMAL:
-            cost.white = 10 + current_item.forge_count
-            cost.blue = 10 + current_item.forge_count
-            cost.purple = 10 + current_item.forge_count
+            cost.white = 5 + current_item.forge_count
+            cost.blue = 5 + current_item.forge_count
+            cost.purple = 5 + current_item.forge_count
             cost_1.set_content("奉献之灰：%s" % str(cost.white), ICON_PATHS.white)
             cost_2.set_content("天堂之尘：%s" % str(cost.blue), ICON_PATHS.blue)
             cost_3.set_content("赦罪之血：：%s" % str(cost.purple), ICON_PATHS.purple)
@@ -81,23 +83,23 @@ func update_cost() -> void:
             cost_2.set_content("赦罪之血：%s" % str(cost.purple), ICON_PATHS.purple)
             cost_3.set_content("天使之泪：%s" % str(cost.yellow), ICON_PATHS.yellow)
         Const.EQUIPMENT_QUALITY.YELLOW:
-            cost.blue = 20 + current_item.forge_count
-            cost.purple = 20 + current_item.forge_count
-            cost.yellow = 20 + current_item.forge_count
+            cost.blue = 10 + current_item.forge_count
+            cost.purple = 10 + current_item.forge_count
+            cost.yellow = 10 + current_item.forge_count
             cost_1.set_content("天堂之尘：%s" % str(cost.blue), ICON_PATHS.blue)
             cost_2.set_content("赦罪之血：%s" % str(cost.purple), ICON_PATHS.purple)
             cost_3.set_content("天使之泪：%s" % str(cost.yellow), ICON_PATHS.yellow)
         Const.EQUIPMENT_QUALITY.DEEP_YELLOW:
-            cost.blue = 20 + current_item.forge_count
-            cost.purple = 20 + current_item.forge_count
-            cost.yellow = 20 + current_item.forge_count
+            cost.blue = 10 + current_item.forge_count
+            cost.purple = 10 + current_item.forge_count
+            cost.yellow = 10 + current_item.forge_count
             cost_1.set_content("天堂之尘：%s" % str(cost.blue), ICON_PATHS.blue)
             cost_2.set_content("赦罪之血：%s" % str(cost.purple), ICON_PATHS.purple)
             cost_3.set_content("天使之泪：%s" % str(cost.yellow), ICON_PATHS.yellow)
         Const.EQUIPMENT_QUALITY.GOLD:
-            cost.blue = 20 + current_item.forge_count
-            cost.purple = 20 + current_item.forge_count
-            cost.yellow = 20 + current_item.forge_count
+            cost.blue = 10 + current_item.forge_count
+            cost.purple = 10 + current_item.forge_count
+            cost.yellow = 10 + current_item.forge_count
             cost_1.set_content("天堂之尘：%s" % str(cost.blue), ICON_PATHS.blue)
             cost_2.set_content("赦罪之血：%s" % str(cost.purple), ICON_PATHS.purple)
             cost_3.set_content("天使之泪：%s" % str(cost.yellow), ICON_PATHS.yellow)
@@ -136,21 +138,29 @@ func forge() -> void:
     if not ture_item:
         return
     
-    if Master.moneys.white < cost.white:
-        EventBus.new_tips.emit("货币不足")
-        return
-    if Master.moneys.blue < cost.blue:
-        EventBus.new_tips.emit("货币不足")
-        return
-    if Master.moneys.purple < cost.purple:
-        EventBus.new_tips.emit("货币不足")
-        return
-    if Master.moneys.yellow < cost.yellow:
-        EventBus.new_tips.emit("货币不足")
-        return
-    
+    if not OS.get_name() == "Windows":
+        if Master.moneys.white < cost.white:
+            EventBus.new_tips.emit("货币不足")
+            return
+        if Master.moneys.blue < cost.blue:
+            EventBus.new_tips.emit("货币不足")
+            return
+        if Master.moneys.purple < cost.purple:
+            EventBus.new_tips.emit("货币不足")
+            return
+        if Master.moneys.yellow < cost.yellow:
+            EventBus.new_tips.emit("货币不足")
+            return
+        
+        Master.moneys.white -= cost.white
+        Master.moneys.blue -= cost.blue
+        Master.moneys.purple -= cost.purple
+        Master.moneys.yellow -= cost.yellow
+        
     var _pre_affixs:Array[AffixItem] = []
     var _buf_affixs:Array[AffixItem] = []
+    
+    forged_item = current_item.duplicate(true) as InventoryItem    
     
     for affix_node in pre_affixs.get_children():
         if affix_node.locked:
@@ -162,12 +172,12 @@ func forge() -> void:
             affix_node.set_null_affix()
             continue
 
-        affix_node.random_change_affix(current_item.forge_count)
+        affix_node.random_change_affix(forged_item.forge_count / 5.0)
         _pre_affixs.append(affix_node.forged_affix)
     
     for affix_node in buf_affixs.get_children():
         if affix_node.locked:
-            _buf_affixs.append(float(current_item.forge_count))
+            _buf_affixs.append(float(forged_item.forge_count / 5.0))
             continue
 
         var _should_forge:bool = [true, false].pick_random()
@@ -175,13 +185,15 @@ func forge() -> void:
             affix_node.set_null_affix()
             continue
         
-        affix_node.random_change_affix(float(current_item.forge_count))
+        affix_node.random_change_affix(float(forged_item.forge_count))
         _buf_affixs.append(affix_node.forged_affix)
     
-    current_item.forge_count += 1
-    forged_item = current_item.duplicate(true) as InventoryItem
+    forged_item.forge_count += 1
     forged_item.pre_affixs = _pre_affixs
     forged_item.buf_affix = _buf_affixs
+    
+    if rename_edit.text != "":
+        forged_item.name = rename_edit.text
     
     origin_tooltip.item = current_item
     forged_tooltip.item = forged_item
@@ -212,6 +224,10 @@ func accept_forged() -> void:
     ture_item.ranged_weapon_type = forged_item.ranged_weapon_type
     ture_item.quality = forged_item.quality
     ture_item.price = forged_item.price
+    ture_item.main_buffs = forged_item.main_buffs.duplicate(true)
+    ture_item.forge_count = forged_item.forge_count
+    
+    current_item = ture_item.duplicate(true)
     
     forged_item = null
 

@@ -21,6 +21,8 @@ func _ready() -> void:
     update_value()
 
 func update_value() -> void:
+    if not visible:
+        return
     if watch_player:
         value_label.text = str(Master.player_output_data[value_index]).pad_decimals(2)
         return

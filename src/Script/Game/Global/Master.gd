@@ -68,6 +68,7 @@ var flyed_just_now:bool = false:
     set(v):
         flyed_just_now = v
         FlowerSaver.set_data("flyed_just_now", flyed_just_now)
+        FlowerSaver.save(current_save_slot)
 var flyed_skill_point:int = 0
 
 var player_name:String = "花神":
@@ -199,6 +200,12 @@ var subscriber:TraceSubscriber = (
     .with_colored_output(false)
     )
 
+var player_score:int = 0:
+    set(v):
+        player_score = v
+        FlowerSaver.set_data("player_score", player_score)
+var player_socre_id:String = ""
+
 const abilitys_start:int = 4002
 const abilitys_end:int = 4009
 
@@ -229,6 +236,16 @@ func _ready():
     maps = config.TbMaps.get_data_list()
     #ability_trees = config.TbSkills.get_data_map()
     #goods = config.TbGoods.get_data_map()
+    
+    SilentWolf.configure({
+        "api_key": "kmHREsWam399k6ogCwCiw2EJWXRFtKIK4Vsff6E0",
+        "game_id": "awesomerpg",
+        "log_level": 1
+    })
+
+    SilentWolf.configure_scores({
+        "open_scene_on_close": "res://Scene/UI/MainMenu.tscn"
+    })
 
     EventBus.unlock_new_function.connect(func(_key:String):
         match _key:
@@ -285,7 +302,7 @@ func _ready():
 
             #EventBus.rework_level_enemy_count.emit()
             EventBus.completed_level.emit()
-            flyed_just_now = false
+            #flyed_just_now = false
             return
 
         Tracer.info("Master常规读档")
@@ -410,6 +427,65 @@ func yes_fly() -> void:
     moneys.blue = 0
     moneys.purple = 0
     moneys.yellow = 0
+
+func apply_fly() -> void:
+    Tracer.info("Master飞升读档，玩家名：%s" % player_name)
+    fly_count = FlowerSaver.get_data("fly_count")
+    unlocked_skills = []
+    current_level = 0
+    coins = 0
+    moneys = {"white": 0, "blue": 0, "purple": 0, "yellow": 0,}
+    next_reward_player_level = 1
+    player_healing_items = {"hp_potion": 0, "mp_potion": 0, }
+    unlocked_functions = {}
+    flyed_skill_point = 0
+    player_data = null
+    player_output_data = null
+    player_inventory = null
+    player.flower_buff_manager.compute_data = get_origin_player_data().duplicate(true)
+    player.flower_buff_manager.output_data = get_origin_player_data().duplicate(true)
+    #EventBus.rework_level_enemy_count.emit()
+    EventBus.completed_level.emit()
+    flyed_just_now = false
+
+func get_origin_player_data() -> CharacterData:
+    return load("res://Assets/Resources/Datas/Characters/Player2.tres").duplicate(true)
+
+
+func update_player_score() -> void:
+    player_score = get_player_score()
+
+
+func get_player_score() -> int:
+    var _result:float = 0.0
+    
+    _result += player_output_data.agility
+    _result += player_output_data.strength
+    _result += player_output_data.wisdom
+    _result += player_output_data.max_hp
+    _result += player_output_data.max_magic
+    _result += player_output_data.level
+    _result += player_output_data.luck
+    _result += player_output_data.fire_damage
+    _result += player_output_data.toxic_damage
+    _result += player_output_data.frost_damage
+    _result += player_output_data.light_damage
+    _result += player_output_data.fire_resistance
+    _result += player_output_data.toxic_resistance
+    _result += player_output_data.frost_resistance
+    _result += player_output_data.light_resistance
+    _result += player_output_data.critical_damage
+    _result += player_output_data.critical_rate
+    _result += player_output_data.vulnerability_damage
+    _result += player_output_data.vulnerability_rate
+    _result += player_output_data.weapon_damage
+    _result += player_output_data.evasion
+    _result += player_output_data.vision
+    _result += player_output_data.atk_cd
+    _result += player_output_data.atk_range
+    _result += player_output_data.atk_speed
+    
+    return int(_result)
 
 
 func get_wheather_by_id(_id:int) -> WheatherData:

@@ -31,8 +31,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_top = 150
-theme_override_constants/margin_bottom = 150
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_bottom = 100
 
 [node name="Panel" type="Panel" parent="Content"]
 layout_mode = 2
@@ -111,47 +111,60 @@ text = "选择装备"
 label_settings = ExtResource("3_spcq0")
 horizontal_alignment = 1
 
-[node name="Affixs" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="RenameEdit" type="LineEdit" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 0
+placeholder_text = "  装备重命名"
+
+[node name="Affixs" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/Affixs"]
+[node name="Label" type="Label" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/Affixs"]
 layout_mode = 2
 text = "词缀"
 label_settings = ExtResource("3_spcq0")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/Affixs"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/Affixs"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 50
 
-[node name="PreAffixs" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/Affixs/VBoxContainer2"]
+[node name="PreAffixs" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/Affixs/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="ForgeAffix" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/Affixs/VBoxContainer2/PreAffixs" instance=ExtResource("7_j3gyy")]
+[node name="ForgeAffix" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/Affixs/VBoxContainer2/PreAffixs" instance=ExtResource("7_j3gyy")]
 layout_mode = 2
 
-[node name="ForgeAffix2" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/Affixs/VBoxContainer2/PreAffixs" instance=ExtResource("7_j3gyy")]
+[node name="ForgeAffix2" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/Affixs/VBoxContainer2/PreAffixs" instance=ExtResource("7_j3gyy")]
 layout_mode = 2
 
-[node name="ForgeAffix3" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/Affixs/VBoxContainer2/PreAffixs" instance=ExtResource("7_j3gyy")]
+[node name="ForgeAffix3" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/Affixs/VBoxContainer2/PreAffixs" instance=ExtResource("7_j3gyy")]
 layout_mode = 2
 
-[node name="BufAffixs" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/Affixs/VBoxContainer2"]
+[node name="BufAffixs" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/Affixs/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="ForgeAffix" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/Affixs/VBoxContainer2/BufAffixs" instance=ExtResource("7_j3gyy")]
+[node name="ForgeAffix" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/Affixs/VBoxContainer2/BufAffixs" instance=ExtResource("7_j3gyy")]
 layout_mode = 2
 
-[node name="ForgeAffix2" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/Affixs/VBoxContainer2/BufAffixs" instance=ExtResource("7_j3gyy")]
+[node name="ForgeAffix2" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/Affixs/VBoxContainer2/BufAffixs" instance=ExtResource("7_j3gyy")]
 layout_mode = 2
 
-[node name="ForgeAffix3" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/Affixs/VBoxContainer2/BufAffixs" instance=ExtResource("7_j3gyy")]
+[node name="ForgeAffix3" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer/VBoxContainer2/Affixs/VBoxContainer2/BufAffixs" instance=ExtResource("7_j3gyy")]
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Content/Panel/VBoxContainer/MarginContainer2/VBoxContainer/TabContainer/VBoxContainer"]
@@ -252,16 +265,27 @@ unique_name_in_owner = true
 layout_mode = 2
 title_text = "打造装备"
 
-[node name="SItems" type="GridContainer" parent="SelectItem/Panel/VBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SelectItem/Panel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+
+[node name="SItems" type="GridContainer" parent="SelectItem/Panel/VBoxContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 columns = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SelectItem/Panel/VBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="SelectItem/Panel/VBoxContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SelectItem/Panel/VBoxContainer/VBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="SYesBtn" type="Button" parent="SelectItem/Panel/VBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="SYesBtn" type="Button" parent="SelectItem/Panel/VBoxContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
@@ -369,15 +393,25 @@ layout_mode = 2
 size_flags_horizontal = 3
 hide_yes_btn = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Tooltips/Panel/VBoxContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Tooltips/Panel/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 30
 
-[node name="AYesBtn" type="Button" parent="Tooltips/Panel/VBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Tooltips/Panel/VBoxContainer/VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AYesBtn" type="Button" parent="Tooltips/Panel/VBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
 text = "确认"
 
-[node name="ACancelBtn" type="Button" parent="Tooltips/Panel/VBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="ACancelBtn" type="Button" parent="Tooltips/Panel/VBoxContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
 text = "返回"

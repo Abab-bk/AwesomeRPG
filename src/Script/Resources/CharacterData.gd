@@ -3,6 +3,7 @@ extends FlowerData
 
 signal hp_is_zero
 
+@export var is_player:bool = false
 @export var level:int = 1
 @export var now_xp:float = 0
 @export var next_level_xp:float = 20
@@ -44,6 +45,9 @@ signal hp_is_zero
 @export var speed:float:
     set(v):
         speed = min(v, 3000.0)
+        if is_player:
+            if speed <= 800:
+                speed = 800
 @export var damage:float
 @export var defense:float
 @export var fire_damage:float

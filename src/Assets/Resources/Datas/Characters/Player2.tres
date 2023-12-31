@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=2 format=3 uid="uid://4xidrl8clwtc"]
+
+[ext_resource type="Script" path="res://Script/Resources/CharacterData.gd" id="1_m5p6s"]
+
+[resource]
+script = ExtResource("1_m5p6s")
+is_player = true
+level = 1
+now_xp = 0.0
+next_level_xp = 0.0
+hp = 800.0
+max_hp = 800.0
+magic = 100.0
+max_magic = 100.0
+strength = 3
+wisdom = 3
+agility = 3
+luck = 1.0
+speed = 800.0
+damage = 10.0
+defense = 0.1
+fire_damage = 0.1
+frost_damage = 0.1
+light_damage = 0.1
+toxic_damage = 0.1
+fire_resistance = 0.5
+frost_resistance = 0.5
+light_resistance = 0.5
+toxic_resistance = 0.5
+physical_resistance = 0.5
+critical_rate = 0.1
+critical_damage = 0.1
+vulnerability_rate = 0.1
+vulnerability_damage = 0.1
+evasion = 0.1
+health_regeneration = 0.1
+healing_effciency = 0.1
+weapon_damage = 0.0
+vision = 800
+atk_speed = 0.5
+atk_cd = 0.5
+atk_range = 125.0
+quipments = {}
+name = ""

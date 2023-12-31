@@ -23,10 +23,6 @@ func _ready() -> void:
             return
         )
     
-    EventBus.save.connect(func():
-        if visible:
-            FlowerSaver.set_data("repo", repo)
-        )
     EventBus.load_save.connect(func():
         if FlowerSaver.has_key("flyed_just_now"):
             if FlowerSaver.get_data("flyed_just_now") == true:
@@ -68,6 +64,9 @@ func gen_slots() -> void:
 
 
 func update_ui() -> void:
+    if not visible:
+        return
+
     for item_index in inventory_items_ui.get_child_count():
         var _node = inventory_items_ui.get_child(item_index)
         _node.item = null
@@ -97,3 +96,5 @@ func update_ui() -> void:
         
         _node.item = repo.items[item_index]
         _node.update_ui()
+    
+    FlowerSaver.set_data("repo", repo)

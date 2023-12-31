@@ -16,6 +16,7 @@ signal criticaled
 @onready var ray_cast:RayCast2D = $RayCast2D
 @onready var marker:Marker2D = $Marker2D
 @onready var ranged_weapon:RangedWeaponComponent = $RangedWeaponComponent
+@onready var relife_timer:Timer = $RelifeTimer
 
 @onready var sprites:Dictionary = {
     "weapon": $"Warrior - 01/Skeleton/bone_004/bone_000/bone_001/Weapon",
@@ -119,6 +120,7 @@ func _ready() -> void:
 
 
     flower_buff_manager.compute_ok.connect(func():
+        Tracer.info("玩家计算完成")
         Master.player_data = flower_buff_manager.compute_data
         Master.player_output_data = flower_buff_manager.output_data
         
@@ -150,9 +152,19 @@ func _ready() -> void:
                 Tracer.info("玩家飞升读档")
                 flower_buff_manager.compute_data = get_origin_player_data().duplicate(true)
                 flower_buff_manager.output_data = get_origin_player_data().duplicate(true)
+                flower_buff_manager.compute_data.is_player = true
+                flower_buff_manager.output_data.is_player = true
+                flower_buff_manager.compute_data.level = 1
+                flower_buff_manager.output_data.level = 1
+                
                 compute_data = flower_buff_manager.compute_data as CharacterData
                 output_data = flower_buff_manager.output_data as CharacterData
-                # print("玩家等级：", output_data.level) # 读出来就是玩家等级2
+                compute_data.is_player = true 
+                output_data.is_player = true
+                
+                compute_data.level = 1
+                output_data.level = 1
+                   
                 
                 for i in Master.flyed_obtain_buffs:
                     compute_data[i[0]] += i[1]
@@ -200,9 +212,9 @@ func _ready() -> void:
         flower_buff_manager.output_data = load("res://Assets/Resources/Datas/Characters/Player.tres")
         )
     
-    atk_range.target_enter_range.connect(func():
-        attack()
-        )
+    #atk_range.target_enter_range.connect(func():
+        #attack()
+        #)
     
     vision.target_exited_range.connect(func():
         ranged_weapon.should_atk = false
@@ -224,6 +236,10 @@ func _ready() -> void:
             return
         $AnimationPlayer.play("oh_hit")
         EventBus.update_ui.emit()
+        )
+    
+    relife_timer.timeout.connect(func():
+        hurt_box_collision.call_deferred("set_disabled", false)
         )
     
     atk_cd_timer.timeout.connect(ranged_attack)
@@ -269,12 +285,17 @@ func reset_player_hp_and_magic() -> void:
 
 
 func get_origin_player_data() -> CharacterData:
-    return load("res://Assets/Resources/Datas/Characters/Player.tres")
+    return load("res://Assets/Resources/Datas/Characters/Player2.tres").duplicate(true)
 
 
 func euipment_up(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
     # 装备装备
     compute_data.quipments[_type] = _item
+    if _item:
+        Tracer.info("装备装备：%s" % _item.name)
+    else:
+        Tracer.info("装备为null")
+        return     
     
     var _temp:Array[FlowerBaseBuff] = []
     # 装备装备时，应用装备 Buff
@@ -323,6 +344,9 @@ func equipment_down(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem, _add_item:b
         return
     
     compute_data.quipments[_type] = null
+    
+    if not _item:
+        return
     
     var _temp:Array[FlowerBaseBuff] = []
     
@@ -467,14 +491,16 @@ func move_to_enemy() -> void:
     
     update_navigation_position()
     
-    if not navigation_agent_2d.is_navigation_finished():
-        var _direction:Vector2 = global_position.direction_to(navigation_agent_2d.get_next_path_position())
-        velocity = _direction * output_data.speed
-        
-        character_animation_player.play("scml/Walking")
-    else:
-        global_position = navigation_agent_2d.get_final_position()
+    if navigation_agent_2d.is_navigation_finished():
+        #global_position = navigation_agent_2d.get_final_position()
         attack()
+        return
+    
+    var _direction:Vector2 = global_position.direction_to(navigation_agent_2d.get_next_path_position())
+    velocity = _direction * output_data.speed
+    
+    character_animation_player.play("scml/Walking")
+
 
 func ranged_attack() -> void:
     ranged_weapon.attack()
@@ -490,15 +516,7 @@ func attack() -> void:
     if current_state == STATE.DEAD:
         return
     
-    #if global_position != closest_enemy.marker.global_position:
-        #global_position = closest_enemy.marker.global_position
-    
     turn_to_closest_enemy()
-    
-    #if not ability_container.ability_list.is_empty():
-        #ability_container.active_a_ability(ability_container.ability_list[0])
-        #current_state = STATE.ATTACKING
-        #return
     
     character_animation_player.play("scml/Attacking")
     current_state = STATE.ATTACKING
@@ -607,13 +625,13 @@ func relife() -> void:
     compute_all()
     
     reset_player_hp_and_magic()
-        
-    EventBus.update_ui.emit()
     
-    hurt_box_collision.call_deferred("set_disabled", false)    
+    EventBus.update_ui.emit()
     
     die_sign = false
     current_state = STATE.IDLE
+    
+    relife_timer.start()
     
     modulate = Color.WHITE
 

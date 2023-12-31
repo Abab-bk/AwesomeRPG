@@ -174,5 +174,16 @@
     "need_cost": 1000,
     "reward_value": 1,
     "max_level": 20
+  },
+  {
+    "id": 6017,
+    "name": "三层汉堡",
+    "enemy_id": 1016,
+    "wheather_id": 1002,
+    "icon_path": "GoldEquipment.png",
+    "reward_type": 12,
+    "need_cost": 100,
+    "reward_value": 1,
+    "max_level": 20
   }
 ]

@@ -2,8 +2,8 @@ class_name EnemyHome extends Node2D
 
 @export var max_enemy_count:int = 15:
     set(v):
-        if v >= 300:
-            v = 300
+        if v >= 50:
+            v = 50
             max_enemy_count = v
             return
         max_enemy_count = v
@@ -17,6 +17,7 @@ class_name EnemyHome extends Node2D
 @onready var point_2:Marker2D = $"../RelifePoint/SpawnPoint/Point2"
 @onready var point_3:Marker2D = $"../RelifePoint/SpawnPoint/Point3"
 @onready var point_4:Marker2D = $"../RelifePoint/SpawnPoint/Point4"
+@onready var timer:Timer = $Timer
 
 var killed_enemys:int = 0
 var need_killed_enemys:int = 50
@@ -78,6 +79,11 @@ func _ready() -> void:
     EventBus.exit_dungeon.connect(func():
         kill_all_enemy()
         gen_a_enemy()
+        )
+    timer.timeout.connect(func():
+        if get_tree().get_nodes_in_group("Enemy").size() <= 0:
+            spawn_a_enemy()
+            Master.player.find_closest_enemy()
         )
 
 

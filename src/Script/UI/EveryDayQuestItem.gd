@@ -43,6 +43,7 @@ func _ready() -> void:
     EventBus.load_save.connect(func():
         if FlowerSaver.has_key("every_day_quest_%s" % id):
             current_quest = FlowerSaver.get_data("every_day_quest_%s" % id)
+            update_ui()
             #Tracer.info("每日任务读档成功，key：%s" % "every_day_quest_%s" % id)
         )
     

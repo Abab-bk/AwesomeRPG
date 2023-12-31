@@ -34,6 +34,7 @@ signal backed_to_home
 @onready var gacha_btn:TextureButton = %GachaBtn
 @onready var every_day_quest_btn:TextureButton = %EveryDayQuestBtn
 @onready var show_more_btn:TextureButton = %ShowMoreBtn
+@onready var ranking_list_btn:TextureButton = %RankingListBtn
 
 @onready var get_skill_btn:Button = %GetSkillBtn
 
@@ -100,6 +101,7 @@ enum PAGE {
     DUNGEON,
     GACHA,
     EVERY_DAY_QUEST,
+    RANKING_LIST,
 }
 
 func _ready() -> void:
@@ -176,6 +178,7 @@ func _ready() -> void:
     friends_btn.pressed.connect(change_page.bind(PAGE.FRIENDS))
     tower_btn.pressed.connect(change_page.bind(PAGE.TOWER))
     gacha_btn.pressed.connect(change_page.bind(PAGE.GACHA))
+    ranking_list_btn.pressed.connect(change_page.bind(PAGE.RANKING_LIST))
     every_day_quest_btn.pressed.connect(func():
         show_every_day_quest_red_point = false
         change_page(PAGE.EVERY_DAY_QUEST)

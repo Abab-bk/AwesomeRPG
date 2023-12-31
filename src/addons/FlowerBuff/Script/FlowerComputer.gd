@@ -26,9 +26,7 @@ func compute_all() -> void:
         match __modifier.type:
             # 根据modifier的type计算
             FlowerConst.COMPUTE_TYPE.MORE:
-                
 #                var computed_data = origin_data.duplicate(true)
-                
                 var _target_property:String = __modifier.target_property
                 computed_data[_target_property] = \
                 computed_data[_target_property] + (computed_data[_target_property] * __modifier.value)
@@ -43,9 +41,7 @@ func compute_all() -> void:
                 output_data_change.emit()
                 
             FlowerConst.COMPUTE_TYPE.COMPLEX_INCREASE:
-                
                 var _origin_index:String = __modifier.target_property
-                
                 # 首先拿到公式
 #                var formual:String = __modifier.formual
                 var formual:String = analyse_formula(__modifier.formual)

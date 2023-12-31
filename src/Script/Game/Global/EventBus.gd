@@ -39,6 +39,8 @@ signal exit_tower
 
 signal get_talent_point(count:int)
 
+signal save_inventory
+
 signal player_criticaled
 signal player_hited(damage:float)
 signal player_dead

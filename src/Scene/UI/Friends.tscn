@@ -70,7 +70,6 @@ layout_mode = 2
 id = 3
 
 [node name="SelectFriend" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

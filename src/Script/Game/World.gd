@@ -25,7 +25,7 @@ func _ready() -> void:
         SoundManager.play_music(load(Const.SOUNDS.BattleBgm))
         change_wheather(Master.get_wheather_by_id(Master.wheathers.keys().pick_random()))
         change_map(Master.maps.pick_random().scene_name)
-
+        
         enemy_home.spawn_a_special_enemy(func():
             # 地牢奖励
             _data.get_reward()
@@ -68,8 +68,12 @@ func _ready() -> void:
     if Master.should_load:
         FlowerSaver.load_save(Master.current_save_slot)
         print("加载存档 - 世界")
-        EventBus.load_save.emit()   
+        EventBus.load_save.emit()
         Master.should_load = false
+    Tracer.info("flyed_just_now   %s" % Master.flyed_just_now)
+    
+    if Master.flyed_just_now:
+        Master.apply_fly()
 
 
 func recovery_wheather() -> void:

@@ -21,7 +21,6 @@ func update_ui() -> void:
     if not data:
         name_label.text = "暂无"
         rate_label.text = ""
-        # TODO: 伙伴名称
         icon.texture = load("res://icon.svg")
         return
     

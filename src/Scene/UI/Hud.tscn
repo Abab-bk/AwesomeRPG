@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=77 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -58,13 +58,16 @@
 [ext_resource type="Texture2D" uid="uid://bfe0vvglvoee4" path="res://Assets/UI/Texture/Button/EveryDayQuestBtnPre.png" id="42_e1xnd"]
 [ext_resource type="Texture2D" uid="uid://cg4bccguh05kn" path="res://Assets/UI/Texture/Button/HideMoreBtn.png" id="42_msk8h"]
 [ext_resource type="Texture2D" uid="uid://driln0a311doo" path="res://Assets/UI/Texture/RedPoint.png" id="45_jeful"]
+[ext_resource type="Texture2D" uid="uid://do4tdsasj0sb3" path="res://Assets/UI/Texture/Button/RankingListFreeBtn.png" id="46_j7xji"]
 [ext_resource type="Texture2D" uid="uid://bdjw7u6rn7obf" path="res://Assets/UI/Texture/Button/GetFreeBtn.png" id="46_yerm3"]
 [ext_resource type="Texture2D" uid="uid://8fx80daou20c" path="res://Assets/UI/Texture/Button/GetFreeBtnPre.png" id="47_2td7n"]
+[ext_resource type="Texture2D" uid="uid://d2l2i5wlbyyk4" path="res://Assets/UI/Texture/Button/RankingListBtnPre.png" id="47_7ldqq"]
 [ext_resource type="PackedScene" uid="uid://cehpj6ivkyk7" path="res://Scene/UI/Friends.tscn" id="50_dncem"]
 [ext_resource type="PackedScene" uid="uid://b05k7iocrua2g" path="res://Scene/UI/Tower.tscn" id="51_icvei"]
 [ext_resource type="PackedScene" uid="uid://car5dwl4qr8w" path="res://Scene/UI/Gacha.tscn" id="52_l1u2u"]
 [ext_resource type="PackedScene" uid="uid://csd413be3hgxg" path="res://Scene/UI/BlackRect.tscn" id="55_wus0m"]
 [ext_resource type="PackedScene" uid="uid://dc812tpv18cnn" path="res://Scene/UI/EveryDayQuest.tscn" id="56_oex1f"]
+[ext_resource type="PackedScene" uid="uid://yxfvnairqm8i" path="res://Scene/UI/RankingList.tscn" id="64_ltlaa"]
 [ext_resource type="PackedScene" uid="uid://bbpe10id5odto" path="res://Scene/UI/AdRewardBtn.tscn" id="66_l7hii"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0sttu"]
@@ -82,11 +85,6 @@ outline_size = 1
 outline_color = Color(0.0941176, 0.101961, 0.0705882, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w0x7s"]
-
-[sub_resource type="Resource" id="Resource_euf2j"]
-script = ExtResource("30_a74rk")
-items = Array[Resource("res://Script/Game/System/InventoryItem.gd")]([])
-size = 50
 
 [sub_resource type="Resource" id="Resource_lu25w"]
 script = ExtResource("30_a74rk")
@@ -732,7 +730,7 @@ anchor_bottom = 0.5
 offset_left = 30.0
 offset_top = -785.0
 offset_right = 158.0
-offset_bottom = -488.0
+offset_bottom = -325.0
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/SubFunction2"]
@@ -761,6 +759,12 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("45_jeful")
 stretch_mode = 5
+
+[node name="RankingListBtn" type="TextureButton" parent="Control/SubFunction2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("46_j7xji")
+texture_pressed = ExtResource("47_7ldqq")
 
 [node name="GetFreeBtn" type="TextureButton" parent="Control/SubFunction2/VBoxContainer"]
 unique_name_in_owner = true
@@ -804,7 +808,7 @@ mouse_filter = 2
 process_mode = 3
 visible = false
 layout_mode = 2
-inventory = SubResource("Resource_euf2j")
+inventory = null
 
 [node name="CharacterPanel" parent="Pages/Pages" instance=ExtResource("3_aoxj4")]
 process_mode = 3
@@ -864,6 +868,10 @@ visible = false
 layout_mode = 2
 
 [node name="EveryDayQuest" parent="Pages/Pages" instance=ExtResource("56_oex1f")]
+visible = false
+layout_mode = 2
+
+[node name="RankingList" parent="Pages/Pages" instance=ExtResource("64_ltlaa")]
 visible = false
 layout_mode = 2
 

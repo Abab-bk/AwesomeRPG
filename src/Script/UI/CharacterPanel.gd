@@ -18,7 +18,7 @@ func _ready() -> void:
             return
         level_label.text = str(Master.player_output_data.level)
         player_name_label.text = Master.player_name
-        #update_ui()
+        update_ui()
         )
     
 func update_ui() -> void:

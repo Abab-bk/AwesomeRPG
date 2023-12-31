@@ -43,6 +43,9 @@ var auto_recycle_targets:Array[Const.EQUIPMENT_QUALITY] = []:
             })
 
 func _ready() -> void:
+    inventory = load("res://Assets/Resources/Inventory/Bag.tres").duplicate(true)
+    Tracer.debug("inventory: %s" % str(inventory))
+
     for i in slots_ui_1.get_children():
         slots.append(i)
     for i in slots_ui_2.get_children():
@@ -50,31 +53,19 @@ func _ready() -> void:
     
     EventBus.update_inventory.connect(update_ui)
     
+    EventBus.save_inventory.connect(save)
     EventBus.add_item.connect(func(_item:InventoryItem):
         if _item.quality == Const.EQUIPMENT_QUALITY.GOLD:
             EventBus.player_getd_gold_equipment.emit()
-        
         inventory.add_item(_item)
+        EventBus.save_inventory.emit()
         update_ui()
         )
     EventBus.remove_item.connect(func(_item:InventoryItem):
-        inventory.remove_item(_item))
+        inventory.remove_item(_item)
+        EventBus.save_inventory.emit()
+        )
     
-    #EventBus.equipment_up_ok.connect(
-        #func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
-            #for i in slots:
-                ## 如果装备类型不匹配，进入下一次循环
-                #if not i.current_equipment_type == _type:
-                    #continue
-                #
-                ## 装备
-                #i.set_item(_item)
-                ##inventory.remove_item(_item)
-                #
-                #EventBus.change_item_tooltip_state.emit(null)
-                #
-                #update_ui()
-            #)
     EventBus.equipment_down_ok.connect(
         func(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem, _add_item:bool = true):
             if _add_item:
@@ -83,15 +74,13 @@ func _ready() -> void:
             EventBus.change_item_tooltip_state.emit(null)
             update_ui()
             )
-    EventBus.save.connect(func():
-        FlowerSaver.set_data("inventory", inventory)
-        )
     EventBus.load_save.connect(func():
         if FlowerSaver.has_key("flyed_just_now"):
             if FlowerSaver.get_data("flyed_just_now") == true:
                 return
         
-        inventory = FlowerSaver.get_data("inventory", Master.current_save_slot)
+        if FlowerSaver.has_key("inventory"):
+            inventory = FlowerSaver.get_data("inventory")
         Master.player_inventory = inventory
         
         if FlowerSaver.has_key("inventory_auto_recycle_setting"):
@@ -116,6 +105,7 @@ func _ready() -> void:
     
     visibility_changed.connect(func():
         if visible:
+            Tracer.info("更新背包UI")
             update_ui()
         )
     
@@ -139,12 +129,24 @@ func _ready() -> void:
     set_bag()
     update_ui()
 
+
+func save() -> void:
+    #FlowerSaver.set_data("inventory", inventory)
+    Tracer.info("背包存档")
+
+
 func set_bag() -> void:
     for i in inventory.size:
         var _n = Builder.build_a_inventory_item()
         items_ui.add_child(_n)
 
+
 func update_ui() -> void:
+    if not visible:
+        return
+    
+    Tracer.info("更新背包UI成功，items：%s" % str(inventory.items))
+
     for item_index in items_ui.get_child_count():
         var _node = items_ui.get_child(item_index)
         _node.item = null
@@ -159,7 +161,10 @@ func update_ui() -> void:
         _node.item = inventory.items[item_index]
         _node.update_ui()
 
-    if inventory.items.size() >= inventory.size - 10 and auto_recycle_is_active:
+    if not auto_recycle_is_active:
+        return
+    
+    if inventory.items.size() >= inventory.size - 10:
         var wait_to_remove_items:Array[InventoryItem]
         
         for _type in auto_recycle_targets:
