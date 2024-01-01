@@ -57,8 +57,9 @@ var bullet_scene_name:String = "BaseBullet"
 
 func _ready() -> void:
     set_skin()
-
-    atk_range.target_enter_range.connect(func(): current_state = STATE.ATTACKING)
+    
+    if range_attack:
+        atk_range.target_enter_range.connect(func(): current_state = STATE.ATTACKING)
 
     atk_range.target_exited_range.connect(func():
         current_state = STATE.PATROL
@@ -87,12 +88,17 @@ func _ready() -> void:
         queue_free()
         )
     
+    EventBus.first_enemy_show.connect(func():
+        current_state = STATE.PATROL
+        )
+    
     if seted_data:
         buff_manager.compute_data = seted_data
     
     buff_manager.compute()
     
-    atk_cd_timer.wait_time = output_data.atk_speed
+    #atk_cd_timer.wait_time = output_data.atk_speed
+    atk_cd_timer.wait_time = 0.3
     set_vision_range(output_data.vision)
     set_atk_range_range(output_data.atk_range)
 
@@ -178,10 +184,9 @@ func move_to_enemy() -> void:
     if not navigation_agent_2d.is_navigation_finished():
         var _direction:Vector2 = global_position.direction_to(navigation_agent_2d.get_next_path_position())
         velocity = _direction * output_data.speed
-    #velocity = global_position.\
-    #direction_to(closest_enemy.marker.global_position) * output_data.speed
-    character_animation.play(move_animation_name)
-    #character_animation.play("scml/Walking")
+        character_animation.play(move_animation_name)
+    else:
+        current_state = STATE.ATTACKING
 
 
 func find_closest_enemy() -> void:
@@ -193,6 +198,9 @@ func find_closest_enemy() -> void:
         return
     
     all_enemy = get_tree().get_nodes_in_group("Enemy")
+    if all_enemy.is_empty():
+        return
+    
     closest_distance = 1000000
     
     var _enemys_distance:Array = []
@@ -205,6 +213,7 @@ func find_closest_enemy() -> void:
             return true
         return false
         )
+    
     closest_enemy = _enemys_distance[0][1]
     closest_distance = _enemys_distance[0][0]
     
@@ -244,7 +253,9 @@ func turn_to_player() -> void:
 
 
 func turn_to_enemy() -> void:
-    var _dir:Vector2 = to_local(closest_enemy.global_position).normalized()
+    var _dir:Vector2 = Vector2.ZERO
+    if is_instance_valid(closest_enemy):
+        _dir = to_local(closest_enemy.global_position).normalized()
     
     if _dir.x > 0:
         # Right

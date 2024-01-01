@@ -4,6 +4,7 @@ extends Panel
 @export var score:int = 0
 @export var rank_sort:int = 0
 @export var is_self:bool
+@export var is_player:bool = false
 
 @onready var rank_label:Label = %RankLabel
 @onready var player_name_label:Label = %PlayerNameLabel
@@ -13,7 +14,7 @@ extends Panel
 func _ready() -> void:
     Master.update_player_score()
     visibility_changed.connect(func():
-        if visible:
+        if visible and is_player:
             score = Master.player_score
             player_name = Master.player_name
             rank_label.hide()

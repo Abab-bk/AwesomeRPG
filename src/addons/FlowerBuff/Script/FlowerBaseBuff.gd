@@ -18,7 +18,6 @@ signal computed_values
         prepare_time = v
         prepare_time_temp = prepare_time
         if prepare_time <= 0:
-            current_state = STATE.RUNNING
             take_effect()
 
 @export var active_time:int = 0:
@@ -153,6 +152,7 @@ func activate(_actor:Node, _compute_data:FlowerData, _output_data:FlowerData) ->
     output_data = _output_data
 #    print("buff尝试激活，名称：", name)
     activated.emit()
+    computed_values.emit()
 
 func take_effect() -> void:
 #    print("buff生效，名称：", name)

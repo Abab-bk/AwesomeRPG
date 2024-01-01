@@ -37,6 +37,8 @@ signal go_to_next_tower_level
 signal start_climb_tower
 signal exit_tower
 
+signal first_enemy_show
+
 signal get_talent_point(count:int)
 
 signal save_inventory
@@ -55,6 +57,8 @@ signal player_changed_display
 signal player_offline_level_up
 
 signal player_getd_gold_equipment
+
+signal spawn_a_enemy
 
 signal use_hp_potion
 signal use_mp_potion

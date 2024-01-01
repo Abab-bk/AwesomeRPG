@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://yxfvnairqm8i"]
+[gd_scene load_steps=6 format=3 uid="uid://yxfvnairqm8i"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_3d5wu"]
 [ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="2_87614"]
 [ext_resource type="Script" path="res://Script/UI/RankingList.gd" id="2_gbfjk"]
+[ext_resource type="LabelSettings" uid="uid://drx7d3iagcvhu" path="res://Assets/LabelSetting/ItemTitle.tres" id="4_analx"]
 [ext_resource type="PackedScene" uid="uid://bwi7t8foifefe" path="res://Scene/UI/RankingListItem.tscn" id="4_p810r"]
 
 [node name="RankingList" type="Control"]
@@ -51,11 +52,25 @@ theme_override_constants/margin_bottom = 30
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="TabContainer" type="TabContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+tabs_visible = false
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer"]
+layout_mode = 2
+text = "加载中，请耐心等待...."
+label_settings = ExtResource("4_analx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Items" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="Items" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -64,3 +79,4 @@ theme_override_constants/separation = 20
 
 [node name="RankingListItem" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" instance=ExtResource("4_p810r")]
 layout_mode = 2
+is_player = true

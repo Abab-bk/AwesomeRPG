@@ -1,6 +1,8 @@
 extends Control
 # FIXME: 每日任务奖励变了
 @onready var items:VBoxContainer = %Items
+@onready var tab_container:TabContainer = %TabContainer
+
 
 func _ready() -> void:
     visibility_changed.connect(func():
@@ -21,9 +23,11 @@ func del_all_item() -> void:
 
 
 func update_ui() -> void:
+    tab_container.current_tab = 0
     var sw_result:Dictionary = await SilentWolf.Scores.get_scores(50).sw_get_scores_complete
+    tab_container.current_tab = 1
     
-    var _count:int = 0
+    var _count:int = 1
     for score in sw_result.scores:
         var _node = load("res://Scene/UI/RankingListItem.tscn").instantiate()
         items.add_child(_node)
@@ -32,4 +36,3 @@ func update_ui() -> void:
         _node.rank_sort = _count
         _node.update_ui()
         _count += 1
-    

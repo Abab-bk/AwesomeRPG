@@ -145,7 +145,7 @@ func update_ui() -> void:
     if not visible:
         return
     
-    Tracer.info("更新背包UI成功，items：%s" % str(inventory.items))
+    #Tracer.info("更新背包UI成功，items：%s" % str(inventory.items))
 
     for item_index in items_ui.get_child_count():
         var _node = items_ui.get_child(item_index)

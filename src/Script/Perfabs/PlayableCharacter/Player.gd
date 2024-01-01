@@ -270,8 +270,9 @@ func _ready() -> void:
     
     compute()
     
-    await get_tree().process_frame
+    await get_tree().physics_frame
     current_state = STATE.IDLE
+    EventBus.spawn_a_enemy.emit()
 
 
 func reset_player_hp_and_magic() -> void:
@@ -666,13 +667,17 @@ func die() -> void:
 
 func find_closest_enemy(_temp = 0) -> void:
     if current_state == STATE.DEAD:
-        #Tracer.debug("玩家寻找最近敌人，但是死亡，所以return")
         return
     
     current_state = STATE.FINDING
     
     all_enemy = get_tree().get_nodes_in_group("Enemy")
     closest_distance = 1000000
+    
+    if all_enemy.is_empty():
+        Tracer.info("怪物组为空")
+        current_state = STATE.IDLE
+        return
     
     var _enemys_distance:Array = []
     

@@ -69,6 +69,7 @@ func compute_all() -> void:
                 
                 output_data_change.emit()
     #buff_manager.compute_ok.emit()
+    all_data = []
     computer_ok.emit()
 
 func analyse_formula(_formula:String) -> String:

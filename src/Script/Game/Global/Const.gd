@@ -4,7 +4,7 @@ const IMAGES:Dictionary = {
     "WhatIcon": "res://Assets/UI/Texture/WhatIcon.png"
 }
 
-const MAX_AD_COUNT:int = 10
+const MAX_AD_COUNT:int = 1000
 
 const SOUNDS:Dictionary = {
     "MonsterAttack": "res://Assets/Sounds/Sfx/MonsterAttack.ogg",

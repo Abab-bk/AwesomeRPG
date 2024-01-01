@@ -40,7 +40,7 @@ enum STATE {
 var current_state:STATE = STATE.PATROL
 
 var atk_animation_name:String = "scml/Attacking"
-
+var send_signal_on_ready:bool = false
 
 func move_camera_to_self_position() -> void:
     current_state = STATE.NOTHING
@@ -130,6 +130,10 @@ func _ready() -> void:
     
     if range_attack:
         atk_range.target_enter_range.connect(func():current_state = STATE.ATTACKING)
+    
+    if send_signal_on_ready:
+        EventBus.first_enemy_show.emit()
+        Master.player.current_state = Player.STATE.IDLE
     
     update_navigation_position()
 

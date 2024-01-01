@@ -84,7 +84,7 @@
     "icon_path": "GoldEquipment.png",
     "reward_type": 14,
     "need_cost": 1000,
-    "reward_value": 1,
+    "reward_value": 5,
     "max_level": 20
   },
   {
@@ -95,7 +95,7 @@
     "icon_path": "GoldEquipment.png",
     "reward_type": 15,
     "need_cost": 1000,
-    "reward_value": 1,
+    "reward_value": 5,
     "max_level": 20
   },
   {
@@ -106,7 +106,7 @@
     "icon_path": "GoldEquipment.png",
     "reward_type": 16,
     "need_cost": 1000,
-    "reward_value": 1,
+    "reward_value": 5,
     "max_level": 20
   },
   {
@@ -117,7 +117,7 @@
     "icon_path": "GoldEquipment.png",
     "reward_type": 17,
     "need_cost": 1000,
-    "reward_value": 1,
+    "reward_value": 5,
     "max_level": 20
   },
   {
@@ -128,7 +128,7 @@
     "icon_path": "GoldEquipment.png",
     "reward_type": 18,
     "need_cost": 1000,
-    "reward_value": 1,
+    "reward_value": 5,
     "max_level": 20
   },
   {
@@ -139,7 +139,7 @@
     "icon_path": "GoldEquipment.png",
     "reward_type": 19,
     "need_cost": 1000,
-    "reward_value": 1,
+    "reward_value": 5,
     "max_level": 20
   },
   {
@@ -150,7 +150,7 @@
     "icon_path": "GoldEquipment.png",
     "reward_type": 20,
     "need_cost": 1000,
-    "reward_value": 1,
+    "reward_value": 5,
     "max_level": 20
   },
   {
@@ -161,7 +161,7 @@
     "icon_path": "GoldEquipment.png",
     "reward_type": 21,
     "need_cost": 1000,
-    "reward_value": 1,
+    "reward_value": 5,
     "max_level": 20
   },
   {
@@ -172,7 +172,7 @@
     "icon_path": "GoldEquipment.png",
     "reward_type": 22,
     "need_cost": 1000,
-    "reward_value": 1,
+    "reward_value": 5,
     "max_level": 20
   },
   {
@@ -183,7 +183,7 @@
     "icon_path": "GoldEquipment.png",
     "reward_type": 12,
     "need_cost": 100,
-    "reward_value": 1,
+    "reward_value": 2,
     "max_level": 20
   }
 ]

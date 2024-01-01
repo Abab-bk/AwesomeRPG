@@ -214,7 +214,8 @@ horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="Credits/MarginContainer/VBoxContainer2/VBoxContainer/VBoxContainer/Sub2"]
 layout_mode = 2
-text = "上善若水
+text = "传说在何方
+上善若水
 猫咪爱吃辣
 我想你
 阿健

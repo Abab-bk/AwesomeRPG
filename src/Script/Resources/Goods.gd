@@ -22,6 +22,7 @@ func try_to_buy() -> void:
             if Master.gacha_money_part < cost:
                 EventBus.new_tips.emit("碎片不足")
                 return
+            
             show_buy_popup(func():
                 Master.gacha_money_part -= cost
                 reward.get_reward())

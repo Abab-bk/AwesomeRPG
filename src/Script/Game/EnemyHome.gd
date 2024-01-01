@@ -1,16 +1,12 @@
 class_name EnemyHome extends Node2D
 
-@export var max_enemy_count:int = 15:
+@export var max_enemy_count:int = 25:
     set(v):
-        if v >= 50:
-            v = 50
-            max_enemy_count = v
-            return
-        max_enemy_count = v
+        max_enemy_count = min(25, v)
 
 @export var min_enemy_count:int = 1:
     set(v):
-        min_enemy_count = v
+        min_enemy_count = min(max_enemy_count, v)
         FlowerSaver.set_data("enemy_home_min_enemy_count", min_enemy_count)
 
 @onready var point_1:Marker2D = $"../RelifePoint/SpawnPoint/Point1"
@@ -18,21 +14,23 @@ class_name EnemyHome extends Node2D
 @onready var point_3:Marker2D = $"../RelifePoint/SpawnPoint/Point3"
 @onready var point_4:Marker2D = $"../RelifePoint/SpawnPoint/Point4"
 @onready var timer:Timer = $Timer
+@onready var spwan_timer:Timer = $SpwanTimer
 
 var killed_enemys:int = 0
-var need_killed_enemys:int = 50
+var need_killed_enemys:int = 30
 
 var current_tower_all_enemy_count:int = 0
 var current_tower_killed_enemy_count:int = 0
 
 func _ready() -> void:
+    EventBus.spawn_a_enemy.connect(spawn_a_enemy.bind(true))
     EventBus.enemy_die.connect(gen_a_enemy)
     EventBus.player_level_up.connect(func():
         min_enemy_count += 1
         )
     EventBus.completed_level.connect(func():
         killed_enemys = 0
-        need_killed_enemys = min_enemy_count * 50
+        need_killed_enemys = min_enemy_count * 30
         Master.next_level_need_kill_count = need_killed_enemys - killed_enemys
         )
     EventBus.load_save.connect(func():
@@ -81,7 +79,7 @@ func _ready() -> void:
         gen_a_enemy()
         )
     timer.timeout.connect(func():
-        if get_tree().get_nodes_in_group("Enemy").size() <= 0:
+        if get_tree().get_nodes_in_group("Enemy").is_empty():
             spawn_a_enemy()
             Master.player.find_closest_enemy()
         )
@@ -118,16 +116,26 @@ func gen_a_enemy(_temp = 0) -> void:
         return
     
     if _current_enemy_count < min_enemy_count:
-        for i in min_enemy_count - _current_enemy_count:
-            #spawn_a_enemy_by_id(7007)
-            spawn_a_enemy_by_id(Master.enemys.keys().pick_random())
+        after_spawn_enemys(min_enemy_count - _current_enemy_count)
         return
     
     spawn_a_enemy_by_id(Master.enemys.keys().pick_random())
-    #spawn_a_enemy_by_id(7007)
+
+
+func after_spawn_enemys(_count:int = 0) -> void:
+    for i in _count:
+        spwan_timer.start()
+        await spwan_timer.timeout
+        spawn_a_enemy_by_id(Master.enemys.keys().pick_random())
+
 
 
 func spawn_a_boss_enemy(_id:int) -> void:
+    var _current_enemy_count:int = get_tree().get_nodes_in_group("Enemy").size()
+    
+    if _current_enemy_count >= max_enemy_count:
+        return
+    
     var _enemy_data = Master.dungeon_enemys[_id]
     
     var new_enemy:Enemy = Builder.build_a_enemy() as Enemy
@@ -210,8 +218,13 @@ func spawn_a_special_enemy(_reward:Callable, _id:int, _is_boss:bool = false,_lev
     new_enemy.dead.connect(_reward)
 
 
-func spawn_a_enemy() -> void:
-    var new_enemy:Enemy = Builder.build_a_enemy()
+func spawn_a_enemy(_send_signal_on_ready:bool = false) -> void:
+    var _current_level_enemy_count:int = get_tree().get_nodes_in_group("Enemy").size()
+        
+    if _current_level_enemy_count >= max_enemy_count:
+        return
+    var new_enemy:Enemy = Builder.build_a_enemy() as Enemy
+    new_enemy.send_signal_on_ready = _send_signal_on_ready
     call_deferred("add_child", new_enemy)
     # 在 Enemy 脚本中设置等级及其他属性，因为 data 需要时间读取并赋值
     new_enemy.global_position = get_random_pos()
@@ -219,6 +232,11 @@ func spawn_a_enemy() -> void:
 
 
 func spawn_a_enemy_by_id(_id:int) -> void:
+    var _current_level_enemy_count:int = get_tree().get_nodes_in_group("Enemy").size()
+        
+    if _current_level_enemy_count >= max_enemy_count:
+        return
+    
     var _enemy_data = Master.enemys[_id]
     
     var new_enemy:Enemy = Builder.build_a_enemy() as Enemy

@@ -1703,6 +1703,7 @@ size = Vector2(25, 175.146)
 [sub_resource type="Resource" id="Resource_c4ys6"]
 resource_local_to_scene = true
 script = ExtResource("22_orv5l")
+is_player = false
 level = 1
 now_xp = 0.0
 next_level_xp = 0.0
@@ -1744,6 +1745,7 @@ name = ""
 [sub_resource type="Resource" id="Resource_jpxe6"]
 resource_local_to_scene = true
 script = ExtResource("22_orv5l")
+is_player = false
 level = 1
 now_xp = 0.0
 next_level_xp = 0.0
@@ -1791,6 +1793,7 @@ buff_manager = NodePath("FlowerBuffManager")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Nvigation"]
 unique_name_in_owner = true
+target_desired_distance = 100.0
 debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(1, 0, 1, 1)
