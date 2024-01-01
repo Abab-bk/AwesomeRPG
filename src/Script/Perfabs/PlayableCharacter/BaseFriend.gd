@@ -98,7 +98,7 @@ func _ready() -> void:
     buff_manager.compute()
     
     #atk_cd_timer.wait_time = output_data.atk_speed
-    atk_cd_timer.wait_time = 0.3
+    atk_cd_timer.wait_time = 0.5
     set_vision_range(output_data.vision)
     set_atk_range_range(output_data.atk_range)
 
@@ -144,10 +144,8 @@ func set_data(_data:CharacterData) -> void:
 
 
 func attack() -> void:
-    atk_cd_timer.start()
     velocity = Vector2.ZERO
     
-    # 攻击代码
     if current_state == STATE.DEAD:
         return
         
@@ -158,7 +156,8 @@ func attack() -> void:
     # 攻击代码
     if range_attack:
         spawn_a_bullet()
-    
+
+    atk_cd_timer.start()    
     current_state = STATE.ATK_COOLDOWN
 
 
@@ -171,7 +170,8 @@ func spawn_a_bullet() -> void:
     range_bullet_spwan_point.add_child(_bullet)
     
     _bullet.global_position = range_bullet_spwan_point.global_position
-    _bullet.update_velocity()
+    _bullet.enemy = closest_enemy
+    _bullet.update_enemy_velocity()
 
 
 func move_to_enemy() -> void:
@@ -186,16 +186,17 @@ func move_to_enemy() -> void:
         velocity = _direction * output_data.speed
         character_animation.play(move_animation_name)
     else:
-        current_state = STATE.ATTACKING
+        if not range_attack:
+            current_state = STATE.ATTACKING
 
 
 func find_closest_enemy() -> void:
-    if ray_cast.is_colliding():
-        closest_enemy = ray_cast.get_collider().owner
-        attack()
-        turn_to_enemy()
-        current_state = STATE.PATROL
-        return
+    #if ray_cast.is_colliding():
+        #closest_enemy = ray_cast.get_collider().owner
+        #attack()
+        #turn_to_enemy()
+        #current_state = STATE.PATROL
+        #return
     
     all_enemy = get_tree().get_nodes_in_group("Enemy")
     if all_enemy.is_empty():

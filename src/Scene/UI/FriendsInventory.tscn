@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dnid2wlns3s4l"]
+[gd_scene load_steps=5 format=3 uid="uid://dnid2wlns3s4l"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_pvt54"]
 [ext_resource type="PackedScene" uid="uid://bwegnxa4rtgh2" path="res://Scene/UI/TitleBar.tscn" id="2_66thd"]
 [ext_resource type="Script" path="res://Script/UI/FriendsInventory.gd" id="2_drilh"]
+[ext_resource type="PackedScene" uid="uid://ctqilicqj6ruk" path="res://Scene/UI/SelectFriendItem.tscn" id="4_f6pcj"]
 
 [node name="FriendsInventory" type="Control"]
 layout_mode = 3
@@ -52,4 +53,9 @@ layout_mode = 2
 [node name="Items" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme_override_constants/separation = 40
+
+[node name="SelectFriendItem" parent="Panel/MarginContainer/VBoxContainer/MarginContainer/ScrollContainer/Items" instance=ExtResource("4_f6pcj")]
+layout_mode = 2

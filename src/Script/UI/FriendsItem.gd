@@ -21,6 +21,7 @@ signal changed(ui_id:int, data:FriendData)
 @onready var change_btn:Button = %ChangeBtn
 @onready var info_btn:Button = %InfoBtn
 
+# 0是装备，1是卸下
 var current_state:int = 0
 
 func _ready() -> void:

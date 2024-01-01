@@ -20,7 +20,10 @@ func _ready() -> void:
     for i in items.get_children():
         i.change_btn_click.connect(show_select_friends_panel.bind(i))
         i.changed.connect(func(_ui_id:int, _data:FriendData):
-            current_friends[_ui_id] = _data.id
+            if _data == null:
+                current_friends[_ui_id] = null
+            else:
+                current_friends[_ui_id] = _data.id
             EventBus.changed_friends.emit(current_friends)
             save()
             )

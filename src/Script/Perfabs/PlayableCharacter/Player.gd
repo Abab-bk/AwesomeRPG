@@ -675,7 +675,6 @@ func find_closest_enemy(_temp = 0) -> void:
     closest_distance = 1000000
     
     if all_enemy.is_empty():
-        Tracer.info("怪物组为空")
         current_state = STATE.IDLE
         return
     
