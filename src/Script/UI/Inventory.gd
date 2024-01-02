@@ -131,7 +131,7 @@ func _ready() -> void:
 
 
 func save() -> void:
-    #FlowerSaver.set_data("inventory", inventory)
+    FlowerSaver.set_data("inventory", inventory)
     Tracer.info("背包存档")
 
 

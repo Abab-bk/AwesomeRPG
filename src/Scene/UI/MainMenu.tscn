@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwnb2gkequqts"]
+[gd_scene load_steps=12 format=3 uid="uid://cwnb2gkequqts"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_d1eks"]
 [ext_resource type="Script" path="res://Script/UI/MainMenu.gd" id="2_ahtec"]
@@ -10,6 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://dhyobuuga8504" path="res://Scene/UI/CreatCharacter.tscn" id="7_56mi5"]
 [ext_resource type="LabelSettings" uid="uid://c1lap0u84heih" path="res://Assets/LabelSetting/UITitle.tres" id="8_rit84"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="9_6aiv1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xapm"]
+bg_color = Color(0.145098, 0.141176, 0.168627, 1)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.823529, 0.737255, 0.607843, 1)
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -87,7 +93,6 @@ layout_mode = 2
 text = "退出游戏"
 
 [node name="SavePanel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -130,17 +135,23 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 40
 
-[node name="SavePanelItem" parent="SavePanel/VBoxContainer/MarginContainer/SavePanels" instance=ExtResource("5_02p3b")]
+[node name="SavePanelItem" parent="SavePanel/VBoxContainer/MarginContainer/SavePanels" node_paths=PackedStringArray("popup", "main_panel") instance=ExtResource("5_02p3b")]
 layout_mode = 2
 slot = 1
+popup = NodePath("../../../../../ColorRect")
+main_panel = NodePath("../../../../..")
 
-[node name="SavePanelItem2" parent="SavePanel/VBoxContainer/MarginContainer/SavePanels" instance=ExtResource("5_02p3b")]
+[node name="SavePanelItem2" parent="SavePanel/VBoxContainer/MarginContainer/SavePanels" node_paths=PackedStringArray("popup", "main_panel") instance=ExtResource("5_02p3b")]
 layout_mode = 2
 slot = 2
+popup = NodePath("../../../../../ColorRect")
+main_panel = NodePath("../../../../..")
 
-[node name="SavePanelItem3" parent="SavePanel/VBoxContainer/MarginContainer/SavePanels" instance=ExtResource("5_02p3b")]
+[node name="SavePanelItem3" parent="SavePanel/VBoxContainer/MarginContainer/SavePanels" node_paths=PackedStringArray("popup", "main_panel") instance=ExtResource("5_02p3b")]
 layout_mode = 2
 slot = 3
+popup = NodePath("../../../../../ColorRect")
+main_panel = NodePath("../../../../..")
 
 [node name="CreatCharacter" parent="." instance=ExtResource("7_56mi5")]
 visible = false
@@ -256,3 +267,84 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "返回"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.52549)
+
+[node name="Popup" type="Panel" parent="ColorRect"]
+custom_minimum_size = Vector2(834, 418)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_d1eks")
+theme_override_styles/panel = SubResource("StyleBoxFlat_8xapm")
+
+[node name="MarginContainer2" type="MarginContainer" parent="ColorRect/Popup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Body" type="VBoxContainer" parent="ColorRect/Popup/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TitleLabel" type="Label" parent="ColorRect/Popup/MarginContainer2/Body"]
+layout_mode = 2
+text = "删除存档"
+label_settings = ExtResource("8_rit84")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescLabel" type="RichTextLabel" parent="ColorRect/Popup/MarginContainer2/Body"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.992157, 0.945098, 0.827451, 1)
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center]确认删除存档？[/center]"
+scroll_active = false
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/Popup/MarginContainer2/Body"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/Popup/MarginContainer2/Body/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="YesBtn" type="Button" parent="ColorRect/Popup/MarginContainer2/Body/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+text = "确认"
+
+[node name="CancelBtn" type="Button" parent="ColorRect/Popup/MarginContainer2/Body/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+text = "取消"

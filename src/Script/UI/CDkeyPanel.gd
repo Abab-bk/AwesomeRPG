@@ -5,6 +5,7 @@ extends Control
 @onready var yes_btn:Button = %YesBtn
 
 var used_keys:Array[String] = []
+var special_keys:Array[String] = ["传说在何方专属礼包"]
 
 var cancel_event:Callable = func():
     SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
@@ -17,6 +18,14 @@ func _ready() -> void:
     yes_btn.pressed.connect(func():
         if line_edit.text in used_keys:
             EventBus.show_popup.emit("兑换失败", "兑换码已使用")
+            return
+        
+        if line_edit.text in special_keys:
+            if line_edit.text == "传说在何方专属礼包":
+                for _count in 10:
+                    var _reward:Reward = Master.get_base_gacha_pool().reward_list.pick_random() as Reward
+                    _reward.get_reward()
+                used_keys.append(line_edit.text)
             return
         
         if line_edit.text != "":

@@ -24,9 +24,6 @@ data = Array[Resource]([])
 [node name="TalentTree" type="Node"]
 script = ExtResource("1_b2y4m")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-
 [node name="WorldmapView" type="Control" parent="." node_paths=PackedStringArray("initial_item")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 100)
@@ -60,3 +57,5 @@ connection_1/nodes = Vector2i(0, 0)
 connection_2/nodes = Vector2i(0, 0)
 connection_3/nodes = Vector2i(0, 0)
 connection_4/nodes = Vector2i(0, 0)
+
+[node name="Camera2D" type="Camera2D" parent="."]

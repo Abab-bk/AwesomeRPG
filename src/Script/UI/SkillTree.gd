@@ -50,7 +50,7 @@ func get_skill_node_data(_id:int) -> WorldmapNodeData:
     var _data_id:int = Master.talent_buffs.keys().pick_random()
     var _ability_data = Master.talent_buffs[_data_id]
     
-    var _offset:float = randf_range(1.0, 2.0)
+    var _offset:float = randf_range(0.1, 1.0)
     
     _data.id = str(_id)
     _data.texture = load("res://Assets/UI/Icons/TalentIcons/" + _ability_data["icon_path"])

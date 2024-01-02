@@ -40,20 +40,20 @@ layer_1/tile_data = PackedInt32Array()
 script = ExtResource("2_84kal")
 debuger = true
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="SpwanTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [node name="EnemyHome" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("4_22mer")
 
-[node name="Timer" type="Timer" parent="EnemyHome"]
-wait_time = 3.0
-autostart = true
-
-[node name="SpwanTimer" type="Timer" parent="EnemyHome"]
-wait_time = 0.2
-one_shot = true
-
 [node name="Player" parent="." instance=ExtResource("2_l5a8p")]
-position = Vector2(541, 1197)
+position = Vector2(494, 1159)
 
 [node name="RelifePoint" parent="." instance=ExtResource("4_f4kq8")]
 position = Vector2(589, 1312)

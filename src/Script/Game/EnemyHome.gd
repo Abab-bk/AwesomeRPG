@@ -13,8 +13,9 @@ class_name EnemyHome extends Node2D
 @onready var point_2:Marker2D = $"../RelifePoint/SpawnPoint/Point2"
 @onready var point_3:Marker2D = $"../RelifePoint/SpawnPoint/Point3"
 @onready var point_4:Marker2D = $"../RelifePoint/SpawnPoint/Point4"
-@onready var timer:Timer = $Timer
-@onready var spwan_timer:Timer = $SpwanTimer
+@onready var timer:Timer = $"../Timer"
+@onready var spwan_timer:Timer = $"../SpwanTimer"
+
 
 var killed_enemys:int = 0
 var need_killed_enemys:int = 30

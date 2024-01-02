@@ -34,6 +34,7 @@ DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
 PockAd="*res://addons/FlowerPockAD/PockAD.gd"
 PockAD="*res://addons/FlowerPockAD/PockAD.gd"
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
+InputManager="*res://addons/GDTIM-4.x-v2_1_2/InputManager.gd"
 
 [debug]
 
@@ -98,6 +99,7 @@ Click={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+pointing/android/enable_pan_and_scale_gestures=true
 
 [internationalization]
 

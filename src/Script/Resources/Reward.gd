@@ -102,6 +102,8 @@ func get_reward(_show_popup:bool = true) -> String:
     
     if type == REWARD_TYPE.FRIEND:
         _return_text = Reward.get_string(type, reward_value)
+    elif type == REWARD_TYPE.MEMORY:
+        _return_text = "%s 的记忆" % str(Master.get_friend_data_by_id(reward_value).name)
     else:
         _return_text = "%s %s" % [str(reward_value), Reward.get_string(type)]        
     

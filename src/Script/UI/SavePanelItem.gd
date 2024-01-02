@@ -4,6 +4,8 @@ signal enter_creat
 signal enter_game
 
 @export var slot:int
+@export var popup:ColorRect
+@export var main_panel:Control
 
 @onready var player_level_label:Label = %PlayerLevelLabel
 @onready var player_name_label:Label = %PlayerNameLabel
@@ -18,12 +20,15 @@ func _ready() -> void:
             Master.should_load = true
             enter_game.emit()
             return
+        
         Master.current_save_slot = get_slot_path()        
-        enter_creat.emit()
+        self.enter_creat.emit()
         )
     del_btn.pressed.connect(func():
-        FlowerSaver.del_save(get_slot_path())
-        update_ui(FlowerSaver.get_data_but_load("player_output_data", get_slot_path()))
+        main_panel.yes_event = func():
+            FlowerSaver.del_save(get_slot_path())
+            update_ui(FlowerSaver.get_data_but_load("player_output_data", get_slot_path()))
+        popup.show()
         )
     update_ui(FlowerSaver.get_data_but_load("player_output_data", get_slot_path()))
 

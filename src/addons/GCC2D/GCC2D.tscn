@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/GCC2D/GCC2D.gd" id="1"]
+
+[node name="GCC2D" type="Camera2D"]
+ignore_rotation =true # reversed "rotating" for Camera2D
+current = true
+script = ExtResource( 1 )
+movement_gesture = 1

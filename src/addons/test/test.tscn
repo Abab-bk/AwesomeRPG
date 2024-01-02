@@ -1,45 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bq2sqb1u1l5ve"]
+[gd_scene load_steps=4 format=3 uid="uid://bq2sqb1u1l5ve"]
 
-[ext_resource type="PackedScene" uid="uid://x1fxghpmlk4a" path="res://Scene/UI/GachaCard.tscn" id="1_w8vc1"]
+[ext_resource type="Texture2D" uid="uid://bee3h05vau7ay" path="res://icon.svg" id="1_mcw8p"]
+[ext_resource type="Script" path="res://Script/Game/System/CameraController.gd" id="2_bxmm2"]
 
 [sub_resource type="GDScript" id="GDScript_svqv6"]
-script/source = "extends Control
-
-@onready var nodes:Array[Control] = [$GachaCard, $GachaCard2, $GachaCard3]
-
-func _ready() -> void:
-    for i in nodes:
-        await i.try_to_show_animation()
+script/source = "extends Node2D
 "
 
-[node name="Test" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Test" type="Node2D"]
 script = SubResource("GDScript_svqv6")
 
-[node name="GachaCard" parent="." instance=ExtResource("1_w8vc1")]
-layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-offset_right = 1080.0
-offset_bottom = 660.0
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(83, 126)
+texture = ExtResource("1_mcw8p")
 
-[node name="GachaCard2" parent="." instance=ExtResource("1_w8vc1")]
-layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-offset_top = 664.0
-offset_right = 1080.0
-offset_bottom = 1324.0
-
-[node name="GachaCard3" parent="." instance=ExtResource("1_w8vc1")]
-layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-offset_top = 1328.0
-offset_right = 1080.0
-offset_bottom = 1988.0
+[node name="CameraController" type="Camera2D" parent="."]
+script = ExtResource("2_bxmm2")
