@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=78 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -69,6 +69,7 @@
 [ext_resource type="PackedScene" uid="uid://dc812tpv18cnn" path="res://Scene/UI/EveryDayQuest.tscn" id="56_oex1f"]
 [ext_resource type="PackedScene" uid="uid://yxfvnairqm8i" path="res://Scene/UI/RankingList.tscn" id="64_ltlaa"]
 [ext_resource type="PackedScene" uid="uid://bbpe10id5odto" path="res://Scene/UI/AdRewardBtn.tscn" id="66_l7hii"]
+[ext_resource type="LabelSettings" uid="uid://mgahdqv1o26h" path="res://Assets/LabelSetting/BigGray.tres" id="70_as7mt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0sttu"]
 font = ExtResource("13_xqeye")
@@ -901,3 +902,16 @@ libraries = {
 [node name="AdRewardBtn" parent="." instance=ExtResource("66_l7hii")]
 offset_top = 215.0
 offset_bottom = 365.0
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.083
+anchor_right = 1.0
+anchor_bottom = 0.083
+offset_left = -103.0
+offset_top = -0.200012
+offset_right = -12.0
+offset_bottom = 43.8
+text = "v0.1.7"
+label_settings = ExtResource("70_as7mt")
