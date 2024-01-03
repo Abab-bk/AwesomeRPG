@@ -111,6 +111,7 @@ func _ready() -> void:
         EventBus.flyed.emit()
         Master.flyed_just_now = true
         Master.should_load = true
+        FlowerSaver.save(Master.current_save_slot)
         get_tree().change_scene_to_packed(load("res://Scene/World.tscn"))
         )
     

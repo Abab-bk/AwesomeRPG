@@ -159,7 +159,7 @@ func confirm_spend() -> void:
             Const.MONEY_TYPE.MEMORY:
                 # Tracer.debug("记忆数量：%s" % str(get_memonry_count_by_id(current_firend.id)))
                 
-                if get_memonry_count_by_id(current_firend.id) > 1: # 为什么是1？因为一次只能消耗一个记忆
+                if get_memonry_count_by_id(current_firend.id) >= 1: # 为什么是1？因为一次只能消耗一个记忆
                     var _memory:Memory = get_memonry_by_id(current_firend.id)
                     if not _memory:
                         return
@@ -326,7 +326,7 @@ func update_ui() -> void:
     rare_label.text = Const.FRIEND_QUALITY.keys()[current_firend.quality]
     title_label.text = current_firend.name
     lv_label.text = "Lv. %s" % str(current_firend_data.level)
-    xp_level.text = "%s/%s" % [str(current_firend_data.now_xp), str(current_firend_data.next_level_xp)]
+    xp_level.text = "%s/%s" % [str(current_firend_data.now_xp), str(current_firend_data.next_level_xp).pad_decimals(2)]
     
     memory_num_label.text = str(current_firend.memory)
     pro_num_label.text = str(current_firend.pro)

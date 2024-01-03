@@ -1,6 +1,6 @@
 extends Control
 
-var world := preload("res://Scene/World.tscn")
+#var world := preload("res://Scene/World.tscn")
 
 @onready var start_btn:Button = %StartBtn
 @onready var exit_btn:Button = %ExitBtn
@@ -33,7 +33,10 @@ func _ready() -> void:
     creat_character.hide()
     
     creat_character.creat_ok.connect(func():
-        get_tree().change_scene_to_packed(load("res://Scene/UI/StartCut.tscn"))
+        #get_tree().change_scene_to_packed(load("res://Scene/UI/StartCut.tscn"))
+        #YASM.load_scene("res://Scene/UI/StartCut.tscn")
+        #SceneLoader.load_scene(self, "start_cut")
+        SceneManager.change_scene("res://Scene/UI/StartCut.tscn")        
         )
     start_btn.pressed.connect(func():
         save_panel.show()
@@ -60,7 +63,10 @@ func _ready() -> void:
     
     for i in save_panels.get_children():
         i.enter_game.connect(func():
-            get_tree().change_scene_to_packed(world)
+            #get_tree().change_scene_to_packed(world)
+            #YASM.load_scene("res://Scene/World.tscn")
+            #SceneLoader.load_scene(self, "world")
+            SceneManager.change_scene("res://Scene/World.tscn")
             )
         i.enter_creat.connect(func():
             creat_character.show()

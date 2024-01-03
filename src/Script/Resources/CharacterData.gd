@@ -152,6 +152,8 @@ func level_up() -> Dictionary:
     defense += strength
     evasion += agility * 0.025
 
+    update_next_xp()
+
     return {
         "等级": [level - 1, level],
         "最大血量": [max_hp - 6, max_hp],

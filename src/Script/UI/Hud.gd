@@ -28,7 +28,6 @@ signal backed_to_home
 @onready var forge_btn:TextureButton = %ForgeBtn
 @onready var repo_btn:TextureButton = %RepoBtn
 @onready var days_checkin_btn:TextureButton = %"7DaysCheckinBtn"
-@onready var fly_btn:TextureButton = %FlyBtn
 @onready var friends_btn:TextureButton = %FriendsBtn
 @onready var tower_btn:TextureButton = %TowerBtn
 @onready var gacha_btn:TextureButton = %GachaBtn
@@ -37,6 +36,8 @@ signal backed_to_home
 @onready var ranking_list_btn:TextureButton = %RankingListBtn
 
 @onready var get_skill_btn:Button = %GetSkillBtn
+@onready var previous_level_btn:Button = %PreviousLevelBtn
+@onready var next_level_btn:Button = %NextLevelBtn
 
 @onready var inventory_ui:Control = $Pages/Pages/Inventory
 @onready var character_panel_ui:Control = $Pages/Pages/CharacterPanel
@@ -157,7 +158,29 @@ func _ready() -> void:
     EventBus.set_should_show_reward_day_reward.connect(func(_state:bool):
         should_show_every_day_reward = _state
         )
-
+    
+    EventBus.boss_appear.connect(func():
+        previous_level_btn.hide()
+        next_level_btn.hide()
+        )
+    
+    EventBus.boss_dead.connect(func():
+        previous_level_btn.show()
+        next_level_btn.show()
+        )
+    
+    previous_level_btn.pressed.connect(func():
+        if Master.current_level == 1:
+            return
+        Master.current_level -= 2
+        EventBus.completed_level.emit()
+        )
+    
+    next_level_btn.pressed.connect(func():
+        if not Master.current_level >= Master.current_max_level:
+            EventBus.completed_level.emit()
+        )
+    
     backed_to_home.connect(func():quest_panel.show())
     changed_to_other.connect(func():quest_panel.hide())
     
@@ -174,7 +197,6 @@ func _ready() -> void:
         show_days_checkin_red_point = false
         change_page(PAGE.DAYS_CHICKIN)
         )
-    fly_btn.pressed.connect(change_page.bind(PAGE.FLY))
     friends_btn.pressed.connect(change_page.bind(PAGE.FRIENDS))
     tower_btn.pressed.connect(change_page.bind(PAGE.TOWER))
     gacha_btn.pressed.connect(change_page.bind(PAGE.GACHA))
@@ -265,9 +287,13 @@ func update_ui() -> void:
     if Master.current_location == Const.LOCATIONS.WORLD:
         level_level_label.text = "第 %s 关" % str(Master.current_level)
         next_lvel_tip_label.text = "余剩：%s 只怪物" % str(Master.next_level_need_kill_count)
+        previous_level_btn.show()
+        next_level_btn.show()
     elif Master.current_location == Const.LOCATIONS.TOWER:
         level_level_label.text = "第 %s 层" % str(Master.current_tower_level)
         next_lvel_tip_label.text = "余剩：%s 只怪物" % str(Master.need_kill_enemys_to_next_tower)
+        previous_level_btn.hide()
+        next_level_btn.hide()
     
     mp_bar.value = (float(Master.player_output_data.magic) / float(Master.player_output_data.max_magic)) * 100.0
     hp_bar.value = (float(Master.player_output_data.hp) / float(Master.player_output_data.max_hp)) * 100.0

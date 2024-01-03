@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://bjqtnyo6c546w"]
+[gd_scene load_steps=76 format=3 uid="uid://bjqtnyo6c546w"]
 
 [ext_resource type="Script" path="res://Script/UI/Hud.gd" id="1_d15xn"]
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="2_3ssiu"]
@@ -41,8 +41,6 @@
 [ext_resource type="Texture2D" uid="uid://bfitc77f4gvhe" path="res://Assets/UI/Texture/Button/RepoBtnPre.png" id="30_di66f"]
 [ext_resource type="Texture2D" uid="uid://b5b2xouca1d3d" path="res://Assets/UI/Texture/Button/DaysCheckin.png" id="31_r2t82"]
 [ext_resource type="Texture2D" uid="uid://d2u888scrwjac" path="res://Assets/UI/Texture/Button/DaysCheckinPre.png" id="32_dgm5u"]
-[ext_resource type="Texture2D" uid="uid://dp156caw8k8f7" path="res://Assets/UI/Texture/Button/FlyBtn.png" id="32_f0iak"]
-[ext_resource type="Texture2D" uid="uid://g0ge1pomi354" path="res://Assets/UI/Texture/Button/FlyBtnPre.png" id="33_r5k0t"]
 [ext_resource type="Texture2D" uid="uid://dcvvtbkl67xlk" path="res://Assets/UI/Texture/Button/TowerBtn.png" id="34_ehu7i"]
 [ext_resource type="Texture2D" uid="uid://dnm0p8iq5spwr" path="res://Assets/UI/Texture/Button/FriendsBtn.png" id="34_qeepe"]
 [ext_resource type="Texture2D" uid="uid://q64pqmnvvetw" path="res://Assets/UI/Texture/Button/TowerBtnPre.png" id="35_8rwpc"]
@@ -142,18 +140,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Control/SubFunction/SubFunction/VBoxContainer2/FlyBtn:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_h6rx1"]
 resource_name = "show_sub_function"
@@ -169,7 +155,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(128, 630), Vector2(128, 1300)]
+"values": [Vector2(128, 630), Vector2(128, 1150)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -203,18 +189,6 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.18),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Control/SubFunction/SubFunction/VBoxContainer2/FlyBtn:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -264,9 +238,38 @@ layout_mode = 2
 layout_mode = 2
 mouse_filter = 2
 
-[node name="HealingItemsBar" parent="Control/BottomBar/VBoxContainer/FunctionBar" instance=ExtResource("4_aqrcm")]
+[node name="MarginContainer" type="MarginContainer" parent="Control/BottomBar/VBoxContainer/FunctionBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/BottomBar/VBoxContainer/FunctionBar/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PreviousLevelBtn" type="Button" parent="Control/BottomBar/VBoxContainer/FunctionBar/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+text = "上一关"
+
+[node name="Control" type="Control" parent="Control/BottomBar/VBoxContainer/FunctionBar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="HealingItemsBar" parent="Control/BottomBar/VBoxContainer/FunctionBar/MarginContainer/HBoxContainer" instance=ExtResource("4_aqrcm")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="Control/BottomBar/VBoxContainer/FunctionBar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="NextLevelBtn" type="Button" parent="Control/BottomBar/VBoxContainer/FunctionBar/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "下一关"
 
 [node name="SkillBar" type="HBoxContainer" parent="Control/BottomBar/VBoxContainer/FunctionBar"]
 unique_name_in_owner = true
@@ -681,14 +684,6 @@ mouse_filter = 2
 texture = ExtResource("45_jeful")
 stretch_mode = 5
 
-[node name="FlyBtn" type="TextureButton" parent="Control/SubFunction/SubFunction/VBoxContainer2"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-texture_normal = ExtResource("32_f0iak")
-texture_pressed = ExtResource("33_r5k0t")
-stretch_mode = 5
-
 [node name="TowerBtn" type="TextureButton" parent="Control/SubFunction/SubFunction/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -914,5 +909,5 @@ offset_left = -103.0
 offset_top = -0.200012
 offset_right = -12.0
 offset_bottom = 43.8
-text = "v0.1.8"
+text = "v0.1.9"
 label_settings = ExtResource("70_as7mt")

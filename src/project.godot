@@ -17,6 +17,8 @@ boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://Icon.png"
+scenes/loading_scene_path="res://addons/yet_another_scene_manager/Scenes/Loading.tscn"
+scenes/error_scene_path="res://addons/yet_another_scene_manager/Scenes/Error.tscn"
 
 [autoload]
 
@@ -35,6 +37,7 @@ PockAd="*res://addons/FlowerPockAD/PockAD.gd"
 PockAD="*res://addons/FlowerPockAD/PockAD.gd"
 SilentWolf="*res://addons/silent_wolf/SilentWolf.gd"
 InputManager="*res://addons/GDTIM-4.x-v2_1_2/InputManager.gd"
+SceneManager="*res://addons/scene_manager/SceneManager.tscn"
 
 [debug]
 
@@ -62,7 +65,7 @@ naming/scene_name_casing=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ChangeMainActivity/plugin.cfg", "res://addons/Dfa/plugin.cfg", "res://addons/FlowerAbility/plugin.cfg", "res://addons/FlowerBuff/plugin.cfg", "res://addons/FlowerPockAD/plugin.cfg", "res://addons/FlowerSaver/plugin.cfg", "res://addons/FlowerTapTapSDK/plugin.cfg", "res://addons/StringFactory/plugin.cfg", "res://addons/TimeManager/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/debug_menu/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/flowercdk/plugin.cfg", "res://addons/godotsize/plugin.cfg", "res://addons/import_scml/plugin.cfg", "res://addons/silent_wolf/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/tracer/plugin.cfg", "res://addons/worldmap_builder/plugin.cfg")
+enabled=PackedStringArray("res://addons/ChangeMainActivity/plugin.cfg", "res://addons/Dfa/plugin.cfg", "res://addons/FlowerAbility/plugin.cfg", "res://addons/FlowerBuff/plugin.cfg", "res://addons/FlowerPockAD/plugin.cfg", "res://addons/FlowerSaver/plugin.cfg", "res://addons/FlowerTapTapSDK/plugin.cfg", "res://addons/StringFactory/plugin.cfg", "res://addons/TimeManager/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/debug_menu/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/flowercdk/plugin.cfg", "res://addons/godotsize/plugin.cfg", "res://addons/import_scml/plugin.cfg", "res://addons/scene_loader/plugin.cfg", "res://addons/scene_manager/plugin.cfg", "res://addons/silent_wolf/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/tracer/plugin.cfg", "res://addons/worldmap_builder/plugin.cfg")
 
 [file_customization]
 

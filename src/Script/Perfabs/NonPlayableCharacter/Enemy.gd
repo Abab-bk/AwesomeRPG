@@ -242,7 +242,7 @@ func die() -> void:
     #EventBus.enemy_die.emit(data.level * data.level * data.level * 3 * (1 + Master.fly_count * 0.1))
     #EventBus.enemy_die.emit(((Master.player_data.level * 3) + 15) * (1 + Master.fly_count * 0.1))
     #EventBus.enemy_die.emit((data.level * 3) * (1 + Master.fly_count * 0.1))
-    var _get_xp:float = (3 * data.level * 1.5) * (1 + Master.fly_count * 0.1)
+    var _get_xp:float = (3 * data.level * 1.5) * (1 + Master.current_level * 0.05)
     EventBus.enemy_die.emit(_get_xp)
 
     randomize()

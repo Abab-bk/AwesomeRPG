@@ -29,6 +29,16 @@ const ENEMYS_SKINS:Array[String] = [
     "res://Scene/Perfabs/NonPlayCharacter/SkeletonArcher.tscn"
 ]
 
+const TIPS:Array[String] = [
+    "天赋树的力量，强大到超乎你的想象！",
+    "伙伴等级越高，专精后越强",
+    "作者很帅",
+    "花神是谁？",
+    "你很帅",
+    "你很美",
+    "AcidWall.icu",
+]
+
 var world:Node2D
 
 var player_healing_items:Dictionary = {
@@ -56,7 +66,10 @@ var should_load:bool = false
 var current_level:int = 1:
     set(v):
         current_level = v
+        if current_level > current_max_level:
+            current_max_level = current_level
         FlowerSaver.set_data("current_level", current_level)
+var current_max_level:int = 1
 # 进入下一关需要击杀的怪物数量
 var next_level_need_kill_count:int = 0
 # 转生次数
@@ -286,23 +299,7 @@ func _ready():
             flyed_just_now = FlowerSaver.get_data("flyed_just_now")
 
         if flyed_just_now:
-            Tracer.info("Master飞升读档，玩家名：%s" % player_name)
-            fly_count = FlowerSaver.get_data("fly_count")
-            unlocked_skills = []
-            current_level = 0
-            coins = 0
-            moneys = {"white": 0, "blue": 0, "purple": 0, "yellow": 0,}
-            next_reward_player_level = 1
-            player_healing_items = {"hp_potion": 0, "mp_potion": 0, }
-            unlocked_functions = {}
-            flyed_skill_point = 0
-            player_data = null
-            player_output_data = null
-            player_inventory = null
-
-            #EventBus.rework_level_enemy_count.emit()
-            EventBus.completed_level.emit()
-            #flyed_just_now = false
+            apply_fly()
             return
 
         Tracer.info("Master常规读档")
@@ -428,6 +425,7 @@ func yes_fly() -> void:
     moneys.purple = 0
     moneys.yellow = 0
 
+
 func apply_fly() -> void:
     Tracer.info("Master飞升读档，玩家名：%s" % player_name)
     fly_count = FlowerSaver.get_data("fly_count")
@@ -442,11 +440,14 @@ func apply_fly() -> void:
     player_data = null
     player_output_data = null
     player_inventory = null
+    player.compute_data = get_origin_player_data().duplicate(true)
+    player.output_data = get_origin_player_data().duplicate(true)
     player.flower_buff_manager.compute_data = get_origin_player_data().duplicate(true)
     player.flower_buff_manager.output_data = get_origin_player_data().duplicate(true)
     #EventBus.rework_level_enemy_count.emit()
     EventBus.completed_level.emit()
     flyed_just_now = false
+
 
 func get_origin_player_data() -> CharacterData:
     return load("res://Assets/Resources/Datas/Characters/Player2.tres").duplicate(true)

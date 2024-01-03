@@ -38,6 +38,9 @@ func _ready() -> void:
     
     yes_btn.pressed.connect(func():
         SoundManager.play_ui_sound(load(Master.CLICK_SOUNDS))
+        if not Master.xp_book_inventory[current_select] >= h_slider.value:
+            EventBus.new_tips.emit("经验书不足")
+            return
         Master.xp_book_inventory[current_select] -= h_slider.value
         var _get_all_xp:int = 0
         sim_all_xp = 0
@@ -49,6 +52,7 @@ func _ready() -> void:
             _next_level_xp = (15 + ((friend_data.level + 1) ** 3)) * (1.07 ** friend_data.level)
             
             if friend_data.now_xp + _get_all_xp < _next_level_xp:
+                friend_data.now_xp += _get_all_xp
                 break
             
             friend_data.level_up()

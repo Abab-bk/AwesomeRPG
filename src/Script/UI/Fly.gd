@@ -20,10 +20,9 @@ func _ready() -> void:
         EventBus.show_popup.emit("飞升", "确认飞升吗？", true, func():
             # 重生目的：解锁最大等级、点飞升技能树 -> 更快变强
             # 获得技能点公式：根据玩家当前的所有属性
-            Master.flyed_skill_point += get_flyed_skill_point_count()
+            Master.flyed_skill_point = get_flyed_skill_point_count()
             Master.coins -= need_coins
             Master.fly_count += 1
-            Master.flyed_just_now = true
             #EventBus.flyed.emit()
             owner.change_page(owner.PAGE.HOME)
             EventBus.save.emit()
