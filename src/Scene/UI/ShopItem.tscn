@@ -9,7 +9,7 @@
 [node name="ShopItem" type="Panel"]
 custom_minimum_size = Vector2(300, 300)
 theme = ExtResource("1_3il4n")
-theme_type_variation = &"SubPanel"
+theme_type_variation = &"ClubPanel"
 script = ExtResource("2_1fcpg")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

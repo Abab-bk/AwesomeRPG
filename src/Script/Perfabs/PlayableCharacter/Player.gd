@@ -290,8 +290,6 @@ func get_origin_player_data() -> CharacterData:
 
 
 func euipment_up(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
-    # 装备装备
-    compute_data.quipments[_type] = _item
     if _item:
         Tracer.info("装备装备：%s" % _item.name)
     else:
@@ -336,6 +334,9 @@ func euipment_up(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem):
     
     # 更新 UI
     EventBus.equipment_up_ok.emit(_type, _item)
+    
+    # 更新数据结构
+    compute_data.quipments[_type] = _item
 
 
 func equipment_down(_type:Const.EQUIPMENT_TYPE, _item:InventoryItem, _add_item:bool) -> void:
@@ -432,7 +433,7 @@ func compute_all_euipment() -> void:
 func update_equipment_textures() -> void:
     var _data:Dictionary = {}
     
-    # FIXME: compute_data.quipments[equipment_index]里面是null，应该是飞升后导致的
+    # FIXME: compute_data.quipments[equipment_index]里面是null
     
     #Tracer.info("compute_data.quipments: %s" % str(compute_data.quipments))
     

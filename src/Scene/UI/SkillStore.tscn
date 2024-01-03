@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxc7hc1jk1l0j"]
+[gd_scene load_steps=5 format=3 uid="uid://dxc7hc1jk1l0j"]
 
 [ext_resource type="Theme" uid="uid://dw7ft4xik3rji" path="res://Assets/Theme/Normal.tres" id="1_gvaxm"]
 [ext_resource type="Script" path="res://Script/UI/SkillStore.gd" id="2_25jub"]
 [ext_resource type="LabelSettings" uid="uid://buvwr4pla8wi1" path="res://Assets/LabelSetting/BigWhite.tres" id="3_yy5bl"]
 [ext_resource type="Texture2D" uid="uid://bvoe7qqn2ya8f" path="res://Assets/Texture/Icons/Skills/BloodDance.png" id="4_vfa4u"]
-[ext_resource type="Texture2D" uid="uid://c5trom4ylic3b" path="res://Assets/UI/Texture/ClubButtonNormal.png" id="6_vi4op"]
 
 [node name="SkillStore" type="VBoxContainer"]
 anchors_preset = 15
@@ -19,33 +18,42 @@ script = ExtResource("2_25jub")
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 0
+theme_override_constants/separation = 50
 
-[node name="Panel" type="NinePatchRect" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 30
+
+[node name="Panel" type="Panel" parent="VBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
-texture = ExtResource("6_vi4op")
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 20
-patch_margin_bottom = 20
+theme_type_variation = &"ClubPanel"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Panel/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 30
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Panel/HBoxContainer/VBoxContainer2"]
+[node name="VBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
-[node name="Icon" type="TextureRect" parent="VBoxContainer/Panel/HBoxContainer/VBoxContainer2/VBoxContainer2"]
+[node name="Icon" type="TextureRect" parent="VBoxContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -53,25 +61,27 @@ texture = ExtResource("4_vfa4u")
 expand_mode = 2
 stretch_mode = 5
 
-[node name="NameLabel" type="Label" parent="VBoxContainer/Panel/HBoxContainer/VBoxContainer2/VBoxContainer2"]
+[node name="NameLabel" type="Label" parent="VBoxContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
 text = "鲜血舞蹈"
 label_settings = ExtResource("3_yy5bl")
-horizontal_alignment = 1
+vertical_alignment = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/Panel/HBoxContainer/VBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CostLabel" type="Label" parent="VBoxContainer/Panel/HBoxContainer/VBoxContainer2/VBoxContainer"]
+[node name="CostLabel" type="Label" parent="VBoxContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "消耗：50 生命"
 label_settings = ExtResource("3_yy5bl")
 
-[node name="DescLabel" type="Label" parent="VBoxContainer/Panel/HBoxContainer/VBoxContainer2/VBoxContainer"]
+[node name="DescLabel" type="Label" parent="VBoxContainer/VBoxContainer/Panel/MarginContainer/HBoxContainer/VBoxContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -79,16 +89,12 @@ text = "每损失 100 点生命，获得 10% 的攻速、速度、伤害加成�
 label_settings = ExtResource("3_yy5bl")
 autowrap_mode = 3
 
-[node name="Panel2" type="NinePatchRect" parent="VBoxContainer"]
+[node name="Panel2" type="Panel" parent="VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-texture = ExtResource("6_vi4op")
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 20
-patch_margin_bottom = 20
+theme_type_variation = &"ClubPanel"
 
-[node name="Items" type="GridContainer" parent="VBoxContainer/Panel2"]
+[node name="Items" type="GridContainer" parent="VBoxContainer/VBoxContainer/Panel2"]
 unique_name_in_owner = true
 layout_mode = 2
 offset_top = 504.0
@@ -97,7 +103,12 @@ offset_bottom = 2284.0
 size_flags_vertical = 3
 columns = 6
 
-[node name="BuyBtn" type="Button" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_right = 100
+
+[node name="BuyBtn" type="Button" parent="VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2

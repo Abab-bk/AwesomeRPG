@@ -1,6 +1,7 @@
 extends Panel
 
 @onready var change_btn:Button = %ChangeBtn
+#@onready var auto_use_check_box:CheckBox = %AutoUseCheckBox
 
 signal changed_ability(ability:FlowerAbility)
 
@@ -30,6 +31,7 @@ var ability:FlowerAbility = null:
                 EventBus.player_ability_change.emit()
 
             %DisBtn.hide()
+            #auto_use_check_box.hide()
             %ChangeBtn.show()
             
             return
@@ -45,6 +47,7 @@ var ability:FlowerAbility = null:
         %Icon.texture = load(ability.icon_path)
         %NameLabel.text = ability.name
         %DisBtn.show()
+        #auto_use_check_box.show()
         %ChangeBtn.hide()
         
         # 通过技能面板刷新 sub skill 的 parent
@@ -79,7 +82,14 @@ func _ready() -> void:
     %DisBtn.pressed.connect(func():
         ability = null
         )
+    #auto_use_check_box.toggled.connect(func(_state:bool):
+        #if _state:
+            #
+            #return
+        #)
+    
     
     %DisBtn.hide()
+    #auto_use_check_box.hide()
     %ChangeBtn.show()
 
